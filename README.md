@@ -17,7 +17,7 @@
   * [gitignore](./configs/gitignore)
   * [editorconfig](./configs/editorconfig)
   * [eslintrc](./configs/eslintrc)
-* Badass terminal - iterm2 + Powerlevel9k + Nerd Fonts + Zshell with plugins and tools ([screenshot](files/terminal.png))
+* Badass terminal - iterm2 + Powerlevel9k + Nerd Fonts + [Zshell](https://github.com/robbyrussell/oh-my-zsh/wiki/Cheatsheet) with plugins and tools ([screenshot](files/terminal.png))
 * NeoVim with bunch of plugins, color schemes and [cheatsheet](vim.md) ([screenhot1](files/nvim1.png), [screenhot2](files/nvim2.png))
 
 ## Installation
@@ -57,14 +57,9 @@ Notes:
 otherwise there will be warning while installation
 * you might want to add some apps to startup after installation
 
-## [ZSH cheetsheet](https://github.com/robbyrussell/oh-my-zsh/wiki/Cheatsheet)
-
-## [Vim Keybindings](vim.md)
-
 ### TODO
 
 * try to add languageserver for russian language ?
 * check all after install
-* add macos_unsafe script + githubusercontent stable version
 * install alfred?
-* re-create repository
+
