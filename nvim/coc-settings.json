@@ -1,0 +1,62 @@
+{
+  "diagnostic.infoSign": "？",
+  "diagnostic.warningSign": "⚠",
+  "diagnostic.errorSign": "✕",
+  "suggest.maxCompleteItemCount": 30,
+
+  "languageserver": {
+    "golang": {
+      "command": "gopls",
+      "filetypes": ["go"],
+      "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"]
+    },
+    "sh": {
+      "command": "bash-language-server",
+      "args": ["start", "--stdio"],
+      "filetypes": ["sh"],
+      "ignoredRootPaths": ["~"]
+    }
+  },
+  "diagnostic-languageserver.linters": {
+        "languagetool": {
+      "command": "languagetool",
+      "filetypes": [],
+      "debounce": 200,
+      "args": ["-"],
+      "offsetLine": 0,
+      "offsetColumn": 0,
+      "sourceName": "languagetool",
+      "formatLines": 2,
+      "formatPattern": [
+        "^\\d+?\\.\\)\\s+Line\\s+(\\d+),\\s+column\\s+(\\d+),\\s+([^\\n]+)\nMessage:\\s+(.*)$",
+        {
+          "line": 1,
+          "column": 2,
+          "message": [4, 3]
+        }
+      ]
+    }
+  },
+
+  "diagnostic-languageserver.filetypes": {
+    "markdown": [ "write-good", "markdownlint" ],
+    "ruby": [ "solargraph" ],
+    "javascript": [ "eslint" ],
+    "sh": "shellcheck"
+  },
+
+  "tslint.alwaysShowRuleFailuresAsWarnings": true,
+  "tslint.autoFixOnSave": true,
+
+  "eslint.filetypes": [
+    "javascript",
+    "javascript.jsx",
+    "javascriptreact"
+  ],
+  "eslint.autoFix": true,
+  "eslint.autoFixOnSave": true,
+
+  "solargraph.diagnostics": true,
+  "solargraph.hover": true,
+  "solargraph.autoformat": true
+}

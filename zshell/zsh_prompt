@@ -1,0 +1,10 @@
+ZSH_THEME="powerlevel9k/powerlevel9k"
+POWERLEVEL9K_MODE="nerdfont-complete"
+
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon ssh root_indicator dir newline vcs vi_mode)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status time date)
+
+POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
+
+POWERLEVEL9K_SHOW_CHANGESET=true

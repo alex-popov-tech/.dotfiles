@@ -1,0 +1,25 @@
+# Shortcuts
+alias Db="cd $HOME/Dropbox"
+alias Dl="cd $HOME/Downloads"
+alias Dt="cd $HOME/Desktop"
+alias GO="cd $GOPATH"
+
+# Improved list
+alias ls="colorls --sort-dirs"
+alias lsa="colorls --almost-all --sort-dirs "
+
+# # Google Chrome
+alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
+
+# Intuitive map function
+# For example, to list all directories that contain a certain file:
+# find . -name .gitattributes | map dirname
+alias map="xargs -n1"
+
+# Kill all the tabs in Chrome to free up memory
+# [C] explained: http://www.commandlinefu.com/commands/view/402/exclude-grep-from-your-grepped-output-of-ps-alias-included-in-description
+alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v extension-process | tr -s ' ' | cut -d ' ' -f2 | xargs kill"
+
+# Other
+alias g="git"
+alias dco="docker-compose"

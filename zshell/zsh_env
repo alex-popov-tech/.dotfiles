@@ -1,0 +1,10 @@
+# Path to my oh-my-zsh installation
+export ZSH="$HOME/.oh-my-zsh"
+# vi-mode go to differents modes faser
+export KEYTIMEOUT=1
+# add brew and packages to PATH
+export PATH="/usr/local/bin:$PATH"
+# Preferred editor for local sessions
+export EDITOR="nvim"
+# Go mod setting
+export GO111MODULE=on
