@@ -27,6 +27,12 @@ settings MacOS it's required to reload your mac at some point of installation.
 For this purposes installation process consists from two install scripts,
 read below how to use them.
 
+Notes:
+
+* for installing apps from `mas` you should be logged in Mac Apple store,
+otherwise there will be warning while installation
+* you might want to add some apps to startup after installation
+
 1. Install package/langs managers:
    * `curl https://raw.githubusercontent.com/aleksanderpopov/.dotfiles/master/install/managers.sh | bash`
 2. Open new terminal session
@@ -51,15 +57,11 @@ read below how to use them.
 
       `csrutil status; ls -la /private/var/vm`
 
-Notes:
-
-* for installing apps from `mas` you should be logged in Mac Apple store,
-otherwise there will be warning while installation
-* you might want to add some apps to startup after installation
-
 ### TODO
 
 * try to add languageserver for russian language ?
 * check all after install
+  * go build is failing https://github.com/moovweb/gvm/#installing-go
+  * nvim extensions does not getting installed after installation
 * install alfred?
 
