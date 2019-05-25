@@ -19,7 +19,7 @@ function main() {
   pip3 install python-language-server pylint
 
   curl https://languagetool.org/download/LanguageTool-stable.zip --output languagetool.zip \
-    && unzip languagetool.zip -d $HOME/.config/nvim/languagetool/ \
+    && unzip languagetool.zip -d $HOME/.config/nvim/ \
     && rm -rf languagetool.zip \
     && chmod +x $DPATH/nvim/languagetool.sh \
     && ln -fvs $DPATH/nvim/languagetool.sh /usr/local/bin/languagetool
