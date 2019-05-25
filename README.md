@@ -61,7 +61,7 @@ otherwise there will be warning while installation
 
 * try to add languageserver for russian language ?
 * check all after install
-  * go build is failing https://github.com/moovweb/gvm/#installing-go
   * nvim extensions does not getting installed after installation
+  * make golang install idempotent and fast
 * install alfred?
 

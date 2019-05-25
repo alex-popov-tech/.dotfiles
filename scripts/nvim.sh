@@ -8,6 +8,24 @@ function main() {
 
   brew install --HEAD neovim
 
+  # Node Version Manager
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvmexport NVM_DIR="$HOME/.nvm"
+  [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+
+  # SDKman - JVM related stuff
+  export SDKMAN_DIR="$HOME/.sdkman"
+  [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+  # Ruby Environment Manager
+  eval "$(rbenv init -)"
+
+  # Python Environment Manager
+  eval "$(pyenv init -)"
+
+  # Golnag Version Manager
+  [[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
+
   gem install neovim
   pip install neovim
   pip3 install neovim
