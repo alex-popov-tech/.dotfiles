@@ -13,9 +13,11 @@ osascript -e 'tell application "System Preferences" to quit'
 # Ask for the administrator password upfront
 sudo -v
 
+###############################################################################
+# SSD-specific tweaks                                                         #
+###############################################################################
 # Disable hibernation (speeds up entering sleep mode)
 sudo pmset -a hibernatemode 0
-
 # Remove the sleep image file to save disk space
 sudo rm /private/var/vm/sleepimage
 # Create a zero-byte file insteadÉ
