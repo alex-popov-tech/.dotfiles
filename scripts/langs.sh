@@ -33,8 +33,10 @@ function main() {
   echo "+----------------------------------------+"
   echo "|        Installing Golang 1.12.5        |"
   echo "+----------------------------------------+"
+  brew install go
   gvm install go1.12.5
   gvm use go1.12.5 --default
+  brew uninstall go
 }
 
 main
