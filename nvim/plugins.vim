@@ -1,7 +1,7 @@
 call plug#begin('~/.config/nvim/plugged')
 " ========== File system ==========
 " fuzzy search from homebrew
-Plug 'junegunn/fzf', { 'dir': '~/.config/fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'dir': '~/.config/fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 " find in all files
 nmap <leader>/F :Files <CR>
