@@ -60,6 +60,6 @@ otherwise there will be warning while installation
 ### TODO
 
 * check all after install
-  * make golang install idempotent and fast
 * install alfred?
+* install private automatically?
 

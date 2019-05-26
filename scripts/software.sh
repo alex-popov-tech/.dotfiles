@@ -10,6 +10,7 @@ function main() {
     watch \
     grep \
     openssh \
+    rsync \
     ssh-copy-id
 
   sudo /usr/bin/gem install colorls
