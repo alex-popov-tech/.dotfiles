@@ -62,4 +62,5 @@ otherwise there will be warning while installation
 * check all after install
 * install alfred?
 * install private automatically?
+* make git clone sets upstream to corresponding branches automatically
 
