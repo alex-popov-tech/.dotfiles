@@ -5,15 +5,12 @@ function main() {
   echo "+---------------------------------+"
   echo "|        Installing NodeJS        |"
   echo "+---------------------------------+"
-  export NVM_DIR="$HOME/.nvm"
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
   nvm install node
   npm install -g yarn
 
   echo "+-------------------------------+"
   echo "|        Installing Java        |"
   echo "+-------------------------------+"
-  source $HOME/.sdkman/bin/sdkman-init.sh
   sdk install java 9.0.4-open
 
   echo "+-------------------------------+"
@@ -33,7 +30,6 @@ function main() {
   echo "+---------------------------------+"
   echo "|        Installing Golang        |"
   echo "+---------------------------------+"
-  source $HOME/.gvm/scripts/gvm
   brew install go
   gvm install go1.12.5
   gvm use go1.12.5 --default
