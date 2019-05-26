@@ -2,6 +2,7 @@
 
 function main() {
 
+  touch $HOME/.bash_profile
   if ! which brew > /dev/null; then
     echo "+-----------------------------------+"
     echo "|        Installing Homebrew        |"
