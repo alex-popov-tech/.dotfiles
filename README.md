@@ -59,9 +59,7 @@ otherwise there will be warning while installation
 
 ### TODO
 
-* try to add languageserver for russian language ?
 * check all after install
-  * nvim extensions does not getting installed after installation
   * make golang install idempotent and fast
 * install alfred?
 
