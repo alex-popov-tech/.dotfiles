@@ -30,10 +30,12 @@ function main() {
   echo "+---------------------------------+"
   echo "|        Installing Golang        |"
   echo "+---------------------------------+"
-  brew install go
-  gvm install go1.12.5
-  gvm use go1.12.5 --default
-  brew uninstall go
+  if [[ ! "$(where go)" =~ "gvm" ]]; then
+    brew install go
+    gvm install go1.12.5
+    gvm use go1.12.5 --default
+    brew uninstall go
+  fi
 }
 
 main
