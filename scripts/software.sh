@@ -22,12 +22,16 @@ function main() {
     macs-fan-control \
     dropbox \
     docker \
-    telegram skype \
+    telegram skype microsoft-teams \
     android-file-transfer \
     vlc \
     gitkraken \
     tunnelblick \
-    flux toggl karabiner-elements
+    flux \
+    toggl \
+    blockblock \
+    teamviewer \
+    karabiner-elements
 
   brew tap caskroom/fonts && brew cask install font-hack-nerd-font
 
