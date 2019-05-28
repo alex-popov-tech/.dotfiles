@@ -9,6 +9,12 @@
       "command": "gopls",
       "filetypes": ["go"],
       "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"]
+    } ,
+    "sh": {
+      "command": "bash-language-server",
+      "args": ["start", "--stdio"],
+      "filetypes": ["sh"],
+      "ignoredRootPaths": ["~"]
     }
   },
 

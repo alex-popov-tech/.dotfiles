@@ -5,7 +5,10 @@ function main() {
   echo "+---------------------------------+"
   echo "|        Installing NodeJS        |"
   echo "+---------------------------------+"
-  nvm install node
+  # install this particular version cause bash-language-server
+  # works only for it https://github.com/mads-hartmann/bash-language-server/issues/131#issuecomment-496540572
+  nvm install 11.14.0
+  nvm use 11.14.0 --default
   npm install -g yarn
 
   echo "+-------------------------------+"
