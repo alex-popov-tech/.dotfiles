@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 
 function main() {
-  [ ! -d $HOME/.dotfiles ] && git clone https://github.com/aleksanderpopov/.dotfiles.git $HOME/.dotfiles
-  cd $HOME/.dotfiles
+  DPATH=$HOME/.dotfiles
+  [ ! -d $DPATH ] && git clone https://github.com/aleksanderpopov/.dotfiles.git $DPATH
+  cd $DPATH
   git pull
 
-  chmod +x ./scripts/managers.sh && ./scripts/managers.sh
+  chmod +x ./scripts/managers.sh && DPATH=$DPATH ./scripts/managers.sh
 }
 main

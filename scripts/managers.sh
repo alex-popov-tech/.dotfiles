@@ -23,6 +23,7 @@ function main() {
   echo "|        Installing Node Version Manager        |"
   echo "+-----------------------------------------------+"
   curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
+  ln -fsv $DPATH/configs/nvim-default-packages $NVM_DIR/default-packages
 
   echo "+--------------------------------------------------+"
   echo "|        Installing JVM Environment Manager        |"
