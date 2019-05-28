@@ -22,7 +22,7 @@ function main() {
     macs-fan-control \
     dropbox \
     docker \
-    telegram skype microsoft-teams \
+    telegram skype zoom microsoft-teams \
     android-file-transfer \
     vlc \
     gitkraken \
