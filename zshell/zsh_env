@@ -8,3 +8,4 @@ export PATH="/usr/local/bin:$PATH"
 export EDITOR="nvim"
 # Go mod setting
 export GO111MODULE=on
+export CGO_ENABLED=0
