@@ -13,8 +13,9 @@ function main() {
   pip3 install neovim
   npm install -g neovim
 
+  brew install shellcheck
   gem install solargraph
-  npm install -g bash-language-server write-good markdownlint-cli eslint tslint shellcheck
+  npm install -g bash-language-server write-good markdownlint-cli eslint tslint
   go get -u golang.org/x/tools/cmd/gopls
   pip3 install python-language-server pylint
 
