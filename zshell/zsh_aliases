@@ -2,6 +2,7 @@
 alias Db="cd $HOME/Dropbox"
 alias Dl="cd $HOME/Downloads"
 alias Dt="cd $HOME/Desktop"
+alias Dc="cd $HOME/Documents"
 alias GO="cd $GOPATH"
 
 # Improved list
