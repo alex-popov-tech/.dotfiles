@@ -59,8 +59,26 @@ otherwise there will be warning while installation
 
 ### TODO
 
-* check all after install
-* install alfred?
-* install private automatically?
+* suggested [software](https://github.com/jaywcjlove/awesome-mac)
+  * alfred?
+  * [better touch tool](https://folivora.ai)
+  * [rescue time](https://www.rescuetime.com/plans)
+  * [ack](https://beyondgrep.com/)
+  * [console player](https://cmus.github.io/#features)
+  * mail clients?:
+    * http://airmailapp.com/
+    * https://www.foxmail.com/mac/en
+    * https://smallcubed.com/scs/index.html
+    * https://www.nylas.com/
+    * https://github.com/nylas/nylas-mail
+    * https://polymail.io/
+    * https://www.postbox-inc.com/
+    * https://sparkmailapp.com/
+    * https://www.thunderbird.net/en-US/
+* dock magnefication does not work?
+* spotlight doesnt show up on hotkeys?
+* track on [isssue](https://github.com/mads-hartmann/bash-language-server/issues/131) on bash-language-server
+* `where` command not found after installation
+* `.bash_profile` does not getting read after installing managers like `nvm` - try to add source script and use it in main/separate?
 * make git clone sets upstream to corresponding branches automatically
 
