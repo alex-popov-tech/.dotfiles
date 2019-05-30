@@ -3,6 +3,7 @@ call plug#begin('~/.config/nvim/plugged')
 " fuzzy search from homebrew
 Plug 'junegunn/fzf', { 'dir': '~/.config/fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
+Plug 'mileszs/ack.vim'
 " find in all files
 nmap <leader>/F :Files <CR>
 " find in git files

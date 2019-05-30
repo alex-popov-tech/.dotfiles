@@ -13,7 +13,7 @@ function main() {
   pip3 install neovim
   npm install -g neovim
 
-  brew install shellcheck
+  brew install shellcheck the_silver_searcher
   gem install solargraph
   npm install -g bash-language-server write-good markdownlint-cli eslint tslint
   go get -u golang.org/x/tools/cmd/gopls
