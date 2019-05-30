@@ -50,9 +50,9 @@ set expandtab " spaces when pressing TAB in insert mode
 set tabstop=2
 set shiftwidth=2
 " when scrolling screen via f.e. J and K how many lines should be to the
-" bottom of the page (for scroll to trigger you need be at 10 line from bottom
+" bottom of the page (for scroll to trigger you need be at 5 line from bottom
 " and press 'j')
-set scrolloff=10
+set scrolloff=5
 " increase signcolumns (to the left from line number) to 2 if necessary ( for
 " git-glutter + coc.nvim signs)
 set signcolumn=auto:2
