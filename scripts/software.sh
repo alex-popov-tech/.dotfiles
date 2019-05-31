@@ -31,6 +31,7 @@ function main() {
     toggl \
     blockblock \
     teamviewer \
+    ledger-live \
     karabiner-elements
 
   brew tap caskroom/fonts && brew cask install font-hack-nerd-font
