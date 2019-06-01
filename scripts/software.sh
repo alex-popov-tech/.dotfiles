@@ -17,6 +17,7 @@ function main() {
 
   brew cask install iterm2 \
     google-chrome firefox \
+    alfred \
     transmission \
     the-unarchiver \
     macs-fan-control \
