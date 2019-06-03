@@ -59,6 +59,7 @@ otherwise there will be warning while installation
 
 ### TODO
 
+* export magnet shortcut settings somehow
 * suggested [software](https://github.com/jaywcjlove/awesome-mac)
   * alfred?
   * [better touch tool](https://folivora.ai)
