@@ -61,7 +61,6 @@ otherwise there will be warning while installation
 
 * export magnet shortcut settings somehow
 * suggested [software](https://github.com/jaywcjlove/awesome-mac)
-  * alfred?
   * [better touch tool](https://folivora.ai)
   * [rescue time](https://www.rescuetime.com/plans)
   * [ack](https://beyondgrep.com/)
@@ -77,7 +76,6 @@ otherwise there will be warning while installation
     * https://sparkmailapp.com/
     * https://www.thunderbird.net/en-US/
 * dock magnefication does not work?
-* spotlight doesnt show up on hotkeys?
 * track on [isssue](https://github.com/mads-hartmann/bash-language-server/issues/131) on bash-language-server
 * `where` command not found after installation
 * `.bash_profile` does not getting read after installing managers like `nvm` - try to add source script and use it in main/separate?
