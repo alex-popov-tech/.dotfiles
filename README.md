@@ -81,5 +81,4 @@ otherwise there will be warning while installation
 * track on [isssue](https://github.com/mads-hartmann/bash-language-server/issues/131) on bash-language-server
 * `where` command not found after installation
 * `.bash_profile` does not getting read after installing managers like `nvm` - try to add source script and use it in main/separate?
-* make git clone sets upstream to corresponding branches automatically
 
