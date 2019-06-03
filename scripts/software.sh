@@ -22,6 +22,7 @@ function main() {
     the-unarchiver \
     macs-fan-control \
     dropbox \
+    steam \
     docker \
     telegram skype zoom microsoft-teams \
     android-file-transfer \
