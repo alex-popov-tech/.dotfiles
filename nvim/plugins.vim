@@ -98,6 +98,10 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#whitespace#enabled = 0
 " some other cool themes
 Plug 'morhetz/gruvbox'
+" make background for sign column black
+let g:gruvbox_sign_column="bg0"
+" make selected text of same color
+let g:gruvbox_invert_selection=0
 Plug 'nanotech/jellybeans.vim'
 Plug 'lifepillar/vim-solarized8'
 Plug 'ayu-theme/ayu-vim'
