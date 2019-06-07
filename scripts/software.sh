@@ -32,6 +32,7 @@ function main() {
     flux \
     toggl \
     blockblock \
+    mysqlworkbench \
     teamviewer \
     ledger-live \
     karabiner-elements
