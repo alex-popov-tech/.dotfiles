@@ -57,6 +57,10 @@ otherwise there will be warning while installation
 
       `csrutil status; ls -la /private/var/vm`
 
+## Additional customization
+
+* you can use Gruvbox theme instead of default Solarized Dark using import `./terminal/gruvbox-dark.itermcolors`
+
 ### TODO
 
 * export magnet shortcut settings somehow
@@ -75,7 +79,6 @@ otherwise there will be warning while installation
     * https://www.postbox-inc.com/
     * https://sparkmailapp.com/
     * https://www.thunderbird.net/en-US/
-* dock magnefication does not work?
 * track on [isssue](https://github.com/mads-hartmann/bash-language-server/issues/131) on bash-language-server
 * `where` command not found after installation
 * `.bash_profile` does not getting read after installing managers like `nvm` - try to add source script and use it in main/separate?

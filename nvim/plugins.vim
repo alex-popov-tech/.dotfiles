@@ -97,6 +97,7 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 " remove trailing whitespace in status line
 let g:airline#extensions#whitespace#enabled = 0
 " some other cool themes
+Plug 'morhetz/gruvbox'
 Plug 'nanotech/jellybeans.vim'
 Plug 'lifepillar/vim-solarized8'
 Plug 'ayu-theme/ayu-vim'
