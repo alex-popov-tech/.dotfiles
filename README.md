@@ -66,8 +66,6 @@ otherwise there will be warning while installation
 * export magnet shortcut settings somehow
 * suggested [software](https://github.com/jaywcjlove/awesome-mac)
   * [better touch tool](https://folivora.ai)
-  * [rescue time](https://www.rescuetime.com/plans)
-  * [ack](https://beyondgrep.com/)
   * [console player](https://cmus.github.io/#features)
   * mail clients?:
     * http://airmailapp.com/

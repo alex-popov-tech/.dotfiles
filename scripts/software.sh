@@ -11,7 +11,8 @@ function main() {
     grep \
     openssh \
     rsync \
-    ssh-copy-id
+    ssh-copy-id \
+    the_silver_searcher
 
   sudo /usr/bin/gem install colorls
 
