@@ -18,7 +18,7 @@
   * [editorconfig](./configs/editorconfig)
   * [eslintrc](./configs/eslintrc)
 * Badass terminal - iterm2 + Powerlevel9k + Nerd Fonts + [Zshell](https://github.com/robbyrussell/oh-my-zsh/wiki/Cheatsheet) with plugins and tools ([screenshot](files/terminal.png))
-* NeoVim with bunch of plugins, color schemes and [cheatsheet](vim.md) ([screenhot1](files/nvim1.png), [screenhot2](files/nvim2.png))
+* NeoVim (nightly v0.4.0-945-g8e8c7d754) with bunch of plugins, color schemes and [cheatsheet](vim.md) ([screenhot1](files/nvim1.png), [screenhot2](files/nvim2.png))
 
 ## Installation
 
