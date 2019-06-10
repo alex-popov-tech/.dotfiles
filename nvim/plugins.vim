@@ -43,7 +43,7 @@ let NERDTreeAutoDeleteBuffer = 1
 " close tree on file open
 let NERDTreeQuitOnOpen = 1
 " configure sidebar size
-let NERDTreeWinSize = 40
+let NERDTreeWinSize = 30
 " add icons for tree folders
 let g:NERDTreeDirArrowExpandable = '►'
 let g:NERDTreeDirArrowCollapsible = '▼'
