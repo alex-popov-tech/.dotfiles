@@ -2,14 +2,16 @@
 nmap j gj
 nmap k gk
 
-" map <leader>w to write current buffer
+" write current buffer
 nmap <leader>w :w<CR>
-" map <leader>W to write all buffers
+" write all buffers
 nmap <leader>W :wa<CR>
-" map <leader>q to write and exit from current buffer
+" write and exit from current buffer
 nmap <silent> <leader>q :x<CR>
-" map <leader>Q to write and exit all buffers
+" write and exit all buffers
 nmap <silent> <leader>Q :xa<CR>
+" open embedded terminal
+nmap <silent> <leader>t :term<CR>
 
 " for choosing in popup menu via <C-j> and <C-k>
 inoremap <expr> <C-j> pumvisible() ? "\<C-N>" : "\<C-j>"

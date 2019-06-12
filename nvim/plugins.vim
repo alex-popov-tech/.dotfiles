@@ -42,8 +42,11 @@ let NERDTreeMinimalUI = 1
 let NERDTreeAutoDeleteBuffer = 1
 " close tree on file open
 let NERDTreeQuitOnOpen = 1
+" open nerd tree by default when calling nvim
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " configure sidebar size
-let NERDTreeWinSize = 30
+let NERDTreeWinSize = 20
 " add icons for tree folders
 let g:NERDTreeDirArrowExpandable = '►'
 let g:NERDTreeDirArrowCollapsible = '▼'
