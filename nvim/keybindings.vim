@@ -10,6 +10,8 @@ nmap <leader>W :wa<CR>
 nmap <silent> <leader>q :x<CR>
 " write and exit all buffers
 nmap <silent> <leader>Q :xa<CR>
+" write and delete current buffer
+nmap <silent> <leader>d :bd<CR>
 " open embedded terminal
 nmap <silent> <leader>t :term<CR>
 
