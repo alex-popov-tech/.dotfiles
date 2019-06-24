@@ -12,6 +12,8 @@ nmap <silent> <leader>q :x<CR>
 nmap <silent> <leader>Q :xa<CR>
 " write and delete current buffer
 nmap <silent> <leader>d :bd<CR>
+" delete current buffer without saving
+nmap <silent> <leader>D :bd!<CR>
 " open embedded terminal
 nmap <silent> <leader>t :term<CR>
 
@@ -34,10 +36,11 @@ map <C-j> <C-w><Down>
 map <C-l> <C-w><Right>
 map <C-h> <C-w><Left>
 " Open new split for C+hjkl, if split doesnt exist
-map <silent> <C-h> :call WinMove('h')<CR>
-map <silent> <C-j> :call WinMove('j')<CR>
-map <silent> <C-k> :call WinMove('k')<CR>
-map <silent> <C-l> :call WinMove('l')<CR>
+map <silent> <Left> :call WinMove('h')<CR>
+map <silent> <Down> :call WinMove('j')<CR>
+map <silent> <Up> :call WinMove('k')<CR>
+map <silent> <Right> :call WinMove('l')<CR>
+
 function! WinMove(key)
   let t:curwin = winnr()
   exec "wincmd ".a:key

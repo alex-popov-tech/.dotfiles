@@ -31,33 +31,24 @@
           }]
         },
         {
-          "description": "Ctrl + y to Arrow Left",
+          "description": "Ctrl + hjkl to Arrows",
           "manipulators": [{
-            "from": { "key_code": "y", "modifiers":{ "mandatory": ["left_control"], "optional": ["any"] } },
+            "from": { "key_code": "h", "modifiers":{ "mandatory": ["left_control"], "optional": ["any"] } },
             "to": [{"key_code": "left_arrow"}],
             "type": "basic"
-          }]
-        },
-        {
-          "description": "Ctrl + o to Arrow Right",
-          "manipulators": [{
-            "from": { "key_code": "o", "modifiers":{ "mandatory": ["left_control"], "optional": ["any"] } },
+          },
+          {
+            "from": { "key_code": "l", "modifiers":{ "mandatory": ["left_control"], "optional": ["any"] } },
             "to": [{"key_code": "right_arrow"}],
             "type": "basic"
-          }]
-        },
-        {
-          "description": "Ctrl + u to Arrow Down",
-          "manipulators": [{
-            "from": { "key_code": "u", "modifiers":{ "mandatory": ["left_control"], "optional": ["any"] } },
+          },
+          {
+            "from": { "key_code": "j", "modifiers":{ "mandatory": ["left_control"], "optional": ["any"] } },
             "to": [{"key_code": "down_arrow"}],
             "type": "basic"
-          }]
-        },
-        {
-          "description": "Ctrl + i to Arrow Up",
-          "manipulators": [{
-            "from": { "key_code": "i", "modifiers":{ "mandatory": ["left_control"], "optional": ["any"] } },
+          },
+          {
+            "from": { "key_code": "k", "modifiers":{ "mandatory": ["left_control"], "optional": ["any"] } },
             "to": [{"key_code": "up_arrow"}],
             "type": "basic"
           }]
