@@ -25,7 +25,7 @@ function main() {
     dropbox \
     steam \
     docker \
-    telegram skype zoom microsoft-teams \
+    telegram skype zoom \
     android-file-transfer \
     vlc \
     gitkraken \
