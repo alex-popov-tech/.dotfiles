@@ -157,7 +157,7 @@ nmap <leader>pp <plug>(SubversiveSubstituteLine)
 nmap <leader>P <plug>(SubversiveSubstituteToEndOfLine)
 " ========= Vim specific ==========
 " ========= Completion ============
-Plug 'neoclide/coc.nvim', { 'do': { -> coc#util#build() } }
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 let g:coc_global_extensions = [
       \ 'coc-word',
       \ 'coc-tsserver',
