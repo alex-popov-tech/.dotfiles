@@ -63,6 +63,11 @@ otherwise there will be warning while installation
 
 ### TODO
 
+* add more keybindings from coc.nvim
+* proper ctags for nvim
+* save alfred settings
+* setup alfred to be able to open nvim in fuzzy search directory
+* document most useful alfred shortcuts
 * export magnet shortcut settings somehow
 * suggested [software](https://github.com/jaywcjlove/awesome-mac)
   * [better touch tool](https://folivora.ai)
