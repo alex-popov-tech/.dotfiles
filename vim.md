@@ -51,7 +51,10 @@
   * `gr` - coc-references
   * `K` - on hover show documentation
   * `[r` and `]r` - navigate through diagnostic
+  * `[l` and `]l` - navigate through linter errors
   * `<leader>y` - show latest yanks
+  * `<leader>f` - format indent for selected lines
+  * `<leader>qf` - fix errors on current line
 * [tpope/vim-commentary](https://github.com/tpope/vim-commentary)
   * `gcc` - to comment line (works with 'motion' and visual mode)
 * [terryma/vim-multiple-cursors](https://github.com/terryma/vim-multiple-cursors)

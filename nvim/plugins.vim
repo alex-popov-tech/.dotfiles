@@ -172,8 +172,6 @@ let g:coc_global_extensions = [
       \ 'coc-diagnostic',
       \]
 
-nnoremap <silent> <leader>y :<C-u>CocList -A --normal yank<CR>
-
 " if hidden is not set, TextEdit might fail.
 " when closes buffer, it hides instead of being abandoned
 set hidden
@@ -192,6 +190,8 @@ set shortmess+=c
 " always show signcolumns
 " always show column to the left of lines number column, f.e. for git glutter
 set signcolumn=yes
+" show list of yanks with preview
+nnoremap <silent> <leader>y :<C-u>CocList -A --normal yank<CR>
 " Navigate interpreter/compiler/linter errors
 nmap <silent> [r <Plug>(coc-diagnostic-prev)
 nmap <silent> ]r <Plug>(coc-diagnostic-next)
@@ -200,10 +200,24 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+" format indent on selected lines
+xmap <leader>f  <Plug>(coc-format-selected)
+" Fix autofix problem of current line
+nmap <leader>qf  <Plug>(coc-fix-current)
+augroup cocnvim
+  autocmd!
+  " organize import on save buffer
+  autocmd BufWritePre *.ts,*.js,*.go :call CocAction('runCommand', 'editor.action.organizeImport')
+augroup end
 " Use K for show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
-" ========= Completion ============
-" =========== Linter ==============
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
 " lint whitespaces
 Plug 'ntpeters/vim-better-whitespace'
 " =========== Linter ==============
