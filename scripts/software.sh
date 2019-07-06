@@ -39,7 +39,8 @@ function main() {
     vanilla \
     karabiner-elements
 
-  brew tap caskroom/fonts && brew cask install font-hack-nerd-font
+  brew tap caskroom/fonts
+  brew cask install font-hack-nerd-font font-fira-code
 
   ITERM_PROFILES_PATH="$HOME/Library/Application Support/iTerm2/DynamicProfiles"
   mkdir -p "$ITERM_PROFILES_PATH"
