@@ -63,8 +63,7 @@ otherwise there will be warning while installation
 
 ### TODO
 
-* add more keybindings from coc.nvim
-* proper ctags for nvim
+* fix airline coc absent warning
 * save alfred settings
 * setup alfred to be able to open nvim in fuzzy search directory
 * document most useful alfred shortcuts
@@ -73,15 +72,6 @@ otherwise there will be warning while installation
   * [better touch tool](https://folivora.ai)
   * [console player](https://cmus.github.io/#features)
   * mail clients?:
-    * http://airmailapp.com/
-    * https://www.foxmail.com/mac/en
-    * https://smallcubed.com/scs/index.html
-    * https://www.nylas.com/
-    * https://github.com/nylas/nylas-mail
-    * https://polymail.io/
-    * https://www.postbox-inc.com/
-    * https://sparkmailapp.com/
-    * https://www.thunderbird.net/en-US/
 * track on [isssue](https://github.com/mads-hartmann/bash-language-server/issues/131) on bash-language-server
 * `where` command not found after installation
 * `.bash_profile` does not getting read after installing managers like `nvm` - try to add source script and use it in main/separate?
