@@ -1,5 +1,4 @@
 call plug#begin('~/.config/nvim/plugged')
-" ========== File system ==========
 " fuzzy search from homebrew
 Plug 'junegunn/fzf', { 'dir': '~/.config/fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
@@ -65,8 +64,6 @@ let g:NERDTreeIndicatorMapCustom = {
       \ 'Ignored'   : '☒',
       \ "Unknown"   : "❓"
       \ }
-" ========== File system ==========
-" ============== Git ==============
 " show added\updated lines to the left of line number
 Plug 'airblade/vim-gitgutter'
 " git plugin
@@ -87,8 +84,6 @@ nmap <leader>gl :0Glog <CR>
 nmap <leader>gd :Gdiff <CR>
 " git push
 nmap <leader>gp :Gpush <CR>
-" ============== Git ==============
-" ============== Ui ===============
 " bottom/upper status bar
 Plug 'vim-airline/vim-airline'
 " show buffer list at the top of the screen
@@ -116,8 +111,6 @@ Plug 'rakr/vim-one'
 let g:airline_theme = 'one'
 " allow italic fonts
 let g:one_allow_italics = 1
-" ============== Ui ===============
-" ========= Vim specific ==========
 " allows repeat via dot. for some plugins like surround
 Plug 'tpope/vim-repeat'
 " add\update\remove surround stuff like '"{[]}"'
@@ -234,13 +227,7 @@ let g:vista_icon_indent = [ "", "├─▸"]
 let g:vista_fzf_preview = ['right:50%']
 " lint whitespaces
 Plug 'ntpeters/vim-better-whitespace'
-" =========== Linter ==============
-" ========== Languages ============
 Plug 'sheerun/vim-polyglot'
-" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go'}
-" let g:go_auto_type_info = 1
-" ========== Languages ============
-" ============ Data ===============
 " plugin which allows vim to work with common editorconfig
 Plug 'editorconfig/editorconfig-vim'
 " syntax highlight
@@ -257,5 +244,4 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 Plug 'plasticboy/vim-markdown'
 " disable all possible folding
 let g:vim_markdown_folding_disabled = 1
-" ============ Data ===============
 call plug#end()
