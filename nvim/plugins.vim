@@ -96,6 +96,15 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 " remove trailing whitespace in status line
 let g:airline#extensions#whitespace#enabled = 0
+" enable extra cool font liguries
+let g:airline_powerline_fonts = 1
+" special status line for nerd tree buffer
+let g:airline_filetype_overrides = {
+      \ 'nerdtree': [ get(g:, 'NERDTreeStatusline', 'NERD'), '' ],
+      \ }
+" set airline theme
+Plug 'vim-airline/vim-airline-themes'
+let g:airline_theme = 'base16'
 " some other cool themes
 Plug 'morhetz/gruvbox'
 " make background for sign column black
@@ -110,7 +119,7 @@ let ayucolor="mirage" " for mirage version of theme
 " let ayucolor="dark"   " for dark version of theme
 Plug 'rakr/vim-one'
 " make airline same theme as one
-let g:airline_theme = 'one'
+" let g:airline_theme = 'one'
 " allow italic fonts
 let g:one_allow_italics = 1
 " allows repeat via dot. for some plugins like surround
