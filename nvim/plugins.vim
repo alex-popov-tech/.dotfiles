@@ -218,6 +218,20 @@ function! s:show_documentation()
     call CocAction('doHover')
   endif
 endfunction
+" working with tags, integrated with coc.nvim
+Plug 'liuchengxu/vista.vim'
+" show sidebar
+nmap <leader>ta :Vista!!<CR>
+" search through tags
+nmap <leader>/ta :Vista finder coc<CR>
+" by default use coc.nvim to get tags
+let g:vista_default_executive = 'coc'
+" show floating window with tag preview on hover
+let g:vista_echo_cursor_strategy = 'floating_win'
+" alter icons in sidebar
+let g:vista_icon_indent = [ "", "├─▸"]
+" preview in search
+let g:vista_fzf_preview = ['right:50%']
 " lint whitespaces
 Plug 'ntpeters/vim-better-whitespace'
 " =========== Linter ==============

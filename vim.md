@@ -55,6 +55,9 @@
   * `<leader>y` - show latest yanks
   * `<leader>f` - format indent for selected lines
   * `<leader>qf` - fix errors on current line
+* [liuchengxu/vista.vim](https://github.com/liuchengxu/vista.vim)
+  * `<leader>ta` - toggle tags sidebar
+  * `<leader>/ta` - fuzzy search tags
 * [tpope/vim-commentary](https://github.com/tpope/vim-commentary)
   * `gcc` - to comment line (works with 'motion' and visual mode)
 * [terryma/vim-multiple-cursors](https://github.com/terryma/vim-multiple-cursors)
