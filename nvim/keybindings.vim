@@ -15,7 +15,7 @@ nmap <silent> <leader>d :bd<CR>
 " delete current buffer without saving
 nmap <silent> <leader>D :bd!<CR>
 " open embedded terminal
-nmap <silent> <leader>t :term<CR>
+nmap <silent> <leader>te :term<CR>
 
 " for choosing in popup menu via <C-j> and <C-k>
 inoremap <expr> <C-j> pumvisible() ? "\<C-N>" : "\<C-j>"
