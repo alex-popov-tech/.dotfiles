@@ -68,6 +68,8 @@ let g:NERDTreeIndicatorMapCustom = {
 Plug 'airblade/vim-gitgutter'
 " git plugin
 Plug 'tpope/vim-fugitive'
+" async gpush for fugitive
+Plug 'tpope/vim-dispatch'
 " git status
 nmap <leader>gs :Gstatus <CR>
 " git add current file
