@@ -2,7 +2,7 @@
   "Profiles": [{
     "Name" : "Zshell",
       "Command" : "\/bin\/zsh",
-      "Normal Font" : "HackNerdFontComplete-Regular 18",
+      "Normal Font" : "FiraCode-Medium 18",
       "Terminal Type" : "xterm-256color-italic",
       "Non Ascii Font" : "HackNerdFontComplete-Regular 18",
       "Use Italic Font" : true,
