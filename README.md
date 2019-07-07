@@ -63,7 +63,6 @@ otherwise there will be warning while installation
 
 ### TODO
 
-* fix airline coc absent warning
 * save alfred settings
 * setup alfred to be able to open nvim in fuzzy search directory
 * document most useful alfred shortcuts
