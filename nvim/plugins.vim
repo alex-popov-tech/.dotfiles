@@ -86,6 +86,7 @@ nmap <leader>gl :0Glog <CR>
 nmap <leader>gd :Gdiff <CR>
 " git push
 nmap <leader>gp :Gpush <CR>
+
 " bottom/upper status bar
 Plug 'vim-airline/vim-airline'
 " show buffer list at the top of the screen
@@ -104,24 +105,21 @@ let g:airline_filetype_overrides = {
       \ }
 " set airline theme
 Plug 'vim-airline/vim-airline-themes'
-let g:airline_theme = 'base16'
-" some other cool themes
-Plug 'morhetz/gruvbox'
-" make background for sign column black
-let g:gruvbox_sign_column="bg0"
-" make selected text of same color
-let g:gruvbox_invert_selection=0
-Plug 'nanotech/jellybeans.vim'
-Plug 'lifepillar/vim-solarized8'
-Plug 'ayu-theme/ayu-vim'
-" let ayucolor="light"  " for light version of theme
-let ayucolor="mirage" " for mirage version of theme
-" let ayucolor="dark"   " for dark version of theme
+
+" some cool themes
+" Plug 'joshdick/onedark.vim'
+" let g:airline_theme = 'onedark'
+" Plug 'morhetz/gruvbox'
+" let g:gruvbox_sign_column="bg0"
+" let g:gruvbox_invert_selection=0
+" let g:gruvbox_contrast_dark = 'dark'
+" let g:airline_theme = 'base16'
+" Plug 'nanotech/jellybeans.vim'
+" Plug 'lifepillar/vim-solarized8'
 Plug 'rakr/vim-one'
-" make airline same theme as one
-" let g:airline_theme = 'one'
-" allow italic fonts
+let g:airline_theme = 'one'
 let g:one_allow_italics = 1
+
 " allows repeat via dot. for some plugins like surround
 Plug 'tpope/vim-repeat'
 " add\update\remove surround stuff like '"{[]}"'
