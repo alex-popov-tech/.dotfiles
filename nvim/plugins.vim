@@ -86,40 +86,6 @@ nmap <leader>gl :0Glog <CR>
 nmap <leader>gd :Gdiff <CR>
 " git push
 nmap <leader>gp :Gpush <CR>
-
-" bottom/upper status bar
-Plug 'vim-airline/vim-airline'
-" show buffer list at the top of the screen
-let g:airline#extensions#tabline#enabled = 1
-" split buffers at the top using that symbol
-let g:airline#extensions#tabline#left_alt_sep = '|'
-" show only name of file, instead of full path or so
-let g:airline#extensions#tabline#formatter = 'unique_tail'
-" remove trailing whitespace in status line
-let g:airline#extensions#whitespace#enabled = 0
-" enable extra cool font liguries
-let g:airline_powerline_fonts = 1
-" special status line for nerd tree buffer
-let g:airline_filetype_overrides = {
-      \ 'nerdtree': [ get(g:, 'NERDTreeStatusline', 'NERD'), '' ],
-      \ }
-" set airline theme
-Plug 'vim-airline/vim-airline-themes'
-
-" some cool themes
-" Plug 'joshdick/onedark.vim'
-" let g:airline_theme = 'onedark'
-" Plug 'morhetz/gruvbox'
-" let g:gruvbox_sign_column="bg0"
-" let g:gruvbox_invert_selection=0
-" let g:gruvbox_contrast_dark = 'dark'
-" let g:airline_theme = 'base16'
-" Plug 'nanotech/jellybeans.vim'
-" Plug 'lifepillar/vim-solarized8'
-Plug 'rakr/vim-one'
-let g:airline_theme = 'one'
-let g:one_allow_italics = 1
-
 " allows repeat via dot. for some plugins like surround
 Plug 'tpope/vim-repeat'
 " add\update\remove surround stuff like '"{[]}"'
@@ -157,8 +123,6 @@ Plug 'svermeulen/vim-subversive'
 nmap <leader>p <plug>(SubversiveSubstitute)
 nmap <leader>pp <plug>(SubversiveSubstituteLine)
 nmap <leader>P <plug>(SubversiveSubstituteToEndOfLine)
-" ========= Vim specific ==========
-" ========= Completion ============
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 let g:coc_global_extensions = [
       \ 'coc-word',
@@ -253,4 +217,38 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 Plug 'plasticboy/vim-markdown'
 " disable all possible folding
 let g:vim_markdown_folding_disabled = 1
+
+" bottom/upper status bar
+Plug 'vim-airline/vim-airline'
+" show buffer list at the top of the screen
+let g:airline#extensions#coc#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
+" split buffers at the top using that symbol
+let g:airline#extensions#tabline#left_alt_sep = '|'
+" show only name of file, instead of full path or so
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+" remove trailing whitespace in status line
+let g:airline#extensions#whitespace#enabled = 0
+" enable extra cool font liguries
+let g:airline_powerline_fonts = 1
+" special status line for nerd tree buffer
+let g:airline_filetype_overrides = {
+      \ 'nerdtree': [ get(g:, 'NERDTreeStatusline', 'NERD'), '' ],
+      \ }
+Plug 'vim-airline/vim-airline-themes'
+
+" some cool themes
+" Plug 'joshdick/onedark.vim'
+" let g:airline_theme = 'onedark'
+" Plug 'morhetz/gruvbox'
+" let g:gruvbox_sign_column="bg0"
+" let g:gruvbox_invert_selection=0
+" let g:gruvbox_contrast_dark = 'dark'
+" let g:airline_theme = 'base16'
+" Plug 'nanotech/jellybeans.vim'
+" Plug 'lifepillar/vim-solarized8'
+Plug 'rakr/vim-one'
+let g:airline_theme = 'one'
+let g:one_allow_italics = 1
+
 call plug#end()

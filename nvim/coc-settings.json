@@ -42,20 +42,11 @@
   "diagnostic-languageserver.filetypes": {
     "markdown": [ "write-good", "markdownlint" ],
     "ruby": [ "solargraph" ],
-    "javascript": [ "eslint" ],
     "sh": "shellcheck"
   },
-
-  "tslint.alwaysShowRuleFailuresAsWarnings": true,
-  "tslint.autoFixOnSave": true,
-
   "eslint.filetypes": [
-    "javascript",
-    "javascript.jsx",
-    "javascriptreact"
+    "typescript"
   ],
-  "eslint.autoFix": true,
-  "eslint.autoFixOnSave": true,
 
   "solargraph.diagnostics": true,
   "solargraph.hover": true,
