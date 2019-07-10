@@ -10,4 +10,7 @@ export EDITOR="nvim"
 export GO111MODULE=on
 export CGO_ENABLED=0
 # for nvim to have correct locale for colorls
-LANG=""
+# LANG=""
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
