@@ -168,9 +168,10 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 " format indent on selected lines
-xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>fi  <Plug>(coc-format-selected)
+vmap <leader>fi  <Plug>(coc-format-selected)
 " Fix autofix problem of current line
-nmap <leader>qf  <Plug>(coc-fix-current)
+nmap <leader>fl  <Plug>(coc-fix-current)
 augroup cocnvim
   autocmd!
   " organize import on save buffer

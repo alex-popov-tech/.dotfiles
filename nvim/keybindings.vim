@@ -29,9 +29,6 @@ nmap <leader>dp :diffput<CR>
 xmap <leader>dg :diffget<CR>
 xmap <leader>dp :diffput<CR>
 
-" apply formating the entire file
-nnoremap <leader>ff :normal! gg=G``<CR>
-
 " Map ctrl-movement keys to window switching
 map <C-k> <C-w><Up>
 map <C-j> <C-w><Down>

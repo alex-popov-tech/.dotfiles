@@ -53,8 +53,8 @@
   * `[r` and `]r` - navigate through diagnostic
   * `[l` and `]l` - navigate through linter errors
   * `<leader>y` - show latest yanks
-  * `<leader>f` - format indent for selected lines
-  * `<leader>qf` - fix errors on current line
+  * `<leader>fi<motion>` - format indent for `<motion>` or selected lines
+  * `<leader>fl` - fix errors on current line
 * [liuchengxu/vista.vim](https://github.com/liuchengxu/vista.vim)
   * `<leader>ta` - toggle tags sidebar
   * `<leader>/ta` - fuzzy search tags
