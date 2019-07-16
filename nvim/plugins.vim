@@ -96,6 +96,9 @@ Plug 'wellle/targets.vim'
 Plug 'michaeljsmith/vim-indent-object'
 " add commenting for different langs via gcc
 Plug 'tpope/vim-commentary'
+" comment mappings
+nmap <leader>c gcc
+vmap <leader>c gc
 " add bunch of mapping
 Plug 'tpope/vim-unimpaired'
 " add ability to select multiple places at the same time

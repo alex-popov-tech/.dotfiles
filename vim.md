@@ -59,7 +59,7 @@
   * `<leader>ta` - toggle tags sidebar
   * `<leader>/ta` - fuzzy search tags
 * [tpope/vim-commentary](https://github.com/tpope/vim-commentary)
-  * `gcc` - to comment line (works with 'motion' and visual mode)
+  * `<leader>c` - to comment line or selected lines
 * [terryma/vim-multiple-cursors](https://github.com/terryma/vim-multiple-cursors)
   * `<C-n>` - select next place
   * `<C-x>` - skip next match
