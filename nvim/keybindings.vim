@@ -2,6 +2,8 @@
 nmap j gj
 nmap k gk
 
+"disable map entering Ex mode
+map Q <Nop>
 " write current buffer
 nmap <leader>w :w<CR>
 " write all buffers
