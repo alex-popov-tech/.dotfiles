@@ -176,6 +176,8 @@ augroup cocnvim
   autocmd!
   " organize import on save buffer
   autocmd BufWritePre *.ts,*.js,*.go :call CocAction('runCommand', 'editor.action.organizeImport')
+  " fix indenting on save buffer
+  autocmd BufWritePre * :call CocAction('format')
 augroup end
 " Use K for show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
