@@ -176,10 +176,10 @@ vmap <leader>fi  <Plug>(coc-format-selected)
 nmap <leader>fl  <Plug>(coc-fix-current)
 augroup cocnvim
   autocmd!
-  " organize import on save buffer
-  autocmd BufWritePre *.ts,*.js,*.go :call CocAction('runCommand', 'editor.action.organizeImport')
   " fix indenting on save buffer
   autocmd BufWritePre * :call CocAction('format')
+  " organize import on save buffer
+  autocmd BufWritePre *.ts,*.js,*.go :call CocAction('runCommand', 'editor.action.organizeImport') | sleep 100m
 augroup end
 " Use K for show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
