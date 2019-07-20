@@ -3,27 +3,41 @@
   "diagnostic.warningSign": "⚠",
   "diagnostic.errorSign": "✕",
   "suggest.maxCompleteItemCount": 30,
-
   "languageserver": {
     "golang": {
       "command": "gopls",
-      "filetypes": ["go"],
-      "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"]
-    } ,
+      "filetypes": [
+        "go"
+      ],
+      "rootPatterns": [
+        "go.mod",
+        ".vim/",
+        ".git/",
+        ".hg/"
+      ]
+    },
     "sh": {
       "command": "bash-language-server",
-      "args": ["start", "--stdio"],
-      "filetypes": ["sh"],
-      "ignoredRootPaths": ["~"]
+      "args": [
+        "start",
+        "--stdio"
+      ],
+      "filetypes": [
+        "sh"
+      ],
+      "ignoredRootPaths": [
+        "~"
+      ]
     }
   },
-
   "diagnostic-languageserver.linters": {
     "languagetool": {
       "command": "languagetool",
       "filetypes": [],
       "debounce": 200,
-      "args": ["-"],
+      "args": [
+        "-"
+      ],
       "offsetLine": 0,
       "offsetColumn": 0,
       "sourceName": "languagetool",
@@ -33,21 +47,28 @@
         {
           "line": 1,
           "column": 2,
-          "message": [4, 3]
+          "message": [
+            4,
+            3
+          ]
         }
       ]
     }
   },
-
   "diagnostic-languageserver.filetypes": {
-    "markdown": [ "write-good", "markdownlint" ],
-    "ruby": [ "solargraph" ],
+    "markdown": [
+      "write-good",
+      "markdownlint"
+    ],
+    "ruby": [
+      "solargraph"
+    ],
     "sh": "shellcheck"
   },
   "eslint.filetypes": [
     "typescript"
   ],
-
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
   "solargraph.diagnostics": true,
   "solargraph.hover": true,
   "solargraph.autoformat": true
