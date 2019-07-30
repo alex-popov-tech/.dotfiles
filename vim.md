@@ -9,9 +9,8 @@
   * `zo` - open fold
   * `zc` - close a fold
 * `<C-j>`/`<C-k>` - navigate through quicklist/popup/etc
-* `<leader>ff` - apply formatting for entire file
-* `<leader>dg` - alias for :diffget
-* `<leader>dp` - alias for :diffput
+* `<leader>gdg` - alias for :diffget
+* `<leader>gdp` - alias for :diffput
 * `<C-e>` - exit from integrated terminal interaction mode
 
 ## Plugins
@@ -103,9 +102,7 @@ current buffer for all files or current file
     * use `until=<DAY>` - to limit by date (f.e. `yesterday`)
     * use `-S<PATTERN>` - to search for `<PATTERN>` diff for
 each commit (f.e. `:Glog -Sfindme --`)
-  * `<leader>gd`/`:Gdiff`, `:Gvdiff`, `:Gsdiff` - show interactive diffs:
-    * `diffget` or `do` - pulls changes from other diffbuff to current diffbuff
-    * `diffput` or `dp` - puts changes in current diffbuff to other diffbuff
+  * `<leader>gdf`/`:Gdiff`, `:Gvdiff`, `:Gsdiff` - show interactive diffs:
     * `:Gwrite` and `:Gread` - also work for diffbuff
 (writes/takes all changes from other diffbuff)
   * `:Git` - alternative to usual git, with some autocompletion

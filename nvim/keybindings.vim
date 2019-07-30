@@ -24,10 +24,10 @@ inoremap <expr> <C-j> pumvisible() ? "\<C-N>" : "\<C-j>"
 inoremap <expr> <C-k> pumvisible() ? "\<C-P>" : "\<C-k>"
 
 " alias for git diffs
-nmap <leader>dg :diffget<CR>
-nmap <leader>dp :diffput<CR>
-xmap <leader>dg :diffget<CR>
-xmap <leader>dp :diffput<CR>
+nmap <leader>gdg :diffget<CR>
+nmap <leader>gdp :diffput<CR>
+xmap <leader>gdg :diffget<CR>
+xmap <leader>gdp :diffput<CR>
 
 " Map ctrl-movement keys to window switching
 map <C-k> <C-w><Up>

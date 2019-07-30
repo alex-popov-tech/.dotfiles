@@ -81,7 +81,7 @@ nmap <leader>gla :Glog -- <CR>
 " git log for current file
 nmap <leader>gl :0Glog <CR>
 " show differences for current buffer
-nmap <leader>gd :Gdiff <CR>
+nmap <leader>gdf :Gdiff <CR>
 " git push
 nmap <leader>gp :Gpush <CR>
 " allows repeat via dot. for some plugins like surround
