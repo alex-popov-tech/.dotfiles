@@ -1,7 +1,7 @@
 ZSH_THEME="powerlevel9k/powerlevel9k"
 POWERLEVEL9K_MODE="nerdfont-complete"
 
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(vcs newline vi_mode)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon vcs newline vi_mode)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time go_version pyenv rbenv node_version)
 
 # customize colors for segments
