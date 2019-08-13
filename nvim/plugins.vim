@@ -124,7 +124,7 @@ Plug 'svermeulen/vim-subversive'
 nmap <leader>p <plug>(SubversiveSubstitute)
 nmap <leader>pp <plug>(SubversiveSubstituteLine)
 nmap <leader>P <plug>(SubversiveSubstituteToEndOfLine)
-Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+Plug 'neoclide/coc.nvim', { 'do': 'yarn install --frozen-lockfile' }
 let g:coc_global_extensions = [
       \ 'coc-word',
       \ 'coc-tsserver',
