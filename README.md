@@ -17,8 +17,11 @@
   * [gitignore](./configs/gitignore)
   * [editorconfig](./configs/editorconfig)
   * [eslintrc](./configs/eslintrc)
-* Badass terminal - iterm2 + Powerlevel9k + Nerd Fonts + [Zshell](https://github.com/robbyrussell/oh-my-zsh/wiki/Cheatsheet) with plugins and tools ([screenshot](files/terminal.png))
-* NeoVim (nightly v0.4.0-1015-gbabcf641e) with bunch of plugins, color schemes and [cheatsheet](vim.md) ([screenhot1](files/nvim1.png), [screenhot2](files/nvim2.png))
+* Badass terminal - iterm2 + Powerlevel9k + Nerd Fonts + [Zshell](https://github.com/robbyrussell/oh-my-zsh/wiki/Cheatsheet) with plugins and tools
+![screenshot](files/terminal.jpg)
+* NeoVim (nightly v0.4.0-1015-gbabcf641e) with bunch of plugins, color schemes and [cheatsheet](vim.md)
+![screenhot1](files/nvim1.png)
+![screenhot2](files/nvim2.png)
 
 ## Installation
 
@@ -63,8 +66,9 @@ otherwise there will be warning while installation
 
 ### TODO
 
+* fix trailing whitespaces on NOT markdown files
 * save alfred settings
-* setup alfred to be able to open nvim in fuzzy search directory
+* setup alfred to be able to open nvim in fuzzy search directory?
 * document most useful alfred shortcuts
 * export magnet shortcut settings somehow
 * suggested [software](https://github.com/jaywcjlove/awesome-mac)

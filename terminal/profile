@@ -26,6 +26,148 @@
       "Sync Title" : false,
       "Scrollback Lines" : 6000,
       "Hide After Opening" : false,
+      "AWDS Tab Option" : "No",
+      "Tags" : [
+        "Dynamic"
+      ]
+      "Show Status Bar" : true,
+      "Status Bar Layout" : {
+        "components" : [
+          {
+            "class" : "iTermStatusBarWorkingDirectoryComponent",
+            "configuration" : {
+              "knobs" : {
+                "path" : "path",
+                "maxwidth" : 1.7976931348623157e+308,
+                "base: priority" : 5,
+                "shared text color" : {
+                  "Red Component" : 0.90000000000000002,
+                  "Color Space" : "sRGB",
+                  "Blue Component" : 0.63,
+                  "Alpha Component" : 1,
+                  "Green Component" : 0.63
+                },
+                "base: compression resistance" : 1,
+                "minwidth" : 0
+              },
+              "layout advanced configuration dictionary value" : {
+                "font" : "FiraCode-Retina 18",
+                "algorithm" : 1
+              }
+            }
+          },
+          {
+            "class" : "iTermStatusBarJobComponent",
+            "configuration" : {
+              "knobs" : {
+                "base: priority" : 5,
+                "minwidth" : 0,
+                "base: compression resistance" : 1,
+                "maxwidth" : 1.7976931348623157e+308
+              },
+              "layout advanced configuration dictionary value" : {
+                "font" : "FiraCode-Retina 18",
+                "algorithm" : 1
+              }
+            }
+          },
+          {
+            "class" : "iTermStatusBarSpringComponent",
+            "configuration" : {
+              "knobs" : {
+                "iTermStatusBarSpringComponentSpringConstantKey" : 0.01
+              },
+              "layout advanced configuration dictionary value" : {
+                "font" : "FiraCode-Retina 18",
+                "algorithm" : 1
+              }
+            }
+          },
+          {
+            "class" : "iTermStatusBarClockComponent",
+            "configuration" : {
+              "knobs" : {
+                "localize" : 0,
+                "base: priority" : 1,
+                "base: compression resistance" : 1,
+                "shared text color" : {
+                  "Red Component" : 0.63,
+                  "Color Space" : "sRGB",
+                  "Blue Component" : 0.63,
+                  "Alpha Component" : 1,
+                  "Green Component" : 0.90000000000000002
+                },
+                "format" : "HH:mm:ss dd.MM.yyyy"
+              },
+              "layout advanced configuration dictionary value" : {
+                "font" : "FiraCode-Retina 18",
+                "algorithm" : 1
+              }
+            }
+          },
+          {
+            "class" : "iTermStatusBarCPUUtilizationComponent",
+            "configuration" : {
+              "knobs" : {
+                "base: priority" : 1,
+                "shared text color" : {
+                  "Red Component" : 0.62999999523162842,
+                  "Color Space" : "sRGB",
+                  "Blue Component" : 0.89999997615814209,
+                  "Alpha Component" : 1,
+                  "Green Component" : 0.89999997615814209
+                }
+              },
+              "layout advanced configuration dictionary value" : {
+                "font" : "FiraCode-Retina 18",
+                "algorithm" : 1
+              }
+            }
+          },
+          {
+            "class" : "iTermStatusBarMemoryUtilizationComponent",
+            "configuration" : {
+              "knobs" : {
+                "base: priority" : 1,
+                "shared text color" : {
+                  "Red Component" : 0.63,
+                  "Color Space" : "sRGB",
+                  "Blue Component" : 0.90000000000000002,
+                  "Alpha Component" : 1,
+                  "Green Component" : 0.63
+                }
+              },
+              "layout advanced configuration dictionary value" : {
+                "font" : "FiraCode-Retina 18",
+                "algorithm" : 1
+              }
+            }
+          },
+          {
+            "class" : "iTermStatusBarNetworkUtilizationComponent",
+            "configuration" : {
+              "knobs" : {
+                "base: priority" : 1,
+                "shared text color" : {
+                  "Red Component" : 0.90000000000000002,
+                  "Color Space" : "sRGB",
+                  "Blue Component" : 0.90000000000000002,
+                  "Alpha Component" : 1,
+                  "Green Component" : 0.63
+                }
+              },
+              "layout advanced configuration dictionary value" : {
+                "font" : "FiraCode-Retina 18",
+                "algorithm" : 1
+              }
+            }
+          }
+        ],
+        "advanced configuration" : {
+          "font" : "FiraCode-Retina 18",
+          "algorithm" : 1
+        }
+      },
       "Background Color" : {
         "Red Component" : 0.11759927868843079,
         "Color Space" : "Calibrated",
