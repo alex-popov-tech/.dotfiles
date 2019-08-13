@@ -7,7 +7,8 @@ alias GO="cd $GOPATH"
 
 # Improved list
 alias ls="colorls --sort-dirs"
-alias lsa="colorls --almost-all --sort-dirs "
+alias lsa="colorls --almost-all --sort-dirs"
+alias lsl="colorls --almost-all --sort-dirs --long"
 
 # # Google Chrome
 alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
@@ -25,3 +26,4 @@ alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v exten
 alias n="nvim"
 alias g="git"
 alias dco="docker-compose"
+alias wow="/Users/alexanderpopov/Downloads/WoW-1.12.1-enUS-Mac/WoW.app/Contents/MacOS/World\ of\ Warcraft"
