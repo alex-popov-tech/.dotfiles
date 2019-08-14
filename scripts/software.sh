@@ -44,7 +44,7 @@ function main() {
 
   ITERM_PROFILES_PATH="$HOME/Library/Application Support/iTerm2/DynamicProfiles"
   mkdir -p "$ITERM_PROFILES_PATH"
-  ln -fvs $DPATH/terminal/profile "$ITERM_PROFILES_PATH/profile"
+  ln -fvs $DPATH/terminal/profile.json "$ITERM_PROFILES_PATH/profile"
 
   KARABINER_PATH="$HOME/.config/karabiner"
   mkdir -p "$KARABINER_PATH"
