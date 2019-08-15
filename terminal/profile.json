@@ -1,354 +1,333 @@
 {
-  "Profiles": [{
-    "Name" : "Zshell",
-      "Command" : "\/bin\/zsh",
-      "Normal Font" : "FiraCode-Medium 18",
-      "Terminal Type" : "xterm-256color-italic",
-      "Non Ascii Font" : "HackNerdFontComplete-Regular 18",
-      "Use Italic Font" : true,
-      "Use Bold Font" : true,
-      "ASCII Anti Aliased" : true,
-      "Use Non-ASCII Font" : true,
-      "Non-ASCII Anti Aliased" : true,
-      "Non-ASCII Ligatures" : true,
-      "Transparency" : 0.11926356281725889,
-      "Unicode Normalization" : 0,
-      "Use Cursor Guide" : false,
-      "Custom Command" : "Yes",
-      "ASCII Ligatures" : true,
-      "Custom Directory" : "Advanced",
-      "Initial Text" : "",
-      "Horizontal Spacing" : 1,
-      "Only The Default BG Color Uses Transparency" : true,
-      "Blur" : false,
-      "Blinking Cursor" : true,
-      "Guid" : "537C7CB5-A646-4ED5-BD5E-897FD6C29A48",
-      "Sync Title" : false,
-      "Scrollback Lines" : 6000,
-      "Hide After Opening" : false,
-      "AWDS Tab Option" : "No",
-      "Tags" : [
+  "Profiles": [
+    {
+      "Name": "Zshell",
+      "Command": "\/bin\/zsh",
+      "Normal Font": "FiraCode-Medium 18",
+      "Terminal Type": "xterm-256color-italic",
+      "Non Ascii Font": "HackNerdFontComplete-Regular 18",
+      "Use Italic Font": true,
+      "Use Bold Font": true,
+      "ASCII Anti Aliased": true,
+      "Use Non-ASCII Font": true,
+      "Non-ASCII Anti Aliased": true,
+      "Non-ASCII Ligatures": true,
+      "Transparency": 0.11926356281725889,
+      "Unicode Normalization": 0,
+      "Use Cursor Guide": false,
+      "Custom Command": "Yes",
+      "ASCII Ligatures": true,
+      "Custom Directory": "Advanced",
+      "Initial Text": "",
+      "Horizontal Spacing": 1,
+      "Only The Default BG Color Uses Transparency": true,
+      "Blur": false,
+      "Blinking Cursor": true,
+      "Guid": "537C7CB5-A646-4ED5-BD5E-897FD6C29A48",
+      "Sync Title": false,
+      "Scrollback Lines": 6000,
+      "Hide After Opening": false,
+      "AWDS Tab Option": "No",
+      "Tags": [
         "Dynamic"
       ],
-      "Show Status Bar" : true,
-      "Status Bar Layout" : {
-        "components" : [
+      "Show Status Bar": true,
+      "Status Bar Layout": {
+        "components": [
           {
-            "class" : "iTermStatusBarWorkingDirectoryComponent",
-            "configuration" : {
-              "knobs" : {
-                "path" : "path",
-                "maxwidth" : 1.7976931348623157e+308,
-                "base: priority" : 5,
-                "shared text color" : {
-                  "Red Component" : 0.90000000000000002,
-                  "Color Space" : "sRGB",
-                  "Blue Component" : 0.63,
-                  "Alpha Component" : 1,
-                  "Green Component" : 0.63
+            "class": "iTermStatusBarJobComponent",
+            "configuration": {
+              "knobs": {
+                "base: priority": 5,
+                "minwidth": 0,
+                "base: compression resistance": 1,
+                "maxwidth": 1.7976931348623157e+308
+              },
+              "layout advanced configuration dictionary value": {
+                "font": "FiraCode-Retina 18",
+                "algorithm": 1
+              }
+            }
+          },
+          {
+            "class": "iTermStatusBarSpringComponent",
+            "configuration": {
+              "knobs": {
+                "iTermStatusBarSpringComponentSpringConstantKey": 0.01
+              },
+              "layout advanced configuration dictionary value": {
+                "font": "FiraCode-Retina 18",
+                "algorithm": 1
+              }
+            }
+          },
+          {
+            "class": "iTermStatusBarClockComponent",
+            "configuration": {
+              "knobs": {
+                "localize": 0,
+                "base: priority": 1,
+                "base: compression resistance": 1,
+                "shared text color": {
+                  "Red Component": 0.63,
+                  "Color Space": "sRGB",
+                  "Blue Component": 0.63,
+                  "Alpha Component": 1,
+                  "Green Component": 0.90000000000000002
                 },
-                "base: compression resistance" : 1,
-                "minwidth" : 0
+                "format": "HH:mm:ss dd.MM.yyyy"
               },
-              "layout advanced configuration dictionary value" : {
-                "font" : "FiraCode-Retina 18",
-                "algorithm" : 1
+              "layout advanced configuration dictionary value": {
+                "font": "FiraCode-Retina 18",
+                "algorithm": 1
               }
             }
           },
           {
-            "class" : "iTermStatusBarJobComponent",
-            "configuration" : {
-              "knobs" : {
-                "base: priority" : 5,
-                "minwidth" : 0,
-                "base: compression resistance" : 1,
-                "maxwidth" : 1.7976931348623157e+308
-              },
-              "layout advanced configuration dictionary value" : {
-                "font" : "FiraCode-Retina 18",
-                "algorithm" : 1
-              }
-            }
-          },
-          {
-            "class" : "iTermStatusBarSpringComponent",
-            "configuration" : {
-              "knobs" : {
-                "iTermStatusBarSpringComponentSpringConstantKey" : 0.01
-              },
-              "layout advanced configuration dictionary value" : {
-                "font" : "FiraCode-Retina 18",
-                "algorithm" : 1
-              }
-            }
-          },
-          {
-            "class" : "iTermStatusBarClockComponent",
-            "configuration" : {
-              "knobs" : {
-                "localize" : 0,
-                "base: priority" : 1,
-                "base: compression resistance" : 1,
-                "shared text color" : {
-                  "Red Component" : 0.63,
-                  "Color Space" : "sRGB",
-                  "Blue Component" : 0.63,
-                  "Alpha Component" : 1,
-                  "Green Component" : 0.90000000000000002
-                },
-                "format" : "HH:mm:ss dd.MM.yyyy"
-              },
-              "layout advanced configuration dictionary value" : {
-                "font" : "FiraCode-Retina 18",
-                "algorithm" : 1
-              }
-            }
-          },
-          {
-            "class" : "iTermStatusBarCPUUtilizationComponent",
-            "configuration" : {
-              "knobs" : {
-                "base: priority" : 1,
-                "shared text color" : {
-                  "Red Component" : 0.62999999523162842,
-                  "Color Space" : "sRGB",
-                  "Blue Component" : 0.89999997615814209,
-                  "Alpha Component" : 1,
-                  "Green Component" : 0.89999997615814209
+            "class": "iTermStatusBarCPUUtilizationComponent",
+            "configuration": {
+              "knobs": {
+                "base: priority": 1,
+                "shared text color": {
+                  "Red Component": 0.62999999523162842,
+                  "Color Space": "sRGB",
+                  "Blue Component": 0.89999997615814209,
+                  "Alpha Component": 1,
+                  "Green Component": 0.89999997615814209
                 }
               },
-              "layout advanced configuration dictionary value" : {
-                "font" : "FiraCode-Retina 18",
-                "algorithm" : 1
+              "layout advanced configuration dictionary value": {
+                "font": "FiraCode-Retina 18",
+                "algorithm": 1
               }
             }
           },
           {
-            "class" : "iTermStatusBarMemoryUtilizationComponent",
-            "configuration" : {
-              "knobs" : {
-                "base: priority" : 1,
-                "shared text color" : {
-                  "Red Component" : 0.63,
-                  "Color Space" : "sRGB",
-                  "Blue Component" : 0.90000000000000002,
-                  "Alpha Component" : 1,
-                  "Green Component" : 0.63
+            "class": "iTermStatusBarMemoryUtilizationComponent",
+            "configuration": {
+              "knobs": {
+                "base: priority": 1,
+                "shared text color": {
+                  "Red Component": 0.63,
+                  "Color Space": "sRGB",
+                  "Blue Component": 0.90000000000000002,
+                  "Alpha Component": 1,
+                  "Green Component": 0.63
                 }
               },
-              "layout advanced configuration dictionary value" : {
-                "font" : "FiraCode-Retina 18",
-                "algorithm" : 1
+              "layout advanced configuration dictionary value": {
+                "font": "FiraCode-Retina 18",
+                "algorithm": 1
               }
             }
           },
           {
-            "class" : "iTermStatusBarNetworkUtilizationComponent",
-            "configuration" : {
-              "knobs" : {
-                "base: priority" : 1,
-                "shared text color" : {
-                  "Red Component" : 0.90000000000000002,
-                  "Color Space" : "sRGB",
-                  "Blue Component" : 0.90000000000000002,
-                  "Alpha Component" : 1,
-                  "Green Component" : 0.63
+            "class": "iTermStatusBarNetworkUtilizationComponent",
+            "configuration": {
+              "knobs": {
+                "base: priority": 1,
+                "shared text color": {
+                  "Red Component": 0.90000000000000002,
+                  "Color Space": "sRGB",
+                  "Blue Component": 0.90000000000000002,
+                  "Alpha Component": 1,
+                  "Green Component": 0.63
                 }
               },
-              "layout advanced configuration dictionary value" : {
-                "font" : "FiraCode-Retina 18",
-                "algorithm" : 1
+              "layout advanced configuration dictionary value": {
+                "font": "FiraCode-Retina 18",
+                "algorithm": 1
               }
             }
           }
         ],
-        "advanced configuration" : {
-          "font" : "FiraCode-Retina 18",
-          "algorithm" : 1
+        "advanced configuration": {
+          "font": "FiraCode-Retina 18",
+          "algorithm": 1
         }
       },
-      "Background Color" : {
-        "Red Component" : 0.11759927868843079,
-        "Color Space" : "Calibrated",
-        "Blue Component" : 0.11759774386882782,
-        "Alpha Component" : 1,
-        "Green Component" : 0.11759573966264725
+      "Background Color": {
+        "Red Component": 0.11759927868843079,
+        "Color Space": "Calibrated",
+        "Blue Component": 0.11759774386882782,
+        "Alpha Component": 1,
+        "Green Component": 0.11759573966264725
       },
-      "Selected Text Color" : {
-        "Red Component" : 0.32501408457756042,
-        "Color Space" : "Calibrated",
-        "Blue Component" : 0.26041668653488159,
-        "Alpha Component" : 1,
-        "Green Component" : 0.2891082763671875
+      "Selected Text Color": {
+        "Red Component": 0.32501408457756042,
+        "Color Space": "Calibrated",
+        "Blue Component": 0.26041668653488159,
+        "Alpha Component": 1,
+        "Green Component": 0.2891082763671875
       },
-      "Foreground Color" : {
-        "Red Component" : 0.90061241388320923,
-        "Color Space" : "Calibrated",
-        "Blue Component" : 0.63873869180679321,
-        "Alpha Component" : 1,
-        "Green Component" : 0.82989895343780518
+      "Foreground Color": {
+        "Red Component": 0.90061241388320923,
+        "Color Space": "Calibrated",
+        "Blue Component": 0.63873869180679321,
+        "Alpha Component": 1,
+        "Green Component": 0.82989895343780518
       },
-      "Selection Color" : {
-        "Red Component" : 0.90061241388320923,
-        "Color Space" : "Calibrated",
-        "Blue Component" : 0.63873869180679321,
-        "Alpha Component" : 1,
-        "Green Component" : 0.82989895343780518
+      "Selection Color": {
+        "Red Component": 0.90061241388320923,
+        "Color Space": "Calibrated",
+        "Blue Component": 0.63873869180679321,
+        "Alpha Component": 1,
+        "Green Component": 0.82989895343780518
       },
-      "Cursor Guide Color" : {
-        "Red Component" : 0.17867125570774078,
-        "Color Space" : "Calibrated",
-        "Blue Component" : 0.15993706881999969,
-        "Alpha Component" : 1,
-        "Green Component" : 0.16613791882991791
+      "Cursor Guide Color": {
+        "Red Component": 0.17867125570774078,
+        "Color Space": "Calibrated",
+        "Blue Component": 0.15993706881999969,
+        "Alpha Component": 1,
+        "Green Component": 0.16613791882991791
       },
-      "Cursor Text Color" : {
-        "Red Component" : 0.11759927868843079,
-        "Color Space" : "Calibrated",
-        "Blue Component" : 0.11759774386882782,
-        "Alpha Component" : 1,
-        "Green Component" : 0.11759573966264725
+      "Cursor Text Color": {
+        "Red Component": 0.11759927868843079,
+        "Color Space": "Calibrated",
+        "Blue Component": 0.11759774386882782,
+        "Alpha Component": 1,
+        "Green Component": 0.11759573966264725
       },
-      "Cursor Color" : {
-        "Red Component" : 0.90061241388320923,
-        "Color Space" : "Calibrated",
-        "Blue Component" : 0.63873869180679321,
-        "Alpha Component" : 1,
-        "Green Component" : 0.82989895343780518
+      "Cursor Color": {
+        "Red Component": 0.90061241388320923,
+        "Color Space": "Calibrated",
+        "Blue Component": 0.63873869180679321,
+        "Alpha Component": 1,
+        "Green Component": 0.82989895343780518
       },
-      "Link Color" : {
-        "Red Component" : 0.7928692102432251,
-        "Color Space" : "Calibrated",
-        "Blue Component" : 0.056549370288848877,
-        "Alpha Component" : 1,
-        "Green Component" : 0.28100395202636719
+      "Link Color": {
+        "Red Component": 0.7928692102432251,
+        "Color Space": "Calibrated",
+        "Blue Component": 0.056549370288848877,
+        "Alpha Component": 1,
+        "Green Component": 0.28100395202636719
       },
-      "Bold Color" : {
-        "Red Component" : 1,
-        "Color Space" : "Calibrated",
-        "Blue Component" : 1,
-        "Alpha Component" : 1,
-        "Green Component" : 1
+      "Bold Color": {
+        "Red Component": 1,
+        "Color Space": "Calibrated",
+        "Blue Component": 1,
+        "Alpha Component": 1,
+        "Green Component": 1
       },
-      "Badge Color" : {
-        "Red Component" : 0.7928692102432251,
-        "Color Space" : "Calibrated",
-        "Blue Component" : 0.056549370288848877,
-        "Alpha Component" : 0.5,
-        "Green Component" : 0.28100395202636719
+      "Badge Color": {
+        "Red Component": 0.7928692102432251,
+        "Color Space": "Calibrated",
+        "Blue Component": 0.056549370288848877,
+        "Alpha Component": 0.5,
+        "Green Component": 0.28100395202636719
       },
-      "Ansi 0 Color" : {
-        "Red Component" : 0.11759927868843079,
-        "Color Space" : "Calibrated",
-        "Blue Component" : 0.11759774386882782,
-        "Alpha Component" : 1,
-        "Green Component" : 0.11759573966264725
+      "Ansi 0 Color": {
+        "Red Component": 0.11759927868843079,
+        "Color Space": "Calibrated",
+        "Blue Component": 0.11759774386882782,
+        "Alpha Component": 1,
+        "Green Component": 0.11759573966264725
       },
-      "Ansi 1 Color" : {
-        "Red Component" : 0.74529051780700684,
-        "Color Space" : "Calibrated",
-        "Blue Component" : 0.090684391558170319,
-        "Alpha Component" : 1,
-        "Green Component" : 0.05879192054271698
+      "Ansi 1 Color": {
+        "Red Component": 0.74529051780700684,
+        "Color Space": "Calibrated",
+        "Blue Component": 0.090684391558170319,
+        "Alpha Component": 1,
+        "Green Component": 0.05879192054271698
       },
-      "Ansi 2 Color" : {
-        "Red Component" : 0.52591603994369507,
-        "Color Space" : "Calibrated",
-        "Blue Component" : 0.082894742488861084,
-        "Alpha Component" : 1,
-        "Green Component" : 0.53061914443969727
+      "Ansi 2 Color": {
+        "Red Component": 0.52591603994369507,
+        "Color Space": "Calibrated",
+        "Blue Component": 0.082894742488861084,
+        "Alpha Component": 1,
+        "Green Component": 0.53061914443969727
       },
-      "Ansi 3 Color" : {
-        "Red Component" : 0.80126690864562988,
-        "Color Space" : "Calibrated",
-        "Blue Component" : 0.10328958928585052,
-        "Alpha Component" : 1,
-        "Green Component" : 0.53254079818725586
+      "Ansi 3 Color": {
+        "Red Component": 0.80126690864562988,
+        "Color Space": "Calibrated",
+        "Blue Component": 0.10328958928585052,
+        "Alpha Component": 1,
+        "Green Component": 0.53254079818725586
       },
-      "Ansi 4 Color" : {
-        "Red Component" : 0.21694663166999817,
-        "Color Space" : "Calibrated",
-        "Blue Component" : 0.4586675763130188,
-        "Alpha Component" : 1,
-        "Green Component" : 0.45008346438407898
+      "Ansi 4 Color": {
+        "Red Component": 0.21694663166999817,
+        "Color Space": "Calibrated",
+        "Blue Component": 0.4586675763130188,
+        "Alpha Component": 1,
+        "Green Component": 0.45008346438407898
       },
-      "Ansi 5 Color" : {
-        "Red Component" : 0.62685638666152954,
-        "Color Space" : "Calibrated",
-        "Blue Component" : 0.45103743672370911,
-        "Alpha Component" : 1,
-        "Green Component" : 0.29604318737983704
+      "Ansi 5 Color": {
+        "Red Component": 0.62685638666152954,
+        "Color Space": "Calibrated",
+        "Blue Component": 0.45103743672370911,
+        "Alpha Component": 1,
+        "Green Component": 0.29604318737983704
       },
-      "Ansi 6 Color" : {
-        "Red Component" : 0.34054014086723328,
-        "Color Space" : "Calibrated",
-        "Blue Component" : 0.34128850698471069,
-        "Alpha Component" : 1,
-        "Green Component" : 0.55607825517654419
+      "Ansi 6 Color": {
+        "Red Component": 0.34054014086723328,
+        "Color Space": "Calibrated",
+        "Blue Component": 0.34128850698471069,
+        "Alpha Component": 1,
+        "Green Component": 0.55607825517654419
       },
-      "Ansi 7 Color" : {
-        "Red Component" : 0.5926094651222229,
-        "Color Space" : "Calibrated",
-        "Blue Component" : 0.44320183992385864,
-        "Alpha Component" : 1,
-        "Green Component" : 0.5310559868812561
+      "Ansi 7 Color": {
+        "Red Component": 0.5926094651222229,
+        "Color Space": "Calibrated",
+        "Blue Component": 0.44320183992385864,
+        "Alpha Component": 1,
+        "Green Component": 0.5310559868812561
       },
-      "Ansi 8 Color" : {
-        "Red Component" : 0.49889594316482544,
-        "Color Space" : "Calibrated",
-        "Blue Component" : 0.37962067127227783,
-        "Alpha Component" : 1,
-        "Green Component" : 0.43934443593025208
+      "Ansi 8 Color": {
+        "Red Component": 0.49889594316482544,
+        "Color Space": "Calibrated",
+        "Blue Component": 0.37962067127227783,
+        "Alpha Component": 1,
+        "Green Component": 0.43934443593025208
       },
-      "Ansi 9 Color" : {
-        "Red Component" : 0.96744710206985474,
-        "Color Space" : "Calibrated",
-        "Blue Component" : 0.15763583779335022,
-        "Alpha Component" : 1,
-        "Green Component" : 0.18880486488342285
+      "Ansi 9 Color": {
+        "Red Component": 0.96744710206985474,
+        "Color Space": "Calibrated",
+        "Blue Component": 0.15763583779335022,
+        "Alpha Component": 1,
+        "Green Component": 0.18880486488342285
       },
-      "Ansi 10 Color" : {
-        "Red Component" : 0.66574931144714355,
-        "Color Space" : "Calibrated",
-        "Blue Component" : 0.11661489307880402,
-        "Alpha Component" : 1,
-        "Green Component" : 0.69061970710754395
+      "Ansi 10 Color": {
+        "Red Component": 0.66574931144714355,
+        "Color Space": "Calibrated",
+        "Blue Component": 0.11661489307880402,
+        "Alpha Component": 1,
+        "Green Component": 0.69061970710754395
       },
-      "Ansi 11 Color" : {
-        "Red Component" : 0.96949708461761475,
-        "Color Space" : "Calibrated",
-        "Blue Component" : 0.1444794088602066,
-        "Alpha Component" : 1,
-        "Green Component" : 0.6926688551902771
+      "Ansi 11 Color": {
+        "Red Component": 0.96949708461761475,
+        "Color Space": "Calibrated",
+        "Blue Component": 0.1444794088602066,
+        "Alpha Component": 1,
+        "Green Component": 0.6926688551902771
       },
-      "Ansi 12 Color" : {
-        "Red Component" : 0.44289660453796387,
-        "Color Space" : "Calibrated",
-        "Blue Component" : 0.52537077665328979,
-        "Alpha Component" : 1,
-        "Green Component" : 0.58534377813339233
+      "Ansi 12 Color": {
+        "Red Component": 0.44289660453796387,
+        "Color Space": "Calibrated",
+        "Blue Component": 0.52537077665328979,
+        "Alpha Component": 1,
+        "Green Component": 0.58534377813339233
       },
-      "Ansi 13 Color" : {
-        "Red Component" : 0.78096956014633179,
-        "Color Space" : "Calibrated",
-        "Blue Component" : 0.53848373889923096,
-        "Alpha Component" : 1,
-        "Green Component" : 0.43883562088012695
+      "Ansi 13 Color": {
+        "Red Component": 0.78096956014633179,
+        "Color Space": "Calibrated",
+        "Blue Component": 0.53848373889923096,
+        "Alpha Component": 1,
+        "Green Component": 0.43883562088012695
       },
-      "Ansi 14 Color" : {
-        "Red Component" : 0.49072420597076416,
-        "Color Space" : "Calibrated",
-        "Blue Component" : 0.41142863035202026,
-        "Alpha Component" : 1,
-        "Green Component" : 0.71257460117340088
+      "Ansi 14 Color": {
+        "Red Component": 0.49072420597076416,
+        "Color Space": "Calibrated",
+        "Blue Component": 0.41142863035202026,
+        "Alpha Component": 1,
+        "Green Component": 0.71257460117340088
       },
-      "Ansi 15 Color" : {
-        "Red Component" : 0.90061241388320923,
-        "Color Space" : "Calibrated",
-        "Blue Component" : 0.63873869180679321,
-        "Alpha Component" : 1,
-        "Green Component" : 0.82989895343780518
+      "Ansi 15 Color": {
+        "Red Component": 0.90061241388320923,
+        "Color Space": "Calibrated",
+        "Blue Component": 0.63873869180679321,
+        "Alpha Component": 1,
+        "Green Component": 0.82989895343780518
       }
-  }]
+    }
+  ]
 }
