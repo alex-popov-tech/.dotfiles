@@ -10,6 +10,12 @@ alias ls="colorls --sort-dirs"
 alias lsa="colorls --almost-all --sort-dirs"
 alias lsl="colorls --almost-all --sort-dirs --long"
 
+# Improved cat
+alias cat="bat"
+
+# Improved ping
+alias ping="prettyping --nolegend"
+
 # # Google Chrome
 alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 

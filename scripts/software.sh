@@ -12,6 +12,8 @@ function main() {
     openssh \
     rsync \
     ssh-copy-id \
+    bat \
+    prettyping \
     the_silver_searcher ripgrep
 
   sudo /usr/bin/gem install colorls
