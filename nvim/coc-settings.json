@@ -69,6 +69,8 @@
     "typescript"
   ],
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
+  "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
+  "typescript.preferences.noSemicolons": true,
   "solargraph.diagnostics": true,
   "solargraph.hover": true,
   "solargraph.autoformat": true
