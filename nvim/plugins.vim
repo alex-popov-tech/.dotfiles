@@ -1,5 +1,5 @@
 call plug#begin('~/.config/nvim/plugged')
-" fuzzy search from homebrew
+" fuzzy search
 Plug 'junegunn/fzf', { 'dir': '~/.config/fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim'
@@ -79,7 +79,7 @@ nmap <leader>gc :Gcommit <CR>
 " git log for all files
 nmap <leader>gla :Glog -- <CR>
 " git log for current file
-nmap <leader>gl :0Glog <CR>
+" nmap <leader>gl :0Glog <CR>
 " show differences for current buffer
 nmap <leader>gdf :Gdiff <CR>
 " git push
