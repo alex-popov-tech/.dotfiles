@@ -6,5 +6,4 @@ source $ZSH/oh-my-zsh.sh
 source $HOME/.zsh_langs
 source $HOME/.zsh_aliases
 source $HOME/.zsh_functions
-source $HOME/.zsh_commands
 
