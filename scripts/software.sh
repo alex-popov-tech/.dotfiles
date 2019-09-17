@@ -39,6 +39,7 @@ function main() {
     teamviewer \
     ledger-live \
     vanilla \
+    arduino \
     karabiner-elements
 
   brew tap caskroom/fonts

@@ -32,4 +32,4 @@ alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v exten
 alias n="nvim"
 alias g="git"
 alias dco="docker-compose"
-alias wow="/Users/alexanderpopov/Downloads/WoW-1.12.1-enUS-Mac/WoW.app/Contents/MacOS/World\ of\ Warcraft"
+alias arduino="/Applications/Arduino.app/Contents/MacOS/Arduino"
