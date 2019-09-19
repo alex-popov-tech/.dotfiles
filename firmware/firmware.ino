@@ -26,7 +26,7 @@
 
 enum { MACRO_TOGGLE_LANG, MACRO_SCREEN };
 
-enum { WORKMAN, MOVEMENT_AND_PUNCTUATION, QWERTY };
+enum { WORKMAN, MOVEMENT, QWERTY };
 
 // *INDENT-OFF*
 
@@ -37,16 +37,16 @@ KEYMAPS(
        Key_Tab,         Key_A, Key_S, Key_H, Key_T, Key_G,
        M(MACRO_SCREEN), Key_Z, Key_X, Key_M, Key_C, Key_V, Key_VolumeDown,
        CTL_T(Escape), Key_Backspace, OSM(LeftGui), OSM(LeftShift),
-       ShiftToLayer(MOVEMENT_AND_PUNCTUATION),
+       ShiftToLayer(MOVEMENT),
 
-       Key_LEDEffectNext,    Key_6, Key_7, Key_8, Key_9, Key_0, ___,
-       ___,                  Key_J, Key_F, Key_U, Key_P, TD(0), TD(1),
-                             Key_Y, Key_N, Key_E, Key_O, Key_I, TD(2),
-       M(MACRO_TOGGLE_LANG), Key_K, Key_L, TD(3), TD(4), TD(5), ___,
+       Key_LEDEffectNext,    Key_6, Key_7, Key_8, Key_9, Key_0, TD(0),
+       TD(1),                Key_J, Key_F, Key_U, Key_P, TD(2), TD(3),
+                             Key_Y, Key_N, Key_E, Key_O, Key_I, TD(4),
+       M(MACRO_TOGGLE_LANG), Key_K, Key_L, TD(5), TD(6), TD(7), TD(8),
        OSM(LeftAlt), OSM(LeftShift), Key_Spacebar, CTL_T(Enter),
-       ShiftToLayer(MOVEMENT_AND_PUNCTUATION)
+       ShiftToLayer(MOVEMENT)
     ),
-  [MOVEMENT_AND_PUNCTUATION] = KEYMAP_STACKED (
+  [MOVEMENT] = KEYMAP_STACKED (
        ___, ___,           ___,              ___,           ___,               ___, ___,
        ___, ___,           Key_mouseScrollR, Key_mouseUp,   Key_mouseScrollDn, ___, ___,
        ___, Key_mouseBtnR, Key_mouseL,       Key_mouseDn,   Key_mouseR,        Key_mouseBtnL,
@@ -56,23 +56,23 @@ KEYMAPS(
 
        ___, ___,           ___,           ___,         ___,            ___, ___,
        ___, ___,           ___,           ___,         ___,            ___, ___,
-            Key_H,         Key_J,         Key_K,       Key_L,          ___, ___,
-       ___, Key_LeftArrow, Key_DownArrow, Key_UpArrow, Key_RightArrow, ___, ___,
+            Key_LeftArrow, Key_DownArrow, Key_UpArrow, Key_RightArrow, ___, ___,
+       ___, Key_H,         Key_J,         Key_K,       Key_L,          ___, ___,
        ___, ___, ___, ___,
        ___
     ),
   [QWERTY] = KEYMAP_STACKED (
        ___, ___,   ___,   ___,   ___,   ___,   ___,
        ___, Key_Q, Key_W, Key_E, Key_R, Key_T, ___,
-            Key_A, Key_S, Key_D, Key_F, Key_G, ___,
+       ___, Key_A, Key_S, Key_D, Key_F, Key_G,
        ___, Key_Z, Key_X, Key_C, Key_V, Key_B, ___,
        ___, ___, ___, ___,
        ___,
 
        ___,  ___,   ___,   ___,       ___,           ___,           ___,
-       ___,  Key_Y, Key_U, Key_I,     Key_O,         Key_P,         ___,
+       ___,  Key_Y, Key_U, Key_I,     Key_O,         Key_P,         Key_LeftBracket,
              Key_H, Key_J, Key_K,     Key_L,         Key_Semicolon, Key_Quote,
-       ___,  Key_N, Key_M, Key_Comma, Key_Period,    ___,           ___,
+       ___,  Key_N, Key_M, Key_Comma, Key_Period,    Key_RightBracket,           ___,
        ___, ___, ___, ___,
        ___
     )
@@ -96,17 +96,23 @@ void tapDanceAction(uint8_t tap_dance_index, byte row, byte col, uint8_t tap_cou
                     kaleidoscope::TapDance::ActionType tap_dance_action) {
   switch (tap_dance_index) {
     case 0:
-      return tapDanceActionKeys(tap_count, tap_dance_action, LSHIFT(Key_1), LSHIFT(Key_Slash));
+      return tapDanceActionKeys(tap_count, tap_dance_action, LSHIFT(Key_Period), LSHIFT(Key_Minus), LSHIFT(Key_Comma));
     case 1:
-      return tapDanceActionKeys(tap_count, tap_dance_action, LSHIFT(Key_2), LSHIFT(Key_3));
+      return tapDanceActionKeys(tap_count, tap_dance_action, Key_Quote, LSHIFT(Key_Quote));
     case 2:
-      return tapDanceActionKeys(tap_count, tap_dance_action, Key_Semicolon, LSHIFT(Key_Semicolon));
+      return tapDanceActionKeys(tap_count, tap_dance_action, LSHIFT(Key_1), LSHIFT(Key_Slash));
     case 3:
-      return tapDanceActionKeys(tap_count, tap_dance_action, LSHIFT(Key_9), Key_Quote);
+      return tapDanceActionKeys(tap_count, tap_dance_action, Key_Equals, LSHIFT(Key_Equals), Key_Minus);
     case 4:
-      return tapDanceActionKeys(tap_count, tap_dance_action, LSHIFT(Key_0), LSHIFT(Key_Quote));
+      return tapDanceActionKeys(tap_count, tap_dance_action, Key_Semicolon, LSHIFT(Key_Semicolon));
     case 5:
+      return tapDanceActionKeys(tap_count, tap_dance_action, LSHIFT(Key_9), LSHIFT(Key_LeftBracket), Key_LeftBracket);
+    case 6:
+      return tapDanceActionKeys(tap_count, tap_dance_action, LSHIFT(Key_0), LSHIFT(Key_RightBracket), Key_RightBracket);
+    case 7:
       return tapDanceActionKeys(tap_count, tap_dance_action, Key_Period, Key_Comma);
+    case 8:
+      return tapDanceActionKeys(tap_count, tap_dance_action, Key_Slash, LSHIFT(Key_Backslash));
     }
 }
 
@@ -137,7 +143,8 @@ KALEIDOSCOPE_INIT_PLUGINS(
 void setup() {
   Kaleidoscope.setup();
   // Make mouse start moving faster
-  MouseKeys.accelSpeed = 3;
+  MouseKeys.accelSpeed = 5;
+  MouseKeys.setSpeedLimit(100);
   // increase default timeout a bit to do double-tap
   TapDance.time_out = 300;
   LEDRainbowWaveEffect.brightness(150);
