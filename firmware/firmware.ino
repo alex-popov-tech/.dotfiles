@@ -13,7 +13,6 @@
 #include "Kaleidoscope-OneShot.h"
 #include "Kaleidoscope-Escape-OneShot.h"
 #include "Kaleidoscope-Qukeys.h"
-#include "Kaleidoscope-ModifierLayers.h"
 #include "Kaleidoscope-TapDance.h"
 #include "Kaleidoscope-MouseKeys.h"
 #include "Kaleidoscope-Macros.h"
@@ -27,7 +26,7 @@
 
 enum { MACRO_TOGGLE_LANG, MACRO_SCREEN };
 
-enum { PDVORAK, PDVORAK_DIGITS, MOVEMENT, QWERTY };
+enum { PDVORAK, PDVORAK_SHIFTED, MOVEMENT, QWERTY };
 
 // *INDENT-OFF*
 KEYMAPS(
@@ -36,28 +35,29 @@ KEYMAPS(
     Key_Backtick,  Key_Semicolon,   LSHIFT(Key_4),           Key_Period,    Key_P,         Key_Y,      Key_Mute,
     Key_Tab,       Key_A,           Key_O,                   Key_E,         Key_U,         Key_I,
     LSHIFT(Key_7), Key_Quote,       Key_Q,                   Key_J,         Key_K,         Key_X,      Key_VolumeDown,
-    CTL_T(Enter), SFT_T(Backspace), OSM(LeftGui), OSM(LeftShift),
+    CTL_T(Enter), LT(PDVORAK_SHIFTED, Backspace), OSM(LeftGui), ShiftToLayer(PDVORAK_SHIFTED),
     ShiftToLayer(MOVEMENT),
 
     Key_LEDEffectNext,    LSHIFT(Key_8), LSHIFT(Key_0), LSHIFT(Key_Slash), LSHIFT(Key_RightBracket), Key_RightBracket, TD(0),
     M(MACRO_SCREEN),      Key_F,         Key_G,         Key_C,             Key_R,                    Key_L,            Key_Slash,
                           Key_D,         Key_H,         Key_T,             Key_N,                    Key_S,            Key_Minus,
     M(MACRO_TOGGLE_LANG), Key_B,         Key_M,         Key_W,             Key_V,                    Key_Z,            LSHIFT(Key_Period),
-    OSM(LeftAlt), OSM(LeftControl), SFT_T(Spacebar), GUI_T(Escape),
+    OSM(LeftAlt), OSM(LeftControl), LT(PDVORAK_SHIFTED, Spacebar), GUI_T(Escape),
     ShiftToLayer(MOVEMENT)
   ),
-  [PDVORAK_DIGITS] = KEYMAP_STACKED (
-    ___,                   Key_7, Key_5,         Key_3,     Key_1, Key_9, ___,
-    ___,                   ___,   LSHIFT(Key_5), Key_Comma, ___,   ___,   ___,
-    ___,                   ___,   ___,           ___,       ___,   ___,
-    LSHIFT(Key_Backslash), ___,   ___,           ___,       ___,   ___,   ___,
+  [PDVORAK_SHIFTED] = KEYMAP_STACKED (
+    ___,                   Key_7,                 Key_5,         Key_3,         Key_1,         Key_9,         ___,
+    LSHIFT(Key_Backtick),  LSHIFT(Key_Semicolon), LSHIFT(Key_5), Key_Comma,     LSHIFT(Key_P), LSHIFT(Key_Y), ___,
+    Key_Tab,               LSHIFT(Key_A),         LSHIFT(Key_O), LSHIFT(Key_E), LSHIFT(Key_U), LSHIFT(Key_I),
+    LSHIFT(Key_Backslash), LSHIFT(Key_Quote),     LSHIFT(Key_Q), LSHIFT(Key_J), LSHIFT(Key_K), LSHIFT(Key_X), ___,
     ___, ___, ___, ___,
     ___,
 
-    ___, Key_0, Key_2, Key_4, Key_6, Key_8, ___,
-    ___, ___,   ___,   ___,   ___,   ___,   LSHIFT(Key_Equals),
-         ___,   ___,   ___,   ___,   ___,   ___,
-    ___, ___,   ___,   ___,   ___,   ___,   LSHIFT(Key_Comma),
+
+    ___, Key_0,           Key_2,           Key_4,           Key_6,           Key_8,           ___,
+    ___, LSHIFT(Key_F),   LSHIFT(Key_G),   LSHIFT(Key_C),   LSHIFT(Key_R),   LSHIFT(Key_L),   LSHIFT(Key_Equals),
+         LSHIFT(Key_D),   LSHIFT(Key_H),   LSHIFT(Key_T),   LSHIFT(Key_N),   LSHIFT(Key_S),   LSHIFT(Key_Minus),
+    ___, LSHIFT(Key_B),   LSHIFT(Key_M),   LSHIFT(Key_W),   LSHIFT(Key_V),   LSHIFT(Key_Z),   LSHIFT(Key_Comma),
     ___, ___, ___, ___,
     ___
   ),
@@ -94,15 +94,6 @@ KEYMAPS(
 )
 // *INDENT-ON*
 
-static const kaleidoscope::ModifierLayers::overlay_t overlays[] = {
-  // When either shift key is held, overlay the PDVORAK_NUMBERS layer if the
-  // PDVORAK layer is active. Note that keys defined directly in the
-  // PDVORAK_NUMBERS will not have the shift modifier applied to them.
-  {LAYER_MODIFIER_KEY(Key_LeftShift) | LAYER_MODIFIER_KEY(Key_RightShift), PDVORAK, PDVORAK_DIGITS},
-  // The last element must be an all-zero terminator
-  {0, 0, 0}
-};
-
 const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
   switch (macroIndex) {
     case MACRO_SCREEN:
@@ -134,7 +125,6 @@ KALEIDOSCOPE_INIT_PLUGINS(
   OneShot,
   EscapeOneShot,
   Qukeys,
-  ModifierLayers,
   TapDance,
   Macros,
   MouseKeys,
@@ -154,8 +144,6 @@ void setup() {
   MouseKeys.setSpeedLimit(100);
   // increase default timeout a bit to do double-tap
   TapDance.time_out = 300;
-  // init layers modifier
-  ModifierLayers.overlays = overlays;
 
   // one of default led's - rainbow
   LEDRainbowWaveEffect.brightness(150);
