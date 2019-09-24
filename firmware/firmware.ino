@@ -7,9 +7,7 @@
 #include "Kaleidoscope.h"
 #include "Kaleidoscope-EEPROM-Settings.h"
 #include "Kaleidoscope-EEPROM-Keymap.h"
-#include "Kaleidoscope-Colormap.h"
 #include "Kaleidoscope-FocusSerial.h"
-#include "Kaleidoscope-LED-Palette-Theme.h"
 #include "Kaleidoscope-OneShot.h"
 #include "Kaleidoscope-Escape-OneShot.h"
 #include "Kaleidoscope-Qukeys.h"
@@ -106,7 +104,8 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
   return MACRO_NONE;
 }
 
-void tapDanceAction(uint8_t tap_dance_index, byte row, byte col, uint8_t tap_count, kaleidoscope::TapDance::ActionType tap_dance_action) {
+void tapDanceAction(uint8_t tap_dance_index, byte row, byte col, uint8_t tap_count,
+                    kaleidoscope::plugin::TapDance::ActionType tap_dance_action) {
   switch (tap_dance_index) {
     case 0: return tapDanceActionKeys(tap_count, tap_dance_action, LSHIFT(Key_2), LSHIFT(Key_3), LSHIFT(Key_6));
   }
@@ -119,12 +118,10 @@ KALEIDOSCOPE_INIT_PLUGINS(
   TestMode,
 
   LEDControl,
-  LEDPaletteTheme,
-  ColormapEffect,
 
+  Qukeys,
   OneShot,
   EscapeOneShot,
-  Qukeys,
   TapDance,
   Macros,
   MouseKeys,
@@ -144,6 +141,8 @@ void setup() {
   MouseKeys.setSpeedLimit(100);
   // increase default timeout a bit to do double-tap
   TapDance.time_out = 300;
+  // make timeout for holding less, so you can faster hold it and press other key
+  //Qukeys.setHoldTimeout(100);
 
   // one of default led's - rainbow
   LEDRainbowWaveEffect.brightness(150);
