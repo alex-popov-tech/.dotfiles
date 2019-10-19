@@ -11,7 +11,6 @@
 #include "Kaleidoscope-OneShot.h"
 #include "Kaleidoscope-Escape-OneShot.h"
 #include "Kaleidoscope-Qukeys.h"
-#include "Kaleidoscope-TapDance.h"
 #include "Kaleidoscope-MouseKeys.h"
 #include "Kaleidoscope-Macros.h"
 #include "Kaleidoscope-LEDControl.h"
@@ -22,70 +21,87 @@
 #include "Kaleidoscope-LED-Stalker.h"
 #include "Kaleidoscope-Model01-TestMode.h"
 
-enum { MACRO_TOGGLE_LANG, MACRO_SCREEN };
+enum { MACRO_SCREEN };
 
-enum { PDVORAK, PDVORAK_SHIFTED, MOVEMENT, QWERTY };
+enum { COLEMAK, FUNC, QWERTY };
+
+#define Key_Exclm         LSHIFT(Key_1)
+#define Key_At            LSHIFT(Key_2)
+#define Key_Hash          LSHIFT(Key_3)
+#define Key_Dollar        LSHIFT(Key_4)
+#define Key_Percent       LSHIFT(Key_5)
+#define Key_Carret        LSHIFT(Key_6)
+#define Key_And           LSHIFT(Key_7)
+#define Key_Star          LSHIFT(Key_8)
+#define Key_Plus          LSHIFT(Key_Equals)
+
+#define Key_LRoundBracket LSHIFT(Key_9)
+#define Key_RRoundBracket LSHIFT(Key_0)
+#define Key_LCurlyBracket LSHIFT(Key_LeftBracket)
+#define Key_RCurlyBracket LSHIFT(Key_RightBracket)
+#define Key_LBracket      Key_LeftBracket
+#define Key_RBracket      Key_RightBracket
+
+#define Key_Question      LSHIFT(Key_Slash)
+#define Key_Pipe          LSHIFT(Key_Backslash)
+
+#define Key_MUp           Key_mouseUp
+#define Key_MDown         Key_mouseDn
+#define Key_MLeft         Key_mouseL
+#define Key_MRight        Key_mouseR
+#define Key_MSUp          Key_mouseScrollUp
+#define Key_MSDown        Key_mouseScrollDn
+#define Key_MSLeft        Key_mouseScrollL
+#define Key_MSRight       Key_mouseScrollR
+#define Key_LClick        Key_mouseBtnL
+#define Key_RClick        Key_mouseBtnR
+
+#define Key_LEDN          Key_LEDEffectNext
 
 // *INDENT-OFF*
 KEYMAPS(
-  [PDVORAK] = KEYMAP_STACKED (
-    ___,           Key_LeftBracket, LSHIFT(Key_LeftBracket), LSHIFT(Key_1), LSHIFT(Key_9), Key_Equals, Key_VolumeUp,
-    Key_Backtick,  Key_Semicolon,   LSHIFT(Key_4),           Key_Period,    Key_P,         Key_Y,      Key_Mute,
-    Key_Tab,       Key_A,           Key_O,                   Key_E,         Key_U,         Key_I,
-    LSHIFT(Key_7), Key_Quote,       Key_Q,                   Key_J,         Key_K,         Key_X,      Key_VolumeDown,
-    CTL_T(Enter), LT(PDVORAK_SHIFTED, Backspace), OSM(LeftGui), ShiftToLayer(PDVORAK_SHIFTED),
-    ShiftToLayer(MOVEMENT),
+  [COLEMAK] = KEYMAP_STACKED (
+    Key_Backtick,      Key_Exclm, Key_At, Key_Hash, Key_Dollar, Key_Percent, XXX,
+    Key_LCurlyBracket, Key_Q,     Key_W,  Key_F,    Key_P,      Key_G,       XXX,
+    Key_Tab,           Key_A,     Key_R,  Key_S,    Key_T,      Key_D,
+    XXX,               Key_Z,     Key_X,  Key_C,    Key_V,      Key_B,       Key_Semicolon,
+    SFT_T(Enter), CTL_T(Backspace), OSM(LeftGui), OSM(LeftAlt),
+    OSL(FUNC),
 
-    Key_LEDEffectNext,    LSHIFT(Key_8), LSHIFT(Key_0), LSHIFT(Key_Slash), LSHIFT(Key_RightBracket), Key_RightBracket, TD(0),
-    M(MACRO_SCREEN),      Key_F,         Key_G,         Key_C,             Key_R,                    Key_L,            Key_Slash,
-                          Key_D,         Key_H,         Key_T,             Key_N,                    Key_S,            Key_Minus,
-    M(MACRO_TOGGLE_LANG), Key_B,         Key_M,         Key_W,             Key_V,                    Key_Z,            LSHIFT(Key_Period),
-    OSM(LeftAlt), OSM(LeftControl), LT(PDVORAK_SHIFTED, Spacebar), GUI_T(Escape),
-    ShiftToLayer(MOVEMENT)
+    XXX,        Key_Carret, Key_And, Key_Star,  Key_LRoundBracket, Key_RRoundBracket, XXX,
+    XXX,        Key_J,      Key_L,   Key_U,     Key_Y,            Key_Quote,         Key_RCurlyBracket,
+                Key_H,      Key_N,   Key_E,     Key_I,            Key_O,             Key_Minus,
+    Key_Equals, Key_K,      Key_M,   Key_Comma, Key_Period,       Key_Question,      Key_Pipe,
+    OSM(RightAlt), OSM(RightGui), CTL_T(Spacebar), SFT_T(Escape),
+    OSL(QWERTY)
   ),
-  [PDVORAK_SHIFTED] = KEYMAP_STACKED (
-    ___,                   Key_7,                 Key_5,         Key_3,         Key_1,         Key_9,         ___,
-    LSHIFT(Key_Backtick),  LSHIFT(Key_Semicolon), LSHIFT(Key_5), Key_Comma,     LSHIFT(Key_P), LSHIFT(Key_Y), ___,
-    Key_Tab,               LSHIFT(Key_A),         LSHIFT(Key_O), LSHIFT(Key_E), LSHIFT(Key_U), LSHIFT(Key_I),
-    LSHIFT(Key_Backslash), LSHIFT(Key_Quote),     LSHIFT(Key_Q), LSHIFT(Key_J), LSHIFT(Key_K), LSHIFT(Key_X), ___,
+  [FUNC] = KEYMAP_STACKED (
+    Key_F1, Key_F2,     Key_F3,     Key_F4,      Key_F5,     Key_F6,      Key_VolumeUp,
+    XXX,    XXX,        Key_MSUp,   Key_MUp,     Key_MSDown, XXX,         Key_Mute,
+    XXX,    Key_MSLeft, Key_MLeft,  Key_MDown,   Key_MRight, Key_MSRight,
+    XXX,    XXX,        XXX,        XXX,         XXX,        XXX,         Key_VolumeDown,
     ___, ___, ___, ___,
     ___,
 
-
-    ___, Key_0,           Key_2,           Key_4,           Key_6,           Key_8,           ___,
-    ___, LSHIFT(Key_F),   LSHIFT(Key_G),   LSHIFT(Key_C),   LSHIFT(Key_R),   LSHIFT(Key_L),   LSHIFT(Key_Equals),
-         LSHIFT(Key_D),   LSHIFT(Key_H),   LSHIFT(Key_T),   LSHIFT(Key_N),   LSHIFT(Key_S),   LSHIFT(Key_Minus),
-    ___, LSHIFT(Key_B),   LSHIFT(Key_M),   LSHIFT(Key_W),   LSHIFT(Key_V),   LSHIFT(Key_Z),   LSHIFT(Key_Comma),
-    ___, ___, ___, ___,
-    ___
-  ),
-  [MOVEMENT] = KEYMAP_STACKED (
-    ___, ___, ___,              ___,           ___,              ___, ___,
-    ___, ___, Key_mouseScrollL, Key_mouseUp,   Key_mouseScrollR, ___, ___,
-    ___, ___, Key_mouseL,       Key_mouseDn,   Key_mouseR,       ___,
-    ___, ___, ___,              Key_DownArrow, Key_UpArrow,      ___, ___,
-    ___, ___, ___, ___,
-    ___,
-
-    ___, ___, ___,           ___,               ___,               ___,            ___,
-    ___, ___, ___,           Key_mouseScrollDn, Key_mouseScrollUp, ___,            ___,
-         ___, Key_LeftArrow, Key_mouseBtnL,     Key_mouseBtnR,     Key_RightArrow, ___,
-    ___, ___, ___,           ___,               ___,               ___,            ___,
+    Key_LEDN,        Key_F7,        Key_F8,         Key_F9,     Key_F10, Key_F11, Key_F12,
+    M(MACRO_SCREEN), Key_DownArrow, Key_RightArrow, XXX,        XXX,     XXX,     XXX,
+                     Key_LeftArrow, Key_LClick,     Key_RClick, XXX,     XXX,     XXX,
+    XXX,             Key_UpArrow,   XXX,            XXX,        XXX,     XXX,     XXX,
     ___, ___, ___, ___,
     ___
   ),
   [QWERTY] = KEYMAP_STACKED (
-    ___, ___,   ___,   ___,   ___,   ___,   ___,
-    ___, Key_Q, Key_W, Key_E, Key_R, Key_T, ___,
-    ___, Key_A, Key_S, Key_D, Key_F, Key_G,
-    ___, Key_Z, Key_X, Key_C, Key_V, Key_B, ___,
+    ___,          ___,   ___,   ___,   ___,   ___,   XXX,
+    Key_Backtick, Key_Q, Key_W, Key_E, Key_R, Key_T, XXX,
+    XXX,          Key_A, Key_S, Key_D, Key_F, Key_G,
+    ___,          Key_Z, Key_X, Key_C, Key_V, Key_B, XXX,
     ___, ___, ___, ___,
     ___,
 
-    ___,  ___,   ___,   ___,       ___,           ___,           ___,
-    ___,  Key_Y, Key_U, Key_I,     Key_O,         Key_P,         Key_LeftBracket,
-          Key_H, Key_J, Key_K,     Key_L,         Key_Semicolon, Key_Quote,
-    ___,  Key_N, Key_M, Key_Comma, Key_Period,    Key_RightBracket,           ___,
+    XXX,  ___,   ___,   ___,       ___,        ___,              ___,
+    XXX,  Key_Y, Key_U, Key_I,     Key_O,      Key_P,            Key_LeftBracket,
+          Key_H, Key_J, Key_K,     Key_L,      Key_Semicolon,    Key_Quote,
+    XXX,  Key_N, Key_M, Key_Comma, Key_Period, Key_RightBracket, XXX,
     ___, ___, ___, ___,
     ___
   )
@@ -97,18 +113,11 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
     case MACRO_SCREEN:
       // print screen
       return MACRODOWN(D(LeftGui), D(LeftShift), T(4), U(LeftShift), U(LeftGui));
-    case MACRO_TOGGLE_LANG:
-      // toggle os lang and switch between qwerty-workman
-      return MACRODOWN(D(LeftControl), T(Spacebar), U(LeftControl), Tr(LockLayer(3)));
+    /* case MACRO_TOGGLE_LANG: */
+      /* toggle os lang and switch layer */
+      /* return MACRODOWN(D(LeftControl), T(Spacebar), U(LeftControl), Tr(LockLayer(3))); */
     }
   return MACRO_NONE;
-}
-
-void tapDanceAction(uint8_t tap_dance_index, byte row, byte col, uint8_t tap_count,
-                    kaleidoscope::plugin::TapDance::ActionType tap_dance_action) {
-  switch (tap_dance_index) {
-    case 0: return tapDanceActionKeys(tap_count, tap_dance_action, LSHIFT(Key_2), LSHIFT(Key_3), LSHIFT(Key_6));
-  }
 }
 
 KALEIDOSCOPE_INIT_PLUGINS(
@@ -118,19 +127,17 @@ KALEIDOSCOPE_INIT_PLUGINS(
   TestMode,
 
   LEDControl,
-
-  Qukeys,
-  OneShot,
-  EscapeOneShot,
-  TapDance,
-  Macros,
-  MouseKeys,
-
   BootGreetingEffect,
   ActiveModColorEffect,
   LEDRainbowWaveEffect,
   LEDBreatheEffect,
-  StalkerEffect
+  StalkerEffect,
+
+  Qukeys,
+  OneShot,
+  EscapeOneShot,
+  Macros,
+  MouseKeys
 );
 
 void setup() {
@@ -139,10 +146,6 @@ void setup() {
   // Make mouse start moving faster
   MouseKeys.accelSpeed = 5;
   MouseKeys.setSpeedLimit(100);
-  // increase default timeout a bit to do double-tap
-  TapDance.time_out = 300;
-  // make timeout for holding less, so you can faster hold it and press other key
-  //Qukeys.setHoldTimeout(100);
 
   // one of default led's - rainbow
   LEDRainbowWaveEffect.brightness(150);

@@ -1,0 +1,282 @@
+{
+  "keymap": [
+    {
+      "keyCode": 53,
+      "label": "`"
+    },
+    {
+      "keyCode": 2078,
+      "label": "!"
+    },
+    {
+      "keyCode": 2079,
+      "label": "@"
+    },
+    {
+      "keyCode": 2080,
+      "label": "#"
+    },
+    {
+      "keyCode": 2081,
+      "label": "$"
+    },
+    {
+      "keyCode": 2082,
+      "label": "%"
+    },
+    {
+      "keyCode": 0,
+      "label": "XXX",
+      "verbose": "Disabled"
+    },
+    {
+      "keyCode": 49465,
+      "label": "Enter",
+      "extraLabel": "SHIFT/"
+    },
+    {
+      "keyCode": 49466,
+      "label": "Esc",
+      "extraLabel": "SHIFT/"
+    },
+    {
+      "keyCode": 0,
+      "label": "XXX",
+      "verbose": "Disabled"
+    },
+    {
+      "keyCode": 2083,
+      "label": "^"
+    },
+    {
+      "keyCode": 2084,
+      "label": "&"
+    },
+    {
+      "keyCode": 2085,
+      "label": "*"
+    },
+    {
+      "keyCode": 2086,
+      "label": "("
+    },
+    {
+      "keyCode": 2087,
+      "label": ")"
+    },
+    {
+      "keyCode": 0,
+      "label": "XXX",
+      "verbose": "Disabled"
+    },
+    {
+      "keyCode": 2095,
+      "label": "{"
+    },
+    {
+      "keyCode": 20,
+      "label": "Q"
+    },
+    {
+      "keyCode": 26,
+      "label": "W"
+    },
+    {
+      "keyCode": 9,
+      "label": "F"
+    },
+    {
+      "keyCode": 19,
+      "label": "P"
+    },
+    {
+      "keyCode": 10,
+      "label": "G"
+    },
+    {
+      "keyCode": 0,
+      "label": "XXX",
+      "verbose": "Disabled"
+    },
+    {
+      "keyCode": 49211,
+      "label": "BSpc",
+      "extraLabel": "CTRL/"
+    },
+    {
+      "keyCode": 49213,
+      "label": "Space",
+      "extraLabel": "CTRL/"
+    },
+    {
+      "keyCode": 0,
+      "label": "XXX",
+      "verbose": "Disabled"
+    },
+    {
+      "keyCode": 13,
+      "label": "J"
+    },
+    {
+      "keyCode": 15,
+      "label": "L"
+    },
+    {
+      "keyCode": 24,
+      "label": "U"
+    },
+    {
+      "keyCode": 28,
+      "label": "Y"
+    },
+    {
+      "keyCode": 52,
+      "label": "'"
+    },
+    {
+      "keyCode": 2096,
+      "label": "}"
+    },
+    {
+      "keyCode": 43,
+      "label": "Tab"
+    },
+    {
+      "keyCode": 4,
+      "label": "A"
+    },
+    {
+      "keyCode": 21,
+      "label": "R"
+    },
+    {
+      "keyCode": 22,
+      "label": "S"
+    },
+    {
+      "keyCode": 23,
+      "label": "T"
+    },
+    {
+      "keyCode": 7,
+      "label": "D"
+    },
+    {
+      "keyCode": 51,
+      "label": ";"
+    },
+    {
+      "keyCode": 49156,
+      "label": "LGui",
+      "extraLabel": "OSM",
+      "verbose": "Left Gui"
+    },
+    {
+      "keyCode": 49160,
+      "label": "RGui",
+      "extraLabel": "OSM",
+      "verbose": "Right Gui"
+    },
+    {
+      "keyCode": 46,
+      "label": "="
+    },
+    {
+      "keyCode": 11,
+      "label": "H"
+    },
+    {
+      "keyCode": 17,
+      "label": "N"
+    },
+    {
+      "keyCode": 8,
+      "label": "E"
+    },
+    {
+      "keyCode": 12,
+      "label": "I"
+    },
+    {
+      "keyCode": 18,
+      "label": "O"
+    },
+    {
+      "keyCode": 45,
+      "label": "-"
+    },
+    {
+      "keyCode": 0,
+      "label": "XXX",
+      "verbose": "Disabled"
+    },
+    {
+      "keyCode": 29,
+      "label": "Z"
+    },
+    {
+      "keyCode": 27,
+      "label": "X"
+    },
+    {
+      "keyCode": 6,
+      "label": "C"
+    },
+    {
+      "keyCode": 25,
+      "label": "V"
+    },
+    {
+      "keyCode": 5,
+      "label": "B"
+    },
+    {
+      "keyCode": 49162,
+      "label": "1",
+      "extraLabel": "OSL"
+    },
+    {
+      "keyCode": 49155,
+      "label": "LAlt",
+      "extraLabel": "OSM",
+      "verbose": "Left Alt"
+    },
+    {
+      "keyCode": 49159,
+      "label": "RAlt",
+      "extraLabel": "OSM",
+      "verbose": "AltGr"
+    },
+    {
+      "keyCode": 49163,
+      "label": "2",
+      "extraLabel": "OSL"
+    },
+    {
+      "keyCode": 14,
+      "label": "K"
+    },
+    {
+      "keyCode": 16,
+      "label": "M"
+    },
+    {
+      "keyCode": 54,
+      "label": ","
+    },
+    {
+      "keyCode": 55,
+      "label": "."
+    },
+    {
+      "keyCode": 2104,
+      "label": "?"
+    },
+    {
+      "keyCode": 2097,
+      "label": "|"
+    }
+  ],
+  "colormap": [],
+  "palette": []
+}
