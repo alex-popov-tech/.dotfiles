@@ -31,24 +31,9 @@
       "verbose": "Transparent"
     },
     {
-      "keyCode": 0,
-      "label": "XXX",
-      "verbose": "Disabled"
-    },
-    {
       "keyCode": 65535,
       "label": "",
       "verbose": "Transparent"
-    },
-    {
-      "keyCode": 65535,
-      "label": "",
-      "verbose": "Transparent"
-    },
-    {
-      "keyCode": 0,
-      "label": "XXX",
-      "verbose": "Disabled"
     },
     {
       "keyCode": 65535,
@@ -81,33 +66,9 @@
       "verbose": "Transparent"
     },
     {
-      "keyCode": 53,
-      "label": "`"
-    },
-    {
-      "keyCode": 20,
-      "label": "Q"
-    },
-    {
-      "keyCode": 26,
-      "label": "W"
-    },
-    {
-      "keyCode": 8,
-      "label": "E"
-    },
-    {
-      "keyCode": 21,
-      "label": "R"
-    },
-    {
-      "keyCode": 23,
-      "label": "T"
-    },
-    {
-      "keyCode": 0,
-      "label": "XXX",
-      "verbose": "Disabled"
+      "keyCode": 65535,
+      "label": "",
+      "verbose": "Transparent"
     },
     {
       "keyCode": 65535,
@@ -120,127 +81,9 @@
       "verbose": "Transparent"
     },
     {
-      "keyCode": 0,
-      "label": "XXX",
-      "verbose": "Disabled"
-    },
-    {
-      "keyCode": 28,
-      "label": "Y"
-    },
-    {
-      "keyCode": 24,
-      "label": "U"
-    },
-    {
-      "keyCode": 12,
-      "label": "I"
-    },
-    {
-      "keyCode": 18,
-      "label": "O"
-    },
-    {
-      "keyCode": 19,
-      "label": "P"
-    },
-    {
-      "keyCode": 47,
-      "label": "["
-    },
-    {
-      "keyCode": 0,
-      "label": "XXX",
-      "verbose": "Disabled"
-    },
-    {
-      "keyCode": 4,
-      "label": "A"
-    },
-    {
-      "keyCode": 22,
-      "label": "S"
-    },
-    {
-      "keyCode": 7,
-      "label": "D"
-    },
-    {
-      "keyCode": 9,
-      "label": "F"
-    },
-    {
-      "keyCode": 10,
-      "label": "G"
-    },
-    {
-      "keyCode": 0,
-      "label": "XXX",
-      "verbose": "Disabled"
-    },
-    {
       "keyCode": 65535,
       "label": "",
       "verbose": "Transparent"
-    },
-    {
-      "keyCode": 65535,
-      "label": "",
-      "verbose": "Transparent"
-    },
-    {
-      "keyCode": 0,
-      "label": "XXX",
-      "verbose": "Disabled"
-    },
-    {
-      "keyCode": 11,
-      "label": "H"
-    },
-    {
-      "keyCode": 13,
-      "label": "J"
-    },
-    {
-      "keyCode": 14,
-      "label": "K"
-    },
-    {
-      "keyCode": 15,
-      "label": "L"
-    },
-    {
-      "keyCode": 51,
-      "label": ";"
-    },
-    {
-      "keyCode": 52,
-      "label": "'"
-    },
-    {
-      "keyCode": 65535,
-      "label": "",
-      "verbose": "Transparent"
-    },
-    {
-      "keyCode": 29,
-      "label": "Z"
-    },
-    {
-      "keyCode": 27,
-      "label": "X"
-    },
-    {
-      "keyCode": 6,
-      "label": "C"
-    },
-    {
-      "keyCode": 25,
-      "label": "V"
-    },
-    {
-      "keyCode": 5,
-      "label": "B"
     },
     {
       "keyCode": 65535,
@@ -263,31 +106,383 @@
       "verbose": "Transparent"
     },
     {
-      "keyCode": 17,
-      "label": "N"
+      "keyCode": 65535,
+      "label": "",
+      "verbose": "Transparent"
     },
     {
-      "keyCode": 16,
-      "label": "M"
+      "keyCode": 65535,
+      "label": "",
+      "verbose": "Transparent"
     },
     {
-      "keyCode": 54,
-      "label": ","
+      "keyCode": 65535,
+      "label": "",
+      "verbose": "Transparent"
     },
     {
-      "keyCode": 55,
-      "label": "."
+      "keyCode": 65535,
+      "label": "",
+      "verbose": "Transparent"
     },
     {
-      "keyCode": 48,
-      "label": "]"
+      "keyCode": 65535,
+      "label": "",
+      "verbose": "Transparent"
     },
     {
-      "keyCode": 0,
-      "label": "XXX",
-      "verbose": "Disabled"
+      "keyCode": 65535,
+      "label": "",
+      "verbose": "Transparent"
+    },
+    {
+      "keyCode": 65535,
+      "label": "",
+      "verbose": "Transparent"
+    },
+    {
+      "keyCode": 65535,
+      "label": "",
+      "verbose": "Transparent"
+    },
+    {
+      "keyCode": 65535,
+      "label": "",
+      "verbose": "Transparent"
+    },
+    {
+      "keyCode": 65535,
+      "label": "",
+      "verbose": "Transparent"
+    },
+    {
+      "keyCode": 65535,
+      "label": "",
+      "verbose": "Transparent"
+    },
+    {
+      "keyCode": 65535,
+      "label": "",
+      "verbose": "Transparent"
+    },
+    {
+      "keyCode": 65535,
+      "label": "",
+      "verbose": "Transparent"
+    },
+    {
+      "keyCode": 65535,
+      "label": "",
+      "verbose": "Transparent"
+    },
+    {
+      "keyCode": 65535,
+      "label": "",
+      "verbose": "Transparent"
+    },
+    {
+      "keyCode": 65535,
+      "label": "",
+      "verbose": "Transparent"
+    },
+    {
+      "keyCode": 65535,
+      "label": "",
+      "verbose": "Transparent"
+    },
+    {
+      "keyCode": 65535,
+      "label": "",
+      "verbose": "Transparent"
+    },
+    {
+      "keyCode": 65535,
+      "label": "",
+      "verbose": "Transparent"
+    },
+    {
+      "keyCode": 65535,
+      "label": "",
+      "verbose": "Transparent"
+    },
+    {
+      "keyCode": 65535,
+      "label": "",
+      "verbose": "Transparent"
+    },
+    {
+      "keyCode": 65535,
+      "label": "",
+      "verbose": "Transparent"
+    },
+    {
+      "keyCode": 65535,
+      "label": "",
+      "verbose": "Transparent"
+    },
+    {
+      "keyCode": 65535,
+      "label": "",
+      "verbose": "Transparent"
+    },
+    {
+      "keyCode": 65535,
+      "label": "",
+      "verbose": "Transparent"
+    },
+    {
+      "keyCode": 65535,
+      "label": "",
+      "verbose": "Transparent"
+    },
+    {
+      "keyCode": 65535,
+      "label": "",
+      "verbose": "Transparent"
+    },
+    {
+      "keyCode": 65535,
+      "label": "",
+      "verbose": "Transparent"
+    },
+    {
+      "keyCode": 65535,
+      "label": "",
+      "verbose": "Transparent"
+    },
+    {
+      "keyCode": 65535,
+      "label": "",
+      "verbose": "Transparent"
+    },
+    {
+      "keyCode": 65535,
+      "label": "",
+      "verbose": "Transparent"
+    },
+    {
+      "keyCode": 65535,
+      "label": "",
+      "verbose": "Transparent"
+    },
+    {
+      "keyCode": 65535,
+      "label": "",
+      "verbose": "Transparent"
+    },
+    {
+      "keyCode": 65535,
+      "label": "",
+      "verbose": "Transparent"
+    },
+    {
+      "keyCode": 65535,
+      "label": "",
+      "verbose": "Transparent"
+    },
+    {
+      "keyCode": 65535,
+      "label": "",
+      "verbose": "Transparent"
+    },
+    {
+      "keyCode": 65535,
+      "label": "",
+      "verbose": "Transparent"
+    },
+    {
+      "keyCode": 65535,
+      "label": "",
+      "verbose": "Transparent"
+    },
+    {
+      "keyCode": 65535,
+      "label": "",
+      "verbose": "Transparent"
+    },
+    {
+      "keyCode": 65535,
+      "label": "",
+      "verbose": "Transparent"
+    },
+    {
+      "keyCode": 65535,
+      "label": "",
+      "verbose": "Transparent"
+    },
+    {
+      "keyCode": 65535,
+      "label": "",
+      "verbose": "Transparent"
+    },
+    {
+      "keyCode": 65535,
+      "label": "",
+      "verbose": "Transparent"
     }
   ],
-  "colormap": [],
-  "palette": []
+  "colormap": [
+    3,
+    3,
+    2,
+    0,
+    0,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    0,
+    0,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    0,
+    0,
+    2,
+    2,
+    2,
+    0,
+    3,
+    3,
+    1,
+    1,
+    1,
+    1,
+    4,
+    2,
+    1,
+    1,
+    1,
+    1,
+    3,
+    3,
+    0,
+    2,
+    2,
+    2,
+    0,
+    0,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    0,
+    0,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    0,
+    3,
+    2,
+    2,
+    0
+  ],
+  "palette": [
+    {
+      "r": 144,
+      "g": 19,
+      "b": 254,
+      "rgb": "rgb(144, 19, 254)"
+    },
+    {
+      "r": 244,
+      "g": 255,
+      "b": 0,
+      "rgb": "rgb(244, 255, 0)"
+    },
+    {
+      "r": 255,
+      "g": 0,
+      "b": 0,
+      "rgb": "rgb(255, 0, 0)"
+    },
+    {
+      "r": 2,
+      "g": 27,
+      "b": 74,
+      "rgb": "rgb(2, 27, 74)"
+    },
+    {
+      "r": 0,
+      "g": 33,
+      "b": 255,
+      "rgb": "rgb(0, 33, 255)"
+    },
+    {
+      "r": 0,
+      "g": 0,
+      "b": 0,
+      "rgb": "rgb(0, 0, 0)"
+    },
+    {
+      "r": 0,
+      "g": 0,
+      "b": 0,
+      "rgb": "rgb(0, 0, 0)"
+    },
+    {
+      "r": 0,
+      "g": 0,
+      "b": 0,
+      "rgb": "rgb(0, 0, 0)"
+    },
+    {
+      "r": 0,
+      "g": 0,
+      "b": 0,
+      "rgb": "rgb(0, 0, 0)"
+    },
+    {
+      "r": 0,
+      "g": 0,
+      "b": 0,
+      "rgb": "rgb(0, 0, 0)"
+    },
+    {
+      "r": 0,
+      "g": 0,
+      "b": 0,
+      "rgb": "rgb(0, 0, 0)"
+    },
+    {
+      "r": 0,
+      "g": 0,
+      "b": 0,
+      "rgb": "rgb(0, 0, 0)"
+    },
+    {
+      "r": 0,
+      "g": 0,
+      "b": 0,
+      "rgb": "rgb(0, 0, 0)"
+    },
+    {
+      "r": 0,
+      "g": 0,
+      "b": 0,
+      "rgb": "rgb(0, 0, 0)"
+    },
+    {
+      "r": 0,
+      "g": 0,
+      "b": 0,
+      "rgb": "rgb(0, 0, 0)"
+    },
+    {
+      "r": 0,
+      "g": 224,
+      "b": 0,
+      "rgb": "rgb(0, 224, 0)"
+    }
+  ]
 }

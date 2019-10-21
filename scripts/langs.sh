@@ -36,8 +36,8 @@ function main() {
   echo "+---------------------------------+"
   if [[ ! "$(where go)" =~ "gvm" ]]; then
     brew install go
-    gvm install go1.12.5
-    gvm use go1.12.5 --default
+    gvm install go1.13.3
+    gvm use go1.13.3 --default
     brew uninstall go
   fi
 }

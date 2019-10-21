@@ -8,18 +8,16 @@
 #include "Kaleidoscope-EEPROM-Settings.h"
 #include "Kaleidoscope-EEPROM-Keymap.h"
 #include "Kaleidoscope-FocusSerial.h"
+#include "Kaleidoscope-HostOS.h"
+#include "Kaleidoscope-LED-Palette-Theme.h"
+#include "Kaleidoscope-Colormap.h"
+#include "Kaleidoscope-Syster.h"
+
 #include "Kaleidoscope-OneShot.h"
 #include "Kaleidoscope-Escape-OneShot.h"
 #include "Kaleidoscope-Qukeys.h"
 #include "Kaleidoscope-MouseKeys.h"
 #include "Kaleidoscope-Macros.h"
-#include "Kaleidoscope-LEDControl.h"
-#include "Kaleidoscope-LED-ActiveModColor.h"
-#include "Kaleidoscope-LEDEffect-BootGreeting.h"
-#include "Kaleidoscope-LEDEffect-Breathe.h"
-#include "Kaleidoscope-LEDEffect-Rainbow.h"
-#include "Kaleidoscope-LED-Stalker.h"
-#include "Kaleidoscope-Model01-TestMode.h"
 
 enum { MACRO_SCREEN };
 
@@ -56,7 +54,6 @@ enum { COLEMAK, FUNC, QWERTY };
 #define Key_LClick        Key_mouseBtnL
 #define Key_RClick        Key_mouseBtnR
 
-#define Key_LEDN          Key_LEDEffectNext
 
 // *INDENT-OFF*
 KEYMAPS(
@@ -83,7 +80,7 @@ KEYMAPS(
     ___, ___, ___, ___,
     ___,
 
-    Key_LEDN,        Key_F7,        Key_F8,         Key_F9,     Key_F10, Key_F11, Key_F12,
+    XXX,        Key_F7,        Key_F8,         Key_F9,     Key_F10, Key_F11, Key_F12,
     M(MACRO_SCREEN), Key_DownArrow, Key_RightArrow, XXX,        XXX,     XXX,     XXX,
                      Key_LeftArrow, Key_LClick,     Key_RClick, XXX,     XXX,     XXX,
     XXX,             Key_UpArrow,   XXX,            XXX,        XXX,     XXX,     XXX,
@@ -121,17 +118,16 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
 }
 
 KALEIDOSCOPE_INIT_PLUGINS(
+  LEDControl,
+  LEDOff,
+  HostOS,
   EEPROMSettings,
   EEPROMKeymap,
-  Focus,
-  TestMode,
+  LEDPaletteTheme,
+  ColormapEffect,
 
-  LEDControl,
-  BootGreetingEffect,
-  ActiveModColorEffect,
-  LEDRainbowWaveEffect,
-  LEDBreatheEffect,
-  StalkerEffect,
+  Syster,
+  Focus,
 
   Qukeys,
   OneShot,
@@ -147,17 +143,14 @@ void setup() {
   MouseKeys.accelSpeed = 5;
   MouseKeys.setSpeedLimit(100);
 
-  // one of default led's - rainbow
-  LEDRainbowWaveEffect.brightness(150);
-  // red haunt after press
-  StalkerEffect.variant = STALKER(Haunt, (CRGB(255, 0, 0)));
-  StalkerEffect.activate();
+  ColormapEffect.max_layers(3);
+  ColormapEffect.activate();
 
   // To make the keymap editable without flashing new firmware, we store
   // additional layers in EEPROM. For now, we reserve space for five layers. If
   // one wants to use these layers, just set the default layer to one in EEPROM,
   // by using the `settings.defaultLayer` Focus command.
-  EEPROMKeymap.setup(5, EEPROMKeymap.Mode::EXTEND);
+  EEPROMKeymap.setup(3, EEPROMKeymap.Mode::EXTEND);
 }
 
 void loop() {
