@@ -40,6 +40,7 @@ function main() {
     ledger-live \
     vanilla \
     arduino \
+    boom-3d \
     karabiner-elements
 
   brew tap caskroom/fonts
