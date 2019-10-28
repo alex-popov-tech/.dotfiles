@@ -19,4 +19,4 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # disable asking for correction
 unsetopt correct
-unsetopt correct_all
+unsetopt correctall
