@@ -6,7 +6,7 @@ function main() {
   echo "|        Installing NeoVim        |"
   echo "+---------------------------------+"
 
-  ln -fvs $DPATH/nvim/nvim*/bin/nvim /usr/local/bin/nvim
+  brew install --head nvim
 
   gem install neovim
   pip install neovim
