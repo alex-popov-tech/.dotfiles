@@ -1,4 +1,4 @@
-// -*- mode: c++ -*-
+// -*- mode: c++
 
 #ifndef BUILD_INFORMATION
 #define BUILD_INFORMATION "locally built"
@@ -16,6 +16,7 @@
 #include "Kaleidoscope-OneShot.h"
 #include "Kaleidoscope-Escape-OneShot.h"
 #include "Kaleidoscope-Qukeys.h"
+#include "Kaleidoscope-TopsyTurvy.h"
 #include "Kaleidoscope-MouseKeys.h"
 #include "Kaleidoscope-Macros.h"
 
@@ -23,25 +24,26 @@ enum { MACRO_SCREEN };
 
 enum { COLEMAK, FUNC, QWERTY };
 
-#define Key_Exclm         LSHIFT(Key_1)
-#define Key_At            LSHIFT(Key_2)
-#define Key_Hash          LSHIFT(Key_3)
-#define Key_Dollar        LSHIFT(Key_4)
-#define Key_Percent       LSHIFT(Key_5)
-#define Key_Carret        LSHIFT(Key_6)
-#define Key_And           LSHIFT(Key_7)
-#define Key_Star          LSHIFT(Key_8)
-#define Key_Plus          LSHIFT(Key_Equals)
+//#define Key_Exclm         LSHIFT(Key_1)
+#define Key_Exclm         TOPSY(1)
+#define Key_At            TOPSY(2)
+#define Key_Hash          TOPSY(3)
+#define Key_Dollar        TOPSY(4)
+#define Key_Percent       TOPSY(5)
+#define Key_Carret        TOPSY(6)
+#define Key_And           TOPSY(7)
+#define Key_Star          TOPSY(8)
+#define Key_Plus          TOPSY(Equals)
 
-#define Key_LRoundBracket LSHIFT(Key_9)
-#define Key_RRoundBracket LSHIFT(Key_0)
-#define Key_LCurlyBracket LSHIFT(Key_LeftBracket)
-#define Key_RCurlyBracket LSHIFT(Key_RightBracket)
+#define Key_LRoundBracket TOPSY(9)
+#define Key_RRoundBracket TOPSY(0)
+#define Key_LCurlyBracket TOPSY(LeftBracket)
+#define Key_RCurlyBracket TOPSY(RightBracket)
 #define Key_LBracket      Key_LeftBracket
 #define Key_RBracket      Key_RightBracket
 
-#define Key_Question      LSHIFT(Key_Slash)
-#define Key_Pipe          LSHIFT(Key_Backslash)
+#define Key_Question      TOPSY(Slash)
+#define Key_Pipe          TOPSY(Backslash)
 
 #define Key_MUp           Key_mouseUp
 #define Key_MDown         Key_mouseDn
@@ -130,6 +132,7 @@ KALEIDOSCOPE_INIT_PLUGINS(
   Focus,
 
   Qukeys,
+  TopsyTurvy,
   OneShot,
   EscapeOneShot,
   Macros,
