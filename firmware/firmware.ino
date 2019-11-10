@@ -68,7 +68,7 @@ KEYMAPS(
                    Key_H,      Key_N,   Key_E,     Key_I,             Key_O,             Key_Minus,
     Key_Semicolon, Key_K,      Key_M,   Key_Comma, Key_Period,        Key_Slash,         Key_Backslash,
     OSM(RightAlt), OSM(RightGui), CTL_T(Spacebar), SFT_T(Escape),
-    XXX
+    Key_Spacebar
   ),
   [FUNC] = KEYMAP_STACKED (
     Key_F1, Key_F2,     Key_F3,     Key_F4,      Key_F5,     Key_F6,      Key_VolumeUp,
