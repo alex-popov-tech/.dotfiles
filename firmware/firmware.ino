@@ -22,9 +22,8 @@
 
 enum { MACRO_SCREEN };
 
-enum { COLEMAK, FUNC, QWERTY };
+enum { COLEMAK, FUNC };
 
-//#define Key_Exclm         LSHIFT(Key_1)
 #define Key_Exclm         TOPSY(1)
 #define Key_At            TOPSY(2)
 #define Key_Hash          TOPSY(3)
@@ -41,9 +40,6 @@ enum { COLEMAK, FUNC, QWERTY };
 #define Key_RCurlyBracket TOPSY(RightBracket)
 #define Key_LBracket      Key_LeftBracket
 #define Key_RBracket      Key_RightBracket
-
-#define Key_Question      TOPSY(Slash)
-#define Key_Pipe          TOPSY(Backslash)
 
 #define Key_MUp           Key_mouseUp
 #define Key_MDown         Key_mouseDn
@@ -63,44 +59,29 @@ KEYMAPS(
     Key_Backtick,      Key_Exclm, Key_At, Key_Hash, Key_Dollar, Key_Percent, XXX,
     Key_LCurlyBracket, Key_Q,     Key_W,  Key_F,    Key_P,      Key_G,       XXX,
     Key_Tab,           Key_A,     Key_R,  Key_S,    Key_T,      Key_D,
-    XXX,               Key_Z,     Key_X,  Key_C,    Key_V,      Key_B,       Key_Semicolon,
+    XXX,               Key_Z,     Key_X,  Key_C,    Key_V,      Key_B,       Key_Equals,
     SFT_T(Enter), CTL_T(Backspace), OSM(LeftGui), OSM(LeftAlt),
-    OSL(FUNC),
+    ShiftToLayer(FUNC),
 
-    XXX,        Key_Carret, Key_And, Key_Star,  Key_LRoundBracket, Key_RRoundBracket, XXX,
-    XXX,        Key_J,      Key_L,   Key_U,     Key_Y,            Key_Quote,         Key_RCurlyBracket,
-                Key_H,      Key_N,   Key_E,     Key_I,            Key_O,             Key_Minus,
-    Key_Equals, Key_K,      Key_M,   Key_Comma, Key_Period,       Key_Question,      Key_Pipe,
+    XXX,           Key_Carret, Key_And, Key_Star,  Key_LRoundBracket, Key_RRoundBracket, XXX,
+    XXX,           Key_J,      Key_L,   Key_U,     Key_Y,             Key_Quote,         Key_RCurlyBracket,
+                   Key_H,      Key_N,   Key_E,     Key_I,             Key_O,             Key_Minus,
+    Key_Semicolon, Key_K,      Key_M,   Key_Comma, Key_Period,        Key_Slash,         Key_Backslash,
     OSM(RightAlt), OSM(RightGui), CTL_T(Spacebar), SFT_T(Escape),
-    OSL(QWERTY)
+    XXX
   ),
   [FUNC] = KEYMAP_STACKED (
     Key_F1, Key_F2,     Key_F3,     Key_F4,      Key_F5,     Key_F6,      Key_VolumeUp,
-    XXX,    XXX,        Key_MSUp,   Key_MUp,     Key_MSDown, XXX,         Key_Mute,
-    XXX,    Key_MSLeft, Key_MLeft,  Key_MDown,   Key_MRight, Key_MSRight,
-    XXX,    XXX,        XXX,        XXX,         XXX,        XXX,         Key_VolumeDown,
+    XXX,    XXX,        Key_MSUp,   Key_MUp,     Key_MSDown, XXX,         Key_VolumeDown,
+    XXX,    Key_RClick, Key_MLeft,  Key_MDown,   Key_MRight, Key_RClick,
+    XXX,    XXX,        XXX,        XXX,         XXX,        XXX,         XXX,
     ___, ___, ___, ___,
     ___,
 
-    XXX,        Key_F7,        Key_F8,         Key_F9,     Key_F10, Key_F11, Key_F12,
-    M(MACRO_SCREEN), Key_DownArrow, Key_RightArrow, XXX,        XXX,     XXX,     XXX,
-                     Key_LeftArrow, Key_LClick,     Key_RClick, XXX,     XXX,     XXX,
-    XXX,             Key_UpArrow,   XXX,            XXX,        XXX,     XXX,     XXX,
-    ___, ___, ___, ___,
-    ___
-  ),
-  [QWERTY] = KEYMAP_STACKED (
-    ___,          ___,   ___,   ___,   ___,   ___,   XXX,
-    Key_Backtick, Key_Q, Key_W, Key_E, Key_R, Key_T, XXX,
-    XXX,          Key_A, Key_S, Key_D, Key_F, Key_G,
-    ___,          Key_Z, Key_X, Key_C, Key_V, Key_B, XXX,
-    ___, ___, ___, ___,
-    ___,
-
-    XXX,  ___,   ___,   ___,       ___,        ___,              ___,
-    XXX,  Key_Y, Key_U, Key_I,     Key_O,      Key_P,            Key_LeftBracket,
-          Key_H, Key_J, Key_K,     Key_L,      Key_Semicolon,    Key_Quote,
-    XXX,  Key_N, Key_M, Key_Comma, Key_Period, Key_RightBracket, XXX,
+    Key_Mute,        Key_F7,        Key_F8,        Key_F9,      Key_F10,        Key_F11, Key_F12,
+    M(MACRO_SCREEN), Key_LeftArrow, Key_DownArrow, Key_UpArrow, Key_RightArrow, XXX,     XXX,
+                     Key_H,         Key_J,         Key_K,       Key_L,          XXX,     XXX,
+    XXX,             XXX,           XXX,           XXX,         XXX,            XXX,     XXX,
     ___, ___, ___, ___,
     ___
   )
