@@ -1,6 +1,6 @@
 scriptencoding utf-8
 
-let mapleader = ";"
+let mapleader = "'"
 
 filetype plugin indent on
 
