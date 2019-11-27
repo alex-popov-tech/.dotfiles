@@ -18,6 +18,8 @@ nmap <silent> <leader>d :bd<CR>
 nmap <silent> <leader>D :bd!<CR>
 " open embedded terminal
 nmap <silent> <leader>te :term<CR>
+" Exit from terminal mode to Normal
+tnoremap <C-e> <C-\><C-n>
 
 " for choosing in popup menu via <C-j> and <C-k>
 inoremap <expr> <C-j> pumvisible() ? "\<C-N>" : "\<C-j>"
@@ -59,5 +61,3 @@ nnoremap <C-u> <C-W>-
 nnoremap <C-y> <C-W>>
 nnoremap <C-o> <C-W><
 
-" Exit from terminal mode to Normal
-tnoremap <C-e> <C-\><C-n>
