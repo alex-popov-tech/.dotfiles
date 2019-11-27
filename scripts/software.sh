@@ -41,7 +41,9 @@ function main() {
     vanilla \
     arduino \
     boom-3d \
-    karabiner-elements
+    karabiner-elements \
+    intellij-idea-ce \
+    expressvpn
 
   brew tap caskroom/fonts
   brew cask install font-hack-nerd-font font-fira-code
