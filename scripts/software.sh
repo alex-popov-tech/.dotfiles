@@ -59,6 +59,7 @@ function main() {
   tic $DPATH/terminal/xterm-256color-italic.terminfo
 
   mas lucky Magnet
+  mas lucky Clocker
   mas lucky Keynote
   mas lucky Pages
 
