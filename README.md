@@ -17,7 +17,7 @@
   * [gitignore](./configs/gitignore)
   * [editorconfig](./configs/editorconfig)
   * [eslintrc](./configs/eslintrc)
-* keyboardio layout (files/keyboardio_layout.png)
+* keyboardio layout ![screenshot](files/keyboardio_layout.png)
 * Badass terminal - iterm2 + Powerlevel9k + Nerd Fonts + [Zshell](https://github.com/robbyrussell/oh-my-zsh/wiki/Cheatsheet) with plugins and tools
 ![screenshot](files/terminal.jpg)
 * NeoVim (nightly v0.4.0-1015-gbabcf641e) with bunch of plugins, color schemes and [cheatsheet](vim.md)
