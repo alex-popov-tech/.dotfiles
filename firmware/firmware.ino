@@ -98,7 +98,7 @@ KALEIDOSCOPE_INIT_PLUGINS(
 void setup() {
   Kaleidoscope.setup();
 
-  ColormapEffect.max_layers(1);
+  ColormapEffect.max_layers(2);
   ColormapEffect.activate();
 
   // turn off led's after 10 minutes of inactivity
@@ -107,7 +107,7 @@ void setup() {
   // additional layers in EEPROM. For now, we reserve space for five layers. If
   // one wants to use these layers, just set the default layer to one in EEPROM,
   // by using the `settings.defaultLayer` Focus command.
-  EEPROMKeymap.setup(1, EEPROMKeymap.Mode::EXTEND);
+  EEPROMKeymap.setup(2, EEPROMKeymap.Mode::EXTEND);
 }
 
 void loop() {
