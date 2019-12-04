@@ -88,8 +88,6 @@ nmap <leader>gp :Gpush <CR>
 Plug 'tpope/vim-repeat'
 " add\update\remove surround stuff like '"{[]}"'
 Plug 'tpope/vim-surround'
-" puts open and closing brackets/quotes/etc.
-Plug 'cohama/lexima.vim'
 " add text objects like in ,, .. {} () etc.
 Plug 'wellle/targets.vim'
 " add text objects depends on indenting <count>ai|ii|aI|iI
@@ -132,10 +130,12 @@ let g:coc_global_extensions = [
       \ 'coc-json',
       \ 'coc-eslint',
       \ 'coc-python',
+      \ 'coc-pairs',
       \ 'coc-java',
       \ 'coc-solargraph',
       \ 'coc-yaml',
       \ 'coc-yank',
+      \ 'coc-tabnine',
       \ 'coc-diagnostic',
       \]
 
