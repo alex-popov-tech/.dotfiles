@@ -29,6 +29,14 @@ let g:fzf_colors = {
       \ }
 " [Buffers] Jump to the existing window if possible
 let g:fzf_buffers_jump = 1
+" previews for fuzzy search
+command! -bang -nargs=? -complete=dir GFiles
+    \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--preview', '~/.config/nvim/plugged/fzf.vim/bin/preview.sh {}']}, <bang>0)
+command! -bang -nargs=? -complete=dir Files
+    \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--preview', '~/.config/nvim/plugged/fzf.vim/bin/preview.sh {}']}, <bang>0)
+command! -bang -nargs=? Ag
+    \ call fzf#vim#grep(printf('ack --nocolor %s || true', shellescape(<q-args>)), 1, {'options': ['--layout=reverse', '--preview', '~/.config/nvim/plugged/fzf.vim/bin/preview.sh {}']}, <bang>0)
+
 " file tree buffer
 Plug 'scrooloose/nerdtree'
 " toggle screen file tree on double leader and refresh root node immediately
