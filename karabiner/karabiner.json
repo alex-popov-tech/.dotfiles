@@ -40,7 +40,7 @@
                 },
                 "to": [
                   {
-                    "key_code": "left_control"
+                    "key_code": "left_shift"
                   }
                 ],
                 "to_if_alone": [
