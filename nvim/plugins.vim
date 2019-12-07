@@ -86,13 +86,11 @@ nmap <leader>gr :Gread <CR>
 nmap <leader>gc :Gcommit <CR>
 " git log for all files
 nmap <leader>gla :Glog -- <CR>
-" git log for current file
-" nmap <leader>gl :0Glog <CR>
 " show differences for current buffer
 nmap <leader>gdf :Gdiff <CR>
 " git push
 nmap <leader>gp :Gpush <CR>
-" allows repeat via dot. for some plugins like surround
+" allows repeat via dot for some plugins like surround
 Plug 'tpope/vim-repeat'
 " add\update\remove surround stuff like '"{[]}"'
 Plug 'tpope/vim-surround'
@@ -125,6 +123,10 @@ map n  <Plug>(incsearch-nohl-n)
 map N  <Plug>(incsearch-nohl-N)
 " clear hightlight
 nnoremap <Esc><Esc> :<C-u>nohlsearch<CR>
+" make 'f' a bit more usefull
+Plug 'rhysd/clever-f.vim'
+let g:clever_f_chars_match_any_signs = '.'
+let g:clever_f_smart_case=1
 " provides function of replacing from yank
 Plug 'svermeulen/vim-subversive'
 nmap <leader>p <plug>(SubversiveSubstitute)

@@ -40,6 +40,9 @@
   * `*`/`#` - search for current word next/previos
   * `z/`/`z?` - fuzzy search next/previos/leave to highlight
   * `Tab`/`<Shift-Tab>` - while searching to move between occurences
+* [rhysd/clever-r.vim](https://github.com/rhysd/clever-r.vim)
+  * `f`/`F` - search character forward/back
+  * `f.`/`F.` - search any non-alphanumeric/space character (like '.=+/-%')
 
 ### Code navigate/refactor
 
