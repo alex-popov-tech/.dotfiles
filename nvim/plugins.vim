@@ -98,13 +98,14 @@ Plug 'tpope/vim-surround'
 Plug 'wellle/targets.vim'
 " add text objects depends on indenting <count>ai|ii|aI|iI
 Plug 'michaeljsmith/vim-indent-object'
-" add url text object
-Plug 'mattn/vim-textobj-url'
 " add commenting for different langs via gcc
 Plug 'tpope/vim-commentary'
 " comment mappings
 nmap <leader>c gcc
 vmap <leader>c gc
+" add switch toggles
+Plug 'AndrewRadev/switch.vim'
+let g:switch_mapping='-'
 " add bunch of mapping
 Plug 'tpope/vim-unimpaired'
 " add ability to select multiple places at the same time

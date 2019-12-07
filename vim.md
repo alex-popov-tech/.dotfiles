@@ -26,7 +26,6 @@
 * [wellle/targets.vim](https://github.com/wellle/targets.vim/blob/master/cheatsheet.md)
 * [michaeljsmith/vim-indent-object](https://github.com/michaeljsmith/vim-indent-object#usage)
 * [tpope/vim-surround](https://github.com/tpope/vim-surround)
-* [mattn/vim-textobj-url](https://github.com/mattn/vim-textobj-url)
 
 ### Search
 
@@ -47,6 +46,8 @@
 
 ### Code navigate/refactor
 
+* [AndrewRadev](https://github.com/AndrewRadev/switch.vim)
+  * `-` - toggle switch
 * [neoclide/coc.nvim](https://github.com/neoclide/coc.nvim)
   * `gd` - coc-definition
   * `gy` - coc-type-definition
