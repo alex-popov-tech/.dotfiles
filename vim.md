@@ -26,6 +26,7 @@
 * [wellle/targets.vim](https://github.com/wellle/targets.vim/blob/master/cheatsheet.md)
 * [michaeljsmith/vim-indent-object](https://github.com/michaeljsmith/vim-indent-object#usage)
 * [tpope/vim-surround](https://github.com/tpope/vim-surround)
+* [mattn/vim-textobj-url](https://github.com/mattn/vim-textobj-url)
 
 ### Search
 
