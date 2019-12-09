@@ -9,38 +9,36 @@
 #include "Kaleidoscope-EEPROM-Keymap.h"
 #include "Kaleidoscope-FocusSerial.h"
 #include "Kaleidoscope-HostOS.h"
+
 #include "Kaleidoscope-LED-Palette-Theme.h"
 #include "Kaleidoscope-Colormap.h"
 #include "Kaleidoscope-IdleLEDs.h"
 #include "Kaleidoscope-Syster.h"
 
 #include "Kaleidoscope-Macros.h"
-#include "Kaleidoscope-TapDance.h"
+#include "Kaleidoscope-Qukeys.h"
 
 
 enum { MACRO_SCREEN };
 
 enum { WORKMAN, FUNCTION };
 
-#define Key_LBracket      Key_LeftBracket
-#define Key_RBracket      Key_RightBracket
-
 // *INDENT-OFF*
 KEYMAPS(
   [WORKMAN] = KEYMAP_STACKED (
     XXX,           Key_1, Key_2, Key_3, Key_4, Key_5, XXX,
-    Key_Backtick,  Key_Q, Key_D, Key_R, Key_W, Key_B, TD(0),
+    Key_Backtick,  Key_Q, Key_D, Key_R, Key_W, Key_B, Key_LeftBracket,
     Key_Tab,       Key_A, Key_S, Key_H, Key_T, Key_G,
     Key_Backslash, Key_Z, Key_X, Key_M, Key_C, Key_V, XXX,
-    Key_Enter, Key_Backspace, Key_LeftGui, Key_LeftAlt,
-    Key_LeftShift,
+    LT(FUNCTION, Enter), Key_Backspace, GUI_T(RightBracket), Key_LeftControl,
+    LSHIFT(Key_9),
 
-    XXX,   Key_6, Key_7, Key_8,     Key_9,      Key_0,     XXX,
-    TD(1), Key_J, Key_F, Key_U,     Key_P,      Key_Quote, Key_Semicolon,
-           Key_Y, Key_N, Key_E,     Key_O,      Key_I,     Key_Minus,
-    XXX,   Key_K, Key_L, Key_Comma, Key_Period, Key_Slash, Key_Equals,
-    Key_RightGui, Key_RightControl, Key_Spacebar, Key_Escape,
-    ShiftToLayer(FUNCTION)
+    XXX,          Key_6, Key_7, Key_8,     Key_9,      Key_0,     XXX,
+    Key_RBracket, Key_J, Key_F, Key_U,     Key_P,      Key_Quote, Key_Semicolon,
+                  Key_Y, Key_N, Key_E,     Key_O,      Key_I,     Key_Minus,
+    XXX,          Key_K, Key_L, Key_Comma, Key_Period, Key_Slash, Key_Equals,
+    Key_RightAlt, GUI_T(LeftBracket), Key_Spacebar, LT(FUNCTION, Escape),
+    LSHIFT(Key_0)
   ),
   [FUNCTION] = KEYMAP_STACKED (
     XXX, Key_F1,        Key_F2,       Key_F3,        Key_F4,        Key_F5, Key_VolumeUp,
@@ -60,15 +58,6 @@ KEYMAPS(
 )
 // *INDENT-ON*
 
-void tapDanceAction(uint8_t tap_dance_index, byte row, byte col, uint8_t tap_count,
-                    kaleidoscope::plugin::TapDance::ActionType tap_dance_action) {
-  switch (tap_dance_index) {
-  case 0:
-    return tapDanceActionKeys(tap_count, tap_dance_action, Key_LBracket, LSHIFT(Key_9));
-  case 1:
-    return tapDanceActionKeys(tap_count, tap_dance_action, Key_RBracket, LSHIFT(Key_0));
-  }
-}
 const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
   switch (macroIndex) {
     case MACRO_SCREEN:
@@ -92,11 +81,18 @@ KALEIDOSCOPE_INIT_PLUGINS(
   Focus,
 
   Macros,
-  TapDance
+  Qukeys
 );
 
 void setup() {
   Kaleidoscope.setup();
+
+  QUKEYS(
+    kaleidoscope::plugin::Qukey(0, KeyAddr(3, 6), Key_LeftShift),      // (/Shift
+    kaleidoscope::plugin::Qukey(0, KeyAddr(3, 9), Key_RightControl),   // )/Control
+  )
+  Qukeys.setHoldTimeout(250);
+  Qukeys.setOverlapThreshold(30);
 
   ColormapEffect.max_layers(2);
   ColormapEffect.activate();
