@@ -26,32 +26,32 @@ enum { WORKMAN, FUNCTION };
 // *INDENT-OFF*
 KEYMAPS(
   [WORKMAN] = KEYMAP_STACKED (
-    XXX,           Key_1, Key_2, Key_3, Key_4, Key_5, XXX,
-    Key_Backtick,  Key_Q, Key_D, Key_R, Key_W, Key_B, Key_LeftBracket,
-    Key_Tab,       Key_A, Key_S, Key_H, Key_T, Key_G,
-    Key_Backslash, Key_Z, Key_X, Key_M, Key_C, Key_V, XXX,
-    LT(FUNCTION, Enter), Key_Backspace, GUI_T(RightBracket), Key_LeftControl,
+    XXX,          Key_F1, Key_F2, Key_F3, Key_F4, Key_F5, XXX,
+    Key_Backtick, Key_Q,  Key_D,  Key_R,  Key_W,  Key_B,  XXX,
+    Key_Tab,      Key_A,  Key_S,  Key_H,  Key_T,  Key_G,
+    XXX,          Key_Z,  Key_X,  Key_M,  Key_C,  Key_V,  XXX,
+    Key_Enter, Key_Backspace, LSHIFT(Key_LeftBracket), Key_LeftBracket,
     LSHIFT(Key_9),
 
-    XXX,          Key_6, Key_7, Key_8,     Key_9,      Key_0,     XXX,
-    Key_RBracket, Key_J, Key_F, Key_U,     Key_P,      Key_Quote, Key_Semicolon,
-                  Key_Y, Key_N, Key_E,     Key_O,      Key_I,     Key_Minus,
-    XXX,          Key_K, Key_L, Key_Comma, Key_Period, Key_Slash, Key_Equals,
-    Key_RightAlt, GUI_T(LeftBracket), Key_Spacebar, LT(FUNCTION, Escape),
+    XXX, Key_F6, Key_F7, Key_F8,     Key_F9,      Key_F10,   XXX,
+    XXX, Key_J,  Key_F,  Key_U,      Key_P,       Key_Quote, XXX,
+         Key_Y,  Key_N,  Key_E,      Key_O,       Key_I,     Key_Minus,
+    XXX, Key_K,  Key_L,  Key_Comma,  Key_Period,  Key_Slash, XXX,
+    Key_RightBracket, LSHIFT(Key_RightBracket), Key_Spacebar, Key_Escape,
     LSHIFT(Key_0)
   ),
   [FUNCTION] = KEYMAP_STACKED (
-    XXX, Key_F1,        Key_F2,       Key_F3,        Key_F4,        Key_F5, Key_VolumeUp,
-    XXX, Key_1,         Key_2,        Key_3,         Key_4,         XXX,    XXX,
-    XXX, Key_Backslash, Key_Backtick, Key_LeftArrow, Key_Semicolon, Key_5,
-    XXX, XXX,           XXX,          XXX,           XXX,           XXX,    Key_VolumeDown,
+    XXX, XXX,   XXX,          XXX,           XXX,           XXX,   Key_VolumeUp,
+    XXX, Key_1, Key_2,        Key_3,         Key_4,         XXX,   XXX,
+    XXX, XXX,   Key_Backtick, Key_LeftArrow, Key_Semicolon, Key_5,
+    XXX, XXX,   XXX,          XXX,           XXX,           XXX,   Key_VolumeDown,
     ___, ___, ___, ___,
     ___,
 
-    Key_Mute,        Key_F6,        Key_F7,         Key_F8,       Key_F9,     Key_F10, Key_LEDEffectNext,
-    XXX,             Key_DownArrow, Key_7,          Key_8,        Key_9,      Key_0,   XXX,
-                     Key_6,         Key_LBracket,   Key_RBracket, Key_Equals, XXX,     XXX,
-    M(MACRO_SCREEN), Key_UpArrow,   Key_RightArrow, XXX,          XXX,        XXX,     XXX,
+    Key_Mute,        XXX,           XXX,            XXX,           XXX,   XXX,   Key_LEDEffectNext,
+    XXX,             Key_DownArrow, Key_7,          Key_8,         Key_9, Key_0, XXX,
+                     Key_6,         Key_Equals,     Key_Backslash, XXX,   XXX,   XXX,
+    M(MACRO_SCREEN), Key_UpArrow,   Key_RightArrow, XXX,           XXX,   XXX,   XXX,
     ___, ___, ___, ___,
     ___
   )
@@ -88,8 +88,14 @@ void setup() {
   Kaleidoscope.setup();
 
   QUKEYS(
-    kaleidoscope::plugin::Qukey(0, KeyAddr(3, 6), Key_LeftShift),      // (/Shift
-    kaleidoscope::plugin::Qukey(0, KeyAddr(3, 9), Key_RightControl),   // )/Control
+    kaleidoscope::plugin::Qukey(0, KeyAddr(0, 7), ShiftToLayer(FUNCTION)),
+    kaleidoscope::plugin::Qukey(0, KeyAddr(2, 7), Key_LeftGui),
+    kaleidoscope::plugin::Qukey(0, KeyAddr(3, 7), Key_LeftControl),
+    kaleidoscope::plugin::Qukey(0, KeyAddr(3, 6), Key_LeftShift),
+    kaleidoscope::plugin::Qukey(0, KeyAddr(3, 8), Key_RightAlt),
+    kaleidoscope::plugin::Qukey(0, KeyAddr(2, 8), Key_RightGui),
+    kaleidoscope::plugin::Qukey(0, KeyAddr(0, 8), ShiftToLayer(FUNCTION)),
+    kaleidoscope::plugin::Qukey(0, KeyAddr(3, 9), Key_RightControl),
   )
   Qukeys.setHoldTimeout(250);
   Qukeys.setOverlapThreshold(30);
