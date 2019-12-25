@@ -10,17 +10,16 @@
   * pyenv + Python
   * rbenv + Ruby
   * gvm + Golang
-* Software
-* Karabiner Elements with [complex modifications](karabiner/karabiner.json)
+* Software (e.g. [alfred](alfred.md))
 * Global configs:
   * [gitconfig](./configs/gitconfig)
   * [gitignore](./configs/gitignore)
   * [editorconfig](./configs/editorconfig)
   * [eslintrc](./configs/eslintrc)
-* keyboardio layout ![screenshot](files/keyboardio_layout.png)
-* Badass terminal - iterm2 + Powerlevel9k + Nerd Fonts + [Zshell](https://github.com/robbyrussell/oh-my-zsh/wiki/Cheatsheet) with plugins and tools
+* [keyboardio layout](http://www.keyboard-layout-editor.com/#/gists/4782bb723fbd9c12adfc23d293e9af0c)
+* Badass terminal - iterm2 + Powerlevel9k + Nerd Fonts + [Zshell](https://github.com/robbyrussell/oh-my-zsh/wiki/Cheatsheet) with plugins (e.g. [git](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git/)) and tools
 ![screenshot](files/terminal.jpg)
-* NeoVim (nightly v0.4.0-1015-gbabcf641e) with bunch of plugins, color schemes and [cheatsheet](vim.md)
+* NeoVim with bunch of plugins, color schemes and [cheatsheet](vim.md)
 ![screenhot1](files/nvim1.png)
 ![screenhot2](files/nvim2.png)
 
@@ -67,9 +66,7 @@ otherwise there will be warning while installation
 
 ### TODO
 
-* fix trailing whitespaces on NOT markdown files
 * save alfred settings
-* export magnet shortcut settings somehow
 * suggested [software](https://github.com/jaywcjlove/awesome-mac)
   * [better touch tool](https://folivora.ai)
   * [console player](https://cmus.github.io/#features)

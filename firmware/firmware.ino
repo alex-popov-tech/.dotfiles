@@ -30,14 +30,14 @@ KEYMAPS(
     Key_Backtick, Key_Q,  Key_D,  Key_R,  Key_W,  Key_B,  XXX,
     Key_Tab,      Key_A,  Key_S,  Key_H,  Key_T,  Key_G,
     XXX,          Key_Z,  Key_X,  Key_M,  Key_C,  Key_V,  XXX,
-    Key_Enter, Key_Backspace, LSHIFT(Key_LeftBracket), Key_LeftBracket,
+    Key_Backspace, Key_Enter, LSHIFT(Key_LeftBracket), Key_LeftBracket,
     LSHIFT(Key_9),
 
     XXX, Key_F6, Key_F7, Key_F8,     Key_F9,      Key_F10,   XXX,
     XXX, Key_J,  Key_F,  Key_U,      Key_P,       Key_Quote, XXX,
          Key_Y,  Key_N,  Key_E,      Key_O,       Key_I,     Key_Minus,
     XXX, Key_K,  Key_L,  Key_Comma,  Key_Period,  Key_Slash, XXX,
-    Key_RightBracket, LSHIFT(Key_RightBracket), Key_Spacebar, Key_Escape,
+    Key_RightBracket, LSHIFT(Key_RightBracket), Key_Escape, Key_Spacebar,
     LSHIFT(Key_0)
   ),
   [FUNCTION] = KEYMAP_STACKED (
@@ -88,13 +88,13 @@ void setup() {
   Kaleidoscope.setup();
 
   QUKEYS(
-    kaleidoscope::plugin::Qukey(0, KeyAddr(0, 7), ShiftToLayer(FUNCTION)),
+    kaleidoscope::plugin::Qukey(0, KeyAddr(1, 7), ShiftToLayer(FUNCTION)),
     kaleidoscope::plugin::Qukey(0, KeyAddr(2, 7), Key_LeftGui),
     kaleidoscope::plugin::Qukey(0, KeyAddr(3, 7), Key_LeftControl),
     kaleidoscope::plugin::Qukey(0, KeyAddr(3, 6), Key_LeftShift),
     kaleidoscope::plugin::Qukey(0, KeyAddr(3, 8), Key_RightAlt),
     kaleidoscope::plugin::Qukey(0, KeyAddr(2, 8), Key_RightGui),
-    kaleidoscope::plugin::Qukey(0, KeyAddr(0, 8), ShiftToLayer(FUNCTION)),
+    kaleidoscope::plugin::Qukey(0, KeyAddr(1, 8), ShiftToLayer(FUNCTION)),
     kaleidoscope::plugin::Qukey(0, KeyAddr(3, 9), Key_RightControl),
   )
   Qukeys.setHoldTimeout(250);
