@@ -52,9 +52,9 @@ function main() {
   mkdir -p "$ITERM_PROFILES_PATH"
   ln -fvs $DPATH/terminal/profile.json "$ITERM_PROFILES_PATH/profile"
 
-  KARABINER_PATH="$HOME/.config/karabiner"
-  mkdir -p "$KARABINER_PATH"
-  ln -fsv $DPATH/karabiner/karabiner.json $KARABINER_PATH/karabiner.json
+  # KARABINER_PATH="$HOME/.config/karabiner"
+  # mkdir -p "$KARABINER_PATH"
+  # ln -fsv $DPATH/karabiner/karabiner.json $KARABINER_PATH/karabiner.json
 
   tic $DPATH/terminal/xterm-256color-italic.terminfo
 
