@@ -7,10 +7,13 @@ function main() {
   echo "+-----------------------------------+"
 
   brew install htop \
+    z \
     watch \
     grep \
     openssh \
     rsync \
+    # for alfred lastpass workflow
+    lastpass-cli \
     ssh-copy-id \
     bat \
     prettyping \

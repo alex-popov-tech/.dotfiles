@@ -1,3 +1,9 @@
+# Note:
+
+* To use lastpass workflow:
+  * `lpsetemail yourname@example.com`
+  * `lplogin`
+
 # List of keybindings and commands for alfred:
 
 * `Cmd + Space` - open alfred prompt

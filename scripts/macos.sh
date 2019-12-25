@@ -545,6 +545,9 @@ defaults write org.m0k.transmission BlocklistAutoUpdate -bool true
 # Randomize port on launch
 defaults write org.m0k.transmission RandomPort -bool true
 
+# For alfred lastpass workflow
+cpan install Capture::Tiny
+
 ###############################################################################
 # Kill affected applications                                                  #
 ###############################################################################
