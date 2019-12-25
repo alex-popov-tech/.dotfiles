@@ -68,7 +68,6 @@ otherwise there will be warning while installation
 
 ### TODO
 
-* save alfred settings
 * suggested [software](https://github.com/jaywcjlove/awesome-mac)
   * [better touch tool](https://folivora.ai)
   * [console player](https://cmus.github.io/#features)
