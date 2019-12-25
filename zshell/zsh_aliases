@@ -30,6 +30,5 @@ alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v exten
 
 # Other
 alias n="nvim"
-alias g="git"
+alias g="tig status"
 alias dco="docker-compose"
-alias arduino="/Applications/Arduino.app/Contents/MacOS/Arduino"

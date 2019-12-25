@@ -10,18 +10,20 @@
   * pyenv + Python
   * rbenv + Ruby
   * gvm + Golang
-* Software (e.g. [alfred](alfred.md))
+* Software
 * Global configs:
   * [gitconfig](./configs/gitconfig)
   * [gitignore](./configs/gitignore)
   * [editorconfig](./configs/editorconfig)
   * [eslintrc](./configs/eslintrc)
+  * [tigrc](./configs/tigrc)
 * [keyboardio layout](http://www.keyboard-layout-editor.com/#/gists/4782bb723fbd9c12adfc23d293e9af0c)
 * Badass terminal - iterm2 + Powerlevel9k + Nerd Fonts + [Zshell](https://github.com/robbyrussell/oh-my-zsh/wiki/Cheatsheet) with plugins (e.g. [git](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git/)) and tools
 ![screenshot](files/terminal.jpg)
 * NeoVim with bunch of plugins, color schemes and [cheatsheet](vim.md)
 ![screenhot1](files/nvim1.png)
 ![screenhot2](files/nvim2.png)
+* Alfred with some customizations and [cheetsheet](alfred.md)
 
 ## Installation
 

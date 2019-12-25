@@ -1,2 +1,12 @@
-bind status p !git push --set-upstream origin $(git_current_branch)
-bind status P !git pull --rebase origin $(git_current_branch)
+bind generic > !git push %(remote) %(branch)
+bind generic P !git pull --rebase origin %(branch)
+
+set main-view = line-number:no,interval=5 id:yes date author:full commit-title:yes,graph,refs,overflow=no
+set diff-context = 5
+set horizontal-scroll = 20%
+set line-graphics = utf-8
+set show-changes = true
+set status-show-untracked-dirs = false
+set tab-size = 2
+set vertical-split = horizontal
+set wrap-lines = yes
