@@ -10,6 +10,7 @@ function main() {
   ln -fvs $DPATH/configs/gitignore $HOME/.gitignore
   ln -fvs $DPATH/configs/editorconfig $HOME/.editorconfig
   ln -fvs $DPATH/configs/eslintrc $HOME/.eslintrc
+  ln -fvs $DPATH/configs/tigrc $HOME/.tigrc
 
 }
 
