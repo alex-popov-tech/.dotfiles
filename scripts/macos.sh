@@ -156,6 +156,9 @@ defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/Desk
 # Finder: show hidden files by default
 defaults write com.apple.finder AppleShowAllFiles -bool true
 
+# Finder: hide desktop icons
+defaults write com.apple.finder CreateDesktop false
+
 # Finder: show all filename extensions
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
