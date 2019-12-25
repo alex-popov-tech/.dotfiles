@@ -1,2 +1,2 @@
-bind status p !ggl
-bind status P !ggp
+bind status p !git push --set-upstream origin $(git_current_branch)
+bind status P !git pull --rebase origin $(git_current_branch)
