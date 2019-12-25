@@ -4,13 +4,10 @@ Plug 'junegunn/fzf', { 'dir': '~/.config/fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim'
 " find in all files
-nmap <leader>/F :Files <CR>
-" find in git files
-nmap <leader>/gf :GFiles <CR>
-" find in commits
-nmap <leader>/gc :Commits <CR>
+" https://stackoverflow.com/questions/9051837/how-to-map-c-to-toggle-comments-in-vim
+nmap <C-_>F :Files <CR>
 " find a text in files
-nmap <leader>/fc :Ag <CR>
+nmap <C-_>fc :Ag <CR>
 " respect color scheme
 let g:fzf_colors = {
       \ 'fg':      ['fg', 'Normal'],
@@ -30,28 +27,19 @@ let g:fzf_colors = {
 " [Buffers] Jump to the existing window if possible
 let g:fzf_buffers_jump = 1
 " previews for fuzzy search
-command! -bang -nargs=? -complete=dir GFiles
-    \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--preview', '~/.config/nvim/plugged/fzf.vim/bin/preview.sh {}']}, <bang>0)
-command! -bang -nargs=? -complete=dir Files
-    \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--preview', '~/.config/nvim/plugged/fzf.vim/bin/preview.sh {}']}, <bang>0)
-command! -bang -nargs=? Ag
-    \ call fzf#vim#grep(printf('ack --nocolor %s || true', shellescape(<q-args>)), 1, {'options': ['--layout=reverse', '--preview', '~/.config/nvim/plugged/fzf.vim/bin/preview.sh {}']}, <bang>0)
+command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--preview', '~/.config/nvim/plugged/fzf.vim/bin/preview.sh {}']}, <bang>0)
+command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, '', fzf#vim#with_preview(), <bang>0)
 
 " file tree buffer
 Plug 'scrooloose/nerdtree'
-" toggle screen file tree on double leader and refresh root node immediately
-nmap <leader>fc :NERDTreeFind <bar> :NERDTreeRefreshRoot <CR>
-" toggle screen file tree on double leader and refresh root node immediately
-nmap <leader>ft :NERDTreeToggle <bar> :NERDTreeRefreshRoot <CR>
+" toggle file tree
+nmap <C-f> :NERDTreeToggle <bar> :NERDTreeRefreshRoot <CR>
 " disable help menu at the top
 let NERDTreeMinimalUI = 1
 " delete buffer on delete file from tree
 let NERDTreeAutoDeleteBuffer = 1
 " close tree on file open
 let NERDTreeQuitOnOpen = 1
-" open nerd tree by default when calling nvim
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " configure sidebar size
 let NERDTreeWinSize = 30
 " add icons for tree folders
@@ -132,9 +120,9 @@ let g:clever_f_chars_match_any_signs = '.'
 let g:clever_f_smart_case=1
 " provides function of replacing from yank
 Plug 'svermeulen/vim-subversive'
-nmap <leader>p <plug>(SubversiveSubstitute)
-nmap <leader>pp <plug>(SubversiveSubstituteLine)
-nmap <leader>P <plug>(SubversiveSubstituteToEndOfLine)
+nmap s <plug>(SubversiveSubstitute)
+nmap ss <plug>(SubversiveSubstituteLine)
+nmap S <plug>(SubversiveSubstituteToEndOfLine)
 Plug 'neoclide/coc.nvim', { 'do': 'yarn install --frozen-lockfile' }
 let g:coc_global_extensions = [
       \ 'coc-word',
@@ -173,20 +161,22 @@ set signcolumn=yes
 " show list of yanks with preview
 nnoremap <silent> <leader>y :<C-u>CocList -A --normal yank<CR>
 " Navigate interpreter/compiler/linter errors
-nmap <silent> [r <Plug>(coc-diagnostic-prev)
-nmap <silent> ]r <Plug>(coc-diagnostic-next)
+nmap <C-g>e <Plug>(coc-diagnostic-next)
 " Remap keys for gotos
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+nmap <C-g>d <Plug>(coc-definition)
+nmap <C-g>y <Plug>(coc-type-definition)
+nmap <C-g>i <Plug>(coc-implementation)
+nmap <C-g>r <Plug>(coc-references)
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
-" format indent on selected lines
-nmap <leader>fi  <Plug>(coc-format-selected)
-vmap <leader>fi  <Plug>(coc-format-selected)
 " Fix autofix problem of current line
 nmap <leader>fl  <Plug>(coc-fix-current)
+nmap <leader>al  <Plug>(coc-codeaction)
+" Create mappings for function text object, requires document symbols feature of languageserver.
+xmap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap if <Plug>(coc-funcobj-i)
+omap af <Plug>(coc-funcobj-a)
 augroup cocnvim
   autocmd!
   " fix indenting on save buffer

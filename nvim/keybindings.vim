@@ -5,17 +5,19 @@ nmap k gk
 "disable map entering Ex mode
 map Q <Nop>
 " write current buffer
-nmap <leader>w :w<CR>
+nmap <C-w> :w<CR>
 " write all buffers
-nmap <leader>W :wa<CR>
+nmap <leader>w :wa<CR>
 " write and exit from current buffer
-nmap <silent> <leader>q :x<CR>
+nmap <C-q> :x<CR>
 " write and exit all buffers
-nmap <silent> <leader>Q :xa<CR>
+nmap <silent> <leader>q :xa<CR>
 " write and delete current buffer
 nmap <silent> <leader>d :bd<CR>
 " delete current buffer without saving
-nmap <silent> <leader>D :bd!<CR>
+nmap <silent> <leader>d :bd!<CR>
+" do Y to yank till the end of the line
+nmap Y y$
 " open embedded terminal
 nmap <silent> <leader>te :term<CR>
 " Exit from terminal mode to Normal
@@ -54,10 +56,4 @@ function! WinMove(key)
     exec "wincmd ".a:key
   endif
 endfunction
-
-" resize windows with <C-UIOP>
-nnoremap <C-i> <C-W>+
-nnoremap <C-u> <C-W>-
-nnoremap <C-y> <C-W>>
-nnoremap <C-o> <C-W><
 
