@@ -16,3 +16,10 @@ function fs() {
 		du $arg .[^.]* ./*;
 	fi;
 }
+
+# Launch nvim in folder
+function zn() {
+  z $1;
+  shift;
+  nvim $@;
+}

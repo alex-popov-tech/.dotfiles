@@ -1,6 +1,8 @@
 # List of shortcuts available in nvim
 
 * `<C-j/k/l/p>` - move between buffers/split
+* `<C-e>/<C-d>` - scroll down
+* `<C-y>/<C-u>` - scroll up
 * `<C-q>`/`<C-Q>` - write and close current/all buffers
 * folding (collapse and uncollapse code lines)
   * `za` - toggle folding for current indent
