@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>customSites</key>
+	<dict>
+		<key>23F274A0-4131-4800-9C6A-DEBB9FC44BEB</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>torus</string>
+			<key>text</key>
+			<string>Translate from eng to rus</string>
+			<key>url</key>
+			<string>https://translate.google.com/#view=home&amp;op=translate&amp;sl=en&amp;tl=ru&amp;text={query}</string>
+			<key>utf8</key>
+			<true/>
+		</dict>
+		<key>F0603671-63EC-4C11-9871-95412FD30386</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>toeng</string>
+			<key>text</key>
+			<string>Translate from rus to eng</string>
+			<key>url</key>
+			<string>https://translate.google.com/#view=home&amp;op=translate&amp;sl=ru&amp;tl=en&amp;text={query}</string>
+			<key>utf8</key>
+			<true/>
+		</dict>
+	</dict>
+	<key>onlyShowEnabledInPrefs</key>
+	<true/>
+</dict>
+</plist>
