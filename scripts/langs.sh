@@ -1,45 +1,36 @@
 #!/usr/bin/env bash
+set -e
 
 function main() {
 
   echo "+---------------------------------+"
   echo "|        Installing NodeJS        |"
   echo "+---------------------------------+"
-  # install this particular version cause bash-language-server
-  # works only for it https://github.com/mads-hartmann/bash-language-server/issues/131#issuecomment-496540572
-  nvm install 11.14.0
-  nvm use 11.14.0
-  nvm alias default 11.14.0
+  nvm install --lts
+  nvm use --lts
+  nvm alias default 'lts/*'
   npm install -g yarn
 
   echo "+-------------------------------+"
   echo "|        Installing Java        |"
   echo "+-------------------------------+"
-  sdk install java 9.0.4-open
+  sdk install java 8.0.232.j9-adpt
 
   echo "+-------------------------------+"
   echo "|        Installing Ruby        |"
   echo "+-------------------------------+"
-  rbenv install 2.6.3
-  rbenv global 2.6.3
+  latestruby=$(rbenv install -l | grep -v - | tail -1 | awk '{$1=$1};1')
+  rbenv install $latestruby
+  rbenv global $latestruby
   rbenv rehash
 
   echo "+---------------------------------+"
   echo "|        Installing Python        |"
   echo "+---------------------------------+"
-  CFLAGS="-I$(xcrun --show-sdk-path)/usr/include" pyenv install 3.7.3
+  latestpython=$(pyenv install -l | grep -v - | tail -1 | awk '{$1=$1};1')
+  CFLAGS="-I$(xcrun --show-sdk-path)/usr/include" pyenv install $latestpython
   CFLAGS="-I$(xcrun --show-sdk-path)/usr/include" pyenv install 2.7.15
-  pyenv global 2.7.15 3.7.3
-
-  echo "+---------------------------------+"
-  echo "|        Installing Golang        |"
-  echo "+---------------------------------+"
-  if [[ ! "$(where go)" =~ "gvm" ]]; then
-    brew install go
-    gvm install go1.13.3
-    gvm use go1.13.3 --default
-    brew uninstall go
-  fi
+  pyenv global 2.7.15 $latestpython
 }
 
 main
