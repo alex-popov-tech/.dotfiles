@@ -5,9 +5,9 @@ Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim'
 " find in all files
 " https://stackoverflow.com/questions/9051837/how-to-map-c-to-toggle-comments-in-vim
-nmap <C-_>F :Files <CR>
+nmap <C-_>f :Files <CR>
 " find a text in files
-nmap <C-_>fc :Ag <CR>
+nmap <C-_>c :Ag <CR>
 " respect color scheme
 let g:fzf_colors = {
       \ 'fg':      ['fg', 'Normal'],
