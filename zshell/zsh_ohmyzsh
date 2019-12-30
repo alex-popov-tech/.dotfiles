@@ -3,8 +3,6 @@ plugins=(
   z
   vi-mode
   zsh-autosuggestions
-  zsh-completions
-  zsh-syntax-highlighting
 )
 
 # Uncomment the following line to use hyphen-insensitive completion.
