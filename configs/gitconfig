@@ -46,8 +46,9 @@
   cim = commit -m
 	amend = commit --amend --reuse-message=HEAD
 [url "git@github.com:"]
+        insteadOf = https://github.com/
         insteadOf = git://github.com/
         insteadOf = gh:
-        insteadOf = github: insteadOf = github:
+        insteadOf = github:
 [push]
 	default = current
