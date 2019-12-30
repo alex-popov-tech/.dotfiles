@@ -240,6 +240,9 @@ let g:vista_echo_cursor_strategy = 'floating_win'
 let g:vista_icon_indent = [ "", "├─▸"]
 " preview in search
 let g:vista_fzf_preview = ['right:50%']
+Plug 'christoomey/vim-tmux-navigator'
+" Write all buffers before navigating from Vim to tmux pane
+let g:tmux_navigator_save_on_switch = 2
 " lint whitespaces
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'sheerun/vim-polyglot'

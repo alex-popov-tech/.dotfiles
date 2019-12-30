@@ -12,6 +12,7 @@ function main() {
     ./scripts/software.sh
     ./scripts/zshell.sh
     ./scripts/nvim.sh
+    ./scripts/tmux.sh
     ./scripts/link_configs.sh
     ./scripts/macos.sh
   "
