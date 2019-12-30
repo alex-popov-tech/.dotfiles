@@ -2,6 +2,9 @@
 nmap j gj
 nmap k gk
 
+" goto line using 1234<Enter>
+nnoremap <CR> G
+
 "disable map entering Ex mode
 map Q <Nop>
 " write current buffer
