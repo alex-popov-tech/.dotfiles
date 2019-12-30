@@ -32,6 +32,8 @@ command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, '', fzf#vim#with_preview(),
 
 " file tree buffer
 Plug 'scrooloose/nerdtree'
+" do not save to session empty window (nerd tree sidebar is the case)
+set sessionoptions-=blank
 " toggle file tree
 nmap <C-f> :NERDTreeToggle <bar> :NERDTreeRefreshRoot <CR>
 " disable help menu at the top
@@ -45,6 +47,8 @@ let NERDTreeWinSize = 30
 " add icons for tree folders
 let g:NERDTreeDirArrowExpandable = '►'
 let g:NERDTreeDirArrowCollapsible = '▼'
+" close vim if last window
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " show git status of files in nerd tree
 Plug 'Xuyuanp/nerdtree-git-plugin'
 " icons for git marks in tree
@@ -80,6 +84,35 @@ nmap <leader>gdf :Gdiff <CR>
 nmap <leader>gp :Gpush <CR>
 " allows repeat via dot for some plugins like surround
 Plug 'tpope/vim-repeat'
+Plug 'mhinz/vim-startify'
+" Automatically save the session when leaving Vim
+let b:sessionsdir = '~/.vim/sessions/'
+function! MakeSession()
+  exe "!mkdir " . b:sessionsdir . " > /dev/null 2>&1"
+  let b:projectpath = finddir('.git/..', expand('%:p:h').';')
+  let b:projectname = substitute(split(b:projectpath, '/')[-1], ".", "", "")
+  let b:filename = b:sessionsdir . b:projectname . '.vim'
+  exe "mksession! " . b:filename
+endfunction
+autocmd VimLeave * call MakeSession()
+
+let g:startify_session_dir = b:sessionsdir
+let g:startify_lists = [
+      \ { 'type': 'sessions',  'header': ['   Sessions']       },
+      \ { 'type': 'dir',       'header': ['   MRU '. getcwd()] },
+      \ { 'type': 'files',     'header': ['   MRU']            },
+      \ ]
+" use vsc root when enter file
+let g:startify_change_to_vcs_root = 1
+" open startify along with nerdtree
+autocmd VimEnter *
+      \   if !argc()
+      \ |   Startify
+      \ |   NERDTree
+      \ |   wincmd w
+      \ | endif
+" do not show 'edit' and 'quit' options
+let g:startify_enable_special = 0
 " add\update\remove surround stuff like '"{[]}"'
 Plug 'tpope/vim-surround'
 " add text objects like in ,, .. {} () etc.
