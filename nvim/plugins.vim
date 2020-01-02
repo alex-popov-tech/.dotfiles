@@ -90,7 +90,8 @@ let b:sessionsdir = '~/.vim/sessions/'
 function! MakeSession()
   exe "!mkdir " . b:sessionsdir . " > /dev/null 2>&1"
   let b:projectpath = finddir('.git/..', expand('%:p:h').';')
-  let b:projectname = substitute(split(b:projectpath, '/')[-1], ".", "", "")
+  let b:rawprojectpath = split(b:projectpath, '/')[-1]
+  let b:projectname = substitute(b:rawprojectpath, "\\.", "", "")
   let b:filename = b:sessionsdir . b:projectname . '.vim'
   exe "mksession! " . b:filename
 endfunction
