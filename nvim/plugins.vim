@@ -3,9 +3,10 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.config/fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim'
-" find in all files
+" find in files
 " https://stackoverflow.com/questions/9051837/how-to-map-c-to-toggle-comments-in-vim
 nmap <C-_>f :Files <CR>
+nmap <C-_>f :GFiles <CR>
 " find a text in files
 nmap <C-_>c :Ag <CR>
 " respect color scheme
@@ -28,6 +29,7 @@ let g:fzf_colors = {
 let g:fzf_buffers_jump = 1
 " previews for fuzzy search
 command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--preview', '~/.config/nvim/plugged/fzf.vim/bin/preview.sh {}']}, <bang>0)
+command! -bang -nargs=? -complete=dir GFiles call fzf#vim#gitfiles(<q-args>, {'options': ['--layout=reverse', '--preview', '~/.config/nvim/plugged/fzf.vim/bin/preview.sh {}']}, <bang>0)
 command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, '', fzf#vim#with_preview(), <bang>0)
 
 " file tree buffer
@@ -43,7 +45,7 @@ let NERDTreeAutoDeleteBuffer = 1
 " close tree on file open
 let NERDTreeQuitOnOpen = 1
 " configure sidebar size
-let NERDTreeWinSize = 30
+let NERDTreeWinSize = 20
 " add icons for tree folders
 let g:NERDTreeDirArrowExpandable = '►'
 let g:NERDTreeDirArrowCollapsible = '▼'
