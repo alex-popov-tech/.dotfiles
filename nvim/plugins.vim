@@ -6,7 +6,7 @@ Plug 'mileszs/ack.vim'
 " find in files
 " https://stackoverflow.com/questions/9051837/how-to-map-c-to-toggle-comments-in-vim
 nmap <C-_>f :Files <CR>
-nmap <C-_>f :GFiles <CR>
+nmap <C-_>g :GFiles <CR>
 " find a text in files
 nmap <C-_>c :Ag <CR>
 " respect color scheme
