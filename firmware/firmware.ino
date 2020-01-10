@@ -99,8 +99,8 @@ void setup() {
     kaleidoscope::plugin::Qukey(0, KeyAddr(1, 8), ShiftToLayer(FUNCTION)),
     kaleidoscope::plugin::Qukey(0, KeyAddr(3, 9), Key_RightControl),
   )
-  Qukeys.setHoldTimeout(150);
-  Qukeys.setOverlapThreshold(30);
+  Qukeys.setHoldTimeout(200);
+  Qukeys.setOverlapThreshold(50);
 
   ColormapEffect.max_layers(2);
   ColormapEffect.activate();
