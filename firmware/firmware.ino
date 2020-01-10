@@ -17,6 +17,7 @@
 
 #include "Kaleidoscope-Macros.h"
 #include "Kaleidoscope-Qukeys.h"
+#include "Kaleidoscope-TopsyTurvy.h"
 
 
 enum { MACRO_SCREEN };
@@ -48,10 +49,10 @@ KEYMAPS(
     ___, ___, ___, ___,
     ___,
 
-    Key_Mute,        XXX,           XXX,            XXX,           XXX,   XXX,   Key_LEDEffectNext,
-    XXX,             Key_DownArrow, Key_7,          Key_8,         Key_9, Key_0, XXX,
-                     Key_6,         Key_Equals,     Key_Backslash, XXX,   XXX,   XXX,
-    M(MACRO_SCREEN), Key_UpArrow,   Key_RightArrow, XXX,           XXX,   XXX,   XXX,
+    Key_Mute,        XXX,           XXX,            XXX,                   XXX,   XXX,   Key_LEDEffectNext,
+    XXX,             Key_DownArrow, Key_7,          Key_8,                 Key_9, Key_0, XXX,
+                     Key_6,         Key_Equals,     TOPSY(Backslash),      XXX,   XXX,   XXX,
+    M(MACRO_SCREEN), Key_UpArrow,   Key_RightArrow, XXX,                   XXX,   XXX,   XXX,
     ___, ___, ___, ___,
     ___
   )
@@ -81,7 +82,8 @@ KALEIDOSCOPE_INIT_PLUGINS(
   Focus,
 
   Macros,
-  Qukeys
+  Qukeys,
+  TopsyTurvy
 );
 
 void setup() {
