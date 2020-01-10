@@ -25,6 +25,7 @@ let g:fzf_colors = {
       \ 'spinner': ['fg', 'Label'],
       \ 'header':  ['fg', 'Comment']
       \ }
+let g:fzf_layout = {'down': '60%'}
 " [Buffers] Jump to the existing window if possible
 let g:fzf_buffers_jump = 1
 " previews for fuzzy search
