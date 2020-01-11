@@ -2,7 +2,8 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 POWERLEVEL9K_MODE="nerdfont-complete"
 
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon dir vcs newline vi_mode)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time pyenv rbenv node_version)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time node_version)
+# 13.6.0   (set by /Users/alexanderpopov/.tool-versions) -> 13.6.0
 
 # customize colors for segments
 POWERLEVEL9K_VCS_CLEAN_FOREGROUND='111' #skyblue2
@@ -14,16 +15,6 @@ POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='black'
 
 POWERLEVEL9K_NODE_VERSION_FOREGROUND='green'
 POWERLEVEL9K_NODE_VERSION_BACKGROUND='black'
-POWERLEVEL9K_PYENV_FOREGROUND='blue'
-POWERLEVEL9K_PYENV_BACKGROUND='black'
-POWERLEVEL9K_RBENV_FOREGROUND='red'
-POWERLEVEL9K_RBENV_BACKGROUND='black'
-POWERLEVEL9K_GO_VERSION_FOREGROUND='cyan'
-POWERLEVEL9K_GO_VERSION_BACKGROUND='black'
-
-# always show ruby/python versions
-POWERLEVEL9K_RBENV_PROMPT_ALWAYS_SHOW=true
-POWERLEVEL9K_PYENV_PROMPT_ALWAYS_SHOW=true
 
 # show git commit hash
 POWERLEVEL9K_SHOW_CHANGESET=true

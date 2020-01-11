@@ -30,5 +30,4 @@ alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v exten
 
 # Other
 alias n="nvim"
-alias g="tig status"
 alias dco="docker-compose"

@@ -1,0 +1,4 @@
+# load main asdf
+source /usr/local/opt/asdf/asdf.sh
+# set java home (from java plugin)
+source $HOME/.asdf/plugins/java/set-java-home.sh
