@@ -36,27 +36,5 @@ nmap <leader>gdp :diffput<CR>
 xmap <leader>gdg :diffget<CR>
 xmap <leader>gdp :diffput<CR>
 
-" Map ctrl-movement keys to window switching
-map <C-k> <C-w><Up>
-map <C-j> <C-w><Down>
-map <C-l> <C-w><Right>
-map <C-h> <C-w><Left>
-" Open new split for C+hjkl, if split doesnt exist
-map <silent> <Left> :call WinMove('h')<CR>
-map <silent> <Down> :call WinMove('j')<CR>
-map <silent> <Up> :call WinMove('k')<CR>
-map <silent> <Right> :call WinMove('l')<CR>
-
-function! WinMove(key)
-  let t:curwin = winnr()
-  exec "wincmd ".a:key
-  if (t:curwin == winnr())
-    if (match(a:key,'[jk]'))
-      wincmd v
-    else
-      wincmd s
-    endif
-    exec "wincmd ".a:key
-  endif
-endfunction
-
+nmap <leader>s :split<CR>
+nmap <leader>v :vsplit<CR>
