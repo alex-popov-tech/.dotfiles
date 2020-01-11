@@ -39,4 +39,5 @@
   * `npm $package` - to search and visit npm package site
   * `blt` - to toggle bluetooth connection / list paired devices
   * `wifi(list)` - toggle wifi connection / show current AP / list available AP's
-
+  * `lp` - use last pass to get username/pass to clipboard
+  * `pwgen` - generate strong password
