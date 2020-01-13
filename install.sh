@@ -39,7 +39,7 @@ function managers() {
 
 }
 
-function languages() {
+function langs() {
   echo "+---------------------------------+"
   echo "|        Installing NodeJS        |"
   echo "+---------------------------------+"
@@ -78,6 +78,7 @@ function languages() {
   asdf install ruby 2.7.0
   asdf global ruby 2.7.0
 
+  asdf reshim
 }
 
 function software() {

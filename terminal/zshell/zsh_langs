@@ -1,4 +1,5 @@
 # load main asdf
 source /usr/local/opt/asdf/asdf.sh
 # set java home (from java plugin)
-source $HOME/.asdf/plugins/java/set-java-home.sh
+# source $HOME/.asdf/plugins/java/set-java-home.sh
+export JAVA_HOME=/Users/alexanderpopov/.asdf/installs/java/adopt-openjdk-8u232-b09_openj9-0.17.0
