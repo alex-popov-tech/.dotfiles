@@ -3,6 +3,7 @@ plugins=(
   z
   vi-mode
   zsh-autosuggestions
+  alias-tips
 )
 
 # Uncomment the following line to use hyphen-insensitive completion.

@@ -175,6 +175,7 @@ function terminal() {
 
   git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh-my-zsh
   git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions.git $CUSTOM_PLUGINS_PATH/zsh-autosuggestions
+  git clone --depth=1 https://github.com/djui/alias-tips.git $CUSTOM_PLUGINS_PATH/alias-tips
   git clone --depth=1 https://github.com/bhilburn/powerlevel9k.git $CUSTOM_THEMES_PATH/powerlevel9k
 
   ln -fsv $DPATH/terminal/zshell/zsh_env $HOME/.zsh_env
