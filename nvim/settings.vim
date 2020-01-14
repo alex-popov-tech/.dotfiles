@@ -28,7 +28,7 @@ set wrap
 " but do not break words, only 'by words'
 set linebreak
 " show relative line number
-set number relativenumber
+set number
 " keep searched chunks hightlighted
 set hlsearch
 " search case-insensative
