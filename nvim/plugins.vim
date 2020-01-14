@@ -52,7 +52,6 @@ let g:NERDTreeDirArrowExpandable = '►'
 let g:NERDTreeDirArrowCollapsible = '▼'
 " close vim if last window
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-Plug 'ryanoasis/vim-devicons'
 " show git status of files in nerd tree
 Plug 'Xuyuanp/nerdtree-git-plugin'
 " icons for git marks in tree
