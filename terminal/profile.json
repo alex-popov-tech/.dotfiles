@@ -6,6 +6,7 @@
       "Normal Font": "FiraCode-Medium 18",
       "Terminal Type": "xterm-256color-italic",
       "Non Ascii Font": "HackNerdFontComplete-Regular 18",
+      "Background Image Location": "\/Users\/alexanderpopov\/.dotfiles\/files\/terminal_background.png",
       "Use Italic Font": true,
       "Use Bold Font": true,
       "ASCII Anti Aliased": true,
