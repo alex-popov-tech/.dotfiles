@@ -8,16 +8,12 @@ alias GO="cd $GOPATH"
 # Improved list
 alias ls="colorls --sort-dirs"
 alias lsa="colorls --almost-all --sort-dirs"
-alias lsl="colorls --almost-all --sort-dirs --long"
 
 # Improved cat
 alias cat="bat"
 
 # Improved ping
 alias ping="prettyping --nolegend"
-
-# # Google Chrome
-alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 
 # Intuitive map function
 # For example, to list all directories that contain a certain file:
@@ -30,4 +26,4 @@ alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v exten
 
 # Other
 alias n="nvim"
-alias dco="docker-compose"
+alias t="tig status"
