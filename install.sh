@@ -96,7 +96,6 @@ function software() {
     # for alfred lastpass workflow
     lastpass-cli \
     ssh-copy-id \
-    bat \
     prettyping \
     mas \
     the_silver_searcher ripgrep
@@ -169,20 +168,13 @@ function terminal() {
   echo "+---------------------------------+"
   brew install zsh
 
-  OMZ_PATH=$HOME/.oh-my-zsh
-  CUSTOM_PATH=$OMZ_PATH/custom
-  CUSTOM_PLUGINS_PATH=$CUSTOM_PATH/plugins
-  CUSTOM_THEMES_PATH=$CUSTOM_PATH/themes
-
-  git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh-my-zsh
-  git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions.git $CUSTOM_PLUGINS_PATH/zsh-autosuggestions
-  git clone --depth=1 https://github.com/djui/alias-tips.git $CUSTOM_PLUGINS_PATH/alias-tips
-  git clone --depth=1 https://github.com/bhilburn/powerlevel9k.git $CUSTOM_THEMES_PATH/powerlevel9k
-  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $CUSTOM_THEMES_PATH/powerlevel10k
+  mkdir ~/.zplugin
+  git clone https://github.com/zdharma/zplugin.git ~/.zplugin/bin
 
   ln -fsv $DPATH/terminal/zshell/zsh_env $HOME/.zsh_env
-  ln -fsv $DPATH/terminal/zshell/zsh_ohmyzsh $HOME/.zsh_ohmyzsh
   ln -fsv $DPATH/terminal/zshell/zsh_prompt $HOME/.zsh_prompt
+  ln -fsv $DPATH/terminal/zshell/zsh_settings $HOME/.zsh_settings
+  ln -fsv $DPATH/terminal/zshell/zsh_plugins $HOME/.zsh_plugins
   ln -fsv $DPATH/terminal/zshell/zsh_aliases $HOME/.zsh_aliases
   ln -fsv $DPATH/terminal/zshell/zsh_functions $HOME/.zsh_functions
   ln -fsv $DPATH/terminal/zshell/zsh_langs $HOME/.zsh_langs

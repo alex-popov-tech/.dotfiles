@@ -3,7 +3,6 @@ alias Db="cd $HOME/Dropbox"
 alias Dl="cd $HOME/Downloads"
 alias Dt="cd $HOME/Desktop"
 alias Dc="cd $HOME/Documents"
-alias GO="cd $GOPATH"
 
 # Improved list
 alias ls="colorls --sort-dirs"
@@ -27,3 +26,4 @@ alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v exten
 # Other
 alias n="nvim"
 alias t="tig status"
+alias grep="rg"

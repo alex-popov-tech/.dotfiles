@@ -1,13 +1,10 @@
 # zmodload zsh/zprof
-
 source $HOME/.zsh_env
-source $HOME/.zsh_ohmyzsh
 source $HOME/.zsh_prompt
-source $ZSH/oh-my-zsh.sh
+source $HOME/.zsh_plugins
+source $HOME/.zsh_settings
 source $HOME/.zsh_langs
 source $HOME/.zsh_aliases
 source $HOME/.zsh_functions
 
-# zprof
-
-
+zprof
