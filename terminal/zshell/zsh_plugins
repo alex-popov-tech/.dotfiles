@@ -1,28 +1,18 @@
 source $HOME/.zplugin/bin/zplugin.zsh
 
-# initial prompt
-PS1="start typing..."
-
 # p10k theme
-zplugin ice wait'!0' lucid atload'true; _p9k_precmd' nocd
+zplugin ice depth=1
 zplugin light romkatv/powerlevel10k
 
 # plugins
-zplugin ice wait lucid atload'_zsh_autosuggest_start'
 zplugin light zsh-users/zsh-autosuggestions
-zplugin ice wait lucid
 zplugin snippet OMZ::plugins/z/z.sh
-zplugin ice wait lucid
 zplugin snippet OMZ::plugins/git/git.plugin.zsh
-zplugin ice wait lucid
 zplugin snippet OMZ::plugins/vi-mode/vi-mode.plugin.zsh
-zplugin ice wait lucid
 zplugin light MichaelAquilina/zsh-you-should-use
-zplugin ice wait lucid
 zplugin light zdharma/fast-syntax-highlighting
-zplugin ice wait lucid
 zplugin light b4b4r07/enhancd
-zplugin ice wait as"command" from"gh-r" mv"fd* -> fd" pick"fd/fd" lucid
+zplugin ice as"command" from"gh-r" mv"fd* -> fd" pick"fd/fd" lucid
 zplugin light sharkdp/fd
-zplugin ice wait as"command" from"gh-r" mv"bat* -> bat" pick"bat/bat" lucid
+zplugin ice as"command" from"gh-r" mv"bat* -> bat" pick"bat/bat" lucid
 zplugin light sharkdp/bat
