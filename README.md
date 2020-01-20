@@ -2,15 +2,9 @@
 
 ## What's inside
 
-* MacOS settings based on
-[Mathias dotfiles](https://github.com/mathiasbynens/dotfiles) repository.
-* Languages:
-  * nvm + NodeJS
-  * sdkman + Java
-  * pyenv + Python
-  * rbenv + Ruby
-  * gvm + Golang
-* Software
+* MacOS settings based on [Mathias dotfiles](https://github.com/mathiasbynens/dotfiles) repository.
+* [ asdf ](https://github.com/asdf-vm/asdf) with nodejs, java, python, ruby, etc.
+* [Alfred](https://www.alfredapp.com/) with some customizations and [cheetsheet](alfred.md)
 * Global configs:
   * [gitconfig](./configs/gitconfig)
   * [gitignore](./configs/gitignore)
@@ -18,19 +12,13 @@
   * [eslintrc](./configs/eslintrc)
   * [tigrc](./configs/tigrc)
 * [keyboardio layout](http://www.keyboard-layout-editor.com/#/gists/4782bb723fbd9c12adfc23d293e9af0c)
-* Badass terminal - iterm2 + Powerlevel9k + Nerd Fonts + [Zshell](https://github.com/robbyrussell/oh-my-zsh/wiki/Cheatsheet) with plugins (e.g. [git](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git/)) and tools
+* Badass terminal - iterm2 + [ Zshell ](https://en.wikipedia.org/wiki/Z_shell) + [ Powerlevel10k ](https://github.com/romkatv/powerlevel10k) + Nerd Fonts + [Zinit](https://github.com/zdharma/zinit), etc.
 ![screenshot](files/terminal.jpg)
 * NeoVim with bunch of plugins, color schemes and [cheatsheet](vim.md)
 ![screenhot1](files/nvim1.png)
 ![screenhot2](files/nvim2.png)
-* Alfred with some customizations and [cheetsheet](alfred.md)
 
 ## Installation
-
-Since we will be installing environment managers like `rbenv` and
-settings MacOS it's required to reload your mac at some point of installation.
-For this purposes installation process consists from two install scripts,
-read below how to use them.
 
 Notes:
 
