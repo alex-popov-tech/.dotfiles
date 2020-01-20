@@ -98,6 +98,7 @@ function software() {
     ssh-copy-id \
     prettyping \
     mas \
+    fd \
     the_silver_searcher ripgrep
 
   gem install colorls
