@@ -53,9 +53,9 @@ set shiftwidth=2
 " bottom of the page (for scroll to trigger you need be at 5 line from bottom
 " and press 'j')
 set scrolloff=5
-" increase signcolumns (to the left from line number) to 2 if necessary ( for
-" git-glutter + coc.nvim signs)
-set signcolumn=auto:2
+" resize signcolumn size dynamically depending on context (coc.nvim signs and
+" git-gutter)
+set signcolumn=auto
 " make inner terminal zsh
 set shell=/usr/local/bin/zsh
 " Keep undo history across sessions, by storing in file.

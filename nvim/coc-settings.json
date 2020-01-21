@@ -1,21 +1,7 @@
 {
-  "diagnostic.infoSign": "？",
-  "diagnostic.warningSign": "⚠",
-  "diagnostic.errorSign": "✕",
+  "explorer.icon.enableNerdfont": true,
   "suggest.maxCompleteItemCount": 30,
   "languageserver": {
-    "golang": {
-      "command": "gopls",
-      "filetypes": [
-        "go"
-      ],
-      "rootPatterns": [
-        "go.mod",
-        ".vim/",
-        ".git/",
-        ".hg/"
-      ]
-    },
     "sh": {
       "command": "bash-language-server",
       "args": [
@@ -30,38 +16,10 @@
       ]
     }
   },
-  "diagnostic-languageserver.linters": {
-    "languagetool": {
-      "command": "languagetool",
-      "filetypes": [],
-      "debounce": 200,
-      "args": [
-        "-"
-      ],
-      "offsetLine": 0,
-      "offsetColumn": 0,
-      "sourceName": "languagetool",
-      "formatLines": 2,
-      "formatPattern": [
-        "^\\d+?\\.\\)\\s+Line\\s+(\\d+),\\s+column\\s+(\\d+),\\s+([^\\n]+)\nMessage:\\s+(.*)$",
-        {
-          "line": 1,
-          "column": 2,
-          "message": [
-            4,
-            3
-          ]
-        }
-      ]
-    }
-  },
   "diagnostic-languageserver.filetypes": {
     "markdown": [
       "write-good",
       "markdownlint"
-    ],
-    "ruby": [
-      "solargraph"
     ],
     "sh": "shellcheck"
   },
@@ -70,7 +28,6 @@
   ],
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
   "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
-  "typescript.preferences.noSemicolons": true,
   "solargraph.diagnostics": true,
   "solargraph.hover": true,
   "solargraph.autoformat": true

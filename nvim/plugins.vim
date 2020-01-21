@@ -47,6 +47,8 @@ let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeQuitOnOpen = 1
 " configure sidebar size
 let NERDTreeWinSize = 20
+" self explanatory
+let NERDTreeShowHidden = 1
 " add icons for tree folders
 let g:NERDTreeDirArrowExpandable = '►'
 let g:NERDTreeDirArrowCollapsible = '▼'
@@ -69,8 +71,10 @@ let g:NERDTreeIndicatorMapCustom = {
       \ }
 " show added\updated lines to the left of line number
 Plug 'airblade/vim-gitgutter'
-" git plugin
-Plug 'tpope/vim-fugitive'
+let g:gitgutter_override_sign_column_highlight = 0
+let g:gitgutter_sign_added = '++'
+let g:gitgutter_sign_modified = '~~'
+let g:gitgutter_sign_removed = '--'
 " git status
 nmap <leader>gs :Gstatus <CR>
 " git add current file
@@ -160,23 +164,16 @@ Plug 'svermeulen/vim-subversive'
 nmap s <plug>(SubversiveSubstitute)
 nmap ss <plug>(SubversiveSubstituteLine)
 nmap S <plug>(SubversiveSubstituteToEndOfLine)
-Plug 'neoclide/coc.nvim', { 'do': 'yarn install --frozen-lockfile' }
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = [
       \ 'coc-word',
       \ 'coc-tsserver',
-      \ 'coc-tslint-plugin',
       \ 'coc-json',
       \ 'coc-eslint',
-      \ 'coc-python',
-      \ 'coc-pairs',
-      \ 'coc-java',
-      \ 'coc-solargraph',
-      \ 'coc-yaml',
       \ 'coc-yank',
       \ 'coc-tabnine',
-      \ 'coc-diagnostic',
+      \ 'coc-explorer'
       \]
-
 " if hidden is not set, TextEdit might fail.
 " when closes buffer, it hides instead of being abandoned
 set hidden
@@ -192,9 +189,8 @@ set updatetime=300
 " don't give |ins-completion-menu| messages.
 " make vim errors shorter
 set shortmess+=c
-" always show signcolumns
 " always show column to the left of lines number column, f.e. for git glutter
-set signcolumn=yes
+" set signcolumn=yes
 " show list of yanks with preview
 nnoremap <silent> <leader>y :<C-u>CocList -A --normal yank<CR>
 " Navigate interpreter/compiler/linter errors
