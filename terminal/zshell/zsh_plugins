@@ -17,3 +17,8 @@ zplugin ice as"command" from"gh-r" mv"fd* -> fd" pick"fd/fd" lucid
 zplugin light sharkdp/fd
 zplugin ice as"command" from"gh-r" mv"bat* -> bat" pick"bat/bat" lucid
 zplugin light sharkdp/bat
+
+zplugin ice blockf atpull'zinit creinstall -q .'
+zplugin light zsh-users/zsh-completions
+autoload compinit
+compinit
