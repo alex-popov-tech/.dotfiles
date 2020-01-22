@@ -6,7 +6,7 @@ zplugin light romkatv/powerlevel10k
 
 # plugins
 zplugin light zsh-users/zsh-autosuggestions
-zplugin snippet OMZ::plugins/z/z.sh
+zplugin light skywind3000/z.lua
 zplugin snippet OMZ::plugins/git/git.plugin.zsh
 zplugin snippet OMZ::plugins/vi-mode/vi-mode.plugin.zsh
 zplugin light MichaelAquilina/zsh-you-should-use
