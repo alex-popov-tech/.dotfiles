@@ -93,8 +93,8 @@ function software() {
     grep \
     openssh \
     rsync \
-    # for alfred lastpass workflow
     lastpass-cli \
+    inetutils \
     ssh-copy-id \
     prettyping \
     mas \
