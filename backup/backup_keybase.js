@@ -1,7 +1,7 @@
 const fs = require('fs')
 const { execSync } = require('child_process')
 
-const dest = '/Volumes/BACKUP/keybaseio/' + new Date().toLocaleDateString().replace(/\//g, '.') + '/'
+const dest = '/tmp/'
 const source = '/keybase/private/alex_popov_tech'
 
 const stat = path => {
@@ -27,3 +27,5 @@ const syncKeybase = path => {
 }
 
 syncKeybase(source)
+
+process.stdout.write(dest)
