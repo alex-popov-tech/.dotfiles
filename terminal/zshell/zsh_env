@@ -11,5 +11,8 @@ export EDITOR="nvim"
 # LANG=""
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+# for gpg
+export GPG_TTY=$(tty)
+# for last pass no never end session after login
+export LPASS_AGENT_TIMEOUT=0
 
-export HOMEBREW_GITHUB_API_TOKEN="c1999ac8d89e6ee207415104ee987ac0d7c13a5b"
