@@ -1,7 +1,7 @@
 const fs = require('fs')
 const { execSync } = require('child_process')
 
-const dest = '/Volumes/BACKUP/' + new Date().toLocaleDateString().replace(/\//g, '.') + '/'
+const dest = '/Volumes/BACKUP/keybaseio/' + new Date().toLocaleDateString().replace(/\//g, '.') + '/'
 const source = '/keybase/private/alex_popov_tech'
 
 const stat = path => {
