@@ -1,6 +1,8 @@
 {
   "Profiles": [
     {
+      "Screen": 0,
+      "Window Type": 15,
       "Name": "Zshell",
       "Command": "\/bin\/zsh",
       "Normal Font": "FiraCode-Medium 18",
