@@ -51,16 +51,20 @@
 * [AndrewRadev](https://github.com/AndrewRadev/switch.vim)
   * `-` - toggle switch
 * [neoclide/coc.nvim](https://github.com/neoclide/coc.nvim)
-  * `gd` - coc-definition
-  * `gy` - coc-type-definition
-  * `gi` - coc-implementation
-  * `gr` - coc-references
-  * `K` - on hover show documentation
-  * `[r` and `]r` - navigate through diagnostic
-  * `[l` and `]l` - navigate through linter errors
-  * `<leader>y` - show latest yanks
-  * `<leader>fi<motion>` - format indent for `<motion>` or selected lines
+  * `<TAB>` - visual blocks of text
+  * `<C-z>` - trigger autocompletion (`tab` to navigate)
+  * `<leader>y` - latest yanks
+  * `<leader>e` - show diagnostics errors
   * `<leader>fl` - fix errors on current line
+  * `<leader>F` - coc-formate-and-organize-imports
+  * `<leader>ll` - call codeaction prompt for single line
+  * `<leader>l<motion>` - call codeaction prompt for `<motion>`
+  * `<leader>rn` - coc-formate-and-organize-imports
+  * `K` - on hover show documentation
+  * `<C-g>d` - coc-definition
+  * `<C-g>y` - coc-type-definition
+  * `<C-g>i` - coc-implementation
+  * `<C-g>r` - coc-references
 * [liuchengxu/vista.vim](https://github.com/liuchengxu/vista.vim)
   * `<leader>ta` - toggle tags sidebar
   * `<leader>/ta` - fuzzy search tags

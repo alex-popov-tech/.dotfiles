@@ -187,16 +187,26 @@ set nowritebackup
 " give more space to outputs of executed commands to 2 lines
 set cmdheight=2
 " Smaller updatetime for CursorHold & CursorHoldI
-set updatetime=300
+set updatetime=750
 " don't give |ins-completion-menu| messages.
 " make vim errors shorter
 set shortmess+=c
-" always show column to the left of lines number column, f.e. for git glutter
-" set signcolumn=yes
+" trigger autocompletion
+inoremap <silent><expr> <c-z> coc#refresh()
+" navigate between suggestions with tab
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 " show list of yanks with preview
-nnoremap <silent> <leader>y :<C-u>CocList -A --normal yank<CR>
+nmap <leader>y :CocList --auto-preview --normal yank<CR>
 " Navigate interpreter/compiler/linter errors
-nmap <C-g>e <Plug>(coc-diagnostic-next)
+nmap <leader>e :CocList --number-select --normal --auto-preview diagnostics<CR>
 " Remap keys for gotos
 nmap <C-g>d <Plug>(coc-definition)
 nmap <C-g>y <Plug>(coc-type-definition)
@@ -204,21 +214,22 @@ nmap <C-g>i <Plug>(coc-implementation)
 nmap <C-g>r <Plug>(coc-references)
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
-" Fix autofix problem of current line
-nmap <leader>fl  <Plug>(coc-fix-current)
-nmap <leader>al  <Plug>(coc-codeaction)
+" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
+xmap <leader>l  <Plug>(coc-codeaction-selected)
+nmap <leader>l  <Plug>(coc-codeaction-selected)
+nmap <leader>ll  <Plug>(coc-codeaction)
+" Use <TAB> for select selections ranges, needs server support, like: coc-tsserver, coc-python
+nmap <silent> <TAB> <Plug>(coc-range-select)
+xmap <silent> <TAB> <Plug>(coc-range-select)
 " Create mappings for function text object, requires document symbols feature of languageserver.
 xmap if <Plug>(coc-funcobj-i)
 xmap af <Plug>(coc-funcobj-a)
 omap if <Plug>(coc-funcobj-i)
 omap af <Plug>(coc-funcobj-a)
-augroup cocnvim
-  autocmd!
-  " fix indenting on save buffer
-  autocmd BufWritePre * :call CocAction('format')
-  " organize import on save buffer
-  autocmd BufWritePre *.ts,*.js :call CocAction('runCommand', 'editor.action.organizeImport') | sleep 100m
-augroup end
+function! Format()
+  call CocAction('format')
+  call CocAction('runCommand', 'editor.action.organizeImport')
+endfunction
 " Use K for show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 function! s:show_documentation()
