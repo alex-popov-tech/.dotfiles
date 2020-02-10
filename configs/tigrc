@@ -1,5 +1,7 @@
 bind generic > !git push %(remote) %(branch)
 bind generic P !git pull --rebase origin %(branch)
+bind diff H !sh -c "tig \"$(git rev-parse --show-toplevel)/%(file)\""
+bind status H !sh -c "tig \"$(git rev-parse --show-toplevel)/%(file)\""
 
 set main-view = line-number:no,interval=5 id:yes date author:full commit-title:yes,graph,refs,overflow=no
 set diff-context = 5
