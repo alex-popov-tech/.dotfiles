@@ -48,6 +48,8 @@ let NERDTreeQuitOnOpen = 1
 " configure sidebar size
 let NERDTreeWinSize = 20
 " self explanatory
+let g:NERDTreeWinPos = "right"
+" self explanatory
 let NERDTreeShowHidden = 1
 " add icons for tree folders
 let g:NERDTreeDirArrowExpandable = '►'
