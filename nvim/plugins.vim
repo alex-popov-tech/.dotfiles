@@ -55,7 +55,20 @@ let NERDTreeShowHidden = 1
 let g:NERDTreeDirArrowExpandable = '►'
 let g:NERDTreeDirArrowCollapsible = '▼'
 " close vim if last window
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
+
+" Close all open buffers on entering a window if the only
+" buffer that's left is the NERDTree buffer
+function! s:CloseIfOnlyNerdTreeLeft()
+  if exists("t:NERDTreeBufName")
+    if bufwinnr(t:NERDTreeBufName) != -1
+      if winnr("$") == 1
+        call MakeSession()
+        q
+      endif
+    endif
+  endif
+endfunction
 " show git status of files in nerd tree
 Plug 'Xuyuanp/nerdtree-git-plugin'
 " icons for git marks in tree
@@ -95,18 +108,21 @@ nmap <leader>gp :Gpush <CR>
 Plug 'tpope/vim-repeat'
 Plug 'mhinz/vim-startify'
 " Automatically save the session when leaving Vim
-let b:sessionsdir = '~/.vim/sessions/'
-function! MakeSession()
-  exe "!mkdir " . b:sessionsdir . " > /dev/null 2>&1"
-  let b:projectpath = finddir('.git/..', expand('%:p:h').';')
-  let b:rawprojectpath = split(b:projectpath, '/')[-1]
-  let b:projectname = substitute(b:rawprojectpath, "\\.", "", "")
-  let b:filename = b:sessionsdir . b:projectname . '.vim'
-  exe "mksession! " . b:filename
+let g:sessionsdir = '~/.vim/sessions/'
+function MakeSession()
+  " echo 'called'
+  if &ft != 'gitcommit'
+    exe "!mkdir -p " . g:sessionsdir
+    let b:projectpath = finddir('.git/..', expand('%:p:h').';')
+    let b:rawprojectpath = split(b:projectpath, '/')[-1]
+    let b:projectname = substitute(b:rawprojectpath, "\\.", "", "")
+    let b:filename = g:sessionsdir . b:projectname . '.vim'
+    exe "mksession! " . b:filename
+  endif
 endfunction
 autocmd VimLeave * call MakeSession()
 
-let g:startify_session_dir = b:sessionsdir
+let g:startify_session_dir = g:sessionsdir
 let g:startify_lists = [
       \ { 'type': 'sessions',  'header': ['   Sessions']       },
       \ { 'type': 'dir',       'header': ['   MRU '. getcwd()] },
