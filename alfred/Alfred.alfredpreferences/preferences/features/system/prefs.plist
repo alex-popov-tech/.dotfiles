@@ -4,10 +4,6 @@
 <dict>
 	<key>ejectKeywordEnabled</key>
 	<true/>
-	<key>emptytrashConfirm</key>
-	<true/>
-	<key>emptytrashKeywordEnabled</key>
-	<false/>
 	<key>hideKeywordEnabled</key>
 	<false/>
 	<key>lockKeywordEnabled</key>
