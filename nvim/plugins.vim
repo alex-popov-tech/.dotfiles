@@ -190,6 +190,8 @@ let g:coc_global_extensions = [
       \ 'coc-eslint',
       \ 'coc-yank',
       \ 'coc-tabnine',
+      \ 'coc-spell-checker',
+      \ 'coc-cspell-dicts',
       \ 'coc-explorer'
       \]
 " if hidden is not set, TextEdit might fail.
@@ -285,13 +287,10 @@ Plug 'elzr/vim-json'
 let g:vim_json_syntax_conceal = 1
 " syntax hightlight for yaml
 Plug 'stephpy/vim-yaml'
-" preview markdown in browser
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 " visual hightlight for markdown files
 Plug 'plasticboy/vim-markdown'
 " disable all possible folding
 let g:vim_markdown_folding_disabled = 1
-
 " bottom/upper status bar
 Plug 'vim-airline/vim-airline'
 " show buffer list at the top of the screen

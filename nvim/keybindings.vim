@@ -2,6 +2,10 @@
 nmap j gj
 nmap k gk
 
+" keymap for keyboardio
+nmap { [
+nmap } ]
+
 " goto line using 1234<Enter>
 nnoremap <CR> G
 
