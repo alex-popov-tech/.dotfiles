@@ -230,8 +230,10 @@ nmap <C-g>d <Plug>(coc-definition)
 nmap <C-g>y <Plug>(coc-type-definition)
 nmap <C-g>i <Plug>(coc-implementation)
 nmap <C-g>r <Plug>(coc-references)
-" Remap for rename current word
+" rename current word
 nmap <leader>rn <Plug>(coc-rename)
+" refactor current word
+nmap <leader>rf <Plug>(coc-refactor)
 " Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
 xmap <leader>l  <Plug>(coc-codeaction-selected)
 nmap <leader>l  <Plug>(coc-codeaction-selected)
@@ -244,6 +246,8 @@ xmap if <Plug>(coc-funcobj-i)
 xmap af <Plug>(coc-funcobj-a)
 omap if <Plug>(coc-funcobj-i)
 omap af <Plug>(coc-funcobj-a)
+" format and optimize imports
+nmap <leader>F call Format()
 function! Format()
   call CocAction('format')
   call CocAction('runCommand', 'editor.action.organizeImport')

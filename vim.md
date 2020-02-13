@@ -55,11 +55,11 @@
   * `<C-z>` - trigger autocompletion (`tab` to navigate)
   * `<leader>y` - latest yanks
   * `<leader>e` - show diagnostics errors
-  * `<leader>fl` - fix errors on current line
   * `<leader>F` - coc-formate-and-organize-imports
   * `<leader>ll` - call codeaction prompt for single line
   * `<leader>l<motion>` - call codeaction prompt for `<motion>`
-  * `<leader>rn` - coc-formate-and-organize-imports
+  * `<leader>rn` - rename current word
+  * `<leader>rf` - refactor current word
   * `K` - on hover show documentation
   * `<C-g>d` - coc-definition
   * `<C-g>y` - coc-type-definition
