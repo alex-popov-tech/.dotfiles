@@ -146,6 +146,11 @@ Plug 'tpope/vim-surround'
 Plug 'wellle/targets.vim'
 " add text objects depends on indenting <count>ai|ii|aI|iI
 Plug 'michaeljsmith/vim-indent-object'
+" line text objects
+xnoremap il g_o0
+onoremap il :normal vil<CR>
+xnoremap al $o0
+onoremap al :normal val<CR>
 " add commenting for different langs via gcc
 Plug 'tpope/vim-commentary'
 " comment mappings
