@@ -1,21 +1,14 @@
 {
-  "explorer.icon.enableNerdfont": true,
+  "suggest.triggerCompletionWait": 300,
+  "suggest.autoTrigger": "trigger",
   "suggest.maxCompleteItemCount": 30,
-  "languageserver": {
-    "sh": {
-      "command": "bash-language-server",
-      "args": [
-        "start",
-        "--stdio"
-      ],
-      "filetypes": [
-        "sh"
-      ],
-      "ignoredRootPaths": [
-        "~"
-      ]
-    }
-  },
+
+  "diagnostic.virtualText": true,
+  "diagnostic.virtualTextPrefix": " |->",
+  "diagnostic.checkCurrentLine": true,
+
+  "explorer.icon.enableNerdfont": true,
+
   "diagnostic-languageserver.filetypes": {
     "markdown": [
       "write-good",
@@ -30,5 +23,8 @@
   "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
   "solargraph.diagnostics": true,
   "solargraph.hover": true,
-  "solargraph.autoformat": true
+  "solargraph.autoformat": true,
+
+  "cSpellExt.enableDictionaries": ["russian"],
+  "cSpell.language": "en,ru"
 }

@@ -4,12 +4,11 @@
 * `<C-e>/<C-d>` - scroll down
 * `<C-y>/<C-u>` - scroll up
 * `<C-q>`/`<C-Q>` - write and close current/all buffers
-* folding (collapse and uncollapse code lines)
-  * `za` - toggle folding for current indent
-  * `zM` - fold everything
-  * `zR` - unfold everything
-  * `zo` - open fold
-  * `zc` - close a fold
+* folding
+  * `zo` - opens folds
+  * `zc` - closes fold
+  * `zm` - increases auto fold depth
+  * `zr` - reduces auto fold depth
 * `<C-j>`/`<C-k>` - navigate through quicklist/popup/etc
 * `<leader>gdg` - alias for :diffget
 * `<leader>gdp` - alias for :diffput
