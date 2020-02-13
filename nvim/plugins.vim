@@ -106,6 +106,7 @@ nmap <leader>gdf :Gdiff <CR>
 nmap <leader>gp :Gpush <CR>
 " allows repeat via dot for some plugins like surround
 Plug 'tpope/vim-repeat'
+" start screen for nvim
 Plug 'mhinz/vim-startify'
 " Automatically save the session when leaving Vim
 let g:sessionsdir = '~/.vim/sessions/'
@@ -182,9 +183,11 @@ Plug 'svermeulen/vim-subversive'
 nmap s <plug>(SubversiveSubstitute)
 nmap ss <plug>(SubversiveSubstituteLine)
 nmap S <plug>(SubversiveSubstituteToEndOfLine)
+Plug 'kizza/actionmenu.nvim/'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = [
       \ 'coc-word',
+      \ 'coc-dictionary',
       \ 'coc-tsserver',
       \ 'coc-json',
       \ 'coc-eslint',
@@ -192,7 +195,10 @@ let g:coc_global_extensions = [
       \ 'coc-tabnine',
       \ 'coc-spell-checker',
       \ 'coc-cspell-dicts',
-      \ 'coc-explorer'
+      \ 'coc-pairs',
+      \ 'coc-marketplace',
+      \ 'coc-explorer',
+      \ 'coc-sh'
       \]
 " if hidden is not set, TextEdit might fail.
 " when closes buffer, it hides instead of being abandoned
