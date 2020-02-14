@@ -8,6 +8,10 @@
   "diagnostic.checkCurrentLine": true,
 
   "explorer.icon.enableNerdfont": true,
+  "explorer.position": "right",
+  "explorer.quitOnOpen": true,
+  "explorer.previewAction.onHover": true,
+  "explorer.file.showHiddenFiles": true,
 
   "diagnostic-languageserver.filetypes": {
     "markdown": [

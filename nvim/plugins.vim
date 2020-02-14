@@ -188,7 +188,6 @@ Plug 'svermeulen/vim-subversive'
 nmap s <plug>(SubversiveSubstitute)
 nmap ss <plug>(SubversiveSubstituteLine)
 nmap S <plug>(SubversiveSubstituteToEndOfLine)
-Plug 'kizza/actionmenu.nvim/'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = [
       \ 'coc-word',
@@ -205,6 +204,7 @@ let g:coc_global_extensions = [
       \ 'coc-explorer',
       \ 'coc-sh'
       \]
+" CocCommand explorer --toggle --file-columns=diagnosticError:git:selection:clip:indent:icon:filename;filename;fullpath;size;modified;readonly;created;modified;accessed
 " if hidden is not set, TextEdit might fail.
 " when closes buffer, it hides instead of being abandoned
 set hidden
