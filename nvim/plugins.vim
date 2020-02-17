@@ -85,12 +85,6 @@ let g:NERDTreeIndicatorMapCustom = {
       \ "Unknown"   : "❓"
       \ }
 " show added\updated lines to the left of line number
-Plug 'airblade/vim-gitgutter'
-let g:gitgutter_override_sign_column_highlight = 0
-let g:gitgutter_sign_added = '++'
-let g:gitgutter_sign_modified = '~~'
-let g:gitgutter_sign_removed = '--'
-" git status
 nmap <leader>gs :Gstatus <CR>
 " git add current file
 nmap <leader>gw :Gwrite <CR>
@@ -202,6 +196,7 @@ let g:coc_global_extensions = [
       \ 'coc-pairs',
       \ 'coc-marketplace',
       \ 'coc-explorer',
+      \ 'coc-git',
       \ 'coc-sh'
       \]
 " CocCommand explorer --toggle --file-columns=diagnosticError:git:selection:clip:indent:icon:filename;filename;fullpath;size;modified;readonly;created;modified;accessed

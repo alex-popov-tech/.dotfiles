@@ -8,6 +8,13 @@
   "diagnostic.virtualText": true,
   "diagnostic.virtualTextPrefix": " |->",
   "diagnostic.checkCurrentLine": true,
+  "git.addedSign.text": "++",
+  "git.addedSign.hlGroup": "GitGutterAdd",
+  "git.changedSign.text": "~~",
+  "git.changedSign.hlGroup": "GitGutterChange",
+  "git.removedSign.text": "--",
+  "git.removedSign.hlGroup": "GitGutterDelete",
+  "git.topRemovedSign.hlGroup": "GitGutterDelete",
 
   "explorer.icon.enableNerdfont": true,
   "explorer.position": "right",
@@ -32,5 +39,8 @@
   "solargraph.autoformat": true,
 
   "cSpellExt.enableDictionaries": ["russian"],
-  "cSpell.language": "en,ru"
+  "cSpell.language": "en,ru",
+  "cSpell.userWords": [
+    "solargraph"
+  ]
 }
