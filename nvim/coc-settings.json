@@ -3,6 +3,8 @@
   "suggest.autoTrigger": "trigger",
   "suggest.maxCompleteItemCount": 30,
 
+  "diagnostic.enableSign": false,
+  "diagnostic.enableHighlightLineNumber": true,
   "diagnostic.virtualText": true,
   "diagnostic.virtualTextPrefix": " |->",
   "diagnostic.checkCurrentLine": true,
