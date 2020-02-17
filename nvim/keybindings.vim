@@ -30,10 +30,6 @@ nmap <silent> <leader>te :term<CR>
 " Exit from terminal mode to Normal
 tnoremap <C-e> <C-\><C-n>
 
-" for choosing in popup menu via <C-j> and <C-k>
-inoremap <expr> <C-j> pumvisible() ? "\<C-N>" : "\<C-j>"
-inoremap <expr> <C-k> pumvisible() ? "\<C-P>" : "\<C-k>"
-
 " alias for git diffs
 nmap <leader>gdg :diffget<CR>
 nmap <leader>gdp :diffput<CR>
