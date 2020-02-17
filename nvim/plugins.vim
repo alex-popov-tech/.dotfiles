@@ -105,7 +105,6 @@ Plug 'mhinz/vim-startify'
 " Automatically save the session when leaving Vim
 let g:sessionsdir = '~/.vim/sessions/'
 function MakeSession()
-  " echo 'called'
   if &ft != 'gitcommit'
     exe "!mkdir -p " . g:sessionsdir
     let b:projectpath = finddir('.git/..', expand('%:p:h').';')
@@ -134,6 +133,7 @@ autocmd VimEnter *
       \ | endif
 " do not show 'edit' and 'quit' options
 let g:startify_enable_special = 0
+let g:startify_custom_indices = [ 'a', 's', 't', 'g', 'y', 'n', 'e', 'o', 'i', 'q', 'd', 'r', 'w', 'f', 'u', 'p']
 " add\update\remove surround stuff like '"{[]}"'
 Plug 'tpope/vim-surround'
 " add text objects like in ,, .. {} () etc.
