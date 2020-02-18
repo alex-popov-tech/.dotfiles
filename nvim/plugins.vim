@@ -155,7 +155,9 @@ function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+" confirm by <enter>
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() :
+                                           \"\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 " show list of yanks with preview
 nmap <leader>y :CocList --auto-preview --normal yank<CR>
 " Navigate interpreter/compiler/linter errors
