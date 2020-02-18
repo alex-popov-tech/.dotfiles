@@ -29,12 +29,6 @@ nmap Y y$
 nmap <silent> <leader>te :term<CR>
 " Exit from terminal mode to Normal
 tnoremap <C-e> <C-\><C-n>
-
-" alias for git diffs
-nmap <leader>gdg :diffget<CR>
-nmap <leader>gdp :diffput<CR>
-xmap <leader>gdg :diffget<CR>
-xmap <leader>gdp :diffput<CR>
-
+" splits
 nmap <leader>s :split<CR>
 nmap <leader>v :vsplit<CR>
