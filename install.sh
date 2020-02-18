@@ -125,6 +125,7 @@ function software() {
     boom-3d \
     karabiner-elements \
     intellij-idea-ce \
+    contexts \
     expressvpn
 
 
