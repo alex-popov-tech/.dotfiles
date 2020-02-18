@@ -32,72 +32,6 @@ let g:fzf_buffers_jump = 1
 command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--preview', '~/.config/nvim/plugged/fzf.vim/bin/preview.sh {}']}, <bang>0)
 command! -bang -nargs=? -complete=dir GFiles call fzf#vim#gitfiles(<q-args>, {'options': ['--layout=reverse', '--preview', '~/.config/nvim/plugged/fzf.vim/bin/preview.sh {}']}, <bang>0)
 command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, '', fzf#vim#with_preview(), <bang>0)
-
-" file tree buffer
-Plug 'scrooloose/nerdtree'
-" do not save to session empty window (nerd tree sidebar is the case)
-set sessionoptions-=blank
-" toggle file tree
-nmap <C-f> :NERDTreeToggle <bar> :NERDTreeRefreshRoot <CR>
-" disable help menu at the top
-let NERDTreeMinimalUI = 1
-" delete buffer on delete file from tree
-let NERDTreeAutoDeleteBuffer = 1
-" close tree on file open
-let NERDTreeQuitOnOpen = 1
-" configure sidebar size
-let NERDTreeWinSize = 20
-" self explanatory
-let g:NERDTreeWinPos = "right"
-" self explanatory
-let NERDTreeShowHidden = 1
-" add icons for tree folders
-let g:NERDTreeDirArrowExpandable = '►'
-let g:NERDTreeDirArrowCollapsible = '▼'
-" close vim if last window
-autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
-
-" Close all open buffers on entering a window if the only
-" buffer that's left is the NERDTree buffer
-function! s:CloseIfOnlyNerdTreeLeft()
-  if exists("t:NERDTreeBufName")
-    if bufwinnr(t:NERDTreeBufName) != -1
-      if winnr("$") == 1
-        call MakeSession()
-        q
-      endif
-    endif
-  endif
-endfunction
-" show git status of files in nerd tree
-Plug 'Xuyuanp/nerdtree-git-plugin'
-" icons for git marks in tree
-let g:NERDTreeIndicatorMapCustom = {
-      \ "Modified"  : "●",
-      \ "Staged"    : "✔",
-      \ "Untracked" : "✭",
-      \ "Renamed"   : "➜",
-      \ "Unmerged"  : "❗",
-      \ "Deleted"   : "✖",
-      \ "Dirty"     : "~",
-      \ "Clean"     : "✔︎",
-      \ 'Ignored'   : '☒',
-      \ "Unknown"   : "❓"
-      \ }
-" show added\updated lines to the left of line number
-nmap <leader>gs :Gstatus <CR>
-" git add current file
-nmap <leader>gw :Gwrite <CR>
-" git checkout current file
-nmap <leader>gr :Gread <CR>
-" git commit
-nmap <leader>gc :Gcommit <CR>
-" git log for all files
-nmap <leader>gla :Glog -- <CR>
-" show differences for current buffer
-nmap <leader>gdf :Gdiff <CR>
-" git push
-nmap <leader>gp :Gpush <CR>
 " allows repeat via dot for some plugins like surround
 Plug 'tpope/vim-repeat'
 " start screen for nvim
@@ -125,12 +59,7 @@ let g:startify_lists = [
 " use vsc root when enter file
 let g:startify_change_to_vcs_root = 1
 " open startify along with nerdtree
-autocmd VimEnter *
-      \   if !argc()
-      \ |   Startify
-      \ |   NERDTree
-      \ |   wincmd w
-      \ | endif
+autocmd VimEnter * if !argc() | Startify | endif
 " do not show 'edit' and 'quit' options
 let g:startify_enable_special = 0
 let g:startify_custom_indices = [ 'a', 's', 't', 'g', 'y', 'n', 'e', 'o', 'i', 'q', 'd', 'r', 'w', 'f', 'u', 'p']
@@ -267,6 +196,8 @@ function! s:show_documentation()
     call CocAction('doHover')
   endif
 endfunction
+" toggle explorer
+nmap <C-f> :CocCommand explorer --toggle --file-columns=diagnosticError:git:selection:clip:indent:icon:filename;filename;fullpath;size;modified;readonly;created;modified;accessed<CR>
 " working with tags, integrated with coc.nvim
 Plug 'liuchengxu/vista.vim'
 " show sidebar
@@ -315,9 +246,6 @@ let g:airline#extensions#whitespace#enabled = 0
 " enable extra cool font liguries
 let g:airline_powerline_fonts = 1
 " special status line for nerd tree buffer
-let g:airline_filetype_overrides = {
-      \ 'nerdtree': [ get(g:, 'NERDTreeStatusline', 'NERD'), '' ],
-      \ }
 Plug 'vim-airline/vim-airline-themes'
 
 " some cool themes
