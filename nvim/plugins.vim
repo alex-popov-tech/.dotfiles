@@ -111,6 +111,7 @@ Plug 'svermeulen/vim-subversive'
 nmap s <plug>(SubversiveSubstitute)
 nmap ss <plug>(SubversiveSubstituteLine)
 nmap S <plug>(SubversiveSubstituteToEndOfLine)
+Plug 'jiangmiao/auto-pairs'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = [
       \ 'coc-word',
@@ -122,7 +123,6 @@ let g:coc_global_extensions = [
       \ 'coc-tabnine',
       \ 'coc-spell-checker',
       \ 'coc-cspell-dicts',
-      \ 'coc-pairs',
       \ 'coc-marketplace',
       \ 'coc-explorer',
       \ 'coc-git',
