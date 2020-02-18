@@ -1,0 +1,9 @@
+# Insert your preferred key mappings here.
+map y scrollLeft
+map hh copyCurrentUrl
+map n scrollDown
+map j performFind
+map e scrollUp
+map o scrollRight
+map l Vomnibar.activate
+map L Vomnibar.activateInNewTab
