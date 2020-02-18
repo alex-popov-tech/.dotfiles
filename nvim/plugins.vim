@@ -169,10 +169,6 @@ nmap <C-g>r <Plug>(coc-references)
 nmap <leader>rn <Plug>(coc-rename)
 " refactor current word
 nmap <leader>rf <Plug>(coc-refactor)
-" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
-xmap <leader>l  <Plug>(coc-codeaction-selected)
-nmap <leader>l  <Plug>(coc-codeaction-selected)
-nmap <leader>ll  <Plug>(coc-codeaction)
 " Use <TAB> for select selections ranges, needs server support, like: coc-tsserver, coc-python
 nmap <silent> <TAB> <Plug>(coc-range-select)
 xmap <silent> <TAB> <Plug>(coc-range-select)
@@ -182,10 +178,10 @@ xmap af <Plug>(coc-funcobj-a)
 omap if <Plug>(coc-funcobj-i)
 omap af <Plug>(coc-funcobj-a)
 " format and optimize imports
-nmap <leader>F call Format()
+nmap <leader>F :call Format()<CR>
 function! Format()
-  call CocAction('format')
-  call CocAction('runCommand', 'editor.action.organizeImport')
+  :call CocAction('format')
+  :call CocAction('runCommand', 'editor.action.organizeImport')
 endfunction
 " Use K for show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -198,6 +194,20 @@ function! s:show_documentation()
 endfunction
 " toggle explorer
 nmap <C-f> :CocCommand explorer --toggle --file-columns=diagnosticError:git:selection:clip:indent:icon:filename;filename;fullpath;size;modified;readonly;created;modified;accessed<CR>
+function! s:cocActionsOpenFromSelected(type) abort
+  execute 'CocCommand actions.open ' . a:type
+endfunction
+" Remap for do codeAction of selected region
+xmap <silent> <leader>f :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
+" remap for do codeaction for <leader>f<motion>
+nmap <silent> <leader>f :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@
+" alias for previos - current line
+nmap <silent> <leader>ff :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>0g@$
+" navigate chunks of current buffer
+nmap [g <Plug>(coc-git-prevchunk)
+nmap ]g <Plug>(coc-git-nextchunk)
+" show chunk diff at current position
+nmap gd <Plug>(coc-git-chunkinfo)
 " working with tags, integrated with coc.nvim
 Plug 'liuchengxu/vista.vim'
 " show sidebar

@@ -3,39 +3,32 @@
 * `<C-j/k/l/p>` - move between buffers/split
 * `<C-e>/<C-d>` - scroll down
 * `<C-y>/<C-u>` - scroll up
-* `<C-q>`/`<C-Q>` - write and close current/all buffers
+* `<C-q>`/`<leader>q` - write and close current/all buffers
+* `<C-d>`/`<leader>d` - write and delete current/all buffers
+* `<number><CR>` - go to `<number>` line
+* `Y` - yank till the end of line
+* `<leared>s`/`<leader>v` - horizontal/vertical split
 * folding
   * `zo` - opens folds
   * `zc` - closes fold
   * `zm` - increases auto fold depth
   * `zr` - reduces auto fold depth
-* `<C-j>`/`<C-k>` - navigate through quicklist/popup/etc
-* `<leader>gdg` - alias for :diffget
-* `<leader>gdp` - alias for :diffput
-* `<C-e>` - exit from integrated terminal interaction mode
 
 ## Plugins
-
-### File System
-
-* [scroloose/nerdtree](https://github.com/scrooloose/nerdtree)
-  * `<leader>ft` - show/hide file tree + refresh
-  * `<leader>fc` - show current file in file tree + refresh
 
 ### Text Objects, Surround
 
 * [wellle/targets.vim](https://github.com/wellle/targets.vim/blob/master/cheatsheet.md)
 * [michaeljsmith/vim-indent-object](https://github.com/michaeljsmith/vim-indent-object#usage)
 * [tpope/vim-surround](https://github.com/tpope/vim-surround)
+* `il/al` - line text object
 
 ### Search
 
 * [junegunn/fzf](https://github.com/junegunn/fzf)
-  * `<leader>/F` - find file
-  * `<leader>/gf` - find file under git
-  * `<leader>/gc` - find commit
-  * `<leader>/fc` - find text in files
-  * `<C-x>` / `<C-v>` - to open selected file in horizontal or vertical splits
+  * `<C-/>f` - find file
+  * `<C-/>g` - find file under git
+  * `<C-/>c` - find text in files
 * [haya14busa/incsearch.vim](https://github.com/haya14busa/incsearch.vim)
   * `/`/`?` - search next/previos/leave to highlight
   * `*`/`#` - search for current word next/previos
@@ -50,13 +43,14 @@
 * [AndrewRadev](https://github.com/AndrewRadev/switch.vim)
   * `-` - toggle switch
 * [neoclide/coc.nvim](https://github.com/neoclide/coc.nvim)
+  * `<C-f>` - toggle explorer
   * `<TAB>` - visual blocks of text
-  * `<C-z>` - trigger autocompletion (`tab` to navigate)
+  * `<C-z>` - trigger autocompletion (`tab/<S-tab>` to navigate)
   * `<leader>y` - latest yanks
   * `<leader>e` - show diagnostics errors
   * `<leader>F` - coc-formate-and-organize-imports
-  * `<leader>ll` - call codeaction prompt for single line
-  * `<leader>l<motion>` - call codeaction prompt for `<motion>`
+  * `<leader>ff` - call codeaction prompt for single line
+  * `<leader>f<motion>` - call codeaction prompt for `<motion>`
   * `<leader>rn` - rename current word
   * `<leader>rf` - refactor current word
   * `K` - on hover show documentation
@@ -64,6 +58,8 @@
   * `<C-g>y` - coc-type-definition
   * `<C-g>i` - coc-implementation
   * `<C-g>r` - coc-references
+  * `[g`/`]g` - previous/next git chunk
+  * `gd` - chunk diff info
 * [liuchengxu/vista.vim](https://github.com/liuchengxu/vista.vim)
   * `<leader>ta` - toggle tags sidebar
   * `<leader>/ta` - fuzzy search tags
@@ -88,56 +84,7 @@ normal mode by pressing `v` and use normal commands there.
   * `[e`/`]e` - exchange current line with [count] lines above/below it
   * `[p`/`]p` - paste on previos/next line
 * [svermeulen/vim-subversive](https://github.com/svermeulen/vim-subversive)
-  * `<leader>p<motion>` - subversive substitute (replace 'motion' with yanked chunk)
-  * `<leader>pp` - subversive substitute line
-  * `<leader>P` - subversive substitute to the EOL
+  * `s<motion>` - subversive substitute (replace 'motion' with yanked chunk)
+  * `ss` - subversive substitute line
+  * `S` - subversive substitute to the EOL
 
-### Other
-
-* [iamcco/markdown-preview](https://github.com/iamcco/markdown-preview.nvim)
-  * `:MarkdownPreview` - to open preview of current buffer md
-  * `:MarkdownPreviewStop` - to close preview
-
-### Git
-
-* [tpope/vim-fugitive](https://github.com/tpope/vim-fugitive)
-  * `<leader>gw`/`:Git add %` === `:Gwrite` - writes changes in working copy to index
-  * `<leader>gr`/`:Git checkout %` === `:Gread` - reads index to working copy
-  * `<leader>gc`/`:Git commit %` === `:Gcommit`
-  * `<leader>gs`/`:Gstatus` - interactive git status with ability to stage changes:
-  * `<leader>gla`/`:Glog --`, `<leader>gl`/`:0Glog` - show history in quicklist and
-current buffer for all files or current file
-    * use `-<NUMBER>` - flag to limit output commits
-    * use `--reverse` - to load in reverse chronological order
-    * use `until=<DAY>` - to limit by date (f.e. `yesterday`)
-    * use `-S<PATTERN>` - to search for `<PATTERN>` diff for
-each commit (f.e. `:Glog -Sfindme --`)
-  * `<leader>gdf`/`:Gdiff`, `:Gvdiff`, `:Gsdiff` - show interactive diffs:
-    * `:Gwrite` and `:Gread` - also work for diffbuff
-(writes/takes all changes from other diffbuff)
-  * `:Git` - alternative to usual git, with some autocompletion
-  * `:Git rm %` === `Gremove`
-  * `:Git mv % target_path` === `:Gmove target_path`
-  * Mappings
-    * Staging and resetting
-      * `s`/`u` - stage/unstage the file or hunk under the cursor
-      * `-` - toggle stage/unstage file or hunk
-      * `X` - discard change
-      * `=` - toggle inline diff
-      * `dd` - to view diffs
-      * `P` - run `git add --patch` for file under the cursor (interactive `git add`)
-    * Navigation
-      * `<CR>` - open file under the cursor
-      * `o` - open file under the cursor in new split
-      * `gO` - open file under the cursor in new vertical split
-      * `C` - open the commit containing the current file
-    * Commit
-      * `cc` - create a commit
-      * `ca` - amend the last commit and edit the message
-      * `ce` - amend the last commit without editing the message
-      * `cw` - reword the last commit
-
-<p align="center"><img src="files/3-way-reconciliation.png" /></p>
-<p align="center"><img src="files/diffget-diffput-matrix.png" /></p>
-<p align="center"><img src="files/Gread-Gwrite-matrix.png" /></p>
-<p align="center"><img src="files/index-lifecycle.png" /></p>
