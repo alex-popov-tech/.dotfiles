@@ -1,11 +1,5 @@
 "enabme yank/paste to/from system clipboard
-if has("clipboard")
-  set clipboard=unnamed
-  if has("unnamedplus")
-    set clipboard+=unnamedplus
-  endif
-endif
-
+set clipboard+=unnamedplus
 " to visually select and copy from vim without line numbers
 if has('mouse')
   set mouse=a
