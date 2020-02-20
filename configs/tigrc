@@ -1,3 +1,7 @@
+bind generic n move-down
+bind generic j find-next
+bind generic e move-up
+bind generic k edit
 bind generic > !git push %(remote) %(branch)
 bind generic P !git pull --rebase origin %(branch)
 bind diff H !sh -c "tig \"$(git rev-parse --show-toplevel)/%(file)\""
