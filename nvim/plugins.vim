@@ -195,7 +195,12 @@ function! s:show_documentation()
   endif
 endfunction
 " toggle explorer
-nmap <C-f> :CocCommand explorer --toggle --file-columns=diagnosticError:git:selection:clip:indent:icon:filename;filename;fullpath;size;modified;readonly;created;modified;accessed<CR>
+let a = coc_explorer#command#generate({
+    \ 'toggle': v:true,
+    \ 'file-child-template': '[git | 2] [selection | clip | 1] [indent][icon | 1] [filename growRight 1 omitCenter 1][modified]',
+    \ 'file-child-labeling-template': '[fullpath][size][modified][readonly]',
+    \ }, '/root/path')
+nmap <C-f> :execute a<CR>
 function! s:cocActionsOpenFromSelected(type) abort
   execute 'CocCommand actions.open ' . a:type
 endfunction
