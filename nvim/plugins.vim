@@ -62,7 +62,6 @@ let g:startify_change_to_vcs_root = 1
 autocmd VimEnter * if !argc() | Startify | endif
 " do not show 'edit' and 'quit' options
 let g:startify_enable_special = 0
-let g:startify_custom_indices = [ 'a', 's', 't', 'g', 'y', 'n', 'e', 'o', 'i', 'q', 'd', 'r', 'w', 'f', 'u', 'p']
 " add\update\remove surround stuff like '"{[]}"'
 Plug 'tpope/vim-surround'
 " add text objects like in ,, .. {} () etc.
@@ -128,7 +127,6 @@ let g:coc_global_extensions = [
       \ 'coc-git',
       \ 'coc-sh'
       \]
-" CocCommand explorer --toggle --file-columns=diagnosticError:git:selection:clip:indent:icon:filename;filename;fullpath;size;modified;readonly;created;modified;accessed
 " if hidden is not set, TextEdit might fail.
 " when closes buffer, it hides instead of being abandoned
 set hidden
