@@ -197,8 +197,8 @@ function neovim() {
 
   brew install shellcheck the_silver_searcher
   gem install neovim solargraph
-  pip install neovim
-  pip3 install neovim python-language-server pylint
+  pip install neovim pynvim
+  pip3 install neovim python-language-server pylint pynvim
   yarn install -g neovim write-good markdownlint-cli eslint
 
 
