@@ -7,7 +7,7 @@
 * `<C-d>`/`<leader>d` - write and delete current/all buffers
 * `<number><CR>` - go to `<number>` line
 * `Y` - yank till the end of line
-* `<leared>s`/`<leader>v` - horizontal/vertical split
+* `<leared>h`/`<leader>v` - horizontal/vertical split
 * folding
   * `zo` - opens folds
   * `zc` - closes fold
@@ -40,7 +40,9 @@
 
 ### Code navigate/refactor
 
-* [AndrewRadev](https://github.com/AndrewRadev/switch.vim)
+* [AndrewRadev/splitjoin.vim](https://github.com/AndrewRadev/splitjoin.vim)
+  * `<leader>s`/`<leader>j` - split/join at current place
+* [AndrewRadev/switch.vim](https://github.com/AndrewRadev/switch.vim)
   * `-` - toggle switch
 * [neoclide/coc.nvim](https://github.com/neoclide/coc.nvim)
   * `<C-f>` - toggle explorer

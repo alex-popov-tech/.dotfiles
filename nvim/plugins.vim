@@ -208,6 +208,12 @@ nmap [g <Plug>(coc-git-prevchunk)
 nmap ]g <Plug>(coc-git-nextchunk)
 " show chunk diff at current position
 nmap gd <Plug>(coc-git-chunkinfo)
+" toggle join/split for args, dicts, ecs.
+Plug 'AndrewRadev/splitjoin.vim'
+let g:splitjoin_split_mapping = ''
+let g:splitjoin_join_mapping = ''
+nmap <Leader>j :SplitjoinJoin<cr>
+nmap <Leader>s :SplitjoinSplit<cr>
 " working with tags, integrated with coc.nvim
 Plug 'liuchengxu/vista.vim'
 " show sidebar
