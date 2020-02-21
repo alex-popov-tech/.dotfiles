@@ -36,7 +36,7 @@ function managers() {
   cd $HOME/.asdf || exit
   git checkout "$(git describe --abbrev=0 --tags)"
   cd -- || exit
-
+  source $HOME/.asdf/asdf.sh
 }
 
 function langs() {
