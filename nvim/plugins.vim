@@ -193,12 +193,7 @@ function! s:show_documentation()
   endif
 endfunction
 " toggle explorer
-let a = coc_explorer#command#generate({
-    \ 'toggle': v:true,
-    \ 'file-child-template': '[git | 2] [selection | clip | 1] [indent][icon | 1] [filename growRight 1 omitCenter 1][modified]',
-    \ 'file-child-labeling-template': '[fullpath][size][modified][readonly]',
-    \ }, '/root/path')
-nmap <C-f> :execute a<CR>
+nmap <C-f> :CocCommand explorer<CR>
 function! s:cocActionsOpenFromSelected(type) abort
   execute 'CocCommand actions.open ' . a:type
 endfunction
