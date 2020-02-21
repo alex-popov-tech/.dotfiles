@@ -19,10 +19,11 @@
   "git.changeRemovedSign.hlGroup": "GitGutterChange",
 
   "explorer.icon.enableNerdfont": true,
-  "explorer.position": "right",
   "explorer.quitOnOpen": true,
   "explorer.previewAction.onHover": true,
   "explorer.file.showHiddenFiles": true,
+  "explorer.position": "floating",
+  "explorer.floating.width": -40,
 
   "diagnostic-languageserver.filetypes": {
     "markdown": [

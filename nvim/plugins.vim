@@ -149,13 +149,13 @@ inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 " confirm by <enter>
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() :
-                                           \"\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
 " show list of yanks with preview
 nmap <leader>y :CocList --auto-preview --normal yank<CR>
 " Navigate interpreter/compiler/linter errors
@@ -193,7 +193,12 @@ function! s:show_documentation()
   endif
 endfunction
 " toggle explorer
-nmap <C-f> :CocCommand explorer<CR>
+nmap <C-f> :CocCommand explorer --preset default<CR>
+let g:coc_explorer_global_presets = {
+\   'default': {
+\     'file.child.template': '[git | 2] [selection | clip | 1] [indent][icon | 1] [diagnosticError & 1][filename omitCenter 1][readonly] [linkIcon & 1][link growRight 1 omitCenter 5][size]'
+\   }
+\ }
 function! s:cocActionsOpenFromSelected(type) abort
   execute 'CocCommand actions.open ' . a:type
 endfunction
