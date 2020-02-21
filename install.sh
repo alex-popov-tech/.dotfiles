@@ -133,6 +133,7 @@ function software() {
   mas lucky Clocker
   mas lucky Keynote
   mas lucky Pages
+  mas lucky Wide
 
 }
 
