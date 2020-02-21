@@ -230,6 +230,11 @@ let g:vista_fzf_preview = ['right:50%']
 Plug 'christoomey/vim-tmux-navigator'
 " Write all buffers before navigating from Vim to tmux pane
 let g:tmux_navigator_save_on_switch = 2
+let g:tmux_navigator_no_mappings = 1
+nnoremap <silent> <C-y> :TmuxNavigateLeft<cr>
+nnoremap <silent> <C-n> :TmuxNavigateDown<cr>
+nnoremap <silent> <C-e> :TmuxNavigateUp<cr>
+nnoremap <silent> <C-o> :TmuxNavigateRight<cr>
 " lint whitespaces
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'sheerun/vim-polyglot'

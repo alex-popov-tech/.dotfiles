@@ -27,5 +27,5 @@ nmap <silent> <leader>te :term<CR>
 " Exit from terminal mode to Normal
 tnoremap <C-e> <C-\><C-n>
 " splits
-nmap <leader>s :split<CR>
+nmap <leader>h :split<CR>
 nmap <leader>v :vsplit<CR>
