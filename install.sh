@@ -117,16 +117,13 @@ function software() {
     tunnelblick \
     flux \
     toggl \
-    blockblock \
-    teamviewer \
     ledger-live \
     vanilla \
     arduino \
     boom-3d \
     karabiner-elements \
-    intellij-idea-ce \
     contexts \
-    expressvpn
+    blockblock
 
 
   mas lucky Magnet
