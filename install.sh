@@ -123,6 +123,7 @@ function software() {
     boom-3d \
     karabiner-elements \
     contexts \
+    keybase \
     blockblock
 
 
