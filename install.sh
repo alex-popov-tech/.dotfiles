@@ -143,8 +143,8 @@ function terminal() {
   echo "|        Installing Terminal        |"
   echo "+-----------------------------------+"
 
-  brew tap caskroom/fonts
-  brew cask install iterm2 font-hack-nerd-font font-fira-code
+  brew tap homebrew/cask-fonts
+  brew cask install iterm2 font-hack-nerd-font font-fira-code font-jetbrains-mono
 
   # link iterm2 profile
   ITERM_PROFILES_PATH="$HOME/Library/Application Support/iTerm2/DynamicProfiles"
