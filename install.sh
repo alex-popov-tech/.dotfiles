@@ -212,7 +212,7 @@ function neovim() {
   ln -fvs $DPATH/nvim/ui.vim $HOME/.config/nvim/ui.vim
   ln -fvs $DPATH/nvim/coc-settings.json $HOME/.config/nvim/coc-settings.json
 
-  nvim --headless +PluginInstall +qa
+  nvim --headless +PlugInstall +qa
 
 }
 
