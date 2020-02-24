@@ -13,7 +13,7 @@ then
 
   export LC_ALL=en_US.UTF-8 && tar -cf - ./keybase | gzip | $gpg --encrypt -r alex.popov.tech@gmail.com > "./$filename"
   rm -rf ./keybase
-  scp "./$filename" "admin@192.168.31.1:/media/Main/"
+  scp "./$filename" "router:/media/Main/"
   $keybase fs write "/keybase/public/alex_popov_tech/$filename" < "./$filename"
   rm "./$filename"
   # to download and decrypt
