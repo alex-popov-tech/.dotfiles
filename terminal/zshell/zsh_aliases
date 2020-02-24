@@ -1,5 +1,4 @@
 # Shortcuts
-alias Db="cd $HOME/Dropbox"
 alias Dl="cd $HOME/Downloads"
 alias Dt="cd $HOME/Desktop"
 alias Dc="cd $HOME/Documents"
@@ -24,10 +23,15 @@ alias map="xargs -n1"
 alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v extension-process | tr -s ' ' | cut -d ' ' -f2 | xargs kill"
 # Other
 alias n="nvim"
+
 alias t="tig"
 alias ts="tig status"
+
 alias grep="rg"
+
 alias find="fd"
+
 alias ...="cd ../.."
 alias ....="cd ../../.."
+
 alias c="clear"
