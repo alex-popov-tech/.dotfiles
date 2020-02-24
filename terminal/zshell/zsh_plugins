@@ -12,7 +12,6 @@ zplugin snippet OMZ::plugins/vi-mode/vi-mode.plugin.zsh
 zplugin light MichaelAquilina/zsh-you-should-use
 export YSU_HARDCORE=1
 zplugin light zdharma/fast-syntax-highlighting
-zplugin light b4b4r07/enhancd
 zplugin ice as"command" from"gh-r" mv"fd* -> fd" pick"fd/fd" lucid
 zplugin light sharkdp/fd
 zplugin ice as"command" from"gh-r" mv"bat* -> bat" pick"bat/bat" lucid
