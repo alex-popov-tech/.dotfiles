@@ -106,7 +106,7 @@ function software() {
     prettyping \
     mas \
     fd \
-    the_silver_searcher ripgrep
+    the_silver_searcher ripgrep fzf
 
   gem install colorls
 
