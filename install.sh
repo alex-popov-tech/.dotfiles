@@ -120,6 +120,7 @@ function software() {
     steam \
     docker \
     telegram skype zoom \
+    telegram slack skype zoom \
     vlc \
     tunnelblick \
     flux \
