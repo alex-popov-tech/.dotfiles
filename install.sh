@@ -159,6 +159,14 @@ function terminal() {
   # fix colors
   tic $DPATH/terminal/xterm-256color-italic.terminfo
 
+  echo "+-------------------------------+"
+  echo "|       Installing Ranger       |"
+  echo "+-------------------------------+"
+  brew install ranger
+  mkdir -p $HOME/.config/ranger/plugins
+
+  git clone https://github.com/alexanderjeurissen/ranger_devicons ~/.config/ranger/plugins/ranger_devicons
+  ln -fsv $DPATH/configs/rc.conf $HOME/.config/ranger/rc.conf
 
   echo "+-------------------------------+"
   echo "|        Installing Tmux        |"
@@ -188,6 +196,7 @@ function terminal() {
   ln -fsv $DPATH/terminal/zshell/zsh_langs $HOME/.zsh_langs
   ln -fsv $DPATH/terminal/zshell/zsh_commands $HOME/.zsh_commands
   ln -fsv $DPATH/terminal/zshell/zshrc $HOME/.zshrc
+
 }
 
 function neovim() {

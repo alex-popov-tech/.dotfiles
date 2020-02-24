@@ -27,6 +27,8 @@ alias n="nvim"
 alias t="tig"
 alias ts="tig status"
 
+alias r="ranger"
+
 alias grep="rg"
 
 alias find="fd"
