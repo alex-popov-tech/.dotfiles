@@ -119,9 +119,9 @@ function software() {
     dropbox \
     steam \
     docker \
-    telegram skype zoom \
     telegram slack skype zoom \
     vlc \
+    tidal \
     tunnelblick \
     flux \
     toggl \
@@ -139,7 +139,6 @@ function software() {
   mas lucky Clocker
   mas lucky Keynote
   mas lucky Pages
-  mas lucky Wide
 
 }
 
