@@ -8,9 +8,9 @@ fi
 # zmodload zsh/zprof
 source $HOME/.zsh_env
 source $HOME/.zsh_prompt
-source $HOME/.zsh_plugins
 source $HOME/.zsh_settings
 source $HOME/.zsh_langs
+source $HOME/.zsh_plugins
 source $HOME/.zsh_aliases
 source $HOME/.zsh_functions
 
