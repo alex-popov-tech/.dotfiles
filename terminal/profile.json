@@ -8,6 +8,7 @@
       "Normal Font" : "JetBrainsMono-Regular 16",
       "Terminal Type": "xterm-256color-italic",
       "Non Ascii Font" : "HackNerdFontComplete-Regular 16",
+      "Draw Powerline Glyphs" : true,
       "Vertical Spacing" : 1.2,
       "Background Image Location": "\/Users\/alexanderpopov\/.dotfiles\/files\/terminal_background.png",
       "Use Italic Font": true,
