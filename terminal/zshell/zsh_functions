@@ -28,9 +28,8 @@ function git_current_branch() {
   echo ${ref#refs/heads/}
 }
 
-# Launch nvim in folder
-function zn() {
-  z $1;
-  shift;
-  nvim $@;
+# workaround to resolve 'is not tty' issue
+function gpg() {
+  export GPG_TTY=$(tty)
+  /usr/local/bin/gpg "$@"
 }
