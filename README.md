@@ -54,6 +54,7 @@ otherwise there will be warning while installation
 ### TODO
 
 * define some aliases fow split and resize tmux/neovim
+* add WireGuard installation
 * rewrite time tracking alfred plugin to be able to start timer for project without searchin for them
 * suggested [software](https://github.com/jaywcjlove/awesome-mac)
   * [better touch tool](https://folivora.ai)
