@@ -78,6 +78,13 @@ function langs() {
   asdf install ruby 2.7.0
   asdf global ruby 2.7.0
 
+  echo "+------------------------------+"
+  echo "|        Installing Lua        |"
+  echo "+------------------------------+"
+  asdf plugin-add lua
+  asdf install lua 5.3.5
+  asdf global lua 5.3.5
+
   asdf reshim
 }
 
