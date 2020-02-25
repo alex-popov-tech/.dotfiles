@@ -27,9 +27,3 @@ function git_current_branch() {
   fi
   echo ${ref#refs/heads/}
 }
-
-# workaround to resolve 'is not tty' issue
-function gpg() {
-  export GPG_TTY=$(tty)
-  /usr/local/bin/gpg "$@"
-}
