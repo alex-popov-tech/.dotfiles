@@ -24,16 +24,16 @@ enum { WORKMAN, PURPLE };
 // *INDENT-OFF*
 KEYMAPS(
   [WORKMAN] = KEYMAP_STACKED (
-    XXX,       Key_F1, Key_F2, Key_F3, Key_F4, Key_F5, Key_VolumeDown,
-    Key_Tab,   Key_Q,  Key_D,  Key_R,  Key_W,  Key_B,  Key_Tab,
-    Key_Minus, Key_A,  Key_S,  Key_H,  Key_T,  Key_G,
-    XXX,       Key_Z,  Key_X,  Key_M,  Key_C,  Key_V,  Key_F11,
+    XXX,     Key_F1, Key_F2, Key_F3, Key_F4, Key_F5, Key_VolumeDown,
+    XXX,     Key_Q,  Key_D,  Key_R,  Key_W,  Key_B,  XXX,
+    Key_Tab, Key_A,  Key_S,  Key_H,  Key_T,  Key_G,
+    XXX,     Key_Z,  Key_X,  Key_M,  Key_C,  Key_V,  Key_F11,
     Key_Backspace, Key_Enter, LSHIFT(Key_LeftBracket), Key_LeftBracket,
     Key_LeftShift,
 
     Key_VolumeUp, Key_F6, Key_F7, Key_F8,     Key_F9,      Key_F10,   XXX,
-    Key_Tab,      Key_J,  Key_F,  Key_U,      Key_P,       Key_Quote, Key_Tab,
-                  Key_Y,  Key_N,  Key_E,      Key_O,       Key_I,     Key_Equals,
+    XXX,          Key_J,  Key_F,  Key_U,      Key_P,       Key_Quote, XXX,
+                  Key_Y,  Key_N,  Key_E,      Key_O,       Key_I,     Key_Minus,
     Key_F12,      Key_K,  Key_L,  Key_Comma,  Key_Period,  Key_Slash, XXX,
     Key_RightBracket, LSHIFT(Key_RightBracket), Key_Escape, Key_Spacebar,
     Key_RightShift
@@ -48,7 +48,7 @@ KEYMAPS(
 
     XXX, XXX,           XXX,               XXX,                      XXX,              XXX,   XXX,
     XXX, Key_6,         Key_7,             Key_8,                    Key_9,            Key_0, XXX,
-         Key_LeftArrow, Key_DownArrow,     Key_UpArrow,              Key_RightArrow,   XXX,   XXX,
+         Key_LeftArrow, Key_DownArrow,     Key_UpArrow,              Key_RightArrow,   XXX,   Key_Equals,
     XXX, XXX,           LSHIFT(Key_0),     LSHIFT(Key_RightBracket), Key_RightBracket, XXX,   XXX,
     Key_Backspace, Key_Enter, Key_Escape, Key_Spacebar,
     Key_RightShift
@@ -77,10 +77,10 @@ void setup() {
   Kaleidoscope.setup();
 
   QUKEYS(
-    kaleidoscope::plugin::Qukey(WORKMAN, KeyAddr(0, 7), Key_LeftAlt),
+    kaleidoscope::plugin::Qukey(WORKMAN, KeyAddr(0, 7), Key_LeftControl),
     kaleidoscope::plugin::Qukey(WORKMAN, KeyAddr(1, 7), ShiftToLayer(PURPLE)),
     kaleidoscope::plugin::Qukey(WORKMAN, KeyAddr(2, 7), Key_LeftGui),
-    kaleidoscope::plugin::Qukey(WORKMAN, KeyAddr(3, 7), Key_LeftControl),
+    kaleidoscope::plugin::Qukey(WORKMAN, KeyAddr(3, 7), Key_LeftAlt),
 
     kaleidoscope::plugin::Qukey(WORKMAN, KeyAddr(3, 8), Key_RightAlt),
     kaleidoscope::plugin::Qukey(WORKMAN, KeyAddr(2, 8), Key_RightGui),
