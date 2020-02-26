@@ -17,6 +17,11 @@
 * NeoVim with bunch of plugins, color schemes and [cheatsheet](vim.md)
 ![screenhot1](files/nvim1.png)
 ![screenhot2](files/nvim2.png)
+* cron backups:
+  * ```
+      0 * * * * $HOME/.dotfiles/backup/mailOnErr.sh $HOME/.dotfiles/backup/lastpass.sh
+      0 * * * * $HOME/.dotfiles/backup/mailOnErr.sh $HOME/.dotfiles/backup/keybase.sh
+    ```
 
 ## Installation
 
@@ -51,6 +56,8 @@ otherwise there will be warning while installation
 
 * you can use Gruvbox theme instead of default Solarized Dark using import `./terminal/gruvbox-dark.itermcolors`
 
+## Useful links
+* how to configure `mail` for gmail on macos https://gist.github.com/giovanigenerali/39efe8760f84ed74b44a31be1ace27e7
 ### TODO
 
 * define some aliases fow split and resize tmux/neovim
