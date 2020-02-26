@@ -25,14 +25,14 @@ enum { WORKMAN, PURPLE };
 KEYMAPS(
   [WORKMAN] = KEYMAP_STACKED (
     XXX,       Key_F1, Key_F2, Key_F3, Key_F4, Key_F5, Key_VolumeDown,
-    XXX,       Key_Q,  Key_D,  Key_R,  Key_W,  Key_B,  Key_Tab,
+    Key_Tab,   Key_Q,  Key_D,  Key_R,  Key_W,  Key_B,  Key_Tab,
     Key_Minus, Key_A,  Key_S,  Key_H,  Key_T,  Key_G,
     XXX,       Key_Z,  Key_X,  Key_M,  Key_C,  Key_V,  Key_F11,
     Key_Backspace, Key_Enter, LSHIFT(Key_LeftBracket), Key_LeftBracket,
     Key_LeftShift,
 
     Key_VolumeUp, Key_F6, Key_F7, Key_F8,     Key_F9,      Key_F10,   XXX,
-    Key_Tab,      Key_J,  Key_F,  Key_U,      Key_P,       Key_Quote, XXX,
+    Key_Tab,      Key_J,  Key_F,  Key_U,      Key_P,       Key_Quote, Key_Tab,
                   Key_Y,  Key_N,  Key_E,      Key_O,       Key_I,     Key_Equals,
     Key_F12,      Key_K,  Key_L,  Key_Comma,  Key_Period,  Key_Slash, XXX,
     Key_RightBracket, LSHIFT(Key_RightBracket), Key_Escape, Key_Spacebar,
