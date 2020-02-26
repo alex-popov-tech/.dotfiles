@@ -241,6 +241,14 @@ nnoremap <silent> <C-y> :TmuxNavigateLeft<cr>
 nnoremap <silent> <C-n> :TmuxNavigateDown<cr>
 nnoremap <silent> <C-e> :TmuxNavigateUp<cr>
 nnoremap <silent> <C-o> :TmuxNavigateRight<cr>
+" resizing windows
+Plug 'talek/obvious-resize'
+let g:obvious_resize_default = 5
+let g:obvious_resize_run_tmux = 1
+noremap <silent> <C-Up> :<C-U>ObviousResizeUp<CR>
+noremap <silent> <C-Down> :<C-U>ObviousResizeDown<CR>
+noremap <silent> <C-Left> :<C-U>ObviousResizeLeft<CR>
+noremap <silent> <C-Right> :<C-U>ObviousResizeRight<CR>
 " lint whitespaces
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'sheerun/vim-polyglot'
