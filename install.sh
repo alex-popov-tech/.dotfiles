@@ -119,7 +119,7 @@ function software() {
     dropbox \
     steam \
     docker \
-    telegram slack skype zoom \
+    telegram slack skype zoomus \
     vlc \
     tidal \
     tunnelblick \
