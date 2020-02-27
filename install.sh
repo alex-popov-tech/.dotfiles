@@ -59,12 +59,10 @@ function langs() {
   echo "+-------------------------------+"
   echo "|        Installing Java        |"
   echo "+-------------------------------+"
+  brew install jq
   asdf plugin-add java
   asdf install java adopt-openjdk-8u232-b09_openj9-0.17.0
   asdf global java adopt-openjdk-8u232-b09_openj9-0.17.0
-  asdf plugin-add gradle
-  asdf install gradle 6.1-milestone-3
-  asdf global gradle 6.1-milestone-3
 
   echo "+---------------------------------+"
   echo "|        Installing Python        |"
