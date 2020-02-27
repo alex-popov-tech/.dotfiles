@@ -43,7 +43,9 @@
 
   "cSpellExt.enableDictionaries": ["russian"],
   "cSpell.language": "en,ru",
-  "cSpell.userWords": [
-    "solargraph"
+  "cSpell.enabledLanguageIds": [
+    "markdown",
+    "plaintext",
+    "yml"
   ]
 }
