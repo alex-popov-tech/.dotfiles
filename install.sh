@@ -32,6 +32,10 @@ function managers() {
   echo "+-------------------------------+"
   echo "|        Installing asdf        |"
   echo "+-------------------------------+"
+  brew install \
+    coreutils automake autoconf openssl \
+    libyaml readline libxslt libtool unixodbc \
+    unzip curl
   git clone https://github.com/asdf-vm/asdf.git $HOME/.asdf
   cd $HOME/.asdf || exit
   git checkout "$(git describe --abbrev=0 --tags)"
@@ -43,8 +47,7 @@ function langs() {
   echo "+---------------------------------+"
   echo "|        Installing NodeJS        |"
   echo "+---------------------------------+"
-  brew install coreutils
-  brew install gpg
+  brew install coreutils gpg
   asdf plugin-add nodejs
   bash $HOME/.asdf/plugins/nodejs/bin/import-release-team-keyring
   asdf install nodejs 13.6.0
