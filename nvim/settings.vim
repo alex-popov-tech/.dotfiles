@@ -18,7 +18,7 @@ set foldnestmax=10
 " don't fold by default
 set nofoldenable
 " when line is longer than the screen, it continues on the next line
-set wrap
+set nowrap
 " but do not break words, only 'by words'
 set linebreak
 " show relative line number
