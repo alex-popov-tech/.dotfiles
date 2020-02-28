@@ -78,7 +78,7 @@ endfunction
 
 " write session file
 function EnsureSession()
-  if &ft != 'gitcommit'
+  if &ft != 'gitcommit' || empty(&ft)
     call EnsureSessionsDirExists()
     let b:projectname = GetProjectNameFromPath()
     let b:filename = GetSessionNameForProject(b:projectname)
