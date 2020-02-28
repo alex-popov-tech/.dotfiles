@@ -29,3 +29,5 @@ tnoremap <C-e> <C-\><C-n>
 " splits
 nmap <leader>- :split<CR>
 nmap <leader>\| :vsplit<CR>
+" reload config
+nmap <leader>R :source ~/.dotfiles/nvim/init.vim<cr>
