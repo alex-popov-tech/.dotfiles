@@ -38,18 +38,6 @@ Plug 'tpope/vim-repeat'
 Plug 'mhinz/vim-startify'
 " Automatically save the session when leaving Vim
 let g:sessionsdir = '~/.vim/sessions/'
-function MakeSession()
-  if &ft != 'gitcommit'
-    exe "!mkdir -p " . g:sessionsdir
-    let b:projectpath = finddir('.git/..', expand('%:p:h').';')
-    let b:rawprojectpath = split(b:projectpath, '/')[-1]
-    let b:projectname = substitute(b:rawprojectpath, "\\.", "", "")
-    let b:filename = g:sessionsdir . b:projectname . '.vim'
-    exe "mksession! " . b:filename
-  endif
-endfunction
-autocmd VimLeave * call MakeSession()
-
 let g:startify_session_dir = g:sessionsdir
 let g:startify_lists = [
       \ { 'type': 'sessions',  'header': ['   Sessions']       },
@@ -58,10 +46,51 @@ let g:startify_lists = [
       \ ]
 " use vsc root when enter file
 let g:startify_change_to_vcs_root = 1
-" open startify along with nerdtree
-autocmd VimEnter * if !argc() | Startify | endif
 " do not show 'edit' and 'quit' options
 let g:startify_enable_special = 0
+
+function EnsureSessionsDirExists()
+  exe "!mkdir -p ". g:sessionsdir
+endfunction
+
+function GetProjectNameFromPath()
+  let b:projectpath = finddir('.git/..', expand('%:p:h').';')
+  let b:rawprojectpath = split(b:projectpath, '/')[-1]
+  let b:projectname = substitute(b:rawprojectpath, "\\.", "", "")
+  return b:projectname
+endfunction
+
+function GetSessionNameForProject(projectname)
+  return g:sessionsdir . a:projectname . '.vim'
+endfunction
+
+function MakeSession()
+  if &ft != 'gitcommit'
+    call EnsureSessionsDirExists()
+    let b:projectname = GetProjectNameFromPath()
+    let b:filename = GetSessionNameForProject(b:projectname)
+    exe "mksession! " . b:filename
+  endif
+endfunction
+
+" open startify along with nerdtree
+function OpenSessionOrStartify()
+  if !argc()
+    let b:projectname = GetProjectNameFromPath()
+    let b:projectsessionname = GetSessionNameForProject(b:projectname)
+    if !empty(glob(b:projectsessionname))
+      echo "session exists! opening..."
+      echo b:projectsessionname
+      exe "source " . b:projectsessionname
+      edit
+    else
+      echo "session not found, running startify..."
+    endif
+  endif
+endfunction
+
+autocmd VimLeave * call MakeSession()
+autocmd VimEnter * call OpenSessionOrStartify()
 " add\update\remove surround stuff like '"{[]}"'
 Plug 'tpope/vim-surround'
 " add text objects like in ,, .. {} () etc.
