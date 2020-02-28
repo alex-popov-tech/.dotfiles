@@ -1,9 +1,13 @@
 # Insert your preferred key mappings here.
 map y scrollLeft
+map Y goBack
 map hh copyCurrentUrl
 map n scrollDown
+map N previousTab
 map j performFind
 map e scrollUp
+map E nextTab
 map o scrollRight
+map O goForward
 map l Vomnibar.activate
 map L Vomnibar.activateInNewTab
