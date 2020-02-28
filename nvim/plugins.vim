@@ -53,6 +53,17 @@ function EnsureSessionsDirExists()
   exe "!mkdir -p ". g:sessionsdir
 endfunction
 
+" is current dir a git repo
+function IsGitRepository()
+  if !empty(glob('.git'))
+    return 1
+  else
+    return 0
+  endif
+endfunction
+
+" ~/.dotfiles -> .dotfiles
+" ~/Documents/selenidejs-webdriver-jasmine-example -> selenidejs-webdriver-jasmine-example
 function GetProjectNameFromPath()
   let b:projectpath = finddir('.git/..', expand('%:p:h').';')
   let b:rawprojectpath = split(b:projectpath, '/')[-1]
@@ -60,11 +71,13 @@ function GetProjectNameFromPath()
   return b:projectname
 endfunction
 
+" dotfiles -> ~/.vim/sessions/dotfiles.vim
 function GetSessionNameForProject(projectname)
   return g:sessionsdir . a:projectname . '.vim'
 endfunction
 
-function MakeSession()
+" write session file
+function EnsureSession()
   if &ft != 'gitcommit'
     call EnsureSessionsDirExists()
     let b:projectname = GetProjectNameFromPath()
@@ -73,25 +86,25 @@ function MakeSession()
   endif
 endfunction
 
-" open startify along with nerdtree
+" open session if exists, startify otherwise
 function OpenSessionOrStartify()
   if !argc()
-    let b:projectname = GetProjectNameFromPath()
-    let b:projectsessionname = GetSessionNameForProject(b:projectname)
-    if !empty(glob(b:projectsessionname))
-      echo "session exists! opening..."
-      echo b:projectsessionname
-      exe "source " . b:projectsessionname
-      edit
+    if IsGitRepository()
+      let b:projectname = GetProjectNameFromPath()
+      let b:projectsessionname = GetSessionNameForProject(b:projectname)
+      if !empty(glob(b:projectsessionname))
+        execute "source" b:projectsessionname
+        execute "edit"
+      endif
     else
-      echo "session not found, running startify..."
+      Startify
     endif
   endif
 endfunction
-
-autocmd VimLeave * call MakeSession()
-autocmd VimEnter * call OpenSessionOrStartify()
-" add\update\remove surround stuff like '"{[]}"'
+" save session on exit, open session/startify on enter
+autocmd VimLeave * call EnsureSession()
+autocmd VimEnter * nested call OpenSessionOrStartify()
+" add\update\remove surround stuff like '"{}"'
 Plug 'tpope/vim-surround'
 " add text objects like in ,, .. {} () etc.
 Plug 'wellle/targets.vim'
