@@ -83,8 +83,6 @@ Plug 'AndrewRadev/switch.vim'
 let g:switch_mapping='-'
 " add bunch of mapping
 Plug 'tpope/vim-unimpaired'
-" add ability to select multiple places at the same time
-Plug 'terryma/vim-multiple-cursors'
 " improved search
 Plug 'haya14busa/incsearch.vim'
 Plug 'haya14busa/incsearch-fuzzy.vim'
