@@ -3,8 +3,9 @@
     {
       "Screen": 0,
       "Window Type": 15,
-      "Name": "Zshell",
+      "Name": "alex-popov-tech",
       "Command": "\/bin\/zsh",
+      "Initial Text" : "tmux attach -t base || tmux new -s base",
       "Normal Font" : "JetBrainsMono-Regular 16",
       "Terminal Type": "xterm-256color-italic",
       "Non Ascii Font" : "HackNerdFontComplete-Regular 16",
