@@ -11,8 +11,11 @@ zplugin snippet OMZ::plugins/git/git.plugin.zsh
 zplugin snippet OMZ::plugins/vi-mode/vi-mode.plugin.zsh
 # key bindings for workman
 bindkey -M vicmd 'y' vi-backward-char
+bindkey -M vicmd 'h' vi-yank
 bindkey -M vicmd 'n' down-history
+bindkey -M vicmd 'j' vi-repeat-search
 bindkey -M vicmd 'e' up-history
+bindkey -M vicmd 'k' vi-forward-word-end
 bindkey -M vicmd 'o' vi-forward-char
 zplugin light MichaelAquilina/zsh-you-should-use
 export YSU_HARDCORE=1
