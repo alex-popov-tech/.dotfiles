@@ -1,4 +1,4 @@
 syntax on
 set termguicolors " set TRUE COLOR to beautify
-colorscheme one
+colorscheme onedark
 set background=dark

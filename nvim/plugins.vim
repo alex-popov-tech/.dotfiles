@@ -137,7 +137,7 @@ set nobackup
 set nowritebackup
 " Better display for messages
 " give more space to outputs of executed commands to 2 lines
-set cmdheight=2
+set cmdheight=1
 " Smaller updatetime for CursorHold & CursorHoldI
 set updatetime=750
 " don't give |ins-completion-menu| messages.
@@ -214,12 +214,6 @@ nmap [g <Plug>(coc-git-prevchunk)
 nmap ]g <Plug>(coc-git-nextchunk)
 " show chunk diff at current position
 nmap gd <Plug>(coc-git-chunkinfo)
-" toggle join/split for args, dicts, ecs.
-Plug 'AndrewRadev/splitjoin.vim'
-let g:splitjoin_split_mapping = ''
-let g:splitjoin_join_mapping = ''
-nmap <Leader>j :SplitjoinJoin<cr>
-nmap <Leader>s :SplitjoinSplit<cr>
 " working with tags, integrated with coc.nvim
 Plug 'liuchengxu/vista.vim'
 " show sidebar
@@ -234,6 +228,12 @@ let g:vista_echo_cursor_strategy = 'floating_win'
 let g:vista_icon_indent = [ "", "├─▸"]
 " preview in search
 let g:vista_fzf_preview = ['right:50%']
+" toggle join/split for args, dicts, ecs.
+Plug 'AndrewRadev/splitjoin.vim'
+let g:splitjoin_split_mapping = ''
+let g:splitjoin_join_mapping = ''
+nmap <Leader>j :SplitjoinJoin<cr>
+nmap <Leader>s :SplitjoinSplit<cr>
 Plug 'christoomey/vim-tmux-navigator'
 " Write all buffers before navigating from Vim to tmux pane
 let g:tmux_navigator_save_on_switch = 2
@@ -284,8 +284,8 @@ let g:airline_powerline_fonts = 1
 Plug 'vim-airline/vim-airline-themes'
 
 " some cool themes
-" Plug 'joshdick/onedark.vim'
-" let g:airline_theme = 'onedark'
+Plug 'joshdick/onedark.vim'
+let g:airline_theme = 'onedark'
 " Plug 'morhetz/gruvbox'
 " let g:gruvbox_sign_column="bg0"
 " let g:gruvbox_invert_selection=0
@@ -293,7 +293,7 @@ Plug 'vim-airline/vim-airline-themes'
 " let g:airline_theme = 'base16'
 " Plug 'nanotech/jellybeans.vim'
 " Plug 'lifepillar/vim-solarized8'
-Plug 'rakr/vim-one'
-let g:airline_theme = 'one'
-let g:one_allow_italics = 1
+" Plug 'rakr/vim-one'
+" let g:airline_theme = 'one'
+" let g:one_allow_italics = 1
 call plug#end()
