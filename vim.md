@@ -1,13 +1,14 @@
 # List of shortcuts available in nvim
 
 * `<C-j/k/l/p>` - move between buffers/split
+* `<C-left/down/up/right>` - resize splits
 * `<C-e>/<C-d>` - scroll down
 * `<C-y>/<C-u>` - scroll up
 * `<C-q>`/`<leader>q` - write and close current/all buffers
 * `<C-d>`/`<leader>d` - write and delete current/all buffers
 * `<number><CR>` - go to `<number>` line
 * `Y` - yank till the end of line
-* `<leared>h`/`<leader>v` - horizontal/vertical split
+* `<leader>h`/`<leader>v` - horizontal/vertical split
 * folding
   * `zo` - opens folds
   * `zc` - closes fold
@@ -67,26 +68,34 @@
   * `<leader>/ta` - fuzzy search tags
 * [tpope/vim-commentary](https://github.com/tpope/vim-commentary)
   * `<leader>c` - to comment line or selected lines
-* [terryma/vim-multiple-cursors](https://github.com/terryma/vim-multiple-cursors)
-  * `<C-n>` - select next place
-  * `<C-x>` - skip next match
-  * You can now change the virual cursots + selection with visual mode commands
-(f.e. `c`, `I`, `A` will work fine). You could also go to
-normal mode by pressing `v` and use normal commands there.
 * [tpope/vim-unimpaired](https://github.com/tpope/vim-unimpaired)
-  * `[a`/`]a` - previos/next file
-  * `[A`/`]A` - firts/last file
-  * `[b`/`]b` - previos/next buffer
+  * `[a`/`]a` - previous/next file
+  * `[A`/`]A` - first/last file
+  * `[b`/`]b` - previous/next buffer
   * `[B`/`]B` - first/last buffer
-  * `[f`/`]f` - go to previos/next file
-  * `[n`/`]n` - go to previos/next SCM conflict marker of diff
+  * `[f`/`]f` - go to previous/next file
+  * `[n`/`]n` - go to previous/next SCM conflict marker of diff
   * `[t`/`]t` - display previous/next tag
   * `[T`/`]T` - display first/last tag
   * `[<Space>`/`]<Space>` - add [count] blank lines above/below the cursor
   * `[e`/`]e` - exchange current line with [count] lines above/below it
-  * `[p`/`]p` - paste on previos/next line
+  * `[p`/`]p` - paste on previous/next line
 * [svermeulen/vim-subversive](https://github.com/svermeulen/vim-subversive)
   * `s<motion>` - subversive substitute (replace 'motion' with yanked chunk)
   * `ss` - subversive substitute line
   * `S` - subversive substitute to the EOL
+
+# Vim tips
+
+* Put a count before a `<motion>i(` to operate multiple 'levels' of inner operation, f.e:
+  `if (function(param1, param2, >param3)) {`
+  Do `d2i(` to delete `if(...)` content.
+* Use `=` to indent a block of code
+* Use `gv` to recreate last selection
+* Use `gf` to open file with the name coming from the word under the cursor
+* Pressing o in visual mode switches the cursor at the other end of the selection
+* Use `zt`, `zz` or `zb` to respectively move the the view towards to the top, the center or the bottom.
+* Use `C-a`/`C-x` to increment/decrement number under cursor
+* Use `^` to go to first non-space character of the line
+* If you want to save a read-only file (forger to open vim with sudo), use the following command: `:w !sudo tee %`
 
