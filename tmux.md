@@ -10,7 +10,7 @@
   * `tmux kill-session -a` - kill all sessions except current
   * `tmux kill-session -a -t <sessionname>` - kill all sessions except `<sessionsname>`
 * Rename session
-  * `prefix + $`
+  * `prefix + .`
 * Detach from session
   * `prefix + d` - detach from session
 * List sessions
