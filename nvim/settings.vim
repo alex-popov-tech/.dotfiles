@@ -7,6 +7,8 @@ endif
 " Don't redraw while executing macros (good performance config)
 set lazyredraw
 set ttyfast
+" add chars to '%'
+set matchpairs+=<:>
 " highlight for current line
 set cursorline
 " highlight for current column
