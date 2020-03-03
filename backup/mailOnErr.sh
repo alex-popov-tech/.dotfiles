@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/zsh
 
 tmp="/tmp/$(date '+%F')_cronerr"
 
