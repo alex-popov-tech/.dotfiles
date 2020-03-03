@@ -25,7 +25,7 @@
   "explorer.position": "floating",
   "explorer.floating.width": -40,
 
-  "diagnostic-languageserver.filetypes": {
+  "diagnostic.filetypeMap": {
     "markdown": [
       "write-good",
       "markdownlint"
@@ -37,9 +37,6 @@
   ],
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
   "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
-  "solargraph.diagnostics": true,
-  "solargraph.hover": true,
-  "solargraph.autoformat": true,
 
   "cSpellExt.enableDictionaries": ["russian"],
   "cSpell.language": "en,ru",
