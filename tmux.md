@@ -2,6 +2,10 @@
 
 ## Sessions
 
+* Save session
+  * `prefix + <C-s>`
+* Load session
+  * `prefix + <C-r>`
 * Start new session
   * `tmux`/`tmux new -s <sessionname>`
   * `:new`/`:new -s <sessionname>`
