@@ -1,7 +1,7 @@
 # Shortcuts
 alias Dl="cd $HOME/Downloads"
 alias Dt="cd $HOME/Desktop"
-alias Dc="cd $HOME/Documents"
+alias work="cd $HOME/Work"
 
 # Improved list
 alias ls="colorls --sort-dirs"
