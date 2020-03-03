@@ -30,7 +30,7 @@
 * Rename current window
   * `prefix + ,`
 * Close current window
-  * `prefix : &`
+  * `prefix + X`
 * Next window
   * `prefix + n`
 * Previous window
