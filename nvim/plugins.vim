@@ -202,10 +202,13 @@ nmap <leader>y :CocList --auto-preview --normal yank<CR>
 " Navigate interpreter/compiler/linter errors
 nmap <leader>e :CocList --number-select --normal --auto-preview diagnostics<CR>
 " Remap keys for gotos
-nmap <C-g>d <Plug>(coc-definition)
-nmap <C-g>y <Plug>(coc-type-definition)
-nmap <C-g>i <Plug>(coc-implementation)
-nmap <C-g>r <Plug>(coc-references)
+" nmap <C-g>d <Plug>(coc-definition)
+nmap gy <Plug>(coc-type-definition)
+nmap gi <Plug>(coc-implementation)
+nmap gr <Plug>(coc-references)
+" navigate througs diagnostic in current buffer
+nmap <silent> [d <Plug>(coc-diagnostic-prev)
+nmap <silent> ]d <Plug>(coc-diagnostic-next)
 " rename current word
 nmap <leader>rn <Plug>(coc-rename)
 " refactor current word
@@ -244,11 +247,13 @@ function! s:cocActionsOpenFromSelected(type) abort
   execute 'CocCommand actions.open ' . a:type
 endfunction
 " Remap for do codeAction of selected region
-xmap <silent> <leader>f :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
+xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
 " remap for do codeaction for <leader>f<motion>
-nmap <silent> <leader>f :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@
+nmap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@
 " alias for previos - current line
-nmap <silent> <leader>ff :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>0g@$
+nmap <silent> <leader>aa :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>0g@$
+" fix current line
+nmap <silent> <leader>ff <Plug>(coc-fix-current)
 " navigate chunks of current buffer
 nmap [g <Plug>(coc-git-prevchunk)
 nmap ]g <Plug>(coc-git-nextchunk)

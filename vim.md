@@ -52,15 +52,17 @@
   * `<leader>y` - latest yanks
   * `<leader>e` - show diagnostics errors
   * `<leader>F` - coc-formate-and-organize-imports
-  * `<leader>ff` - call codeaction prompt for single line
-  * `<leader>f<motion>` - call codeaction prompt for `<motion>`
+  * `<leader>aa` - call codeaction prompt for single line
+  * `<leader>a<motion>` - call codeaction prompt for `<motion>`
+  * `<leader>ff` - fix-current
   * `<leader>rn` - rename current word
   * `<leader>rf` - refactor current word
   * `K` - on hover show documentation
-  * `<C-g>d` - coc-definition
-  * `<C-g>y` - coc-type-definition
-  * `<C-g>i` - coc-implementation
-  * `<C-g>r` - coc-references
+  * `gd` - coc-definition
+  * `gy` - coc-type-definition
+  * `gi` - coc-implementation
+  * `gr` - coc-references
+  * `[d`/`]d` - previous/next diagnostic
   * `[g`/`]g` - previous/next git chunk
   * `gd` - chunk diff info
 * [liuchengxu/vista.vim](https://github.com/liuchengxu/vista.vim)
