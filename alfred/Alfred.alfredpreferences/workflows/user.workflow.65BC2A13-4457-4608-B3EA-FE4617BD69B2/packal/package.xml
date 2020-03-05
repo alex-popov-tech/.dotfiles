@@ -1,8 +1,0 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<workflow>
-  <name>Github Repos</name>
-  <version>2.0.3</version>
-  <bundle>edgarjs.github-repos.workflow</bundle>
-  <updated>1573667196</updated>
-  <file>github_repos.alfredworkflow</file>
-</workflow>
