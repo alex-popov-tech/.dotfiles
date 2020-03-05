@@ -1,3 +1,6 @@
+" mappings for jumping
+nnoremap <C-j> <C-o>
+nnoremap <C-k> <C-i>
 "enabme yank/paste to/from system clipboard
 set clipboard+=unnamedplus
 " to visually select and copy from vim without line numbers
