@@ -4,7 +4,6 @@ Plug 'junegunn/fzf', { 'dir': '~/.config/fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim'
 " find in files
-" https://stackoverflow.com/questions/9051837/how-to-map-c-to-toggle-comments-in-vim
 nmap <C-_>f :Files <CR>
 nmap <C-_>g :GFiles <CR>
 " find a text in files
@@ -150,7 +149,10 @@ Plug 'svermeulen/vim-subversive'
 nmap s <plug>(SubversiveSubstitute)
 nmap ss <plug>(SubversiveSubstituteLine)
 nmap S <plug>(SubversiveSubstituteToEndOfLine)
+" auto placing paired signs like {} [] '' "" etc
 Plug 'jiangmiao/auto-pairs'
+Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
+" framework for code completion/navigation/refactoging
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = [
       \ 'coc-word',
