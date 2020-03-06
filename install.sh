@@ -86,6 +86,13 @@ function langs() {
   asdf install lua 5.3.5
   asdf global lua 5.3.5
 
+  echo "+------------------------------+"
+  echo "|       Installing Rust        |"
+  echo "+------------------------------+"
+  asdf plugin-add rust
+  asdf install rust stable
+  asdf global rust stable
+
   asdf reshim
 }
 
