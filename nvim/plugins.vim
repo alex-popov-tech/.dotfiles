@@ -3,6 +3,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.config/fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim'
+Plug 'liuchengxu/vim-clap'
 " find in files
 nmap <C-_>f :Files <CR>
 nmap <C-_>g :GFiles <CR>
@@ -85,15 +86,21 @@ function EnsureSession()
   endif
 endfunction
 
+" is file empty
+function! IsFileEmpty(filepath)
+  let lines = readfile(a:filepath)    " read the file *contents* into a list
+  let matched_index = match(lines, '\S')  " find the first entry with a non-space
+  return matched_index == -1              " if no match was found -1 was returned
+endfunction
+
 " open session if exists, startify otherwise
 function OpenSessionOrStartify()
   if !argc()
     if IsGitRepository()
       let b:projectname = GetProjectNameFromPath()
       let b:projectsessionname = GetSessionNameForProject(b:projectname)
-      if !empty(glob(b:projectsessionname))
+      if !empty(glob(b:projectsessionname)) && !IsFileEmpty(glob(b:projectsessionname))
         execute "source" b:projectsessionname
-        execute "edit"
       endif
     else
       Startify
