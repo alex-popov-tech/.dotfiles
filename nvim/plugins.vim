@@ -334,20 +334,26 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#whitespace#enabled = 0
 " enable extra cool font liguries
 let g:airline_powerline_fonts = 1
-" special status line for nerd tree buffer
-Plug 'vim-airline/vim-airline-themes'
 
 " some cool themes
 Plug 'joshdick/onedark.vim'
 let g:airline_theme = 'onedark'
 " Plug 'morhetz/gruvbox'
-" let g:gruvbox_sign_column="bg0"
-" let g:gruvbox_invert_selection=0
-" let g:gruvbox_contrast_dark = 'dark'
-" let g:airline_theme = 'base16'
+" let g:gruvbox_contrast_dark = "hard"
+" let g:gruvbox_sign_column = "bg0"
+" let g:airline_theme = 'gruvbox'
+" let g:gruvbox_color_column = 'bg0'
 " Plug 'nanotech/jellybeans.vim'
 " Plug 'lifepillar/vim-solarized8'
 " Plug 'rakr/vim-one'
-" let g:airline_theme = 'one'
-" let g:one_allow_italics = 1
+" Plug 'ayu-theme/ayu-vim'
+" let ayucolor="mirage"
+
 call plug#end()
+
+syntax on
+" set TRUE COLOR to beautify
+set termguicolors
+set background=dark
+colorscheme onedark
+

@@ -231,7 +231,6 @@ function neovim() {
   ln -fvs $DPATH/nvim/keybindings.vim $HOME/.config/nvim/keybindings.vim
   ln -fvs $DPATH/nvim/plugins.vim $HOME/.config/nvim/plugins.vim
   ln -fvs $DPATH/nvim/settings.vim $HOME/.config/nvim/settings.vim
-  ln -fvs $DPATH/nvim/ui.vim $HOME/.config/nvim/ui.vim
   ln -fvs $DPATH/nvim/coc-settings.json $HOME/.config/nvim/coc-settings.json
 
   nvim --headless +PlugInstall +qa
