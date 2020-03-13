@@ -182,7 +182,11 @@ function terminal() {
   brew install tmux
   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-  ln -fsv $DPATH/configs/tmux.conf $HOME/.tmux.conf
+  ln -fsv $DPATH/tmux/init.conf $HOME/.tmux.conf
+  ln -fsv $DPATH/tmux/plugins.conf $HOME/.tmux_plugins.conf
+  ln -fsv $DPATH/tmux/settings.conf $HOME/.tmux_settings.conf
+  ln -fsv $DPATH/tmux/bindings.conf $HOME/.tmux_bindings.conf
+  ln -fsv $DPATH/tmux/ui.conf $HOME/.tmux_ui.conf
 
 
   echo "+---------------------------------+"
@@ -212,9 +216,7 @@ function neovim() {
   echo "|        Installing NeoVim        |"
   echo "+---------------------------------+"
 
-  asdf plugin-add neovim
-  asdf install neovim 0.4.3
-  asdf global neovim 0.4.3
+  brew install neovim
 
   brew install shellcheck the_silver_searcher
   gem install neovim solargraph
