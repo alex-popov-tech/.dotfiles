@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.vitorgalvao.alfred.newfile</string>
+	<key>connections</key>
+	<dict>
+		<key>137E4749-7D83-426A-A8C4-AB736358775E</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>9954B863-DC31-488D-8184-2568AC55AE82</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>22E5ACE0-2434-43F3-A5AA-F146F8B1C17A</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>47EC24AA-00DE-4A0A-A59A-D0F4EE5AA1BC</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>47EC24AA-00DE-4A0A-A59A-D0F4EE5AA1BC</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>BFDDAA43-73BB-48F4-A58E-EC4B60B6D378</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>9954B863-DC31-488D-8184-2568AC55AE82</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>47EC24AA-00DE-4A0A-A59A-D0F4EE5AA1BC</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>D03807E1-1B7E-4FBD-B4C0-877B87E2AB86</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>22E5ACE0-2434-43F3-A5AA-F146F8B1C17A</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Vítor Galvão</string>
+	<key>description</key>
+	<string>Creates a new file in the current Finder directory</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>NewFile</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>nf</string>
+				<key>subtext</key>
+				<string>Separate multiple names with a “/” (if no extension is given, “.txt” will be used)</string>
+				<key>text</key>
+				<string>Create new file(s)</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>D03807E1-1B7E-4FBD-B4C0-877B87E2AB86</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>{query}</string>
+				<key>variables</key>
+				<dict>
+					<key>open_files</key>
+					<string>no</string>
+				</dict>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>22E5ACE0-2434-43F3-A5AA-F146F8B1C17A</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>script</key>
+				<string># THESE VARIABLES MUST BE SET. SEE THE ONEUPDATER README FOR AN EXPLANATION OF EACH.
+readonly remote_info_plist="https://raw.githubusercontent.com/vitorgalvao/alfred-workflows/master/${alfred_workflow_name}/source/info.plist"
+readonly workflow_url="https://raw.githubusercontent.com/vitorgalvao/alfred-workflows/master/${alfred_workflow_name}/${alfred_workflow_name}.alfredworkflow"
+readonly download_type='direct'
+readonly frequency_check='4'
+
+# FROM HERE ON, CODE SHOULD BE LEFT UNTOUCHED!
+function abort {
+  echo "${1}" &gt;&amp;2
+  exit 1
+}
+
+function url_exists {
+  curl --silent --location --output /dev/null --fail --range 0-0 "${1}"
+}
+
+function notification {
+  local -r notificator="$(find . -type d -name 'Notificator.app')"
+  if [[ -n "${notificator}" ]]; then
+    "${notificator}/Contents/Resources/Scripts/notificator" --message "${1}" --title "${alfred_workflow_name}" --subtitle 'A new version is available'
+    return
+  fi
+
+  local -r terminal_notifier="$(find . -type f -name 'terminal-notifier')"
+  if [[ -n "${terminal_notifier}" ]]; then
+    "${terminal_notifier}" -title "${alfred_workflow_name}" -subtitle 'A new version is available' -message "${1}"
+    return
+  fi
+
+  osascript -e "display notification \"${1}\" with title \"${alfred_workflow_name}\" subtitle \"A new version is available\""
+}
+
+# Local sanity checks
+readonly local_info_plist='info.plist'
+readonly local_version="$(/usr/libexec/PlistBuddy -c 'print version' "${local_info_plist}")"
+
+[[ -n "${local_version}" ]] || abort 'You need to set a workflow version in the configuration sheet.'
+[[ "${download_type}" =~ ^(direct|page|github_release)$ ]] || abort "'download_type' (${download_type}) needs to be one of 'direct', 'page', or 'github_release'."
+[[ "${frequency_check}" =~ ^[0-9]+$ ]] || abort "'frequency_check' (${frequency_check}) needs to be a number."
+
+# Check for updates
+if [[ $(find "${local_info_plist}" -mtime +"${frequency_check}"d) ]]; then
+  if ! url_exists "${remote_info_plist}"; then abort "'remote_info_plist' (${remote_info_plist}) appears to not be reachable."; fi # Remote sanity check
+
+  readonly tmp_file="$(mktemp)"
+  curl --silent --location --output "${tmp_file}" "${remote_info_plist}"
+  readonly remote_version="$(/usr/libexec/PlistBuddy -c 'print version' "${tmp_file}")"
+
+  if [[ "${local_version}" == "${remote_version}" ]]; then
+    touch "${local_info_plist}" # Reset timer by touching local file
+    exit 0
+  fi
+
+  if [[ "${download_type}" == 'page' ]]; then
+    notification 'Opening download page…'
+    open "${workflow_url}"
+    exit 0
+  fi
+
+  download_url="$([[ "${download_type}" == 'github_release' ]] &amp;&amp; curl --silent "https://api.github.com/repos/${workflow_url}/releases/latest" | grep 'browser_download_url' | head -1 | sed -E 's/.*browser_download_url": "(.*)"/\1/' || echo "${workflow_url}")"
+
+  if url_exists "${download_url}"; then
+    notification 'Downloading and installing…'
+    curl --silent --location --output "${HOME}/Downloads/${alfred_workflow_name}.alfredworkflow" "${download_url}"
+    open "${HOME}/Downloads/${alfred_workflow_name}.alfredworkflow"
+  else
+    abort "'workflow_url' (${download_url}) appears to not be reachable."
+  fi
+fi</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>BFDDAA43-73BB-48F4-A58E-EC4B60B6D378</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>script</key>
+				<string>dir_path="$(osascript -l JavaScript -e '
+  const frontmost_app_name = Application("System Events").applicationProcesses.where({ frontmost: true }).name()[0]
+
+  if (frontmost_app_name === "Finder") {
+    decodeURI(Application("Finder").insertionLocation().url()).slice(7).slice(0, -1)
+  } else if(frontmost_app_name === "Path Finder") {
+    decodeURI(Application("Path Finder").finderWindows[0].target.url()).slice(7).slice(0, -1)
+  } else {
+    decodeURI(Application("Finder").desktop.url()).slice(7).slice(0, -1)
+  }
+')"
+
+IFS=$'/\n'
+
+for file in ${@}; do
+  file_extension="$([[ "${file}" == *.* ]] &amp;&amp; echo ".${file##*.}" || echo '')"
+  file_no_extension="${file%.*}"
+
+  [[ -z "${file_extension}" ]] &amp;&amp; file_extension=".txt"
+
+  file_location="${dir_path}/${file_no_extension}${file_extension}"
+
+  touch "${file_location}"
+  if [[ "${open_files}" == 'yes' ]]; then open "${file_location}"; fi
+done</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>47EC24AA-00DE-4A0A-A59A-D0F4EE5AA1BC</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>nfo</string>
+				<key>subtext</key>
+				<string>Separate multiple names with a “/” (if no extension is given, “.txt” will be used)</string>
+				<key>text</key>
+				<string>Create and open new file(s)</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>137E4749-7D83-426A-A8C4-AB736358775E</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>{query}</string>
+				<key>variables</key>
+				<dict>
+					<key>open_files</key>
+					<string>yes</string>
+				</dict>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>9954B863-DC31-488D-8184-2568AC55AE82</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string>Call `nf` followed by a file name (if you don’t give it an extension, it’ll be `.txt`) to make a new file. If you type `nfo` instead the files will open after creation. If you have a Finder or Path Finder window as your frontmost window, the file will be created there, otherwise it will be created on your Desktop.
+
+![](https://i.imgur.com/uUik2XO.png)</string>
+	<key>uidata</key>
+	<dict>
+		<key>137E4749-7D83-426A-A8C4-AB736358775E</key>
+		<dict>
+			<key>xpos</key>
+			<integer>30</integer>
+			<key>ypos</key>
+			<integer>140</integer>
+		</dict>
+		<key>22E5ACE0-2434-43F3-A5AA-F146F8B1C17A</key>
+		<dict>
+			<key>xpos</key>
+			<integer>210</integer>
+			<key>ypos</key>
+			<integer>50</integer>
+		</dict>
+		<key>47EC24AA-00DE-4A0A-A59A-D0F4EE5AA1BC</key>
+		<dict>
+			<key>xpos</key>
+			<integer>320</integer>
+			<key>ypos</key>
+			<integer>80</integer>
+		</dict>
+		<key>9954B863-DC31-488D-8184-2568AC55AE82</key>
+		<dict>
+			<key>xpos</key>
+			<integer>210</integer>
+			<key>ypos</key>
+			<integer>170</integer>
+		</dict>
+		<key>BFDDAA43-73BB-48F4-A58E-EC4B60B6D378</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>12</integer>
+			<key>note</key>
+			<string>OneUpdater</string>
+			<key>xpos</key>
+			<integer>510</integer>
+			<key>ypos</key>
+			<integer>80</integer>
+		</dict>
+		<key>D03807E1-1B7E-4FBD-B4C0-877B87E2AB86</key>
+		<dict>
+			<key>xpos</key>
+			<integer>30</integer>
+			<key>ypos</key>
+			<integer>20</integer>
+		</dict>
+	</dict>
+	<key>version</key>
+	<string>1.2.6</string>
+	<key>webaddress</key>
+	<string>http://vitorgalvao.com/</string>
+</dict>
+</plist>
