@@ -338,11 +338,10 @@ let g:airline_powerline_fonts = 1
 
 " some cool themes
 Plug 'joshdick/onedark.vim'
-let g:airline_theme = 'onedark'
-" Plug 'morhetz/gruvbox'
-" let g:gruvbox_contrast_dark = "hard"
-" let g:gruvbox_sign_column = "bg0"
-" let g:airline_theme = 'gruvbox'
+" let g:airline_theme = 'onedark'
+Plug 'morhetz/gruvbox'
+let g:gruvbox_contrast_dark = "hard"
+let g:gruvbox_sign_column = "bg0"
 " let g:gruvbox_color_column = 'bg0'
 " Plug 'nanotech/jellybeans.vim'
 " Plug 'lifepillar/vim-solarized8'
@@ -356,5 +355,5 @@ syntax on
 " set TRUE COLOR to beautify
 set termguicolors
 set background=dark
-colorscheme onedark
+colorscheme gruvbox
 
