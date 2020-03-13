@@ -34,7 +34,8 @@ class ChooseProject extends Menu
             ->title('No project')
             ->subtitle('Timer will be created without a project')
             ->match('')
-            ->arg('choose_tag');
+            ->arg('do')
+            ->variable('timer_action', 'start');
     }
 
     private static function getServiceProjects($service)
@@ -47,8 +48,8 @@ class ChooseProject extends Menu
                 ->variable('timer_project_id', $id)
                 ->variable('timer_project_name', $name)
                 ->match($name)
-                ->arg('choose_tag')
-                ->icon(Icon::create("resources/icons/$service.png"));
+                ->arg('do')
+                ->variable('timer_action', 'start');
         }
 
         return $projects;
