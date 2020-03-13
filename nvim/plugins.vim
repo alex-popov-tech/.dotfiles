@@ -3,7 +3,6 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.config/fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim'
-Plug 'liuchengxu/vim-clap'
 " find in files
 nmap <C-_>f :Files <CR>
 nmap <C-_>g :GFiles <CR>
