@@ -4,10 +4,12 @@ Plug 'junegunn/fzf', { 'dir': '~/.config/fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim'
 " find in files
-nmap <C-_>f :Files <CR>
-nmap <C-_>g :GFiles <CR>
+nmap <C-_>f :Files<CR>
+nmap <C-_>F :GFiles<CR>
 " find a text in files
-nmap <C-_>c :Ag <CR>
+nmap <C-_>c :Ag<CR>
+nmap <C-_>b :Buffers<CR>
+nmap <C-_>m :Marks<CR>
 " respect color scheme
 let g:fzf_colors = {
       \ 'fg':      ['fg', 'Normal'],
@@ -24,13 +26,13 @@ let g:fzf_colors = {
       \ 'spinner': ['fg', 'Label'],
       \ 'header':  ['fg', 'Comment']
       \ }
-let g:fzf_layout = {'down': '60%'}
+let g:fzf_layout = {'down': '80%'}
 " [Buffers] Jump to the existing window if possible
 let g:fzf_buffers_jump = 1
 " previews for fuzzy search
-command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--preview', '~/.config/nvim/plugged/fzf.vim/bin/preview.sh {}']}, <bang>0)
-command! -bang -nargs=? -complete=dir GFiles call fzf#vim#gitfiles(<q-args>, {'options': ['--layout=reverse', '--preview', '~/.config/nvim/plugged/fzf.vim/bin/preview.sh {}']}, <bang>0)
-command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, '', fzf#vim#with_preview(), <bang>0)
+command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, fzf#vim#with_preview('up'), <bang>0)
+command! -bang -nargs=? -complete=dir GFiles call fzf#vim#gitfiles(<q-args>, fzf#vim#with_preview('up'), <bang>0)
+command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, '', fzf#vim#with_preview('up'), <bang>0)
 " allows repeat via dot for some plugins like surround
 Plug 'tpope/vim-repeat'
 " start screen for nvim
