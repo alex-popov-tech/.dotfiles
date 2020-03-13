@@ -341,8 +341,6 @@ Plug 'joshdick/onedark.vim'
 " let g:airline_theme = 'onedark'
 Plug 'morhetz/gruvbox'
 let g:gruvbox_contrast_dark = "hard"
-let g:gruvbox_sign_column = "bg0"
-" let g:gruvbox_color_column = 'bg0'
 " Plug 'nanotech/jellybeans.vim'
 " Plug 'lifepillar/vim-solarized8'
 " Plug 'rakr/vim-one'
