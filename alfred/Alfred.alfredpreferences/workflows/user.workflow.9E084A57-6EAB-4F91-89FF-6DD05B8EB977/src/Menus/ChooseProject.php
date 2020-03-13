@@ -31,8 +31,6 @@ class ChooseProject extends Menu
     private static function getNoProject()
     {
         return Item::create()
-            ->title('No project')
-            ->subtitle('Timer will be created without a project')
             ->match('')
             ->arg('do')
             ->variable('timer_action', 'start');
