@@ -188,7 +188,6 @@ nmap ss <plug>(SubversiveSubstituteLine)
 nmap S <plug>(SubversiveSubstituteToEndOfLine)
 " auto placing paired signs like {} [] '' "" etc
 Plug 'jiangmiao/auto-pairs'
-Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
 " framework for code completion/navigation/refactoging
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = [
