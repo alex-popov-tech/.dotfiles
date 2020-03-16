@@ -10,8 +10,8 @@ nmap k gk
 map Q <Nop>
 " write current buffer
 nmap <C-w> :w<CR>
-" write all buffers
-nmap <leader>w :wa<CR>
+" write all buffers, warn if failed
+nmap <leader>w :try\|wa\|catch /\<E141\>/\|echomsg 'Not all files saved!'\|endtry<CR>
 " write and exit from current buffer
 nmap <C-q> :x<CR>
 " write and exit all buffers
