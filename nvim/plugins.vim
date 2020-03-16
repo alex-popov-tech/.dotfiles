@@ -217,7 +217,7 @@ set nowritebackup
 " give more space to outputs of executed commands to 2 lines
 set cmdheight=1
 " Smaller updatetime for CursorHold & CursorHoldI
-set updatetime=750
+set updatetime=200
 " don't give |ins-completion-menu| messages.
 " make vim errors shorter
 set shortmess+=c
