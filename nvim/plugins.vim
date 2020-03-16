@@ -80,6 +80,7 @@ endfunction
 " write session file
 function EnsureSession()
   if &ft != 'gitcommit' || empty(&ft)
+    call s:closeOldBuffers()
     call EnsureSessionsDirExists()
     let b:projectname = GetProjectNameFromPath()
     let b:filename = GetSessionNameForProject(b:projectname)
@@ -108,6 +109,34 @@ function OpenSessionOrStartify()
     endif
   endif
 endfunction
+
+" help functions from fzf.vim
+function! s:buflisted()
+  return filter(range(1, bufnr('$')), 'buflisted(v:val) && getbufvar(v:val, "&filetype") != "qf"')
+endfunction
+function! s:sort_buffers(...)
+  let [b1, b2] = map(copy(a:000), 'get(g:fzf#vim#buffers, v:val, v:val)')
+  " Using minus between a float and a number in a sort function causes an error
+  return b1 < b2 ? 1 : -1
+endfunction
+function! s:buflisted_sorted()
+  return sort(s:buflisted(), 's:sort_buffers')
+endfunction
+
+" Close all active buffers except last N
+let s:buffers_to_keep = 10
+function! s:closeOldBuffers()
+  let buffers = s:buflisted_sorted()
+  if len(buffers) < s:buffers_to_keep
+    return
+  endif
+  let buffers_to_close = buffers[s:buffers_to_keep:]
+  for buffer in buffers_to_close
+    echo buffer
+    silent exe 'bdel ' . buffer
+  endfor
+endfunction
+
 " save session on exit, open session/startify on enter
 autocmd VimLeave * call EnsureSession()
 autocmd VimEnter * nested call OpenSessionOrStartify()
