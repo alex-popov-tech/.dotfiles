@@ -352,6 +352,7 @@ Plug 'plasticboy/vim-markdown'
 let g:vim_markdown_folding_disabled = 1
 " bottom/upper status bar
 Plug 'vim-airline/vim-airline'
+let g:airline_theme = 'gruvbox_material'
 " show buffer list at the top of the screen
 let g:airline#extensions#coc#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -370,12 +371,17 @@ Plug 'joshdick/onedark.vim'
 Plug 'morhetz/gruvbox'
 let g:gruvbox_contrast_dark = "hard"
 let g:gruvbox_sign_column = "bg0"
-" let g:gruvbox_color_column = 'bg0'
 " Plug 'nanotech/jellybeans.vim'
 " Plug 'lifepillar/vim-solarized8'
 " Plug 'rakr/vim-one'
 " Plug 'ayu-theme/ayu-vim'
 " let ayucolor="mirage"
+Plug 'sainnhe/gruvbox-material'
+let g:gruvbox_material_cursor_line_contrast = 'higher'
+let g:gruvbox_material_background = 'medium'
+let g:gruvbox_material_enable_italic = 1
+let g:gruvbox_material_current_word = 'grey background'
+
 
 call plug#end()
 
@@ -383,5 +389,5 @@ syntax on
 " set TRUE COLOR to beautify
 set termguicolors
 set background=dark
-colorscheme gruvbox
+colorscheme gruvbox-material
 
