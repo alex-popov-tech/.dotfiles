@@ -179,7 +179,7 @@ map N  <Plug>(incsearch-nohl-N)
 nnoremap <Esc><Esc> :<C-u>nohlsearch<CR>
 " make 'f' a bit more usefull
 Plug 'rhysd/clever-f.vim'
-let g:clever_f_chars_match_any_signs = '.'
+let g:clever_f_chars_match_any_signs = '/'
 let g:clever_f_smart_case=1
 " provides function of replacing from yank
 Plug 'svermeulen/vim-subversive'
