@@ -38,9 +38,41 @@
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
   "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
 
-  "cSpellExt.enableDictionaries": ["russian"],
+  "cSpell.showStatus": true,
+  "cSpell.allowCompoundWords": true,
+  "cSpell.ignorePaths": [
+    "**/package-lock.json",
+    "**/node_modules/**",
+    "**/vscode-extension/**",
+    "**/.git/objects/**",
+    ".vscode"
+  ],
+  "cSpellExt.enableDictionaries": [
+    "russian",
+    "node",
+    "aws",
+    "bash",
+    "django",
+    "dotnet",
+    "elixir",
+    "fullstack",
+    "golang",
+    "haskell",
+    "java",
+    "lua",
+    "php",
+    "pyhton",
+    "ruby",
+    "rust",
+    "scala",
+    "software-terms",
+    "typescript"
+  ],
   "cSpell.language": "en,ru",
   "cSpell.enabledLanguageIds": [
+    "javascript",
+    "typescript",
+    "json",
     "markdown",
     "plaintext",
     "yml"

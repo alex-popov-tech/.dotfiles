@@ -1,7 +1,6 @@
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = [
       \ 'coc-word',
-      \ 'coc-dictionary',
       \ 'coc-tsserver',
       \ 'coc-json',
       \ 'coc-eslint',
@@ -9,7 +8,6 @@ let g:coc_global_extensions = [
       \ 'coc-yank',
       \ 'coc-spell-checker',
       \ 'coc-cspell-dicts',
-      \ 'coc-marketplace',
       \ 'coc-explorer',
       \ 'coc-git',
       \ 'coc-sh'
@@ -103,3 +101,4 @@ nmap [g <Plug>(coc-git-prevchunk)
 nmap ]g <Plug>(coc-git-nextchunk)
 " show chunk diff at current position
 nmap gd <Plug>(coc-git-chunkinfo)
+
