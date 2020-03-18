@@ -1,5 +1,4 @@
 Plug 'vim-airline/vim-airline'
-let g:airline_theme = 'gruvbox_material'
 " show buffer list at the top of the screen
 let g:airline#extensions#coc#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
