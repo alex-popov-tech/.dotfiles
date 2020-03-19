@@ -1,0 +1,66 @@
+# Configuration for Alacritty, the GPU enhanced terminal emulator.
+
+env:
+  # for starting tmux with correnct locale
+  LC_ALL: en_US.UTF-8
+  LANG: en_US.UTF-8
+  # homebrew
+  PATH: "/usr/local/bin:$PATH"
+
+window:
+  startup_mode: Maximized
+  decorations: none
+  padding:
+    x: 10
+    y: 10
+
+shell:
+  program: /bin/zsh
+  args:
+    - -l
+    - -c
+    - "tmux attach -t '(∩Ȍ▾Ȍ)⊃━☆ﾟ,*' || tmux new -s '(∩Ȍ▾Ȍ)⊃━☆ﾟ,*'"
+
+font:
+  normal:
+    family: "JetBrainsMono Nerd Font"
+  size: 16
+  glyph_offset:
+    y: 1
+
+key_bindings:
+  # <C-q>
+  - { key: Q, mods: Control, chars: "\x11" }
+  # <C-/>
+  - { key: Slash, mods: Control, chars: "\x1f" }
+
+# Colors (Gruvbox dark)
+colors:
+  # Default colors
+  primary:
+    # hard contrast: background = '#1d2021'
+    background: '#282828'
+    # soft contrast: background = '#32302f'
+    foreground: '#ebdbb2'
+
+  # Normal colors
+  normal:
+    black:   '#282828'
+    red:     '#cc241d'
+    green:   '#98971a'
+    yellow:  '#d79921'
+    blue:    '#458588'
+    magenta: '#b16286'
+    cyan:    '#689d6a'
+    white:   '#a89984'
+
+  # Bright colors
+  bright:
+    black:   '#928374'
+    red:     '#fb4934'
+    green:   '#b8bb26'
+    yellow:  '#fabd2f'
+    blue:    '#83a598'
+    magenta: '#d3869b'
+    cyan:    '#8ec07c'
+    white:   '#ebdbb2'

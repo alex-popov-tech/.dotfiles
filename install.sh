@@ -157,15 +157,18 @@ function terminal() {
   echo "+-----------------------------------+"
 
   brew tap homebrew/cask-fonts
-  brew cask install iterm2 font-hack-nerd-font font-fira-code font-jetbrains-mono
+  brew cask install alacritty iterm2 font-hack-nerd-font font-fira-code font-jetbrains-mono
 
   # link iterm2 profile
   ITERM_PROFILES_PATH="$HOME/Library/Application Support/iTerm2/DynamicProfiles"
   mkdir -p "$ITERM_PROFILES_PATH"
   ln -fvs $DPATH/terminal/profile.json "$ITERM_PROFILES_PATH/profile"
-
   # fix colors
   tic $DPATH/terminal/xterm-256color-italic.terminfo
+
+  # link alacritty config
+  mkdir -p $HOME/.config/alacritty
+  ln -fvs $DPATH/terminal/alacritty.yml $HOME/.config/alacritty/alacritty.yml
 
   echo "+-------------------------------+"
   echo "|       Installing Ranger       |"
