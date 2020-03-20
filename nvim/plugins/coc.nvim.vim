@@ -101,4 +101,6 @@ nmap [g <Plug>(coc-git-prevchunk)
 nmap ]g <Plug>(coc-git-nextchunk)
 " show chunk diff at current position
 nmap gd <Plug>(coc-git-chunkinfo)
+" checkout current chunk
+nmap gu <Plug>(coc-git-undochunk)
 
