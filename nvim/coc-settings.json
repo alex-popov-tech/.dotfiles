@@ -6,7 +6,7 @@
   "diagnostic.enableSign": false,
   "diagnostic.enableHighlightLineNumber": true,
   "diagnostic.virtualText": true,
-  "diagnostic.virtualTextPrefix": " |->",
+  "diagnostic.virtualTextPrefix": " ---> ",
   "diagnostic.checkCurrentLine": true,
   "git.addedSign.text": "++",
   "git.addedSign.hlGroup": "GitGutterAdd",
@@ -17,6 +17,8 @@
   "git.topRemovedSign.hlGroup": "GitGutterDelete",
   "git.changeRemovedSign.text": "==",
   "git.changeRemovedSign.hlGroup": "GitGutterChange",
+  "git.addGBlameToVirtualText": true,
+  "git.virtualTextPrefix": " ---> ",
 
   "explorer.icon.enableNerdfont": true,
   "explorer.quitOnOpen": true,
