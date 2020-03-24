@@ -28,9 +28,11 @@ font:
 
 key_bindings:
   # <C-q>
-  - { key: Q, mods: Control, chars: "\x11" }
+  - { key: Q,     mods: Control, chars: "\x11" }
   # <C-/>
   - { key: Slash, mods: Control, chars: "\x1f" }
+  - { key: E,     mods: Alt,     chars: "´"    }
+  - { key: N,     mods: Alt,     chars: "˜"    }
 
 # Colors (Gruvbox dark)
 colors:
