@@ -1,6 +1,4 @@
 " keymap for keyboardio and workman
-nmap { [
-nmap } ]
 set langmap=hy,yh,nj,jn,ek,ke,lo,ol,HY,YH,NJ,JN,EK,KE,LO,OL
 " Turn off linewise keys. Normally, the `j' and `k' keys move the cursor down one entire line. with line wrapping on, this can cause the cursor to actually skip a few lines on the screen because it's moving from line N to line N+1 in the file. I want this to act more visually -- I want `down' to mean the next line on the screen
 nmap j gj
@@ -30,4 +28,4 @@ tnoremap <C-e> <C-\><C-n>
 nmap <leader>- :split<CR>
 nmap <leader>\| :vsplit<CR>
 " reload config
-nmap <leader>R :source ~/.dotfiles/nvim/init.vim<cr>
+nmap <leader>rr :source ~/.dotfiles/nvim/init.vim<cr>
