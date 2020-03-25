@@ -2,6 +2,7 @@
 
 * `<C-j/k/l/p>` - move between buffers/split
 * `<C-left/down/up/right>` - resize splits
+* `<S-down/up>` - move between buffers
 * `<C-e>/<C-d>` - scroll down
 * `<C-y>/<C-u>` - scroll up
 * `<C-q>`/`<leader>q` - write and close current/all buffers

@@ -36,9 +36,9 @@
 * Close current window
   * `prefix + X`
 * Next window
-  * `prefix + n`
+  * `Ctrl + Shift + Up`
 * Previous window
-  * `prefix + p`
+  * `Ctrl + Shift + Down`
 * Select window by number
   * `prefix + 0..9`
 * Reorder window swap window number 2(src) and 1(targ)

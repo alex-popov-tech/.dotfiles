@@ -31,8 +31,8 @@ key_bindings:
   - { key: Q,     mods: Control, chars: "\x11" }
   # <C-/>
   - { key: Slash, mods: Control, chars: "\x1f" }
-  - { key: E,     mods: Alt,     chars: "´"    }
-  - { key: N,     mods: Alt,     chars: "˜"    }
+  - { key: Left, mods: Control|Shift, chars: "\x1b[1;6D" }
+  - { key: Right, mods: Control|Shift, chars: "\x1b[1;6C" }
 
 # Colors (Gruvbox dark)
 colors:
