@@ -1,3 +1,5 @@
+Plug 'honza/vim-snippets'
+Plug 'neoclide/coc-neco'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = [
       \ 'coc-word',
@@ -9,6 +11,7 @@ let g:coc_global_extensions = [
       \ 'coc-spell-checker',
       \ 'coc-cspell-dicts',
       \ 'coc-explorer',
+      \ 'coc-snippets',
       \ 'coc-git',
       \ 'coc-sh'
       \]
@@ -27,9 +30,7 @@ set updatetime=200
 " don't give |ins-completion-menu| messages.
 " make vim errors shorter
 set shortmess+=c
-" trigger autocompletion
-inoremap <silent><expr> <c-z> coc#refresh()
-" navigate between suggestions with tab
+" navigate between suggestions with tab, trigger auto-completion with tap
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
@@ -56,8 +57,6 @@ nmap <leader>rn <Plug>(coc-rename)
 " refactor current word
 nmap <leader>rf <Plug>(coc-refactor)
 " Use <TAB> for select selections ranges, needs server support, like: coc-tsserver, coc-python
-nmap <silent> <TAB> <Plug>(coc-range-select)
-xmap <silent> <TAB> <Plug>(coc-range-select)
 " Create mappings for function text object, requires document symbols feature of languageserver.
 xmap if <Plug>(coc-funcobj-i)
 xmap af <Plug>(coc-funcobj-a)
@@ -103,4 +102,8 @@ nmap ]g <Plug>(coc-git-nextchunk)
 nmap gd <Plug>(coc-git-chunkinfo)
 " checkout current chunk
 nmap gu <Plug>(coc-git-undochunk)
+" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+let g:coc_snippet_next = '<c-j>'
+" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+let g:coc_snippet_prev = '<c-k>'
 

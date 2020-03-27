@@ -1,7 +1,8 @@
 {
   "suggest.triggerCompletionWait": 300,
-  "suggest.autoTrigger": "trigger",
+  "suggest.autoTrigger": "always",
   "suggest.maxCompleteItemCount": 30,
+
   "diagnostic.enableSign": false,
   "diagnostic.enableHighlightLineNumber": true,
   "diagnostic.virtualText": true,
