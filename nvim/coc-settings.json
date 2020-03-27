@@ -2,7 +2,6 @@
   "suggest.triggerCompletionWait": 300,
   "suggest.autoTrigger": "trigger",
   "suggest.maxCompleteItemCount": 30,
-
   "diagnostic.enableSign": false,
   "diagnostic.enableHighlightLineNumber": true,
   "diagnostic.virtualText": true,
@@ -19,14 +18,27 @@
   "git.changeRemovedSign.hlGroup": "GitGutterChange",
   "git.addGBlameToVirtualText": true,
   "git.virtualTextPrefix": " ---> ",
-
   "explorer.icon.enableNerdfont": true,
   "explorer.quitOnOpen": true,
   "explorer.previewAction.onHover": true,
   "explorer.file.showHiddenFiles": true,
   "explorer.position": "floating",
   "explorer.floating.width": -40,
-
+  "explorer.file.column.git.icon.added": "✚",
+  "explorer.file.column.git.icon.deleted": "✖",
+  "explorer.file.column.git.icon.renamed": "➜",
+  "explorer.file.column.git.icon.unmerged": "═",
+  "explorer.file.column.git.icon.untracked": "?",
+  "explorer.file.column.git.icon.modified": "✹",
+  "explorer.file.column.git.icon.ignored": "☒",
+  "explorer.openAction.for.directory": "expandOrCollapse",
+  "explorer.keyMappings": {
+    "<cr>": [
+      "expandable?",
+      "expandOrCollapse",
+      "open"
+    ]
+  },
   "diagnostic.filetypeMap": {
     "markdown": [
       "write-good",
@@ -39,7 +51,6 @@
   ],
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
   "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
-
   "cSpell.showStatus": true,
   "cSpell.allowCompoundWords": true,
   "cSpell.ignorePaths": [
