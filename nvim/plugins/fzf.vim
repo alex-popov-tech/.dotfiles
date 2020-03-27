@@ -28,14 +28,14 @@ let g:fzf_layout = {'down': '80%'}
 " [Buffers] Jump to the existing window if possible
 let g:fzf_buffers_jump = 1
 " find in files
-nmap <C-_>f :GFiles<CR>
-nmap <C-_>F :Files<CR>
+nmap ?f :GFiles<CR>
+nmap ?F :Files<CR>
 " find a text in files
-nmap <C-_>c :GGrep<CR>
-nmap <C-_>C :Ag<CR>
+nmap ?c :GGrep<CR>
+nmap ?C :Ag<CR>
 " find a buffer
-nmap <C-_>b :Buffers<CR>
+nmap ?b :Buffers<CR>
 " find mark
-nmap <C-_>m :Marks<CR>
+nmap ?m :Marks<CR>
 " find in files history
-nmap <C-_>h :History<CR>
+nmap ?h :History<CR>
