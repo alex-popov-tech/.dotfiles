@@ -1,0 +1,108 @@
+snippet fun "one-line-arrow-func"
+const ${1:function_name} = (${2}) => ${0:${VISUAL}}
+endsnippet
+
+
+snippet funb "brackets-arrow-func"
+const ${1:function_name} = (${2}) => {
+  ${0:${VISUAL}}
+}
+endsnippet
+
+snippet afun "one-line-arrow-afunc"
+const ${1:function_name} = (${2}) => ${0:${VISUAL}}
+endsnippet
+
+
+snippet afunb "brackets-arrow-afunc"
+const ${1:function_name} = (${2}) => {
+  ${0:${VISUAL}}
+}
+endsnippet
+
+snippet if "if (condition) { ... }"
+if (${1:true}) {
+  ${0:${VISUAL}}
+}
+endsnippet
+
+snippet ife "if (condition) { ... } else { ... }"
+if (${1:true}) {
+  ${0:${VISUAL}}
+} else {
+  ${2}
+}
+endsnippet
+
+snippet ter
+${1:/* condition */} ? ${2:/* if true */} : ${0:/* if false */}
+endsnippet
+
+snippet try "try { ... } catch(e) { ... }"
+try {
+  ${0:${VISUAL}}
+} catch (${1:e}) {
+  ${2:/* handle error */}
+}
+endsnippet
+
+snippet tryf "try { ... } catch(e) { ... } finally { ... }"
+try {
+  ${0:${VISUAL}}
+} catch (${1:e}) {
+  ${2:/* handle error */}
+} finally {
+  ${3:/* be executed regardless of the try / catch result*/}
+}
+endsnippet
+
+snippet terr
+throw new Error('${1:error message}')
+endsnippet
+
+snippet fori "for (let ... ; ... ; ...) { ... }"
+for (let ${ 1:i } = 0; ${2:from} < ${3:to}; ${while}++) {
+  ${0:${VISUAL}}
+}
+endsnippet
+
+
+snippet for "for (const ... of ...) { ... }"
+for (const ${1:item} of ${2:array}) {
+  ${0:${VISUAL}}
+}
+endsnippet
+
+snippet jsonp
+JSON.parse(${0:jstr});
+endsnippet
+
+snippet jsons
+JSON.stringify(${0:object});
+endsnippet
+snippet log "Insert cosole.log"
+console.log($1);
+endsnippet
+
+snippet logc "Insert log with color"
+console.log('%c$1', 'font-weight:bold;color:${2:green};');
+endsnippet
+
+snippet logt "console.time ... console.timeEnd"
+console.time("${1:label}");
+${0:${VISUAL}}
+console.timeEnd("$1");
+endsnippet
+
+snippet im "import xyz from 'xyz'"
+import ${1} from '${2:$1}';
+endsnippet
+snippet imas "import * as xyz from 'xyz'"
+import * as ${1} from '${2:$1}';
+endsnippet
+snippet imd "import { member } from 'xyz'"
+import { ${1} } from '${2}';
+endsnippet
+snippet re
+const ${1} = require('${2:module_name}');
+endsnippet
