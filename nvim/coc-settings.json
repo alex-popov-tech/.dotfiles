@@ -48,7 +48,8 @@
     "sh": "shellcheck"
   },
   "eslint.filetypes": [
-    "typescript"
+    "typescript",
+    "javascript"
   ],
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
   "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
