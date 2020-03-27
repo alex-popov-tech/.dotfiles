@@ -1,6 +1,8 @@
 call plug#begin('~/.config/nvim/plugged')
 " fuzzy search
 source ~/.config/nvim/plugins/fzf.vim
+" paste with indenting respected
+Plug 'sickill/vim-pasta'
 " allows repeat via dot for some plugins like surround
 Plug 'tpope/vim-repeat'
 " add\update\remove surround stuff like '"{}"'
