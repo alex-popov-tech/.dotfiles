@@ -232,10 +232,13 @@ function neovim() {
       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
   mkdir -p $HOME/.config/nvim/plugins
+  mkdir -p $HOME/.config/coc/ultisnips
   # link main config files
   cd $DPATH/nvim && for filename in $(/bin/ls | grep .vim) ; do ln -fsv $PWD/$filename $HOME/.config/nvim/$filename; done && cd -
   # link separate plugins
   cd $DPATH/nvim/plugins && for filename in $(/bin/ls | grep .vim) ; do ln -fsv $PWD/$filename $HOME/.config/nvim/plugins/$filename; done && cd -
+  # link ultisnips
+  ln -fsv $DPATH/nvim/ultisnips/* $HOME/.config/coc/ultisnips/
 
   nvim --headless +PlugInstall +qa
 

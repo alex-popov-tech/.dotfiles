@@ -1,31 +1,41 @@
-snippet fun "one-line-arrow-func"
-const ${1:function_name} = (${2}) => ${0:${VISUAL}}
+# imports
+snippet r
+require('${1:module_name}')${2:;}
+endsnippet
+snippet rd
+const ${1} = require('${1}');
+endsnippet
+snippet i "import xyz from 'xyz'"
+import ${1} from '${2:$1}';
+endsnippet
+snippet ias "import * as xyz from 'xyz'"
+import * as ${1} from '${2:$1}';
 endsnippet
 
 
-snippet funb "brackets-arrow-func"
-const ${1:function_name} = (${2}) => {
-  ${0:${VISUAL}}
+# function and method declarations
+snippet f "arrow func"
+${1:async }(${2:...args}) => ${3:console.log(args)}
+endsnippet
+snippet df "arrow func declaration"
+const ${1:func} = ${2:async }(${3:...args}) => ${4:console.log(args)}
+endsnippet
+snippet m "class method"
+${1:method_name_and_modifiers}(${2:...args}) {
+	${3:throw new Error('To be implemented')}
 }
 endsnippet
 
-snippet afun "one-line-arrow-afunc"
-const ${1:function_name} = (${2}) => ${0:${VISUAL}}
+
+# conditions
+snippet ?
+${1:true} ? ${2:true} : ${0:false}
 endsnippet
-
-
-snippet afunb "brackets-arrow-afunc"
-const ${1:function_name} = (${2}) => {
-  ${0:${VISUAL}}
-}
-endsnippet
-
 snippet if "if (condition) { ... }"
 if (${1:true}) {
   ${0:${VISUAL}}
 }
 endsnippet
-
 snippet ife "if (condition) { ... } else { ... }"
 if (${1:true}) {
   ${0:${VISUAL}}
@@ -34,10 +44,8 @@ if (${1:true}) {
 }
 endsnippet
 
-snippet ter
-${1:/* condition */} ? ${2:/* if true */} : ${0:/* if false */}
-endsnippet
 
+# error handling
 snippet try "try { ... } catch(e) { ... }"
 try {
   ${0:${VISUAL}}
@@ -45,7 +53,6 @@ try {
   ${2:/* handle error */}
 }
 endsnippet
-
 snippet tryf "try { ... } catch(e) { ... } finally { ... }"
 try {
   ${0:${VISUAL}}
@@ -56,53 +63,40 @@ try {
 }
 endsnippet
 
-snippet terr
-throw new Error('${1:error message}')
-endsnippet
-
-snippet fori "for (let ... ; ... ; ...) { ... }"
-for (let ${ 1:i } = 0; ${2:from} < ${3:to}; ${while}++) {
-  ${0:${VISUAL}}
-}
-endsnippet
-
-
+# loops
 snippet for "for (const ... of ...) { ... }"
 for (const ${1:item} of ${2:array}) {
-  ${0:${VISUAL}}
+	${0:${VISUAL}}
+}
+endsnippet
+snippet fori "for (let ... ; ... ; ...) { ... }"
+for (let ${1:i} = 0; ${2:$1} < ${3:to}; ${4:$1}++) {
+	${0:${VISUAL}}
 }
 endsnippet
 
-snippet jsonp
-JSON.parse(${0:jstr});
-endsnippet
 
-snippet jsons
-JSON.stringify(${0:object});
-endsnippet
+# logging
 snippet log "Insert cosole.log"
 console.log($1);
 endsnippet
-
 snippet logc "Insert log with color"
-console.log('%c$1', 'font-weight:bold;color:${2:green};');
+console.log('\x1b[31m$1');
 endsnippet
-
 snippet logt "console.time ... console.timeEnd"
 console.time("${1:label}");
 ${0:${VISUAL}}
 console.timeEnd("$1");
 endsnippet
 
-snippet im "import xyz from 'xyz'"
-import ${1} from '${2:$1}';
+
+# other
+snippet jsonp
+JSON.parse(${0:jstr});
 endsnippet
-snippet imas "import * as xyz from 'xyz'"
-import * as ${1} from '${2:$1}';
+snippet jsons
+JSON.stringify(${0:object});
 endsnippet
-snippet imd "import { member } from 'xyz'"
-import { ${1} } from '${2}';
-endsnippet
-snippet re
-const ${1} = require('${2:module_name}');
+snippet terr
+throw new Error('${1:error message}')
 endsnippet

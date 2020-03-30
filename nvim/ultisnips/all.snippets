@@ -1,3 +1,3 @@
-snippet todo "TODO comment" bw
-`!p snip.rv=get_comment_format()[0]` ${2:TODO}: $0${3: <${4:`!v strftime('%d-%m-%y')`}${5:, `!v Alexander Popov (alex.popov.tech@gmail.com)`}>} `!p snip.rv=get_comment_format()[2]`
+snippet todo "TODO comment"
+	TODO: ${1:todo_text} - by Alexander Popov (alex.popov.tech@gmail.com) on `!v strftime('%c')`
 endsnippet

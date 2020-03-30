@@ -1,9 +1,9 @@
-Plug 'honza/vim-snippets'
-Plug 'neoclide/coc-neco'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = [
       \ 'coc-word',
       \ 'coc-tsserver',
+      \ 'coc-tabnine',
+      \ 'coc-snippets',
       \ 'coc-json',
       \ 'coc-eslint',
       \ 'coc-tslint',
@@ -107,3 +107,4 @@ let g:coc_snippet_next = '<c-j>'
 " Use <C-k> for jump to previous placeholder, it's default of coc.nvim
 let g:coc_snippet_prev = '<c-k>'
 
+imap <S-TAB> <Plug>(coc-snippets-expand-jump)
