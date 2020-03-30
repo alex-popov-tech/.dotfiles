@@ -9,4 +9,3 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_alt_sep = '|'
 " show only name of file, instead of full path or so
 let g:airline#extensions#tabline#formatter = 'unique_tail'
-
