@@ -48,10 +48,10 @@ nmap ss <plug>(SubversiveSubstituteLine)
 nmap S <plug>(SubversiveSubstituteToEndOfLine)
 " auto placing paired signs like {} [] '' "" etc
 Plug 'jiangmiao/auto-pairs'
-
+" find/jump definition/reference with fzf
 Plug 'pechorin/any-jump.vim'
-nmap gG :AnyJump<cr>
-" framework for code completion/navigation/refactoging
+nmap go :AnyJump<cr>
+" framework for code completion/navigation/refactoring
 source ~/.config/nvim/plugins/coc.nvim.vim
 " working with tags, integrated with coc.nvim
 Plug 'liuchengxu/vista.vim'
