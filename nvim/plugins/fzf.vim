@@ -24,7 +24,12 @@ let g:fzf_colors = {
       \ 'spinner': ['fg', 'Label'],
       \ 'header':  ['fg', 'Comment']
       \ }
-let g:fzf_layout = {'down': '80%'}
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.7 } }
+" define actions
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
 " [Buffers] Jump to the existing window if possible
 let g:fzf_buffers_jump = 1
 " find in files
