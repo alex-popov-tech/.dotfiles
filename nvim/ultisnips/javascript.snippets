@@ -29,19 +29,19 @@ endsnippet
 
 # conditions
 snippet ?
-${1:true} ? ${2:true} : ${0:false}
+${1}? ${2}: ${3}
 endsnippet
 snippet if "if (condition) { ... }"
-if (${1:true}) {
-  ${0:${VISUAL}}
-}
+if (${1}) {
+  ${2}
+}${3}
 endsnippet
 snippet ife "if (condition) { ... } else { ... }"
-if (${1:true}) {
-  ${0:${VISUAL}}
-} else {
+if (${1}) {
   ${2}
-}
+} else {
+  ${3}
+}${4}
 endsnippet
 
 
@@ -92,10 +92,10 @@ endsnippet
 
 # other
 snippet jsonp
-JSON.parse(${0:jstr});
+JSON.parse(${0:jstr})
 endsnippet
 snippet jsons
-JSON.stringify(${0:object});
+JSON.stringify(${0:object})
 endsnippet
 snippet terr
 throw new Error('${1:error message}')
