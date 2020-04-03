@@ -51,6 +51,9 @@
     "typescript",
     "javascript"
   ],
+  "eslint.options": {
+    "configFile": "/Users/alexanderpopov/.eslintrc"
+  },
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
   "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
   "cSpell.showStatus": true,
