@@ -1,16 +1,25 @@
 call plug#begin('~/.config/nvim/plugged')
 " fuzzy search
 source ~/.config/nvim/plugins/fzf.vim
+" abbreviations, substitusion, coercion (transform case)
+Plug 'tpope/vim-abolish'
+" abbreviations
+:Abolish co{snt,tsn,tns,nts} co{nst}
+:Abolish fun{cton, ctino, ctoin} fun{ction}
+:Abolish ret{utn,nurn} ret{urn}
+:Abolish f{ro} f{or}
+" bunch of Abolish calls
+Plug 'jdelkins/vim-correction'
+" add bunch of mappings like ]p ]e ]<space> etc.
+Plug 'tpope/vim-unimpaired'
 " paste with indenting respected
 Plug 'sickill/vim-pasta'
 " allows repeat via dot for some plugins like surround
 Plug 'tpope/vim-repeat'
 " add\update\remove surround stuff like '"{}"'
 Plug 'tpope/vim-surround'
-" add text objects like in ,, .. {} () etc.
-Plug 'wellle/targets.vim'
-" add text objects depends on indenting <count>ai|ii|aI|iI
-Plug 'michaeljsmith/vim-indent-object'
+" various text objects
+source ~/.dotfiles/nvim/plugins/textobjects.vim
 " add commenting for different langs via gcc
 Plug 'tpope/vim-commentary'
 " comment mappings
@@ -19,8 +28,6 @@ vmap <leader>c gc
 " add switch toggles
 Plug 'AndrewRadev/switch.vim'
 let g:switch_mapping='-'
-" add bunch of mapping
-Plug 'tpope/vim-unimpaired'
 " improved search
 Plug 'haya14busa/incsearch.vim'
 Plug 'haya14busa/incsearch-fuzzy.vim'

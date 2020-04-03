@@ -83,6 +83,17 @@
   * `[<Space>`/`]<Space>` - add [count] blank lines above/below the cursor
   * `[e`/`]e` - exchange current line with [count] lines above/below it
   * `[p`/`]p` - paste on previous/next line
+* [tpope/vim-abolish](https://github.com/tpope/vim-abolish)
+  * Subvert
+    * Blog to Post `:Subvert/blog{,s}/post{,s}/g`
+    * Child to Adult `:Subvert/child{,ren}/adult{,s}/g`
+  * `crs` - to snake case
+  * `crc` - to camel case
+  * `crm` - to mixed case
+  * `cru` - to upper case
+  * `crs` - to space case
+  * `cr.` - to dot case
+  * `cr-` - to dash case
 * [svermeulen/vim-subversive](https://github.com/svermeulen/vim-subversive)
   * `s<motion>` - subversive substitute (replace 'motion' with yanked chunk)
   * `ss` - subversive substitute line

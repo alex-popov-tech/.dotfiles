@@ -56,7 +56,6 @@ nmap <silent> ]d <Plug>(coc-diagnostic-next)
 nmap <leader>rn <Plug>(coc-rename)
 " refactor current word
 nmap <leader>rf <Plug>(coc-refactor)
-" Use <TAB> for select selections ranges, needs server support, like: coc-tsserver, coc-python
 " Create mappings for function text object, requires document symbols feature of languageserver.
 xmap if <Plug>(coc-funcobj-i)
 xmap af <Plug>(coc-funcobj-a)
