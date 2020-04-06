@@ -3,11 +3,15 @@ call plug#begin('~/.config/nvim/plugged')
 source ~/.config/nvim/plugins/fzf.vim
 " abbreviations, substitusion, coercion (transform case)
 Plug 'tpope/vim-abolish'
-" abbreviations
-:Abolish co{snt,tsn,tns,nts} co{nst}
-:Abolish fun{cton, ctino, ctoin} fun{ction}
-:Abolish ret{utn,nurn} ret{urn}
-:Abolish f{ro} f{or}
+function InitAbbreviations()
+  " abbreviations
+  Abolish! -cmdline co{snt,tsn,tns,nts} co{nst}
+  Abolish! -cmdline fun{cton, ctino, ctoin} fun{ction}
+  Abolish! -cmdline ret{utn,nurn} ret{urn}
+  Abolish! -cmdline f{ro} f{or}
+  Abolish! -cmdline aw{ati,tai,tia} aw{ait}
+endfunction
+autocmd BufEnter * call InitAbbreviations()
 " bunch of Abolish calls
 Plug 'jdelkins/vim-correction'
 " add bunch of mappings like ]p ]e ]<space> etc.
