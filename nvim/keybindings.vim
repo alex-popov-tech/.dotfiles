@@ -15,9 +15,7 @@ nmap <leader>w :try\|wa\|catch /\<E141\>/\|echomsg 'Not all files saved!'\|endtr
 " write and exit from current buffer
 nmap <C-q> :x<CR>
 " write and exit all buffers
-nmap <silent> <leader>q :xa<CR>
-" write and delete current buffer
-nmap <silent> <leader>d :bd<CR>
+nmap <silent> <leader>x :xa<CR>
 " do Y to yank till the end of the line
 nmap Y y$
 " splits

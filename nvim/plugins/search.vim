@@ -44,3 +44,22 @@ nmap ?b :Buffers<CR>
 nmap ?m :Marks<CR>
 " find in files history
 nmap ?h :History<CR>
+
+" improved search
+Plug 'haya14busa/incsearch.vim'
+Plug 'haya14busa/incsearch-fuzzy.vim'
+" auto remove search hightlight by moving
+let g:incsearch#auto_nohlsearch = 1
+" mapping for plain and fuzzy search
+nmap /  <Plug>(incsearch-forward)
+nmap ?  <Plug>(incsearch-backward)
+nmap z/ <Plug>(incsearch-fuzzy-/)
+nmap z? <Plug>(incsearch-fuzzy-?)
+nmap *  <Plug>(incsearch-nohl-*)
+nmap #  <Plug>(incsearch-nohl-#)
+nmap n  <Plug>(incsearch-nohl-n)
+nmap N  <Plug>(incsearch-nohl-N)
+" make 'f' a bit more usefull
+Plug 'rhysd/clever-f.vim'
+let g:clever_f_chars_match_any_signs = '/'
+let g:clever_f_smart_case=1

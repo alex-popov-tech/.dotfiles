@@ -1,3 +1,6 @@
+" =====================================================================
+" ============================= COC.NVIM ==============================
+" =====================================================================
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = [
       \ 'coc-word',
@@ -105,5 +108,43 @@ nmap gu <Plug>(coc-git-undochunk)
 let g:coc_snippet_next = '<c-j>'
 " Use <C-k> for jump to previous placeholder, it's default of coc.nvim
 let g:coc_snippet_prev = '<c-k>'
-
+" trigger snipped expand from completion window directly
 imap <S-TAB> <Plug>(coc-snippets-expand-jump)
+" =====================================================================
+" =============================== VISTA ===============================
+" =====================================================================
+" working with tags, integrated with coc.nvim
+Plug 'liuchengxu/vista.vim'
+" show sidebar
+nmap <C-t> :Vista!!<CR>
+" search through tags
+nmap ?t :Vista finder coc<CR>
+" by default use coc.nvim to get tags
+let g:vista_default_executive = 'coc'
+" show floating window with tag preview on hover
+let g:vista_echo_cursor_strategy = 'floating_win'
+" alter icons in sidebar
+let g:vista_icon_indent = [ "", "├─▸"]
+" preview in search
+let g:vista_fzf_preview = ['right:50%']
+" =====================================================================
+" =============================== OTHER ===============================
+" =====================================================================
+" add commenting for different langs via gcc
+Plug 'tpope/vim-commentary'
+" comment mappings
+nmap <leader>c gcc
+vmap <leader>c gc
+" add switch toggles
+Plug 'AndrewRadev/switch.vim'
+let g:switch_mapping='-'
+" toggle join/split for args, dicts, ecs.
+Plug 'AndrewRadev/splitjoin.vim'
+let g:splitjoin_split_mapping = ''
+let g:splitjoin_join_mapping = ''
+map <leader>j :SplitjoinJoin<cr>
+map <leader>s :SplitjoinSplit<cr>
+" syntax highlight
+Plug 'sheerun/vim-polyglot'
+" plugin which allows vim to work with common editorconfig
+Plug 'editorconfig/editorconfig-vim'
