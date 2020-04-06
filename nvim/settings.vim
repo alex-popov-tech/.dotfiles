@@ -1,7 +1,7 @@
 " mappings for jumping
 nnoremap <C-j> <C-o>
 nnoremap <C-k> <C-i>
-"enabme yank/paste to/from system clipboard
+"enable yank/paste to/from system clipboard
 set clipboard+=unnamedplus
 " to visually select and copy from vim without line numbers
 if has('mouse')
@@ -26,11 +26,11 @@ set nofoldenable
 set nowrap
 " but do not break words, only 'by words'
 set linebreak
-" show relative line number
+" show absolute line number
 set number
 " keep searched chunks hightlighted
 set hlsearch
-" search case-insensative
+" search case-insensitive
 set ignorecase
 " if on with ignorecase, when a pattern contains an uppercase letter, it is
 " case sensitive, otherwise it is not
@@ -52,8 +52,7 @@ set shiftwidth=2
 " bottom of the page (for scroll to trigger you need be at 5 line from bottom
 " and press 'j')
 set scrolloff=5
-" resize signcolumn size dynamically depending on context (coc.nvim signs and
-" git-gutter)
+" resize signcolumn size dynamically depending on context
 set signcolumn=auto
 " make inner terminal zsh
 set shell=/usr/local/bin/zsh
