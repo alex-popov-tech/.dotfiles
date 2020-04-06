@@ -1,5 +1,7 @@
 Plug 'mhinz/vim-startify'
 " Automatically save the session when leaving Vim
+" Close all active buffers except last N
+let s:buffers_to_keep = 5
 let g:sessionsdir = '~/.vim/sessions/'
 let g:startify_session_dir = g:sessionsdir
 let g:startify_lists = [
@@ -42,7 +44,8 @@ endfunction
 " write session file
 function EnsureSession()
   if &ft != 'gitcommit' || empty(&ft)
-    call s:closeOldBuffers()
+    call DeleteTrashBuffers()
+    call s:deleteExtraBuffers()
     call EnsureSessionsDirExists()
     let b:projectname = GetProjectNameFromPath()
     let b:filename = GetSessionNameForProject(b:projectname)
@@ -85,16 +88,29 @@ function! s:buflisted_sorted()
   return sort(s:buflisted(), 's:sort_buffers')
 endfunction
 
-" Close all active buffers except last N
-let s:buffers_to_keep = 10
-function! s:closeOldBuffers()
-  let buffers = s:buflisted_sorted()
-  if len(buffers) < s:buffers_to_keep
+autocmd SourcePost * call DeleteTrashBuffers()
+
+" close stupid buffers on start
+function! DeleteTrashBuffers()
+  let allBuffers = s:buflisted_sorted()
+  let filteredBuffers = []
+  for buffer in allBuffers
+    if bufname(buffer) =~ "list"
+      silent exe 'bdel ' . bufname(buffer)
+    else
+      call add(filteredBuffers, buffer)
+    endif
+  endfor
+  return filteredBuffers
+endfunction
+
+function! s:deleteExtraBuffers()
+  let bufferIds = s:buflisted_sorted()
+  if len(bufferIds) < s:buffers_to_keep
     return
   endif
-  let buffers_to_close = buffers[s:buffers_to_keep:]
+  let buffers_to_close = bufferIds[s:buffers_to_keep:]
   for buffer in buffers_to_close
-    echo buffer
     silent exe 'bdel ' . buffer
   endfor
 endfunction
