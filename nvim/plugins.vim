@@ -4,6 +4,7 @@ source ~/.config/nvim/plugins/search.vim
 source ~/.config/nvim/plugins/ide.vim
 source ~/.config/nvim/plugins/session.vim
 source ~/.config/nvim/plugins/ui.vim
+source ~/.config/nvim/plugins/tmux.vim
 call plug#end()
 
 syntax on
