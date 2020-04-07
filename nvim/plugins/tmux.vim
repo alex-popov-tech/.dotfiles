@@ -15,5 +15,21 @@ map <silent> <C-Up> :ObviousResizeUp<CR>
 map <silent> <C-Down> :ObviousResizeDown<CR>
 map <silent> <C-Left> :ObviousResizeLeft<CR>
 map <silent> <C-Right> :ObviousResizeRight<CR>
+" tmux-like zoom in vim
+function! s:zoom_toggle() abort
+  if 1 == winnr('$')
+    return
+  endif
+  let restore_cmd = winrestcmd()
+  wincmd |
+  wincmd _
+  " If the layout did not change, it's a toggle (un-zoom).
+  if restore_cmd ==# winrestcmd()
+    exe t:zoom_restore
+  else
+    let t:zoom_restore = restore_cmd
+  endif
+endfunction
+nnoremap <leader>z :call <SID>zoom_toggle()<CR>
 " send lines to tmux pane repl
 Plug 'esamattis/slimux'
