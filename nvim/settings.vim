@@ -16,12 +16,12 @@ set matchpairs+=<:>
 set cursorline
 " highlight for current column
 set cursorcolumn
-" fold based on indent
-set foldmethod=indent
 " deepest fold is 10 levels
 set foldnestmax=10
 " don't fold by default
 set nofoldenable
+" fold text using syntax
+set foldmethod=syntax
 " when line is longer than the screen, it continues on the next line
 set nowrap
 " but do not break words, only 'by words'
