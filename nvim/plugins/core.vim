@@ -20,6 +20,7 @@ function! InitAbbreviations()
   Abolish! -cmdline ret{utn,nurn} ret{urn}
   Abolish! -cmdline f{ro} f{or}
   Abolish! -cmdline aw{ati,tai,tia} aw{ait}
+  Abolish! -cmdline len{ght} len{gth}
 endfunction
 autocmd BufEnter * call InitAbbreviations()
 
