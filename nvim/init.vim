@@ -2,6 +2,7 @@ scriptencoding utf-8
 
 filetype plugin indent on
 
+" make two leaders
 let mapleader = " "
 nmap <BS> <leader>
 
