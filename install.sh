@@ -113,10 +113,7 @@ function software() {
     ssh-copy-id \
     prettyping \
     mas \
-    fd \
-    the_silver_searcher ripgrep fzf
-
-  gem install colorls
+    the_silver_searcher fzf
 
   brew cask install \
     google-chrome firefox \
@@ -221,7 +218,7 @@ function neovim() {
 
   brew install neovim
 
-  brew install shellcheck the_silver_searcher
+  brew install shellcheck
   gem install neovim solargraph
   pip install neovim pynvim
   pip3 install neovim python-language-server pylint pynvim
