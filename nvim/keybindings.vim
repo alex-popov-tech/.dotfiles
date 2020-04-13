@@ -23,3 +23,5 @@ nmap <leader>- :split<CR>
 nmap <leader>\| :vsplit<CR>
 " reload config
 nmap <leader>rr :source ~/.dotfiles/nvim/init.vim<cr>
+" remap zl back to zo
+nnoremap zl zo
