@@ -45,6 +45,7 @@ endfunction
 function EnsureSession()
   if &ft != 'gitcommit' || empty(&ft)
     call DeleteTrashBuffers()
+    call DeleteEmptyBuffers()
     call s:deleteExtraBuffers()
     call EnsureSessionsDirExists()
     let b:projectname = GetProjectNameFromPath()
@@ -92,16 +93,33 @@ autocmd SourcePost * call DeleteTrashBuffers()
 
 " close stupid buffers on start
 function! DeleteTrashBuffers()
+  call DeleteEmptyBuffers()
   let allBuffers = s:buflisted_sorted()
   let filteredBuffers = []
   for buffer in allBuffers
-    if bufname(buffer) =~ "list"
+    if bufname(buffer) =~ "list" || bufname(buffer) == ''
       silent exe 'bdel ' . bufname(buffer)
     else
       call add(filteredBuffers, buffer)
     endif
   endfor
   return filteredBuffers
+endfunction
+
+function! DeleteEmptyBuffers()
+    let [i, n; empty] = [1, bufnr('$')]
+    while i <= n
+        if bufexists(i) && bufname(i) == ''
+            call add(empty, i)
+        endif
+        let i += 1
+    endwhile
+    if len(empty) > 0
+        try
+          exe 'bdelete! ' join(empty)
+        catch
+        endtry
+    endif
 endfunction
 
 function! s:deleteExtraBuffers()
