@@ -10,7 +10,6 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 " show only name of file, instead of full path or so
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 
-
 Plug 'morhetz/gruvbox'
 let g:gruvbox_contrast_dark = "light"
 let g:gruvbox_sign_column = "bg0"

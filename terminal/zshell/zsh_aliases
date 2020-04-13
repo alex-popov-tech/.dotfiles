@@ -1,14 +1,5 @@
 # Shortcuts
-alias Dl="cd $HOME/Downloads"
-alias Dt="cd $HOME/Desktop"
 alias work="cd $HOME/Work"
-
-# Improved list
-alias ls="colorls --sort-dirs"
-alias lsa="colorls --almost-all --sort-dirs"
-
-# Improved cat
-alias cat="bat"
 
 # Improved ping
 alias ping="prettyping --nolegend"
@@ -29,11 +20,9 @@ alias ts="tig status"
 
 alias r="ranger"
 
-alias grep="rg"
-
-alias find="fd"
-
 alias ...="cd ../.."
 alias ....="cd ../../.."
+alias .....="cd ../../../.."
 
 alias c="clear"
+alias cc="clear"
