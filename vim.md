@@ -98,6 +98,9 @@
   * `s<motion>` - subversive substitute (replace 'motion' with yanked chunk)
   * `ss` - subversive substitute line
   * `S` - subversive substitute to the EOL
+* [esamattis/slimux](https://github.com/sesamattis/slimux)
+    * `gc` - configure pane to send commands to the
+    * `gx` - send line/selection
 
 # Vim tips
 
@@ -112,4 +115,3 @@
 * Use `C-a`/`C-x` to increment/decrement number under cursor
 * Use `^` to go to first non-space character of the line
 * If you want to save a read-only file (forger to open vim with sudo), use the following command: `:w !sudo tee %`
-
