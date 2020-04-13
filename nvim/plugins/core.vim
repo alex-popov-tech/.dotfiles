@@ -22,7 +22,7 @@ function! InitAbbreviations()
   Abolish! -cmdline aw{ati,tai,tia} aw{ait}
   Abolish! -cmdline len{ght} len{gth}
 endfunction
-autocmd BufEnter * call InitAbbreviations()
+autocmd VimEnter * call InitAbbreviations()
 
 " add bunch of mappings like ]p ]e ]<space> etc.
 Plug 'tpope/vim-unimpaired'
