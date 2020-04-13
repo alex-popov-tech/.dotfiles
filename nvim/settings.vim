@@ -52,6 +52,8 @@ set shiftwidth=2
 " bottom of the page (for scroll to trigger you need be at 5 line from bottom
 " and press 'j')
 set scrolloff=5
+" same as above but for columns
+set sidescrolloff=5
 " resize signcolumn size dynamically depending on context
 set signcolumn=auto
 " make inner terminal zsh
