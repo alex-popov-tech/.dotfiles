@@ -7,7 +7,7 @@ nmap k gk
 nmap <S-Up> :bn<cr>
 nmap <S-Down> :bp<cr>
 "disable map entering Ex mode
-map Q <Nop>
+map Q :x<CR>
 " write current buffer
 nmap <C-w> :w<CR>
 " write all buffers, warn if failed
