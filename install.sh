@@ -194,8 +194,8 @@ function terminal() {
   echo "+---------------------------------+"
   brew install zsh
 
-  mkdir ~/.zplugin
-  git clone https://github.com/zdharma/zplugin.git ~/.zplugin/bin
+  mkdir ~/.zinit
+  git clone https://github.com/zdharma/zinit.git ~/.zinit/bin
 
   ln -fsv $DPATH/terminal/zshell/zsh_env $HOME/.zsh_env
   ln -fsv $DPATH/terminal/zshell/zsh_prompt $HOME/.zsh_prompt
