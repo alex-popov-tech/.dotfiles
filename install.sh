@@ -182,12 +182,8 @@ function terminal() {
   brew install tmux
   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-  ln -fsv $DPATH/tmux/init.conf $HOME/.tmux.conf
-  ln -fsv $DPATH/tmux/plugins.conf $HOME/.tmux_plugins.conf
-  ln -fsv $DPATH/tmux/settings.conf $HOME/.tmux_settings.conf
-  ln -fsv $DPATH/tmux/bindings.conf $HOME/.tmux_bindings.conf
-  ln -fsv $DPATH/tmux/ui.conf $HOME/.tmux_ui.conf
-
+  # link main config files
+  cd $DPATH/tmux && for filename in $(/bin/ls) ; do ln -fsv $PWD/$filename $HOME/$filename; done && cd -
 
   echo "+---------------------------------+"
   echo "|        Installing Zshell        |"
@@ -197,15 +193,7 @@ function terminal() {
   mkdir ~/.zinit
   git clone https://github.com/zdharma/zinit.git ~/.zinit/bin
 
-  ln -fsv $DPATH/terminal/zshell/zsh_env $HOME/.zsh_env
-  ln -fsv $DPATH/terminal/zshell/zsh_prompt $HOME/.zsh_prompt
-  ln -fsv $DPATH/terminal/zshell/zsh_settings $HOME/.zsh_settings
-  ln -fsv $DPATH/terminal/zshell/zsh_plugins $HOME/.zsh_plugins
-  ln -fsv $DPATH/terminal/zshell/zsh_aliases $HOME/.zsh_aliases
-  ln -fsv $DPATH/terminal/zshell/zsh_functions $HOME/.zsh_functions
-  ln -fsv $DPATH/terminal/zshell/zsh_langs $HOME/.zsh_langs
-  ln -fsv $DPATH/terminal/zshell/zsh_commands $HOME/.zsh_commands
-  ln -fsv $DPATH/terminal/zshell/zshrc $HOME/.zshrc
+  cd $DPATH/terminal/zshell && for filename in $(/bin/ls) ; do ln -fsv $PWD/$filename $HOME/.$filename; done && cd -
 
 }
 
