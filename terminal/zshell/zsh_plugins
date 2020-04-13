@@ -1,15 +1,31 @@
-source $HOME/.zplugin/bin/zplugin.zsh
+source $HOME/.zinit/bin/zinit.zsh
 
-# p10k theme
-zplugin ice depth=1
-zplugin light romkatv/powerlevel10k
+zinit for \
+  light-mode romkatv/powerlevel10k \
+  light-mode zsh-users/zsh-autosuggestions \
+  light-mode zdharma/fast-syntax-highlighting \
+  light-mode OMZ::plugins/git/git.plugin.zsh \
+  light-mode OMZ::plugins/vi-mode/vi-mode.plugin.zsh \
+  light-mode MichaelAquilina/zsh-you-should-use \
+  light-mode skywind3000/z.lua
 
-# plugins
-zplugin light zsh-users/zsh-autosuggestions
-zplugin light skywind3000/z.lua
-zplugin snippet OMZ::plugins/git/git.plugin.zsh
-zplugin snippet OMZ::plugins/vi-mode/vi-mode.plugin.zsh
-# key bindings for workman
+zinit ice as"program" from"gh-r" mv"fd* -> fd" pick"fd/fd" lucid
+zinit light sharkdp/fd
+alias find="fd"
+zinit ice as"program" from"gh-r" mv"bat* -> bat" pick"bat/bat" lucid
+zinit light sharkdp/bat
+alias cat="bat"
+zinit ice as"program" from"gh-r" mv"exa* -> exa" pick"exa/exa" lucid
+zinit light ogham/exa
+alias ls='exa --icons'
+alias la='exa -a --icons'
+alias lt='exa --tree --level=2 --icons'
+zinit ice as"program" from"gh-r" mv"rg* -> rg" pick"rg/rg" lucid
+zinit light BurntSushi/ripgrep
+
+# force zsh-you-should-use
+export YSU_HARDCORE=1
+# remap for workman in vi-mode
 bindkey -M vicmd 'y' vi-backward-char
 bindkey -M vicmd 'h' vi-yank
 bindkey -M vicmd 'n' down-history
@@ -17,15 +33,3 @@ bindkey -M vicmd 'j' vi-repeat-search
 bindkey -M vicmd 'e' up-history
 bindkey -M vicmd 'k' vi-forward-word-end
 bindkey -M vicmd 'o' vi-forward-char
-zplugin light MichaelAquilina/zsh-you-should-use
-export YSU_HARDCORE=1
-zplugin light zdharma/fast-syntax-highlighting
-zplugin ice as"command" from"gh-r" mv"fd* -> fd" pick"fd/fd" lucid
-zplugin light sharkdp/fd
-zplugin ice as"command" from"gh-r" mv"bat* -> bat" pick"bat/bat" lucid
-zplugin light sharkdp/bat
-
-zplugin ice blockf atpull'zinit creinstall -q .'
-zplugin light zsh-users/zsh-completions
-autoload compinit
-compinit
