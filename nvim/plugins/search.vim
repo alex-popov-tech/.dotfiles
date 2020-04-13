@@ -1,12 +1,11 @@
-Plug 'junegunn/fzf', { 'dir': '~/.config/fzf', 'do': './install --bin' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'mileszs/ack.vim'
 " previews for fuzzy search
 command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, fzf#vim#with_preview('up'), <bang>0)
 command! -bang -nargs=? -complete=dir GFiles call fzf#vim#gitfiles(<q-args>, fzf#vim#with_preview('up'), <bang>0)
-" search for content occurences only, not file names
+" search for content occurrences only, not file names
 command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, '', fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'up'), <bang>0)
-" search for content occurences in only git files
+" search for content occurrences in only git files
 command! -bang -nargs=* GGrep call fzf#vim#grep('git grep --line-number '.shellescape(<q-args>), 0, fzf#vim#with_preview('up'),<bang>0)
 " respect color scheme
 let g:fzf_colors = {
