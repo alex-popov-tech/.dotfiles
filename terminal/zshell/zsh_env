@@ -11,5 +11,3 @@ export LANG=en_US.UTF-8
 export GPG_TTY=$TTY
 # for last pass no never end session after login
 export LPASS_AGENT_TIMEOUT=0
-# for fzf to keep last search
-export FZF_DEFAULT_OPTS="--history=$HOME/.fzf_history"
