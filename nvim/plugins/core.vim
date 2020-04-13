@@ -21,6 +21,8 @@ function! InitAbbreviations()
   Abolish! -cmdline f{ro} f{or}
   Abolish! -cmdline aw{ati,tai,tia} aw{ait}
   Abolish! -cmdline len{ght} len{gth}
+  Abolish! -cmdline shou{dl} shou{ld}
+  Abolish! -cmdline tr{eu} tr{ue}
 endfunction
 autocmd VimEnter * call InitAbbreviations()
 
