@@ -3,19 +3,21 @@
 " =====================================================================
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = [
-      \ 'coc-word',
+      \ 'coc-actions',
+      \ 'coc-vimlsp',
       \ 'coc-tsserver',
       \ 'coc-tabnine',
-      \ 'coc-snippets',
-      \ 'coc-json',
-      \ 'coc-eslint',
-      \ 'coc-tslint',
-      \ 'coc-yank',
       \ 'coc-spell-checker',
       \ 'coc-cspell-dicts',
-      \ 'coc-explorer',
       \ 'coc-snippets',
+      \ 'coc-json',
+      \ 'coc-yaml',
+      \ 'coc-eslint',
+      \ 'coc-yank',
+      \ 'coc-tslint',
+      \ 'coc-explorer',
       \ 'coc-git',
+      \ 'coc-marketplace',
       \ 'coc-sh'
       \]
 " if hidden is not set, TextEdit might fail.
@@ -29,26 +31,27 @@ set nowritebackup
 " give more space to outputs of executed commands to 2 lines
 set cmdheight=1
 " Smaller updatetime for CursorHold & CursorHoldI
-set updatetime=200
+set updatetime=400
 " don't give |ins-completion-menu| messages.
 " make vim errors shorter
 set shortmess+=c
 " navigate between suggestions with tab, trigger auto-completion with tap
-inoremap <silent><expr> <TAB>
+inoremap <silent><expr> <Down>
       \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
+      \ <SID>check_back_space() ? "\<Down>" :
       \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <expr><Up> pumvisible() ? "\<C-p>" : "\<C-h>"
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 " confirm by <enter>
 inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+inoremap <silent><expr> <Right> coc#refresh()
 " show list of yanks with preview
 nmap <leader>y :CocList --auto-preview --normal yank<CR>
 " Navigate interpreter/compiler/linter errors
-nmap <leader>e :CocList --number-select --normal --auto-preview diagnostics<CR>
+nmap <leader>d :CocList --strict --auto-preview diagnostics<CR>
 " Remap keys for gotos
 nmap gi <Plug>(coc-implementation)
 nmap gr <Plug>(coc-references)
@@ -105,11 +108,13 @@ nmap gd <Plug>(coc-git-chunkinfo)
 " checkout current chunk
 nmap gu <Plug>(coc-git-undochunk)
 " Use <C-j> for jump to next placeholder, it's default of coc.nvim
-let g:coc_snippet_next = '<c-j>'
+" let g:coc_snippet_next = '<c-j>'
+let g:coc_snippet_next = '<Right>'
 " Use <C-k> for jump to previous placeholder, it's default of coc.nvim
-let g:coc_snippet_prev = '<c-k>'
+" let g:coc_snippet_prev = '<c-k>'
+let g:coc_snippet_prev = '<Left>'
 " trigger snipped expand from completion window directly
-imap <S-TAB> <Plug>(coc-snippets-expand-jump)
+imap <Right> <Plug>(coc-snippets-expand-jump)
 " =====================================================================
 " =============================== VISTA ===============================
 " =====================================================================

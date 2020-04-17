@@ -2,11 +2,12 @@
   "suggest.triggerCompletionWait": 300,
   "suggest.autoTrigger": "always",
   "suggest.maxCompleteItemCount": 30,
+  "suggest.noselect": true,
+  "suggest.removeDuplicateItems": true,
 
+  "diagnostic.messageDelay": 500,
   "diagnostic.enableSign": true,
   "diagnostic.enableHighlightLineNumber": true,
-  "diagnostic.virtualText": true,
-  "diagnostic.virtualTextPrefix": " ---> ",
   "diagnostic.checkCurrentLine": true,
   "git.addedSign.text": "++",
   "git.changedSign.text": "~~",
@@ -56,7 +57,6 @@
   },
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
   "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
-  "cSpell.showStatus": true,
   "cSpell.allowCompoundWords": true,
   "cSpell.ignorePaths": [
     "**/package-lock.json",
@@ -66,7 +66,6 @@
     ".vscode"
   ],
   "cSpellExt.enableDictionaries": [
-    "russian",
     "node",
     "aws",
     "bash",
@@ -86,7 +85,7 @@
     "software-terms",
     "typescript"
   ],
-  "cSpell.language": "en,ru",
+  "cSpell.language": "en",
   "cSpell.enabledLanguageIds": [
     "vim",
     "javascript",
