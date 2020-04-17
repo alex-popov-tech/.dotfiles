@@ -44,3 +44,14 @@ Plug 'jiangmiao/auto-pairs'
 " find/jump definition/reference with fzf
 Plug 'pechorin/any-jump.vim'
 nmap go :AnyJump<cr>
+Plug 'mhinz/vim-startify'
+let g:startify_session_dir = '~/.vim/sessions/'
+let g:startify_lists = [
+      \ { 'type': 'sessions',  'header': ['   Sessions']       },
+      \ { 'type': 'dir',       'header': ['   MRU '. getcwd()] },
+      \ { 'type': 'files',     'header': ['   MRU']            },
+      \ ]
+" use vsc root when enter file
+let g:startify_change_to_vcs_root = 1
+" do not show 'edit' and 'quit' options
+let g:startify_enable_special = 1
