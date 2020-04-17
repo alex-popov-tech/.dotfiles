@@ -13,7 +13,8 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 Plug 'morhetz/gruvbox'
 let g:gruvbox_contrast_dark = "light"
 let g:gruvbox_sign_column = "bg0"
-
+Plug 'Yggdroot/indentLine'
+let g:indentLine_char = '|'
 " Plug 'joshdick/onedark.vim'
 " let g:airline_theme = 'onedark'
 
