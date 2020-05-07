@@ -1,36 +1,36 @@
-Plug 'vim-airline/vim-airline'
-" enable extra cool font liguria
-let g:airline_powerline_fonts = 1
-" enable coc integration
-let g:airline#extensions#coc#enabled = 1
-" show buffer list at the top of the screen
-let g:airline#extensions#tabline#enabled = 1
-" split buffers at the top using that symbol
-let g:airline#extensions#tabline#left_alt_sep = '|'
-" show only name of file, instead of full path or so
-let g:airline#extensions#tabline#formatter = 'unique_tail'
+Plug 'rbong/vim-crystalline'
 
-Plug 'morhetz/gruvbox'
+function! StatusDiagnostic() abort
+  let info = get(b:, 'coc_diagnostic_info', {})
+  if empty(info) | return '' | endif
+  let msgs = []
+  if get(info, 'error', 0)
+    call add(msgs, 'E' . info['error'])
+  endif
+  if get(info, 'warning', 0)
+    call add(msgs, 'W' . info['warning'])
+  endif
+  return join(msgs, ' '). ' ' . get(g:, 'coc_status', '')
+endfunction
+
+function! StatusLine(...)
+  return crystalline#mode() . crystalline#right_mode_sep('')
+        \ . ' %f%h%w%m%r ' . crystalline#right_sep('', 'Fill') . '%='
+        \ . crystalline#left_sep('', 'Fill') . '%{StatusDiagnostic()} %{&ft}[%{&fenc!=#""?&fenc:&enc}][%{&ff}] %l/%L %c%V %P '
+endfunction
+let g:crystalline_enable_sep = 1
+let g:crystalline_statusline_fn = 'StatusLine'
+let g:crystalline_theme = 'crystalline_gruvbox'
+set laststatus=2
+
+function! TabLine()
+  return crystalline#bufferline()
+endfunction
+
+let g:crystalline_tabline_fn = 'TabLine'
+set showtabline=2
+
+Plug 'gruvbox-community/gruvbox'
 let g:gruvbox_contrast_dark = "light"
 let g:gruvbox_sign_column = "bg0"
-Plug 'Yggdroot/indentLine'
-let g:indentLine_char = '|'
-" Plug 'joshdick/onedark.vim'
-" let g:airline_theme = 'onedark'
-
-" Plug 'nanotech/jellybeans.vim'
-
-" Plug 'lifepillar/vim-solarized8'
-
-" Plug 'rakr/vim-one'
-
-" Plug 'ayu-theme/ayu-vim'
-" let ayucolor="mirage"
-
-" Plug 'sainnhe/gruvbox-material'
-" let g:airline_theme = 'gruvbox_material'
-" let g:gruvbox_material_cursor_line_contrast = 'higher'
-" let g:gruvbox_material_background = 'medium'
-" let g:gruvbox_material_enable_italic = 1
-" let g:gruvbox_material_current_word = 'grey background'
-
+Plug 'ap/vim-css-color'
