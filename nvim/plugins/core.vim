@@ -55,3 +55,5 @@ let g:startify_lists = [
 let g:startify_change_to_vcs_root = 1
 " do not show 'edit' and 'quit' options
 let g:startify_enable_special = 1
+Plug 'chaoren/vim-wordmotion'
+let g:wordmotion_prefix = ','
