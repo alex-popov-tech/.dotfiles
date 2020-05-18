@@ -11,3 +11,18 @@ indent_size = 2
 [*.{py,go}]
 indent_style = tab
 indent_size = 4
+
+[*.vim]
+indent_style = space
+indent_size = 4
+
+[*.rb]
+indent_style = space
+indent_size = 2
+
+[*.yml]
+indent_style = space
+indent_size = 2
+
+[Makefile]
+indent_style = tab
