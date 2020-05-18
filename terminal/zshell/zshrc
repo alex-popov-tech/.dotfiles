@@ -15,3 +15,4 @@ source $HOME/.zsh_aliases
 source $HOME/.zsh_functions
 source $HOME/.zsh_fzf
 # zprof
+unsetopt share_history
