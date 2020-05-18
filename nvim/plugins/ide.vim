@@ -151,5 +151,7 @@ map <leader>j :SplitjoinJoin<cr>
 map <leader>s :SplitjoinSplit<cr>
 " syntax highlight
 Plug 'sheerun/vim-polyglot'
+" don't conceal links like SOME_LINK instead of [SOME_LINK](some link url)
+let g:vim_markdown_conceal = 0
 " plugin which allows vim to work with common editorconfig
 Plug 'editorconfig/editorconfig-vim'
