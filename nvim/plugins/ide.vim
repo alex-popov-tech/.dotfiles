@@ -32,6 +32,8 @@ set nowritebackup
 set cmdheight=1
 " Smaller updatetime for CursorHold & CursorHoldI
 set updatetime=400
+autocmd CursorHold * call CocActionAsync('highlight')
+hi! link CocHighlightText GruvboxAqua
 " don't give |ins-completion-menu| messages.
 " make vim errors shorter
 set shortmess+=c
