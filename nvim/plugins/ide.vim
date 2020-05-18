@@ -3,23 +3,24 @@
 " =====================================================================
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = [
-      \ 'coc-actions',
-      \ 'coc-vimlsp',
-      \ 'coc-tsserver',
-      \ 'coc-tabnine',
-      \ 'coc-spell-checker',
-      \ 'coc-cspell-dicts',
-      \ 'coc-snippets',
-      \ 'coc-json',
-      \ 'coc-yaml',
-      \ 'coc-eslint',
-      \ 'coc-yank',
-      \ 'coc-tslint',
-      \ 'coc-explorer',
-      \ 'coc-git',
-      \ 'coc-marketplace',
-      \ 'coc-sh'
-      \]
+            \ 'coc-actions',
+            \ 'coc-vimlsp',
+            \ 'coc-tsserver',
+            \ 'coc-tabnine',
+            \ 'coc-spell-checker',
+            \ 'coc-cspell-dicts',
+            \ 'coc-snippets',
+            \ 'coc-json',
+            \ 'coc-yaml',
+            \ 'coc-eslint',
+            \ 'coc-yank',
+            \ 'coc-tslint',
+            \ 'coc-explorer',
+            \ 'coc-git',
+            \ 'coc-java',
+            \ 'coc-post',
+            \ 'coc-marketplace'
+            \]
 " if hidden is not set, TextEdit might fail.
 " when closes buffer, it hides instead of being abandoned
 set hidden
@@ -72,27 +73,27 @@ omap af <Plug>(coc-funcobj-a)
 " format and optimize imports
 nmap <leader>F :call Format()<CR>
 function! Format()
-  :call CocAction('format')
-  :call CocAction('runCommand', 'editor.action.organizeImport')
+    :call CocAction('format')
+    :call CocAction('runCommand', 'editor.action.organizeImport')
 endfunction
 " Use K for show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
+    if (index(['vim','help'], &filetype) >= 0)
+        execute 'h '.expand('<cword>')
+    else
+        call CocAction('doHover')
+    endif
 endfunction
 " toggle explorer
 nmap <C-f> :CocCommand explorer --preset default<CR>
 let g:coc_explorer_global_presets = {
-      \   'default': {
-      \     'file.child.template': '[git | 2] [selection | clip | 1] [indent][icon | 1] [diagnosticError & 1][filename omitCenter 1][readonly] [linkIcon & 1][link growRight 1 omitCenter 5][size]'
-      \   }
-      \ }
+            \   'default': {
+            \     'file.child.template': '[git | 2] [selection | clip | 1] [indent][icon | 1] [diagnosticError & 1][filename omitCenter 1][readonly] [linkIcon & 1][link growRight 1 omitCenter 5][size]'
+            \   }
+            \ }
 function! s:cocActionsOpenFromSelected(type) abort
-  execute 'CocCommand actions.open ' . a:type
+    execute 'CocCommand actions.open ' . a:type
 endfunction
 " Remap for do codeAction of selected region
 xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
