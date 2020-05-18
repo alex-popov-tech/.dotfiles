@@ -57,3 +57,5 @@ let g:startify_change_to_vcs_root = 1
 let g:startify_enable_special = 1
 Plug 'chaoren/vim-wordmotion'
 let g:wordmotion_prefix = ','
+" when navigate to previously opened files - open in last file position
+Plug 'farmergreg/vim-lastplace'
