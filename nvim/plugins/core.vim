@@ -55,6 +55,9 @@ let g:startify_lists = [
 let g:startify_change_to_vcs_root = 1
 " do not show 'edit' and 'quit' options
 let g:startify_enable_special = 1
+" start from 1 when choosing
+let g:startify_custom_indices = map(range(1,100), 'string(v:val)')
+" text object camel case word
 Plug 'chaoren/vim-wordmotion'
 let g:wordmotion_prefix = ','
 " when navigate to previously opened files - open in last file position
