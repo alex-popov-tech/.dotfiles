@@ -37,13 +37,13 @@ set updatetime=400
 set shortmess+=c
 " navigate between suggestions with tab, trigger auto-completion with tap
 inoremap <silent><expr> <Down>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<Down>" :
-      \ coc#refresh()
+            \ pumvisible() ? "\<C-n>" :
+            \ <SID>check_back_space() ? "\<Down>" :
+            \ coc#refresh()
 inoremap <expr><Up> pumvisible() ? "\<C-p>" : "\<C-h>"
 function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 " confirm by <enter>
 inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
