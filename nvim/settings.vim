@@ -35,6 +35,9 @@ set ignorecase
 " if on with ignorecase, when a pattern contains an uppercase letter, it is
 " case sensitive, otherwise it is not
 set smartcase
+" when using * # ignore smart case
+nnoremap * /\<<C-R>=expand('<cword>')<CR>\><CR>
+nnoremap # ?\<<C-R>=expand('<cword>')<CR>\><CR>
 " Turn backup off, since most stuff is in SVN, git et.c anyway...
 set nowb
 set noswapfile
