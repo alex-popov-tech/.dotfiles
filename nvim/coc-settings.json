@@ -4,7 +4,6 @@
   "suggest.maxCompleteItemCount": 30,
   "suggest.noselect": true,
   "suggest.removeDuplicateItems": true,
-
   "diagnostic.messageDelay": 500,
   "diagnostic.enableSign": true,
   "diagnostic.enableHighlightLineNumber": true,

@@ -25,3 +25,5 @@ nmap <leader>\| :vsplit<CR>
 nmap <leader>rr :source ~/.dotfiles/nvim/init.vim<cr>
 " remap zl back to zo
 nnoremap zl zo
+" toggle search highlight
+nnoremap <silent> <c-_> :set hlsearch!<cr>
