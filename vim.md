@@ -23,6 +23,7 @@
 * [wellle/targets.vim](https://github.com/wellle/targets.vim/blob/master/cheatsheet.md)
 * [michaeljsmith/vim-indent-object](https://github.com/michaeljsmith/vim-indent-object#usage)
 * [tpope/vim-surround](https://github.com/tpope/vim-surround)
+* [chaoren/vim-wordmotion](https://github.com/chaoren/vim-wordmotion)
 * `il/al` - line text object
 
 ### Search
@@ -42,6 +43,8 @@
 
 ### Code navigate/refactor
 
+* [matze/vim-move](https://github.com/matze/vim-move)
+  * in visual - use arrows to move selected
 * [AndrewRadev/splitjoin.vim](https://github.com/AndrewRadev/splitjoin.vim)
   * `<leader>s`/`<leader>j` - split/join at current place
 * [AndrewRadev/switch.vim](https://github.com/AndrewRadev/switch.vim)

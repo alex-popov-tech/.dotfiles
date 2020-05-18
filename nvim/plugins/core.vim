@@ -60,5 +60,12 @@ let g:startify_custom_indices = map(range(1,100), 'string(v:val)')
 " text object camel case word
 Plug 'chaoren/vim-wordmotion'
 let g:wordmotion_prefix = ','
+" moving selected lines
+Plug 'matze/vim-move'
+let g:move_map_keys = 0
+vmap <silent> <Down> <Plug>MoveBlockDown
+vmap <silent> <Up> <Plug>MoveBlockUp
+vmap <silent> <Left> <Plug>MoveBlockLeft
+vmap <silent> <Right> <Plug>MoveBlockRight
 " when navigate to previously opened files - open in last file position
 Plug 'farmergreg/vim-lastplace'
