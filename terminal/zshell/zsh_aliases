@@ -1,3 +1,4 @@
+alias a="alias"
 # Shortcuts
 alias work="cd $HOME/Work"
 
