@@ -58,7 +58,7 @@ set scrolloff=5
 " same as above but for columns
 set sidescrolloff=5
 " resize signcolumn size dynamically depending on context
-set signcolumn=auto
+set signcolumn=no
 " make inner terminal zsh
 set shell=/usr/local/bin/zsh
 " Keep undo history across sessions, by storing in file.
