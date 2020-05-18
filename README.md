@@ -12,7 +12,7 @@
   * [eslintrc](./configs/eslintrc)
   * [tigrc](./configs/tigrc)
 * [ergodox ez layout](https://configure.ergodox-ez.com/ergodox-ez/layouts/QaJY3/latest/0)
-* Badass terminal - iterm2 + [ Zshell ](https://en.wikipedia.org/wiki/Z_shell) + [ Powerlevel10k ](https://github.com/romkatv/powerlevel10k) + Nerd Fonts + [Zinit](https://github.com/zdharma/zinit), etc.
+* Badass terminal - [Alacritty](https://github.com/alacritty/alacritty) + [ Zshell ](https://en.wikipedia.org/wiki/Z_shell) + [ Powerlevel10k ](https://github.com/romkatv/powerlevel10k) + Nerd Fonts + [Zinit](https://github.com/zdharma/zinit), etc.
 ![screenshot](files/terminal.png)
 * NeoVim with bunch of plugins, color schemes and [cheatsheet](vim.md)
 ![screenhot1](files/nvim1.png)
