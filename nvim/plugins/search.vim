@@ -32,32 +32,28 @@ let g:fzf_action = {
 " [Buffers] Jump to the existing window if possible
 let g:fzf_buffers_jump = 1
 " find in files
-nmap ?f :GFiles<CR>
-nmap ?F :Files<CR>
+nmap <leader>/f :GFiles<CR>
+nmap <leader>/F :Files<CR>
 " find a text in files
-nmap ?c :GGrep<CR>
-nmap ?C :Ag<CR>
+nmap <leader>/c :GGrep<CR>
+nmap <leader>/C :Ag<CR>
 " find a buffer
-nmap ?b :Buffers<CR>
+nmap <leader>/b :Buffers<CR>
 " find mark
-nmap ?m :Marks<CR>
+nmap <leader>/m :Marks<CR>
 " find in files history
-nmap ?h :History<CR>
+nmap <leader>/h :History<CR>
 
 " improved search
-Plug 'haya14busa/incsearch.vim'
-Plug 'haya14busa/incsearch-fuzzy.vim'
-" auto remove search hightlight by moving
-let g:incsearch#auto_nohlsearch = 1
-" mapping for plain and fuzzy search
-nmap /  <Plug>(incsearch-forward)
-nmap ?  <Plug>(incsearch-backward)
-nmap z/ <Plug>(incsearch-fuzzy-/)
-nmap z? <Plug>(incsearch-fuzzy-?)
-nmap *  <Plug>(incsearch-nohl-*)
-nmap #  <Plug>(incsearch-nohl-#)
-nmap n  <Plug>(incsearch-nohl-n)
-nmap N  <Plug>(incsearch-nohl-N)
+Plug 'ggvgc/vim-fuzzysearch'
+let g:fuzzysearch_prompt = '-> '
+let g:fuzzysearch_hlsearch = 1
+let g:fuzzysearch_ignorecase = 1
+let g:fuzzysearch_max_history = 30
+let g:fuzzysearch_match_spaces = 0
+nmap / :FuzzySearch<CR>
+" replace selected
+nnoremap <leader>r :%s///g<left><left>
 " make 'f' a bit more usefull
 Plug 'rhysd/clever-f.vim'
 let g:clever_f_chars_match_any_signs = '/'
