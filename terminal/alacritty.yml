@@ -8,9 +8,6 @@ env:
 window:
   startup_mode: Maximized
   decorations: none
-  padding:
-    x: 10
-    y: 10
 
 shell:
   program: /bin/zsh
