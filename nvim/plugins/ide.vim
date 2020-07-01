@@ -52,9 +52,9 @@ endfunction
 inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
 inoremap <silent><expr> <Right> coc#refresh()
 " show list of yanks with preview
-nmap <leader>y :CocList --auto-preview --normal yank<CR>
+nmap <leader>y :CocFzfList yank<CR>
 " Navigate interpreter/compiler/linter errors
-nmap <leader>d :CocList --strict --auto-preview diagnostics<CR>
+nmap <leader>dd :CocFzfList diagnostics --current-buf<CR>
 " Remap keys for gotos
 nmap gi <Plug>(coc-implementation)
 nmap gr <Plug>(coc-references)
@@ -118,6 +118,7 @@ let g:coc_snippet_next = '<Right>'
 let g:coc_snippet_prev = '<Left>'
 " trigger snipped expand from completion window directly
 imap <Right> <Plug>(coc-snippets-expand-jump)
+Plug 'antoinemadec/coc-fzf'
 " =====================================================================
 " =============================== VISTA ===============================
 " =====================================================================
