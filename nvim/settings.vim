@@ -24,7 +24,7 @@ set nowrap
 " but do not break words, only 'by words'
 set linebreak
 " show absolute line number
-set number
+set number relativenumber
 " keep searched chunks hightlighted
 set hlsearch
 " search case-insensitive
