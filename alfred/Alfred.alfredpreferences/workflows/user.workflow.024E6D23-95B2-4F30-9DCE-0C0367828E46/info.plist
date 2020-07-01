@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.kopepasah.random-string-generator</string>
+	<key>connections</key>
+	<dict>
+		<key>7789A0A9-5B9F-47A4-8B5F-EFDF1387CD69</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>CB2B327C-31B5-4102-B08A-0B6473C807D9</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>6C0A1276-C235-4680-977C-0844DCC693C5</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Justin Kopepasah</string>
+	<key>description</key>
+	<string>This workflow generates a random string for usage in passwords and such.</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Random String Generator</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>output</key>
+				<integer>2</integer>
+				<key>removeextension</key>
+				<false/>
+				<key>sticky</key>
+				<false/>
+				<key>text</key>
+				<string>{query}</string>
+				<key>title</key>
+				<string>String Copied</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>CB2B327C-31B5-4102-B08A-0B6473C807D9</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>63</integer>
+				<key>keyword</key>
+				<string>rand</string>
+				<key>runningsubtext</key>
+				<string>Generating string...</string>
+				<key>script</key>
+				<string>// Pull in the Workflows class.
+require_once( 'workflows.php' );
+
+// Require our URL builder.
+require_once( 'string.php' );
+
+// Get URL!
+generate_string( '{query}' );</string>
+				<key>subtext</key>
+				<string>Type a number and parameter (separated by a space).</string>
+				<key>title</key>
+				<string>Generate a random string.</string>
+				<key>type</key>
+				<integer>1</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>7789A0A9-5B9F-47A4-8B5F-EFDF1387CD69</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<false/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>6C0A1276-C235-4680-977C-0844DCC693C5</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string></string>
+	<key>uidata</key>
+	<dict>
+		<key>6C0A1276-C235-4680-977C-0844DCC693C5</key>
+		<dict>
+			<key>ypos</key>
+			<real>260</real>
+		</dict>
+		<key>7789A0A9-5B9F-47A4-8B5F-EFDF1387CD69</key>
+		<dict>
+			<key>ypos</key>
+			<real>150</real>
+		</dict>
+		<key>CB2B327C-31B5-4102-B08A-0B6473C807D9</key>
+		<dict>
+			<key>ypos</key>
+			<real>60</real>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string>kopepasah.com</string>
+</dict>
+</plist>
