@@ -53,7 +53,7 @@ let g:fuzzysearch_max_history = 30
 let g:fuzzysearch_match_spaces = 0
 nmap / :FuzzySearch<CR>
 " replace selected
-nnoremap <leader>r :%s///g<left><left>
+vmap R :%s///g<left><left>
 " make 'f' a bit more usefull
 Plug 'rhysd/clever-f.vim'
 let g:clever_f_chars_match_any_signs = '/'
