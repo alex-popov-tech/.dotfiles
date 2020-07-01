@@ -69,6 +69,8 @@ vmap <silent> <Left> <Plug>MoveBlockLeft
 vmap <silent> <Right> <Plug>MoveBlockRight
 " when navigate to previously opened files - open in last file position
 Plug 'farmergreg/vim-lastplace'
+" kill all buffers but current
+Plug 'schickling/vim-bufonly'
 " open terminal in floating window
 Plug 'voldikss/vim-floaterm'
 noremap  <F11> :FloatermToggle<CR>
