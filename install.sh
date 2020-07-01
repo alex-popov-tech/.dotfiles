@@ -131,16 +131,16 @@ function software() {
     flux \
     toggl \
     ledger-live \
-    vanilla \
     arduino \
     boom-3d \
     karabiner-elements \
     contexts \
     keybase \
+    dozen \
+    rectangle \
     blockblock
 
 
-  mas lucky Magnet
   mas lucky Clocker
   mas lucky Keynote
   mas lucky Pages
