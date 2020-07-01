@@ -17,8 +17,18 @@ shell:
     - "tmux attach -t '(∩Ȍ▾Ȍ)⊃━☆ﾟ,*' || tmux new -s '(∩Ȍ▾Ȍ)⊃━☆ﾟ,*'"
 
 font:
+  # normal:
+  #   family: JetBrainsMono Nerd Font
+  #   style: Italic
   normal:
-    family: "JetBrainsMono Nerd Font"
+    family: JetBrainsMono Nerd Font
+    style: Regular
+  italic:
+    family: JetBrainsMono Nerd Font
+    style: Italic
+  bold:
+    family: JetBrainsMono Nerd Font
+    style: Bold
   size: 16
   glyph_offset:
     y: 1
