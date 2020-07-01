@@ -32,7 +32,7 @@ set nowritebackup
 " give more space to outputs of executed commands to 2 lines
 set cmdheight=1
 " Smaller updatetime for CursorHold & CursorHoldI
-set updatetime=400
+set updatetime=50
 autocmd CursorHold * call CocActionAsync('highlight')
 hi! link CocHighlightText GruvboxAqua
 " don't give |ins-completion-menu| messages.
