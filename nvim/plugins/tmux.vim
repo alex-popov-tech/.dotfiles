@@ -3,10 +3,10 @@ Plug 'christoomey/vim-tmux-navigator'
 " Write all buffers before navigating from Vim to tmux pane
 let g:tmux_navigator_save_on_switch = 2
 let g:tmux_navigator_no_mappings = 1
-map <C-y> :TmuxNavigateLeft<cr>
-map <C-n> :TmuxNavigateDown<cr>
-map <C-e> :TmuxNavigateUp<cr>
-map <C-o> :TmuxNavigateRight<cr>
+map <C-h> :TmuxNavigateLeft<cr>
+map <C-j> :TmuxNavigateDown<cr>
+map <C-k> :TmuxNavigateUp<cr>
+map <C-l> :TmuxNavigateRight<cr>
 " resizing windows
 Plug 'talek/obvious-resize'
 let g:obvious_resize_default = 4

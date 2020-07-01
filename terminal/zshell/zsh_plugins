@@ -11,7 +11,6 @@ zinit for \
 
 zinit ice as"program" from"gh-r" mv"fd* -> fd" pick"fd/fd" lucid
 zinit light sharkdp/fd
-alias find="fd"
 zinit ice as"program" from"gh-r" mv"bat* -> bat" pick"bat/bat" lucid
 zinit light sharkdp/bat
 alias cat="bat"
@@ -22,14 +21,3 @@ alias la='exa -a --icons'
 alias lt='exa --tree --level=2 --icons'
 zinit ice as"program" from"gh-r" mv"rg* -> rg" pick"rg/rg" lucid
 zinit light BurntSushi/ripgrep
-
-# force zsh-you-should-use
-export YSU_HARDCORE=1
-# remap for workman in vi-mode
-bindkey -M vicmd 'y' vi-backward-char
-bindkey -M vicmd 'h' vi-yank
-bindkey -M vicmd 'n' down-history
-bindkey -M vicmd 'j' vi-repeat-search
-bindkey -M vicmd 'e' up-history
-bindkey -M vicmd 'k' vi-forward-word-end
-bindkey -M vicmd 'o' vi-forward-char

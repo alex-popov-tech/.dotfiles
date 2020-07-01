@@ -1,7 +1,3 @@
-bind generic n move-down
-bind generic j find-next
-bind generic e move-up
-bind generic k edit
 bind generic C !git commit
 bind generic > !git push %(remote) %(branch)
 bind generic P !git pull --rebase origin %(branch)
