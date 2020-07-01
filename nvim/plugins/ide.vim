@@ -147,12 +147,6 @@ vmap <leader>c gc
 " add switch toggles
 Plug 'AndrewRadev/switch.vim'
 let g:switch_mapping='-'
-" toggle join/split for args, dicts, ecs.
-Plug 'AndrewRadev/splitjoin.vim'
-let g:splitjoin_split_mapping = ''
-let g:splitjoin_join_mapping = ''
-map <leader>j :SplitjoinJoin<cr>
-map <leader>s :SplitjoinSplit<cr>
 " syntax highlight
 Plug 'sheerun/vim-polyglot'
 " don't conceal links like SOME_LINK instead of [SOME_LINK](some link url)
