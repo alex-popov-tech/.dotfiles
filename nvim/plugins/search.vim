@@ -32,29 +32,14 @@ let g:fzf_action = {
 " [Buffers] Jump to the existing window if possible
 let g:fzf_buffers_jump = 1
 " find in files
-nmap <leader>/f :GFiles<CR>
-nmap <leader>/F :Files<CR>
+nmap <leader>nf :GFiles<CR>
+nmap <leader>nF :Files<CR>
 " find a text in files
-nmap <leader>/c :GGrep<CR>
-nmap <leader>/C :Ag<CR>
+nmap <leader>nc :GGrep<CR>
+nmap <leader>nC :Ag<CR>
 " find a buffer
-nmap <leader>/b :Buffers<CR>
+nmap <leader>nb :Buffers<CR>
 " find mark
-nmap <leader>/m :Marks<CR>
+nmap <leader>nm :Marks<CR>
 " find in files history
-nmap <leader>/h :History<CR>
-
-" improved search
-Plug 'ggvgc/vim-fuzzysearch'
-let g:fuzzysearch_prompt = '-> '
-let g:fuzzysearch_hlsearch = 1
-let g:fuzzysearch_ignorecase = 1
-let g:fuzzysearch_max_history = 30
-let g:fuzzysearch_match_spaces = 0
-nmap / :FuzzySearch<CR>
-" replace selected
-vmap R :%s///g<left><left>
-" make 'f' a bit more usefull
-Plug 'rhysd/clever-f.vim'
-let g:clever_f_chars_match_any_signs = '/'
-let g:clever_f_smart_case=1
+nmap <leader>nh :History<CR>
