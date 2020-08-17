@@ -4,4 +4,8 @@ bash-language-server
 write-good
 markdownlint-cli
 eslint
+prettier
+prettier-eslint-cli
 tslint
+ts-node
+typescript
