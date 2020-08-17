@@ -31,12 +31,8 @@ Plug 'sickill/vim-pasta'
 " allows repeat via dot for some plugins like surround
 Plug 'tpope/vim-repeat'
 " add\update\remove surround stuff like '"{}"'
-Plug 'tpope/vim-surround'
-" provides function of replacing from yank
-Plug 'svermeulen/vim-subversive'
-nmap s <plug>(SubversiveSubstitute)
-nmap ss <plug>(SubversiveSubstituteLine)
-nmap S <plug>(SubversiveSubstituteToEndOfLine)
+" Plug 'tpope/vim-surround'
+Plug 'machakann/vim-sandwich'
 " auto placing paired signs like {} [] '' "" etc
 Plug 'jiangmiao/auto-pairs'
 " find/jump definition/reference with fzf
