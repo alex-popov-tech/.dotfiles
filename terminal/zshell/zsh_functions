@@ -27,4 +27,3 @@ function git_current_branch() {
   fi
   echo ${ref#refs/heads/}
 }
-

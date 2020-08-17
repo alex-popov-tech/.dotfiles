@@ -6,8 +6,7 @@ zinit for \
   light-mode zdharma/fast-syntax-highlighting \
   light-mode OMZ::plugins/git/git.plugin.zsh \
   light-mode OMZ::plugins/vi-mode/vi-mode.plugin.zsh \
-  light-mode MichaelAquilina/zsh-you-should-use \
-  light-mode skywind3000/z.lua
+  light-mode MichaelAquilina/zsh-you-should-use
 
 zinit ice as"program" from"gh-r" mv"fd* -> fd" pick"fd/fd" lucid
 zinit light sharkdp/fd
