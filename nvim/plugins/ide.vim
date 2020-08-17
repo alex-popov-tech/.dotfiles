@@ -2,10 +2,13 @@
 " ============================= COC.NVIM ==============================
 " =====================================================================
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+let g:node_client_debug = 1
+Plug 'antoinemadec/coc-fzf'
 let g:coc_global_extensions = [
             \ 'coc-actions',
-            \ 'coc-vimlsp',
             \ 'coc-tsserver',
+            \ 'coc-vimlsp',
+            \ 'coc-sql',
             \ 'coc-tabnine',
             \ 'coc-spell-checker',
             \ 'coc-cspell-dicts',
@@ -13,12 +16,14 @@ let g:coc_global_extensions = [
             \ 'coc-json',
             \ 'coc-yaml',
             \ 'coc-eslint',
+            \ 'coc-prettier',
             \ 'coc-yank',
             \ 'coc-tslint',
             \ 'coc-explorer',
             \ 'coc-git',
             \ 'coc-java',
             \ 'coc-post',
+            \ 'coc-db',
             \ 'coc-marketplace'
             \]
 " if hidden is not set, TextEdit might fail.
@@ -38,19 +43,11 @@ hi! link CocHighlightText GruvboxAqua
 " don't give |ins-completion-menu| messages.
 " make vim errors shorter
 set shortmess+=c
+set shortmess-=S
 " navigate between suggestions with tab, trigger auto-completion with tap
-inoremap <silent><expr> <Down>
-            \ pumvisible() ? "\<C-n>" :
-            \ <SID>check_back_space() ? "\<Down>" :
-            \ coc#refresh()
-inoremap <expr><Up> pumvisible() ? "\<C-p>" : "\<C-h>"
-function! s:check_back_space() abort
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
 " confirm by <enter>
 inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-inoremap <silent><expr> <Right> coc#refresh()
+inoremap <silent><expr> <Tab> coc#refresh()
 " show list of yanks with preview
 nmap <leader>y :CocFzfList yank<CR>
 " Navigate interpreter/compiler/linter errors
@@ -117,8 +114,7 @@ let g:coc_snippet_next = '<Right>'
 " let g:coc_snippet_prev = '<c-k>'
 let g:coc_snippet_prev = '<Left>'
 " trigger snipped expand from completion window directly
-imap <Right> <Plug>(coc-snippets-expand-jump)
-Plug 'antoinemadec/coc-fzf'
+imap <Tab> <Plug>(coc-snippets-expand-jump)
 " =====================================================================
 " =============================== VISTA ===============================
 " =====================================================================
