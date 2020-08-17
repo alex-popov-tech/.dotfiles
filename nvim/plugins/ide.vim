@@ -151,6 +151,9 @@ let g:switch_mapping='-'
 Plug 'sheerun/vim-polyglot'
 " don't conceal links like SOME_LINK instead of [SOME_LINK](some link url)
 let g:vim_markdown_conceal = 0
+set conceallevel=1
+let g:javascript_conceal_function             = "ƒ"
+let g:javascript_conceal_this                 = "@"
 " plugin which allows vim to work with common editorconfig
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-dadbod'
