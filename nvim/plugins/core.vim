@@ -33,6 +33,8 @@ Plug 'tpope/vim-repeat'
 " add\update\remove surround stuff like '"{}"'
 " Plug 'tpope/vim-surround'
 Plug 'machakann/vim-sandwich'
+" automatically adjust shiftwidth/expandtab/etc
+Plug 'tpope/vim-sleuth'
 " provides f/t - like thing but with s{firstletter}{secontLetter}
 " as well with text object like dzke - delete till 'ke'
 " Plug 'justinmk/vim-sneak'
