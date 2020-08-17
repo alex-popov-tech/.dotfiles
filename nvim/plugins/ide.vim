@@ -63,18 +63,17 @@ nmap <silent> [d <Plug>(coc-diagnostic-prev)
 nmap <silent> ]d <Plug>(coc-diagnostic-next)
 " rename current word
 nmap <leader>rn <Plug>(coc-rename)
+nmap <leader>pr :CocSearch <C-R>=expand("<cword>")<cr><cr>
 " refactor current word
 nmap <leader>rf <Plug>(coc-refactor)
-" Create mappings for function text object, requires document symbols feature of languageserver.
-xmap if <Plug>(coc-funcobj-i)
-xmap af <Plug>(coc-funcobj-a)
-omap if <Plug>(coc-funcobj-i)
-omap af <Plug>(coc-funcobj-a)
 " format and optimize imports
 nmap <leader>F :call Format()<CR>
 function! Format()
     :call CocAction('format')
-    :call CocAction('runCommand', 'editor.action.organizeImport')
+    let filetypesWithImports = ['javascript', 'typescript']
+    if index(filetypesWithImports, &filetype) != -1
+        :call CocAction('runCommand', 'editor.action.organizeImport')
+    endif
 endfunction
 " Use K for show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -85,6 +84,7 @@ function! s:show_documentation()
         call CocAction('doHover')
     endif
 endfunction
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 " toggle explorer
 nmap <C-f> :CocCommand explorer --preset default<CR>
 let g:coc_explorer_global_presets = {

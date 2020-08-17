@@ -1,13 +1,10 @@
 {
-  "suggest.triggerCompletionWait": 300,
   "suggest.autoTrigger": "always",
   "suggest.maxCompleteItemCount": 30,
-  "suggest.noselect": true,
   "suggest.removeDuplicateItems": true,
   "diagnostic.messageDelay": 500,
-  "diagnostic.enableSign": true,
-  "diagnostic.enableHighlightLineNumber": true,
   "diagnostic.checkCurrentLine": true,
+  "diagnostic.maxWindowWidth": 140,
   "git.addedSign.text": "++",
   "git.changedSign.text": "~~",
   "git.removedSign.text": "--",
@@ -18,7 +15,6 @@
   "git.topRemovedSign.hlGroup": "GitGutterDelete",
   "git.changeRemovedSign.hlGroup": "GitGutterChangeDelete",
   "git.addGBlameToVirtualText": true,
-  "git.virtualTextPrefix": " ---> ",
   "explorer.icon.enableNerdfont": true,
   "explorer.quitOnOpen": true,
   "explorer.previewAction.onHover": true,
@@ -51,9 +47,15 @@
     "typescript",
     "javascript"
   ],
+  "eslint.run": "onSave",
   "eslint.options": {
-    "configFile": "/Users/alexanderpopov/.eslintrc"
+    "configFile": "/Users/alexanderpopov/.eslintrc.json"
   },
+  "prettier.eslintIntegration": true,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "javascript",
+    "typescript"
+  ],
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
   "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
   "cSpell.allowCompoundWords": true,
@@ -86,9 +88,6 @@
   ],
   "cSpell.language": "en",
   "cSpell.enabledLanguageIds": [
-    "vim",
-    "javascript",
-    "typescript",
     "json",
     "markdown",
     "plaintext",
