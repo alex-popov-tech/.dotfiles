@@ -1,3 +1,8 @@
+# await
+snippet a "await"
+await ${1}
+endsnippet
+
 # imports
 snippet r
 require('${1:module_name}')${2:;}
@@ -89,6 +94,31 @@ ${0:${VISUAL}}
 console.timeEnd("$1")
 endsnippet
 
+# testing
+snippet desc "put describe"
+describe('${1:some test suite name}', () => {
+  ${0:${VISUAL}}
+});
+
+endsnippet
+snippet it "put it"
+it('${1:some test name}', async () => {
+  ${0:${VISUAL}}
+});
+
+endsnippet
+snippet be "put beforeEach"
+beforeEach(async () => {
+  ${0:${VISUAL}}
+});
+
+endsnippet
+snippet ae "put afterEach"
+afterEach(async () => {
+  ${0:${VISUAL}}
+});
+
+endsnippet
 
 # other
 snippet jsonp
