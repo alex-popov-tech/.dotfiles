@@ -2,9 +2,6 @@ alias a="alias"
 # Shortcuts
 alias work="cd $HOME/Work"
 
-# Improved ping
-alias ping="prettyping --nolegend"
-
 # Intuitive map function
 # For example, to list all directories that contain a certain file:
 # find . -name .gitattributes | map dirname
@@ -27,3 +24,4 @@ alias .....="cd ../../../.."
 
 alias c="clear"
 alias cc="clear"
+alias tnode="npx ts-node"
