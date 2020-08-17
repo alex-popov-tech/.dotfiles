@@ -14,11 +14,11 @@ function ReInstall() {
 }
 
 function start() {
-  var SEARCHES_TO_DELETE = ['subject:BACKUP_ERROR older_than:1h'];
+  var SEARCHES_TO_DELETE = ['subject:BACKUP_ERROR older_than:1h', 'from:no-reply@twitch.tv older_than:1h'];
   for (var search of SEARCHES_TO_DELETE) {
     var threads = GmailApp.search(search);
     for (var thread of threads) {
-       Gmail.Users.Messages.remove('me', thread.getId());
+       Gmail.Users.Threads.remove('me', thread.getId());
     }
   }
 }
