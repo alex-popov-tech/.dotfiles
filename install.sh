@@ -138,6 +138,7 @@ function software() {
     keybase \
     dozen \
     rectangle \
+    finicky \
     blockblock
 
 
@@ -238,8 +239,10 @@ function link_configs() {
   ln -fvs $DPATH/configs/gitconfig $HOME/.gitconfig
   ln -fvs $DPATH/configs/gitignore $HOME/.gitignore
   ln -fvs $DPATH/configs/editorconfig $HOME/.editorconfig
-  ln -fvs $DPATH/configs/eslintrc $HOME/.eslintrc
+  ln -fvs $DPATH/configs/eslintrc.json $HOME/.eslintrc
+  ln -fvs $DPATH/configs/prettierrc.json $HOME/.prettierrc
   ln -fvs $DPATH/configs/tigrc $HOME/.tigrc
+  ln -fvs $DPATH/configs/.finicky.js $HOME/.finicky.js
 
 }
 
