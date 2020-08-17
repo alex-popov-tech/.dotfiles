@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.alfred.tunnelblick.bundle</string>
+	<key>connections</key>
+	<dict>
+		<key>32EE28E9-D8CF-40C7-A5B8-8D3B847BF58A</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>FA37FFC8-579D-4197-B5F1-3709467037AE</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>9A648627-9F3E-4981-A4F1-91EBD952E6A5</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>32EE28E9-D8CF-40C7-A5B8-8D3B847BF58A</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Jeff Johns</string>
+	<key>description</key>
+	<string>Connect/Disconnection from VPNs</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Tunnelblick</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>vpn</string>
+				<key>queuedelaycustom</key>
+				<integer>1</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<false/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>script</key>
+				<string>osascript tunnelblick-lookup.scpt "{query}"</string>
+				<key>subtext</key>
+				<string>Find any VPN connections in Tunnelblick</string>
+				<key>title</key>
+				<string>Lookup VPN Connections</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>9A648627-9F3E-4981-A4F1-91EBD952E6A5</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>applescript</key>
+				<string>on alfred_script(q)
+	
+	set msg to ""
+	tell application "Tunnelblick"
+		set configs to get name of configurations
+		if q is in configs then
+			set s to get state of first configuration where name = q
+			if s is equal to "CONNECTED" then
+				if disconnect q then
+				else
+					return "Could not disconnect from: " &amp; q
+				end if
+			else
+				activate
+				if connect q then
+				else
+					return "Could not connect to: " &amp; q
+				end if
+			end if
+		else
+			return "There is no VPN named: " &amp; q
+		end if
+	end tell
+	
+end alfred_script</string>
+				<key>cachescript</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.applescript</string>
+			<key>uid</key>
+			<string>32EE28E9-D8CF-40C7-A5B8-8D3B847BF58A</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<true/>
+				<key>output</key>
+				<integer>0</integer>
+				<key>removeextension</key>
+				<false/>
+				<key>sticky</key>
+				<false/>
+				<key>text</key>
+				<string>{query}</string>
+				<key>title</key>
+				<string>VPN Error</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>FA37FFC8-579D-4197-B5F1-3709467037AE</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+	</array>
+	<key>uidata</key>
+	<dict>
+		<key>32EE28E9-D8CF-40C7-A5B8-8D3B847BF58A</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+		<key>9A648627-9F3E-4981-A4F1-91EBD952E6A5</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+		<key>FA37FFC8-579D-4197-B5F1-3709467037AE</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string>http://phpfunk.me</string>
+</dict>
+</plist>
