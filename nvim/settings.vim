@@ -65,4 +65,7 @@ if has('persistent_undo')
   set undodir=~/.vim/backups
   set undofile
 endif
-
+set inccommand=nosplit
+" write path when save file if needed
+au BufNewFile * :exe ': !mkdir -p ' . escape(fnamemodify(bufname('%'),':p:h'),'#% \\')
+set completeopt=longest,menuone

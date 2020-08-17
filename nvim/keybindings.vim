@@ -1,6 +1,3 @@
-" Turn off linewise keys. Normally, the `j' and `k' keys move the cursor down one entire line. with line wrapping on, this can cause the cursor to actually skip a few lines on the screen because it's moving from line N to line N+1 in the file. I want this to act more visually -- I want `down' to mean the next line on the screen
-nmap j gj
-nmap k gk
 " next/prev buffers
 nmap <S-Up> :bn<cr>
 nmap <S-Down> :bp<cr>
@@ -25,3 +22,10 @@ nmap <leader>rr :source ~/.dotfiles/nvim/init.vim<cr>
 nnoremap zl zo
 " toggle search highlight
 nnoremap <silent> <c-_> :set hlsearch!<cr>
+" replace selected
+nmap R :%s///g<left><left>
+" move lines in visual & insert mode
+inoremap <S-Up> <Esc>:m .+1<CR>==gi
+inoremap <S-Down> <Esc>:m .-2<CR>==gi
+vnoremap <S-Up> :m '>+1<CR>gv=gv
+vnoremap <S-Down> :m '<-2<CR>gv=gv
