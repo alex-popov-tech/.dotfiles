@@ -33,6 +33,10 @@ Plug 'tpope/vim-repeat'
 " add\update\remove surround stuff like '"{}"'
 " Plug 'tpope/vim-surround'
 Plug 'machakann/vim-sandwich'
+" provides f/t - like thing but with s{firstletter}{secontLetter}
+" as well with text object like dzke - delete till 'ke'
+" Plug 'justinmk/vim-sneak'
+" let g:sneak#s_next = 0
 " auto placing paired signs like {} [] '' "" etc
 Plug 'jiangmiao/auto-pairs'
 " find/jump definition/reference with fzf
@@ -54,13 +58,6 @@ let g:startify_custom_indices = map(range(1,100), 'string(v:val)')
 " text object camel case word
 Plug 'chaoren/vim-wordmotion'
 let g:wordmotion_prefix = ','
-" moving selected lines
-Plug 'matze/vim-move'
-let g:move_map_keys = 0
-vmap <silent> <Down> <Plug>MoveBlockDown
-vmap <silent> <Up> <Plug>MoveBlockUp
-vmap <silent> <Left> <Plug>MoveBlockLeft
-vmap <silent> <Right> <Plug>MoveBlockRight
 " when navigate to previously opened files - open in last file position
 Plug 'farmergreg/vim-lastplace'
 " kill all buffers but current
@@ -69,3 +66,9 @@ Plug 'schickling/vim-bufonly'
 Plug 'voldikss/vim-floaterm'
 noremap  <F11> :FloatermToggle<CR>
 tnoremap <F11> <C-\><C-n>:FloatermToggle<CR>
+Plug 'svermeulen/vim-subversive'
+nmap m <plug>(SubversiveSubstitute)
+nmap mm <plug>(SubversiveSubstituteLine)
+nmap M <plug>(SubversiveSubstituteToEndOfLine)
+" gS to split things, gJ to join them together
+Plug 'andrewradev/splitjoin.vim'
