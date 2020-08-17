@@ -153,3 +153,6 @@ Plug 'sheerun/vim-polyglot'
 let g:vim_markdown_conceal = 0
 " plugin which allows vim to work with common editorconfig
 Plug 'editorconfig/editorconfig-vim'
+Plug 'tpope/vim-dadbod'
+Plug 'kristijanhusak/vim-dadbod-ui'
+Plug 'kristijanhusak/vim-dadbod-completion'
