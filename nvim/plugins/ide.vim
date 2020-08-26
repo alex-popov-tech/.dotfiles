@@ -21,7 +21,6 @@ let g:coc_global_extensions = [
             \ 'coc-tslint',
             \ 'coc-explorer',
             \ 'coc-git',
-            \ 'coc-java',
             \ 'coc-post',
             \ 'coc-db',
             \ 'coc-marketplace'
