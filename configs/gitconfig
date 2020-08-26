@@ -51,3 +51,5 @@
         insteadOf = github:
 [push]
 	default = current
+[pull]
+  rebase = true
