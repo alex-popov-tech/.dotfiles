@@ -118,6 +118,8 @@ function software() {
 
   brew tap federico-terzi/espanso
   brew install espanso
+  espanso install lorem
+  espanso restart
 
   brew cask install \
     google-chrome firefox \
