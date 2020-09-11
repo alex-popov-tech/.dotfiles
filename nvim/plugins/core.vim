@@ -61,6 +61,9 @@ let g:sandwich#recipes = [
       \ ]
 " automatically adjust shiftwidth/expandtab/etc
 Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-fugitive'
+nmap gs :Gstatus<cr>
+nmap gp :Gpush<cr>
 " provides f/t - like thing but with s{firstletter}{secontLetter}
 " as well with text object like dzke - delete till 'ke'
 " Plug 'justinmk/vim-sneak'
