@@ -1,4 +1,12 @@
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'stsewd/fzf-checkout.vim'
+let g:fzf_branch_actions = {
+      \ 'checkout': {
+      \   'execute': 'echo system("{git} checkout " . (empty("{branch}") ? "-b {input}" : "{branch}"))',
+      \   'required': [],
+      \ },
+      \}
+nmap gb :GBranches<CR>
 Plug 'junegunn/fzf.vim'
 " previews for fuzzy search
 command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, fzf#vim#with_preview('up'), <bang>0)
