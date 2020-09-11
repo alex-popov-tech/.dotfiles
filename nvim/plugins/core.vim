@@ -63,11 +63,6 @@ let g:sandwich#recipes = [
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-fugitive'
 nmap gs :Gstatus<cr>
-nmap gp :Gpush<cr>
-" provides f/t - like thing but with s{firstletter}{secontLetter}
-" as well with text object like dzke - delete till 'ke'
-" Plug 'justinmk/vim-sneak'
-" let g:sneak#s_next = 0
 " auto placing paired signs like {} [] '' "" etc
 Plug 'jiangmiao/auto-pairs'
 " find/jump definition/reference with fzf
