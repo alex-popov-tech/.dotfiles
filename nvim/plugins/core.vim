@@ -99,6 +99,5 @@ tnoremap <F11> <C-\><C-n>:FloatermToggle<CR>
 Plug 'svermeulen/vim-subversive'
 nmap m <plug>(SubversiveSubstitute)
 nmap mm <plug>(SubversiveSubstituteLine)
-nmap M <plug>(SubversiveSubstituteToEndOfLine)
 " gS to split things, gJ to join them together
 Plug 'andrewradev/splitjoin.vim'
