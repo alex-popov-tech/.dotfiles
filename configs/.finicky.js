@@ -2,7 +2,12 @@ module.exports = {
   defaultBrowser: 'Google Chrome',
   handlers: [
     {
-      match: ['bcg-xchange.atlassian.net*', 'id.svitla.com*', 'bitbucket.org/xchangeteam*'],
+      match: [
+        'bcg-xchange.atlassian.net*',
+        'id.svitla.com*',
+        'bitbucket.org/xchangeteam*',
+        'jenkins.container-xchange.com*',
+      ],
       browser: 'Safari',
     },
     {
@@ -10,7 +15,7 @@ module.exports = {
       browser: 'Opera',
     },
     {
-      match: ['cake.hr*', 'lokalise.atlassian.net*'],
+      match: ['*cake.hr*', '*lokalise.atlassian.net*', '*lokalise.cake.hr'],
       browser: 'Firefox',
     },
     {
