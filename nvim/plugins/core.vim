@@ -95,7 +95,7 @@ Plug 'farmergreg/vim-lastplace'
 Plug 'schickling/vim-bufonly'
 " open terminal in floating window
 Plug 'voldikss/vim-floaterm'
-let g:floaerm_width = 0.9
+let g:floaterm_width = 0.9
 let g:floaterm_height = 0.8
 noremap  <F11> :FloatermToggle<CR>
 tnoremap <F11> <C-\><C-n>:FloatermToggle<CR>
