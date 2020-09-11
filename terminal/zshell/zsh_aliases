@@ -13,8 +13,8 @@ alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v exten
 # Other
 alias n="nvim"
 
-alias t="tig"
-alias ts="tig status"
+# alias t="tig"
+# alias ts="tig status"
 
 alias r="ranger"
 
