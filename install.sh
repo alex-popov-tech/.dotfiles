@@ -113,7 +113,11 @@ function software() {
     ssh-copy-id \
     prettyping \
     mas \
-    the_silver_searcher fzf
+    the_silver_searcher \
+    fzf
+
+  brew tap federico-terzi/espanso
+  brew install espanso
 
   brew cask install \
     google-chrome firefox \
@@ -243,6 +247,7 @@ function link_configs() {
   ln -fvs $DPATH/configs/prettierrc.json $HOME/.prettierrc
   ln -fvs $DPATH/configs/tigrc $HOME/.tigrc
   ln -fvs $DPATH/configs/.finicky.js $HOME/.finicky.js
+  ln -fvs $DPATH/configs/espanso.yml $HOME/Library/Preferences/espanso/default.yml
 
 }
 
