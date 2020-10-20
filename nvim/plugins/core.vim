@@ -37,7 +37,11 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-fugitive'
 nmap gs :Git<cr>
 " auto placing paired signs like {} [] '' "" etc
-Plug 'jiangmiao/auto-pairs'
+" Plug 'jiangmiao/auto-pairs'
+Plug 'Raimondi/delimitMate'
+let delimitMate_expand_cr = 2
+let delimitMate_expand_space = 1
+let delimitMate_jump_expansion = 1
 " find/jump definition/reference with fzf
 Plug 'pechorin/any-jump.vim'
 nmap go :AnyJump<cr>
