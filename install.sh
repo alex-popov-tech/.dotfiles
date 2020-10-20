@@ -260,7 +260,6 @@ function link_configs() {
   ln -fvs $DPATH/configs/editorconfig $HOME/.editorconfig
   ln -fvs $DPATH/configs/eslintrc.json $HOME/.eslintrc
   ln -fvs $DPATH/configs/prettierrc.json $HOME/.prettierrc
-  ln -fvs $DPATH/configs/tigrc $HOME/.tigrc
   ln -fvs $DPATH/configs/.finicky.js $HOME/.finicky.js
   ln -fvs $DPATH/configs/espanso.yml $HOME/Library/Preferences/espanso/default.yml
 
