@@ -211,8 +211,6 @@ function terminal() {
   echo "+---------------------------------+"
   echo "|        Installing Zshell        |"
   echo "+---------------------------------+"
-  brew install zsh
-
   mkdir ~/.zinit
   git clone https://github.com/zdharma/zinit.git ~/.zinit/bin
 
