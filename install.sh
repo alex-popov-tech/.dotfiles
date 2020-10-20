@@ -59,7 +59,6 @@ function managers() {
   echo "|        Installing Homebrew        |"
   echo "+-----------------------------------+"
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-  brew tap homebrew/cask-cask
 
   echo "+-------------------------------+"
   echo "|        Installing asdf        |"
@@ -153,32 +152,33 @@ function software() {
   espanso install lorem
   espanso restart
 
-  brew cask install \
-    google-chrome firefox \
-    alfred \
-    transmission \
-    the-unarchiver \
-    macs-fan-control \
-    dropbox \
-    steam \
-    docker \
-    telegram slack skype zoomus \
-    vlc \
-    tidal \
-    tunnelblick \
-    flux \
-    toggl-track \
-    ledger-live \
-    arduino \
-    boom-3d \
-    karabiner-elements \
-    contexts \
-    keybase \
-    dozen \
-    rectangle \
-    finicky \
-    blockblock
-
+  brew cask install google-chrome
+  brew cask install firefox
+  brew cask install alfred
+  brew cask install transmission
+  brew cask install the-unarchiver
+  brew cask install macs-fan-control
+  brew cask install dropbox
+  brew cask install steam
+  brew cask install docker
+  brew cask install telegram
+  brew cask install slack
+  brew cask install skype
+  brew cask install zoomus
+  brew cask install vlc
+  brew cask install tidal
+  brew cask install tunnelblick
+  brew cask install flux
+  brew cask install toggl-track
+  brew cask install ledger-live
+  brew cask install arduino
+  brew cask install boom-3d
+  brew cask install karabiner-elements
+  brew cask install contexts
+  brew cask install keybase
+  brew cask install rectangle
+  brew cask install finicky
+  brew cask install blockblock
 
   mas lucky Clocker
   mas lucky Keynote
