@@ -18,6 +18,8 @@ function main() {
   then
     managers
   fi
+  source $HOME/.asdf/asdf.sh
+
   read -p "Install langs? Y/N" -n 1 -r
   if [[ $REPLY =~ ^[Yy]$ ]]
   then
@@ -71,7 +73,6 @@ function managers() {
   cd $HOME/.asdf || exit
   git checkout "$(git describe --abbrev=0 --tags)"
   cd -- || exit
-  source $HOME/.asdf/asdf.sh
 }
 
 function langs() {
