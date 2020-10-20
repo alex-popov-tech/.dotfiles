@@ -30,6 +30,9 @@
   "explorer.file.column.git.icon.ignored": "☒",
   "explorer.openAction.for.directory": "expandOrCollapse",
   "explorer.keyMappings": {
+    "c": "copyFilepath",
+    "C": "copyFilename",
+    "y": "copyFile",
     "<cr>": [
       "expandable?",
       "expandOrCollapse",
