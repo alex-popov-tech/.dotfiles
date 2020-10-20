@@ -27,6 +27,11 @@ set linebreak
 set number relativenumber
 " keep searched chunks hightlighted
 set hlsearch
+autocmd cursorhold * set nohlsearch
+noremap n :set hlsearch<cr>n
+noremap N :set hlsearch<cr>N
+noremap / :set hlsearch<cr>/
+noremap ? :set hlsearch<cr>?
 " search case-insensitive
 set ignorecase
 " if on with ignorecase, when a pattern contains an uppercase letter, it is
