@@ -220,19 +220,18 @@ function terminal() {
 
 function neovim() {
 
-
   echo "+---------------------------------+"
   echo "|        Installing NeoVim        |"
   echo "+---------------------------------+"
 
-  brew install neovim
+  asdf plugin-add neovim
+  asdf install neovim nightly
+  asdf global neovim nightly
 
-  brew install shellcheck
   gem install neovim solargraph
   pip install neovim pynvim
   pip3 install neovim python-language-server pylint pynvim
   yarn global add neovim write-good markdownlint-cli eslint
-
 
   curl -fLo $HOME/.local/share/nvim/site/autoload/plug.vim --create-dirs \
       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
