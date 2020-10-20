@@ -4,19 +4,51 @@ DPATH=$HOME/.dotfiles
 
 function main() {
 
-  [ ! -d $HOME/.dotfiles ] && git clone https://github.com/aleksanderpopov/.dotfiles.git $HOME/.dotfiles
-  cd $HOME/.dotfiles
+  if [ -d $HOME/.dotfiles ]
+  then
+    echo "Dotfiles exists"
+    cd $HOME/.dotfiles && git checkout -f master && git pull
+  else
+    echo "Dotfiles not found, cloning"
+    git clone https://github.com/alex-popov-tech/.dotfiles.git && cd $HOME/.dotfiles
+  fi
 
-  managers
-  langs
-  software
-  terminal
-  neovim
-  link_configs
-
-  sudo -v
-  macos
-
+  read -p "Install managers? Y/N" -n 1 -r
+  if [[ $REPLY =~ ^[Yy]$ ]]
+  then
+    managers
+  fi
+  read -p "Install langs? Y/N" -n 1 -r
+  if [[ $REPLY =~ ^[Yy]$ ]]
+  then
+    langs
+  fi
+  read -p "Install software? Y/N" -n 1 -r
+  if [[ $REPLY =~ ^[Yy]$ ]]
+  then
+    software
+  fi
+  read -p "Install terminal? Y/N" -n 1 -r
+  if [[ $REPLY =~ ^[Yy]$ ]]
+  then
+    terminal
+  fi
+  read -p "Install nvim? Y/N" -n 1 -r
+  if [[ $REPLY =~ ^[Yy]$ ]]
+  then
+    neovim
+  fi
+  read -p "Link configs? Y/N" -n 1 -r
+  if [[ $REPLY =~ ^[Yy]$ ]]
+  then
+    link_configs
+  fi
+  read -p "Install macos settings? Y/N" -n 1 -r
+  if [[ $REPLY =~ ^[Yy]$ ]]
+  then
+    sudo -v
+    macos
+  fi
 }
 
 function managers() {
