@@ -167,7 +167,7 @@ function software() {
     tidal \
     tunnelblick \
     flux \
-    toggl \
+    toggl-track \
     ledger-live \
     arduino \
     boom-3d \
@@ -193,27 +193,11 @@ function terminal() {
   echo "+-----------------------------------+"
 
   brew tap homebrew/cask-fonts
-  brew cask install alacritty iterm2 font-hack-nerd-font font-fira-code font-jetbrains-mono
-
-  # link iterm2 profile
-  ITERM_PROFILES_PATH="$HOME/Library/Application Support/iTerm2/DynamicProfiles"
-  mkdir -p "$ITERM_PROFILES_PATH"
-  ln -fvs $DPATH/terminal/profile.json "$ITERM_PROFILES_PATH/profile"
-  # fix colors
-  tic $DPATH/terminal/xterm-256color-italic.terminfo
+  brew cask install alacritty font-hack-nerd-font font-fira-code font-jetbrains-mono
 
   # link alacritty config
   mkdir -p $HOME/.config/alacritty
   ln -fvs $DPATH/terminal/alacritty.yml $HOME/.config/alacritty/alacritty.yml
-
-  echo "+-------------------------------+"
-  echo "|       Installing Ranger       |"
-  echo "+-------------------------------+"
-  brew install ranger
-  mkdir -p $HOME/.config/ranger/plugins
-
-  git clone https://github.com/alexanderjeurissen/ranger_devicons ~/.config/ranger/plugins/ranger_devicons
-  ln -fsv $DPATH/configs/rc.conf $HOME/.config/ranger/rc.conf
 
   echo "+-------------------------------+"
   echo "|        Installing Tmux        |"
