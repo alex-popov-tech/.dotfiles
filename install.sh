@@ -82,8 +82,8 @@ function langs() {
   brew install coreutils gpg
   asdf plugin-add nodejs
   bash $HOME/.asdf/plugins/nodejs/bin/import-release-team-keyring
-  asdf install nodejs 13.6.0
-  asdf global nodejs 13.6.0
+  asdf install nodejs 15.0.0
+  asdf global nodejs 15.0.0
   asdf plugin-add yarn
   asdf install yarn 1.21.1
   asdf global yarn 1.21.1
@@ -92,17 +92,17 @@ function langs() {
   echo "|        Installing Java        |"
   echo "+-------------------------------+"
   brew install jq
-  asdf plugin-add java
-  asdf install java adopt-openjdk-8u232-b09_openj9-0.17.0
-  asdf global java adopt-openjdk-8u232-b09_openj9-0.17.0
+  asdf plugin-add java https://github.com/halcyon/asdf-java.git
+  asdf install java adoptopenjdk-large_heap-8.0.265+1.openj9-0.21.0
+  asdf global java adoptopenjdk-large_heap-8.0.265+1.openj9-0.21.0
 
   echo "+---------------------------------+"
   echo "|        Installing Python        |"
   echo "+---------------------------------+"
   asdf plugin-add python
-  asdf install python 3.8.1
+  asdf install python 3.9.0
   asdf install python 2.7.13
-  asdf global python 2.7.13 3.8.1
+  asdf global python 2.7.13 3.9.0
 
   echo "+-------------------------------+"
   echo "|        Installing Ruby        |"
