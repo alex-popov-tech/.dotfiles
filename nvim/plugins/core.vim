@@ -35,7 +35,7 @@ Plug 'tpope/vim-surround'
 " automatically adjust shiftwidth/expandtab/etc
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-fugitive'
-nmap gs :Gstatus<cr>
+nmap gs :Git<cr>
 " auto placing paired signs like {} [] '' "" etc
 Plug 'jiangmiao/auto-pairs'
 " find/jump definition/reference with fzf
