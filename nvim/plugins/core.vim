@@ -46,11 +46,13 @@ let delimitMate_jump_expansion = 1
 Plug 'pechorin/any-jump.vim'
 nmap go :AnyJump<cr>
 Plug 'mhinz/vim-startify'
-let g:startify_session_dir = '~/.vim/sessions/'
+function! s:gitModified()
+    let files = systemlist('git ls-files -m 2>/dev/null')
+    return map(files, "{'line': v:val, 'path': v:val}")
+endfunction
 let g:startify_lists = [
-      \ { 'type': 'sessions',  'header': ['   Sessions']       },
       \ { 'type': 'dir',       'header': ['   MRU '. getcwd()] },
-      \ { 'type': 'files',     'header': ['   MRU']            },
+      \ { 'type': function('s:gitModified'),  'header': ['   git modified']},
       \ ]
 " use vsc root when enter file
 let g:startify_change_to_vcs_root = 1
