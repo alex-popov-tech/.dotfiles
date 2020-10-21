@@ -10,15 +10,11 @@
   * [gitignore](./configs/gitignore)
   * [editorconfig](./configs/editorconfig)
   * [eslintrc](./configs/eslintrc)
-  * [tigrc](./configs/tigrc)
-* [ergodox ez layout](https://configure.ergodox-ez.com/ergodox-ez/layouts/QaJY3/latest/0)
 * Badass terminal - [Alacritty](https://github.com/alacritty/alacritty) + [ Zshell ](https://en.wikipedia.org/wiki/Z_shell) + [ Powerlevel10k ](https://github.com/romkatv/powerlevel10k) + Nerd Fonts + [Zinit](https://github.com/zdharma/zinit), etc.
 ![screenshot](files/terminal.png)
 * NeoVim with bunch of plugins, color schemes and [cheatsheet](vim.md)
 ![screenhot1](files/nvim1.png)
 ![screenhot2](files/nvim2.png)
-* (ARCHIEVED)[iterm2 configs](./terminal/iterm2/)
-* (ARCHIEVED)[keyboardio layout](http://www.keyboard-layout-editor.com/#/gists/4782bb723fbd9c12adfc23d293e9af0c)
 * other:
   * [gmail cleanup script](./gmail-script.js)
   * cron backup for [lastpass](./backup/lastpass.sh) and [keybaseio](./backup/keybase.sh)
@@ -36,7 +32,7 @@ otherwise there will be warning while installation
 * you might want to add some apps to startup after installation
 
 1. Install main stuff (managers, langs, software, etc)
-   * `curl https://raw.githubusercontent.com/aleksanderpopov/.dotfiles/master/install.sh | bash`
+   * `curl https://raw.githubusercontent.com/alex-popov-tech/.dotfiles/master/install.sh | zsh`
 2. (Optional) Setup some macos settings which require disabling [System Integrity Protection](https://christianvarga.com/how-to-delete-sleepimage-on-macos-high-sierra/)
    * > Restart your machine and hold down CMD + R to boot into recovery mode.
      > When that loads, go to Utilities - Terminal,
@@ -46,7 +42,7 @@ otherwise there will be warning while installation
 
    * When your machine starts back up run following script:
 
-      `curl https://raw.githubusercontent.com/aleksanderpopov/.dotfiles/master/macos_optional.sh | bash`
+      `curl https://raw.githubusercontent.com/alex-popov-tech/.dotfiles/master/macos_optional.sh | bash`
 
    * Boot into recovery mode again and re-enable SIP:
 
