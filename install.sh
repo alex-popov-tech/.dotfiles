@@ -203,7 +203,9 @@ function terminal() {
   echo "+-------------------------------+"
   echo "|        Installing Tmux        |"
   echo "+-------------------------------+"
-  brew install tmux
+  asdf plugin-add tmux
+  asdf install tmux 3.1b
+  asdf global tmux 3.1b
   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
   # link main config files
