@@ -244,7 +244,7 @@ function neovim() {
   # link separate plugins
   cd $DPATH/nvim/plugins && for filename in $(/bin/ls | grep .vim) ; do ln -fsv $PWD/$filename $HOME/.config/nvim/plugins/$filename; done && cd -
   # link ultisnips
-  ln -fsv $DPATH/nvim/ultisnips/* $HOME/.config/coc/ultisnips/
+  ln -fsv $DPATH/nvim/ultisnips/* $HOME/.config/coc/ultisnips
 
   nvim --headless +PlugInstall +qa
 
