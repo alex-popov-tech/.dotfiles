@@ -207,7 +207,7 @@ function terminal() {
   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
   # link main config files
-  cd $DPATH/tmux && for filename in $(/bin/ls) ; do ln -fsv $PWD/$filename $HOME/$filename; done && cd -
+  cd $DPATH/tmux && for filename in $(/bin/ls -a) ; do ln -fsv $PWD/$filename $HOME/$filename; done && cd -
 
   echo "+---------------------------------+"
   echo "|        Installing Zshell        |"
