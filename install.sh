@@ -10,7 +10,7 @@ function main() {
     cd $HOME/.dotfiles && git checkout -f master && git pull
   else
     echo "Dotfiles not found, cloning"
-    git clone https://github.com/alex-popov-tech/.dotfiles.git && cd $HOME/.dotfiles
+    cd $HOME && git clone https://github.com/alex-popov-tech/.dotfiles.git && cd $HOME/.dotfiles
   fi
 
   read -p "Install managers? Y/N" -n 1 -r
@@ -197,8 +197,7 @@ function terminal() {
   brew cask install alacritty font-hack-nerd-font font-fira-code font-jetbrains-mono
 
   # link alacritty config
-  mkdir -p $HOME/.config/alacritty
-  ln -fvs $DPATH/terminal/alacritty.yml $HOME/.config/alacritty/alacritty.yml
+  ln -fvs $DPATH/terminal/alacritty.yml $HOME/.alacritty.yml
 
   echo "+-------------------------------+"
   echo "|        Installing Tmux        |"
@@ -214,6 +213,7 @@ function terminal() {
   echo "+---------------------------------+"
   echo "|        Installing Zshell        |"
   echo "+---------------------------------+"
+  # brew install zsh
   mkdir ~/.zinit
   git clone https://github.com/zdharma/zinit.git ~/.zinit/bin
 
