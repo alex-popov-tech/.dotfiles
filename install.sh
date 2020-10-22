@@ -7,11 +7,17 @@ function main() {
   if [ -d $HOME/.dotfiles ]
   then
     echo "Dotfiles exists"
-    cd $HOME/.dotfiles && git checkout -f master && git pull
+    cd $HOME/.dotfiles && git stash && git checkout -f master && git stash pop && git pull
   else
     echo "Dotfiles not found, cloning"
     cd $HOME && git clone https://github.com/alex-popov-tech/.dotfiles.git && cd $HOME/.dotfiles
   fi
+
+  read -p "Install xcode-select?" -n 1 -r
+  if [[ $REPLY =~ ^[Yy]$ ]]
+  then
+    xcode-select --install
+  end
 
   read -p "Install managers? Y/N" -n 1 -r
   if [[ $REPLY =~ ^[Yy]$ ]]
@@ -227,9 +233,7 @@ function neovim() {
   echo "|        Installing NeoVim        |"
   echo "+---------------------------------+"
 
-  asdf plugin-add neovim
-  asdf install neovim nightly
-  asdf global neovim nightly
+  brew install --HEAD neovim
 
   gem install neovim solargraph
   pip install neovim pynvim
@@ -273,8 +277,6 @@ function macos() {
   echo "+--------------------------------+"
   echo "|        Setting Up MacOS        |"
   echo "+--------------------------------+"
-
-  xcode-select --install
 
   # Close any open System Preferences panes, to prevent them from overriding
   # settings weÕre about to change
