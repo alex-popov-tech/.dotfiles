@@ -10,25 +10,22 @@ window:
   decorations: none
 
 shell:
-  program: /bin/zsh
+  program: /usr/local/bin/zsh
   args:
     - -l
     - -c
-    - "tmux attach -t '(∩Ȍ▾Ȍ)⊃━☆ﾟ,*' || tmux new -s '(∩Ȍ▾Ȍ)⊃━☆ﾟ,*'"
+    - "/Users/alexanderpopov/.asdf/shims/tmux attach -t '(∩Ȍ▾Ȍ)⊃━☆ﾟ,*' || /Users/alexanderpopov/.asdf/shims/tmux new -s '(∩Ȍ▾Ȍ)⊃━☆ﾟ,*'"
 
 font:
-  # normal:
-  #   family: JetBrainsMono Nerd Font
-  #   style: Italic
   normal:
     family: JetBrainsMono Nerd Font
     style: Regular
-  italic:
-    family: JetBrainsMono Nerd Font
-    style: Italic
   bold:
     family: JetBrainsMono Nerd Font
     style: Bold
+  italic:
+    family: JetBrainsMono Nerd Font
+    style: Italic
   size: 16
   glyph_offset:
     y: 1

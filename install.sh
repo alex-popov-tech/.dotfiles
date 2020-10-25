@@ -204,6 +204,8 @@ function terminal() {
 
   # link alacritty config
   ln -fvs $DPATH/terminal/alacritty.yml $HOME/.alacritty.yml
+  # link patched fonts
+  ln -fvs $DPATH/terminal/*.ttf $HOME/Library/Fonts
 
   echo "+-------------------------------+"
   echo "|        Installing Tmux        |"
