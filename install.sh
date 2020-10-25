@@ -17,7 +17,7 @@ function main() {
   if [[ $REPLY =~ ^[Yy]$ ]]
   then
     xcode-select --install
-  end
+  fi
 
   read -p "Install managers? Y/N" -n 1 -r
   if [[ $REPLY =~ ^[Yy]$ ]]
