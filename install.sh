@@ -536,7 +536,7 @@ function macos() {
   defaults write com.apple.dock show-recents -bool false
 
   # Place Dock at the right side of screen
-  defaults write com.apple.dock orientation -string right
+  defaults write com.apple.dock orientation -string bottom
 
   # Enable Magnification
   defaults write com.apple.dock largesize -int 128
