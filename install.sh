@@ -199,8 +199,7 @@ function terminal() {
   echo "|        Installing Terminal        |"
   echo "+-----------------------------------+"
 
-  brew tap homebrew/cask-fonts
-  brew cask install alacritty font-hack-nerd-font font-fira-code font-jetbrains-mono
+  brew cask install alacritty
 
   # link alacritty config
   ln -fvs $DPATH/terminal/alacritty.yml $HOME/.alacritty.yml
