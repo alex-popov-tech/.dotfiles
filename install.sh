@@ -172,24 +172,26 @@ function software() {
   brew cask install slack
   brew cask install skype
   brew cask install zoomus
+  brew cask install spark
   brew cask install vlc
   brew cask install tidal
   brew cask install tunnelblick
   brew cask install flux
   brew cask install toggl-track
   brew cask install ledger-live
-  brew cask install arduino
-  brew cask install boom-3d
-  brew cask install karabiner-elements
   brew cask install contexts
   brew cask install keybase
   brew cask install rectangle
+  brew cask install dozer
   brew cask install finicky
   brew cask install blockblock
+  brew cask install path-finder
 
   mas lucky Clocker
   mas lucky Keynote
   mas lucky Pages
+  mas lucky Spark
+  mas lucky Monosnap
 
 }
 
