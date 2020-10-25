@@ -1,5 +1,8 @@
 module.exports = {
-  defaultBrowser: 'Google Chrome',
+  defaultBrowser: {
+        name: 'Google Chrome',
+        profile: 'Profile 1'
+  },
   handlers: [
     {
       match: [
@@ -8,15 +11,24 @@ module.exports = {
         'bitbucket.org/xchangeteam*',
         'jenkins.container-xchange.com*',
       ],
-      browser: 'Safari',
+      browser: {
+        name: 'Google Chrome',
+        profile: 'Profile 3'
+      }
     },
     {
       match: ['beta.scrumpypoker.com*', 'mlitvinova.testrail.io*', 'digitalproducts.atlassian.net*'],
-      browser: 'Opera',
+      browser: {
+        name: 'Google Chrome',
+        profile: 'Profile 4'
+      }
     },
     {
-      match: ['*cake.hr*', '*lokalise.atlassian.net*', '*lokalise.cake.hr'],
-      browser: 'Firefox',
+      match: ['*lokalise*', '*meet.google*'],
+      browser: {
+        name: 'Google Chrome',
+        profile: 'Profile 2'
+      }
     },
     {
       match: /zoom.us\/j\//,
