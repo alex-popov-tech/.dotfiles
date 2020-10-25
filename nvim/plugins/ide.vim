@@ -82,10 +82,11 @@ function! s:show_documentation()
 endfunction
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 " toggle explorer
-nmap <C-f> :CocCommand explorer --preset default<CR>
+nmap <C-f> :CocCommand explorer --preset floating<CR>
 let g:coc_explorer_global_presets = {
-            \   'default': {
-            \     'file.child.template': '[git | 2] [selection | clip | 1] [indent][icon | 1] [diagnosticError & 1][filename omitCenter 1][readonly] [linkIcon & 1][link growRight 1 omitCenter 5][size]'
+            \   'floating': {
+            \     'position': 'floating',
+            \     'open-action-strategy': 'sourceWindow'
             \   }
             \ }
 function! s:cocActionsOpenFromSelected(type) abort
