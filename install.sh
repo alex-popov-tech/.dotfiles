@@ -214,6 +214,8 @@ function terminal() {
   asdf plugin-add tmux
   asdf install tmux 3.1b
   asdf global tmux 3.1b
+  # for tmux to not crach and be able to copy with mouse ( and selection ? )
+  brew install reattach-to-user-namespace
   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
   # link main config files
