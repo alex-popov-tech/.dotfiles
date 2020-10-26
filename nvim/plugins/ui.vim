@@ -7,7 +7,7 @@ function! StatusLine(...)
 endfunction
 let g:crystalline_enable_sep = 1
 let g:crystalline_statusline_fn = 'StatusLine'
-let g:crystalline_theme = 'crystalline_gruvbox'
+let g:crystalline_theme = 'crystalline_statusline'
 set laststatus=2
 
 function! TabLine()

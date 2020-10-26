@@ -249,6 +249,7 @@ function neovim() {
       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
   mkdir -p $HOME/.config/nvim/plugins
+  mkdir -p $HOME/.config/nvim/plugged/vim-crystalline/autoload/crystalline/theme
   mkdir -p $HOME/.config/coc/ultisnips
   # link main config files
   cd $DPATH/nvim && for filename in $(/bin/ls | grep .vim) ; do ln -fsv $PWD/$filename $HOME/.config/nvim/$filename; done && cd -
@@ -256,6 +257,8 @@ function neovim() {
   cd $DPATH/nvim/plugins && for filename in $(/bin/ls | grep .vim) ; do ln -fsv $PWD/$filename $HOME/.config/nvim/plugins/$filename; done && cd -
   # link ultisnips
   ln -fsv $DPATH/nvim/ultisnips/* $HOME/.config/coc/ultisnips
+  # link crystalline file, cause it cannot find theme anywhere but in its own folder
+  ln -fsv $DPATH/nvim/plugins/crystalline_statusline $HOME/.config/nvim/plugged/vim-crystalline/autoload/crystalline/theme/crystalline_statusline.vim
 
   nvim --headless +PlugInstall +qa
 

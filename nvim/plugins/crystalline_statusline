@@ -1,4 +1,4 @@
-function! crystalline#theme#crystalline_gruvbox#set_theme() abort
+function! crystalline#theme#crystalline_statusline#set_theme() abort
     call crystalline#generate_theme({
                 \ 'NormalMode':  [[235, 246], ['#32302f', '#d4be98']],
                 \ 'InsertMode':  [[235, 109], ['#32302f', '#83a598']],
