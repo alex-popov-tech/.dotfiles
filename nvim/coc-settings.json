@@ -15,12 +15,8 @@
   "git.topRemovedSign.hlGroup": "GitGutterDelete",
   "git.changeRemovedSign.hlGroup": "GitGutterChangeDelete",
   "git.addGBlameToVirtualText": true,
-  "explorer.icon.enableNerdfont": true,
   "explorer.quitOnOpen": true,
-  "explorer.previewAction.onHover": true,
   "explorer.file.showHiddenFiles": true,
-  "explorer.position": "floating",
-  "explorer.floating.width": -40,
   "explorer.file.column.git.icon.added": "✚",
   "explorer.file.column.git.icon.deleted": "✖",
   "explorer.file.column.git.icon.renamed": "➜",
@@ -28,6 +24,9 @@
   "explorer.file.column.git.icon.untracked": "?",
   "explorer.file.column.git.icon.modified": "✹",
   "explorer.file.column.git.icon.ignored": "☒",
+  "explorer.icon.enableNerdfont": true,
+  "explorer.floating.position": "center",
+  "explorer.position": "floating",
   "explorer.openAction.for.directory": "expandOrCollapse",
   "explorer.keyMappings": {
     "c": "copyFilepath",
@@ -54,11 +53,6 @@
   "eslint.options": {
     "configFile": "/Users/alexanderpopov/.eslintrc.json"
   },
-  "prettier.eslintIntegration": true,
-  "coc.preferences.formatOnSaveFiletypes": [
-    "javascript",
-    "typescript"
-  ],
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
   "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
   "cSpell.allowCompoundWords": true,
