@@ -12,12 +12,8 @@ alias map="xargs -n1"
 alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v extension-process | tr -s ' ' | cut -d ' ' -f2 | xargs kill"
 # Other
 alias n="nvim"
+
 alias gs="nvim +Git '+wincmd w' +q"
-
-# alias t="tig"
-# alias ts="tig status"
-
-alias r="ranger"
 
 alias ...="cd ../.."
 alias ....="cd ../../.."
