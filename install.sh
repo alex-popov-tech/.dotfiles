@@ -186,6 +186,7 @@ function software() {
   brew cask install finicky
   brew cask install blockblock
   brew cask install path-finder
+  brew cask install mysqlworkbench
 
   mas lucky Clocker
   mas lucky Keynote
