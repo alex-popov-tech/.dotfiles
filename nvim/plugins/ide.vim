@@ -80,12 +80,13 @@ function! s:show_documentation()
         call CocAction('doHover')
     endif
 endfunction
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 " toggle explorer
 nmap <C-f> :CocCommand explorer --preset floating<CR>
 let g:coc_explorer_global_presets = {
             \   'floating': {
             \     'position': 'floating',
+            \     'floating-position': 'center',
+            \     'floating-width': 120,
             \     'open-action-strategy': 'sourceWindow'
             \   }
             \ }

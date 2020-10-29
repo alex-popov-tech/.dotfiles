@@ -25,8 +25,6 @@
   "explorer.file.column.git.icon.modified": "✹",
   "explorer.file.column.git.icon.ignored": "☒",
   "explorer.icon.enableNerdfont": true,
-  "explorer.floating.position": "center",
-  "explorer.position": "floating",
   "explorer.openAction.for.directory": "expandOrCollapse",
   "explorer.keyMappings": {
     "c": "copyFilepath",
