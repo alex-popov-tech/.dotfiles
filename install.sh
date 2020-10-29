@@ -152,6 +152,8 @@ function software() {
     prettyping \
     mas \
     the_silver_searcher \
+    ripgrep \
+    ctop \
     fzf
 
   brew tap federico-terzi/espanso
