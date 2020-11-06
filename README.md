@@ -4,7 +4,7 @@
 
 * MacOS settings based on [Mathias dotfiles](https://github.com/mathiasbynens/dotfiles) repository.
 * [ asdf ](https://github.com/asdf-vm/asdf) with nodejs, java, python, ruby, etc.
-* [Alfred](https://www.alfredapp.com/) with some customizations and [cheetsheet](alfred.md)
+* [Alfred](https://www.alfredapp.com/) with some customizations
 * Global configs:
   * [gitconfig](./configs/gitconfig)
   * [gitignore](./configs/gitignore)
@@ -12,15 +12,15 @@
   * [eslintrc](./configs/eslintrc)
 * Badass terminal - [Alacritty](https://github.com/alacritty/alacritty) + [ Zshell ](https://en.wikipedia.org/wiki/Z_shell) + [ Powerlevel10k ](https://github.com/romkatv/powerlevel10k) + Nerd Fonts + [Zinit](https://github.com/zdharma/zinit), etc.
 ![screenshot](files/terminal.png)
-* NeoVim with bunch of plugins, color schemes and [cheatsheet](vim.md)
+* NeoVim with bunch of plugins, color schemes
 ![screenhot1](files/nvim1.png)
 ![screenhot2](files/nvim2.png)
 * other:
   * [gmail cleanup script](./gmail-script.js)
   * cron backup for [lastpass](./backup/lastpass.sh) and [keybaseio](./backup/keybase.sh)
     * how to use ```
-        0 * * * * $HOME/.dotfiles/backup/mailOnErr.sh $HOME/.dotfiles/backup/lastpass.sh
-        0 * * * * $HOME/.dotfiles/backup/mailOnErr.sh $HOME/.dotfiles/backup/keybase.sh
+        0 * */3 * * $HOME/.dotfiles/backup/mailOnErr.sh $HOME/.dotfiles/backup/lastpass.sh
+        0 * */3 * * $HOME/.dotfiles/backup/mailOnErr.sh $HOME/.dotfiles/backup/keybase.sh
       ```
 
 ## Installation
@@ -52,15 +52,12 @@ otherwise there will be warning while installation
 
       `csrutil status; ls -la /private/var/vm`
 
-## Additional customization
-
-* you can use Gruvbox theme instead of default Solarized Dark using import `./terminal/gruvbox-dark.itermcolors`
-
 ## Useful links
+
 * how to configure `mail` for crontab gmail on macos https://gist.github.com/giovanigenerali/39efe8760f84ed74b44a31be1ace27e7
+
 ### TODO
 
-* add WireGuard installation
 * rewrite time tracking alfred plugin to be able to start timer for project without searchin for them
 * suggested [software](https://github.com/jaywcjlove/awesome-mac)
   * [better touch tool](https://folivora.ai)
