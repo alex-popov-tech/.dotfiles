@@ -196,6 +196,7 @@ function software() {
   mas lucky Pages
   mas lucky Spark
   mas lucky Monosnap
+  mas lucky WireGuard
 
 }
 
