@@ -36,6 +36,8 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-fugitive'
 nmap gs :Git<cr>
+nmap gm :diffget //2<cr>
+nmap gt :diffget //3<cr>
 " auto placing paired signs like {} [] '' "" etc
 " Plug 'jiangmiao/auto-pairs'
 Plug 'Raimondi/delimitMate'
