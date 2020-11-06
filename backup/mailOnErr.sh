@@ -10,7 +10,7 @@ while  true ; do
   then
     mail -s BACKUP_ERROR alex.popov.tech@gmail.com < $tmp
     rm $tmp
-    sleep 900
+    sleep 3600
   else
     break
   fi
