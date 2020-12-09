@@ -511,10 +511,15 @@ fi</string>
 				<key>script</key>
 				<string>VPN="{query}"
 IS_CONNECTED=$(test -z `scutil --nc status "$VPN" | head -n 1 | grep Connected` &amp;&amp; echo 0 || echo 1);
-if [ $IS_CONNECTED = 1 ]; then
+if [ $IS_CONNECTED -eq 1 ]; then
   scutil --nc stop "$VPN"
 else
-  scutil --nc start "$VPN"
+  scutil --nc show "$VPN" | head -1 | grep PPP:L2TP 2&gt;&amp;1 &gt; /dev/null
+  if [ $? -eq 0 ]; then
+    networksetup -connectpppoeservice "$VPN"
+  else  
+    scutil --nc start "$VPN"
+  fi
 fi</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
@@ -748,8 +753,8 @@ fi</string>
 	<key>variablesdontexport</key>
 	<array/>
 	<key>version</key>
-	<string>1.2.0</string>
+	<string>1.3.0</string>
 	<key>webaddress</key>
-	<string>http://rodalgaard.dk/</string>
+	<string>https://github.com/mrodalgaard/alfred-network-workflow</string>
 </dict>
 </plist>
