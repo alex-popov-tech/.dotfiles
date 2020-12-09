@@ -10,23 +10,9 @@ Plug 'kana/vim-textobj-indent'
 Plug 'wellle/targets.vim'
 " abbreviations, substitusion, coercion (transform case)
 Plug 'tpope/vim-abolish'
-function! InitAbbreviations()
-  " abbreviations
-  Abolish! -cmdline co{snt,tsn,tns,nts} co{nst}
-  Abolish! -cmdline fun{cton, ctino, ctoin} fun{ction}
-  Abolish! -cmdline ret{utn,nurn} ret{urn}
-  Abolish! -cmdline f{ro} f{or}
-  Abolish! -cmdline aw{ati,tai,tia} aw{ait}
-  Abolish! -cmdline len{ght} len{gth}
-  Abolish! -cmdline shou{dl} shou{ld}
-  Abolish! -cmdline tr{eu} tr{ue}
-endfunction
-autocmd VimEnter * call InitAbbreviations()
 
 " add bunch of mappings like ]p ]e ]<space> etc.
 Plug 'tpope/vim-unimpaired'
-" paste with indenting respected
-Plug 'sickill/vim-pasta'
 " allows repeat via dot for some plugins like surround
 Plug 'tpope/vim-repeat'
 " add\update\remove surround stuff like '"{}"'
