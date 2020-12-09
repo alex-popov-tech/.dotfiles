@@ -52,9 +52,7 @@ let g:startify_enable_special = 1
 let g:startify_custom_indices = map(range(1,100), 'string(v:val)')
 " text object camel case word
 Plug 'chaoren/vim-wordmotion'
-let g:wordmotion_prefix = ','
-" when navigate to previously opened files - open in last file position
-Plug 'farmergreg/vim-lastplace'
+let g:wordmotion_prefix = '<leader>'
 " kill all buffers but current
 Plug 'schickling/vim-bufonly'
 cnoreabbrev bo Bonly!
