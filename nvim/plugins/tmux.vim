@@ -31,8 +31,3 @@ function! s:zoom_toggle() abort
   endif
 endfunction
 nnoremap <leader>z :call <SID>zoom_toggle()<CR>
-" send lines to tmux pane repl
-Plug 'esamattis/slimux'
-" map qc :SlimuxREPLConfigure<cr>
-map gx :SlimuxREPLSendLine<cr>
-vmap gx :SlimuxREPLSendSelection<cr>
