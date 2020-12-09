@@ -27,14 +27,10 @@ cnoreabbrev gs Gs
 nmap gm :diffget //2<cr>
 nmap gt :diffget //3<cr>
 " auto placing paired signs like {} [] '' "" etc
-" Plug 'jiangmiao/auto-pairs'
-Plug 'Raimondi/delimitMate'
-let delimitMate_expand_cr = 2
-let delimitMate_expand_space = 1
-let delimitMate_jump_expansion = 1
-" find/jump definition/reference with fzf
-Plug 'pechorin/any-jump.vim'
-nmap go :AnyJump<cr>
+Plug 'cohama/lexima.vim'
+" when navigate to previously opened files - open in last file position
+Plug 'farmergreg/vim-lastplace'
+" start screen
 Plug 'mhinz/vim-startify'
 function! s:gitModified()
     let files = systemlist('git ls-files -m 2>/dev/null')
