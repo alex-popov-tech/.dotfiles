@@ -1,6 +1,5 @@
-" main text objects plugin
-Plug 'kana/vim-textobj-user'
-" dac dic yic cic
+" debug vim runtime
+Plug 'dstein64/vim-startuptime'
 " main text objects plugin
 Plug 'kana/vim-textobj-user'
 " dac dic yic cic
