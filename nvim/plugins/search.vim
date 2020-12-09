@@ -1,13 +1,6 @@
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'stsewd/fzf-checkout.vim'
-let g:fzf_branch_actions = {
-      \ 'checkout': {
-      \   'execute': 'echo system("{git} checkout " . (empty("{branch}") ? "-b {input}" : "{branch}"))',
-      \   'required': [],
-      \ },
-      \}
-nmap gb :GBranches<CR>
 Plug 'junegunn/fzf.vim'
+Plug 'fszymanski/fzf-quickfix'
 " previews for fuzzy search
 command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, fzf#vim#with_preview('up'), <bang>0)
 command! -bang -nargs=? -complete=dir GFiles call fzf#vim#gitfiles(<q-args>, fzf#vim#with_preview('up'), <bang>0)
@@ -51,3 +44,14 @@ nmap <leader>nb :Buffers<CR>
 nmap <leader>nm :Marks<CR>
 " find in files history
 nmap <leader>nh :History<CR>
+" find/jump definition/reference with fzf
+Plug 'pechorin/any-jump.vim'
+nmap go :AnyJump<cr>
+Plug 'stsewd/fzf-checkout.vim'
+let g:fzf_branch_actions = {
+      \ 'checkout': {
+      \   'execute': 'echo system("{git} checkout " . (empty("{branch}") ? "-b {input}" : "{branch}"))',
+      \   'required': [],
+      \ },
+      \}
+nmap gb :GBranches<CR>
