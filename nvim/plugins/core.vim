@@ -63,5 +63,17 @@ tnoremap <F11> <C-\><C-n>:FloatermToggle<CR>
 Plug 'svermeulen/vim-subversive'
 nmap m <plug>(SubversiveSubstitute)
 nmap mm <plug>(SubversiveSubstituteLine)
-" gS to split things, gJ to join them together
-Plug 'andrewradev/splitjoin.vim'
+" vim in browser inputs
+Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+" remove statusline for nvim in browser to have more space
+if exists('g:started_by_firenvim')
+  let fc['*'] = { 'takeover': 'never' }
+  set laststatus=0
+  au BufEnter github.com_*.txt set filetype=markdown
+  " Enable hotkeys for Russian layout
+  set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
+  " to be able to exit on rus
+  map <C-й> <C-q>
+else
+  set laststatus=2
+endif
