@@ -6,6 +6,15 @@ module.exports = {
   handlers: [
     {
       match: [
+        '*github*'
+      ],
+      browser: {
+        name: 'Google Chrome',
+        profile: 'Profile 1'
+      }
+    },
+    {
+      match: [
         'bcg-xchange.atlassian.net*',
         'id.svitla.com*',
         'bitbucket.org/xchangeteam*',
