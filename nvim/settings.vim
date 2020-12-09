@@ -41,8 +41,9 @@ set smartcase
 nnoremap * /\<<C-R>=expand('<cword>')<CR>\><CR>
 nnoremap # ?\<<C-R>=expand('<cword>')<CR>\><CR>
 " Turn backup off, since most stuff is in SVN, git et.c anyway...
-set nowb
+set nowritebackup
 set noswapfile
+set nobackup
 " show what commands you typing, what you select in visual mode, etc.
 set showcmd
 " Automatically :write before running commands
@@ -73,4 +74,4 @@ endif
 set inccommand=nosplit
 " write path when save file if needed
 au BufNewFile * :exe ': !mkdir -p ' . escape(fnamemodify(bufname('%'),':p:h'),'#% \\')
-set completeopt=longest,menuone
+set backspace=2
