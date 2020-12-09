@@ -19,8 +19,11 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 " automatically adjust shiftwidth/expandtab/etc
 Plug 'tpope/vim-sleuth'
+" git plugin
 Plug 'tpope/vim-fugitive'
-nmap gs :Git<cr>
+cnoreabbrev gp Gpush
+command Gs :Git | on
+cnoreabbrev gs Gs
 nmap gm :diffget //2<cr>
 nmap gt :diffget //3<cr>
 " auto placing paired signs like {} [] '' "" etc
@@ -54,6 +57,7 @@ let g:wordmotion_prefix = ','
 Plug 'farmergreg/vim-lastplace'
 " kill all buffers but current
 Plug 'schickling/vim-bufonly'
+cnoreabbrev bo Bonly!
 " open terminal in floating window
 Plug 'voldikss/vim-floaterm'
 let g:floaterm_width = 0.9
