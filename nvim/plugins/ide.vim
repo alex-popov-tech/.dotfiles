@@ -30,13 +30,29 @@ Plug 'nvim-lua/lsp-status.nvim'
 " plugin to add completeion possibility
 Plug 'nvim-lua/completion-nvim'
 let g:completion_chain_complete_list = {
-    \ 'default': [ {'complete_items': ['lsp', 'tabnine', 'buffers' ] }, {'mode': '<c-p>'}, {'mode': '<c-n>'} ],
+    \ 'default': [ {'complete_items': ['lsp', 'tabnine', 'buffers' ] } ],
     \ 'sql': [ {'complete_items': ['vim-dadbod-completion'] } ],
 \}
+let g:completion_items_priority = {
+        \ 'Field': 10,
+        \ 'Method': 10,
+        \ 'Function': 9,
+        \ 'Variables': 9,
+        \ 'Constant': 9,
+        \ 'Interfaces': 8,
+        \ 'Class': 8,
+        \ 'Struct': 8,
+        \ 'Keyword': 8,
+        \ 'Treesitter': 8,
+        \ 'TabNine' : 8,
+        \ 'vim-vsnip' : 7,
+        \ 'Buffers' : 1,
+        \ 'File' : 2,
+        \}
 let g:completion_sorting = "length"
-let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
+let g:completion_matching_strategy_list = ['exact', 'fuzzy']
 let g:completion_matching_smart_case = 1
-let g:completion_auto_change_source = 1
+" let g:completion_auto_change_source = 1
 Plug 'steelsojka/completion-buffers'
 Plug 'kristijanhusak/vim-dadbod-completion'
 Plug 'aca/completion-tabnine', { 'do': 'version=3.1.9 ./install.sh' }
