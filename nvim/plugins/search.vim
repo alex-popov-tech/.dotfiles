@@ -54,4 +54,4 @@ let g:fzf_branch_actions = {
       \   'required': [],
       \ },
       \}
-nmap gb :GBranches<CR>
+cnoreabbrev gb GBranches
