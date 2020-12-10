@@ -73,5 +73,7 @@ if has('persistent_undo')
 endif
 set inccommand=nosplit
 " write path when save file if needed
-au BufNewFile * :exe ': !mkdir -p ' . escape(fnamemodify(bufname('%'),':p:h'),'#% \\')
+autocmd BufNewFile * :exe ': !mkdir -p ' . escape(fnamemodify(bufname('%'),':p:h'),'#% \\')
 set backspace=2
+autocmd BufWinEnter quickfix nnoremap <silent> <buffer> <enter> <enter>:lclose<cr>
+set updatetime=100
