@@ -60,6 +60,51 @@ lua vim.fn.nvim_set_keymap('t', '<F11>', '<C-\\><C-n><CMD>lua require"FTerm".tog
 Plug 'svermeulen/vim-subversive'
 nmap m <plug>(SubversiveSubstitute)
 nmap mm <plug>(SubversiveSubstituteLine)
+" file tree
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'kyazdani42/nvim-tree.lua'
+nmap <c-f> :LuaTreeToggle<cr>
+let g:lua_tree_side = 'left'
+let g:lua_tree_width = 30
+let g:lua_tree_auto_close = 1 " closes the tree when it's the last window
+let g:lua_tree_quit_on_open = 1 " closes the tree when you open a file
+let g:lua_tree_follow = 1 " this option allows the cursor to be updated when entering a buffer
+let g:lua_tree_indent_markers = 1 " this option shows indent markers when folders are open
+let g:lua_tree_git_hl = 1 "0 by default, will enable file highlight for git attributes (can be used without the icons).
+let g:lua_tree_allow_resize = 1 " will not resize the tree when opening a file
+let g:lua_tree_show_icons = {
+    \ 'git': 1,
+    \ 'folders': 1,
+    \ 'files': 1,
+    \ }
+let g:lua_tree_bindings = {
+    \ 'edit':            ['<CR>', 'l'],
+    \ 'edit_vsplit':     '<C-v>',
+    \ 'edit_split':      '<C-x>',
+    \ 'close_node':      ['<S-CR>', 'h'],
+    \ 'refresh':         'R',
+    \ 'create':          'a',
+    \ 'remove':          'd',
+    \ 'rename':          'r',
+    \ 'cut':             'x',
+    \ 'copy':            'y',
+    \ 'paste':           'p',
+    \ }
+let g:lua_tree_icons = {
+    \ 'default': '',
+    \ 'symlink': '',
+    \ 'git': {
+    \   'unstaged': "✗",
+    \   'staged': "✓",
+    \   'unmerged': "",
+    \   'renamed': "➜",
+    \   'untracked': "★"
+    \   },
+    \ 'folder': {
+    \   'default': "",
+    \   'open': ""
+    \   }
+    \ }
 " vim in browser inputs
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 " remove statusline for nvim in browser to have more space

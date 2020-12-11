@@ -10,10 +10,8 @@ hi DiffText   cterm=none ctermfg=none ctermbg=none gui=none guifg=#00afff guibg=
 hi DiffChange cterm=none ctermfg=none ctermbg=none gui=none guifg=#ffff00 guibg=none
 hi DiffDelete cterm=none ctermfg=none ctermbg=none gui=none guifg=#ff0000 guibg=none
 
-hi CocExplorerFileDiagnosticError cterm=none ctermfg=none ctermbg=none gui=none guifg=#ff0000 guibg=none
-hi CocExplorerFilenameDiagnosticError cterm=none ctermfg=none ctermbg=none gui=none guifg=#ff0000 guibg=none
-hi CocExplorerFileDiagnosticWarning cterm=none ctermfg=none ctermbg=none gui=none guifg=#fff000 guibg=none
-hi CocExplorerFilenameDiagnosticWarning cterm=none ctermfg=none ctermbg=none gui=none guifg=#fff000 guibg=none
-hi CocExplorerGitPathChange   cterm=none ctermfg=none ctermbg=none gui=none guifg=#5fd700 guibg=none
-hi CocExplorerGitContentChange   cterm=none ctermfg=none ctermbg=none gui=none guifg=#00afff guibg=none
-hi CocExplorerGitDeleted cterm=none ctermfg=none ctermbg=none gui=none guifg=#ff0000 guibg=none
+hi LuaTreeFileNew   cterm=none ctermfg=none ctermbg=none gui=none guifg=#5fd700 guibg=none
+hi LuaTreeFileDirty   cterm=none ctermfg=none ctermbg=none gui=none guifg=#ffff00 guibg=none
+hi LuaTreeFileRenamed   cterm=none ctermfg=none ctermbg=none gui=none guifg=#ffff00 guibg=none
+hi LuaTreeFileMerge   cterm=none ctermfg=none ctermbg=none gui=none guifg=#ff0000 guibg=none
+hi LuaTreeFileStaged   cterm=none ctermfg=none ctermbg=none gui=none guifg=#00afff guibg=none

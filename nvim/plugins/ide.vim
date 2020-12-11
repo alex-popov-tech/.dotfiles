@@ -1,19 +1,3 @@
-" file explorer
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-let g:coc_global_extensions = [
-            \ 'coc-explorer',
-            \ 'coc-git',
-            \]
-" toggle explorer
-nmap <C-f> :CocCommand explorer --preset floating<CR>
-let g:coc_explorer_global_presets = {
-            \   'floating': {
-            \     'position': 'floating',
-            \     'floating-position': 'center',
-            \     'floating-width': 120,
-            \     'open-action-strategy': 'sourceWindow'
-            \   }
-            \ }
 " add commenting for different langs via gcc
 Plug 'tpope/vim-commentary'
 " plugin which allows vim to work with common editorconfig
