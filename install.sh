@@ -249,7 +249,7 @@ function neovim() {
   gem install neovim solargraph
   pip install neovim pynvim
   pip3 install neovim python-language-server pylint pynvim
-  yarn global add neovim write-good markdownlint-cli eslint
+  yarn global add neovim write-good markdownlint-cli eslint prettier lua-fmt
 
   curl -fLo $HOME/.local/share/nvim/site/autoload/plug.vim --create-dirs \
       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
