@@ -1,11 +1,8 @@
 yarn
 neovim
-bash-language-server
-write-good
-markdownlint-cli
 eslint
 prettier
-prettier-eslint-cli
+lua-fmt
 tslint
 ts-node
 typescript
