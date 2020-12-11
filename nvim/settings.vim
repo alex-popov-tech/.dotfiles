@@ -75,5 +75,13 @@ set inccommand=nosplit
 " write path when save file if needed
 autocmd BufNewFile * :exe ': !mkdir -p ' . escape(fnamemodify(bufname('%'),':p:h'),'#% \\')
 set backspace=2
+" close quickfix on follow
 autocmd BufWinEnter quickfix nnoremap <silent> <buffer> <enter> <enter>:lclose<cr>
+" refresh things faster
 set updatetime=100
+" Set completeopt to have a better completion experience
+set completeopt=menuone,noinsert,noselect
+" better messages
+set shortmess+=s
+" TextEdit might fail if hidden is not set.
+set hidden

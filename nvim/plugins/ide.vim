@@ -58,9 +58,4 @@ Plug 'kristijanhusak/vim-dadbod-completion'
 Plug 'aca/completion-tabnine', { 'do': 'version=3.1.9 ./install.sh' }
 let g:completion_tabnine_priority = 5
 let g:completion_tabnine_sort_by_details=1
-" Set completeopt to have a better completion experience
-set completeopt=menuone,noinsert,noselect
-" better messages
-set shortmess+=s
-" TextEdit might fail if hidden is not set.
-" set hidden
+Plug 'mhartington/formatter.nvim'
