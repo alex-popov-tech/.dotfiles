@@ -105,6 +105,9 @@ let g:lua_tree_icons = {
     \   'open': ""
     \   }
     \ }
+Plug 'AndrewRadew/splitjoin.vim'
+nmap gj :SplitjoinJoin<cr>
+nmap gs :SplitjoinSplit<cr>
 " vim in browser inputs
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 " remove statusline for nvim in browser to have more space
