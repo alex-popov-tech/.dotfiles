@@ -42,4 +42,7 @@ Plug 'kristijanhusak/vim-dadbod-completion'
 Plug 'aca/completion-tabnine', { 'do': 'version=3.1.9 ./install.sh' }
 let g:completion_tabnine_priority = 5
 let g:completion_tabnine_sort_by_details=1
+" formatting
 Plug 'mhartington/formatter.nvim'
+" installing lsp servers
+Plug 'mattn/vim-lsp-settings'

@@ -50,13 +50,13 @@ for _, server in pairs({"vimls", "jsonls", "bashls"}) do
   }
 end
 -- tsserver, stop messing with prettier da fuck!
-lsp_config.tsserver.setup {
-  capabilities = lsp_status.capabilities,
-  on_attach = function(client, bufnr)
-    general_on_attach(client, bufnr)
-    client.resolved_capabilities.document_formatting = false
-  end
-}
+-- lsp_config.tsserver.setup {
+--   capabilities = lsp_status.capabilities,
+--   on_attach = function(client, bufnr)
+--     general_on_attach(client, bufnr)
+--     client.resolved_capabilities.document_formatting = false
+--   end
+-- }
 
 lsp_config.sumneko_lua.setup {
   on_attach = general_on_attach,
@@ -118,6 +118,21 @@ require "formatter".setup(
     }
   }
 )
+
+vim.lsp.handlers["textDocument/formatting"] = function(err, _, result, _, bufnr)
+    if err ~= nil or result == nil then
+        return
+    end
+    if not vim.api.nvim_buf_get_option(bufnr, "modified") then
+        local view = vim.fn.winsaveview()
+        vim.lsp.util.apply_text_edits(result, bufnr)
+        vim.fn.winrestview(view)
+        if bufnr == vim.api.nvim_get_current_buf() then
+            vim.cmd("noautocmd :update")
+        end
+    end
+end
+
 -- setup diagnostic linters and formatters
 lsp_config.diagnosticls.setup(
   {

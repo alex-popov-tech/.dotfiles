@@ -157,11 +157,6 @@ function software() {
     ctop \
     fzf
 
-  brew tap federico-terzi/espanso
-  brew install espanso
-  espanso install lorem
-  espanso restart
-
   brew cask install google-chrome
   brew cask install firefox
   brew cask install alfred
@@ -210,9 +205,9 @@ function terminal() {
   brew cask install alacritty
 
   # link alacritty config
-  ln -fvs $DPATH/terminal/alacritty.yml $HOME/.alacritty.yml
+  ./lnfilepath.sh $HOME/.dotfiles/terminal/alacritty.yml $HOME/.alacritty.yml
   # link patched fonts
-  ln -fvs $DPATH/terminal/*.ttf $HOME/Library/Fonts
+  ./lnfilepath.sh $DPATH/terminal/*.ttf $HOME/Library/Fonts
 
   echo "+-------------------------------+"
   echo "|        Installing Tmux        |"
@@ -225,7 +220,7 @@ function terminal() {
   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
   # link main config files
-  cd $DPATH/tmux && for filename in $(/bin/ls -a) ; do ln -fsv $PWD/$filename $HOME/$filename; done && cd -
+  ./lnfilepath.sh $DPATH/tmux/.tmux* $HOME
 
   echo "+---------------------------------+"
   echo "|        Installing Zshell        |"
@@ -234,7 +229,7 @@ function terminal() {
   mkdir ~/.zinit
   git clone https://github.com/zdharma/zinit.git ~/.zinit/bin
 
-  cd $DPATH/terminal/zshell && for filename in $(/bin/ls) ; do ln -fsv $PWD/$filename $HOME/.$filename; done && cd -
+  ./lnfilepath.sh $DPATH/terminal/zshell/.zsh* $HOME
 
 }
 
@@ -254,17 +249,11 @@ function neovim() {
   curl -fLo $HOME/.local/share/nvim/site/autoload/plug.vim --create-dirs \
       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-  mkdir -p $HOME/.config/nvim/plugins
-  mkdir -p $HOME/.config/nvim/lua
-  mkdir -p $HOME/.config/nvim/plugged/vim-crystalline/autoload/crystalline/theme
   # link main config files
-  cd $DPATH/nvim && for filename in $(/bin/ls | grep .vim) ; do ln -fsv $PWD/$filename $HOME/.config/nvim/$filename; done && cd -
-  # link separate plugins
-  cd $DPATH/nvim/plugins && for filename in $(/bin/ls | grep .vim) ; do ln -fsv $PWD/$filename $HOME/.config/nvim/plugins/$filename; done && cd -
-  # link crystalline file, cause it cannot find theme anywhere but in its own folder
-  ln -fsv $DPATH/nvim/plugins/crystalline_statusline $HOME/.config/nvim/plugged/vim-crystalline/autoload/crystalline/theme/crystalline_statusline.vim
-  # link lua files
-  cd $DPATH/nvim/lua && for filename in $(/bin/ls | grep .lua) ; do ln -fsv $PWD/$filename $HOME/.config/nvim/lua/$filename; done && cd -
+  ./lnfilepath.sh $DPATH/nvim/*.vim $HOME/.config/nvim
+  ./lnfilepath.sh $DPATH/nvim/plugins/*.vim $HOME/.config/nvim/lua
+  ./lnfilepath.sh $DPATH/nvim/crystalline_statusline $HOME/.config/nvim/plugged/vim-crystalline/autoload/crystalline/theme/crystalline_statusline.vim
+  ./lnfilepath.sh $DPATH/nvim/lua/*.lua $HOME/.config/nvim/lua
 
   nvim --headless +PlugInstall +qa
 
@@ -276,13 +265,7 @@ function link_configs() {
   echo "|        Linking Configs        |"
   echo "+-------------------------------+"
 
-  ln -fvs $DPATH/configs/gitconfig $HOME/.gitconfig
-  ln -fvs $DPATH/configs/gitignore $HOME/.gitignore
-  ln -fvs $DPATH/configs/editorconfig $HOME/.editorconfig
-  ln -fvs $DPATH/configs/eslintrc.json $HOME/.eslintrc
-  ln -fvs $DPATH/configs/prettierrc.json $HOME/.prettierrc
-  ln -fvs $DPATH/configs/.finicky.js $HOME/.finicky.js
-  ln -fvs $DPATH/configs/espanso.yml $HOME/Library/Preferences/espanso/default.yml
+  ./lnfilepath.sh $DPATH/configs/* $HOME
 
 }
 

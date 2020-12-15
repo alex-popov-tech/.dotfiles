@@ -4,6 +4,8 @@
 <dict>
 	<key>bundleid</key>
 	<string>dk.rodalgaard.alfred.network</string>
+	<key>category</key>
+	<string>Internet</string>
 	<key>connections</key>
 	<dict>
 		<key>18344CF4-87B8-4EAC-960F-0424188DBD78</key>
@@ -207,6 +209,8 @@
 				<false/>
 				<key>clipboardtext</key>
 				<string>{query}</string>
+				<key>ignoredynamicplaceholders</key>
+				<false/>
 				<key>transient</key>
 				<false/>
 			</dict>
@@ -443,7 +447,7 @@ fi</string>
 				<key>scriptfile</key>
 				<string></string>
 				<key>type</key>
-				<integer>0</integer>
+				<integer>5</integer>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.script</string>

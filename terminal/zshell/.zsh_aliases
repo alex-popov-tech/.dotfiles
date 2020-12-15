@@ -22,3 +22,5 @@ alias .....="cd ../../../.."
 alias c="clear"
 alias cc="clear"
 alias tnode="npx ts-node"
+
+alias refresh="$HOME/.dotfiles/linkconfigs.sh"

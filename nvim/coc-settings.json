@@ -1,8 +1,0 @@
-{
-  "explorer.filename.colored.enable": true,
-  "explorer.quitOnOpen": true,
-  "explorer.file.showHiddenFiles": true,
-  "explorer.icon.enableNerdfont": true,
-  "explorer.openAction.for.directory": "expandOrCollapse",
-  "explorer.enableFloatinput": false
-}
