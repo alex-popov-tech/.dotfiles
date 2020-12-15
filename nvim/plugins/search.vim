@@ -1,6 +1,7 @@
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'fszymanski/fzf-quickfix'
+" fzf commands for lsp sources
+Plug 'gfanto/fzf-lsp.nvim'
 " previews for fuzzy search
 command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, fzf#vim#with_preview('up'), <bang>0)
 command! -bang -nargs=? -complete=dir GFiles call fzf#vim#gitfiles(<q-args>, fzf#vim#with_preview('up'), <bang>0)
