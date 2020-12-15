@@ -1,5 +1,7 @@
 " debug vim runtime
 Plug 'dstein64/vim-startuptime'
+" scroll bar
+Plug 'dstein64/nvim-scrollview'
 " main text objects plugin
 Plug 'kana/vim-textobj-user'
 " dac dic yic cic
