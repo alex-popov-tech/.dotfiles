@@ -55,10 +55,9 @@ let g:wordmotion_prefix = '<leader>'
 Plug 'schickling/vim-bufonly'
 cnoreabbrev bo Bonly!
 " open terminal in floating window
-Plug 'numtostr/FTerm.nvim'
-lua require'FTerm'.setup({ dimensions  = { height = 0.8, width = 0.9, row = 0.5, col = 0.5 } })
-lua vim.fn.nvim_set_keymap('n', '<F11>', '<CMD>lua require"FTerm".toggle()<CR>', { noremap = true, silent = true })
-lua vim.fn.nvim_set_keymap('t', '<F11>', '<C-\\><C-n><CMD>lua require"FTerm".toggle()<CR>', { noremap = true, silent = true })
+Plug 'voldikss/vim-floaterm'
+noremap  <F11> :FloatermToggle<CR>
+tnoremap <F11> <C-\><C-n>:FloatermToggle<CR>
 Plug 'svermeulen/vim-subversive'
 nmap m <plug>(SubversiveSubstitute)
 nmap mm <plug>(SubversiveSubstituteLine)
