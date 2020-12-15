@@ -1,5 +1,5 @@
-# shortcuts like <c-r> and <TAB> completion
-[ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
+[ -f "/usr/local/opt/fzf/shell/completion.zsh" ] && source /usr/local/opt/fzf/shell/completion.zsh
+[ -f "/usr/local/opt/fzf/shell/key-bindings.zsh" ] && source /usr/local/opt/fzf/shell/key-bindings.zsh
 
 fzf_opts=(
   '--border'
