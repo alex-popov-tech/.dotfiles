@@ -21,6 +21,12 @@ function main() {
     xcode-select --install
   fi
 
+  read -p "Install software? Y/N" -n 1 -r
+  if [[ $REPLY =~ ^[Yy]$ ]]
+  then
+    software
+  fi
+
   read -p "Install managers? Y/N" -n 1 -r
   if [[ $REPLY =~ ^[Yy]$ ]]
   then
@@ -33,27 +39,26 @@ function main() {
   then
     langs
   fi
-  read -p "Install software? Y/N" -n 1 -r
-  if [[ $REPLY =~ ^[Yy]$ ]]
-  then
-    software
-  fi
+
   read -p "Install terminal? Y/N" -n 1 -r
   if [[ $REPLY =~ ^[Yy]$ ]]
   then
     terminal
   fi
+
   read -p "Install nvim? Y/N" -n 1 -r
   if [[ $REPLY =~ ^[Yy]$ ]]
   then
     neovim
   fi
+
   read -p "Install macos settings? Y/N" -n 1 -r
   if [[ $REPLY =~ ^[Yy]$ ]]
   then
     sudo -v
     macos
   fi
+
 }
 
 function managers() {
@@ -68,10 +73,6 @@ function managers() {
   echo "+-------------------------------+"
   echo "|        Installing asdf        |"
   echo "+-------------------------------+"
-  brew install \
-    coreutils automake autoconf openssl \
-    libyaml readline libxslt libtool unixodbc \
-    unzip curl
   git clone https://github.com/asdf-vm/asdf.git $HOME/.asdf
   cd $HOME/.asdf || exit
   git checkout "$(git describe --abbrev=0 --tags)"
@@ -82,7 +83,6 @@ function langs() {
   echo "+---------------------------------+"
   echo "|        Installing NodeJS        |"
   echo "+---------------------------------+"
-  brew install coreutils gpg
   asdf plugin-add nodejs
   bash $HOME/.asdf/plugins/nodejs/bin/import-release-team-keyring
   asdf install nodejs 15.0.0
@@ -94,7 +94,6 @@ function langs() {
   echo "+-------------------------------+"
   echo "|        Installing Java        |"
   echo "+-------------------------------+"
-  brew install jq
   asdf plugin-add java https://github.com/halcyon/asdf-java.git
   asdf install java adoptopenjdk-large_heap-8.0.265+1.openj9-0.21.0
   asdf global java adoptopenjdk-large_heap-8.0.265+1.openj9-0.21.0
@@ -137,53 +136,7 @@ function software() {
   echo "|        Installing Software        |"
   echo "+-----------------------------------+"
 
-  brew install htop \
-    tig \
-    watch \
-    grep \
-    openssh \
-    rsync \
-    lastpass-cli \
-    inetutils \
-    ssh-copy-id \
-    prettyping \
-    mas \
-    the_silver_searcher \
-    ripgrep \
-    httpie \
-    ctop \
-    fzf
-
-  brew cask install google-chrome
-  brew cask install firefox
-  brew cask install alfred
-  brew cask install transmission
-  brew cask install the-unarchiver
-  brew cask install macs-fan-control
-  brew cask install dropbox
-  brew cask install steam
-  brew cask install docker
-  brew cask install telegram
-  brew cask install slack
-  brew cask install skype
-  brew cask install zoomus
-  brew cask install spark
-  brew cask install vlc
-  brew cask install tidal
-  brew cask install tunnelblick
-  brew cask install flux
-  brew cask install toggl-track
-  brew cask install ledger-live
-  brew cask install contexts
-  brew cask install keybase
-  brew cask install rectangle
-  brew cask install dozer
-  brew cask install finicky
-  brew cask install blockblock
-  brew cask install path-finder
-  brew cask install mysqlworkbench
-  brew cask install robo-3t
-
+  brew bundle
   mas lucky Clocker
   mas lucky Keynote
   mas lucky Pages
@@ -199,8 +152,6 @@ function terminal() {
   echo "|        Installing Terminal        |"
   echo "+-----------------------------------+"
 
-  brew cask install alacritty
-
   echo "+-------------------------------+"
   echo "|        Installing Tmux        |"
   echo "+-------------------------------+"
@@ -208,7 +159,6 @@ function terminal() {
   asdf install tmux 3.1b
   asdf global tmux 3.1b
   # for tmux to not crach and be able to copy with mouse ( and selection ? )
-  brew install reattach-to-user-namespace
   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
   echo "+---------------------------------+"
