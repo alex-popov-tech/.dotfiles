@@ -13,6 +13,8 @@ function main() {
     cd $HOME && git clone https://github.com/alex-popov-tech/.dotfiles.git && cd $HOME/.dotfiles
   fi
 
+  link_configs
+
   read -p "Install xcode-select?" -n 1 -r
   if [[ $REPLY =~ ^[Yy]$ ]]
   then
@@ -45,11 +47,6 @@ function main() {
   if [[ $REPLY =~ ^[Yy]$ ]]
   then
     neovim
-  fi
-  read -p "Link configs? Y/N" -n 1 -r
-  if [[ $REPLY =~ ^[Yy]$ ]]
-  then
-    link_configs
   fi
   read -p "Install macos settings? Y/N" -n 1 -r
   if [[ $REPLY =~ ^[Yy]$ ]]
@@ -204,11 +201,6 @@ function terminal() {
 
   brew cask install alacritty
 
-  # link alacritty config
-  ./lnfilepath.sh $HOME/.dotfiles/terminal/alacritty.yml $HOME/.alacritty.yml
-  # link patched fonts
-  ./lnfilepath.sh $DPATH/terminal/*.ttf $HOME/Library/Fonts
-
   echo "+-------------------------------+"
   echo "|        Installing Tmux        |"
   echo "+-------------------------------+"
@@ -219,17 +211,12 @@ function terminal() {
   brew install reattach-to-user-namespace
   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-  # link main config files
-  ./lnfilepath.sh $DPATH/tmux/.tmux* $HOME
-
   echo "+---------------------------------+"
   echo "|        Installing Zshell        |"
   echo "+---------------------------------+"
   # brew install zsh
   mkdir ~/.zinit
   git clone https://github.com/zdharma/zinit.git ~/.zinit/bin
-
-  ./lnfilepath.sh $DPATH/terminal/zshell/.zsh* $HOME
 
 }
 
@@ -249,12 +236,6 @@ function neovim() {
   curl -fLo $HOME/.local/share/nvim/site/autoload/plug.vim --create-dirs \
       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-  # link main config files
-  ./lnfilepath.sh $DPATH/nvim/*.vim $HOME/.config/nvim
-  ./lnfilepath.sh $DPATH/nvim/plugins/*.vim $HOME/.config/nvim/lua
-  ./lnfilepath.sh $DPATH/nvim/crystalline_statusline $HOME/.config/nvim/plugged/vim-crystalline/autoload/crystalline/theme/crystalline_statusline.vim
-  ./lnfilepath.sh $DPATH/nvim/lua/*.lua $HOME/.config/nvim/lua
-
   nvim --headless +PlugInstall +qa
 
 }
@@ -265,7 +246,7 @@ function link_configs() {
   echo "|        Linking Configs        |"
   echo "+-------------------------------+"
 
-  ./lnfilepath.sh $DPATH/configs/* $HOME
+  $DPATH/scripts/linkconfigs.sh
 
 }
 
