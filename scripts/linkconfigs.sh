@@ -1,6 +1,5 @@
 #!/bin/zsh
 DPATH="$HOME/.dotfiles"
-cp -f $DPATH/home/Library/Fonts/*.ttf $HOME/Library/Fonts
 
 $DPATH/scripts/lnfilepath.sh $DPATH/home/.* $HOME
 $DPATH/scripts/lnfilepath.sh $DPATH/home/.config/nvim/*.vim $HOME/.config/nvim

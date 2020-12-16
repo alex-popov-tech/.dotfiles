@@ -136,13 +136,8 @@ function software() {
   echo "|        Installing Software        |"
   echo "+-----------------------------------+"
 
+  cp -f $DPATH/home/Library/Fonts/*.ttf $HOME/Library/Fonts
   brew bundle
-  mas lucky Clocker
-  mas lucky Keynote
-  mas lucky Pages
-  mas lucky Spark
-  mas lucky Monosnap
-  mas lucky WireGuard
 
 }
 
