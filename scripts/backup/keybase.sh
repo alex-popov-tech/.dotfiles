@@ -6,7 +6,7 @@ filename=keybase_$(date '+%F').tar.gzip.gpg
 
 if ! $(/usr/local/bin/keybase fs stat /keybase/public/alex_popov_tech/$filename &>/dev/null)
 then
-  $HOME/.asdf/shims/node $HOME/.dotfiles/backup/keybase.js
+  $HOME/.asdf/shims/node $HOME/.dotfiles/scripts/backup/keybase.js
   cd /tmp
 
   export LC_ALL=en_US.UTF-8 && tar -cf - ./keybase | gzip | /usr/local/bin/gpg --encrypt -r alex.popov.tech@gmail.com > "./$filename"
