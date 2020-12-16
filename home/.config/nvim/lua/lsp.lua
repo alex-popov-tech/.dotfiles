@@ -50,13 +50,13 @@ for _, server in pairs({"vimls", "jsonls", "bashls"}) do
   }
 end
 -- tsserver, stop messing with prettier da fuck!
--- lsp_config.tsserver.setup {
---   capabilities = lsp_status.capabilities,
---   on_attach = function(client, bufnr)
---     general_on_attach(client, bufnr)
---     client.resolved_capabilities.document_formatting = false
---   end
--- }
+lsp_config.tsserver.setup {
+  capabilities = lsp_status.capabilities,
+  on_attach = function(client, bufnr)
+    general_on_attach(client, bufnr)
+    client.resolved_capabilities.document_formatting = false
+  end
+}
 
 lsp_config.sumneko_lua.setup {
   on_attach = general_on_attach,
