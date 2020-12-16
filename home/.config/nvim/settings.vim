@@ -48,12 +48,6 @@ set nobackup
 set showcmd
 " Automatically :write before running commands
 set autowrite
-" put Set 'tabstop' and 'shiftwidth' to whatever you prefer and use
-" 'expandtab'.  This way you will always insert spaces.  The
-" formatting will never be messed up when 'tabstop' is changed.
-" set expandtab " spaces when pressing TAB in insert mode
-set tabstop=4
-set shiftwidth=4
 " when scrolling screen via f.e. J and K how many lines should be to the
 " bottom of the page (for scroll to trigger you need be at 5 line from bottom
 " and press 'j')
