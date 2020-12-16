@@ -1,33 +1,32 @@
-local lsp_config = require("lspconfig")
-local lsp_completion = require("completion")
-local lsp_status = require("lsp-status")
+local lsp_config = require('lspconfig')
+local lsp_completion = require('completion')
+local lsp_status = require('lsp-status')
 local general_on_attach = function(client, bufnr)
   lsp_completion.on_attach(client, bufnr)
   lsp_status.on_attach(client, bufnr)
-
   local mappingOptions = {noremap = true, silent = true}
-  vim.api.nvim_set_keymap("i", "<tab>", "<cmd>lua vim.lsp.buf.signature_help()<cr>", mappingOptions)
-  vim.api.nvim_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", mappingOptions)
-  vim.api.nvim_set_keymap("n", "'i", "<cmd>Implementations<CR>", mappingOptions)
-  vim.api.nvim_set_keymap("n", "'re", "<cmd>lua vim.lsp.buf.references()<CR>", mappingOptions)
-  vim.api.nvim_set_keymap("n", "'rn", "<cmd>lua vim.lsp.buf.rename()<CR>", mappingOptions)
-  vim.api.nvim_set_keymap("n", "'a", "<cmd>CodeActions<cr>", mappingOptions)
+  vim.api.nvim_set_keymap('i', '<tab>', '<cmd>lua vim.lsp.buf.signature_help()<cr>', mappingOptions)
+  vim.api.nvim_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', mappingOptions)
+  vim.api.nvim_set_keymap('n', "'i", '<cmd>Implementations<CR>', mappingOptions)
+  vim.api.nvim_set_keymap('n', "'re", '<cmd>lua vim.lsp.buf.references()<CR>', mappingOptions)
+  vim.api.nvim_set_keymap('n', "'rn", '<cmd>lua vim.lsp.buf.rename()<CR>', mappingOptions)
+  vim.api.nvim_set_keymap('n', "'a", '<cmd>CodeActions<cr>', mappingOptions)
   vim.api.nvim_set_keymap(
-    "n",
-    "[d",
-    "<cmd>lua vim.lsp.diagnostic.goto_prev({ popup_opts = { show_header = false } })<CR>",
+    'n',
+    '[d',
+    '<cmd>lua vim.lsp.diagnostic.goto_prev({ popup_opts = { show_header = false } })<CR>',
     mappingOptions
   )
   vim.api.nvim_set_keymap(
-    "n",
-    "]d",
-    "<cmd>lua vim.lsp.diagnostic.goto_next({ popup_opts = { show_header = false } })<CR>",
+    'n',
+    ']d',
+    '<cmd>lua vim.lsp.diagnostic.goto_next({ popup_opts = { show_header = false } })<CR>',
     mappingOptions
   )
-  vim.api.nvim_set_keymap("n", "'d", "<cmd>Diagnostics<CR>", mappingOptions)
+  vim.api.nvim_set_keymap('n', "'d", '<cmd>Diagnostics<CR>', mappingOptions)
 
   -- vim.api.nvim_command('setlocal omnifunc=lua.vim.lsp.omnifunc')
-  vim.api.nvim_command("autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics({ show_header = false })")
+  vim.api.nvim_command('autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics({ show_header = false })')
   vim.api.nvim_command('autocmd BufWritePre * FormatWrite')
 end
 
@@ -100,7 +99,6 @@ local prettierFormatter = function()
     stdin = true
   }
 end
-
 require "formatter".setup(
   {
     logging = true,
@@ -119,20 +117,6 @@ require "formatter".setup(
     }
   }
 )
-
-vim.lsp.handlers["textDocument/formatting"] = function(err, _, result, _, bufnr)
-    if err ~= nil or result == nil then
-        return
-    end
-    if not vim.api.nvim_buf_get_option(bufnr, "modified") then
-        local view = vim.fn.winsaveview()
-        vim.lsp.util.apply_text_edits(result, bufnr)
-        vim.fn.winrestview(view)
-        if bufnr == vim.api.nvim_get_current_buf() then
-            vim.cmd("noautocmd :update")
-        end
-    end
-end
 
 -- setup diagnostic linters and formatters
 lsp_config.diagnosticls.setup(
@@ -179,5 +163,3 @@ vim.fn.sign_define("LspDiagnosticsSignError", {numhl = "LspDiagnosticsSignError"
 vim.fn.sign_define("LspDiagnosticsSignWarning", {numhl = "LspDiagnosticsSignWarning"})
 vim.fn.sign_define("LspDiagnosticsSignInformation", {numhl = "LspDiagnosticsSignInformation"})
 vim.fn.sign_define("LspDiagnosticsSignHint", {numhl = "LspDiagnosticsSignHint"})
--- when following something from loclist close it
-vim.api.nvim_command("autocmd BufWinEnter quickfix nnoremap <silent> <buffer> <enter> <enter>:lclose<cr>")
