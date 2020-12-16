@@ -28,7 +28,7 @@ local general_on_attach = function(client, bufnr)
 
   -- vim.api.nvim_command('setlocal omnifunc=lua.vim.lsp.omnifunc')
   vim.api.nvim_command("autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics({ show_header = false })")
-  -- vim.api.nvim_command('autocmd BufWritePre *.ts,*.js lua vim.lsp.buf.formatting_sync({}, 5000)')
+  vim.api.nvim_command('autocmd BufWritePre * FormatWrite')
 end
 
 lsp_status.config {
@@ -49,6 +49,7 @@ for _, server in pairs({"vimls", "jsonls", "bashls"}) do
     on_attach = general_on_attach
   }
 end
+
 -- tsserver, stop messing with prettier da fuck!
 lsp_config.tsserver.setup {
   capabilities = lsp_status.capabilities,
