@@ -1,2 +1,3 @@
-require('lsp')
-require('treesitter')
+require("settings")
+require("lsp")
+require("treesitter")
