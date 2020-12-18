@@ -1,6 +1,6 @@
 "disabl" next/prev buffers
 nmap <S-Up> :bn<cr>
-nmap <S-Down> :bp<cr>e map entering Ex mode
+nmap <S-Down> :bp<cr>
 map Q :x<CR>
 " write current buffer
 nmap <C-w> :w<CR>
