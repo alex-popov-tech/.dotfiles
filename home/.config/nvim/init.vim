@@ -7,8 +7,9 @@ let mapleader = " "
 nmap <BS> <leader>
 nmap <Space> <leader>
 
-source $HOME/.config/nvim/settings.vim
-source $HOME/.config/nvim/keybindings.vim
-source $HOME/.config/nvim/plugins.vim
-source $HOME/.config/nvim/ui.vim
-lua require'init'
+lua require'settings'
+source ~/.config/nvim/keybindings.vim
+source ~/.config/nvim/plugins.vim
+source ~/.config/nvim/ui.vim
+lua require'lsp'
+lua require'treesitter'
