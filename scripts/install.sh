@@ -4,16 +4,11 @@ DPATH=$HOME/.dotfiles
 
 function main() {
 
-  if [ -d $HOME/.dotfiles ]
-  then
-    echo "Dotfiles exists"
-    cd $HOME/.dotfiles && git stash && git checkout -f master && git stash pop && git pull
-  else
-    echo "Dotfiles not found, cloning"
-    cd $HOME && git clone https://github.com/alex-popov-tech/.dotfiles.git && cd $HOME/.dotfiles
-  fi
+  echo "+-------------------------------+"
+  echo "|        Linking Configs        |"
+  echo "+-------------------------------+"
 
-  link_configs
+  $DPATH/scripts/linkconfigs.sh
 
   read -p "Install xcode-select?" -n 1 -r
   if [[ $REPLY =~ ^[Yy]$ ]]
@@ -38,18 +33,6 @@ function main() {
   if [[ $REPLY =~ ^[Yy]$ ]]
   then
     langs
-  fi
-
-  read -p "Install terminal? Y/N" -n 1 -r
-  if [[ $REPLY =~ ^[Yy]$ ]]
-  then
-    terminal
-  fi
-
-  read -p "Install nvim? Y/N" -n 1 -r
-  if [[ $REPLY =~ ^[Yy]$ ]]
-  then
-    neovim
   fi
 
   read -p "Install macos settings? Y/N" -n 1 -r
@@ -135,17 +118,8 @@ function software() {
   echo "+-----------------------------------+"
   echo "|        Installing Software        |"
   echo "+-----------------------------------+"
-
   cp -f $DPATH/home/Library/Fonts/*.ttf $HOME/Library/Fonts
   brew bundle
-
-}
-
-function terminal() {
-
-  echo "+-----------------------------------+"
-  echo "|        Installing Terminal        |"
-  echo "+-----------------------------------+"
 
   echo "+-------------------------------+"
   echo "|        Installing Tmux        |"
@@ -153,47 +127,26 @@ function terminal() {
   asdf plugin-add tmux
   asdf install tmux 3.1b
   asdf global tmux 3.1b
-  # for tmux to not crach and be able to copy with mouse ( and selection ? )
   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
   echo "+---------------------------------+"
-  echo "|        Installing Zshell        |"
+  echo "|        Installing Zinit         |"
   echo "+---------------------------------+"
-  # brew install zsh
   mkdir ~/.zinit
   git clone https://github.com/zdharma/zinit.git ~/.zinit/bin
-
-}
-
-function neovim() {
 
   echo "+---------------------------------+"
   echo "|        Installing NeoVim        |"
   echo "+---------------------------------+"
-
-  brew install --HEAD neovim
-
   gem install neovim solargraph
   pip install neovim pynvim
   pip3 install neovim python-language-server pylint pynvim
   yarn global add neovim write-good markdownlint-cli eslint prettier lua-fmt
 
-  curl -fLo $HOME/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
   nvim --headless +PlugInstall +qa
-
 }
 
-function link_configs() {
-
-  echo "+-------------------------------+"
-  echo "|        Linking Configs        |"
-  echo "+-------------------------------+"
-
-  $DPATH/scripts/linkconfigs.sh
-
-}
 
 function macos() {
 
