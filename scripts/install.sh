@@ -142,7 +142,8 @@ function software() {
   pip install neovim pynvim
   pip3 install neovim python-language-server pylint pynvim
   yarn global add neovim write-good markdownlint-cli eslint prettier lua-fmt
-
+  curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
   nvim --headless +PlugInstall +qa
 }

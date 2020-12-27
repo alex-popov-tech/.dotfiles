@@ -1,60 +1,55 @@
-local lsp_config = require('lspconfig')
-local lsp_completion = require('completion')
-local lsp_status = require('lsp-status')
+local lsp_config = require("lspconfig")
+local lsp_completion = require("completion")
 local general_on_attach = function(client, bufnr)
-  lsp_completion.on_attach(client, bufnr)
-  lsp_status.on_attach(client, bufnr)
+  if client.resolved_capabilities.completion then
+    lsp_completion.on_attach(client, bufnr)
+  -- map("i", "<c-n>", "<Plug>(completion_trigger)", false)
+  -- map("i", "<c-j>", "<Plug>(completion_next_source)", false)
+  -- map("i", "<c-k>", "<Plug>(completion_prev_source)", false)
+  end
   local mappingOptions = {noremap = true, silent = true}
-  vim.api.nvim_set_keymap('i', '<tab>', '<cmd>lua vim.lsp.buf.signature_help()<cr>', mappingOptions)
-  vim.api.nvim_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', mappingOptions)
-  vim.api.nvim_set_keymap('n', "'i", '<cmd>Implementations<CR>', mappingOptions)
-  vim.api.nvim_set_keymap('n', "'re", '<cmd>lua vim.lsp.buf.references()<CR>', mappingOptions)
-  vim.api.nvim_set_keymap('n', "'rn", '<cmd>lua vim.lsp.buf.rename()<CR>', mappingOptions)
-  vim.api.nvim_set_keymap('n', "'a", '<cmd>CodeActions<cr>', mappingOptions)
+  if client.resolved_capabilities.hover then
+    vim.api.nvim_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", mappingOptions)
+  end
+  if client.resolved_capabilities.find_references then
+    vim.api.nvim_set_keymap("n", "'re", "<cmd>lua vim.lsp.buf.references()<CR>", mappingOptions)
+  end
+  if client.resolved_capabilities.rename then
+    vim.api.nvim_set_keymap("n", "'rn", "<cmd>lua vim.lsp.buf.rename()<CR>", mappingOptions)
+  end
+  vim.api.nvim_set_keymap("i", "<tab>", "<cmd>lua vim.lsp.buf.signature_help()<cr>", mappingOptions)
+  vim.api.nvim_set_keymap("n", "'i", "<cmd>Implementations<CR>", mappingOptions)
+  vim.api.nvim_set_keymap("n", "'a", "<cmd>CodeActions<cr>", mappingOptions)
   vim.api.nvim_set_keymap(
-    'n',
-    '[d',
-    '<cmd>lua vim.lsp.diagnostic.goto_prev({ popup_opts = { show_header = false } })<CR>',
+    "n",
+    "[d",
+    "<cmd>lua vim.lsp.diagnostic.goto_prev({ popup_opts = { show_header = false } })<CR>",
     mappingOptions
   )
   vim.api.nvim_set_keymap(
-    'n',
-    ']d',
-    '<cmd>lua vim.lsp.diagnostic.goto_next({ popup_opts = { show_header = false } })<CR>',
+    "n",
+    "]d",
+    "<cmd>lua vim.lsp.diagnostic.goto_next({ popup_opts = { show_header = false } })<CR>",
     mappingOptions
   )
-  vim.api.nvim_set_keymap('n', "'d", '<cmd>Diagnostics<CR>', mappingOptions)
+  vim.api.nvim_set_keymap("n", "'d", "<cmd>Diagnostics<CR>", mappingOptions)
 
-  -- vim.api.nvim_command('setlocal omnifunc=lua.vim.lsp.omnifunc')
-  vim.api.nvim_command('autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics({ show_header = false })')
-  vim.api.nvim_command('autocmd BufWritePre * FormatWrite')
+  vim.api.nvim_command("setlocal omnifunc=lua.vim.lsp.omnifunc")
+  vim.api.nvim_command("autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics({ show_header = false })")
 end
-
-lsp_status.config {
-  current_function = false,
-  indicator_errors = "E:",
-  indicator_warnings = "W:",
-  indicator_info = "I:",
-  indicator_hint = "H:",
-  indicator_ok = "",
-  status_symbol = ""
-}
-lsp_status.register_progress()
 
 -- setup basic lsp servers
 for _, server in pairs({"vimls", "jsonls", "bashls"}) do
   lsp_config[server].setup {
-    capabilities = lsp_status.capabilities,
     on_attach = general_on_attach
   }
 end
 
 -- tsserver, stop messing with prettier da fuck!
 lsp_config.tsserver.setup {
-  capabilities = lsp_status.capabilities,
   on_attach = function(client, bufnr)
     general_on_attach(client, bufnr)
-    client.resolved_capabilities.document_formatting = false
+    -- client.resolved_capabilities.document_formatting = false
   end
 }
 
@@ -85,43 +80,18 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
   vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics,
   {
-    underline = false,
-    virtual_text = true,
+    underline = true,
+    virtual_text = {
+      prefix = "<"
+    },
     signs = true,
     update_in_insert = true
-  }
-)
-
-local prettierFormatter = function()
-  return {
-    exe = "npx prettier",
-    args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0)},
-    stdin = true
-  }
-end
-require "formatter".setup(
-  {
-    logging = true,
-    filetype = {
-      typescript = {prettierFormatter},
-      javascript = {prettierFormatter},
-      lua = {
-        function()
-          return {
-            exe = "npx luafmt",
-            args = {"--indent-count", 2, "--stdin"},
-            stdin = true
-          }
-        end
-      }
-    }
   }
 )
 
 -- setup diagnostic linters and formatters
 lsp_config.diagnosticls.setup(
   {
-    capabilities = lsp_status.capabilities,
     on_attach = general_on_attach,
     filetypes = {"javascript", "typescript"},
     init_options = {

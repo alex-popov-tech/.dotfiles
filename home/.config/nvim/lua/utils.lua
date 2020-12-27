@@ -4,7 +4,7 @@ local cmd = vim.cmd
 local U = {}
 
 -- Key mapping
-function U.map(mode, key, result, opts)
+function U.createMapping(mode, key, result, opts)
   opts =
     vim.tbl_extend(
     "keep",
@@ -59,6 +59,22 @@ function U.hiLinks(hi_table)
   for src, dest in pairs(hi_table) do
     U.hiLink(src, dest)
   end
+end
+
+function U.range(from, to)
+  local result = {}
+  for i = from, to do
+    result[i] = i
+  end
+  return result
+end
+
+function U.map(list, mapper)
+    local result = {}
+    for k,v in pairs(list) do
+        result[k] = mapper(v)
+    end
+    return result
 end
 
 return U

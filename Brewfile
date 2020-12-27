@@ -26,6 +26,7 @@ brew "libxslt"
 brew "libyaml"
 brew "mas"
 brew "neovim", args: ["HEAD"]
+brew "luajit", args: ["HEAD"]
 brew "openssh"
 brew "prettyping"
 brew "python@3.8"

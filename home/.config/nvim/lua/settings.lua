@@ -1,8 +1,12 @@
-local map = require "utils".map
+local createMapping = require "utils".createMapping
 local go = vim.o
 local bo = vim.bo
 local wo = vim.wo
 local v = vim.cmd
+
+vim.g.mapleader = " "
+createMapping("n", "<bs>", "<leader>")
+createMapping("n", "<space>", "<leader>")
 -- enable yank/paste to/from system clipboard
 go.clipboard = "unnamedplus"
 -- to visually select and copy from vim without line numbers
@@ -34,10 +38,10 @@ wo.relativenumber = true
 -- keep searched chunks hightlighted
 go.hlsearch = true
 vim.cmd("autocmd cursorhold * set nohlsearch")
-map("n", "n", ":set hlsearch <cr>n")
-map("n", "N", ":set hlsearch <cr>N")
-map("n", "/", ":set hlsearch <cr>/")
-map("n", "?", ":set hlsearch <cr>?")
+createMapping("n", "n", ":set hlsearch <cr>n")
+createMapping("n", "N", ":set hlsearch <cr>N")
+createMapping("n", "/", ":set hlsearch <cr>/")
+createMapping("n", "?", ":set hlsearch <cr>?")
 -- search case-insensitive
 go.ignorecase = true
 -- if on with ignorecase, when a pattern contains an uppercase letter, it is
@@ -67,8 +71,8 @@ go.shell = "/usr/local/bin/zsh"
 -- Keep undo history across sessions, by storing in file.
 -- Only works all the time.
 if vim.fn.has("persistent_undo") then
-  os.execute("mkdir ~/.vim/backups > /dev/null 2>&1")
-  go.undodir = "~/.vim/backups"
+  os.execute("mkdir " .. os.getenv("HOME") .. "/.vim/backups > /dev/null 2>&1")
+  go.undodir = os.getenv("HOME") .. "/.vim/backups"
   go.undofile = true
 end
 go.inccommand = "nosplit"
@@ -83,3 +87,25 @@ go.completeopt = "menu,noinsert,noselect"
 go.shortmess = go.shortmess .. "s"
 -- TextEdit might fail if hidden is not set.
 go.hidden = true
+go.termguicolors = true
+go.background = "dark"
+wo.signcolumn = "no"
+vim.cmd("syntax on")
+
+-- tmux-like zoom in vim
+zoomToggle = function()
+  if 1 == vim.fn.winnr("$") then
+    return
+  end
+  local restoreCmd = vim.fn.winrestcmd()
+  vim.api.nvim_command("wincmd |")
+  vim.api.nvim_command("wincmd _")
+  -- If the layout did not change, it's a toggle (un-zoom).
+  if restoreCmd == vim.fn.winrestcmd() then
+    vim.cmd("exe t:zoom_restore")
+  else
+    vim.t.zoom_restore = restoreCmd
+  end
+  return
+end
+createMapping("n", "<leader>z", ':call luaeval("zoomToggle")()<cr>')
