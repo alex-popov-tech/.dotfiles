@@ -89,47 +89,45 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
   }
 )
 
--- setup diagnostic linters and formatters
-lsp_config.diagnosticls.setup(
-  {
-    on_attach = general_on_attach,
-    filetypes = {"javascript", "typescript"},
-    init_options = {
-      filetypes = {javascript = "eslint", typescript = "eslint"},
-      linters = {
-        eslint = {
-          command = "./node_modules/.bin/eslint",
-          rootPatterns = {".git"},
-          debounce = 100,
-          args = {
-            "--stdin",
-            "--stdin-filename",
-            "%filepath",
-            "--format",
-            "json"
-          },
-          sourceName = "eslint",
-          parseJson = {
-            errorsRoot = "[0].messages",
-            line = "line",
-            column = "column",
-            endLine = "endLine",
-            endColumn = "endColumn",
-            message = "${message} [${ruleId}]",
-            security = "severity"
-          },
-          securities = {
-            [2] = "error",
-            [1] = "warning"
-          }
-        }
-      }
-    }
-  }
-)
+-- write only if diffs there
+vim.lsp.handlers["textDocument/formatting"] = function(err, _, result, _, bufnr)
+    if err ~= nil or result == nil then
+        return
+    end
+    if not vim.api.nvim_buf_get_option(bufnr, "modified") then
+        local view = vim.fn.winsaveview()
+        vim.lsp.util.apply_text_edits(result, bufnr)
+        vim.fn.winrestview(view)
+        if bufnr == vim.api.nvim_get_current_buf() then
+            vim.cmd [[noautocmd :update]]
+        end
+    end
+end
+
 
 -- define line number hl for lines with Lsp errors
 vim.fn.sign_define("LspDiagnosticsSignError", {numhl = "LspDiagnosticsSignError"})
 vim.fn.sign_define("LspDiagnosticsSignWarning", {numhl = "LspDiagnosticsSignWarning"})
 vim.fn.sign_define("LspDiagnosticsSignInformation", {numhl = "LspDiagnosticsSignInformation"})
 vim.fn.sign_define("LspDiagnosticsSignHint", {numhl = "LspDiagnosticsSignHint"})
+
+
+
+lsp_config.efm.setup {
+  default_config = {
+    cmd = {
+      "efm-langserver",
+      "-c",
+      [["$HOME/.config/efm-langserver/config.yaml"]]
+    }
+  },
+  filetypes = {
+    "javascript",
+    "javascriptreact",
+    "javascript.jsx",
+    "typescript",
+    "typescript.tsx",
+    "typescriptreact",
+    "lua"
+  }
+}
