@@ -82,8 +82,6 @@ Plug 'steelsojka/completion-buffers'
 Plug 'kristijanhusak/vim-dadbod-completion'
 Plug 'aca/completion-tabnine', { 'do': 'version=3.1.9 ./install.sh' }
 luafile ~/.config/nvim/lua/plugins/completion-nvim.lua
-" formatting
-Plug 'mhartington/formatter.nvim'
 call plug#end()
 luafile ~/.config/nvim/lua/plugins/galaxyline-nvim.lua
 luafile ~/.config/nvim/lua/plugins/nvim-treesitter.lua
