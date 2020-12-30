@@ -1,5 +1,5 @@
 local createMapping = require'utils'.createMapping
-createMapping('n', '<c-f>', ':LuaTreeToggle<cr>')
+createMapping('n', '<c-f>', ':NvimTreeToggle<cr>')
 vim.g.lua_tree_side = 'left'
 vim.g.lua_tree_width = 30
 vim.g.lua_tree_auto_close = 1
