@@ -27,7 +27,7 @@ gls.left = {
   },
   {
     FileName = {
-      provider = "FileName",
+      provider = function() return vim.fn.expand("%:F") end,
       condition = buffer_not_empty
     }
   },
