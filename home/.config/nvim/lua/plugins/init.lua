@@ -27,6 +27,7 @@ require("packer").startup(
         use "cohama/lexima.vim"
         -- when navigate to previously opened files - open in last file position
         use "farmergreg/vim-lastplace"
+        use {"schickling/vim-bufonly", config = require("plugins.vim-bufonly")}
         -- start screen
         use {"mhinz/vim-startify", config = require("plugins.vim-startify")}
         -- text object camel case word
@@ -61,7 +62,7 @@ require("packer").startup(
         use "kristijanhusak/vim-dadbod-ui"
         -- main lsp plugin to enable servers communication
         -- top buff line
-        use {"romgrk/barbar.nvim", config = require("plugins.barbar-nvim")}
+        use {"akinsho/nvim-bufferline.lua", config = require("plugins.nvim-bufferline")}
         -- statusline
         use {"glepnir/galaxyline.nvim", config = require("plugins.galaxyline-nvim")}
         -- parser
