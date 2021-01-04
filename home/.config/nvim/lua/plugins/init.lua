@@ -67,12 +67,14 @@ require("packer").startup(
         use {"glepnir/galaxyline.nvim", config = require("plugins.galaxyline-nvim")}
         -- parser
         use {"nvim-treesitter/nvim-treesitter", cmd = "TSUpdate all", config = require("plugins.nvim-treesitter")}
+        -- color scheme
         use "christianchiarulli/nvcode-color-schemes.vim"
+        -- lsp configs placed here
         use "neovim/nvim-lspconfig"
         -- plugin to add completeion possibility
-        use {"nvim-lua/completion-nvim", config = require("plugins.completion-nvim")}
+        use {"nvim-lua/completion-nvim", config = require("plugins.completion-nvim") }
         use "steelsojka/completion-buffers"
-        use "kristijanhusak/vim-dadbod-completion"
         use {"aca/completion-tabnine", run = "version=3.1.9 ./install.sh"}
+
     end
 )

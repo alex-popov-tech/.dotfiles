@@ -1,23 +1,29 @@
 return function(config, on_attach)
-  config.sumneko_lua.setup {
-  on_attach = on_attach,
-  capabilities = {
-    textDocument = {
-      completion = {
-        completionItem = {
-          snippetSupport = true
+    local bin_path = vim.fn.stdpath("cache") .. "/lspconfig/sumneko-lua-language-server/sumneko-lua-language-server"
+
+    config.sumneko_lua.setup {
+        on_attach = on_attach,
+        cmd = {bin_path},
+        settings = {
+            Lua = {
+                runtime = {
+                    -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+                    version = "LuaJIT",
+                    -- Setup your lua path
+                    path = vim.split(package.path, ";")
+                },
+                diagnostics = {
+                    -- Get the language server to recognize the `vim` global
+                    globals = {"vim", "use"}
+                },
+                workspace = {
+                    -- Make the server aware of Neovim runtime files
+                    library = {
+                        [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+                        [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true
+                    }
+                }
+            }
         }
-      }
     }
-  },
-  settings = {
-    Lua = {
-      runtime = {version = "LuaJIT"},
-      diagnostics = {globals = {"vim", "use"}},
-      workspace = {
-        library = {[vim.fn.expand("$VIMRUNTIME/lua")] = true, [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true}
-      }
-    }
-  }
-}
 end
