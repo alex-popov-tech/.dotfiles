@@ -1,16 +1,35 @@
+const name = 'Brave Browser';
+const profiles = {
+  personal: 'Profile 4',
+  lokalise: 'Profile 5',
+  waverley: 'Profile 6',
+  svitla: 'Profile 7',
+};
 module.exports = {
   defaultBrowser: {
-        name: 'Google Chrome',
-        profile: 'Profile 1'
+        name,
+        profile: profiles.personal
   },
   handlers: [
     {
-      match: [
-        '*github*'
-      ],
+      match: [ '*github*' ],
       browser: {
-        name: 'Google Chrome',
-        profile: 'Profile 1'
+        name,
+        profile: profiles.personal,
+      }
+    },
+    {
+      match: ['*lokalise*', '*meet.google*'],
+      browser: {
+        name: 'Brave Browser',
+        profile: profiles.lokalise,
+      }
+    },
+    {
+      match: ['mlitvinova.testrail.io*', 'digitalproducts.atlassian.net*'],
+      browser: {
+        name,
+        profile: profiles.waverley,
       }
     },
     {
@@ -21,22 +40,8 @@ module.exports = {
         'jenkins.container-xchange.com*',
       ],
       browser: {
-        name: 'Google Chrome',
-        profile: 'Profile 3'
-      }
-    },
-    {
-      match: ['beta.scrumpypoker.com*', 'mlitvinova.testrail.io*', 'digitalproducts.atlassian.net*'],
-      browser: {
-        name: 'Google Chrome',
-        profile: 'Profile 4'
-      }
-    },
-    {
-      match: ['*lokalise*', '*meet.google*'],
-      browser: {
-        name: 'Google Chrome',
-        profile: 'Profile 2'
+        name,
+        profile: profiles.svitla
       }
     },
     {
