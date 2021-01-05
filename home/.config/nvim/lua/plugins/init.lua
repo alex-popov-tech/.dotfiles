@@ -1,7 +1,7 @@
 vim.cmd [[packadd packer.nvim]]
 vim.cmd [[ autocmd BufWritePost **/nvim/lua/plugins/*.lua PackerCompile ]]
 
-require("packer").startup(
+require("packer").startup({
     function()
         -- Packer can manage itself as an optional plugin
         use {"wbthomason/packer.nvim", opt = true}
@@ -28,6 +28,7 @@ require("packer").startup(
         -- when navigate to previously opened files - open in last file position
         use "farmergreg/vim-lastplace"
         use {"schickling/vim-bufonly", config = require("plugins.vim-bufonly")}
+        use {"moll/vim-bbye", config = require("plugins.vim-bbye")}
         -- start screen
         use {"mhinz/vim-startify", config = require("plugins.vim-startify")}
         -- text object camel case word
@@ -40,7 +41,7 @@ require("packer").startup(
         use "kyazdani42/nvim-web-devicons"
         -- file tree
         use {"kyazdani42/nvim-tree.lua", config = require("plugins.nvim-tree")}
-        use {"AndrewRadew/splitjoin.vim", config = require("plugins.splitjoin")}
+        use {"AndrewRadev/splitjoin.vim", config = require("plugins.splitjoin")}
         -- plugin for vim-tmux interactions
         use {"christoomey/vim-tmux-navigator", config = require("plugins.vim-tmux-navigator")}
         -- resizing windows
@@ -76,5 +77,12 @@ require("packer").startup(
         use "steelsojka/completion-buffers"
         use {"aca/completion-tabnine", run = "version=3.1.9 ./install.sh"}
 
-    end
+      end,
+
+    config = {
+           display = {
+               open_fn = require"packer.util".float
+           }
+       }
+     }
 )
