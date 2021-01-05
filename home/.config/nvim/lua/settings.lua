@@ -89,6 +89,7 @@ go.shortmess = go.shortmess .. "s"
 go.hidden = true
 go.termguicolors = true
 go.background = "dark"
+go.encoding = "UTF-8"
 wo.signcolumn = "no"
 vim.cmd("syntax on")
 
