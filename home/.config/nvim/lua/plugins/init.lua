@@ -1,4 +1,5 @@
 vim.cmd [[packadd packer.nvim]]
+vim.cmd [[ autocmd BufWritePost **/nvim/lua/plugins/*.lua :lua reload()<cr> ]]
 vim.cmd [[ autocmd BufWritePost **/nvim/lua/plugins/*.lua PackerCompile ]]
 
 require("packer").startup({
@@ -76,6 +77,7 @@ require("packer").startup({
         use {"nvim-lua/completion-nvim", config = require("plugins.completion-nvim") }
         use "steelsojka/completion-buffers"
         use {"aca/completion-tabnine", run = "version=3.1.9 ./install.sh"}
+        use "tmux-plugins/vim-tmux"
 
       end,
 

@@ -1,5 +1,7 @@
 return function(config, on_attach)
+    local bin_path = vim.fn.stdpath("cache") .. "/lspconfig/json-languageserver/vscode-json-languageserver"
     config.jsonls.setup {
+        cmd = {bin_path},
         on_attach = on_attach,
         commands = {
             Format = {

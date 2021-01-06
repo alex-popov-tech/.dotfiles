@@ -22,5 +22,17 @@ _G.printt = function(tbl)
 end
 
 _G.fmt = function()
-    vim.lsp.buf.formatting_sync(nil, 500)
+    return vim.lsp.buf.formatting_sync(nil, 500)
+end
+
+_G.reload = function()
+    local modules = {"lsp", "plugins", "globals", "mappings", "settings", "ui", "utils"}
+    for _, moduleName in pairs(modules) do
+        for packageName, _ in pairs(package.loaded) do
+            if string.find(packageName, "^" .. moduleName) then
+                package.loaded[packageName] = nil
+            end
+        end
+        require(moduleName)
+    end
 end
