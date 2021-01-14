@@ -5,7 +5,7 @@ vim.cmd [[ autocmd BufWritePost **/nvim/lua/plugins/*.lua PackerCompile ]]
 require("packer").startup({
     function()
         -- Packer can manage itself as an optional plugin
-        use {"wbthomason/packer.nvim", opt = true}
+        use {"wbthomason/packer.nvim", opt = true, config = require("plugins.packer-nvim")}
         use "dstein64/vim-startuptime"
         -- text objects
         use "kana/vim-textobj-user"
