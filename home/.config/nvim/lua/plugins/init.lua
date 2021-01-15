@@ -1,12 +1,18 @@
-vim.cmd [[packadd packer.nvim]]
-vim.cmd [[ autocmd BufWritePost **/nvim/lua/plugins/*.lua :lua reload()<cr> ]]
-vim.cmd [[ autocmd BufWritePost **/nvim/lua/plugins/*.lua PackerCompile ]]
+local install_path = fn.stdpath('data')..'/site/pack/packer/opt/packer.nvim'
+if fn.empty(vim.fn.glob(install_path)) > 0 then
+        execute('!git clone https://github.com/wbthomason/packer.nvim '..install_path)
+    execute 'packadd packer.nvim'
+end
+cmd('packadd packer.nvim')
+
+cmd [[ autocmd BufWritePost **/nvim/lua/plugins/*.lua lua reload() ]]
+cmd [[ autocmd BufWritePost **/nvim/lua/plugins/*.lua PackerCompile ]]
 
 require("packer").startup({
     function()
         -- Packer can manage itself as an optional plugin
         use {"wbthomason/packer.nvim", opt = true, config = require("plugins.packer-nvim")}
-        use "dstein64/vim-startuptime"
+        use {"dstein64/vim-startuptime", cmd = {"StartupTime"}}
         -- text objects
         use "kana/vim-textobj-user"
         use "glts/vim-textobj-comment"
@@ -25,7 +31,7 @@ require("packer").startup({
         -- git plugin
         use {"tpope/vim-fugitive", config = require("plugins.vim-fugitive")}
         -- auto placing paired signs like {} [] '' "" etc
-        use "cohama/lexima.vim"
+        -- use {"windwp/nvim-autopairs", config = require("plugins.vim-autopairs")}
         -- when navigate to previously opened files - open in last file position
         use "farmergreg/vim-lastplace"
         use {"schickling/vim-bufonly", config = require("plugins.vim-bufonly")}
@@ -76,9 +82,10 @@ require("packer").startup({
         -- plugin to add completeion possibility
         use {"nvim-lua/completion-nvim", config = require("plugins.completion-nvim") }
         use "steelsojka/completion-buffers"
-        use {"aca/completion-tabnine", run = "version=3.1.9 ./install.sh"}
+        -- use {"aca/completion-tabnine", run = "version=3.1.9 ./install.sh"}
+        use {"hrsh7th/vim-vsnip", requires = "hrsh7th/vim-vsnip-integ", config = require("plugins.vim-vsnip")}
+        -- syntax high, K docs, something else...
         use "tmux-plugins/vim-tmux"
-
       end,
 
     config = {

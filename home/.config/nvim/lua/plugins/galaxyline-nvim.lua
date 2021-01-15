@@ -29,7 +29,7 @@ return function()
     }
 
     local buffer_not_empty = function()
-        if vim.fn.empty(vim.fn.expand("%:t")) ~= 1 then
+        if fn.empty(vim.fn.expand("%:t")) ~= 1 then
             return true
         end
         return false

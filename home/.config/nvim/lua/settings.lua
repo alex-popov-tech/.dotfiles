@@ -1,112 +1,110 @@
-local createMapping = require "utils".createMapping
-local go = vim.o
-local bo = vim.bo
-local wo = vim.wo
-local v = vim.cmd
+g.mapleader = " "
 
-vim.g.mapleader = " "
-createMapping("n", "<bs>", "<leader>")
-createMapping("n", "<space>", "<leader>")
--- enable yank/paste to/from system clipboard
-go.clipboard = "unnamedplus"
--- to visually select and copy from vim without line numbers
-if vim.fn.has("mouse") == 1 then
-  go.mouse = "a"
+for key, val in pairs(
+    {
+        clipboard = "unnamedplus", -- enable yank/paste to/from system clipboard
+        mouse = "a", -- to visually select and copy from vim without line numbers
+        lazyredraw = true,
+        -- Don't redraw while executing macros (good performance config)
+        ttyfast = true, -- Don't redraw while executing macros (good performance config)
+        hlsearch = true, -- keep searched chunks hightlighted
+        ignorecase = true, -- search case-insensitive
+        smartcase = true, -- if on with ignorecase, when a pattern contains an uppercase letter, it is case sensitive, otherwise it is not
+        writebackup = false, -- Turn backup off, since most stuff is in SVN, git et.c anyway...
+        swapfile = false,
+        backup = false,
+        showcmd = true, -- show what commands you typing, what you select in visual mode, etc.
+        autowrite = true, -- Automatically :write before running commands
+        scrolloff = 5, -- how many lines till window border to see when scrolling
+        sidescrolloff = 10, -- same as above but for columns
+        signcolumn = "no", -- nothing to the left of line number
+        shell = "/usr/local/bin/zsh",
+        inccommand = "nosplit",
+        updatetime = 300, -- timeout for showing completions, cursorhold events, etc
+        completeopt = "menu,noinsert,noselect", -- how window for completion will look like
+        shortmess = vim.o.shortmess .. "s", -- better messages
+        -- TextEdit might fail if hidden is not set.
+        hidden = true,
+        termguicolors = true,
+        background = "dark",
+        encoding = "UTF-8",
+    }
+) do
+    vim.o[key] = val
 end
--- Don't redraw while executing macros (good performance config)
-go.lazyredraw = true
-go.ttyfast = true
+for key, val in pairs(
+    {
+        cursorcolumn = true, -- highlight for current column
+        foldnestmax = 10, -- deepest fold is 10 levels
+        foldenable = false, -- don't fold by default
+        foldmethod = "syntax", -- fold text using syntax
+        wrap = true, -- when line is longer than the screen, it continues on the next line
+        linebreak = true, -- but do not break words, only 'by words'
+        number = true, -- show absolute line number
+        relativenumber = true, -- show relative line number for current line
+        cursorline = true -- Highlight the screen line of the cursor with CursorLine
+    }
+) do
+    vim.wo[key] = val
+end
 -- add chars to '%'
-bo.matchpairs = "(:),{:},[:],<:>"
--- highlight for current line
-wo.cursorline = true
--- highlight for current column
-wo.cursorcolumn = true
--- deepest fold is 10 levels
-wo.foldnestmax = 10
--- don't fold by default
-wo.foldenable = false
--- fold text using syntax
-wo.foldmethod = "syntax"
--- when line is longer than the screen, it continues on the next line
-wo.wrap = true
--- but do not break words, only 'by words'
-wo.linebreak = true
--- show absolute line number
-wo.number = true
-wo.relativenumber = true
--- keep searched chunks hightlighted
-go.hlsearch = true
-vim.cmd("autocmd cursorhold * set nohlsearch")
-createMapping("n", "n", ":set hlsearch <cr>n")
-createMapping("n", "N", ":set hlsearch <cr>N")
-createMapping("n", "/", ":set hlsearch <cr>/")
-createMapping("n", "?", ":set hlsearch <cr>?")
--- search case-insensitive
-go.ignorecase = true
--- if on with ignorecase, when a pattern contains an uppercase letter, it is
--- case sensitive, otherwise it is not
-go.smartcase = true
+vim.bo.matchpairs = "(:),{:},[:],<:>"
+
+map("n", "<bs>", "<leader>")
+map("n", "<space>", "<leader>")
+
+-- blink search matches, not leave them visible
+au("cursorhold", "*", "set nohlsearch")
+map("n", "n", ":set hlsearch <cr>n")
+map("n", "N", ":set hlsearch <cr>N")
+map("n", "/", ":set hlsearch <cr>/")
+map("n", "?", ":set hlsearch <cr>?")
 -- when using * # ignore smart case
--- nnoremap * /\<<C-R>=expand('<cword>')<CR>\><CR>
--- nnoremap # ?\<<C-R>=expand('<cword>')<CR>\><CR>
--- Turn backup off, since most stuff is in SVN, git et.c anyway...
-go.writebackup = false
-go.swapfile = false
-go.backup = false
--- show what commands you typing, what you select in visual mode, etc.
-go.showcmd = true
--- Automatically :write before running commands
-go.autowrite = true
--- when scrolling screen via f.e. J and K how many lines should be to the
--- bottom of the page (for scroll to trigger you need be at 5 line from bottom
--- and press 'j')
-go.scrolloff = 5
--- same as above but for columns
-go.sidescrolloff = 10
--- resize signcolumn size dynamically depending on context
-go.signcolumn = "no"
--- make inner terminal zsh
-go.shell = "/usr/local/bin/zsh"
+_G['*'] = function()
+  vim.o.ignorecase = false
+  vim.o.smartcase = false
+  cmd('/' .. fn.expand('<cword>'))
+  vim.o.ignorecase = true
+  vim.o.smartcase = true
+end
+_G['#'] = function()
+  vim.o.ignorecase = false
+  vim.o.smartcase = false
+  cmd('?' .. fn.expand('<cword>'))
+  vim.o.ignorecase = true
+  vim.o.smartcase = true
+end
+-- case-sensative search for * and #
+map("n", "*", ":lua _G['*']()<cr>")
+map("n", "#", ":lua _G['#']()<cr>")
+
 -- Keep undo history across sessions, by storing in file.
 -- Only works all the time.
-if vim.fn.has("persistent_undo") then
-  os.execute("mkdir " .. os.getenv("HOME") .. "/.vim/backups > /dev/null 2>&1")
-  go.undodir = os.getenv("HOME") .. "/.vim/backups"
-  go.undofile = true
+if fn.has("persistent_undo") then
+    os.execute("mkdir " .. os.getenv("HOME") .. "/.vim/backups > /dev/null 2>&1")
+    vim.o.undodir = os.getenv("HOME") .. "/.vim/backups"
+    vim.o.undofile = true
 end
-go.inccommand = "nosplit"
+
 -- write path when save file if needed
-vim.cmd("autocmd BufNewFile * :exe ': !mkdir -p ' . escape(fnamemodify(bufname('%'),':p:h'),'#% \\')")
--- go.backspace = 2
--- refresh things faster
-go.updatetime = 300
--- -- go.completeopt  to have a better completion experience
-go.completeopt = "menu,noinsert,noselect"
--- better messages
-go.shortmess = go.shortmess .. "s"
--- TextEdit might fail if hidden is not set.
-go.hidden = true
-go.termguicolors = true
-go.background = "dark"
-go.encoding = "UTF-8"
-wo.signcolumn = "no"
-vim.cmd("syntax on")
+au("BufNewFile", "*", ":exe ': !mkdir -p ' . escape(fnamemodify(bufname('%'),':p:h'),'#% \\')")
+
+cmd("syntax on")
 
 -- tmux-like zoom in vim
-zoomToggle = function()
-  if 1 == vim.fn.winnr("$") then
+function _toggleZoom()
+    if 1 == vim.fn.winnr("$") then
+        return
+    end
+    local restoreCmd = vim.fn.winrestcmd()
+    cmd("wincmd |")
+    cmd("wincmd _")
+    -- If the layout did not change, it's an un-zoom.
+    if restoreCmd == vim.fn.winrestcmd() then
+        cmd("exe t:zoom_restore")
+    else
+        vim.t.zoom_restore = restoreCmd
+    end
     return
-  end
-  local restoreCmd = vim.fn.winrestcmd()
-  vim.api.nvim_command("wincmd |")
-  vim.api.nvim_command("wincmd _")
-  -- If the layout did not change, it's a toggle (un-zoom).
-  if restoreCmd == vim.fn.winrestcmd() then
-    vim.cmd("exe t:zoom_restore")
-  else
-    vim.t.zoom_restore = restoreCmd
-  end
-  return
 end
-createMapping("n", "<leader>z", ':call luaeval("zoomToggle")()<cr>')
+map("n", "<leader>z", ':lua _toggleZoom()<cr>')

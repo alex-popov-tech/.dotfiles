@@ -1,4 +1,4 @@
 return function()
-    vim.cmd("nmap mm <plug>(SubversiveSubstituteLine)")
-    vim.cmd("nmap m <plug>(SubversiveSubstitute)")
+    map("n", "m", "<plug>(SubversiveSubstitute)")
+    map("n", "mm", "<plug>(SubversiveSubstituteLine)")
 end

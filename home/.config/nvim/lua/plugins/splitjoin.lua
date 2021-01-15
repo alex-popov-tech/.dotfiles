@@ -1,5 +1,4 @@
 return function()
-    local createMapping = require "utils".createMapping
-    createMapping("n", "gj", ":SplitjoinJoin<cr>")
-    createMapping("n", "gs", ":SplitjoinSplit<cr>")
+    map("n", "gj", ":SplitjoinJoin<cr>")
+    map("n", "gs", ":SplitjoinSplit<cr>")
 end

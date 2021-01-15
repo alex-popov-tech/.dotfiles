@@ -1,3 +1,3 @@
 return function()
-    vim.cmd("cnoreabbrev bd Bdelete")
+    cmd("cnoreabbrev bd Bdelete")
 end
