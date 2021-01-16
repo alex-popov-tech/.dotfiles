@@ -17,7 +17,6 @@ for key, val in pairs(
         autowrite = true, -- Automatically :write before running commands
         scrolloff = 5, -- how many lines till window border to see when scrolling
         sidescrolloff = 10, -- same as above but for columns
-        signcolumn = "no", -- nothing to the left of line number
         shell = "/usr/local/bin/zsh",
         inccommand = "nosplit",
         updatetime = 300, -- timeout for showing completions, cursorhold events, etc
@@ -34,6 +33,7 @@ for key, val in pairs(
 end
 for key, val in pairs(
     {
+        signcolumn = "no", -- nothing to the left of line number
         cursorcolumn = true, -- highlight for current column
         foldnestmax = 10, -- deepest fold is 10 levels
         foldenable = false, -- don't fold by default
