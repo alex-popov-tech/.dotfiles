@@ -4,19 +4,6 @@
 <dict>
 	<key>customSites</key>
 	<dict>
-		<key>23F274A0-4131-4800-9C6A-DEBB9FC44BEB</key>
-		<dict>
-			<key>enabled</key>
-			<true/>
-			<key>keyword</key>
-			<string>torus</string>
-			<key>text</key>
-			<string>Translate from eng to rus</string>
-			<key>url</key>
-			<string>https://translate.google.com/#view=home&amp;op=translate&amp;sl=en&amp;tl=ru&amp;text={query}</string>
-			<key>utf8</key>
-			<true/>
-		</dict>
 		<key>5C0BA7B3-6CD0-4CFA-8CF1-C98C310E3CDF</key>
 		<dict>
 			<key>enabled</key>
@@ -27,19 +14,6 @@
 			<string>github</string>
 			<key>url</key>
 			<string>https://github.com/search?q={query}</string>
-			<key>utf8</key>
-			<true/>
-		</dict>
-		<key>F0603671-63EC-4C11-9871-95412FD30386</key>
-		<dict>
-			<key>enabled</key>
-			<true/>
-			<key>keyword</key>
-			<string>toeng</string>
-			<key>text</key>
-			<string>Translate from rus to eng</string>
-			<key>url</key>
-			<string>https://translate.google.com/#view=home&amp;op=translate&amp;sl=ru&amp;tl=en&amp;text={query}</string>
 			<key>utf8</key>
 			<true/>
 		</dict>

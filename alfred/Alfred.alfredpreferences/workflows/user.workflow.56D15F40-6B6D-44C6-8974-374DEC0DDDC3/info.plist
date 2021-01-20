@@ -209,8 +209,6 @@
 				<false/>
 				<key>clipboardtext</key>
 				<string>{query}</string>
-				<key>ignoredynamicplaceholders</key>
-				<false/>
 				<key>transient</key>
 				<false/>
 			</dict>
