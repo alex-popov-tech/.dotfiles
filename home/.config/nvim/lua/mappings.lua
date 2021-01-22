@@ -12,7 +12,6 @@ for _, mappings in pairs(
         {"n", "R", ":%s///g<left><left>"},
         {"i", '"', '""<left>', {noremap = true}},
         {"i", "'", "''<left>", {noremap = true}},
-        {"i", "(", "()<left>", {noremap = true}},
         {"i", "[", "[]<left>", {noremap = true}},
         {"i", "{", "{}<left>", {noremap = true}},
         {"i", "{<CR>", "{<CR>}<ESC>O", {noremap = true}}
