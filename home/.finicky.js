@@ -26,7 +26,7 @@ module.exports = {
       }
     },
     {
-      match: ['mlitvinova.testrail.io*', 'digitalproducts.atlassian.net*'],
+      match: ['mlitvinova.testrail.io*', 'digitalproducts.atlassian.net*', '*freemanblueprint.atlassian.net*'],
       browser: {
         name,
         profile: profiles.waverley,
