@@ -2,19 +2,27 @@
 
 set -e
 
-filename=lpass_"$(date '+%F')".gzip.gpg
+filename="lastpass_backup.gzip.gpg"
+filepath="/tmp/$filename"
+export LC_ALL=en_US.UTF-8 && /usr/local/bin/lpass export --sync=now | gzip | /usr/local/bin/gpg --encrypt -r alex.popov.tech@gmail.com > "$filepath"
+currentsize=$(wc -c "$filepath" | awk '{print $1}')
+existingsize=$(wc -c "$HOME/.backup/$filename" | awk '{print $1}')
 
-if ! $(/usr/local/bin/keybase fs stat /keybase/public/alex_popov_tech/$filename &>/dev/null)
-then
-  data="$(/usr/local/bin/lpass export --sync=now)"
-
-  export LC_ALL=en_US.UTF-8 && echo "$data" | gzip | /usr/local/bin/gpg --encrypt -r alex.popov.tech@gmail.com > "/tmp/$filename"
-  # to download and decrypt
-  # scp router:/media/Main/lpass_2020-02-11.gzip.gpg ./lpass.gzip.gpg
+if [ $currentsize != $existingsize ]; then
+  # scp "router:/media/Main/$filename" ./lpass.gzip.gpg
   # gpg --decrypt ./lpass_2020-02-03.gzip.gpg | funzip
-  scp "/tmp/$filename" "router:/media/Main/$filename"
-  # to download and decrypt
+  scp "$filepath" "router:/media/Main/$filename"
+
   # keybase fs read /keybase/public/alex_popov_tech/lpass_2020-03-04.gzip.gpg | gpg --decrypt | funzip
+  /usr/local/bin/keybase fs rm "/keybase/public/alex_popov_tech/$filename"
   /usr/local/bin/keybase fs write "/keybase/public/alex_popov_tech/$filename" < "/tmp/$filename"
-  rm "/tmp/$filename"
+
+  mkdir -p $HOME/.backup
+  cd $HOME/.backup
+  cp -f "$filepath" "./$filename"
+  git add "./$filename"
+  git commit -m "lpass backup from $(date)"
+  git push github master
+
+  rm "$filepath"
 fi
