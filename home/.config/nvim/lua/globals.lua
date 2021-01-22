@@ -1,14 +1,14 @@
-_G.range = function (from, to)
-  local result = {}
-  for i = from, to do
-    result[i] = i
-  end
-  return result
+_G.range = function(from, to)
+    local result = {}
+    for i = from, to do
+        result[i] = i
+    end
+    return result
 end
 
 _G.map = function(list, mapper)
     local result = {}
-    for k,v in pairs(list) do
+    for k, v in pairs(list) do
         result[k] = mapper(v)
     end
     return result
@@ -42,7 +42,7 @@ _G.fmt = function()
 end
 
 _G.reload = function()
-    local modules = {"lsp", "plugins", "globals", "mappings", "settings", "ui" }
+    local modules = {"lsp", "plugins", "globals", "mappings", "settings", "ui"}
     for _, moduleName in pairs(modules) do
         for packageName, _ in pairs(package.loaded) do
             if string.find(packageName, "^" .. moduleName) then
