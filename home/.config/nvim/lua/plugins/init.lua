@@ -58,9 +58,11 @@ require("packer").startup({
         use {"junegunn/fzf.vim", config = require("plugins.fzf-vim")}
         -- " fzf commands for lsp sources
         use "gfanto/fzf-lsp.nvim"
-        -- " find/jump definition/reference with fzf
-        use {"pechorin/any-jump.vim", config = require("plugins.any-jump")}
-        use {"stsewd/fzf-checkout.vim", config = require("plugins.fzf-checkout")}
+        use {
+            "nvim-telescope/telescope.nvim",
+            requires = {"nvim-lua/popup.nvim", "nvim-lua/plenary.nvim"},
+            config = require("plugins.telescope-nvim")
+        }
         -- add commenting for different langs via gcc
         use "tpope/vim-commentary"
         -- plugin which allows vim to work with common editorconfig
