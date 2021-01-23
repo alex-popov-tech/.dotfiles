@@ -1,19 +1,4 @@
 return function()
-    -- previews for fuzzy search
-    cmd(
-        "command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, fzf#vim#with_preview('up'), <bang>0)"
-    )
-    cmd(
-        "command! -bang -nargs=? -complete=dir GFiles call fzf#gitfiles(<q-args>, fzf#vim#with_preview('up'), <bang>0)"
-    )
-    -- search for content occurrences only, not file names
-    cmd(
-        "command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, '', fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'up'), <bang>0)"
-    )
-    -- search for content occurrences in only git files
-    cmd(
-        "command! -bang -nargs=* GGrep call fzf#grep('git grep --line-number '.shellescape(<q-args>), 0, fzf#vim#with_preview('up'),<bang>0)"
-    )
     -- respect color scheme
     g.fzf_colors = {
         fg = {"fg", "Normal"},
@@ -40,13 +25,7 @@ return function()
     -- [Buffers] Jump to the existing window if possible
     g.fzf_buffers_jump = 1
     -- find in files
-    map("n", "<leader>nF", ":GFiles<cr>")
-    map("n", "<leader>nf", ":Files<cr>")
-    -- find a text in files
-    map("n", "<leader>nc", ":GGrep<cr>")
-    map("n", "<leader>nC", ":Ag<cr>")
-    -- find a buffer
-    map("n", "<leader>nb", ":Buffers<cr>")
-    -- find in files history
-    map("n", "<leader>nh", ":History<cr>")
+    map("n", "gf", ":GFiles<cr>")
+    map("n", "gF", ":Files<cr>")
+    map("n", "gC", ":Rg<cr>")
 end
