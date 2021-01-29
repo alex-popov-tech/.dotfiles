@@ -83,6 +83,10 @@ require("packer").startup(
             use "christianchiarulli/nvcode-color-schemes.vim"
             -- lsp configs placed here
             use "neovim/nvim-lspconfig"
+            -- pretty hover and references/implementations/codeaction
+            use {"glepnir/lspsaga.nvim", config = require("plugins.lspsaga-nvim")}
+            -- pretty references/codeaction
+            use {"RishabhRD/nvim-lsputils", requires = {"RishabhRD/popfix"}, config = require("plugins.nvim-lsputils")}
             -- plugin to add completeion possibility
             use {"nvim-lua/completion-nvim", config = require("plugins.completion-nvim")}
             use "steelsojka/completion-buffers"
