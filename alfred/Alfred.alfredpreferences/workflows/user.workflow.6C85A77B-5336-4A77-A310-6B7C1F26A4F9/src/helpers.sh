@@ -3,6 +3,10 @@
 . src/workflowHandler.sh
 . src/media.sh
 
+PRIORITY_HIGH="1"
+PRIORITY_MEDIUM="2"
+PRIORITY_LOW="5"
+
 trim () {
   str="$1"
   match=" "
@@ -235,11 +239,14 @@ getAPDetails() {
   fi
 
   FAVORITED=$(listContains "$3" "$SSID")
+  PRIORITY=$PRIORITY_LOW
 
   if [ "$2" == "$BSSID" ]; then
     AP_ICON=$ICON_WIFI_ACTIVE_
+    PRIORITY=$PRIORITY_HIGH
   elif [ "$FAVORITED" != "" ]; then
     AP_ICON=$ICON_WIFI_STAR_
+    PRIORITY=$PRIORITY_MEDIUM
   elif [[ "$SECURITY" =~ "NONE" ]]; then
     AP_ICON=$ICON_WIFI_
   else
@@ -248,5 +255,5 @@ getAPDetails() {
 
   AP_ICON=$AP_ICON$(getWifiStrength "$RSSI")$ICON_END
 
-  echo "$SSID"~"$BSSID"~"$RSSI"~"$CHANNEL"~"$SECURITY"~"$AP_ICON"
+  echo "$PRIORITY"~"$SSID"~"$BSSID"~"$RSSI"~"$CHANNEL"~"$SECURITY"~"$AP_ICON"
 }
