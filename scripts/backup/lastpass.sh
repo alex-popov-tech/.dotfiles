@@ -22,7 +22,7 @@ if [ $currentsize != $existingsize ]; then
   cp -f "$filepath" "./$filename"
   git add "./$filename"
   git commit -m "lpass backup from $(date)"
-  git push github master
+  git push github master >/dev/null
 
   rm "$filepath"
 fi
