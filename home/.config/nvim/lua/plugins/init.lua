@@ -90,6 +90,8 @@ require("packer").startup(
             use {"hrsh7th/vim-vsnip", requires = "hrsh7th/vim-vsnip-integ", config = require("plugins.vim-vsnip")}
             -- syntax high, K docs, something else...
             use "tmux-plugins/vim-tmux"
+            -- file tree
+            use {"ms-jpq/chadtree", branch = "chad", run = "python3 -m chadtree deps", config = require("plugins.chadtree") }
         end,
         config = {
             display = {
