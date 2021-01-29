@@ -12,7 +12,6 @@ return function()
             update_in_insert = true
         }
     )
-
     -- write only if diffs there
     vim.lsp.handlers["textDocument/formatting"] = function(err, _, result, _, bufnr)
         if err ~= nil or result == nil then

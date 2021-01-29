@@ -24,7 +24,7 @@ return function(client, bufnr)
     if client.resolved_capabilities.rename then
         map("n", "'rn", "<cmd>lua vim.lsp.buf.rename()<CR>", options)
     end
-    map("n", "'a", "<cmd>lua require'telescope.builtin'.lsp_code_actions()<cr>", options)
+    map("n", "'a", "<cmd>lua vim.lsp.buf.code_action()<cr>", options)
     map("n", "'D", "<cmd>lua _show_diagnostics()<CR>", options)
     map("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev({ popup_opts = { show_header = false } })<CR>", options)
     map("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next({ popup_opts = { show_header = false } })<CR>", options)
