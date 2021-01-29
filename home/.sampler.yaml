@@ -1,6 +1,6 @@
 runcharts:
   - title: Ping google.com
-    position: [[0, 2], [43, 42]]
+    position: [[0, 1], [80, 20]]
     rate-ms: 1000
     legend:
         enabled: false
@@ -12,6 +12,6 @@ runcharts:
             -f 2
 textboxes:
   - title: Docker containers stats
-    position: [[43, 2], [37, 42]]
+    position: [[0, 21], [80, 21]]
     rate-ms: 500
     sample: docker stats --no-stream --format "table {{.Name}}\t{{.CPUPerc}}\t{{.MemUsage}}\t{{.PIDs}}"
