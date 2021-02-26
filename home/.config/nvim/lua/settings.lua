@@ -62,19 +62,19 @@ map("n", "N", ":set hlsearch <cr>N")
 map("n", "/", ":set hlsearch <cr>/")
 map("n", "?", ":set hlsearch <cr>?")
 -- when using * # ignore smart case
-_G['*'] = function()
-  vim.o.ignorecase = false
-  vim.o.smartcase = false
-  cmd('/' .. fn.expand('<cword>'))
-  vim.o.ignorecase = true
-  vim.o.smartcase = true
+_G["*"] = function()
+    vim.o.ignorecase = false
+    vim.o.smartcase = false
+    cmd("/" .. fn.expand("<cword>"))
+    vim.o.ignorecase = true
+    vim.o.smartcase = true
 end
-_G['#'] = function()
-  vim.o.ignorecase = false
-  vim.o.smartcase = false
-  cmd('?' .. fn.expand('<cword>'))
-  vim.o.ignorecase = true
-  vim.o.smartcase = true
+_G["#"] = function()
+    vim.o.ignorecase = false
+    vim.o.smartcase = false
+    cmd("?" .. fn.expand("<cword>"))
+    vim.o.ignorecase = true
+    vim.o.smartcase = true
 end
 -- case-sensative search for * and #
 map("n", "*", ":lua _G['*']()<cr>")
