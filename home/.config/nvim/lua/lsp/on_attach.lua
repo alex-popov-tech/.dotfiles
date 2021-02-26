@@ -41,7 +41,7 @@ return function(client, bufnr)
             if vim.fn.mode() == "i" then
                 require("lspsaga.signaturehelp").signature_help()
             end
-            return 2000
+            return 1000
         end
     )
 
