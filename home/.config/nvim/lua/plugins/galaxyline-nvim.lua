@@ -24,7 +24,8 @@ return function()
         Space = {
             provider = function()
                 return " "
-            end
+            end,
+            highlight = {nord_colors.fg, nord_colors.line_bg}
         }
     }
 
@@ -57,7 +58,8 @@ return function()
                 provider = function()
                     return vim.fn.expand("%:F")
                 end,
-                condition = buffer_not_empty
+                condition = buffer_not_empty,
+                highlight = {nord_colors.fg, nord_colors.line_bg}
             }
         },
         space,
@@ -116,12 +118,14 @@ return function()
         {
             GitBranch = {
                 provider = "GitBranch",
-                condition = require("galaxyline.provider_vcs").check_git_workspace
+                condition = require("galaxyline.provider_vcs").check_git_workspace,
+                highlight = {nord_colors.fg, nord_colors.line_bg}
             }
         },
         {
             LineInfo = {
-                provider = "LineColumn"
+                provider = "LineColumn",
+                highlight = {nord_colors.fg, nord_colors.line_bg}
             }
         },
         space
