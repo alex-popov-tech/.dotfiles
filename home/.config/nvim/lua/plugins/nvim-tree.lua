@@ -1,5 +1,5 @@
 return function()
-    map("n", "<c-f>", ":NvimTreeFindFile<cr>")
+    map("n", "<c-f>", ":NvimTreeToggle<cr>")
     g.nvim_tree_side = "left"
     g.nvim_tree_width = 30
     g.nvim_tree_auto_close = 1
@@ -9,19 +9,6 @@ return function()
     g.nvim_tree_git_hl = 1
     g.nvim_tree_allow_resize = 1
     g.nvim_tree_show_icons = {git = 1, folders = 1, files = 1}
-    g.nvim_tree_bindings = {
-        edit = {"<CR>", "l"},
-        edit_vsplit = "<C-v>",
-        edit_split = "<C-x>",
-        close_node = {"<S-CR>", "h"},
-        refresh = "R",
-        create = "a",
-        remove = "d",
-        rename = "r",
-        cut = "x",
-        copy = "y",
-        paste = "p"
-    }
     g.nvim_tree_icons = {
         default = "",
         symlink = "",
