@@ -3,10 +3,9 @@ DPATH="$HOME/.dotfiles"
 
 $DPATH/scripts/lnfilepath.sh $DPATH/home/.* $HOME
 
-$DPATH/scripts/lnfilepath.sh $DPATH/home/.config/efm-langserver/config.yaml $HOME/.config/efm-langserver
-
 $DPATH/scripts/lnfilepath.sh $DPATH/home/.config/kitty/*.conf $HOME/.config/kitty
 
+$DPATH/scripts/lnfilepath.sh $DPATH/home/.config/nvim/spell/* $HOME/.config/nvim/spell
 $DPATH/scripts/lnfilepath.sh $DPATH/home/.config/nvim/*.lua $HOME/.config/nvim
 $DPATH/scripts/lnfilepath.sh $DPATH/home/.config/nvim/lua/*.lua $HOME/.config/nvim/lua
 $DPATH/scripts/lnfilepath.sh $DPATH/home/.config/nvim/lua/plugins/*.lua $HOME/.config/nvim/lua/plugins
