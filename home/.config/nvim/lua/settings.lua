@@ -27,6 +27,8 @@ for key, val in pairs(
         termguicolors = true,
         background = "dark",
         encoding = "UTF-8",
+        list = true,
+        listchars = "space:·,tab:»»,eol:↩"
     }
 ) do
     vim.o[key] = val
