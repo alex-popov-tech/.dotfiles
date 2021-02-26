@@ -40,7 +40,7 @@ for key, val in pairs(
         foldnestmax = 10, -- deepest fold is 10 levels
         foldenable = false, -- don't fold by default
         foldmethod = "syntax", -- fold text using syntax
-        wrap = true, -- when line is longer than the screen, it continues on the next line
+        wrap = false, -- when line is longer than the screen, it continues on the next line
         linebreak = true, -- but do not break words, only 'by words'
         number = true, -- show absolute line number
         relativenumber = true, -- show relative line number for current line
@@ -53,7 +53,6 @@ end
 vim.bo.matchpairs = "(:),{:},[:],<:>"
 
 map("n", "<bs>", "<leader>")
-map("n", "<space>", "<leader>")
 
 -- blink search matches, not leave them visible
 au("cursorhold", "*", "set nohlsearch")
