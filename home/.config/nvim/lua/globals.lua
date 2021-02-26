@@ -6,14 +6,6 @@ _G.range = function(from, to)
     return result
 end
 
-_G.map = function(list, mapper)
-    local result = {}
-    for k, v in pairs(list) do
-        result[k] = mapper(v)
-    end
-    return result
-end
-
 _G.installLsp = function()
     -- https://github.com/mattn/vim-lsp-settings should be installed
     -- and that set to download in single dir   vim.g.lsp_settings_servers_dir = vim.fn.stdpath("cache") .. "/lspconfig"
@@ -35,10 +27,6 @@ end
 
 _G.printt = function(tbl)
     print(vim.inspect(tbl))
-end
-
-_G.fmt = function()
-    return vim.lsp.buf.formatting_sync(nil, 500)
 end
 
 _G.reload = function()
@@ -64,7 +52,7 @@ function _G.map(mode, key, result, opts)
             expr = false
         }
     )
-    vim.fn.nvim_set_keymap(mode, key, result, opts)
+    vim.api.nvim_set_keymap(mode, key, result, opts)
 end
 
 function _G.au(event, filetype, action)
@@ -97,3 +85,4 @@ end
 _G.g = vim.g
 _G.cmd = vim.cmd
 _G.fn = vim.fn
+_G.lsp = vim.lsp
