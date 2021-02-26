@@ -109,4 +109,4 @@ function _toggleZoom()
     end
     return
 end
-map("n", "<leader>z", ':lua _toggleZoom()<cr>')
+map("n", "<leader>z", ":lua _toggleZoom()<cr>")
