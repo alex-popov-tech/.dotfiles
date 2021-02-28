@@ -1,26 +1,19 @@
-# Dotfiles
-
-* cron backup for [lastpass](./scripts/backup/lastpass.sh) and [keybaseio](./scripts/backup/keybase.sh)
-  * how to use ```
-      0 * */3 * * $HOME/.dotfiles/backup/mailOnErr.sh $HOME/.dotfiles/backup/lastpass.sh
-      0 * */3 * * $HOME/.dotfiles/backup/mailOnErr.sh $HOME/.dotfiles/backup/keybase.sh
-    ```
-
-## Installation
-
-Notes:
-
-* for installing apps from `mas` you should be logged in Mac Apple store,
-otherwise there will be warning while installation
-* you might want to add some apps to startup after installation
-
-## Useful links
-
-* how to configure `mail` for crontab gmail on macos https://gist.github.com/giovanigenerali/39efe8760f84ed74b44a31be1ace27e7
-
-### TODO
-
-* rewrite time tracking alfred plugin to be able to start timer for project without searchin for them
-* suggested [software](https://github.com/jaywcjlove/awesome-mac)
-  * [better touch tool](https://folivora.ai)
-  * [console player](https://cmus.github.io/#features)
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/60138143/91989761-8fd15180-ed39-11ea-8a83-645f92507c2d.png" width="120" title="My dotfiles">
+  <br />
+  &bull; <a href="https://github.com/alex-popov-tech/.dotfiles/blob/master/scripts/install.sh#L152" title="OS"><b>OSX</b></a>
+  &bull; <a href="https://www.alfredapp.com/" title="Alfred"><b>Alfred</b></a>
+  &bull; <a href="https://github.com/alex-popov-tech/.dotfiles/blob/master/Brewfile" title="Homebrew"><b>Homebrew</b></a>
+  &bull; <a href="https://manytricks.com/moom/" title="Window manager"><b>Moom</b></a>
+  &bull; <a href="https://www.jetbrains.com/lp/mono/" title="Font"><b>JetBrains Mono</a> <a href="https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/JetBrainsMono" title="Font">( patched )</a></b>
+  &bull;
+  <br />
+  <br />
+  <img width="1360" alt="nvim" src="https://user-images.githubusercontent.com/60138143/109388635-00d07b00-7911-11eb-997f-1b6236b7cd05.png">
+  &bull; <a href="https://github.com/alex-popov-tech/.dotfiles/blob/master/scripts/install.sh#L65" title="Languages"><b>Programming Languages</b></a>
+  &bull; <a href="https://github.com/alex-popov-tech/.dotfiles/tree/master/home/.config/kitty" title="Terminal"><b>Kitty</b></a>
+  &bull; <a href="https://github.com/alex-popov-tech/.dotfiles/blob/master/home/.zshrc" title="Shell"><b>Zsh p10k</b></a>
+  &bull; <a href="https://github.com/alex-popov-tech/.dotfiles/blob/master/home/.tmux.conf"> <b>Tmux</b></a>
+  &bull; <a href="https://github.com/alex-popov-tech/.dotfiles/tree/master/home/.config/nvim" title="Editor"><b>NeoVim</b></a>
+  &bull;
+</p>

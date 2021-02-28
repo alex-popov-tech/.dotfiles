@@ -1,0 +1,2 @@
+# At minute 0 past every 5th hour on every 5th day-of-week.
+0 */8 * * 1 $HOME/.dotfiles/scripts/backup/mailOnErr.sh $HOME/.dotfiles/scripts/backup/lastpass.sh
