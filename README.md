@@ -8,7 +8,7 @@
   &bull; <a href="https://github.com/alex-popov-tech/.dotfiles/blob/master/scripts/install.sh#L65" title="Languages"><b>Programming Languages</b></a>
   &bull;
   <br />
-  <img src="https://github.com/alex-popov-tech/.dotfiles/tree/master/readme.gif" alt="readme gif" title="Databay showcase gif" />
+  <img src="https://github.com/alex-popov-tech/.dotfiles/blob/master/readme.gif" alt="readme gif" title="Databay showcase gif" />
   <br />
   &bull; <a href="https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/JetBrainsMono" title="Font"><b>JetBrains Mono</b></a>
   &bull; <a href="https://github.com/sainnhe/sonokai#%F0%9D%90%92%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%9A" title="Font"><b>Sonokai</b></a>
