@@ -1,5 +1,5 @@
 g.nvcode_termcolors = 256 -- true colors
-cmd("colorscheme nord")
+cmd("colorscheme sonokai")
 
 -- highlight modified buffers for tabline
 hi("BufferCurrentMod", {guifg="#00afff"})

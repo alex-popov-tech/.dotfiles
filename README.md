@@ -5,12 +5,13 @@
   &bull; <a href="https://www.alfredapp.com/" title="Alfred"><b>Alfred</b></a>
   &bull; <a href="https://github.com/alex-popov-tech/.dotfiles/blob/master/Brewfile" title="Homebrew"><b>Homebrew</b></a>
   &bull; <a href="https://manytricks.com/moom/" title="Window manager"><b>Moom</b></a>
-  &bull; <a href="https://www.jetbrains.com/lp/mono/" title="Font"><b>JetBrains Mono</a> <a href="https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/JetBrainsMono" title="Font">( patched )</a></b>
+  &bull; <a href="https://github.com/alex-popov-tech/.dotfiles/blob/master/scripts/install.sh#L65" title="Languages"><b>Programming Languages</b></a>
   &bull;
   <br />
+  <img src="https://github.com/alex-popov-tech/.dotfiles/tree/master/readme.gif" alt="readme gif" title="Databay showcase gif" />
   <br />
-  <img width="1360" alt="nvim" src="https://user-images.githubusercontent.com/60138143/109388635-00d07b00-7911-11eb-997f-1b6236b7cd05.png">
-  &bull; <a href="https://github.com/alex-popov-tech/.dotfiles/blob/master/scripts/install.sh#L65" title="Languages"><b>Programming Languages</b></a>
+  &bull; <a href="https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/JetBrainsMono" title="Font"><b>JetBrains Mono</b></a>
+  &bull; <a href="https://github.com/sainnhe/sonokai#%F0%9D%90%92%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%9A" title="Font"><b>Sonokai</b></a>
   &bull; <a href="https://github.com/alex-popov-tech/.dotfiles/tree/master/home/.config/kitty" title="Terminal"><b>Kitty</b></a>
   &bull; <a href="https://github.com/alex-popov-tech/.dotfiles/blob/master/home/.zshrc" title="Shell"><b>Zsh p10k</b></a>
   &bull; <a href="https://github.com/alex-popov-tech/.dotfiles/blob/master/home/.tmux.conf"> <b>Tmux</b></a>

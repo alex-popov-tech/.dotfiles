@@ -1,31 +1,54 @@
 return function()
-    local nord_colors = {
-        bg = "#2E3440",
-        fg = "#81A1C1",
-        line_bg = "#2E3440",
-        fg_green = "#8FBCBB",
-        yellow = "#EBCB8B",
-        cyan = "#A3BE8C",
-        darkblue = "#81A1C1",
-        green = "#8FBCBB",
-        orange = "#D08770",
-        purple = "#B48EAD",
-        magenta = "#BF616A",
-        gray = "#616E88",
-        blue = "#5E81AC",
-        red = "#BF616A"
+    local colors = {
+        spaceBg = "#2c2e34",
+        spaceFg = "#2c2e34",
+        fileiconBg = "#2c2e34",
+        fileiconFg = require("galaxyline.provider_fileinfo").get_file_icon_color,
+        filepathBg = "#2c2e34",
+        filepathFg = "#85d3f2",
+        errorBg = "#2c2e34",
+        errorFg = "#fc5d7c",
+        warningBg = "#2c2e34",
+        warningFg = "#e7c664",
+        hintBg = "#2c2e34",
+        hintFg = "#7f8490",
+        infoBg = "#2c2e34",
+        infoFg = "#7f8490",
+        giticonBg = "#2c2e34",
+        giticonFg = "#fc5d7c",
+        gitbranchBg = "#343136",
+        gitbranchFg = "#e2e2e3"
     }
 
     local gl = require("galaxyline")
     local gls = gl.section
-    gl.short_line_list = {"LuaTree", "vista", "dbui"}
+gl.short_line_list = {
+    'LuaTree',
+    'vista',
+    'dbui',
+    'startify',
+    'term',
+    'nerdtree',
+    'fugitive',
+    'fugitiveblame',
+    'plug'
+}
 
     local space = {
         Space = {
             provider = function()
                 return " "
             end,
-            highlight = {nord_colors.fg, nord_colors.line_bg}
+            highlight = {colors.spaceFg, colors.spaceBg}
+        }
+    }
+
+    local kek = {
+        kek = {
+            provider = function()
+                return "kek"
+            end,
+            -- highlight = {colors.spaceFg, colors.spaceBg}
         }
     }
 
@@ -50,7 +73,7 @@ return function()
         {
             FileIcon = {
                 provider = "FileIcon",
-                highlight = {require("galaxyline.provider_fileinfo").get_file_icon_color}
+                highlight = {colors.fileiconFg, colors.fileiconBg}
             }
         },
         {
@@ -59,7 +82,7 @@ return function()
                     return vim.fn.expand("%:F")
                 end,
                 condition = buffer_not_empty,
-                highlight = {nord_colors.fg, nord_colors.line_bg}
+                highlight = {colors.filepathFg, colors.filepathBg}
             }
         },
         space,
@@ -70,7 +93,7 @@ return function()
                 end,
                 icon = " ",
                 condition = any_diagnostic("error"),
-                highlight = {nord_colors.red, nord_colors.line_bg}
+                highlight = {colors.errorFg, colors.errorBg}
             }
         },
         {
@@ -80,7 +103,7 @@ return function()
                 end,
                 icon = " ",
                 condition = any_diagnostic("warn"),
-                highlight = {nord_colors.yellow, nord_colors.line_bg}
+                highlight = {colors.warningFg, colors.warningBg}
             }
         },
         {
@@ -90,7 +113,7 @@ return function()
                 end,
                 icon = " ",
                 condition = any_diagnostic("hint"),
-                highlight = {nord_colors.blue, nord_colors.line_bg}
+                highlight = {colors.hintFg, colors.hintBg}
             }
         },
         {
@@ -100,7 +123,7 @@ return function()
                 end,
                 icon = " ",
                 condition = any_diagnostic("info"),
-                highlight = {nord_colors.gray, nord_colors.line_bg}
+                highlight = {colors.hintFg, colors.hintBg}
             }
         }
     }
@@ -112,22 +135,16 @@ return function()
                     return " "
                 end,
                 condition = require("galaxyline.provider_vcs").check_git_workspace,
-                highlight = {nord_colors.red, nord_colors.line_bg}
+                highlight = {colors.giticonFg, colors.giticonBg}
             }
         },
         {
             GitBranch = {
                 provider = "GitBranch",
                 condition = require("galaxyline.provider_vcs").check_git_workspace,
-                highlight = {nord_colors.fg, nord_colors.line_bg}
+                highlight = {colors.gitbranchFg, colors.gitbranchBg}
             }
         },
-        {
-            LineInfo = {
-                provider = "LineColumn",
-                highlight = {nord_colors.fg, nord_colors.line_bg}
-            }
-        },
-        space
+        space,
     }
 end

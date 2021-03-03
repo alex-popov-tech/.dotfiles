@@ -8,6 +8,7 @@ zinit for \
   light-mode MichaelAquilina/zsh-you-should-use
 
 zinit ice depth=1; zinit light romkatv/powerlevel10k
+# zinit snippet https://github.com/sainnhe/sonokai/raw/master/zsh/.zsh-theme-sonokai-shusia
 zinit ice as"program" from"gh-r" mv"fd* -> fd" pick"fd/fd" lucid
 zinit light sharkdp/fd
 zinit ice as"program" from"gh-r" mv"bat* -> bat" pick"bat/bat" lucid
