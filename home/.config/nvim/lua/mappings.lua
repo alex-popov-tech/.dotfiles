@@ -22,11 +22,3 @@ for _, mappings in pairs(
     local options = mappings[4]
     map(mode, key, value, options)
 end
-
--- init some abbreviations
-cmd [[iab a await]]
-cmd [[iab c const]]
-cmd [[iab l let]]
-cmd [[iab fun function]]
-cmd [[iab r return]]
-cmd [[iab e end]]
