@@ -12,17 +12,20 @@ return function()
         max_kind_width = 100,
         max_menu_width = 100,
         documentation = true,
-        allow_prefix_unmatch = false,
-  source = {
-    path = {menu = " "},
-    buffer = {menu = " "},
-    -- vsnip = {menu = " "},
-    nvim_lsp = {menu = "  "},
-    nvim_lua = {menu = " "},
-    spell = true,
-    calc = true,
-    tags = true,
-    omni = true
-  }
+        allow_prefix_unmatch = true,
+        source = {
+            path = {menu = " "},
+            buffer = {menu = " "},
+            vsnip = {menu = " "},
+            nvim_lsp = {menu = "  "},
+            nvim_lua = {menu = " "},
+            spell = true,
+            calc = true,
+            tags = true,
+            -- omni = true,
+            treesitter = true
+        }
     }
+    map("i", "<cr>", 'compe#confirm("<cr>")', {silent = true, expr = true})
+    -- map("i", "<s-cr>", "compe#complete()", {silent = true, expr = true})
 end
