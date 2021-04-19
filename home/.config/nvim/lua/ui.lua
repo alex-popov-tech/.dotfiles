@@ -4,6 +4,10 @@ g.sonokai_style = "shusia"
 g.sonokai_enable_italic = 1
 cmd("colorscheme sonokai")
 
+-- highlight split separators
+hi("VertSplit", {guibg = "none", guifg = "#78dce8"})
+hi("StatusLineNC", {guibg = "none", guifg = "#78dce8"})
+hi("StatusLine", {guibg = "none", guifg = "none"})
 -- custom highlights for fugitive
 hi("DiffAdd", {guifg = "#5fd700"})
 hi("DiffText", {guifg = "#00afff"})

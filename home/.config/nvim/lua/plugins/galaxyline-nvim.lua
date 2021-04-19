@@ -1,38 +1,39 @@
 return function()
     local colors = {
-        spaceBg = "#2c2e34",
-        spaceFg = "#2c2e34",
-        fileiconBg = "#2c2e34",
-        fileiconFg = require("galaxyline.provider_fileinfo").get_file_icon_color,
-        filepathBg = "#2c2e34",
-        filepathFg = "#85d3f2",
-        errorBg = "#2c2e34",
+        spaceBg = "none",
+        spaceFg = "none",
+        modeBg = "none",
+        modeFg = "#9ecd6f",
+        fileiconBg = "none",
+        filepathBg = "none",
+        filepathFg = "#e5c463",
+        errorBg = "none",
         errorFg = "#fc5d7c",
-        warningBg = "#2c2e34",
+        warningBg = "none",
         warningFg = "#e7c664",
-        hintBg = "#2c2e34",
+        hintBg = "none",
         hintFg = "#7f8490",
-        infoBg = "#2c2e34",
+        infoBg = "none",
         infoFg = "#7f8490",
-        giticonBg = "#2c2e34",
-        giticonFg = "#fc5d7c",
-        gitbranchBg = "#343136",
-        gitbranchFg = "#e2e2e3"
+        gitBg = "none",
+        gitFg = "#78dce8",
+        lineBg = "none",
+        lineFg = "#78dce8"
     }
 
     local gl = require("galaxyline")
     local gls = gl.section
-gl.short_line_list = {
-    'LuaTree',
-    'vista',
-    'dbui',
-    'startify',
-    'term',
-    'nerdtree',
-    'fugitive',
-    'fugitiveblame',
-    'plug'
-}
+    gl.short_line_list = {
+        "LuaTree",
+        "vista",
+        "dbui",
+        "startify",
+        "term",
+        "nerdtree",
+        "fugitive",
+        "fugitiveblame",
+        "plug"
+    }
 
     local space = {
         Space = {
@@ -43,15 +44,6 @@ gl.short_line_list = {
         }
     }
 
-    local kek = {
-        kek = {
-            provider = function()
-                return "kek"
-            end,
-            -- highlight = {colors.spaceFg, colors.spaceBg}
-        }
-    }
-
     local buffer_not_empty = function()
         if fn.empty(vim.fn.expand("%:t")) ~= 1 then
             return true
@@ -59,92 +51,105 @@ gl.short_line_list = {
         return false
     end
 
-    local diagnostic_count = function(type)
-        return require("galaxyline.provider_diagnostic")["get_diagnostic_" .. type]()
-    end
-
-    local any_diagnostic = function(type)
-        return function()
-            return diagnostic_count(type) ~= 0
+    local wide_enough = function()
+        local squeeze_width = vim.fn.winwidth(0)
+        if squeeze_width > 80 then
+            return true
         end
+        return false
     end
 
     gls.left = {
         {
-            FileIcon = {
-                provider = "FileIcon",
-                highlight = {colors.fileiconFg, colors.fileiconBg}
-            }
-        },
-        {
-            FileName = {
+            ViMode = {
                 provider = function()
-                    return vim.fn.expand("%:F")
+                    local aliases = {
+                        ["n"] = "NORMAL",
+                        ["i"] = "INSERT",
+                        ["c"] = "COMMAND",
+                        ["V"] = "VISUAL"
+                    }
+                    return aliases[vim.fn.mode()]
                 end,
-                condition = buffer_not_empty,
-                highlight = {colors.filepathFg, colors.filepathBg}
+                highlight = {colors.modeFg, colors.modeBg}
             }
         },
         space,
         {
-            DiagnosticError = {
+            FileIcon = {
+                provider = "FileIcon",
+                highlight = {require("galaxyline.provider_fileinfo").get_file_icon_color, colors.fileiconBg}
+            }
+        },
+        {
+            FilePath = {
                 provider = function()
-                    return diagnostic_count("error")
+                    -- return vim.fn.expand("%:F")
+                    local result = ""
+                    if vim.bo.readonly then
+                        result = result .. "🔒"
+                    end
+                    if wide_enough() then
+                        result = result .. vim.fn.fnamemodify(vim.fn.expand "%", ":~:.")
+                    else
+                        result = result .. vim.fn.expand "%:t"
+                    end
+                    if vim.bo.modified then
+                        result = result .. " 🖍"
+                    end
+                    return result
                 end,
+                condition = buffer_not_empty,
+                highlight = {colors.filepathFg, colors.filepathBg}
+            }
+        }
+    }
+    gls.mid = {}
+
+    gls.right = {
+        {
+            DiagnosticError = {
+                provider = "DiagnosticError",
                 icon = " ",
-                condition = any_diagnostic("error"),
                 highlight = {colors.errorFg, colors.errorBg}
             }
         },
         {
             DiagnosticWarn = {
-                provider = function()
-                    return diagnostic_count("warn")
-                end,
+                provider = "DiagnosticWarn",
                 icon = " ",
-                condition = any_diagnostic("warn"),
                 highlight = {colors.warningFg, colors.warningBg}
             }
         },
         {
             DiagnosticHint = {
-                provider = function()
-                    return diagnostic_count("hint")
-                end,
-                icon = " ",
-                condition = any_diagnostic("hint"),
+                provider = "DiagnosticHint",
+                icon = " ",
                 highlight = {colors.hintFg, colors.hintBg}
             }
         },
         {
             DiagnosticInfo = {
-                provider = function()
-                    return diagnostic_count("info")
-                end,
-                icon = " ",
-                condition = any_diagnostic("info"),
+                provider = "DiagnosticInfo",
+                icon = " ",
                 highlight = {colors.hintFg, colors.hintBg}
             }
-        }
-    }
-
-    gls.right = {
+        },
         {
             GitIcon = {
                 provider = function()
-                    return " "
+                    return " "
                 end,
                 condition = require("galaxyline.provider_vcs").check_git_workspace,
-                highlight = {colors.giticonFg, colors.giticonBg}
+                highlight = {colors.gitFg, colors.gitBg}
             }
         },
         {
             GitBranch = {
                 provider = "GitBranch",
                 condition = require("galaxyline.provider_vcs").check_git_workspace,
-                highlight = {colors.gitbranchFg, colors.gitbranchBg}
+                highlight = {colors.gitFg, colors.gitBg, "bold"}
             }
-        },
-        space,
+        }
     }
 end

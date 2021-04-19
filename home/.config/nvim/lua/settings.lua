@@ -28,7 +28,8 @@ for key, val in pairs(
         background = "dark",
         encoding = "UTF-8",
         list = true,
-        listchars = "space:·,tab:»»,eol:↩"
+        listchars = "space:·,tab:»»,eol:↩", -- replace chars
+        fillchars = "stlnc:-,vert:¦" -- splits char
     }
 ) do
     vim.o[key] = val
