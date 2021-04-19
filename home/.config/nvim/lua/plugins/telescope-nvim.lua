@@ -42,5 +42,5 @@ return function()
     map("n", "go", "<CMD>lua TelescopeOpenPrewiev('grep_string')<CR>")
     map("n", "gc", "<CMD>lua TelescopeOpenPrewiev('live_grep')<CR>")
     map("n", "gbr", "<CMD>lua TelescopeOpenPrewiev('git_branches')<CR>")
-    map("n", "'D", "<CMD>lua TelescopeOpenPrewiev('lsp.document_diagnostics')", {noremap = true, silent = true})
+    map("n", "'D", "<CMD>lua TelescopeOpenPrewiev('lsp.document_diagnostics')<cr>", {noremap = true, silent = true})
 end

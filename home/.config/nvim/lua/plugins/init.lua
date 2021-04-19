@@ -35,7 +35,7 @@ local core = {
     -- allows repeat via dot for some plugins like surround
     "tpope/vim-repeat",
     -- add\update\remove surround stuff like ''{}''
-    "tpope/vim-surround",
+    -- "tpope/vim-surround",
     "machakann/vim-sandwich",
     --  shiftwidth/expandtab/etc
     "tpope/vim-sleuth",
@@ -47,13 +47,12 @@ local core = {
     {"svermeulen/vim-subversive", config = require("plugins.vim-subversive")},
     -- gj gs
     {"AndrewRadev/splitjoin.vim", config = require("plugins.splitjoin")},
-    "iamcco/markdown-preview.nvim",
-    "alex-popov-tech/timer.nvim"
+    "iamcco/markdown-preview.nvim"
 }
 
 local git = {
-    "tpope/vim-fugitive",
-    config = require("plugins.vim-fugitive")
+    {"tpope/vim-fugitive", config = require("plugins.vim-fugitive")},
+    {"f-person/git-blame.nvim", config = require("plugins.git-blame"), requires = {"alex-popov-tech/timer.nvim"}}
 }
 
 local session = {
@@ -65,7 +64,7 @@ local session = {
 
 local tmuxAndSplits = {
     -- plugin for vim-tmux interactions
-    {"christoomey/vim-tmux-navigator", config = require("plugins.vim-tmux-navigator")},
+    {"numToStr/Navigator.nvim", config = require("plugins.navigator-nvim")},
     -- resizing windows
     {"talek/obvious-resize", config = require("plugins.obvious-resize")},
     -- syntax high, K docs, something else...
@@ -86,16 +85,9 @@ local filetree = {
 }
 
 local fuzzyFinder = {
-    {
-        "junegunn/fzf.vim",
-        requires = {{"junegunn/fzf", run = "./install --all"}},
-        config = require("plugins.fzf-vim")
-    },
-    {
-        "nvim-telescope/telescope.nvim",
-        requires = {"nvim-lua/popup.nvim", "nvim-lua/plenary.nvim"},
-        config = require("plugins.telescope-nvim")
-    }
+    "nvim-telescope/telescope.nvim",
+    requires = {"nvim-lua/popup.nvim", "nvim-lua/plenary.nvim", "nvim-telescope/telescope-fzy-native.nvim"},
+    config = require("plugins.telescope-nvim")
 }
 
 local coding = {
@@ -104,17 +96,40 @@ local coding = {
     -- plugin which allows vim to work with common editorconfig
     "editorconfig/editorconfig-vim",
     -- database viewer
-    "tpope/vim-dadbod",
-    "kristijanhusak/vim-dadbod-ui"
+    {
+        "kristijanhusak/vim-dadbod-ui",
+        config = require("plugins.vim-dadbod"),
+        requires = {"tpope/vim-dadbod", "kristijanhusak/vim-dadbod-completion"}
+    },
+    {"tpope/vim-dotenv", config = require("plugins.vim-dotenv")}
 }
 
 local ui = {
     -- top buff line
     {"akinsho/nvim-bufferline.lua", config = require("plugins.nvim-bufferline")},
     -- statusline
-    {"glepnir/galaxyline.nvim", config = require("plugins.galaxyline-nvim")},
+    {
+        "glepnir/galaxyline.nvim",
+        requires = {"kyazdani42/nvim-web-devicons", opt = true},
+        config = require("plugins.galaxyline-nvim")
+    },
     -- color scheme
-    "christianchiarulli/nvcode-color-schemes.vim"
+    -- "christianchiarulli/nvcode-color-schemes.vim",
+    -- "bluz71/vim-nightfly-guicolors",
+    {"sainnhe/sonokai", config = require("plugins.sonokai")},
+    -- "glepnir/zephyr-nvim",
+    -- "sainnhe/edge",
+    -- "mhartington/oceanic-next",
+    -- "rktjmp/lush.nvim",
+    -- "npxbr/gruvbox.nvim",
+    -- "edkolev/tmuxline.vim", -- generate tmux statusline from vim statusline
+    {
+        "rrethy/vim-hexokinase",
+        run = "make hexokinase",
+        config = function()
+            vim.g.Hexokinase_highlighters = {"foregroundfull"}
+        end
+    } -- highlight hex colors in buffer
 }
 
 local treesitter = {
@@ -126,19 +141,26 @@ local treesitter = {
 local lsp = {
     -- lsp configs placed here
     "neovim/nvim-lspconfig",
+    {"kabouzeid/nvim-lspinstall", config = require("plugins.nvim-lspinstall")},
+    -- just a bit better ts support
+    "jose-elias-alvarez/nvim-lsp-ts-utils",
     -- pretty hover and references/implementations/codeaction
     {"glepnir/lspsaga.nvim", config = require("plugins.lspsaga-nvim")},
     -- pretty references/codeaction
     {"RishabhRD/nvim-lsputils", requires = {"RishabhRD/popfix"}, config = require("plugins.nvim-lsputils")},
     -- plugin to add completeion possibility
-    {"hrsh7th/nvim-compe", config = require("plugins.nvim-compe")}
-    -- {"nvim-lua/completion-nvim", requires = "steelsojka/completion-buffers", config = require("plugins.completion-nvim")},
-    -- {"hrsh7th/vim-vsnip", requires = "hrsh7th/vim-vsnip-integ", config = require("plugins.vim-vsnip")}
+    {
+        "hrsh7th/nvim-compe",
+        config = require("plugins.nvim-compe"),
+        requires = {"kristijanhusak/vim-dadbod-completion"}
+    },
+    -- snippeds
+    {"hrsh7th/vim-vsnip", requires = "hrsh7th/vim-vsnip-integ", config = require("plugins.vim-vsnip")}
 }
 
 local other = {
-    {"dstein64/vim-startuptime", cmd = {"StartupTime"}},
-    {"sedm0784/vim-you-autocorrect", config = require("plugins.vim-you-autocorrect")}
+    "dstein64/vim-startuptime",
+    cmd = {"StartupTime"}
 }
 
 return require "packer".startup {

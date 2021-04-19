@@ -23,6 +23,7 @@ return function()
             calc = true,
             tags = true,
             -- omni = true,
+            vim_dadbod_completion = true,
             treesitter = true
         }
     }
