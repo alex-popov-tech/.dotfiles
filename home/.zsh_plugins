@@ -4,8 +4,8 @@ zinit for \
   light-mode zsh-users/zsh-autosuggestions \
   light-mode zdharma/fast-syntax-highlighting \
   light-mode OMZ::plugins/git/git.plugin.zsh \
-  light-mode MichaelAquilina/zsh-you-should-use
-  # light-mode OMZ::plugins/vi-mode/vi-mode.plugin.zsh
+  light-mode MichaelAquilina/zsh-you-should-use \
+  light-mode OMZ::plugins/vi-mode/vi-mode.plugin.zsh
 
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 # zinit snippet https://github.com/sainnhe/sonokai/raw/master/zsh/.zsh-theme-sonokai-shusia
@@ -22,5 +22,3 @@ alias lt='exa --tree --icons'
 zinit ice as"program" from"gh-r" mv"rg* -> rg" pick"rg/rg" lucid
 zinit light BurntSushi/ripgrep
 
-zinit ice depth=1
-zinit light jeffreytse/zsh-vi-mode
