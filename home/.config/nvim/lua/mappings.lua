@@ -13,7 +13,7 @@ for _, mappings in pairs(
         -- replace selected
         {"n", "R", ":%s///g<left><left>"},
         {"i", "{<CR>", "{<CR>}<ESC>O", {noremap = true}},
-        {"n", "Q", "<Nop>"},
+        {"n", "Q", "q:"},
     }
 ) do
     local mode = mappings[1]
