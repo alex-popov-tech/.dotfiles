@@ -1,10 +1,14 @@
 #!/bin/zsh
 function ensure_link() {
-  FROM_FILE_PATH="$1"
-  TO_FILE_PATH="$2"
-  TO_DIR_PATH=$(dirname "$TO_FILE_PATH")
-  mkdir -pv "$TO_FILE_PATH"
-  ln -fsv "$FROM_FILE_PATH" "$TO_FILE_PATH"
+    local src
+    src=$1
+    local target
+    target=$2
+    local targetDir
+    targetDir=$(dirname "$target")
+
+    mkdir -p "$targetDir"
+    ln -F -v -s "$src" "$target"
 }
 
 lastarg=${@: -1}
