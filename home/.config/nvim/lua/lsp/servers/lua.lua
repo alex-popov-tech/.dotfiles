@@ -1,9 +1,6 @@
 return function(config, on_attach)
-    local bin_path = vim.fn.stdpath("cache") .. "/lspconfig/sumneko-lua-language-server/sumneko-lua-language-server"
-
-    config.sumneko_lua.setup {
+    config.lua.setup {
         on_attach = on_attach,
-        cmd = {bin_path},
         settings = {
             Lua = {
                 runtime = {

@@ -1,5 +1,4 @@
 return function(config)
-    local util = require "lspconfig/util"
     local eslint_d = {
         lintCommand = "eslint_d -f unix --stdin --stdin-filename ${INPUT}",
         lintStdin = true,
@@ -12,19 +11,19 @@ return function(config)
         formatCommand = "luafmt --stdin",
         formatStdin = true
     }
+    local yaml = {
+        lintCommand = "yamllint -f parsable -",
+        lintStdin = true
+    }
     local languages = {
         typescript = {eslint_d},
         javascript = {eslint_d},
         typescriptreact = {eslint_d},
         javascriptreact = {eslint_d},
-        lua = {luaFormat}
+        lua = {luaFormat},
+        yaml = {yaml}
     }
-    local bin_path = vim.fn.stdpath("cache") .. "/lspconfig/efm-langserver/efm-langserver"
     config.efm.setup {
-        default_config = {
-            cmd = bin_path
-        },
-        root_dir = util.root_pattern(".git", vim.fn.getcwd()),
         init_options = {
             documentFormatting = true,
             codeAction = true
@@ -37,7 +36,8 @@ return function(config)
             "typescript",
             "typescriptreact",
             "javascriptreact",
-            "lua"
+            "lua",
+            "yaml"
         }
     }
 end
