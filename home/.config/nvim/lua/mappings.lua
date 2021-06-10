@@ -10,7 +10,7 @@ for _, mappings in pairs(
         {"n", "<leader>|", ":vsplit | wincmd l<cr>"},
         {"n", "zl", "zo"}, -- remap zl back to zo
         -- replace selected
-        {"n", "R", ":%s///g<left><left>"},
+        {"n", "R", ":%s///gI<left><left><left>"},
         {"i", "{<CR>", "{<CR>}<ESC>O", {noremap = true}},
         {"n", "Q", "q:"},
     }
