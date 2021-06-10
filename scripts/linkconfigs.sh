@@ -21,4 +21,4 @@ $DPATH/scripts/lnfilepath.sh $DPATH/home/.config/nvim/lua/lsp/servers/*.lua $HOM
 
 $DPATH/scripts/lnfilepath.sh $DPATH/home/.config/nvim/vsnip/*.json $HOME/.config/vsnip
 
-$DPATH/scripts/lnfilepath.sh $DPATH/home/Library/Fonts/* $HOME/Library/Fonts
+cp -vf $DPATH/home/Library/Fonts/* $HOME/Library/Fonts/
