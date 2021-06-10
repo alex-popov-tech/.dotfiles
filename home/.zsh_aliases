@@ -21,6 +21,8 @@ alias cc="clear"
 alias tnode="npx ts-node"
 
 alias refresh="$HOME/.dotfiles/scripts/linkconfigs.sh"
+alias refreshScreens='displayplacer "id:B4DB637F-B509-E8F7-93FC-3FEB16AFE658 res:1920x1080 hz:60 color_depth:8 scaling:on origin:(0,0) degree:0" "id:30806869-1EE1-C15D-60AD-8DD5E0325E5E res:1152x720 hz:59 color_depth:4 scaling:on origin:(-1152,-357) degree:0" "id:CA011EAD-8768-F388-BAA3-899F65048599 res:1920x1080 hz:30 color_depth:8 scaling:on origin:(0,-1080) degree:0" "id:B7AE2D44-CA3F-EFD1-F08C-BEEDD1A534C2 res:1920x1080 hz:60 color_depth:8 scaling:on origin:(1920,0) degree:0" "id:874C4405-B375-9A0D-FF50-094F80539F21 res:1920x1080 hz:60 color_depth:8 scaling:on origin:(1920,-1080) degree:0"'
+
 alias dtf="cd $HOME/.dotfiles"
 alias font='echo -e "\nnormal flower\n\e[1mboldflower\e[0m\n\e[3mitalic flower\e[0m\n\e[3m\e[1mbold italic flower\e[0m\n\e[4munderline flower\e[0m\n\e[9mstrikethrough flower\e[0m\n\e[4:3mcurly underline flower\e[4:0m\n\e[4:3\e[58:mcurlyunderlinewithcolor flower\e[59m\e[4:0m"'
 alias color="$HOME/.dotfiles/scripts/test_color.sh"
