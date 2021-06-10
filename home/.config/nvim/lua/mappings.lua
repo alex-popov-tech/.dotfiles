@@ -21,3 +21,6 @@ for _, mappings in pairs(
     local options = mappings[4]
     map(mode, key, value, options)
 end
+
+cmd("cnoreabbrev W noa w")
+cmd("cnoreabbrev WA noa wa")
