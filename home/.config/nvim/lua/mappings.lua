@@ -8,7 +8,6 @@ for _, mappings in pairs(
         {"n", "<shift><down>", ":bp"},
         {"n", "<leader>-", ":split | wincmd j<cr>"},
         {"n", "<leader>|", ":vsplit | wincmd l<cr>"},
-        {"n", "<leader>rr", ":lua reload()<cr>"}, -- reload config
         {"n", "zl", "zo"}, -- remap zl back to zo
         -- replace selected
         {"n", "R", ":%s///g<left><left>"},
