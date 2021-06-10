@@ -68,7 +68,8 @@ local tmuxAndSplits = {
     -- resizing windows
     {"talek/obvious-resize", config = require("plugins.obvious-resize")},
     -- syntax high, K docs, something else...
-    "tmux-plugins/vim-tmux"
+    "tmux-plugins/vim-tmux",
+    -- {"alex-popov-tech/shade.nvim", config = require("plugins.shade-nvim")}
 }
 
 local term = {
@@ -85,9 +86,12 @@ local filetree = {
 }
 
 local fuzzyFinder = {
-    "nvim-telescope/telescope.nvim",
-    requires = {"nvim-lua/popup.nvim", "nvim-lua/plenary.nvim", "nvim-telescope/telescope-fzy-native.nvim"},
-    config = require("plugins.telescope-nvim")
+    {
+        "nvim-telescope/telescope.nvim",
+        requires = {"nvim-lua/popup.nvim", "nvim-lua/plenary.nvim", "nvim-telescope/telescope-fzy-native.nvim"},
+        config = require("plugins.telescope-nvim")
+    },
+    {"windwp/nvim-spectre", config = require('plugins.spectre'), requires = {"nvim-lua/plenary.nvim", "nvim-lua/popup.nvim"}}
 }
 
 local coding = {
