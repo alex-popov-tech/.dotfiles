@@ -1,4 +1,5 @@
 g.mapleader = " "
+cmd("nmap <bs> <leader>")
 
 for key, val in pairs(
     {
@@ -15,7 +16,7 @@ for key, val in pairs(
         backup = false,
         showcmd = true, -- show what commands you typing, what you select in visual mode, etc.
         autowrite = true, -- Automatically :write before running commands
-        scrolloff = 5, -- how many lines till window border to see when scrolling
+        scrolloff = 2, -- how many lines till window border to see when scrolling
         sidescrolloff = 10, -- same as above but for columns
         shell = "/usr/local/bin/zsh",
         inccommand = "nosplit",
@@ -53,33 +54,12 @@ end
 -- add chars to '%'
 vim.bo.matchpairs = "(:),{:},[:],<:>"
 
-map("n", "<bs>", "<leader>")
-
 -- blink search matches, not leave them visible
 au("cursorhold", "*", "set nohlsearch")
 map("n", "n", ":set hlsearch <cr>n")
 map("n", "N", ":set hlsearch <cr>N")
 map("n", "/", ":set hlsearch <cr>/")
 map("n", "?", ":set hlsearch <cr>?")
--- when using * # ignore smart case
-_G["*"] = function()
-    vim.o.ignorecase = false
-    vim.o.smartcase = false
-    cmd("/" .. fn.expand("<cword>"))
-    vim.o.ignorecase = true
-    vim.o.smartcase = true
-end
-_G["#"] = function()
-    vim.o.ignorecase = false
-    vim.o.smartcase = false
-    cmd("?" .. fn.expand("<cword>"))
-    vim.o.ignorecase = true
-    vim.o.smartcase = true
-end
--- case-sensative search for * and #
-map("n", "*", ":lua _G['*']()<cr>")
-map("n", "#", ":lua _G['#']()<cr>")
-
 -- Keep undo history across sessions, by storing in file.
 -- Only works all the time.
 if fn.has("persistent_undo") then
@@ -110,3 +90,8 @@ function _toggleZoom()
     return
 end
 map("n", "<leader>z", ":lua _toggleZoom()<cr>")
+
+au('BufNewFile', '*.pug', 'set filetype=pug')
+au('bufreadpost', '*.pug', 'set filetype=pug')
+au('BufNewFile', '*.jade', 'set filetype=pug')
+au('bufreadpost', '*.jade', 'set filetype=pug')
