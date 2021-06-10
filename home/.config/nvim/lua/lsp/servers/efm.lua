@@ -1,4 +1,8 @@
-return function(config)
+return function(config, on_attach)
+    local prettier_pug = {
+        formatCommand = "prettier --tab-width 4 --stdin-filepath ${INPUT}",
+        formatStdin = true
+    }
     local eslint_d = {
         lintCommand = "eslint_d -f unix --stdin --stdin-filename ${INPUT}",
         lintStdin = true,
@@ -21,6 +25,7 @@ return function(config)
         typescriptreact = {eslint_d},
         javascriptreact = {eslint_d},
         lua = {luaFormat},
+        pug = {prettier_pug},
         yaml = {yaml}
     }
     config.efm.setup {
@@ -37,7 +42,11 @@ return function(config)
             "typescriptreact",
             "javascriptreact",
             "lua",
+            "pug",
             "yaml"
-        }
+        },
+        on_attach = function(client, bufnr)
+            on_attach(client, bufnr)
+        end
     }
 end
