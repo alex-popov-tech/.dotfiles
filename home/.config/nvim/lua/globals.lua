@@ -67,6 +67,20 @@ function _G.ft()
   return vim.api.nvim_buf_get_option(0, "filetype")
 end
 
+function _G.fmt()
+    if ft() == "json" then
+        vim.lsp.buf.range_formatting({}, {0, 0}, {vim.fn.line("$"), 0})
+        return
+    end
+
+    if ft() == "typescript" then
+        require "nvim-lsp-ts-utils".organize_imports_sync()
+    end
+
+    vim.lsp.buf.formatting_sync(nil, 500)
+    vim.cmd("w | :e | TSBufEnable highlight")
+end
+
 _G.g = vim.g
 _G.cmd = vim.cmd
 _G.fn = vim.fn

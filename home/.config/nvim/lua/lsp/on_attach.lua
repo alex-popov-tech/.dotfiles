@@ -1,16 +1,3 @@
-function _FMT()
-    if ft() == "json" then
-        vim.lsp.buf.range_formatting({}, {0, 0}, {vim.fn.line("$"), 0})
-        return
-    end
-
-    if ft() == "typescript" then
-        require "nvim-lsp-ts-utils".organize_imports_sync()
-    end
-
-    vim.lsp.buf.formatting_sync(nil, 800)
-end
-
 return function(client, bufnr)
     local options = {noremap = true, silent = true}
     if client.resolved_capabilities.hover then
@@ -42,6 +29,5 @@ return function(client, bufnr)
 
     map("n", "[d", "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>", options)
     map("n", "]d", "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>", options)
-
-    au("bufwritepost", "*", "lua _FMT()")
+    map("n", "<leader>f", "<cmd>lua fmt()<CR>", options)
 end
