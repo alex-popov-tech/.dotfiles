@@ -1,8 +1,0 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<workflow>
-  <name>Join Zoom Meeting</name>
-  <version>1.2.1</version>
-  <bundle>com.alfredapp.aurooba.zoommeeting</bundle>
-  <updated>1590954573</updated>
-  <file>join-zoom-meeting.alfredworkflow</file>
-</workflow>

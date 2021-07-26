@@ -1,8 +1,0 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<workflow>
-  <name>alfred-adapters</name>
-  <version>2018.04.20</version>
-  <bundle>cz.vookimedlo.alfred.adapters</bundle>
-  <updated>1524252598</updated>
-  <file>adapters.alfredworkflow</file>
-</workflow>

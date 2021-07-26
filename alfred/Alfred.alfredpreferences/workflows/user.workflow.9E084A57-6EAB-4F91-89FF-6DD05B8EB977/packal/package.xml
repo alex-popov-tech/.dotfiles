@@ -1,8 +1,0 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<workflow>
-  <name>Alfred-Time V2</name>
-  <version>2.1.0</version>
-  <bundle>mo.com.sleeplessmind.time-v2</bundle>
-  <updated>1562145873</updated>
-  <file>time.alfredworkflow</file>
-</workflow>
