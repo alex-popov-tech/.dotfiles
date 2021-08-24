@@ -1,5 +1,5 @@
 return function(config, on_attach)
-    config.lua.setup {
+    return {
         on_attach = on_attach,
         settings = {
             Lua = {

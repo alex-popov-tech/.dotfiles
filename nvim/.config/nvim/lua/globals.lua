@@ -1,3 +1,12 @@
+_G.includes = function(map, expected)
+    for _, value in pairs(map) do
+        if expected == value then
+          return true
+        end
+    end
+    return false
+end
+
 _G.keys = function(map)
     local result = {}
     local index = 1

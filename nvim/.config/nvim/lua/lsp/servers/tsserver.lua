@@ -1,5 +1,5 @@
-return function(config, on_attach)
-    config.typescript.setup {
+return function(on_attach)
+    return {
         filetypes = {"typescript", "javascript"},
         on_attach = function(client, bufnr)
             on_attach(client, bufnr)

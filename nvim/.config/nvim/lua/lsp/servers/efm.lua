@@ -1,4 +1,4 @@
-return function(config, on_attach)
+return function(on_attach)
     local prettier_pug = {
         formatCommand = "prettier --tab-width 4 --stdin-filepath ${INPUT}",
         formatStdin = true
@@ -36,7 +36,7 @@ return function(config, on_attach)
         pug = {prettier_pug},
         yaml = {yaml}
     }
-    config.efm.setup {
+    return {
         init_options = {
             documentFormatting = true,
             codeAction = true
