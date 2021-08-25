@@ -1,6 +1,7 @@
 local lsp_installer = require("nvim-lsp-installer")
 
-local servers = {"tsserver", "jsonls", "sumneko_lua", "terraformls" }
+-- local servers = {"efm", "eslintls", "tsserver", "jsonls", "sumneko_lua", "terraformls" }
+local servers = {"efm", "tsserver", "jsonls", "sumneko_lua", "terraformls" }
 -- local servers = {"efm"}
 
 _G.uninstallLspServers = function()
@@ -19,6 +20,7 @@ lsp_installer.on_server_ready(function(server)
     if not includes(servers, server.name) then
       return
     end
+
     local configurationFunc = require("lsp.servers." .. server.name)
     local general_on_attach = require("lsp.on_attach")
     local opts = configurationFunc(general_on_attach)

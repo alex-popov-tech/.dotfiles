@@ -6,7 +6,7 @@ return function(client, bufnr)
         map("n", "K", "<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>", options)
     end
     if client.resolved_capabilities.find_references then
-        map("n", "'re", "<cmd>lua require'telescope.builtin'.lsp_references()<CR>", options)
+        map("n", "'rf", "<cmd>lua require'telescope.builtin'.lsp_references()<CR>", options)
     end
     if client.resolved_capabilities.goto_definition then
         map("n", "'d", "<cmd>lua vim.lsp.buf.definition()<CR>", options)
@@ -18,8 +18,8 @@ return function(client, bufnr)
     map("n", "'i", "<cmd>lua vim.lsp.buf.implementation()<CR>", options)
     map("n", "'a", "<cmd>lua require'lspsaga.codeaction'.code_action()<CR>", options)
     map("v", "'a", "<cmd>lua require'lspsaga.codeaction'.range_code_action()<CR>", options)
+    map("n", "'d", '<cmd>lua require "lspsaga.diagnostic".show_line_diagnostics()<CR>', options)
 
-    au("cursorhold", "*", 'lua require "lspsaga.diagnostic".show_line_diagnostics()')
     require "timer".add(
         function()
             if not require("lspsaga.signaturehelp").has_saga_signature() and vim.fn.mode() == "i" then
