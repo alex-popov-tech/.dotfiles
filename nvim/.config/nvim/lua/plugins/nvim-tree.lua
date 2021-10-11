@@ -1,10 +1,12 @@
 return function()
-    map("n", "<c-f>", ":NvimTreeToggle<cr>")
+    map(
+        "n",
+        "<c-f>",
+        ":lua if ft() == 'NvimTree' or ft() == 'startify' then vim.cmd('NvimTreeToggle') else vim.cmd('NvimTreeFindFile') end<cr>"
+    )
     g.nvim_tree_side = "left"
     g.nvim_tree_width = 30
-    g.nvim_tree_auto_close = 1
     g.nvim_tree_quit_on_open = 1
-    g.nvim_tree_follow = 1
     g.nvim_tree_indent_markers = 1
     g.nvim_tree_git_hl = 1
     g.nvim_tree_allow_resize = 1
@@ -23,5 +25,8 @@ return function()
             default = "",
             open = ""
         }
+    }
+    require "nvim-tree".setup {
+        auto_close = true
     }
 end
