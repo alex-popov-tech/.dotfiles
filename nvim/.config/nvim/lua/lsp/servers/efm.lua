@@ -1,17 +1,20 @@
 return function(on_attach)
     local prettier_pug = {
         formatCommand = "prettier --tab-width 4 --stdin-filepath ${INPUT}",
-        formatStdin = true
+        formatStdin = true,
+        lintSeverity = 2
     }
     local prettier_sh = {
         formatCommand = "prettier --tab-width 4 --stdin-filepath ${INPUT}",
-        formatStdin = true
+        formatStdin = true,
+        lintSeverity = 2
     }
     local yaml = {
         lintCommand = "yamllint -f parsable -",
         lintStdin = true,
         formatCommand = "prettier --tab-width 4 --stdin-filepath ${INPUT}",
-        formatStdin = true
+        formatStdin = true,
+        lintSeverity = 2
     }
     local eslint_d = {
         lintCommand = "eslint_d -f unix --stdin --stdin-filename ${INPUT}",
@@ -19,11 +22,13 @@ return function(on_attach)
         lintFormats = {"%f:%l:%c: %m"},
         lintIgnoreExitCode = true,
         formatCommand = "eslint_d --fix-to-stdout --stdin --stdin-filename=${INPUT}",
-        formatStdin = true
+        formatStdin = true,
+        lintSeverity = 2
     }
     local luaFormat = {
         formatCommand = "luafmt --stdin",
-        formatStdin = true
+        formatStdin = true,
+        lintSeverity = 2
     }
     local filetypeConfigMap = {
         typescript = {eslint_d},

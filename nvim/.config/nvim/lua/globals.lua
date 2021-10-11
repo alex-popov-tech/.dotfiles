@@ -96,7 +96,7 @@ function _G.fmt()
         require "nvim-lsp-ts-utils".organize_imports_sync()
     end
 
-    vim.lsp.buf.formatting_seq_sync(nil, 500, nil)
+    vim.lsp.buf.formatting_seq_sync()
     vim.cmd("w | :e | TSBufEnable highlight")
 end
 
