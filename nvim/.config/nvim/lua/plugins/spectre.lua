@@ -11,6 +11,5 @@ return function()
           replace ="DiffChange",
       },
     })
-    map("n", "<leader>r", 'viw:lua require("spectre").open_visual()<CR>', {})
-    map("n", "<leader>R", '<cmd>lua require("spectre").open()<CR>', {})
+    vim.api.nvim_command("command! Replace :lua require'spectre'.open()")
 end
