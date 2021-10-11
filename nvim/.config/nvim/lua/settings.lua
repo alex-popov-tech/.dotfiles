@@ -29,7 +29,7 @@ for key, val in pairs(
         background = "dark",
         encoding = "UTF-8",
         list = true,
-        listchars = "space:·,tab:»»,eol:↩", -- replace chars
+        -- listchars = "space:·,tab:»»,eol:↩", -- replace chars
         fillchars = "stlnc:-,vert:¦" -- splits char
     }
 ) do
@@ -56,10 +56,10 @@ vim.bo.matchpairs = "(:),{:},[:],<:>"
 
 -- blink search matches, not leave them visible
 au("cursorhold", "*", "set nohlsearch")
-map("n", "n", ":set hlsearch <cr>n")
-map("n", "N", ":set hlsearch <cr>N")
-map("n", "/", ":set hlsearch <cr>/")
-map("n", "?", ":set hlsearch <cr>?")
+-- map("n", "n", ":set hlsearch <cr>n")
+-- map("n", "N", ":set hlsearch <cr>N")
+-- map("n", "/", ":set hlsearch <cr>/")
+-- map("n", "?", ":set hlsearch <cr>?")
 -- Keep undo history across sessions, by storing in file.
 -- Only works all the time.
 if fn.has("persistent_undo") then
@@ -73,39 +73,3 @@ au("BufNewFile", "*", ":exe ': !mkdir -p ' . escape(fnamemodify(bufname('%'),':p
 
 cmd("syntax on")
 
--- tmux-like zoom in vim
-function _toggleZoom()
-    if 1 == vim.fn.winnr("$") then
-        return
-    end
-    local restoreCmd = vim.fn.winrestcmd()
-    cmd("wincmd |")
-    cmd("wincmd _")
-    -- If the layout did not change, it's an un-zoom.
-    if restoreCmd == vim.fn.winrestcmd() then
-        cmd("exe t:zoom_restore")
-    else
-        vim.t.zoom_restore = restoreCmd
-    end
-    return
-end
-map("n", "<leader>z", ":lua _toggleZoom()<cr>")
-function _AorS()
-    local lineContent = cmd('echo getline(".")')
-    if lineContent == "" then
-        cmd("norm! S")
-    else
-        cmd("norm! a")
-    end
-end
-
-au("BufNewFile, BufReadPost", "*.pug", "set filetype=pug")
--- au('bufreadpost', '*.pug', 'set filetype=pug')
-au("BufNewFile, BufReadPost", "*.jade", "set filetype=pug")
--- au('BufNewFile', '*.jade', 'set filetype=pug')
--- au('bufreadpost', '*.jade', 'set filetype=pug')
-
--- au('BufNewFile', '*.tf', 'set filetype=terraform')
--- au('bufreadpost', '*.tf', 'set filetype=terraform')
--- au('BufNewFile', '*.tf', 'set filetype=terraform')
--- au('bufreadpost', '*.tf', 'set filetype=terraform')
