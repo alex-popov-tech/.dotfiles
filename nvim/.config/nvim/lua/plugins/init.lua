@@ -29,7 +29,7 @@ local textObjects = {
 
 local core = {
     -- abbreviations, substitusion, coercion (transform case)
-    "tpope/vim-abolish",
+    {"tpope/vim-abolish", config = require("plugins.abolish-vim")},
     -- add bunch of mappings like ]p ]e ]<space> etc.
     "tpope/vim-unimpaired",
     -- allows repeat via dot for some plugins like surround
@@ -54,12 +54,12 @@ local core = {
     -- paste for <c-v>
     "lambdalisue/pastefix.vim",
     -- highlight for % pairs
-    "andymass/vim-matchup",
+    "andymass/vim-matchup"
 }
 
 local git = {
-    {"tpope/vim-fugitive", config = require("plugins.vim-fugitive")},
-    {"f-person/git-blame.nvim", config = require("plugins.git-blame"), requires = {"alex-popov-tech/timer.nvim"}}
+    "tpope/vim-fugitive",
+    config = require("plugins.vim-fugitive")
 }
 
 local session = {
@@ -95,7 +95,10 @@ local filetree = {
 local fuzzyFinder = {
     {
         "nvim-telescope/telescope.nvim",
-        requires = {"nvim-lua/popup.nvim", "nvim-lua/plenary.nvim", "nvim-telescope/telescope-fzy-native.nvim", "nvim-telescope/telescope-fzf-writer.nvim", "camgraff/telescope-tmux.nvim"},
+        requires = {
+            "nvim-lua/popup.nvim",
+            "nvim-lua/plenary.nvim"
+        },
         config = require("plugins.telescope-nvim")
     },
     {
@@ -151,34 +154,62 @@ local ui = {
 }
 
 local treesitter = {
-  "nvim-treesitter/nvim-treesitter", run = ":TSUpdate", config = require("plugins.nvim-treesitter")
-  -- { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate", config = require("plugins.nvim-treesitter") },
-  -- { "theHamsta/nvim-treesitter-pairs", },
+    {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate", config = require("plugins.nvim-treesitter")},
+    -- { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate", config = require("plugins.nvim-treesitter") },
+    -- { "theHamsta/nvim-treesitter-pairs", },
+    {"David-Kunz/treesitter-unit", config = require("plugins.treesitter-unit")}
 }
 
 local lsp = {
     -- lsp configs placed here
     "neovim/nvim-lspconfig",
-    {"kabouzeid/nvim-lspinstall", config = require("plugins.nvim-lspinstall")},
+    {"williamboman/nvim-lsp-installer"},
     -- just a bit better ts support
     "jose-elias-alvarez/nvim-lsp-ts-utils",
-    -- pretty hover and references/implementations/codeaction
-    {"glepnir/lspsaga.nvim", config = require("plugins.lspsaga-nvim")},
     -- pretty references/codeaction
     {"RishabhRD/nvim-lsputils", requires = {"RishabhRD/popfix"}, config = require("plugins.nvim-lsputils")},
     -- plugin to add completeion possibility
+    -- {
+    --     "hrsh7th/nvim-compe",
+    --     config = require("plugins.nvim-compe"),
+    --     requires = {"kristijanhusak/vim-dadbod-completion"}
+    -- },
     {
-        "hrsh7th/nvim-compe",
-        config = require("plugins.nvim-compe"),
-        requires = {"kristijanhusak/vim-dadbod-completion"}
+        "hrsh7th/nvim-cmp",
+        config = require("plugins.nvim-cmp"),
+        requires = {
+            "onsails/lspkind-nvim",
+            "f3fora/cmp-spell",
+            "octaltree/cmp-look",
+            "hrsh7th/cmp-path",
+            "hrsh7th/cmp-nvim-lsp",
+            "hrsh7th/cmp-buffer",
+            "hrsh7th/cmp-vsnip",
+            "hrsh7th/vim-vsnip",
+            "hrsh7th/cmp-emoji"
+        }
     },
     -- snippeds
-    {"hrsh7th/vim-vsnip", requires = "hrsh7th/vim-vsnip-integ", config = require("plugins.vim-vsnip")}
+    {"hrsh7th/vim-vsnip", requires = "hrsh7th/vim-vsnip-integ", config = require("plugins.vim-vsnip")},
+    -- colors for lsp if your theme have not
+    "folke/lsp-colors.nvim",
+    -- {"tami5/lspsaga.nvim", config = require("plugins.lspsaga")},
+    {"rinx/lspsaga.nvim", config = require("plugins.lspsaga")},
+    -- diagnostics
+    {"folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons", config = require("plugins.trouble-nvim")},
+    -- pretty hover and references/implementations/codeaction
+    -- {"ray-x/lsp_signature.nvim", config = require("plugins.lsp_signature-nvim")}
+    {"weilbith/nvim-code-action-menu", cmd = "CodeActionMenu"}
 }
 
 local other = {
     {"dstein64/vim-startuptime", cmd = {"StartupTime"}},
-    "iamcco/markdown-preview.nvim"
+    {"iamcco/markdown-preview.nvim"},
+    {
+        "NTBBloodbath/rest.nvim",
+        requires = {"nvim-lua/plenary.nvim"},
+        config = require("plugins.rest-nvim")
+    }
 }
 
 return require "packer".startup {
