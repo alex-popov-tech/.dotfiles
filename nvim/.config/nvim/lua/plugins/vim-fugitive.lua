@@ -3,6 +3,6 @@ return function()
     cmd("cnoreabbrev gpf Git push --force")
     cmd("command! Gs :Git | on")
     cmd("cnoreabbrev gs Gs")
-    map("n", "gm", ":diffget //2<cr>")
-    map("n", "gt", ":diffget //3<cr>")
+    map("n", "gl", ":diffget //2<cr>")
+    map("n", "gr", ":diffget //3<cr>")
 end
