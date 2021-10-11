@@ -27,7 +27,3 @@ function git_current_branch() {
   fi
   echo ${ref#refs/heads/}
 }
-
-function a() {
-  alias | rg "$1" | map echo
-}
