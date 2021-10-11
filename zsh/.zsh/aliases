@@ -32,3 +32,5 @@ alias color="$HOME/.dotfiles/scripts/test_color.sh"
 alias gist="pbpaste | gh gist create | rg github | pbcopy"
 
 alias a="alias | rg"
+
+alias app='fd ".app" /System/Library/CoreServices /System/Applications /Applications /System/Applications/Utilities --max-depth 1 | fzf | xargs -I {} open "{}"'
