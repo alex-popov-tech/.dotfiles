@@ -129,11 +129,7 @@ local ui = {
     -- top buff line
     {"akinsho/nvim-bufferline.lua", config = require("plugins.nvim-bufferline")},
     -- statusline
-    {
-        "glepnir/galaxyline.nvim",
-        requires = {"kyazdani42/nvim-web-devicons", opt = true},
-        config = require("plugins.galaxyline-nvim")
-    },
+    {"windwp/windline.nvim", config = require("plugins.windline-nvim")},
     -- color scheme
     -- "christianchiarulli/nvcode-color-schemes.vim",
     -- "bluz71/vim-nightfly-guicolors",
