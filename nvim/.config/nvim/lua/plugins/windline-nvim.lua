@@ -2,6 +2,7 @@ return function()
     local windline = require("windline")
     local b_components = require("windline.components.basic")
     local lsp_comps = require("windline.components.lsp")
+    local git_comps = require("windline.components.git")
 
     local space = {
         function()
@@ -35,22 +36,44 @@ return function()
                         space,
                         {
                             name = "file",
-                            text = function(_, _, width)
-                                local result = ""
-
+                            text = function()
+                                local readonly_text = ""
                                 if vim.bo.readonly then
-                                    result = result .. "🔒"
+                                    readonly_text = "🔒 "
                                 end
 
-                                result = result .. vim.fn.fnamemodify(vim.fn.expand "%", ":~:.")
-
-                                local color = "green"
+                                local filepath_color = "green"
                                 if vim.bo.modified then
-                                    color = "yellow"
+                                    filepath_color = "yellow"
                                 end
+
+                                local filepath = vim.fn.fnamemodify(vim.fn.expand "%", ":~:.")
+                                local filename = vim.fn.expand("%:t")
+                                local fileext = vim.fn.expand("%:e")
+                                local icon, color = require "nvim-web-devicons".get_icon_color(filename, fileext)
+                                hi("WL_icon_tmp", {guifg = color or "white", guibg = "none"})
 
                                 return {
-                                    {result, {color, "bg"}}
+                                    {icon, "WL_icon_tmp"},
+                                    {" "},
+                                    {readonly_text .. filepath, {filepath_color, "bg"}}
+                                }
+                            end
+                        },
+                        space,
+                        {
+                            name = "git",
+                            text = function(bufnr)
+                                if not git_comps.is_git(bufnr) then
+                                    return ""
+                                end
+                                return {
+                                    {"on", {"green", "bg"}},
+                                    {git_comps.git_branch({icon = "  "}), {"blue", "bg"}},
+                                    {" with ", {"green", "bg"}},
+                                    {git_comps.diff_added({format = "  %s", show_zero = true}), {"green", "bg"}},
+                                    {git_comps.diff_removed({format = "  %s", show_zero = true}), {"red", "bg"}},
+                                    {git_comps.diff_changed({format = " 柳%s", show_zero = true}), {"blue", "bg"}}
                                 }
                             end
                         },
