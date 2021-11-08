@@ -126,8 +126,11 @@ local coding = {
 }
 
 local ui = {
-    -- top buff line
-    {"akinsho/nvim-bufferline.lua", config = require("plugins.nvim-bufferline")},
+    {
+      'noib3/cokeline.nvim',
+      requires = 'kyazdani42/nvim-web-devicons', -- If you want devicons
+      config = require("plugins.cokeline-nvim")
+    },
     -- statusline
     {"windwp/windline.nvim", config = require("plugins.windline-nvim")},
     -- color scheme
