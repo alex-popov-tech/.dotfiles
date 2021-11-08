@@ -1,11 +1,7 @@
-GitHub Workflow for [Alfred 3](http://www.alfredapp.com)
+GitHub Workflow for [Alfred 4](http://www.alfredapp.com)
 ==============================
 
-[![Gitter](https://badges.gitter.im/gharlan/alfred-github-workflow.svg)](https://gitter.im/gharlan/alfred-github-workflow?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
-
 You can search through GitHub (`gh`) and your GitHub Enterprise instance (`ghe`).
-
-You have to login (`gh > login`) before you can use the workflow. The login uses OAuth, so you do not have to enter your credentials.
 
 **[DOWNLOAD](https://github.com/gharlan/alfred-github-workflow/releases)**
 
@@ -13,6 +9,9 @@ You have to login (`gh > login`) before you can use the workflow. The login uses
 
 Setup
 -----
+
+This workflow requires PHP, which is no longer pre-installed since macOS 12 Montery.  
+You can install it via [Homebrew](https://brew.sh) (`brew install php`).
 
 ### For github.com
 
@@ -24,6 +23,10 @@ In Alfred type (`gh > login`) to authenticate against your account. The login us
 2. Create a new Personal Access Token (`ghe > generate token` or `https://github.mycompany.com/settings/applications`). It only needs access to your repos. Copy this token to your clipboard.
 3. In Alfred type (`ghe > login <paste token here>`)
 4. You can now `ghe your_enterprise_repo_name`
+
+### Access to private repositories in organizations
+
+Organizations must approve this app, otherwise private repositories of that organization can not be accessed. Access can be requested [here](https://github.com/settings/connections/applications/2d4f43826cb68e11c17c).
 
 Key Combinations
 ----------------
@@ -61,6 +64,7 @@ To search through your GitHub Enterprise instance replace `gh` by `ghe`.
 * `gh user/repo releases`
 * `gh user/repo wiki`
 * `gh user/repo projects`
+* `gh user/repo actions`
 
 ### User commands
 

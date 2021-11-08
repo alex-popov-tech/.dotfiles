@@ -422,6 +422,7 @@ class Search
                 'wiki' => array('Pull up the wiki'),
                 'commits' => array('View commit history'),
                 'releases' => array('See latest releases'),
+                'actions' => array('Show Github Actions'),
             );
             foreach ($subs as $key => $sub) {
                 Workflow::addItem(Item::create()
@@ -435,7 +436,7 @@ class Search
                 ->title($parts[0].' new issue')
                 ->subtitle('Create new issue')
                 ->icon('issue')
-                ->arg('/'.$parts[0].'/issues/new?source=c')
+                ->arg('/'.$parts[0].'/issues/new/choose?source=c')
             );
             Workflow::addItem(Item::create()
                 ->title($parts[0].' new pull')
@@ -605,6 +606,3 @@ class Search
         }
     }
 }
-
-Search::run($argv[1], $argv[2], getenv('hotkey'));
-echo Workflow::getItemsAsXml();
