@@ -162,17 +162,19 @@ local ui = {
     -- "rktjmp/lush.nvim",
     -- "npxbr/gruvbox.nvim",
     -- "edkolev/tmuxline.vim", -- generate tmux statusline from vim statusline
-    {
-        "rrethy/vim-hexokinase",
-        run = "make hexokinase",
-        config = function()
-            vim.g.Hexokinase_highlighters = {"foregroundfull"}
-        end
-    } -- highlight hex colors in buffer
+    -- highlight hex colors in buffer
+    -- {
+    --     "rrethy/vim-hexokinase",
+    --     run = "make hexokinase",
+    --     config = function()
+    --         vim.g.Hexokinase_highlighters = {"foregroundfull"}
+    --     end
+    -- }
 }
 
 local treesitter = {
     {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate", config = require("plugins.nvim-treesitter")},
+    {"nvim-treesitter/playground"},
     -- { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate", config = require("plugins.nvim-treesitter") },
     -- { "theHamsta/nvim-treesitter-pairs", },
     {"David-Kunz/treesitter-unit", config = require("plugins.treesitter-unit")}
