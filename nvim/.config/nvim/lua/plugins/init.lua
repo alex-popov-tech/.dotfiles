@@ -228,13 +228,14 @@ local lsp = {
     {"hrsh7th/vim-vsnip", requires = "hrsh7th/vim-vsnip-integ", config = require("plugins.vim-vsnip")},
     -- colors for lsp if your theme have not
     "folke/lsp-colors.nvim",
-    -- {"tami5/lspsaga.nvim", config = require("plugins.lspsaga")},
-    {"rinx/lspsaga.nvim", config = require("plugins.lspsaga")},
     -- diagnostics
     {"folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons", config = require("plugins.trouble-nvim")},
     -- pretty hover and references/implementations/codeaction
     -- {"ray-x/lsp_signature.nvim", config = require("plugins.lsp_signature-nvim")}
-    {"weilbith/nvim-code-action-menu", cmd = "CodeActionMenu"}
+    -- code action
+    {"weilbith/nvim-code-action-menu", cmd = "CodeActionMenu"},
+    -- shema validation for JSON files
+    {"b0o/SchemaStore.nvim"}
 }
 
 local other = {
