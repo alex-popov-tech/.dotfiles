@@ -37,9 +37,6 @@ return function()
                             if buffer.is_modified then
                                 return "#e5c463"
                             end
-                            if buffer.lsp.errors ~= 0 then
-                                return "#fc5d7c"
-                            end
                         end,
                         style = function(buffer)
                             if buffer.is_focused then
@@ -61,7 +58,9 @@ return function()
             }
         }
     )
-    map("n", "<S-Up>", "<Cmd>lua require'cokeline'.focus({ step = 1 })<CR>")
-    map("n", "<S-Down>", "<Cmd>lua require'cokeline'.focus({ step = -1 })<CR>")
+    -- map("n", "<S-Up>", "<Cmd>lua require'cokeline'.focus({ step = 1 })<CR>")
+    -- map("n", "<S-Down>", "<Cmd>lua require'cokeline'.focus({ step = -1 })<CR>")
+    cmd("nmap <S-Up> <Plug>(cokeline-focus-next)")
+    cmd("nmap <S-Down> <Plug>(cokeline-focus-prev)")
     hi("tablinefill", {guibg = "none"})
 end

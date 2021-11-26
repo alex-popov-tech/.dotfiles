@@ -127,9 +127,9 @@ local coding = {
 
 local ui = {
     {
-      'noib3/cokeline.nvim',
-      requires = 'kyazdani42/nvim-web-devicons', -- If you want devicons
-      config = require("plugins.cokeline-nvim")
+        "noib3/cokeline.nvim",
+        requires = "kyazdani42/nvim-web-devicons", -- If you want devicons
+        config = require("plugins.cokeline-nvim")
     },
     -- statusline
     {"windwp/windline.nvim", config = require("plugins.windline-nvim")},
