@@ -2,7 +2,7 @@ return function()
     map(
         "n",
         "<c-f>",
-        ":lua if ft() == 'NvimTree' or ft() == 'startify' then vim.cmd('NvimTreeToggle') else vim.cmd('NvimTreeFindFile') end<cr>"
+        "<cmd>lua if ft() == 'NvimTree' or ft() == 'startify' then vim.cmd('NvimTreeToggle') else vim.cmd('NvimTreeFindFile') end<cr>"
     )
     g.nvim_tree_side = "left"
     g.nvim_tree_width = 30
@@ -27,6 +27,10 @@ return function()
         }
     }
     require "nvim-tree".setup {
-        auto_close = true
+        auto_close = true,
+        view = {
+          width = 50,
+          side = 'right'
+        }
     }
 end
