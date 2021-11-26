@@ -56,7 +56,7 @@ function _G.map(mode, key, result, opts)
 end
 
 function _G.au(event, filetype, action)
-    vim.cmd("au " .. " " .. event .. " " .. filetype .. " " .. action)
+    vim.cmd("au" .. " " .. event .. " " .. filetype .. " " .. action)
 end
 
 function _G.hi(group, options)
