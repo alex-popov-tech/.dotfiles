@@ -121,7 +121,9 @@ local fuzzyFinder = {
     {
         "windwp/nvim-spectre",
         config = require("plugins.spectre"),
-        requires = {"nvim-lua/plenary.nvim", "nvim-lua/popup.nvim"}
+        requires = {"nvim-lua/plenary.nvim", "nvim-lua/popup.nvim"},
+        cmd = "Replace"
+    },
     }
 }
 
