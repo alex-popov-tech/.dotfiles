@@ -169,10 +169,29 @@ local lsp = {
             "octaltree/cmp-look",
             "hrsh7th/cmp-path",
             "hrsh7th/cmp-nvim-lsp",
+            "hrsh7th/cmp-nvim-lua",
             "hrsh7th/cmp-buffer",
             "hrsh7th/cmp-vsnip",
             "hrsh7th/vim-vsnip",
-            "hrsh7th/cmp-emoji"
+            "hrsh7th/cmp-emoji",
+            {
+                "tzachar/cmp-fuzzy-buffer",
+                requires = {
+                    {
+                        "tzachar/fuzzy.nvim",
+                        requires = {{"hrsh7th/cmp-buffer"}, {"nvim-telescope/telescope-fzf-native.nvim", run = "make"}}
+                    }
+                }
+            },
+            {
+                "tzachar/cmp-fuzzy-path",
+                requires = {
+                    {
+                        "tzachar/fuzzy.nvim",
+                        requires = {{"hrsh7th/cmp-path"}, {"nvim-telescope/telescope-fzf-native.nvim", run = "make"}}
+                    }
+                }
+            }
         }
     },
     -- snippeds
