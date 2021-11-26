@@ -44,8 +44,10 @@ local core = {
     -- allows repeat via dot for some plugins like surround
     "tpope/vim-repeat",
     -- add\update\remove surround stuff like ''{}''
-    -- "tpope/vim-surround",
-    "machakann/vim-sandwich",
+    "tpope/vim-surround",
+    -- {
+    --     "machakann/vim-sandwich",
+    -- },
     -- auto brackets
     -- "cohama/lexima.vim",
     --  shiftwidth/expandtab/etc
@@ -57,7 +59,14 @@ local core = {
     -- move to {motion}
     {"svermeulen/vim-subversive", config = require("plugins.vim-subversive")},
     -- highlight for % pairs
-    "andymass/vim-matchup"
+    "andymass/vim-matchup",
+    -- removes cursor jumping when opening qf,etc.
+    {"luukvbaal/stabilize.nvim", config = require("plugins.stabilize-nvim")},
+    -- easy motion like.
+    {
+        "ggandor/lightspeed.nvim",
+        requires = {"tpope/vim-repeat"}
+    }
 }
 
 local git = {
