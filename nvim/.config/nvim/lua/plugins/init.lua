@@ -70,8 +70,16 @@ local core = {
 }
 
 local git = {
-    "tpope/vim-fugitive",
-    config = require("plugins.vim-fugitive")
+    {
+        "tpope/vim-fugitive",
+        config = require("plugins.vim-fugitive")
+    },
+    {
+        "lewis6991/gitsigns.nvim",
+        config = function()
+            require("gitsigns").setup()
+        end
+    }
 }
 
 local session = {
