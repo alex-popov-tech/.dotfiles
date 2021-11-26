@@ -97,7 +97,8 @@ function _G.fmt()
     end
 
     vim.lsp.buf.formatting_seq_sync()
-    vim.cmd("w | :e | TSBufEnable highlight")
+    -- vim.cmd("w | :e | TSBufEnable highlight | :e")
+    -- vim.cmd("TSBufEnable highlight")
 end
 
 _G.g = vim.g
