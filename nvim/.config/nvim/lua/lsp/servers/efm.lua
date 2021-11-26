@@ -9,6 +9,11 @@ return function(on_attach)
         formatStdin = true,
         lintSeverity = 2
     }
+    local prettier = {
+        -- formatCommand = 'prettierd --stdin --stdin-filepath ${INPUT}',
+        formatCommand = 'prettierd "${INPUT}"',
+        formatStdin = true
+    }
     local yaml = {
         lintCommand = "yamllint -f parsable -",
         lintStdin = true,
@@ -21,8 +26,8 @@ return function(on_attach)
         lintStdin = true,
         lintFormats = {"%f:%l:%c: %m"},
         lintIgnoreExitCode = true,
-        formatCommand = "eslint_d --fix-to-stdout --stdin --stdin-filename=${INPUT}",
-        formatStdin = true,
+        -- formatCommand = "eslint_d --fix-to-stdout --stdin --stdin-filename=${INPUT}",
+        -- formatStdin = true,
         lintSeverity = 2
     }
     local luaFormat = {
@@ -31,10 +36,10 @@ return function(on_attach)
         lintSeverity = 2
     }
     local filetypeConfigMap = {
-        typescript = {eslint_d},
-        javascript = {eslint_d},
-        typescriptreact = {eslint_d},
-        javascriptreact = {eslint_d},
+        typescript = {prettier, eslint_d},
+        javascript = {prettier, eslint_d},
+        typescriptreact = {prettier, eslint_d},
+        javascriptreact = {prettier, eslint_d},
         lua = {luaFormat},
         sh = {prettier_sh},
         zsh = {prettier_sh},
@@ -47,7 +52,10 @@ return function(on_attach)
             codeAction = true
         },
         settings = {
-            languages = filetypeConfigMap
+            languages = filetypeConfigMap,
+            -- Note: Debounce should be fairly enough not to run multiple efm instances to a file.
+            --  (https://github.com/mattn/efm-langserver/issues/98)
+            -- lintDebounce = 1e9 -- (nano seconds)
         },
         filetypes = keys(filetypeConfigMap),
         on_attach = on_attach
