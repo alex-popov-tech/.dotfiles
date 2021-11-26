@@ -5,8 +5,7 @@ for key, val in pairs(
     {
         clipboard = "unnamedplus", -- enable yank/paste to/from system clipboard
         mouse = "a", -- to visually select and copy from vim without line numbers
-        lazyredraw = true,
-        -- Don't redraw while executing macros (good performance config)
+        lazyredraw = true, -- Don't redraw while executing macros (good performance config)
         ttyfast = true, -- Don't redraw while executing macros (good performance config)
         hlsearch = true, -- keep searched chunks hightlighted
         ignorecase = true, -- search case-insensitive
@@ -20,8 +19,8 @@ for key, val in pairs(
         sidescrolloff = 10, -- same as above but for columns
         shell = "/usr/local/bin/zsh",
         inccommand = "nosplit",
-        updatetime = 300, -- timeout for showing completions, cursorhold events, etc
-        completeopt = "menu,noinsert,noselect", -- how window for completion will look like
+        updatetime = 200, -- timeout for showing cursorhold events, etc
+        -- completeopt = "menu,noinsert,noselect", -- how window for completion will look like
         shortmess = vim.o.shortmess .. "s", -- better messages
         -- TextEdit might fail if hidden is not set.
         hidden = true,
@@ -29,7 +28,7 @@ for key, val in pairs(
         background = "dark",
         encoding = "UTF-8",
         list = true,
-        -- listchars = "space:·,tab:»»,eol:↩", -- replace chars
+        listchars = "space:·,tab:»»,eol:↩", -- replace chars
         fillchars = "stlnc:-,vert:¦" -- splits char
     }
 ) do
@@ -38,7 +37,6 @@ end
 for key, val in pairs(
     {
         signcolumn = "no", -- nothing to the left of line number
-        cursorcolumn = true, -- highlight for current column
         foldnestmax = 10, -- deepest fold is 10 levels
         foldenable = false, -- don't fold by default
         foldmethod = "syntax", -- fold text using syntax
@@ -46,6 +44,7 @@ for key, val in pairs(
         linebreak = true, -- but do not break words, only 'by words'
         number = true, -- show absolute line number
         relativenumber = true, -- show relative line number for current line
+        -- cursorcolumn = true, -- highlight for current column
         cursorline = true -- Highlight the screen line of the cursor with CursorLine
     }
 ) do
