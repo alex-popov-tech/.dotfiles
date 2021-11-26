@@ -25,6 +25,8 @@ for _, mappings in pairs(
         -- move selected lines up and down
         {"v", "J", ":m '>+1<cr>gv=gv"},
         {"v", "J", ":m '>-12cr>gv=gv"}
+        {"n", "x", '"_dl'},
+        {"n", "X", '"_dh'},
     }
 ) do
     local mode = mappings[1]
