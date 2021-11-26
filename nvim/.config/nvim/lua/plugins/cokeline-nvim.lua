@@ -1,9 +1,23 @@
 return function()
     local get_hex = require("cokeline/utils").get_hex
     local space = {text = " "}
+    local isNonEmptyString = function(str)
+        return str ~= nil and str ~= ""
+    end
     require("cokeline").setup(
         {
             cycle_prev_next_mappings = true,
+            buffers = {
+                -- A function to filter out unwanted buffers. It takes the `buffer` table
+                -- (described above) as a parameter.
+                -- For example, if you want to keep terminals out of your cokeline:
+                --   filter = function(buffer) return buffer.type ~= 'terminal' end,
+                filter = function(buffer)
+                    return isNonEmptyString(buffer.type) and isNonEmptyString(buffer.filetype) and
+                        isNonEmptyString(buffer.path) and
+                        isNonEmptyString(buffer.filename)
+                end
+            },
             default_hl = {
                 focused = {
                     bg = "none"
@@ -27,7 +41,7 @@ return function()
                 },
                 {
                     text = function(buffer)
-                        return buffer.filename
+                        return buffer.unique_prefix .. buffer.filename
                     end,
                     hl = {
                         fg = function(buffer)
