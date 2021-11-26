@@ -51,6 +51,7 @@ return function()
                                 local filename = vim.fn.expand("%:t")
                                 local fileext = vim.fn.expand("%:e")
                                 local icon, color = require "nvim-web-devicons".get_icon_color(filename, fileext)
+
                                 hi("WL_icon_tmp", {guifg = color or "white", guibg = "none"})
 
                                 return {
@@ -60,7 +61,6 @@ return function()
                                 }
                             end
                         },
-                        space,
                         {
                             name = "git",
                             text = function(bufnr)
@@ -68,9 +68,8 @@ return function()
                                     return ""
                                 end
                                 return {
-                                    {"on", {"green", "bg"}},
-                                    {git_comps.git_branch({icon = "  "}), {"blue", "bg"}},
-                                    {" with ", {"green", "bg"}},
+                                    {git_comps.git_branch({icon = "  "}), {"red", "bg"}},
+                                    {" with", {"green", "bg"}},
                                     {git_comps.diff_added({format = "  %s", show_zero = true}), {"green", "bg"}},
                                     {git_comps.diff_removed({format = "  %s", show_zero = true}), {"red", "bg"}},
                                     {git_comps.diff_changed({format = " 柳%s", show_zero = true}), {"blue", "bg"}}
