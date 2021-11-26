@@ -25,7 +25,8 @@ for _, mappings in pairs(
         {"n", "J", "mzJ`z"},
         -- move selected lines up and down
         {"v", "J", ":m '>+1<cr>gv=gv"},
-        {"v", "J", ":m '>-12cr>gv=gv"}
+        {"v", "K", ":m '<-2<cr>gv=gv"},
+        -- do not yank on x/X
         {"n", "x", '"_dl'},
         {"n", "X", '"_dh'},
     }
