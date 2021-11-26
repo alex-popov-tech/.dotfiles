@@ -43,6 +43,7 @@ for key, val in pairs(
         wrap = false, -- when line is longer than the screen, it continues on the next line
         linebreak = true, -- but do not break words, only 'by words'
         number = true, -- show absolute line number
+        numberwidth = 1, -- by default 4, and because of that there is empty space to the right to line numbers except current
         relativenumber = true, -- show relative line number for current line
         -- cursorcolumn = true, -- highlight for current column
         cursorline = true -- Highlight the screen line of the cursor with CursorLine
