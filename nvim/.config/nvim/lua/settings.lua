@@ -7,7 +7,7 @@ for key, val in pairs(
         mouse = "a", -- to visually select and copy from vim without line numbers
         lazyredraw = true, -- Don't redraw while executing macros (good performance config)
         ttyfast = true, -- Don't redraw while executing macros (good performance config)
-        hlsearch = true, -- keep searched chunks hightlighted
+        hlsearch = false, -- keep searched chunks hightlighted
         ignorecase = true, -- search case-insensitive
         smartcase = true, -- if on with ignorecase, when a pattern contains an uppercase letter, it is case sensitive, otherwise it is not
         writebackup = false, -- Turn backup off, since most stuff is in SVN, git et.c anyway...
@@ -56,10 +56,7 @@ vim.bo.matchpairs = "(:),{:},[:],<:>"
 
 -- blink search matches, not leave them visible
 au("cursorhold", "*", "set nohlsearch")
--- map("n", "n", ":set hlsearch <cr>n")
--- map("n", "N", ":set hlsearch <cr>N")
--- map("n", "/", ":set hlsearch <cr>/")
--- map("n", "?", ":set hlsearch <cr>?")
+
 -- Keep undo history across sessions, by storing in file.
 -- Only works all the time.
 if fn.has("persistent_undo") then
