@@ -1,11 +1,8 @@
-
 return function(client, bufnr)
-
-
     local options = {noremap = true, silent = true}
 
     if client.resolved_capabilities.hover then
-        map("n", "K", "<cmd>Lspsaga hover_doc<CR>", options)
+        map("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", options)
     end
     if client.resolved_capabilities.find_references then
         map(
@@ -19,17 +16,15 @@ return function(client, bufnr)
         map("n", "'gd", "<cmd>lua vim.lsp.buf.definition()<CR>", options)
     end
     if client.resolved_capabilities.rename then
-        map("n", "'rn", "<cmd>Lspsaga rename<cr>", options)
+        map("n", "'rn", "<cmd>lua vim.lsp.buf.rename.float()<cr>", options)
     end
 
-    au("cursorholdi", "*", "Lspsaga signature_help")
-
-    map("n", ".d", "<cmd>lua vim.diagnostic.goto_prev()<cr>", options)
-    map("n", ",d", "<cmd>lua vim.diagnostic.goto_next()<cr>", options)
-    map("n", "'i", "<cmd>lua vim.lsp.buf.implementation()<CR>", options)
+    map("n", "[d", "<cmd>lua vim.diagnostic.goto_prev({ float =  { border = 'single' }})<CR>", options)
+    map("n", "]d", "<cmd>lua vim.diagnostic.goto_next({ float =  { border = 'single' }})<CR>", options)
+    map("n", "'gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", options)
     map("n", "'a", "<cmd>CodeActionMenu<CR>", options)
-    map("n", "'d", '<cmd>lua vim.diagnostic.show_line_diagnostics({ show_header = false })<CR>', options)
-    map("n", "'D", '<cmd>TroubleToggle<CR>', options)
+    map("n", "'d", '<cmd>lua vim.diagnostic.open_float(0, { scope = "line", border = "single", focusable = true })<CR>', options)
+    map("n", "'D", "<cmd>TroubleToggle<CR>", options)
 
     map("n", "<leader>f", "<cmd>lua fmt()<CR>", options)
 end
