@@ -8,7 +8,12 @@ return function(client, bufnr)
         map("n", "K", "<cmd>Lspsaga hover_doc<CR>", options)
     end
     if client.resolved_capabilities.find_references then
-        map("n", "'gr", "<cmd>lua require'telescope.builtin'.lsp_references({layout_strategy='vertical',layout_config={width=0.9, height=0.9}})<CR>", options)
+        map(
+            "n",
+            "'gr",
+            "<cmd>lua require'telescope.builtin'.lsp_references({layout_strategy='vertical',layout_config={width=0.9, height=0.9}})<CR>",
+            options
+        )
     end
     if client.resolved_capabilities.goto_definition then
         map("n", "'gd", "<cmd>lua vim.lsp.buf.definition()<CR>", options)
