@@ -101,6 +101,16 @@ function _G.fmt()
     -- vim.cmd("TSBufEnable highlight")
 end
 
+function _G.isNonEmptyString(str)
+   if str == nil then
+       return false
+   end
+   if str == "" then
+       return false
+   end
+   return true
+end
+
 _G.g = vim.g
 _G.cmd = vim.cmd
 _G.fn = vim.fn
