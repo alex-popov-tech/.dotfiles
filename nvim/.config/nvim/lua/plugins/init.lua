@@ -4,6 +4,7 @@ local ensurePackerInstalled = function()
         execute("!git clone https://github.com/wbthomason/packer.nvim " .. install_path)
         execute "packadd packer.nvim"
     end
+
     cmd("packadd packer.nvim")
 end
 ensurePackerInstalled()
@@ -123,7 +124,6 @@ local fuzzyFinder = {
         config = require("plugins.spectre"),
         requires = {"nvim-lua/plenary.nvim", "nvim-lua/popup.nvim"},
         cmd = "Replace"
-    },
     }
 }
 
@@ -248,7 +248,8 @@ local other = {
     }
 }
 
-return require "packer".startup {
+-- vim.cmd("cnoreabbrev ps PackerSync")
+require "packer".startup {
     function(use)
         use(packer)
         use(textObjects)
@@ -266,6 +267,7 @@ return require "packer".startup {
         use(other)
     end,
     config = {
+        max_jobs = 5, -- Limit the number of simultaneous jobs. nil means no limit
         display = {
             open_fn = require "packer.util".float
         }
