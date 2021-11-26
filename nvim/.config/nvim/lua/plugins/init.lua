@@ -47,12 +47,6 @@ local core = {
     {"moll/vim-bbye", config = require("plugins.vim-bbye")},
     -- move to {motion}
     {"svermeulen/vim-subversive", config = require("plugins.vim-subversive")},
-    -- gj gs
-    {"AndrewRadev/splitjoin.vim", config = require("plugins.splitjoin")},
-    -- help f/F
-    {"unblevable/quick-scope", config = require("plugins.quick-scope")},
-    -- paste for <c-v>
-    "lambdalisue/pastefix.vim",
     -- highlight for % pairs
     "andymass/vim-matchup"
 }
@@ -73,10 +67,7 @@ local tmuxAndSplits = {
     -- plugin for vim-tmux interactions
     {"numToStr/Navigator.nvim", config = require("plugins.navigator-nvim")},
     -- resizing windows
-    {"talek/obvious-resize", config = require("plugins.obvious-resize")},
-    -- syntax high, K docs, something else...
-    "tmux-plugins/vim-tmux"
-    -- {"alex-popov-tech/shade.nvim", config = require("plugins.shade-nvim")}
+    {"talek/obvious-resize", config = require("plugins.obvious-resize")}
 }
 
 local term = {
@@ -162,17 +153,13 @@ local treesitter = {
 local lsp = {
     -- lsp configs placed here
     "neovim/nvim-lspconfig",
+    -- lsp servers installer
     {"williamboman/nvim-lsp-installer"},
     -- just a bit better ts support
     "jose-elias-alvarez/nvim-lsp-ts-utils",
     -- pretty references/codeaction
     {"RishabhRD/nvim-lsputils", requires = {"RishabhRD/popfix"}, config = require("plugins.nvim-lsputils")},
     -- plugin to add completeion possibility
-    -- {
-    --     "hrsh7th/nvim-compe",
-    --     config = require("plugins.nvim-compe"),
-    --     requires = {"kristijanhusak/vim-dadbod-completion"}
-    -- },
     {
         "hrsh7th/nvim-cmp",
         config = require("plugins.nvim-cmp"),
