@@ -127,7 +127,7 @@ local ui = {
     -- color scheme
     -- "christianchiarulli/nvcode-color-schemes.vim",
     -- "bluz71/vim-nightfly-guicolors",
-    {"sainnhe/sonokai", config = require("plugins.sonokai")},
+    {"sainnhe/sonokai"}
     -- "glepnir/zephyr-nvim",
     -- "sainnhe/edge",
     -- "mhartington/oceanic-next",
