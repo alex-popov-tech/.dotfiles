@@ -8,8 +8,8 @@ local ensurePackerInstalled = function()
 end
 ensurePackerInstalled()
 
-au("BufWritePost", "**/nvim/lua/plugins/init.lua", "lua reload()")
-au("BufWritePost", "**/nvim/lua/plugins/init.lua", "PackerCompile")
+-- au("BufWritePost", "**/nvim/lua/plugins/init.lua", "lua reload()")
+-- au("BufWritePost", "**/nvim/lua/plugins/init.lua", "PackerCompile")
 -- cmd [[ autocmd BufWritePost **/nvim/lua/plugins/*.lua lua reload() ]]
 -- cmd [[ autocmd BufWritePost **/nvim/lua/plugins/*.lua PackerCompile ]]
 
