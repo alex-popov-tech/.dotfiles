@@ -28,6 +28,15 @@ local textObjects = {
 }
 
 local core = {
+    -- fix performance bug https://github.com/neovim/neovim/issues/12587 for CursorHold CursorHoldI
+    {
+        "antoinemadec/FixCursorHold.nvim",
+        config = function()
+            vim.g.cursorhold_updatetime = 200
+        end
+    },
+    -- improve load time with better 'filetype'
+    {"nathom/filetype.nvim"},
     -- abbreviations, substitusion, coercion (transform case)
     {"tpope/vim-abolish", config = require("plugins.abolish-vim")},
     -- add bunch of mappings like ]p ]e ]<space> etc.
