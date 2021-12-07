@@ -36,7 +36,7 @@ function main() {
   echo
   $DPATH/.scripts/linkconfigs.sh
 
-  neovimPlugins()
+  neovimPlugins
 
   read -p "Install macos settings? Y/N" -n 1 -r
   if [[ $REPLY =~ ^[Yy]$ ]]
