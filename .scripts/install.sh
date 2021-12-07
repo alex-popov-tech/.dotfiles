@@ -17,6 +17,12 @@ function main() {
   fi
   source $HOME/.asdf/asdf.sh
 
+  read -p "Install langs? Y/N" -n 1 -r
+  if [[ $REPLY =~ ^[Yy]$ ]]
+  then
+    langs
+  fi
+
   read -p "Install software? Y/N" -n 1 -r
   if [[ $REPLY =~ ^[Yy]$ ]]
   then
@@ -27,12 +33,6 @@ function main() {
   echo "|        Linking Configs        |"
   echo "+-------------------------------+"
   $DPATH/.scripts/linkconfigs.sh
-
-  read -p "Install langs? Y/N" -n 1 -r
-  if [[ $REPLY =~ ^[Yy]$ ]]
-  then
-    langs
-  fi
 
   read -p "Install macos settings? Y/N" -n 1 -r
   if [[ $REPLY =~ ^[Yy]$ ]]
@@ -142,11 +142,7 @@ function software() {
   gem install neovim
   pip install neovim pynvim
   pip3 install neovim pynvim
-  yarn global add neovim
-  curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-  nvim --headless +PlugInstall +qa
+  npm install -g neovim
 }
 
 
