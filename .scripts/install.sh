@@ -17,22 +17,26 @@ function main() {
   fi
   source $HOME/.asdf/asdf.sh
 
-  read -p "Install langs? Y/N" -n 1 -r
-  if [[ $REPLY =~ ^[Yy]$ ]]
-  then
-    langs
-  fi
-
   read -p "Install software? Y/N" -n 1 -r
   if [[ $REPLY =~ ^[Yy]$ ]]
   then
     software
   fi
 
+  read -p "Install langs? Y/N" -n 1 -r
+  if [[ $REPLY =~ ^[Yy]$ ]]
+  then
+    langs
+  fi
+
+  echo
   echo "+-------------------------------+"
   echo "|        Linking Configs        |"
   echo "+-------------------------------+"
+  echo
   $DPATH/.scripts/linkconfigs.sh
+
+  neovimPlugins()
 
   read -p "Install macos settings? Y/N" -n 1 -r
   if [[ $REPLY =~ ^[Yy]$ ]]
@@ -41,31 +45,49 @@ function main() {
     macos
   fi
 
+}
 
+function neovimPlugins() {
+  brew install --head neovim
+  echo
+  echo "+---------------------------------+"
+  echo "|    Installing NeoVim plugins    |"
+  echo "+---------------------------------+"
+  echo
+  gem install neovim
+  pip install neovim pynvim
+  pip3 install neovim pynvim
+  npm install -g neovim
 }
 
 function managers() {
 
   touch $HOME/.bash_profile
 
+  echo
   echo "+-----------------------------------+"
   echo "|        Installing Homebrew        |"
   echo "+-----------------------------------+"
+  echo
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
+  echo
   echo "+-------------------------------+"
   echo "|        Installing asdf        |"
   echo "+-------------------------------+"
-  git clone https://github.com/asdf-vm/asdf.git $HOME/.asdf
-  cd $HOME/.asdf || exit
+  echo
+  [[ -d $HOME/.asdf ]] || git clone https://github.com/asdf-vm/asdf.git $HOME/.asdf
+  cd $HOME/.asdf
   git checkout "$(git describe --abbrev=0 --tags)"
-  cd -- || exit
+  cd --
 }
 
 function langs() {
+  echo
   echo "+---------------------------------+"
   echo "|        Installing NodeJS        |"
   echo "+---------------------------------+"
+  echo
   asdf plugin-add nodejs
   bash $HOME/.asdf/plugins/nodejs/bin/import-release-team-keyring
   asdf install nodejs 15.0.0
@@ -74,38 +96,48 @@ function langs() {
   asdf install yarn 1.21.1
   asdf global yarn 1.21.1
 
+  echo
   echo "+-------------------------------+"
   echo "|        Installing Java        |"
   echo "+-------------------------------+"
+  echo
   asdf plugin-add java https://github.com/halcyon/asdf-java.git
   asdf install java adoptopenjdk-large_heap-8.0.265+1.openj9-0.21.0
   asdf global java adoptopenjdk-large_heap-8.0.265+1.openj9-0.21.0
 
+  echo
   echo "+---------------------------------+"
   echo "|        Installing Python        |"
   echo "+---------------------------------+"
+  echo
   asdf plugin-add python
   asdf install python 3.9.0
   asdf install python 2.7.13
   asdf global python 2.7.13 3.9.0
 
+  echo
   echo "+-------------------------------+"
   echo "|        Installing Ruby        |"
   echo "+-------------------------------+"
+  echo
   asdf plugin-add ruby
   asdf install ruby 2.7.0
   asdf global ruby 2.7.0
 
+  echo
   echo "+------------------------------+"
   echo "|        Installing Lua        |"
   echo "+------------------------------+"
+  echo
   asdf plugin-add lua
   asdf install lua 5.3.5
   asdf global lua 5.3.5
 
+  echo
   echo "+------------------------------+"
   echo "|       Installing Rust        |"
   echo "+------------------------------+"
+  echo
   asdf plugin-add rust
   asdf install rust stable
   asdf global rust stable
@@ -115,42 +147,42 @@ function langs() {
 
 function software() {
 
+  echo
   echo "+-----------------------------------+"
   echo "|        Installing Software        |"
   echo "+-----------------------------------+"
+  echo
   cp -f $DPATH/.fonts/*.ttf $HOME/Library/Fonts
   brew bundle
 
+  echo
   echo "+-------------------------------+"
   echo "|        Installing Tmux        |"
   echo "+-------------------------------+"
+  echo
   asdf plugin-add tmux
   asdf install tmux 3.1b
   asdf global tmux 3.1b
   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
+  echo
   echo "+---------------------------------+"
   echo "|        Installing Zinit         |"
   echo "+---------------------------------+"
+  echo
   ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
-  mkdir -p "$(dirname $ZINIT_HOME)"
+  [[ -d $ZINIT_HOME ]] || mkdir -p "$(dirname $ZINIT_HOME)"
   git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
-
-  echo "+---------------------------------+"
-  echo "|        Installing NeoVim        |"
-  echo "+---------------------------------+"
-  gem install neovim
-  pip install neovim pynvim
-  pip3 install neovim pynvim
-  npm install -g neovim
 }
 
 
 function macos() {
 
+  echo
   echo "+--------------------------------+"
   echo "|        Setting Up MacOS        |"
   echo "+--------------------------------+"
+  echo
 
   # Close any open System Preferences panes, to prevent them from overriding
   # settings weÕre about to change
