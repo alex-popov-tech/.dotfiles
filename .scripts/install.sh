@@ -118,7 +118,7 @@ function software() {
   echo "+-----------------------------------+"
   echo "|        Installing Software        |"
   echo "+-----------------------------------+"
-  cp -f $DPATH/home/Library/Fonts/*.ttf $HOME/Library/Fonts
+  cp -f $DPATH/.fonts/*.ttf $HOME/Library/Fonts
   brew bundle
 
   echo "+-------------------------------+"
