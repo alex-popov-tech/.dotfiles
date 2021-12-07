@@ -58,6 +58,11 @@ function neovimPlugins() {
   pip install neovim pynvim
   pip3 install neovim pynvim
   npm install -g neovim
+
+  if [ ! -d "$HOME/.local/share/nvim/site/pack/packer/start/packer.nvim" ]; then
+    git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+     $HOME/.local/share/nvim/site/pack/packer/start/packer.nvim
+  fi
 }
 
 function managers() {
@@ -81,6 +86,8 @@ function managers() {
     cd $HOME/.asdf
     git checkout "$(git describe --abbrev=0 --tags)"
     cd --
+  else
+    echo "Exists!"
   fi
 }
 
@@ -167,6 +174,8 @@ function software() {
   asdf global tmux 3.1b
   if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+  else
+    echo "Exists!"
   fi
 
   echo
@@ -178,6 +187,8 @@ function software() {
   if [ ! -d "$ZINIT_HOME" ]; then
     mkdir -p "$(dirname $ZINIT_HOME)"
     git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+  else
+    echo "Exists!"
   fi
 }
 
