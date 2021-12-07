@@ -76,10 +76,12 @@ function managers() {
   echo "|        Installing asdf        |"
   echo "+-------------------------------+"
   echo
-  [[ -d $HOME/.asdf ]] || git clone https://github.com/asdf-vm/asdf.git $HOME/.asdf
-  cd $HOME/.asdf
-  git checkout "$(git describe --abbrev=0 --tags)"
-  cd --
+  if [ ! -d "$HOME/.asdf" ]; then
+    git clone https://github.com/asdf-vm/asdf.git $HOME/.asdf
+    cd $HOME/.asdf
+    git checkout "$(git describe --abbrev=0 --tags)"
+    cd --
+  fi
 }
 
 function langs() {
@@ -163,7 +165,9 @@ function software() {
   asdf plugin-add tmux
   asdf install tmux 3.1b
   asdf global tmux 3.1b
-  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+  if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+  fi
 
   echo
   echo "+---------------------------------+"
@@ -171,8 +175,10 @@ function software() {
   echo "+---------------------------------+"
   echo
   ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
-  [[ -d $ZINIT_HOME ]] || mkdir -p "$(dirname $ZINIT_HOME)"
-  git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+  if [ ! -d "$ZINIT_HOME" ]; then
+    mkdir -p "$(dirname $ZINIT_HOME)"
+    git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+  fi
 }
 
 
