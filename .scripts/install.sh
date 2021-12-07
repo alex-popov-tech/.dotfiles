@@ -5,12 +5,14 @@ DPATH=$HOME/.dotfiles
 function main() {
 
   read -p "Install xcode-select?" -n 1 -r
+  echo
   if [[ $REPLY =~ ^[Yy]$ ]]
   then
     xcode-select --install
   fi
 
   read -p "Install managers? Y/N" -n 1 -r
+  echo
   if [[ $REPLY =~ ^[Yy]$ ]]
   then
     managers
@@ -18,12 +20,14 @@ function main() {
   source $HOME/.asdf/asdf.sh
 
   read -p "Install software? Y/N" -n 1 -r
+  echo
   if [[ $REPLY =~ ^[Yy]$ ]]
   then
     software
   fi
 
   read -p "Install langs? Y/N" -n 1 -r
+  echo
   if [[ $REPLY =~ ^[Yy]$ ]]
   then
     langs
