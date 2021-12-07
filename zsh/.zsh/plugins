@@ -4,7 +4,7 @@ source "${ZINIT_HOME}/zinit.zsh"
 
 zinit for \
   light-mode zsh-users/zsh-autosuggestions \
-  light-mode zdharma/fast-syntax-highlighting \
+  light-mode zdharma-continuum/fast-syntax-highlighting \
   light-mode OMZ::plugins/git/git.plugin.zsh \
   light-mode MichaelAquilina/zsh-you-should-use \
   light-mode OMZ::plugins/vi-mode/vi-mode.plugin.zsh
