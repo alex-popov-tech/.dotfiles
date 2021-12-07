@@ -17,16 +17,16 @@ function main() {
   fi
   source $HOME/.asdf/asdf.sh
 
-  echo "+-------------------------------+"
-  echo "|        Linking Configs        |"
-  echo "+-------------------------------+"
-  $DPATH/.scripts/linkconfigs.sh
-
   read -p "Install software? Y/N" -n 1 -r
   if [[ $REPLY =~ ^[Yy]$ ]]
   then
     software
   fi
+
+  echo "+-------------------------------+"
+  echo "|        Linking Configs        |"
+  echo "+-------------------------------+"
+  $DPATH/.scripts/linkconfigs.sh
 
   read -p "Install langs? Y/N" -n 1 -r
   if [[ $REPLY =~ ^[Yy]$ ]]
