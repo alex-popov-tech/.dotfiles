@@ -4,22 +4,10 @@ DPATH=$HOME/.dotfiles
 
 function main() {
 
-  echo "+-------------------------------+"
-  echo "|        Linking Configs        |"
-  echo "+-------------------------------+"
-
-  $DPATH/.scripts/linkconfigs.sh
-
   read -p "Install xcode-select?" -n 1 -r
   if [[ $REPLY =~ ^[Yy]$ ]]
   then
     xcode-select --install
-  fi
-
-  read -p "Install software? Y/N" -n 1 -r
-  if [[ $REPLY =~ ^[Yy]$ ]]
-  then
-    software
   fi
 
   read -p "Install managers? Y/N" -n 1 -r
@@ -28,6 +16,17 @@ function main() {
     managers
   fi
   source $HOME/.asdf/asdf.sh
+
+  echo "+-------------------------------+"
+  echo "|        Linking Configs        |"
+  echo "+-------------------------------+"
+  $DPATH/.scripts/linkconfigs.sh
+
+  read -p "Install software? Y/N" -n 1 -r
+  if [[ $REPLY =~ ^[Yy]$ ]]
+  then
+    software
+  fi
 
   read -p "Install langs? Y/N" -n 1 -r
   if [[ $REPLY =~ ^[Yy]$ ]]
@@ -41,6 +40,7 @@ function main() {
     sudo -v
     macos
   fi
+
 
 }
 
@@ -138,10 +138,10 @@ function software() {
   echo "+---------------------------------+"
   echo "|        Installing NeoVim        |"
   echo "+---------------------------------+"
-  gem install neovim solargraph
+  gem install neovim
   pip install neovim pynvim
-  pip3 install neovim python-language-server pylint pynvim
-  yarn global add neovim write-good markdownlint-cli eslint prettier @prettier/plugin-pug lua-fmt
+  pip3 install neovim pynvim
+  yarn global add neovim
   curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
