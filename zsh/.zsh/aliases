@@ -22,6 +22,7 @@ alias hist="history"
 alias tnode="npx ts-node"
 alias tf="terraform"
 alias f="fuck"
+alias grep="rg"
 
 alias refresh="$HOME/.dotfiles/.scripts/linkconfigs.sh"
 alias refreshScreens='displayplacer "id:F86A2987-00E6-1324-8909-A1B777C5D9BE res:1920x1080 hz:60 color_depth:8 scaling:on origin:(0,0) degree:0" "id:30806869-1EE1-C15D-60AD-8DD5E0325E5E res:1152x720 hz:59 color_depth:4 scaling:on origin:(-1152,-321) degree:0" "id:B7AE2D44-CA3F-EFD1-F08C-BEEDD1A534C2 res:1920x1080 hz:60 color_depth:8 scaling:on origin:(1920,0) degree:0" "id:874C4405-B375-9A0D-FF50-094F80539F21 res:1920x1080 hz:60 color_depth:8 scaling:on origin:(1920,-1080) degree:0" "id:A5208E0C-4114-CF38-6E1C-1BABE1BDFEFF res:1920x1080 hz:60 color_depth:8 scaling:on origin:(0,-1080) degree:0"'
