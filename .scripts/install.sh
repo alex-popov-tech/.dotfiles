@@ -38,6 +38,7 @@ function main() {
   echo "|        Linking Configs        |"
   echo "+-------------------------------+"
   echo
+  brew install stow
   $DPATH/.scripts/linkconfigs.sh
 
   neovimPlugins
