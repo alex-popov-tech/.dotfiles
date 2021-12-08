@@ -18,7 +18,7 @@ for key, val in pairs(
         scrolloff = 2, -- how many lines till window border to see when scrolling
         sidescrolloff = 10, -- same as above but for columns
         shell = "/usr/local/bin/zsh",
-        inccommand = "nosplit",
+        -- inccommand = "nosplit", -- incremental search ( enabled by default )
         updatetime = 200, -- timeout for showing cursorhold events, etc
         -- completeopt = "menu,noinsert,noselect", -- how window for completion will look like
         shortmess = vim.o.shortmess .. "s", -- better messages
