@@ -98,7 +98,7 @@ return function()
                                     return ""
                                 end
                                 return {
-                                    {lsp_comps.lsp_name()}
+                                    {lsp_comps.lsp_name({ seprator = ',' })}
                                 }
                             end
                         },
