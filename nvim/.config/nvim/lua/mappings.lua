@@ -17,6 +17,10 @@ for _, mappings in pairs(
         {"n", "Q", "q:dd"},
         -- map to drop into { } block
         {"i", "{<cr>", "{}<left><cr><esc>O"},
+        {"i", "{<space>", "{}<left><space><left><space>"},
+        {"i", "(<cr>", "()<left><cr><esc>O"},
+        {"i", "(<space>", "()<left><space><left><space>"},
+        {"i", "({<space>", "({})<left><left><space><left><space>"},
         -- jump with  and stay cursor in center of the screen
         {"n", "*", ":set hlsearch<cr>*zz", { noremap = true }},
         {"n", "n", ":set hlsearch<cr>nzz", { noremap = true }},
