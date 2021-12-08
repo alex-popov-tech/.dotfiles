@@ -4,30 +4,30 @@ DPATH=$HOME/.dotfiles
 
 function main() {
 
-  read -p "Install xcode-select?" -n 1 -r
   echo
+  read -p "Install xcode-select? Y/N" -n 1 -r
   if [[ $REPLY =~ ^[Yy]$ ]]
   then
     xcode-select --install
   fi
 
-  read -p "Install managers? Y/N" -n 1 -r
   echo
+  read -p "Install managers? Y/N" -n 1 -r
   if [[ $REPLY =~ ^[Yy]$ ]]
   then
     managers
   fi
   source $HOME/.asdf/asdf.sh
 
-  read -p "Install software? Y/N" -n 1 -r
   echo
+  read -p "Install software? Y/N" -n 1 -r
   if [[ $REPLY =~ ^[Yy]$ ]]
   then
     software
   fi
 
-  read -p "Install langs? Y/N" -n 1 -r
   echo
+  read -p "Install langs? Y/N" -n 1 -r
   if [[ $REPLY =~ ^[Yy]$ ]]
   then
     langs
@@ -67,6 +67,9 @@ function neovimPlugins() {
     git clone --depth 1 https://github.com/wbthomason/packer.nvim\
      $HOME/.local/share/nvim/site/pack/packer/start/packer.nvim
   fi
+
+  nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+  nvim --headless -c 'lua installLspServers()'
 }
 
 function managers() {

@@ -16,7 +16,7 @@ zinit light sharkdp/fd
 zinit ice as"program" from"gh-r" mv"bat* -> bat" pick"bat/bat" lucid
 zinit light sharkdp/bat
 alias cat="bat"
-zinit ice as"program" from"gh-r" mv"exa* -> exa" pick"exa/exa" lucid
+zinit ice as"program" from"gh-r" mv"bin/exa* -> exa" pick"exa/exa" lucid
 zinit light ogham/exa
 alias ls='exa --icons'
 alias la='exa -a --icons'

@@ -3,13 +3,15 @@ return function()
     local space = {text = " "}
     require("cokeline").setup(
         {
-            cycle_prev_next_mappings = true,
+            mappings = {
+                cycle_prev_next = true,
+            },
             buffers = {
                 -- A function to filter out unwanted buffers. It takes the `buffer` table
                 -- (described above) as a parameter.
                 -- For example, if you want to keep terminals out of your cokeline:
                 --   filter = function(buffer) return buffer.type ~= 'terminal' end,
-                filter = function(buffer)
+                filter_valid = function(buffer)
                     return isNonEmptyString(buffer.path) and isNonEmptyString(buffer.filename)
                 end
             },
