@@ -67,9 +67,6 @@ function neovimPlugins() {
     git clone --depth 1 https://github.com/wbthomason/packer.nvim\
      $HOME/.local/share/nvim/site/pack/packer/start/packer.nvim
   fi
-
-  nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
-  nvim --headless -c 'lua installLspServers()'
 }
 
 function managers() {
