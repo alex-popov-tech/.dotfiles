@@ -67,32 +67,32 @@ brew "wimlib"
 brew "zsh"
 brew "heroku/brew/heroku"
 brew "jakehilborn/jakehilborn/displayplacer"
-cask "alfred"
-cask "android-file-transfer"
-cask "brave-browser"
-cask "docker"
-cask "dozer"
-cask "dropbox"
-cask "finicky"
-cask "flux"
-cask "kitty"
-cask "ledger-live"
-cask "meetingbar"
-cask "moom"
-cask "path-finder"
-cask "skype"
-cask "slack"
-cask "spotify"
-cask "steam"
-cask "telegram"
-cask "the-unarchiver"
-cask "transmission"
-cask "visual-studio-code"
-cask "vlc"
-mas "Clocker", id: 1056643111
-mas "iStatistica Pro", id: 1447778660
-mas "Keynote", id: 409183694
-mas "Pages", id: 409201541
-mas "Spark", id: 1176895641
-mas "Tailscale", id: 1475387142
-mas "Xcode", id: 497799835
+# cask "alfred"
+# cask "android-file-transfer"
+# cask "brave-browser"
+# cask "docker"
+# cask "dozer"
+# cask "dropbox"
+# cask "finicky"
+# cask "flux"
+# cask "kitty"
+# cask "ledger-live"
+# cask "meetingbar"
+# cask "moom"
+# cask "path-finder"
+# cask "skype"
+# cask "slack"
+# cask "spotify"
+# cask "steam"
+# cask "telegram"
+# cask "the-unarchiver"
+# cask "transmission"
+# cask "visual-studio-code"
+# cask "vlc"
+# mas "Clocker", id: 1056643111
+# mas "iStatistica Pro", id: 1447778660
+# mas "Keynote", id: 409183694
+# mas "Pages", id: 409201541
+# mas "Spark", id: 1176895641
+# mas "Tailscale", id: 1475387142
+# mas "Xcode", id: 497799835
