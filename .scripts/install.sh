@@ -44,15 +44,13 @@ function main() {
 
 }
 
-function neovimPlugins() {
-}
-
 function langs() {
   echo
   echo "+---------------------------------+"
   echo "|        Installing NodeJS        |"
   echo "+---------------------------------+"
   echo
+  brew install gpg tar
   asdf plugin-add nodejs
   bash $HOME/.asdf/plugins/nodejs/bin/import-release-team-keyring
   asdf install nodejs 16.13.0
