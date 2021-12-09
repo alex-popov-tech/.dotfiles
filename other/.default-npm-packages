@@ -1,7 +1,4 @@
 yarn
 neovim
-eslint
-prettier
-lua-fmt
 ts-node
 typescript

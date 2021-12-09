@@ -12,14 +12,6 @@ function main() {
   fi
 
   echo
-  read -p "Install managers? Y/N" -n 1 -r
-  if [[ $REPLY =~ ^[Yy]$ ]]
-  then
-    managers
-  fi
-  source $HOME/.asdf/asdf.sh
-
-  echo
   read -p "Install software? Y/N" -n 1 -r
   if [[ $REPLY =~ ^[Yy]$ ]]
   then
@@ -53,47 +45,6 @@ function main() {
 }
 
 function neovimPlugins() {
-  brew install --head neovim
-  echo
-  echo "+---------------------------------+"
-  echo "|    Installing NeoVim plugins    |"
-  echo "+---------------------------------+"
-  echo
-  gem install neovim
-  pip install neovim pynvim
-  pip3 install neovim pynvim
-  npm install -g neovim
-
-  if [ ! -d "$HOME/.local/share/nvim/site/pack/packer/start/packer.nvim" ]; then
-    git clone --depth 1 https://github.com/wbthomason/packer.nvim\
-     $HOME/.local/share/nvim/site/pack/packer/start/packer.nvim
-  fi
-}
-
-function managers() {
-
-  touch $HOME/.bash_profile
-
-  echo
-  echo "+-----------------------------------+"
-  echo "|        Installing Homebrew        |"
-  echo "+-----------------------------------+"
-  echo
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
-  echo
-  echo "+-------------------------------+"
-  echo "|        Installing asdf        |"
-  echo "+-------------------------------+"
-  echo
-  if [ ! -d "$HOME/.asdf" ]; then
-    git clone https://github.com/asdf-vm/asdf.git $HOME/.asdf
-    cd $HOME/.asdf
-    git checkout "$(git describe --abbrev=0 --tags)"
-    cd --
-  else
-    echo "Exists!"
-  fi
 }
 
 function langs() {
@@ -104,11 +55,8 @@ function langs() {
   echo
   asdf plugin-add nodejs
   bash $HOME/.asdf/plugins/nodejs/bin/import-release-team-keyring
-  asdf install nodejs 15.0.0
-  asdf global nodejs 15.0.0
-  asdf plugin-add yarn
-  asdf install yarn 1.21.1
-  asdf global yarn 1.21.1
+  asdf install nodejs 16.13.0
+  asdf global nodejs 16.13.0
 
   echo
   echo "+-------------------------------+"
@@ -161,13 +109,37 @@ function langs() {
 
 function software() {
 
+  touch $HOME/.bash_profile
+
+  echo
+  echo "+-----------------------------------+"
+  echo "|        Installing Homebrew        |"
+  echo "+-----------------------------------+"
+  echo
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+  echo
+  echo "+-------------------------------+"
+  echo "|        Installing asdf        |"
+  echo "+-------------------------------+"
+  echo
+  if [ ! -d "$HOME/.asdf" ]; then
+    git clone https://github.com/asdf-vm/asdf.git $HOME/.asdf
+    cd $HOME/.asdf
+    git checkout "$(git describe --abbrev=0 --tags)"
+    cd --
+  else
+    echo "Exists!"
+  fi
+  source $HOME/.asdf/asdf.sh
+
   echo
   echo "+-----------------------------------+"
   echo "|        Installing Software        |"
   echo "+-----------------------------------+"
   echo
   cp -f $DPATH/.fonts/*.ttf $HOME/Library/Fonts
-  brew bundle
+  brew bundle install --file $DPATH/Brewfile
 
   echo
   echo "+-------------------------------+"
@@ -194,6 +166,22 @@ function software() {
     git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
   else
     echo "Exists!"
+  fi
+
+  brew install --head neovim
+  echo
+  echo "+---------------------------------+"
+  echo "|    Installing NeoVim plugins    |"
+  echo "+---------------------------------+"
+  echo
+  gem install neovim
+  pip install neovim pynvim
+  pip3 install neovim pynvim
+  npm install -g neovim
+
+  if [ ! -d "$HOME/.local/share/nvim/site/pack/packer/start/packer.nvim" ]; then
+    git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+     $HOME/.local/share/nvim/site/pack/packer/start/packer.nvim
   fi
 }
 
