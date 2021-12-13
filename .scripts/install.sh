@@ -33,8 +33,6 @@ function main() {
   brew install stow
   $DPATH/.scripts/linkconfigs.sh
 
-  neovimPlugins
-
   read -p "Install macos settings? Y/N" -n 1 -r
   if [[ $REPLY =~ ^[Yy]$ ]]
   then
