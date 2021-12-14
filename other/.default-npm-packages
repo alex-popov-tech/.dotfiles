@@ -2,3 +2,5 @@ yarn
 neovim
 ts-node
 typescript
+eslint_d
+@fsouza/prettierd
