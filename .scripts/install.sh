@@ -5,13 +5,6 @@ DPATH=$HOME/.dotfiles
 function main() {
 
   echo
-  read -p "Install xcode-select? Y/N" -n 1 -r
-  if [[ $REPLY =~ ^[Yy]$ ]]
-  then
-    xcode-select --install
-  fi
-
-  echo
   read -p "Install software? Y/N" -n 1 -r
   if [[ $REPLY =~ ^[Yy]$ ]]
   then
@@ -124,8 +117,6 @@ function software() {
     cd $HOME/.asdf
     git checkout "$(git describe --abbrev=0 --tags)"
     cd --
-  else
-    echo "Exists!"
   fi
   source $HOME/.asdf/asdf.sh
 
@@ -136,6 +127,7 @@ function software() {
   echo
   cp -f $DPATH/.fonts/*.ttf $HOME/Library/Fonts
   brew bundle install --file $DPATH/Brewfile
+  sudo xcodebuild -license accept
 
   echo
   echo "+-------------------------------+"
