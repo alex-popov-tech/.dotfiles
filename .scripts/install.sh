@@ -53,8 +53,8 @@ function langs() {
   echo "+-------------------------------+"
   echo
   asdf plugin-add java https://github.com/halcyon/asdf-java.git
-  asdf install java adoptopenjdk-large_heap-8.0.265+1.openj9-0.21.0
-  asdf global java adoptopenjdk-large_heap-8.0.265+1.openj9-0.21.0
+  asdf install java adoptopenjdk-openj9-large_heap-8.0.282+8.openj9-0.24.0
+  asdf global java adoptopenjdk-openj9-large_heap-8.0.282+8.openj9-0.24.0
 
   echo
   echo "+---------------------------------+"

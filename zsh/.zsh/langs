@@ -2,5 +2,5 @@
 source $HOME/.asdf/asdf.sh
 # set java home (from java plugin)
 # source $HOME/.asdf/plugins/java/set-java-home.sh
-export JAVA_HOME=/Users/alexanderpopov/.asdf/installs/java/adoptopenjdk-large_heap-8.0.265+1.openj9-0.21.0
+export JAVA_HOME=/Users/alexanderpopov/.asdf/installs/java/adoptopenjdk-openj9-large_heap-8.0.282+8.openj9-0.24.0
 
