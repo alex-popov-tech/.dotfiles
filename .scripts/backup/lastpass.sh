@@ -9,10 +9,6 @@ currentsize=$(wc -c "$filepath" | awk '{print $1}')
 existingsize=$(wc -c "$HOME/.backup/$filename" | awk '{print $1}')
 
 if [ $currentsize != $existingsize ]; then
-    # scp "router:/media/Main/$filename" ./lpass.gzip.gpg
-    # gpg --decrypt ./lastpass_backup.gzip.gpg | funzip
-    # scp "$filepath" "router:/media/Main/$filename"
-
     # keybase fs read /keybase/public/alex_popov_tech/lastpass_backup.gzip.gpg | gpg --decrypt | funzip
     /usr/local/bin/keybase fs rm "/keybase/public/alex_popov_tech/$filename" 2>&1 | xargs
     /usr/local/bin/keybase fs write "/keybase/public/alex_popov_tech/$filename" < "/tmp/$filename"
