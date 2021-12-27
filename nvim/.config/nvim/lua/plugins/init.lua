@@ -53,7 +53,8 @@ local core = {
     -- easy motion like.
     {
         "ggandor/lightspeed.nvim",
-        requires = {"tpope/vim-repeat"}
+        requires = {"tpope/vim-repeat"},
+        config = require("plugins.lightspeed-nvim")
     }
 }
 
