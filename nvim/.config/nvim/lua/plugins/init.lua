@@ -50,6 +50,13 @@ local core = {
     "andymass/vim-matchup",
     -- removes cursor jumping when opening qf,etc.
     {"luukvbaal/stabilize.nvim", config = require("plugins.stabilize-nvim")},
+    -- expectedly resizes splits in different situations
+    {
+        "kwkarlwang/bufresize.nvim",
+        config = function()
+            require("bufresize").setup()
+        end
+    },
     -- easy motion like.
     {
         "ggandor/lightspeed.nvim",
