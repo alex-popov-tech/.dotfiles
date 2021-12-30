@@ -87,8 +87,8 @@ local tmuxAndSplits = {
 
 local term = {
     -- open terminal in floating window
-    "voldikss/vim-floaterm",
-    config = require("plugins.vim-floaterm")
+    "numToStr/FTerm.nvim",
+    config = require("plugins.fterm-nvim")
 }
 
 local filetree = {
