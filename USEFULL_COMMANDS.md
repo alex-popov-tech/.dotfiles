@@ -32,5 +32,5 @@ defaults export com.manytricks.Moom ./Moom.plist
 ## How to add passwords backup
 ```
 # At 13:00 on Monday.
-0 13 * * 1 $HOME/.dotfiles/.scripts/backup/mailOnErr.sh $HOME/.dotfiles/.scripts/backup/lastpass.sh
+0 13 * * 1 $HOME/.dotfiles/.scripts/backup/backupWithNotify.sh
 ```

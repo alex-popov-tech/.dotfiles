@@ -1,24 +1,19 @@
 #!/bin/zsh
 
-set -e
-
 filename="lastpass_backup.gzip.gpg"
 filepath="/tmp/$filename"
-export LC_ALL=en_US.UTF-8 && /usr/local/bin/lpass export --sync=now | gzip | /usr/local/bin/gpg --encrypt -r alex.popov.tech@gmail.com > "$filepath"
-currentsize=$(wc -c "$filepath" | awk '{print $1}')
-existingsize=$(wc -c "$HOME/.backup/$filename" | awk '{print $1}')
+errpath="/tmp/pusherr"
+echo '' > $errpath
+export LC_ALL=en_US.UTF-8 && /usr/local/bin/lpass export --sync=now | gzip | /usr/local/bin/gpg --encrypt --trust-model always -r alex.popov.tech@gmail.com > "$filepath"
 
-if [ $currentsize != $existingsize ]; then
-    # keybase fs read /keybase/public/alex_popov_tech/lastpass_backup.gzip.gpg | gpg --decrypt | funzip
-    /usr/local/bin/keybase fs rm "/keybase/public/alex_popov_tech/$filename" 2>&1 | xargs
-    /usr/local/bin/keybase fs write "/keybase/public/alex_popov_tech/$filename" < "/tmp/$filename"
+mkdir -p $HOME/.backup
+cd $HOME/.backup
 
-    mkdir -p $HOME/.backup
-    cd $HOME/.backup
-    cp -f "$filepath" "./$filename"
-    git add "./$filename"
-    git commit -m "lpass backup from $(date)"
-    git push github master > /dev/null
+cp -f "$filepath" "./$filename"
+rm "$filepath"
 
-    rm "$filepath"
-fi
+git add "./$filename"
+git commit -m "lpass backup from $(date)" 1>/dev/null
+git push github master 2>&1 | tr -d '\n' | grep "error" 1>&2
+git push gitlab master 2>&1 | tr -d '\n' | grep "error" 1>&2
+
