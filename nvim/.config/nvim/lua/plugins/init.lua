@@ -174,7 +174,6 @@ local treesitter = {
     {"nvim-treesitter/playground"},
     -- { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate", config = require("plugins.nvim-treesitter") },
     -- { "theHamsta/nvim-treesitter-pairs", },
-    {"David-Kunz/treesitter-unit", config = require("plugins.treesitter-unit")}
 }
 
 local lsp = {
@@ -184,8 +183,6 @@ local lsp = {
     {"williamboman/nvim-lsp-installer"},
     -- just a bit better ts support
     "jose-elias-alvarez/nvim-lsp-ts-utils",
-    -- pretty references/codeaction
-    {"RishabhRD/nvim-lsputils", requires = {"RishabhRD/popfix"}, config = require("plugins.nvim-lsputils")},
     -- plugin to add completeion possibility
     {
         "hrsh7th/nvim-cmp",
@@ -232,8 +229,6 @@ local lsp = {
     "folke/lsp-colors.nvim",
     -- diagnostics
     {"folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons", config = require("plugins.trouble-nvim")},
-    -- pretty hover and references/implementations/codeaction
-    -- {"ray-x/lsp_signature.nvim", config = require("plugins.lsp_signature-nvim")}
     -- code action
     {"weilbith/nvim-code-action-menu", cmd = "CodeActionMenu"},
     -- shema validation for JSON files
