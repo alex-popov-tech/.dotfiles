@@ -1,8 +1,4 @@
 return function()
-    -- cmd("cnoreabbrev gp Git push")
-    -- cmd("cnoreabbrev gpf Git push --force")
-    -- cmd("command! Gs :Git | on")
-    -- cmd("cnoreabbrev gs Gs")
     map("n", "<leader>gs", "<cmd>Git | on<cr>")
     map("n", "<leader>gp", "<cmd>exe 'Git push -u origin ' . FugitiveHead()<cr>")
     map("n", "gpf", "<cmd>Git push --force<cr>")
