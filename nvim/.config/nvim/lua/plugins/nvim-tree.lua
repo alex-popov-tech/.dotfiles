@@ -2,7 +2,12 @@ return function()
     map(
         "n",
         "<c-f>",
-        "<cmd>lua if ft() == 'NvimTree' or ft() == 'startify' then vim.cmd('NvimTreeToggle') else vim.cmd('NvimTreeFindFile') end<cr>"
+        function()
+          if ft() == 'NvimTree' or ft() == 'startify' then
+            vim.cmd('NvimTreeToggle')
+          else vim.cmd('NvimTreeFindFile')
+          end
+        end
     )
     g.nvim_tree_side = "left"
     g.nvim_tree_width = 30
