@@ -1,7 +1,5 @@
 return function()
     local cmp = require "cmp"
-    local types = require "cmp.types"
-    local compare = require "cmp.config.compare"
     local lspkind = require("lspkind")
 
     local function check_back_space()

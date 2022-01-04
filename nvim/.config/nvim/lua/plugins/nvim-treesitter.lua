@@ -26,9 +26,5 @@ return function()
             fallback_cmd_normal = "call matchit#Match_wrapper('',1,'n')", -- What command to issue when we can't find a pair (e.g. "normal! %")
             keymaps = {goto_partner = "<leader>%"} -- do not work
         }
-        -- matchup = {
-        --   enable = true,              -- mandatory, false will disable the whole extension
-        --   disable = { "c", "ruby" },  -- optional, list of language that will be disabled
-        -- },
     }
 end
