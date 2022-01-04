@@ -23,6 +23,8 @@ local core = {
             vim.g.cursorhold_updatetime = 200
         end
     },
+    -- when yanking do not put cursor at the begginning of yanked text
+    { "svban/YankAssassin.vim", },
     -- improve load time with better 'filetype'
     {"nathom/filetype.nvim"},
     -- abbreviations, substitusion, coercion (transform case)
