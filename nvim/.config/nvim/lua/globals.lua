@@ -7,6 +7,15 @@ _G.includes = function(map, expected)
     return false
 end
 
+_G.keyIncludes = function(map, expected)
+    for key, _ in pairs(map) do
+        if expected == key then
+          return true
+        end
+    end
+    return false
+end
+
 _G.keys = function(map)
     local result = {}
     local index = 1
@@ -41,7 +50,16 @@ _G.reload = function()
     end
 end
 
-function _G.map(mode, key, result, opts)
+function _G.map(mode, lhs, rhs, opts)
+
+    local finalRhs = ''
+    local callback = nil
+    if type(rhs) == 'string' then
+      finalRhs = rhs
+    else
+      callback = rhs
+    end
+
     opts =
         vim.tbl_extend(
         "keep",
@@ -49,10 +67,16 @@ function _G.map(mode, key, result, opts)
         {
             noremap = true,
             silent = true,
-            expr = false
+            expr = false,
+            callback = callback
         }
     )
-    vim.api.nvim_set_keymap(mode, key, result, opts)
+
+    vim.api.nvim_set_keymap(mode, lhs, finalRhs, opts)
+end
+
+function _G.merge(dest, source, strategy)
+  return vim.tbl_extend(strategy or 'keep', source or {}, dest)
 end
 
 function _G.au(event, filetype, action)
@@ -110,6 +134,11 @@ function _G.isNonEmptyString(str)
    end
    return true
 end
+
+function _G.addCommand(name, func, opts)
+  vim.api.nvim_add_user_command(name, func, opts or {})
+end
+
 
 _G.g = vim.g
 _G.cmd = vim.cmd
