@@ -11,5 +11,5 @@ return function()
           replace ="DiffChange",
       },
     })
-    vim.api.nvim_command("command! Replace :lua require'spectre'.open()")
+    addCommand('Replace', function() require'spectre'.open() end)
 end
