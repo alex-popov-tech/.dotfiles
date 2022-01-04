@@ -1,4 +1,4 @@
-return function(config, on_attach)
+return function(on_attach)
     local runtime_path = vim.split(package.path, ";")
     table.insert(runtime_path, "lua/?.lua")
     table.insert(runtime_path, "lua/?/init.lua")
