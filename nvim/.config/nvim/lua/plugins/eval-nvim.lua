@@ -1,3 +1,1 @@
-return function()
-    require("eval").setup()
-end
+return function() require("eval").setup() end

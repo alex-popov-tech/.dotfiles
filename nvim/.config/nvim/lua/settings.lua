@@ -1,56 +1,58 @@
 g.mapleader = " "
 cmd("nmap <bs> <leader>")
 
-for key, val in pairs(
-    {
-        clipboard = "unnamedplus", -- enable yank/paste to/from system clipboard
-        mouse = "a", -- to visually select and copy from vim without line numbers
-        lazyredraw = true, -- Don't redraw while executing macros (good performance config)
-        ttyfast = true, -- Don't redraw while executing macros (good performance config)
-        hlsearch = false, -- keep searched chunks hightlighted
-        ignorecase = true, -- search case-insensitive
-        smartcase = true, -- if on with ignorecase, when a pattern contains an uppercase letter, it is case sensitive, otherwise it is not
-        writebackup = false, -- Turn backup off, since most stuff is in SVN, git et.c anyway...
-        swapfile = false,
-        backup = false,
-        showcmd = true, -- show what commands you typing, what you select in visual mode, etc.
-        autowrite = true, -- Automatically :write before running commands
-        scrolloff = 2, -- how many lines till window border to see when scrolling
-        sidescrolloff = 10, -- same as above but for columns
-        shell = "/usr/local/bin/zsh",
-        -- inccommand = "nosplit", -- incremental search ( enabled by default )
-        updatetime = 200, -- timeout for showing cursorhold events, etc
-        -- completeopt = "menu,noinsert,noselect", -- how window for completion will look like
-        shortmess = vim.o.shortmess .. "s", -- better messages
-        -- TextEdit might fail if hidden is not set.
-        hidden = true,
-        termguicolors = true,
-        background = "dark",
-        encoding = "UTF-8",
-        list = true,
-        listchars = "space:·,tab:»»,eol:↩", -- replace chars
-        fillchars = "stlnc:-,vert:¦" -- splits char
-    }
-) do
-    vim.o[key] = val
-end
-for key, val in pairs(
-    {
-        signcolumn = "no", -- nothing to the left of line number
-        foldnestmax = 10, -- deepest fold is 10 levels
-        foldenable = false, -- don't fold by default
-        foldmethod = "syntax", -- fold text using syntax
-        wrap = false, -- when line is longer than the screen, it continues on the next line
-        linebreak = true, -- but do not break words, only 'by words'
-        number = true, -- show absolute line number
-        numberwidth = 1, -- by default 4, and because of that there is empty space to the right to line numbers except current
-        relativenumber = true, -- show relative line number for current line
-        -- cursorcolumn = true, -- highlight for current column
-        cursorline = true -- Highlight the screen line of the cursor with CursorLine
-    }
-) do
-    vim.wo[key] = val
-end
+-- cmd("let g:do_filetype_lua=1")
+-- cmd("let g:did_load_filetypes=0")
+for key, val in pairs({
+    -- for next two - https://www.reddit.com/r/neovim/comments/rvwsl3/introducing_filetypelua_and_a_call_for_help/
+    do_filetype_lua = 1,
+    did_load_filetypes = 0
+}) do vim.g[key] = val end
+
+vim.filetype.add({extension = {ts = 'typescript'}})
+
+for key, val in pairs({
+    clipboard = "unnamedplus", -- enable yank/paste to/from system clipboard
+    mouse = "a", -- to visually select and copy from vim without line numbers
+    lazyredraw = true, -- Don't redraw while executing macros (good performance config)
+    ttyfast = true, -- Don't redraw while executing macros (good performance config)
+    hlsearch = false, -- keep searched chunks hightlighted
+    ignorecase = true, -- search case-insensitive
+    smartcase = true, -- if on with ignorecase, when a pattern contains an uppercase letter, it is case sensitive, otherwise it is not
+    writebackup = false, -- Turn backup off, since most stuff is in SVN, git et.c anyway...
+    swapfile = false,
+    backup = false,
+    showcmd = true, -- show what commands you typing, what you select in visual mode, etc.
+    autowrite = true, -- Automatically :write before running commands
+    scrolloff = 2, -- how many lines till window border to see when scrolling
+    sidescrolloff = 10, -- same as above but for columns
+    shell = "/usr/local/bin/zsh",
+    -- inccommand = "nosplit", -- incremental search ( enabled by default )
+    updatetime = 200, -- timeout for showing cursorhold events, etc
+    -- completeopt = "menu,noinsert,noselect", -- how window for completion will look like
+    shortmess = vim.o.shortmess .. "s", -- better messages
+    -- TextEdit might fail if hidden is not set.
+    hidden = true,
+    termguicolors = true,
+    background = "dark",
+    encoding = "UTF-8",
+    list = true,
+    listchars = "space:·,tab:»»,eol:↩", -- replace chars
+    fillchars = "stlnc:-,vert:¦" -- splits char
+}) do vim.o[key] = val end
+for key, val in pairs({
+    signcolumn = "no", -- nothing to the left of line number
+    foldnestmax = 10, -- deepest fold is 10 levels
+    foldenable = false, -- don't fold by default
+    foldmethod = "syntax", -- fold text using syntax
+    wrap = false, -- when line is longer than the screen, it continues on the next line
+    linebreak = true, -- but do not break words, only 'by words'
+    number = true, -- show absolute line number
+    numberwidth = 1, -- by default 4, and because of that there is empty space to the right to line numbers except current
+    relativenumber = true, -- show relative line number for current line
+    -- cursorcolumn = true, -- highlight for current column
+    cursorline = true -- Highlight the screen line of the cursor with CursorLine
+}) do vim.wo[key] = val end
 -- add chars to '%'
 vim.bo.matchpairs = "(:),{:},[:],<:>"
 
@@ -66,7 +68,8 @@ if fn.has("persistent_undo") then
 end
 
 -- write path when save file if needed
-au("BufNewFile", "*", ":exe ': !mkdir -p ' . escape(fnamemodify(bufname('%'),':p:h'),'#% \\')")
+au("BufNewFile", "*",
+   ":exe ': !mkdir -p ' . escape(fnamemodify(bufname('%'),':p:h'),'#% \\')")
 
 -- cmd("syntax on")
 

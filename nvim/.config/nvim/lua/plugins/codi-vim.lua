@@ -1,3 +1,1 @@
-return function ()
-    cmd("cnoreabbrev Eval Codi!!")
-end
+return function() cmd("cnoreabbrev Eval Codi!!") end

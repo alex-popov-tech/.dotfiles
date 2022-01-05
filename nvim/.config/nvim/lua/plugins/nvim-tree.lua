@@ -1,14 +1,11 @@
 return function()
-    map(
-        "n",
-        "<c-f>",
-        function()
-          if ft() == 'NvimTree' or ft() == 'startify' then
+    map("n", "<c-f>", function()
+        if ft() == 'NvimTree' or ft() == 'startify' then
             vim.cmd('NvimTreeToggle')
-          else vim.cmd('NvimTreeFindFile')
-          end
+        else
+            vim.cmd('NvimTreeFindFile')
         end
-    )
+    end)
     g.nvim_tree_side = "left"
     g.nvim_tree_width = 30
     g.nvim_tree_quit_on_open = 1
@@ -26,16 +23,10 @@ return function()
             renamed = "➜",
             untracked = "★"
         },
-        folder = {
-            default = "",
-            open = ""
-        }
+        folder = {default = "", open = ""}
     }
-    require "nvim-tree".setup {
+    require"nvim-tree".setup {
         auto_close = true,
-        view = {
-          width = 50,
-          side = 'right'
-        }
+        view = {width = 50, side = 'right'}
     }
 end

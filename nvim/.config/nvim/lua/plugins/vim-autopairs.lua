@@ -1,3 +1,1 @@
-return function()
-    require("nvim-autopairs").setup()
-end
+return function() require("nvim-autopairs").setup() end

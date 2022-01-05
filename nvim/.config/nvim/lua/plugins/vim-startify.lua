@@ -1,5 +1,7 @@
 return function()
-    g.startify_lists = {{type = "dir", header = {" Most recently updated in " .. fn.getcwd()}}}
+    g.startify_lists = {
+        {type = "dir", header = {" Most recently updated in " .. fn.getcwd()}}
+    }
     -- use vsc root when enter file
     g.startify_change_to_vcs_root = 1
     -- do not show 'edit' and 'quit' options

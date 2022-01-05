@@ -1,3 +1,1 @@
-return function()
-    cmd("cnoreabbrev bd Bdelete")
-end
+return function() cmd("cnoreabbrev bd Bdelete") end

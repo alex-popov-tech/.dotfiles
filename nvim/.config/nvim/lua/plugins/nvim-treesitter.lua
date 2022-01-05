@@ -1,5 +1,6 @@
 return function()
-    local parser_configs = require("nvim-treesitter.parsers").get_parser_configs()
+    local parser_configs =
+        require("nvim-treesitter.parsers").get_parser_configs()
     parser_configs.http = {
         install_info = {
             url = "https://github.com/NTBBloodbath/tree-sitter-http",
@@ -7,14 +8,12 @@ return function()
             branch = "main"
         }
     }
-    require "nvim-treesitter.configs".setup {
+    require"nvim-treesitter.configs".setup {
         -- ensure_installed = "all",
         ignore_install = {"haskell"},
         highlight = {
             enable = true, -- false will disable the whole extension
-            indent = {
-                enable = true
-            },
+            indent = {enable = true},
             use_languagetree = true
         },
         pairs = {

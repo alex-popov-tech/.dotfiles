@@ -8,10 +8,8 @@ local packer = {
 }
 
 local textObjects = {
-    "kana/vim-textobj-user",
-    "glts/vim-textobj-comment",
-    "kana/vim-textobj-indent",
-    "wellle/targets.vim",
+    "kana/vim-textobj-user", "glts/vim-textobj-comment",
+    "kana/vim-textobj-indent", "wellle/targets.vim",
     {"chaoren/vim-wordmotion", config = require("plugins.vim-wordmotion")}
 }
 
@@ -19,47 +17,36 @@ local core = {
     -- fix performance bug https://github.com/neovim/neovim/issues/12587 for CursorHold CursorHoldI
     {
         "antoinemadec/FixCursorHold.nvim",
-        config = function()
-            vim.g.cursorhold_updatetime = 200
-        end
-    },
-    -- when yanking do not put cursor at the begginning of yanked text
-    { "svban/YankAssassin.vim", },
-    -- improve load time with better 'filetype'
-    {"nathom/filetype.nvim"},
+        config = function() vim.g.cursorhold_updatetime = 200 end
+    }, -- when yanking do not put cursor at the begginning of yanked text
+    {"svban/YankAssassin.vim"}, -- improve load time with better 'filetype'
+    -- {"nathom/filetype.nvim"},
     -- abbreviations, substitusion, coercion (transform case)
     {"tpope/vim-abolish", config = require("plugins.abolish-vim")},
     -- add bunch of mappings like ]p ]e ]<space> etc.
     "tpope/vim-unimpaired",
     -- allows repeat via dot for some plugins like surround
-    "tpope/vim-repeat",
-    -- add\update\remove surround stuff like ''{}''
-    "tpope/vim-surround",
-    -- {
+    "tpope/vim-repeat", -- add\update\remove surround stuff like ''{}''
+    "tpope/vim-surround", -- {
     --     "machakann/vim-sandwich",
     -- },
     -- auto brackets
     -- "cohama/lexima.vim",
     --  shiftwidth/expandtab/etc
-    "tpope/vim-sleuth",
-    -- close all buffers but current
+    "tpope/vim-sleuth", -- close all buffers but current
     {"schickling/vim-bufonly", config = require("plugins.vim-bufonly")},
     -- close buffer
     {"moll/vim-bbye", config = require("plugins.vim-bbye")},
     -- move to {motion}
     {"svermeulen/vim-subversive", config = require("plugins.vim-subversive")},
     -- highlight for % pairs
-    "andymass/vim-matchup",
-    -- removes cursor jumping when opening qf,etc.
+    "andymass/vim-matchup", -- removes cursor jumping when opening qf,etc.
     {"luukvbaal/stabilize.nvim", config = require("plugins.stabilize-nvim")},
     -- expectedly resizes splits in different situations
     {
         "kwkarlwang/bufresize.nvim",
-        config = function()
-            require("bufresize").setup()
-        end
-    },
-    -- easy motion like.
+        config = function() require("bufresize").setup() end
+    }, -- easy motion like.
     {
         "ggandor/lightspeed.nvim",
         requires = {"tpope/vim-repeat"},
@@ -68,15 +55,9 @@ local core = {
 }
 
 local git = {
-    {
-        "tpope/vim-fugitive",
-        config = require("plugins.vim-fugitive")
-    },
-    {
+    {"tpope/vim-fugitive", config = require("plugins.vim-fugitive")}, {
         "lewis6991/gitsigns.nvim",
-        config = function()
-            require("gitsigns").setup()
-        end
+        config = function() require("gitsigns").setup() end
     }
 }
 
@@ -110,13 +91,9 @@ local filetree = {
 local fuzzyFinder = {
     {
         "nvim-telescope/telescope.nvim",
-        requires = {
-            "nvim-lua/popup.nvim",
-            "nvim-lua/plenary.nvim"
-        },
+        requires = {"nvim-lua/popup.nvim", "nvim-lua/plenary.nvim"},
         config = require("plugins.telescope-nvim")
-    },
-    {
+    }, {
         "windwp/nvim-spectre",
         config = require("plugins.spectre"),
         requires = {"nvim-lua/plenary.nvim", "nvim-lua/popup.nvim"},
@@ -128,14 +105,12 @@ local coding = {
     -- add commenting for different langs
     {"tpope/vim-commentary", config = require("plugins.vim-commentary")},
     -- plugin which allows vim to work with common editorconfig
-    "editorconfig/editorconfig-vim",
-    -- database viewer
+    "editorconfig/editorconfig-vim", -- database viewer
     {
         "kristijanhusak/vim-dadbod-ui",
         config = require("plugins.vim-dadbod"),
         requires = {"tpope/vim-dadbod", "kristijanhusak/vim-dadbod-completion"}
-    },
-    {"tpope/vim-dotenv", config = require("plugins.vim-dotenv")},
+    }, {"tpope/vim-dotenv", config = require("plugins.vim-dotenv")},
     {"hashivim/vim-terraform", config = require("plugins.vim-terraform")},
     -- interactive eval whole buff
     {"metakirby5/codi.vim", config = require("plugins.codi-vim")}
@@ -146,13 +121,17 @@ local ui = {
         "noib3/cokeline.nvim",
         requires = "kyazdani42/nvim-web-devicons", -- If you want devicons
         config = require("plugins.cokeline-nvim")
-    },
-    -- statusline
+    }, -- statusline
     {"windwp/windline.nvim", config = require("plugins.windline-nvim")},
     -- color scheme
+    {
+        "catppuccin/nvim",
+        as = "catppuccin",
+        config = require("plugins.catppuccin")
+    }
     -- "christianchiarulli/nvcode-color-schemes.vim",
     -- "bluz71/vim-nightfly-guicolors",
-    {"sainnhe/sonokai"}
+    -- {"sainnhe/sonokai"}
     -- "glepnir/zephyr-nvim",
     -- "sainnhe/edge",
     -- "mhartington/oceanic-next",
@@ -170,66 +149,72 @@ local ui = {
 }
 
 local treesitter = {
-    {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate", config = require("plugins.nvim-treesitter")},
-    {"nvim-treesitter/playground"},
-    -- { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate", config = require("plugins.nvim-treesitter") },
-    -- { "theHamsta/nvim-treesitter-pairs", },
+    {
+        "nvim-treesitter/nvim-treesitter",
+        run = ":TSUpdate",
+        config = require("plugins.nvim-treesitter")
+    }, {"nvim-treesitter/playground"}
 }
 
 local lsp = {
     -- lsp configs placed here
-    "neovim/nvim-lspconfig",
-    -- lsp servers installer
-    {"williamboman/nvim-lsp-installer"},
-    -- just a bit better ts support
+    "neovim/nvim-lspconfig", -- lsp servers installer
+    {"williamboman/nvim-lsp-installer"}, -- just a bit better ts support
     "jose-elias-alvarez/nvim-lsp-ts-utils",
     -- plugin to add completeion possibility
     {
         "hrsh7th/nvim-cmp",
         config = require("plugins.nvim-cmp"),
         requires = {
-            "onsails/lspkind-nvim",
-            "f3fora/cmp-spell",
-            "octaltree/cmp-look",
-            "hrsh7th/cmp-path",
-            "hrsh7th/cmp-nvim-lsp",
-            "hrsh7th/cmp-nvim-lua",
-            "hrsh7th/cmp-buffer",
-            "hrsh7th/cmp-vsnip",
-            "hrsh7th/vim-vsnip",
-            "hrsh7th/cmp-emoji",
-            {
+            "onsails/lspkind-nvim", "f3fora/cmp-spell", "octaltree/cmp-look",
+            "hrsh7th/cmp-path", "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-nvim-lua",
+            "hrsh7th/cmp-buffer", "hrsh7th/cmp-vsnip", "hrsh7th/vim-vsnip",
+            "hrsh7th/cmp-emoji", {
                 "tzachar/cmp-fuzzy-buffer",
                 requires = {
                     {
                         "tzachar/fuzzy.nvim",
-                        requires = {{"hrsh7th/cmp-buffer"}, {"nvim-telescope/telescope-fzf-native.nvim", run = "make"}}
+                        requires = {
+                            {"hrsh7th/cmp-buffer"},
+                            {
+                                "nvim-telescope/telescope-fzf-native.nvim",
+                                run = "make"
+                            }
+                        }
                     }
                 }
-            },
-            {
+            }, {
                 "tzachar/cmp-fuzzy-path",
                 requires = {
                     {
                         "tzachar/fuzzy.nvim",
-                        requires = {{"hrsh7th/cmp-path"}, {"nvim-telescope/telescope-fzf-native.nvim", run = "make"}}
+                        requires = {
+                            {"hrsh7th/cmp-path"},
+                            {
+                                "nvim-telescope/telescope-fzf-native.nvim",
+                                run = "make"
+                            }
+                        }
                     }
                 }
             }
-        },
-    },
-    {
+        }
+    }, {
         "jose-elias-alvarez/null-ls.nvim",
         config = require("plugins.null-ls"),
         requires = {"nvim-lua/plenary.nvim", "neovim/nvim-lspconfig"}
-    },
-    -- snippeds
-    {"hrsh7th/vim-vsnip", requires = "hrsh7th/vim-vsnip-integ", config = require("plugins.vim-vsnip")},
-    -- colors for lsp if your theme have not
-    "folke/lsp-colors.nvim",
-    -- diagnostics
-    {"folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons", config = require("plugins.trouble-nvim")},
-    -- code action
+    }, -- snippeds
+    {
+        "hrsh7th/vim-vsnip",
+        requires = "hrsh7th/vim-vsnip-integ",
+        config = require("plugins.vim-vsnip")
+    }, -- colors for lsp if your theme have not
+    "folke/lsp-colors.nvim", -- diagnostics
+    {
+        "folke/trouble.nvim",
+        requires = "kyazdani42/nvim-web-devicons",
+        config = require("plugins.trouble-nvim")
+    }, -- code action
     {"weilbith/nvim-code-action-menu", cmd = "CodeActionMenu"},
     -- shema validation for JSON files
     {"b0o/SchemaStore.nvim"}
@@ -237,8 +222,7 @@ local lsp = {
 
 local other = {
     {"dstein64/vim-startuptime", cmd = {"StartupTime"}},
-    {"iamcco/markdown-preview.nvim"},
-    {
+    {"iamcco/markdown-preview.nvim"}, {
         "NTBBloodbath/rest.nvim",
         requires = {"nvim-lua/plenary.nvim"},
         config = require("plugins.rest-nvim")
@@ -246,7 +230,7 @@ local other = {
 }
 
 -- vim.cmd("cnoreabbrev ps PackerSync")
-require "packer".startup {
+require"packer".startup {
     function(use)
         use(packer)
         use(textObjects)
@@ -265,8 +249,6 @@ require "packer".startup {
     end,
     config = {
         max_jobs = 5, -- Limit the number of simultaneous jobs. nil means no limit
-        display = {
-            open_fn = require "packer.util".float
-        }
+        display = {open_fn = require"packer.util".float}
     }
 }

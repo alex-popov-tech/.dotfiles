@@ -43,25 +43,9 @@ for _, mappings in pairs(
     map(mode, key, value, options)
 end
 
--- tmux-like zoom in vim
-function _toggleZoom()
-    if 1 == vim.fn.winnr("$") then
-        return
-    end
-    local restoreCmd = vim.fn.winrestcmd()
-    cmd("wincmd |")
-    cmd("wincmd _")
-    -- If the layout did not change, it's an un-zoom.
-    if restoreCmd == vim.fn.winrestcmd() then
-        cmd("exe t:zoom_restore")
-    else
-        vim.t.zoom_restore = restoreCmd
-    end
-    return
-end
-map("n", "<leader>z", ":lua _toggleZoom()<cr>")
+map("n", "<leader>z", function() toggleZoom() end)
 
-au("BufNewFile, BufReadPost", "*.pug", "set filetype=pug")
+au("bufNewFile, BufReadPost", "*.pug", "set filetype=pug")
 au("BufNewFile, BufReadPost", "*.jade", "set filetype=pug")
 
 cmd("cnoreabbrev W noa w")

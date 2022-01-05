@@ -8,12 +8,12 @@ return function(client, bufnr)
         map("i", "<c-k>", function() vim.lsp.buf.signature_help() end, options)
     end
     if client.resolved_capabilities.find_references then
-        map(
-            "n",
-            "'gr",
-            function() require'telescope.builtin'.lsp_references({layout_strategy='vertical',layout_config={width=0.9, height=0.9}}) end,
-            options
-        )
+        map("n", "'gr", function()
+            require'telescope.builtin'.lsp_references({
+                layout_strategy = 'vertical',
+                layout_config = {width = 0.9, height = 0.9}
+            })
+        end, options)
     end
     if client.resolved_capabilities.goto_definition then
         map("n", "'gd", function() vim.lsp.buf.definition() end, options)
@@ -22,12 +22,31 @@ return function(client, bufnr)
         map("n", "'rn", function() vim.lsp.buf.rename.float() end, options)
     end
 
-    map("n", "[d", function() vim.diagnostic.goto_prev({ float =  { border = 'single' }}) end, options)
-    map("n", "]d", function() vim.diagnostic.goto_next({ float =  { border = 'single' }}) end, options)
+    map("n", "[d",
+        function() vim.diagnostic.goto_prev({float = {border = 'single'}}) end,
+        options)
+    map("n", "]d",
+        function() vim.diagnostic.goto_next({float = {border = 'single'}}) end,
+        options)
     map("n", "'gi", function() vim.lsp.buf.implementation() end, options)
     map("n", "'a", "<cmd>CodeActionMenu<CR>", options)
-    map("n", "'d", function() vim.diagnostic.open_float(0, { scope = "line", border = "rounded", focusable = false }) end, options)
+    map("n", "'d", function()
+        vim.diagnostic.open_float(0, {
+            scope = "line",
+            border = "rounded",
+            focusable = false
+        })
+    end, options)
     map("n", "'D", "<cmd>TroubleToggle<CR>", options)
 
+    function _G.fmt()
+        if ft() == "typescript" then
+            require"nvim-lsp-ts-utils".organize_imports_sync()
+        end
+
+        vim.lsp.buf.formatting_seq_sync()
+        -- vim.cmd("w | :e | TSBufEnable highlight | :e")
+        -- vim.cmd("TSBufEnable highlight")
+    end
     map("n", "<leader>f", function() fmt() end, options)
 end
