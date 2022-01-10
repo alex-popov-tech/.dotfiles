@@ -83,6 +83,10 @@ function _G.isNonEmptyString(str)
     return true
 end
 
+function _G.sleep(sec)
+  vim.cmd('sleep ' .. sec)
+end
+
 function _G.addCommand(name, func, opts)
     vim.api.nvim_add_user_command(name, func, opts or {})
 end
