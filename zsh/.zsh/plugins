@@ -7,7 +7,8 @@ zinit for \
   light-mode zdharma-continuum/fast-syntax-highlighting \
   light-mode OMZ::plugins/git/git.plugin.zsh \
   light-mode MichaelAquilina/zsh-you-should-use \
-  light-mode OMZ::plugins/vi-mode/vi-mode.plugin.zsh
+  light-mode OMZ::plugins/vi-mode/vi-mode.plugin.zsh \
+  light-mode OMZ::plugins/dotenv/dotenv.plugin.zsh
 
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 # zinit snippet https://github.com/sainnhe/sonokai/raw/master/zsh/.zsh-theme-sonokai-shusia
