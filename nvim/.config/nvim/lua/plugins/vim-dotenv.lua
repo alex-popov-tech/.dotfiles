@@ -1,4 +1,4 @@
 return function()
-    au("VimEnter", "*", "if !empty(glob('.env')) | Dotenv .env | endif")
+    au("VimEnter", ".env", "Dotenv .env")
     au("BufWritePost", ".env", "Dotenv .env")
 end
