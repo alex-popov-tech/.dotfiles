@@ -135,10 +135,18 @@ local ui = {
 
 local treesitter = {
     {
-        "nvim-treesitter/nvim-treesitter",
-        run = ":TSUpdate",
-        config = require("plugins.nvim-treesitter")
-    }, {"nvim-treesitter/playground"}
+        'nvim-treesitter/nvim-treesitter',
+        run = ':TSUpdate',
+        config = require('plugins.nvim-treesitter')
+    },
+    {'windwp/nvim-ts-autotag', config = function() require('nvim-ts-autotag').setup() end},
+    {'JoosepAlviste/nvim-ts-context-commentstring', config = function()
+      -- https://github.com/JoosepAlviste/nvim-ts-context-commentstring/blob/097df33c9ef5bbd3828105e4bee99965b758dc3f/lua/ts_context_commentstring/internal.lua#L86-L89
+      vim.g.loaded_commentary = 0
+      require('nvim-ts-autotag').setup()
+      vim.g.loaded_commentary = 1
+    end},
+    {'nvim-treesitter/playground'}
 }
 
 local lsp = {

@@ -9,12 +9,15 @@ return function()
         }
     }
     require"nvim-treesitter.configs".setup {
-        -- ensure_installed = "all",
+        ensure_installed = "all",
         ignore_install = {"haskell"},
         highlight = {
             enable = true, -- false will disable the whole extension
             indent = {enable = true},
             use_languagetree = true
+        },
+        context_commentstring = {
+          enable = true
         },
         pairs = {
             enable = true,
