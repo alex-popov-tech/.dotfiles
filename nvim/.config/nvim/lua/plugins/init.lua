@@ -1,10 +1,12 @@
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
 
+au('BufWrite', '**/nvim/.config/nvim/lua*.lua', 'PackerCompile')
+
 local packer = {
     -- Packer can manage itself as an optional plugin
-    "wbthomason/packer.nvim",
-    opt = true
+    'wbthomason/packer.nvim',
+    config = function () cmd('command! PS PackerSync') end
 }
 
 local textObjects = {
