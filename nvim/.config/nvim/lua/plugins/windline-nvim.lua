@@ -11,10 +11,10 @@ return function()
         colors_name = function(colors)
             local result = vim.tbl_extend("force", colors, {
                 default_blue = colors.blue,
-                red = "#fc5d7c",
-                green = "#9ecd6f",
-                blue = "#78dce8",
-                yellow = "#e5c463",
+                red = "#D57780",
+                green = "#A3BE8C",
+                blue = "#81A1C1",
+                yellow = "#EBCB8B",
                 bg = "none"
             })
             return result

@@ -124,28 +124,13 @@ local ui = {
     }, -- statusline
     {"windwp/windline.nvim", config = require("plugins.windline-nvim")},
     -- color scheme
+    { 'rmehri01/onenord.nvim' },
     {
-        "catppuccin/nvim",
-        as = "catppuccin",
-        config = require("plugins.catppuccin")
+        'norcalli/nvim-colorizer.lua',
+        config = function()
+            require'colorizer'.setup(nil, {names = false, mode = 'foreground'})
+        end
     }
-    -- "christianchiarulli/nvcode-color-schemes.vim",
-    -- "bluz71/vim-nightfly-guicolors",
-    -- {"sainnhe/sonokai"}
-    -- "glepnir/zephyr-nvim",
-    -- "sainnhe/edge",
-    -- "mhartington/oceanic-next",
-    -- "rktjmp/lush.nvim",
-    -- "npxbr/gruvbox.nvim",
-    -- "edkolev/tmuxline.vim", -- generate tmux statusline from vim statusline
-    -- highlight hex colors in buffer
-    -- {
-    --     "rrethy/vim-hexokinase",
-    --     run = "make hexokinase",
-    --     config = function()
-    --         vim.g.Hexokinase_highlighters = {"foregroundfull"}
-    --     end
-    -- }
 }
 
 local treesitter = {

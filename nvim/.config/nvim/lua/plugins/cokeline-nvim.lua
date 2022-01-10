@@ -32,10 +32,10 @@ return function()
                 hl = {
                     fg = function(buffer)
                         if buffer.is_focused then
-                            return "#78dce8"
+                            return "#B988B0"
                         end
                         if buffer.is_modified then
-                            return "#e5c463"
+                            return "#EBCB8B"
                         end
                     end,
                     style = function(buffer)
@@ -53,8 +53,6 @@ return function()
             }, space
         }
     })
-    -- map("n", "<S-Up>", "<Cmd>lua require'cokeline'.focus({ step = 1 })<CR>")
-    -- map("n", "<S-Down>", "<Cmd>lua require'cokeline'.focus({ step = -1 })<CR>")
     cmd("nmap <S-Up> <Plug>(cokeline-focus-next)")
     cmd("nmap <S-Down> <Plug>(cokeline-focus-prev)")
     hi("tablinefill", {guibg = "none"})
