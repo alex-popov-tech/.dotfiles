@@ -148,36 +148,28 @@ local lsp = {
     "jose-elias-alvarez/nvim-lsp-ts-utils",
     -- plugin to add completeion possibility
     {
-        "hrsh7th/nvim-cmp",
-        config = require("plugins.nvim-cmp"),
+        'hrsh7th/nvim-cmp',
+        config = require('plugins.nvim-cmp'),
         requires = {
-            "onsails/lspkind-nvim", "f3fora/cmp-spell", "octaltree/cmp-look",
-            "hrsh7th/cmp-path", "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-nvim-lua",
-            "hrsh7th/cmp-buffer", "hrsh7th/cmp-vsnip", "hrsh7th/vim-vsnip",
-            "hrsh7th/cmp-emoji", {
-                "tzachar/cmp-fuzzy-buffer",
+            'onsails/lspkind-nvim',
+            'octaltree/cmp-look',
+            'hrsh7th/cmp-path',
+            'hrsh7th/cmp-nvim-lsp',
+            'hrsh7th/cmp-nvim-lua',
+            'hrsh7th/cmp-buffer',
+            'hrsh7th/cmp-vsnip',
+            'hrsh7th/vim-vsnip',
+            'hrsh7th/cmp-emoji',
+            {
+                'tzachar/cmp-fuzzy-buffer',
                 requires = {
                     {
-                        "tzachar/fuzzy.nvim",
+                        'tzachar/fuzzy.nvim',
                         requires = {
-                            {"hrsh7th/cmp-buffer"},
+                            {'hrsh7th/cmp-buffer'},
                             {
-                                "nvim-telescope/telescope-fzf-native.nvim",
-                                run = "make"
-                            }
-                        }
-                    }
-                }
-            }, {
-                "tzachar/cmp-fuzzy-path",
-                requires = {
-                    {
-                        "tzachar/fuzzy.nvim",
-                        requires = {
-                            {"hrsh7th/cmp-path"},
-                            {
-                                "nvim-telescope/telescope-fzf-native.nvim",
-                                run = "make"
+                                'nvim-telescope/telescope-fzf-native.nvim',
+                                run = 'make'
                             }
                         }
                     }
