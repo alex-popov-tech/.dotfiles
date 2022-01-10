@@ -184,15 +184,11 @@ local lsp = {
                 }
             }
         }
-    }, {
-        "jose-elias-alvarez/null-ls.nvim",
-        config = require("plugins.null-ls"),
-        requires = {"nvim-lua/plenary.nvim", "neovim/nvim-lspconfig"}
-    }, -- snippeds
+    },
     {
-        "hrsh7th/vim-vsnip",
-        requires = "hrsh7th/vim-vsnip-integ",
-        config = require("plugins.vim-vsnip")
+        'jose-elias-alvarez/null-ls.nvim',
+        requires = {'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig'}
+    },
     }, -- colors for lsp if your theme have not
     "folke/lsp-colors.nvim", -- diagnostics
     {
