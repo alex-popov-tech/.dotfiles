@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CompatibleVersion</key>
+	<integer>1</integer>
+	<key>RawQuery</key>
+	<string>(((_kMDItemGroupId = 7))) &amp;&amp; (true)</string>
+	<key>RawQueryDict</key>
+	<dict>
+		<key>FinderFilesOnly</key>
+		<true/>
+		<key>RawQuery</key>
+		<string>(((_kMDItemGroupId = 7))) &amp;&amp; (true)</string>
+		<key>SearchScopes</key>
+		<array>
+			<string>kMDQueryScopeComputer</string>
+		</array>
+		<key>UserFilesOnly</key>
+		<true/>
+	</dict>
+	<key>SuggestedAttributes</key>
+	<array>
+		<string>kMDItemPixelHeight</string>
+		<string>kMDItemDurationSeconds</string> 
+		<string>kMDItemCodecs</string> 
+		<string>kMDItemTotalBitRate</string> 
+		<string>kMDItemRecordingYear</string> 
+	</array>
+	<key>SearchCriteria</key>
+	<dict>
+		<key>AnyAttributeContains</key>
+		<string></string>
+		<key>FXCriteriaSlices</key>
+		<array>
+			<dict>
+				<key>criteria</key>
+				<array>
+					<string>kMDItemKind</string>
+					<integer>300</integer>
+					<integer>415</integer>
+				</array>
+				<key>displayValues</key>
+				<array>
+					<string>Kind</string>
+					<string>is</string>
+					<string>movies</string>
+				</array>
+				<key>rowType</key>
+				<integer>0</integer>
+				<key>subrows</key>
+				<array/>
+			</dict>
+		</array>
+		<key>FXScope</key>
+		<integer>1396929382</integer>
+		<key>FXScopeArrayOfPaths</key>
+		<array>
+			<string>kMDQueryScopeComputer</string>
+		</array>
+	</dict>
+</dict>
+</plist>

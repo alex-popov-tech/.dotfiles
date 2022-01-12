@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CompatibleVersion</key>
+	<integer>1</integer>
+	<key>RawQuery</key>
+	<string>((InRange(kMDItemLastUsedDate,$time.today(-1),$time.today) &amp;&amp; (!((_kMDItemGroupId = 9))))) &amp;&amp; (true)</string>
+	<key>RawQueryDict</key>
+	<dict>
+		<key>FinderFilesOnly</key>
+		<true/>
+		<key>RawQuery</key>
+		<string>((InRange(kMDItemLastUsedDate,$time.today(-1),$time.today) &amp;&amp; (!((_kMDItemGroupId = 9))))) &amp;&amp; (true)</string>
+		<key>SearchScopes</key>
+		<array>
+			<string>kMDQueryScopeComputer</string>
+		</array>
+		<key>UserFilesOnly</key>
+		<true/>
+	</dict>
+	<key>SearchCriteria</key>
+	<dict>
+		<key>AnyAttributeContains</key>
+		<string></string>
+		<key>FXCriteriaSlices</key>
+		<array>
+			<dict>
+				<key>criteria</key>
+				<array>
+					<string>kMDItemLastUsedDate</string>
+					<integer>800</integer>
+					<integer>806</integer>
+				</array>
+				<key>displayValues</key>
+				<array>
+					<string>Last opened date</string>
+					<string>is</string>
+					<string>yesterday</string>
+				</array>
+				<key>rowType</key>
+				<integer>0</integer>
+				<key>subrows</key>
+				<array/>
+			</dict>
+			<dict>
+				<key>criteria</key>
+				<array>
+					<string>com_apple_CompoundSliceNone</string>
+					<integer>20000</integer>
+				</array>
+				<key>displayValues</key>
+				<array>
+					<string>None</string>
+					<string>of the following are true</string>
+				</array>
+				<key>rowType</key>
+				<integer>1</integer>
+				<key>subrows</key>
+				<array>
+					<dict>
+						<key>criteria</key>
+						<array>
+							<string>kMDItemKind</string>
+							<integer>300</integer>
+							<integer>406</integer>
+						</array>
+						<key>displayValues</key>
+						<array>
+							<string>Kind</string>
+							<string>is</string>
+							<string>folders</string>
+						</array>
+						<key>rowType</key>
+						<integer>0</integer>
+						<key>subrows</key>
+						<array/>
+					</dict>
+				</array>
+			</dict>
+		</array>
+		<key>FXScope</key>
+		<integer>1396929382</integer>
+		<key>FXScopeArrayOfPaths</key>
+		<array>
+			<string>kMDQueryScopeComputer</string>
+		</array>
+	</dict>
+</dict>
+</plist>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CompatibleVersion</key>
+	<integer>0</integer>
+	<key>RawQuery</key>
+	<string>(kMDItemLastUsedDate &gt;= $time.today) &amp;&amp; ((kMDItemContentType != *) || (kMDItemContentType != com.apple.mail.emlx))</string>
+	<key>SearchCriteria</key>
+	<dict>
+		<key>FXCriteriaSlices</key>
+		<array>
+			<dict>
+				<key>FXSliceKind</key>
+				<string>Slsv</string>
+				<key>Value</key>
+				<string>DAto</string>
+			</dict>
+		</array>
+		<key>FXScope</key>
+		<integer>1396925814</integer>
+		<key>FXScopeArrayOfPaths</key>
+		<array>
+			<string>kMDQueryScopeComputer</string>
+		</array>
+	</dict>
+	<key>Version</key>
+	<string>10.5</string>
+</dict>
+</plist>
