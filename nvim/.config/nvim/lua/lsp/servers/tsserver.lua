@@ -1,6 +1,6 @@
 return function(on_attach)
     return {
-        filetypes = {"typescript", "javascript"},
+        -- filetypes = {"typescript", "javascript"},
         on_attach = function(client, bufnr)
             on_attach(client, bufnr)
             -- tsserver, stop messing with prettier da fuck!
