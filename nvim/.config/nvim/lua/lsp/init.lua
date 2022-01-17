@@ -1,12 +1,13 @@
 require("lsp.settings")()
 local lsp_installer = require("nvim-lsp-installer")
+require("lsp.servers.customs")
 local null_ls = require("null-ls")
 local diagnostics = null_ls.builtins.diagnostics
 local formatting = null_ls.builtins.formatting
 local code_actions = null_ls.builtins.code_actions
 
 local general_on_attach = require("lsp.on_attach")
-local servers = {"sumneko_lua", "jsonls", "tsserver", "emmet-ls"}
+local servers = {"sumneko_lua", "jsonls", "tsserver", "ls_emmet"}
 
 _G.installLspServers = function()
     cmd("LspUninstallAll")
@@ -24,7 +25,6 @@ lsp_installer.on_server_ready(function(server)
     serverConfig.flags = {debounce_text_changes = 100, lintDebounce = 200}
     serverConfig.capabilities = require("cmp_nvim_lsp").update_capabilities(
                                     vim.lsp.protocol.make_client_capabilities())
-
     server:setup(serverConfig)
     vim.cmd [[ do User LspAttachBuffers ]]
 
