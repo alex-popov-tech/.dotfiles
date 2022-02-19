@@ -6,7 +6,7 @@ au('BufWrite', '**/nvim/.config/nvim/lua*.lua', 'PackerCompile')
 local packer = {
     -- Packer can manage itself as an optional plugin
     'wbthomason/packer.nvim',
-    config = function () cmd('command! PS PackerSync') end
+    config = function() cmd('command! PS PackerSync') end
 }
 
 local textObjects = {
@@ -96,7 +96,11 @@ local filetree = {
 local fuzzyFinder = {
     {
         'nvim-telescope/telescope.nvim',
-        requires = {'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim'},
+        requires = {
+            'nvim-lua/popup.nvim',
+            'nvim-lua/plenary.nvim',
+            {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
+        },
         config = require('plugins.telescope-nvim')
     },
     {
@@ -109,8 +113,17 @@ local fuzzyFinder = {
 
 local coding = {
     -- add commenting for different langs
-    {'tpope/vim-commentary', config = require('plugins.vim-commentary')},
-    -- plugin which allows vim to work with common editorconfig
+    -- {'tpope/vim-commentary', config = require('plugins.vim-commentary')},
+    {
+        'winston0410/commented.nvim',
+        config = function()
+            require('commented').setup({
+                hooks = {
+                    before_comment = require('ts_context_commentstring.internal').update_commentstring
+                }
+            })
+        end
+    },
     'editorconfig/editorconfig-vim', -- database viewer
     {
         'kristijanhusak/vim-dadbod-ui',
@@ -118,9 +131,7 @@ local coding = {
         requires = {'tpope/vim-dadbod', 'kristijanhusak/vim-dadbod-completion'}
     },
     {'tpope/vim-dotenv', config = require('plugins.vim-dotenv')},
-    {'hashivim/vim-terraform', config = require('plugins.vim-terraform')},
-    -- interactive eval whole buff
-    {'metakirby5/codi.vim', config = require('plugins.codi-vim')}
+    {'hashivim/vim-terraform', config = require('plugins.vim-terraform')}
 }
 
 local ui = {
@@ -152,8 +163,7 @@ local treesitter = {
     },
     {'JoosepAlviste/nvim-ts-context-commentstring'},
     {'nvim-treesitter/playground'},
-    end},
-    {'nvim-treesitter/playground'}
+    {'m-demare/hlargs.nvim', config = function() require'hlargs'.setup {} end}
 }
 
 local lsp = {
@@ -165,6 +175,7 @@ local lsp = {
     -- plugin to add completion possibility
     {
         'hrsh7th/nvim-cmp',
+        branch = 'dev',
         config = require('plugins.nvim-cmp'),
         requires = {
             'onsails/lspkind-nvim',
