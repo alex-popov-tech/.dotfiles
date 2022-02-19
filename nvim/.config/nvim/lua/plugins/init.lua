@@ -131,7 +131,7 @@ local ui = {
     }, -- statusline
     {'windwp/windline.nvim', config = require('plugins.windline-nvim')},
     -- color scheme
-    { 'rmehri01/onenord.nvim' },
+    {'rmehri01/onenord.nvim'},
     {
         'norcalli/nvim-colorizer.lua',
         config = function()
