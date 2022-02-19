@@ -58,6 +58,8 @@ vim.bo.matchpairs = "(:),{:},[:],<:>"
 
 -- blink search matches, not leave them visible
 au("cursorhold", "*", "set nohlsearch")
+-- highlight yanked text
+vim.cmd[[ au TextYankPost * silent! lua vim.highlight.on_yank({higroup="Visual", timeout=200}) ]]
 
 -- Keep undo history across sessions, by storing in file.
 -- Only works all the time.
