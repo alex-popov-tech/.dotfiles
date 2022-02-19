@@ -209,6 +209,7 @@ local lsp = {
         config = require('plugins.trouble-nvim')
     }, -- diagnostics
     {'weilbith/nvim-code-action-menu', cmd = 'CodeActionMenu'}, -- code action
+    {'j-hui/fidget.nvim', config = require('plugins.fidget-nvim')}, -- code action
     -- shema validation for JSON files
     {'b0o/SchemaStore.nvim'}
 }
