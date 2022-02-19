@@ -227,12 +227,7 @@ local lsp = {
 
 local other = {
     {'dstein64/vim-startuptime', cmd = {'StartupTime'}},
-    {'iamcco/markdown-preview.nvim'},
-    {
-        'NTBBloodbath/rest.nvim',
-        requires = {'nvim-lua/plenary.nvim'},
-        config = require('plugins.rest-nvim')
-    }
+    {'iamcco/markdown-preview.nvim'}
 }
 
 -- vim.cmd("cnoreabbrev ps PackerSync")
