@@ -35,7 +35,17 @@ local core = {
     --     "machakann/vim-sandwich",
     -- },
     -- auto brackets
-    -- "cohama/lexima.vim",
+    {
+        'ZhiyuanLck/smart-pairs',
+        config = function()
+            require 'pairs':setup({
+                autojump_strategy = {unbalanced = 'all'},
+                enter = {enable_mapping = false}
+            })
+        end,
+        event = 'InsertEnter'
+    },
+    --  "cohama/lexima.vim",
     --  shiftwidth/expandtab/etc
     'tpope/vim-sleuth', -- close all buffers but current
     {'schickling/vim-bufonly', config = require('plugins.vim-bufonly')},

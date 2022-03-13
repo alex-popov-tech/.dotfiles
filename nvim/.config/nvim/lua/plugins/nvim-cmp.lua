@@ -1,5 +1,6 @@
 return function()
     local cmp = require 'cmp'
+    local kind = cmp.lsp.CompletionItemKind
     local lspkind = require('lspkind')
 
     local function check_back_space()
@@ -108,10 +109,15 @@ return function()
             ['<Up>'] = cmp.mapping(cmp.mapping.select_prev_item({
                 behavior = cmp.SelectBehavior.Insert
             }), {'i', 's'}),
-            ['<CR>'] = cmp.mapping(cmp.mapping.confirm({
-                behavior = cmp.ConfirmBehavior.Replace,
-                select = true
-            }), {'i', 's'}),
+            --  ['<CR>'] = cmp.mapping(cmp.mapping.confirm({
+            --  behavior = cmp.ConfirmBehavior.Replace,
+            --  select = true
+            --  }), {'i', 's'}),
+            ['<CR>'] = cmp.mapping(function(fallback)
+                if not cmp.confirm({select = false}) then
+                    require('pairs.enter').type()
+                end
+            end),
             ['<Tab>'] = function(fallback)
                 if vim.fn['vsnip#available']() == 1 then
                     vim.fn.feedkeys(vim.api.nvim_replace_termcodes(
@@ -151,7 +157,6 @@ return function()
            '}})')
     au('filetype', 'gitcommit,markdown',
        'lua require"cmp".setup.buffer { sources = { ' ..
-           '{ name = "emoji", max_item_count = 20 },' ..
            '{ name = "look", keyword_length = 5, max_item_count = 10 }' ..
            ' } }')
     hi('CmpCompletionWindow', {guibg = 'none'})
