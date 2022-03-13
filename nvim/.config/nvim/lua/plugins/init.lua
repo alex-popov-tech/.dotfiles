@@ -23,8 +23,7 @@ local core = {
         'antoinemadec/FixCursorHold.nvim',
         config = function() vim.g.cursorhold_updatetime = 200 end
     }, -- when yanking do not put cursor at the beginning of yanked text
-    {'svban/YankAssassin.vim'}, -- improve load time with better 'filetype'
-    -- {"nathom/filetype.nvim"},
+    'svban/YankAssassin.vim',
     -- abbreviations, substitusion, coercion (transform case)
     {'tpope/vim-abolish', config = require('plugins.abolish-vim')},
     -- add bunch of mappings like ]p ]e ]<space> etc.
@@ -196,7 +195,6 @@ local lsp = {
             'hrsh7th/cmp-buffer',
             'hrsh7th/cmp-vsnip',
             'hrsh7th/vim-vsnip',
-            'hrsh7th/cmp-emoji',
             {
                 'tzachar/cmp-fuzzy-buffer',
                 requires = {
@@ -259,7 +257,7 @@ require'packer'.startup {
         use(other)
     end,
     config = {
-        max_jobs = 5, -- Limit the number of simultaneous jobs. nil means no limit
+        max_jobs = 10, -- Limit the number of simultaneous jobs. nil means no limit
         display = {open_fn = require'packer.util'.float}
     }
 }
