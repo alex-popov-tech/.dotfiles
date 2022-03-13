@@ -9,9 +9,8 @@ fzf_opts=(
   '--bind "ctrl-a:select-all"'
   '--bind "ctrl-y:execute-silent(echo {+} | pbcopy)"'
   '--bind "ctrl-e:execute(echo {+} | xargs -o nvim)"'
-  '--color=fg:#ffd7af,bg:#282828,hl:#5f87af'
-  '--color=fg+:#d0d0d0,bg+:#282828,hl+:#5fd7ff'
-  '--color=info:#282828,prompt:#d7005f,pointer:#af5fff'
+  '--color=fg:#ffd7af,hl:#5f87af'
+  '--color=fg+:#d0d0d0,hl+:#5fd7ff'
   '--preview "([[ -f {} ]] && (bat --style=changes,numbers --color=always {} || cat {})) || ([[ -d {} ]] && (exa --icons --tree --level=2 {} | less)) || echo {} 2> /dev/null | head -200"'
 )
 export FZF_DEFAULT_COMMAND="fd --hidden --follow --exclude '.git' --exclude 'node_modules'"
