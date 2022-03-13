@@ -1,7 +1,7 @@
 return function()
-    local get_hex = require("cokeline/utils").get_hex
-    local space = {text = " "}
-    require("cokeline").setup({
+    local get_hex = require('cokeline/utils').get_hex
+    local space = {text = ' '}
+    require('cokeline').setup({
         mappings = {cycle_prev_next = true},
         buffers = {
             -- A function to filter out unwanted buffers. It takes the `buffer` table
@@ -14,46 +14,50 @@ return function()
             end
         },
         default_hl = {
-            focused = {bg = "none"},
-            unfocused = {fg = get_hex("Comment", "fg"), bg = "none"}
+            bg = 'none',
+            fg = function(buffer)
+                if not buffer.is_focused then
+                    return get_hex('Comment', 'fg')
+                end
+            end
         },
         components = {
-            space, {
+            space,
+            {
                 text = function(buffer)
                     return buffer.devicon.icon
                 end,
-                hl = {fg = function(buffer)
-                    return buffer.devicon.color
-                end}
-            }, {
+                fg = function(buffer) return buffer.devicon.color end
+            },
+            {
                 text = function(buffer)
                     return buffer.unique_prefix .. buffer.filename
                 end,
-                hl = {
-                    fg = function(buffer)
-                        if buffer.is_focused then
-                            return "#B988B0"
-                        end
-                        if buffer.is_modified then
-                            return "#EBCB8B"
-                        end
-                    end,
-                    style = function(buffer)
-                        if buffer.is_focused then
-                            return "underline"
-                        end
-                        return nil
+                fg = function(buffer)
+                    if buffer.is_focused then
+                        return '#B988B0'
                     end
-                }
-            }, {
-                text = function(buffer)
-                    if buffer.is_readonly then return " 🔒" end
-                    return ""
+                    if buffer.is_modified then
+                        return '#EBCB8B'
+                    end
+                end,
+                style = function(buffer)
+                    if buffer.is_focused then
+                        return 'underline'
+                    end
+                    return nil
                 end
-            }, space
+            },
+            {
+                text = function(buffer)
+                    if buffer.is_readonly then return ' 🔒' end
+                    return ''
+                end
+            },
+            space
         }
     })
-    cmd("nmap <S-Up> <Plug>(cokeline-focus-next)")
-    cmd("nmap <S-Down> <Plug>(cokeline-focus-prev)")
-    hi("tablinefill", {guibg = "none"})
+    cmd('nmap <S-Up> <Plug>(cokeline-focus-next)')
+    cmd('nmap <S-Down> <Plug>(cokeline-focus-prev)')
+    hi('tablinefill', {guibg = 'none'})
 end
