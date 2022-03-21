@@ -149,7 +149,8 @@ local ui = {
         requires = 'kyazdani42/nvim-web-devicons', -- If you want devicons
         config = require('plugins.cokeline-nvim')
     }, -- statusline
-    {'windwp/windline.nvim', config = require('plugins.windline-nvim')},
+    --  {'windwp/windline.nvim', config = require('plugins.windline-nvim')},
+    {'nvim-lualine/lualine.nvim', config = require('plugins.lualine'), requires = 'kyazdani42/nvim-web-devicons'},
     -- color scheme
     {'rmehri01/onenord.nvim'},
     {
