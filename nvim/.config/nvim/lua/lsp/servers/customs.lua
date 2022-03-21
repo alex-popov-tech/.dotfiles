@@ -4,7 +4,7 @@ local servers = require 'nvim-lsp-installer.servers'
 local server = require 'nvim-lsp-installer.server'
 local path = require 'nvim-lsp-installer.path'
 local npm = require 'nvim-lsp-installer.installers.npm'
-local null_ls = require("null-ls")
+local null_ls = require('null-ls')
 local diagnostics = null_ls.builtins.diagnostics
 local formatting = null_ls.builtins.formatting
 local code_actions = null_ls.builtins.code_actions
@@ -47,27 +47,24 @@ local custom_servers = {
 }
 
 for _, config in pairs(custom_servers) do
-  configs[config.server_name] = config.lspconfig
-  servers.register(config.installer_server)
+    configs[config.server_name] = config.lspconfig
+    servers.register(config.installer_server)
 end
 
 null_ls.setup({
     sources = {
-	formatting.prettierd,
-	formatting.fixjson,
-	formatting.lua_format,
-	diagnostics.eslint_d.with({timeout = 10000}),
-	diagnostics.codespell,
-	diagnostics.yamllint,
-	diagnostics.write_good.with({
-	  extra_filetypes = { "gitcommit" },
-	}),
-	diagnostics.markdownlint,
-	diagnostics.proselint.with({
-	  extra_filetypes = { "gitcommit", "markdown" },
-	}),
-	code_actions.eslint_d,
-	code_actions.proselint,
+        formatting.prettierd,
+        formatting.fixjson,
+        formatting.lua_format,
+        diagnostics.eslint_d.with({timeout = 10000}),
+        diagnostics.codespell,
+        diagnostics.yamllint,
+        diagnostics.write_good.with({extra_filetypes = {'gitcommit'}}),
+        diagnostics.markdownlint,
+        diagnostics.proselint
+            .with({extra_filetypes = {'gitcommit', 'markdown'}}),
+        code_actions.eslint_d,
+        code_actions.proselint
     },
     on_attach = general_on_attach
 })
