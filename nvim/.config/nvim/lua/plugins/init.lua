@@ -79,7 +79,7 @@ local session = {
     -- start screen
     {'mhinz/vim-startify', config = require('plugins.vim-startify')},
     -- when navigate to previously opened files - open in last file position
-    'farmergreg/vim-lastplace'
+    {'ethanholz/nvim-lastplace', config = require('plugins.nvim-lastplace')}
 }
 
 local tmuxAndSplits = {
