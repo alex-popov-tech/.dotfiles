@@ -4,8 +4,8 @@ for _, mappings in pairs(
         {"n", "<C-q>", "ZZ"}, -- write and exit from current buffer
         {"n", "Y", "y$"}, -- do Y to yank till the end of the line
         -- split and navigate to it
-        {"n", "<shift><up>", ":bn"},
-        {"n", "<shift><down>", ":bp"},
+        {"n", "<up>", ":bn<cr>"},
+        {"n", "<down>", ":bp<cr>"},
         {"n", "<leader>-", ":split | wincmd j<cr>"},
         {"n", "<leader>|", ":vsplit | wincmd l<cr>"},
         {"n", "zl", "zo"}, -- remap zl back to zo
