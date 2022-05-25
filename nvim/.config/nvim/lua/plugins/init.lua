@@ -31,8 +31,6 @@ local core = {
     -- allows repeat via dot for some plugins like surround
     'tpope/vim-repeat', -- add\update\remove surround stuff like ''{}''
     'tpope/vim-surround', -- {
-    --     "machakann/vim-sandwich",
-    -- },
     -- auto brackets
     {
         'ZhiyuanLck/smart-pairs',
@@ -44,7 +42,6 @@ local core = {
         end,
         event = 'InsertEnter'
     },
-    --  "cohama/lexima.vim",
     --  shiftwidth/expandtab/etc
     'tpope/vim-sleuth', -- close all buffers but current
     {'schickling/vim-bufonly', config = require('plugins.vim-bufonly')},
@@ -68,11 +65,18 @@ local core = {
 }
 
 local git = {
-    {'tpope/vim-fugitive', config = require('plugins.vim-fugitive')},
-    {
-        'lewis6991/gitsigns.nvim',
-        config = function() require('gitsigns').setup() end
-    }
+    'kdheepak/lazygit.nvim',
+    config = function ()
+      cmd[[cnoreabbrev git LazyGit]]
+    end
+    --  {
+        --  'ldelossa/gh.nvim',
+        --  requires = {'ldelossa/litee.nvim'},
+        --  config = function()
+            --  require('litee.lib').setup()
+            --  require('litee.gh').setup()
+        --  end
+    --  }
 }
 
 local session = {
@@ -139,11 +143,6 @@ local coding = {
         end
     },
     'editorconfig/editorconfig-vim', -- database viewer
-    {
-        'kristijanhusak/vim-dadbod-ui',
-        config = require('plugins.vim-dadbod'),
-        requires = {'tpope/vim-dadbod', 'kristijanhusak/vim-dadbod-completion'}
-    },
     {'tpope/vim-dotenv', config = require('plugins.vim-dotenv')},
     {'hashivim/vim-terraform', config = require('plugins.vim-terraform')}
 }
@@ -155,7 +154,11 @@ local ui = {
         config = require('plugins.cokeline-nvim')
     }, -- statusline
     --  {'windwp/windline.nvim', config = require('plugins.windline-nvim')},
-    {'nvim-lualine/lualine.nvim', config = require('plugins.lualine'), requires = 'kyazdani42/nvim-web-devicons'},
+    {
+        'nvim-lualine/lualine.nvim',
+        config = require('plugins.lualine'),
+        requires = {'kyazdani42/nvim-web-devicons', 'tpope/vim-fugitive'}
+    },
     -- color scheme
     {'rmehri01/onenord.nvim'},
     {
@@ -185,12 +188,14 @@ local lsp = {
     'mattn/emmet-vim',
     -- lsp configs placed here
     'neovim/nvim-lspconfig', -- lsp servers installer
-    {'williamboman/nvim-lsp-installer'}, -- just a bit better ts support
+    {
+        'williamboman/nvim-lsp-installer',
+        config = require('plugins.nvim-lsp-installer')
+    }, -- just a bit better ts support
     'jose-elias-alvarez/nvim-lsp-ts-utils',
     -- plugin to add completion possibility
     {
         'hrsh7th/nvim-cmp',
-        branch = 'dev',
         config = require('plugins.nvim-cmp'),
         requires = {
             'onsails/lspkind-nvim',
@@ -241,7 +246,12 @@ local lsp = {
 
 local other = {
     {'dstein64/vim-startuptime', cmd = {'StartupTime'}},
-    {'iamcco/markdown-preview.nvim'}
+    {
+        'iamcco/markdown-preview.nvim',
+        run = 'cd app && npm install',
+        setup = function() vim.g.mkdp_filetypes = {'markdown'} end,
+        ft = {'markdown'}
+    }
 }
 
 -- vim.cmd("cnoreabbrev ps PackerSync")

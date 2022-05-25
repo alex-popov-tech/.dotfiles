@@ -12,7 +12,7 @@ for key, val in pairs({
 vim.filetype.add({extension = {ts = 'typescript'}})
 
 for key, val in pairs({
-    winbar = "%f",
+    --  winbar = "%f",
     clipboard = "unnamedplus", -- enable yank/paste to/from system clipboard
     mouse = "a", -- to visually select and copy from vim without line numbers
     lazyredraw = true, -- Don't redraw while executing macros (good performance config)
