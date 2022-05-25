@@ -97,9 +97,14 @@ local term = {
 
 local filetree = {
     -- file tree
-    'kyazdani42/nvim-tree.lua',
-    requires = {'kyazdani42/nvim-web-devicons'},
-    config = require('plugins.nvim-tree')
+    'nvim-neo-tree/neo-tree.nvim',
+    branch = 'v2.x',
+    requires = {
+        'nvim-lua/plenary.nvim',
+        'kyazdani42/nvim-web-devicons', -- not strictly required, but recommended
+        'MunifTanjim/nui.nvim'
+    },
+    config = require('plugins.nvim-neo-tree')
 }
 
 local fuzzyFinder = {
