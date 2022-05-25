@@ -66,23 +66,26 @@ local core = {
 
 local git = {
     'kdheepak/lazygit.nvim',
-    config = function ()
-      cmd[[cnoreabbrev git LazyGit]]
-    end
+    config = function() cmd [[cnoreabbrev git LazyGit]] end
     --  {
-        --  'ldelossa/gh.nvim',
-        --  requires = {'ldelossa/litee.nvim'},
-        --  config = function()
-            --  require('litee.lib').setup()
-            --  require('litee.gh').setup()
-        --  end
+    --  'ldelossa/gh.nvim',
+    --  requires = {'ldelossa/litee.nvim'},
+    --  config = function()
+    --  require('litee.lib').setup()
+    --  require('litee.gh').setup()
+    --  end
     --  }
 }
 
 local session = {
     -- start screen
-    {'mhinz/vim-startify', config = require('plugins.vim-startify')},
-    -- when navigate to previously opened files - open in last file position
+    {
+        'goolord/alpha-nvim',
+        requires = {'kyazdani42/nvim-web-devicons'},
+        config = function()
+            require'alpha'.setup(require'alpha.themes.startify'.config)
+        end
+    }, -- when navigate to previously opened files - open in last file position
     {'ethanholz/nvim-lastplace', config = require('plugins.nvim-lastplace')}
 }
 
