@@ -1,1 +1,2 @@
+require('impatient')
 require("init")

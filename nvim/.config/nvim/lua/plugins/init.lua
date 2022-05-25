@@ -23,6 +23,8 @@ local core = {
         'antoinemadec/FixCursorHold.nvim',
         config = function() vim.g.cursorhold_updatetime = 200 end
     }, -- when yanking do not put cursor at the beginning of yanked text
+    -- cache modules to improve load time
+    'lewis6991/impatient.nvim',
     'svban/YankAssassin.vim',
     -- abbreviations, substitusion, coercion (transform case)
     {'tpope/vim-abolish', config = require('plugins.abolish-vim')},
