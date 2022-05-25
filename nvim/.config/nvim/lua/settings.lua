@@ -12,6 +12,7 @@ for key, val in pairs({
 vim.filetype.add({extension = {ts = 'typescript'}})
 
 for key, val in pairs({
+    winbar = "%f",
     clipboard = "unnamedplus", -- enable yank/paste to/from system clipboard
     mouse = "a", -- to visually select and copy from vim without line numbers
     lazyredraw = true, -- Don't redraw while executing macros (good performance config)
@@ -28,7 +29,7 @@ for key, val in pairs({
     sidescrolloff = 10, -- same as above but for columns
     shell = "/usr/local/bin/zsh",
     -- inccommand = "nosplit", -- incremental search ( enabled by default )
-    updatetime = 200, -- timeout for showing cursorhold events, etc
+    updatetime = 100, -- timeout for showing cursorhold events, etc
     -- completeopt = "menu,noinsert,noselect", -- how window for completion will look like
     shortmess = vim.o.shortmess .. "s", -- better messages
     -- TextEdit might fail if hidden is not set.
