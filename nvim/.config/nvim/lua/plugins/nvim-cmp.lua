@@ -29,6 +29,7 @@ return function()
                     '╰',
                     '│'
                 },
+                winhighlight = 'Normal:CmpPmenu,FloatBorder:CmpPmenuBorder,CursorLine:PmenuSel,Search:None',
                 scrollbar = '║'
             },
             documentation = {
@@ -103,12 +104,34 @@ return function()
             ['<C-p>'] = cmp.mapping(cmp.mapping.select_prev_item({
                 behavior = cmp.SelectBehavior.Insert
             }), {'i', 's'}),
-            ['<Down>'] = cmp.mapping(cmp.mapping.select_next_item({
-                behavior = cmp.SelectBehavior.Insert
-            }), {'i', 's'}),
-            ['<Up>'] = cmp.mapping(cmp.mapping.select_prev_item({
-                behavior = cmp.SelectBehavior.Insert
-            }), {'i', 's'}),
+            --  ['<Down>'] = cmp.mapping(cmp.mapping.select_next_item({
+                --  behavior = cmp.SelectBehavior.Insert
+            --  }), {'i', 's'}),
+            --  ['<Up>'] = cmp.mapping(cmp.mapping.select_prev_item({
+                --  behavior = cmp.SelectBehavior.Insert
+            --  }), {'i', 's'}),
+            ['<Up>'] = function(fallback)
+                if cmp.visible() then
+                    cmp.select_prev_item()
+                elseif check_back_space() then
+                    vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Up>',
+                                                                   true, true,
+                                                                   true), '')
+                else
+                    fallback()
+                end
+            end,
+            ['<Down>'] = function(fallback)
+                if cmp.visible() then
+                    cmp.select_next_item()
+                elseif check_back_space() then
+                    vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Down>',
+                                                                   true, true,
+                                                                   true), '')
+                else
+                    fallback()
+                end
+            end,
             --  ['<CR>'] = cmp.mapping(cmp.mapping.confirm({
             --  behavior = cmp.ConfirmBehavior.Replace,
             --  select = true
@@ -146,6 +169,15 @@ return function()
             end
         }
     })
+    cmp.event:on('confirm_done', function(event)
+        local item = event.entry:get_completion_item()
+        local parensDisabled = item.data and item.data.funcParensDisabled or
+                                   false
+        if not parensDisabled and
+            (item.kind == kind.Method or item.kind == kind.Function) then
+            require('pairs.bracket').type_left('(')
+        end
+    end)
     cmp.setup.cmdline('/', {
         completion = {completeopt = 'menu,menuone,noinsert,noselect'},
         sources = {{name = 'fuzzy_buffer'}}
@@ -159,7 +191,6 @@ return function()
        'lua require"cmp".setup.buffer { sources = { ' ..
            '{ name = "look", keyword_length = 5, max_item_count = 10 }' ..
            ' } }')
-    hi('CmpCompletionWindow', {guibg = 'none'})
     vim.cmd [[
       " gray
       highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough guifg=#808080
