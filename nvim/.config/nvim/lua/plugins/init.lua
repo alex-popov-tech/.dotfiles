@@ -68,8 +68,10 @@ local core = {
 }
 
 local git = {
-    'kdheepak/lazygit.nvim',
-    config = function() cmd [[cnoreabbrev git LazyGit]] end
+    {
+        'kdheepak/lazygit.nvim',
+        config = function() cmd [[cnoreabbrev git LazyGit]] end
+    },
     --  {
     --  'ldelossa/gh.nvim',
     --  requires = {'ldelossa/litee.nvim'},
