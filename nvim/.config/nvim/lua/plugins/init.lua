@@ -244,6 +244,12 @@ local lsp = {
         config = require('plugins.trouble-nvim')
     }, -- diagnostics
     {'weilbith/nvim-code-action-menu', cmd = 'CodeActionMenu'}, -- code action
+    {
+        'smjonas/inc-rename.nvim',
+        config = function()
+            require('inc_rename').setup({cmd_name = 'Rename'})
+        end
+    }, -- code action
     {'j-hui/fidget.nvim', config = require('plugins.fidget-nvim')}, -- code action
     -- shema validation for JSON files
     {'b0o/SchemaStore.nvim'}
