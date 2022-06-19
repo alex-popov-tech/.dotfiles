@@ -63,7 +63,8 @@ local core = {
         'ggandor/lightspeed.nvim',
         requires = {'tpope/vim-repeat'},
         config = require('plugins.lightspeed-nvim')
-    }
+    },
+    {'monaqa/dial.nvim', config = require('plugins.dial-nvim')}
 }
 
 local git = {
