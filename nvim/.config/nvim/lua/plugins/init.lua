@@ -147,9 +147,8 @@ local coding = {
             })
         end
     },
-    'editorconfig/editorconfig-vim', -- database viewer
+    'editorconfig/editorconfig-vim',
     {'tpope/vim-dotenv', config = require('plugins.vim-dotenv')},
-    {'hashivim/vim-terraform', config = require('plugins.vim-terraform')}
 }
 
 local ui = {
