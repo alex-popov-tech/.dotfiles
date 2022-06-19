@@ -121,6 +121,9 @@ function software() {
   cp -f $DPATH/.fonts/*.ttf $HOME/Library/Fonts
   brew bundle install --file $DPATH/Brewfile
   sudo xcodebuild -license accept
+  curl https://cht.sh/:cht.sh > ./cht.sh
+  chmod +x ./cht.sh
+  mv ./cht.sh /usr/local/bin/
 
   echo
   echo "+-------------------------------+"
