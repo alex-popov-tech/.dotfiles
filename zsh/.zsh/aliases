@@ -10,8 +10,6 @@ alias gb="git for-each-ref --sort='-committerdate' --format='%(committerdate) %(
 # Other
 alias n="nvim"
 
-alias gs="nvim +Git '+wincmd w' +q"
-
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
@@ -25,7 +23,7 @@ alias f="fuck"
 alias grep="rg"
 
 alias refresh="$HOME/.dotfiles/.scripts/linkconfigs.sh"
-alias refreshScreens='displayplacer "id:F86A2987-00E6-1324-8909-A1B777C5D9BE res:1920x1080 hz:60 color_depth:8 scaling:on origin:(0,0) degree:0" "id:30806869-1EE1-C15D-60AD-8DD5E0325E5E res:1152x720 hz:59 color_depth:4 scaling:on origin:(-1152,-321) degree:0" "id:B7AE2D44-CA3F-EFD1-F08C-BEEDD1A534C2 res:1920x1080 hz:60 color_depth:8 scaling:on origin:(1920,0) degree:0" "id:874C4405-B375-9A0D-FF50-094F80539F21 res:1920x1080 hz:60 color_depth:8 scaling:on origin:(1920,-1080) degree:0" "id:E931B588-8DF0-7828-97C7-E3D452D91B99 res:1920x1080 hz:60 color_depth:8 scaling:on origin:(0,-1080) degree:0"'
+alias refreshScreens='displayplacer "id:B7AE2D44-CA3F-EFD1-F08C-BEEDD1A534C2 res:1920x1080 hz:60 color_depth:8 scaling:on origin:(0,0) degree:0" "id:30806869-1EE1-C15D-60AD-8DD5E0325E5E res:1152x720 hz:59 color_depth:4 scaling:on origin:(-2232,-312) degree:0" "id:874C4405-B375-9A0D-FF50-094F80539F21 res:1080x1920 hz:60 color_depth:8 scaling:on origin:(1920,-840) degree:270" "id:A5208E0C-4114-CF38-6E1C-1BABE1BDFEFF res:1920x1080 hz:60 color_depth:8 scaling:on origin:(0,-1080) degree:0" "id:F86A2987-00E6-1324-8909-A1B777C5D9BE res:1080x1920 hz:60 color_depth:8 scaling:on origin:(-1080,-840) degree:90"'
 alias restartBluetooth='blueutil -p 0 && sleep 5 && blueutil -p 1'
 
 alias dtf="cd $HOME/.dotfiles"
@@ -33,6 +31,7 @@ alias font='echo -e "\nnormal flower\n\e[1mboldflower\e[0m\n\e[3mitalic flower\e
 alias color="$HOME/.dotfiles/.scripts/test_color.sh"
 
 alias gist="pbpaste | gh gist create | rg github | pbcopy"
+alias lg="lazygit"
 
 alias a="alias | rg"
 
