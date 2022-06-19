@@ -11,6 +11,7 @@ require'onenord'.setup({
       FloatBorder = { bg = "none" },
     }
 })
+hi("ColorColumn", {guibg = "none"})
 -- highlight split separators
 -- hi("VertSplit", {guibg = "none", guifg = "#81A1C1"})
 -- hi("StatusLineNC", {guibg = "none", guifg = "#81A1C1"})
