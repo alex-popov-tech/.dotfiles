@@ -88,7 +88,7 @@ function _G.sleep(sec)
 end
 
 function _G.addCommand(name, func, opts)
-    vim.api.nvim_add_user_command(name, func, opts or {})
+    vim.api.nvim_create_user_command(name, func, opts or {})
 end
 
 -- tmux-like zoom in vim
