@@ -105,18 +105,18 @@ return function()
                 behavior = cmp.SelectBehavior.Insert
             }), {'i', 's'}),
             --  ['<Down>'] = cmp.mapping(cmp.mapping.select_next_item({
-                --  behavior = cmp.SelectBehavior.Insert
+            --  behavior = cmp.SelectBehavior.Insert
             --  }), {'i', 's'}),
             --  ['<Up>'] = cmp.mapping(cmp.mapping.select_prev_item({
-                --  behavior = cmp.SelectBehavior.Insert
+            --  behavior = cmp.SelectBehavior.Insert
             --  }), {'i', 's'}),
             ['<Up>'] = function(fallback)
                 if cmp.visible() then
                     cmp.select_prev_item()
                 elseif check_back_space() then
-                    vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Up>',
-                                                                   true, true,
-                                                                   true), '')
+                    vim.fn.feedkeys(
+                        vim.api.nvim_replace_termcodes('<Up>', true, true, true),
+                        '')
                 else
                     fallback()
                 end
