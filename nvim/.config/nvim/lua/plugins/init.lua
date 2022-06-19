@@ -106,7 +106,6 @@ local term = {
 }
 
 local filetree = {
-    -- file tree
     'nvim-neo-tree/neo-tree.nvim',
     branch = 'v2.x',
     requires = {
