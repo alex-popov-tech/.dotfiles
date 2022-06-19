@@ -256,6 +256,7 @@ local lsp = {
 
 local other = {
     {'dstein64/vim-startuptime', cmd = {'StartupTime'}},
+    {'RishabhRD/nvim-cheat.sh', requires = {'RishabhRD/popfix'}},
     {
         'iamcco/markdown-preview.nvim',
         run = 'cd app && npm install',
