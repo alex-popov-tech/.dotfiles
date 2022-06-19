@@ -72,6 +72,20 @@ local git = {
         'kdheepak/lazygit.nvim',
         config = function() cmd [[cnoreabbrev git LazyGit]] end
     },
+    {
+        'pwntester/octo.nvim',
+        requires = {
+            'nvim-lua/plenary.nvim',
+            'nvim-telescope/telescope.nvim',
+            'kyazdani42/nvim-web-devicons'
+        },
+        config = function()
+            hi('OctoEditable', {bg = 'none'})
+            map('v', '<leader>ca', '<cmd>OctoAddReviewComment<cr>')
+            map('v', '<leader>sa', '<cmd>OctoAddReviewSuggestion<cr>')
+            require'octo'.setup()
+        end
+    }
     --  {
     --  'ldelossa/gh.nvim',
     --  requires = {'ldelossa/litee.nvim'},
