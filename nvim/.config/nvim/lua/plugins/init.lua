@@ -50,7 +50,7 @@ local core = {
     -- close buffer
     {'moll/vim-bbye', config = require('plugins.vim-bbye')},
     -- move to {motion}
-    {'svermeulen/vim-subversive', config = require('plugins.vim-subversive')},
+    {'gbprod/substitute.nvim', config = require('plugins.substitute-nvim')},
     -- highlight for % pairs
     'andymass/vim-matchup', -- removes cursor jumping when opening qf,etc.
     {'luukvbaal/stabilize.nvim', config = require('plugins.stabilize-nvim')},
