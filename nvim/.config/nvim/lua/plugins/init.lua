@@ -64,7 +64,12 @@ local core = {
         requires = {'tpope/vim-repeat'},
         config = require('plugins.lightspeed-nvim')
     },
-    {'monaqa/dial.nvim', config = require('plugins.dial-nvim')}
+    {'monaqa/dial.nvim', config = require('plugins.dial-nvim')},
+    {
+        'anuvyklack/hydra.nvim',
+        requires = {'anuvyklack/keymap-layer.nvim'}, -- needed only for pink hydras
+        config = require('plugins.hydra-nvim'),
+    }
 }
 
 local git = {
