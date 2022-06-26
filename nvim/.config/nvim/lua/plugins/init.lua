@@ -86,19 +86,9 @@ local git = {
         },
         config = function()
             hi('OctoEditable', {bg = 'none'})
-            map('v', '<leader>ca', '<cmd>OctoAddReviewComment<cr>')
-            map('v', '<leader>sa', '<cmd>OctoAddReviewSuggestion<cr>')
             require'octo'.setup()
         end
     }
-    --  {
-    --  'ldelossa/gh.nvim',
-    --  requires = {'ldelossa/litee.nvim'},
-    --  config = function()
-    --  require('litee.lib').setup()
-    --  require('litee.gh').setup()
-    --  end
-    --  }
 }
 
 local session = {
