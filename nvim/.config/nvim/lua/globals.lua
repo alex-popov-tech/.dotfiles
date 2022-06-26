@@ -91,20 +91,6 @@ function _G.addCommand(name, func, opts)
     vim.api.nvim_create_user_command(name, func, opts or {})
 end
 
--- tmux-like zoom in vim
-function _G.toggleZoom()
-    if 1 == vim.fn.winnr("$") then return end
-    local restoreCmd = vim.fn.winrestcmd()
-    cmd("wincmd |")
-    cmd("wincmd _")
-    -- If the layout did not change, it's an un-zoom.
-    if restoreCmd == vim.fn.winrestcmd() then
-        cmd("exe t:zoom_restore")
-    else
-        vim.t.zoom_restore = restoreCmd
-    end
-end
-
 _G.g = vim.g
 _G.cmd = vim.cmd
 _G.fn = vim.fn

@@ -27,7 +27,7 @@ for _, mappings in pairs(
         {"n", "n", ":set hlsearch<cr>nzz", { noremap = true }},
         {"n", "N", ":set hlsearch<cr>Nzz", { noremap = true }},
         -- stay cursor on place when 'J'
-        {"n", "J", "mzJ`z"},
+        --  {"n", "J", "mzJ`z"},
         -- move selected lines up and down
         {"v", "J", ":m '>+1<cr>gv=gv"},
         {"v", "K", ":m '<-2<cr>gv=gv"},
@@ -42,8 +42,6 @@ for _, mappings in pairs(
     local options = mappings[4]
     map(mode, key, value, options)
 end
-
-map("n", "<leader>z", function() toggleZoom() end)
 
 au("bufNewFile, BufReadPost", "*.pug", "set filetype=pug")
 au("BufNewFile, BufReadPost", "*.jade", "set filetype=pug")
