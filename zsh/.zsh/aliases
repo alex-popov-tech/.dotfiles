@@ -32,6 +32,7 @@ alias color="$HOME/.dotfiles/.scripts/test_color.sh"
 
 alias gist="pbpaste | gh gist create | rg github | pbcopy"
 alias lg="lazygit"
+alias ld="lazydocker"
 
 alias a="alias | rg"
 
