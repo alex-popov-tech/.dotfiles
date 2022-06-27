@@ -1,1 +1,3 @@
-return function() g.wordmotion_prefix = "<leader>" end
+return function()
+    g.wordmotion_prefix = '<leader>'
+end
