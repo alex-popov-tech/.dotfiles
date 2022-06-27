@@ -70,7 +70,7 @@ local core = {
     {
         'anuvyklack/hydra.nvim',
         requires = {'anuvyklack/keymap-layer.nvim'}, -- needed only for pink hydras
-        config = require('plugins.hydra-nvim'),
+        config = require('plugins.hydra-nvim')
     }
 }
 
@@ -159,7 +159,7 @@ local coding = {
         end
     },
     'editorconfig/editorconfig-vim',
-    {'tpope/vim-dotenv', config = require('plugins.vim-dotenv')},
+    {'tpope/vim-dotenv', config = require('plugins.vim-dotenv')}
 }
 
 local ui = {
@@ -192,6 +192,49 @@ local treesitter = {
     {
         'windwp/nvim-ts-autotag',
         config = function() require('nvim-ts-autotag').setup() end
+    },
+    {
+        'nvim-treesitter/nvim-treesitter-textobjects',
+        config = function()
+            require'nvim-treesitter.configs'.setup {
+                textobjects = {
+                    select = {
+                        enable = true,
+
+                        -- Automatically jump forward to textobj, similar to targets.vim
+                        lookahead = true,
+
+                        keymaps = {
+                            -- You can use the capture groups defined in textobjects.scm
+                            ['af'] = '@function.outer',
+                            ['if'] = '@function.inner',
+                            ['ac'] = '@class.outer',
+                            ['ic'] = '@class.inner'
+                        }
+                    },
+                    move = {
+                        enable = true,
+                        set_jumps = true, -- whether to set jumps in the jumplist
+                        goto_next_start = {
+                            [']m'] = '@function.outer',
+                            [']]'] = '@class.outer'
+                        },
+                        goto_next_end = {
+                            [']M'] = '@function.outer',
+                            [']['] = '@class.outer'
+                        },
+                        goto_previous_start = {
+                            ['[m'] = '@function.outer',
+                            ['[['] = '@class.outer'
+                        },
+                        goto_previous_end = {
+                            ['[M'] = '@function.outer',
+                            ['[]'] = '@class.outer'
+                        }
+                    }
+                }
+            }
+        end
     },
     {'JoosepAlviste/nvim-ts-context-commentstring'},
     {'nvim-treesitter/playground'},
