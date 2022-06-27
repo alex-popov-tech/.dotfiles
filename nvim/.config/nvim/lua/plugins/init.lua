@@ -1,7 +1,9 @@
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
 
-au('BufWrite', '**/nvim/.config/nvim/lua*.lua', 'PackerCompile')
+au('BufWrite', '**/nvim/.config/nvim/lua/**/*.lua', 'PackerCompile')
+addCommand('Sync', 'PackerSync')
+vim.cmd('cnoreabbrev sync Sync')
 
 local packer = {
     -- Packer can manage itself as an optional plugin
