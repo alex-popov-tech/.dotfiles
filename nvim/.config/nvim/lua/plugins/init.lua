@@ -16,7 +16,19 @@ local textObjects = {
     'glts/vim-textobj-comment',
     'kana/vim-textobj-indent',
     'wellle/targets.vim',
-    {'chaoren/vim-wordmotion', config = require('plugins.vim-wordmotion')}
+    {'chaoren/vim-wordmotion', config = require('plugins.vim-wordmotion')},
+    {
+        'andrewferrier/textobj-diagnostic.nvim',
+        config = function()
+            require('textobj-diagnostic').setup({create_default_keymaps = false})
+            vim.keymap.set({'x', 'o'}, 'id', function()
+                require('textobj-diagnostic').next_diag_inclusive()
+            end, {silent = true})
+            vim.keymap.set({'x', 'o'}, 'ad', function()
+                require('textobj-diagnostic').next_diag_inclusive()
+            end, {silent = true})
+        end
+    }
 }
 
 local core = {
