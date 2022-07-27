@@ -27,10 +27,10 @@ end
 _G.printt = function(tbl) print(vim.inspect(tbl)) end
 
 _G.reload = function()
-    local modules = {"lsp", "plugins", "globals", "mappings", "settings", "ui"}
+    local modules = {'lsp', 'plugins', 'globals', 'mappings', 'settings', 'ui'}
     for _, moduleName in pairs(modules) do
         for packageName, _ in pairs(package.loaded) do
-            if string.find(packageName, "^" .. moduleName) then
+            if string.find(packageName, '^' .. moduleName) then
                 package.loaded[packageName] = nil
             end
         end
@@ -48,7 +48,7 @@ function _G.map(mode, lhs, rhs, opts)
         callback = rhs
     end
 
-    opts = vim.tbl_extend("keep", opts or {}, {
+    opts = vim.tbl_extend('keep', opts or {}, {
         noremap = true,
         silent = true,
         expr = false,
@@ -63,29 +63,36 @@ function _G.merge(dest, source, strategy)
 end
 
 function _G.au(event, filetype, action)
-    vim.cmd("au" .. " " .. event .. " " .. filetype .. " " .. action)
+    vim.cmd('au' .. ' ' .. event .. ' ' .. filetype .. ' ' .. action)
 end
 
 function _G.hi(group, options)
-    vim.cmd("hi " .. group .. " " .. "cterm=" .. (options.cterm or "none") ..
-                " " .. "ctermfg=" .. (options.ctermfg or "none") .. " " ..
-                "ctermbg=" .. (options.ctermbg or "none") .. " " .. "gui=" ..
-                (options.gui or "none") .. " " .. "guifg=" ..
-                (options.guifg or "none") .. " " .. "guibg=" ..
-                (options.guibg or "none"))
+    --  vim.cmd("hi " .. group .. " " .. "cterm=" .. (options.cterm or "none") ..
+    --  " " .. "ctermfg=" .. (options.ctermfg or "none") .. " " ..
+    --  "ctermbg=" .. (options.ctermbg or "none") .. " " .. "gui=" ..
+    --  (options.gui or "none") .. " " .. "guifg=" ..
+    --  (options.guifg or "none") .. " " .. "guibg=" ..
+    --  (options.guibg or "none"))
+    local style = options.style and 'gui=' .. options.style or 'gui=NONE'
+    local fg = options.fg and 'guifg=' .. options.fg or 'guifg=NONE'
+    local bg = options.bg and 'guibg=' .. options.bg or 'guibg=NONE'
+    local sp = options.sp and 'guisp=' .. options.sp or ''
+    local blend = options.blend and 'blend=' .. options.blend or ''
+    local hl =
+        'highlight ' .. group .. ' ' .. style .. ' ' .. fg .. ' ' .. bg .. ' ' ..
+            sp .. ' ' .. blend
+    vim.cmd(hl)
 end
 
-function _G.ft() return vim.api.nvim_buf_get_option(0, "filetype") end
+function _G.ft() return vim.api.nvim_buf_get_option(0, 'filetype') end
 
 function _G.isNonEmptyString(str)
     if str == nil then return false end
-    if str == "" then return false end
+    if str == '' then return false end
     return true
 end
 
-function _G.sleep(sec)
-  vim.cmd('sleep ' .. sec)
-end
+function _G.sleep(sec) vim.cmd('sleep ' .. sec) end
 
 function _G.addCommand(name, func, opts)
     vim.api.nvim_create_user_command(name, func, opts or {})
