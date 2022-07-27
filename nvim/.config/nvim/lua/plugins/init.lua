@@ -174,7 +174,12 @@ local ui = {
         requires = {'kyazdani42/nvim-web-devicons', 'lewis6991/gitsigns.nvim'}
     },
     -- color scheme
-    {'rmehri01/onenord.nvim'},
+    --  {'rmehri01/onenord.nvim'},
+    {
+        'catppuccin/nvim',
+        config = require('plugins.catppuccin'),
+        run = ':CatppuccinCompile'
+    },
     {
         'norcalli/nvim-colorizer.lua',
         config = function()

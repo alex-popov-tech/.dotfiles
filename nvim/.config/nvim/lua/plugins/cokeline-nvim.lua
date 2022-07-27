@@ -1,4 +1,7 @@
 return function()
+    local colors = require('catppuccin.palettes').get_palette()
+    colors.bg = colors.base
+
     local get_hex = require('cokeline/utils').get_hex
     local space = {text = ' '}
     require('cokeline').setup({
@@ -14,7 +17,7 @@ return function()
             end
         },
         default_hl = {
-            bg = 'none',
+            bg = colors.bg,
             fg = function(buffer)
                 if not buffer.is_focused then
                     return get_hex('Comment', 'fg')
@@ -35,15 +38,16 @@ return function()
                 end,
                 fg = function(buffer)
                     if buffer.is_focused then
-                        return '#B988B0'
+                        return colors.mauve
                     end
                     if buffer.is_modified then
-                        return '#EBCB8B'
+                        return colors.yellow
                     end
+                    return get_hex('Comment', 'fg')
                 end,
                 style = function(buffer)
                     if buffer.is_focused then
-                        return 'underline'
+                        return 'italic'
                     end
                     return nil
                 end

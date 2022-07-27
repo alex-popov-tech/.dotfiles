@@ -1,17 +1,13 @@
 return function()
     require('gitsigns').setup()
-    local colors = {
-        red = '#D57780',
-        green = '#A3BE8C',
-        blue = '#81A1C1',
-        yellow = '#EBCB8B',
-        bg = 'none'
-    }
+    local colors = require('catppuccin.palettes').get_palette()
+    colors.bg = colors.base
 
     local component = function(component)
         return vim.tbl_deep_extend('keep', {hl = {bg = colors.bg}}, component)
     end
     local space = component({provider = ' '})
+
     require('feline').setup({
         components = {
             active = {
@@ -26,10 +22,10 @@ return function()
                                 file_modified_icon = '[+]'
                             }
                         },
-                        hl = {fg = colors.green, style = 'italic'},
+                        hl = {fg = colors.teal, style = 'italic'},
                         short_provider = {}
                     }),
-                    component({provider = ' on ', hl = {fg = colors.blue}}),
+                    component({provider = ' on ', hl = {fg = colors.text}}),
                     component({
                         provider = function()
                             local branch =
@@ -45,7 +41,7 @@ return function()
                 {
                     component({
                         provider = 'lsp_client_names',
-                        hl = {fg = colors.green, bg = colors.bg, gui = 'italic'}
+                        hl = {fg = colors.blue, bg = colors.bg, gui = 'italic'}
                     }),
                     space
                 }
@@ -64,7 +60,7 @@ return function()
                     file_modified_icon = ''
                 })
             end,
-            hl = {fg = colors.green, style = 'italic'},
+            hl = {fg = colors.teal, style = 'italic'},
             short_provider = {}
         }),
         space,
