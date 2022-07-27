@@ -8,7 +8,7 @@ local null_ls = require('null-ls')
 local diagnostics = null_ls.builtins.diagnostics
 local formatting = null_ls.builtins.formatting
 local code_actions = null_ls.builtins.code_actions
-local general_on_attach = require("lsp.on_attach")
+local general_on_attach = require('lsp.on_attach')
 
 local custom_servers = {
     {
@@ -35,16 +35,19 @@ local custom_servers = {
             root_dir = server.get_server_root_path('ls_emmet'),
             installer = npm.packages {'ls_emmet'},
             default_options = {
-              cmd_env = npm.env(server.get_server_root_path('ls_emmet'))
-                --  cmd = {
+                cmd_env = npm.env(server.get_server_root_path('ls_emmet')),
+                cmd = {
+                    server.get_server_root_path('ls_emmet') ..
+                        '/node_modules/.bin/ls_emmet',
+                    '--stdio'
                     --  path.concat {
-                        --  server.get_server_root_path('ls_emmet'),
-                        --  'node_modules',
-                        --  '.bin',
-                        --  'ls_emmet'
+                    --  server.get_server_root_path('ls_emmet'),
+                    --  'node_modules',
+                    --  '.bin',
+                    --  'ls_emmet'
                     --  },
                     --  '--stdio'
-                --  }
+                }
             }
         }
     }
@@ -60,11 +63,14 @@ null_ls.setup({
         formatting.prettierd,
         formatting.fixjson,
         formatting.lua_format,
+        formatting.stylelint,
+        formatting.codespell.with({extra_filetypes = {'markdown', 'octo'}}),
         diagnostics.eslint_d.with({timeout = 10000}),
         diagnostics.yamllint,
         diagnostics.markdownlint,
-        diagnostics.proselint
-            .with({extra_filetypes = {'markdown'}}),
+        diagnostics.proselint.with({extra_filetypes = {'markdown', 'octo'}}),
+        diagnostics.stylelint,
+        diagnostics.cspell.with({extra_filetypes = {'typescript', 'octo'}}),
         code_actions.eslint_d,
         code_actions.proselint
     },
