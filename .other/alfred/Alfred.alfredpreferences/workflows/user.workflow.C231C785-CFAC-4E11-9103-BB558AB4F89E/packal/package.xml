@@ -1,8 +1,0 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<workflow>
-  <name>Safe Sleep</name>
-  <version>1.0.0.2</version>
-  <bundle>com.rockbeacons.safesleep</bundle>
-  <updated>1576744204</updated>
-  <file>safe_sleep_v1.0.0.2.alfredworkflow</file>
-</workflow>
