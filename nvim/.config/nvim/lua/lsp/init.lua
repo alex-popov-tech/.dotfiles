@@ -1,4 +1,4 @@
-local servers = {'sumneko_lua', 'jsonls', 'tsserver', 'ls_emmet'}
+local servers = {'sumneko_lua', 'jsonls', 'tsserver', 'ls_emmet', 'cssls'}
 local lsp_installer = require('nvim-lsp-installer')
 lsp_installer.setup({
   ensure_installed = servers, -- ensure these servers are always installed
