@@ -89,6 +89,7 @@ local git = {
         config = function()
             hi('OctoEditable', {bg = 'none'})
             require'octo'.setup()
+            hi('OctoEditable', {bg = 'none'})
         end
     }
 }
@@ -267,6 +268,7 @@ local lsp = {
             'hrsh7th/cmp-nvim-lua',
             'hrsh7th/cmp-buffer',
             'hrsh7th/cmp-vsnip',
+            'hrsh7th/cmp-emoji',
             'hrsh7th/vim-vsnip',
             {
                 'tzachar/cmp-fuzzy-buffer',

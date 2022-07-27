@@ -182,6 +182,11 @@ return function()
         completion = {completeopt = 'menu,menuone,noinsert,noselect'},
         sources = {{name = 'fuzzy_buffer'}}
     })
+    cmp.setup.filetype('octo', {
+        sources = cmp.config.sources({
+            {name = 'emoji'} -- You can specify the `cmp_git` source if you were installed it.
+        })
+    })
 
     au('filetype', 'lua',
        'lua require"cmp".setup.buffer({ sources = {' .. '{ name = "nvim_lua" },' ..
