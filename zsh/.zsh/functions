@@ -1,3 +1,5 @@
+# vi: ft=zsh
+
 # Create a new directory and enter it
 function mkd() {
 	mkdir -p "$@" && cd "$_";
@@ -26,4 +28,83 @@ function git_current_branch() {
     ref=$(command git rev-parse --short HEAD 2> /dev/null) || return
   fi
   echo ${ref#refs/heads/}
+}
+
+# Install one or more versions of specified language
+# e.g. `vmi rust` # => fzf multimode, tab to mark, enter to install
+# if no plugin is supplied (e.g. `vmi<CR>`), fzf will list them for you
+asdf_install() {
+  local lang=${1}
+
+  if [[ ! $lang ]]; then
+    lang=$(asdf plugin-list | fzf)
+  fi
+
+  if [[ $lang ]]; then
+    local versions=$(asdf list-all $lang | fzf --tac --no-sort --multi)
+    if [[ $versions ]]; then
+      for version in $(echo $versions);
+      do; asdf install $lang $version; done;
+    fi
+  fi
+}
+
+# Remove one or more versions of specified language
+# e.g. `vmi rust` # => fzf multimode, tab to mark, enter to remove
+# if no plugin is supplied (e.g. `vmi<CR>`), fzf will list them for you
+# Mnemonic [V]ersion [M]anager [C]lean
+asdf_uninstall() {
+  local lang=${1}
+
+  if [[ ! $lang ]]; then
+    lang=$(asdf plugin-list | fzf)
+  fi
+
+  if [[ $lang ]]; then
+    local versions=$(asdf list $lang | fzf -m)
+    if [[ $versions ]]; then
+      for version in $(echo $versions);
+      do; asdf uninstall $lang $version; done;
+    fi
+  fi
+}
+
+# Install or open the webpage for the selected application
+# using brew cask search as input source
+# and display a info quickview window for the currently marked application
+brew_install() {
+    local token
+    token=$(brew search --casks "$1" | fzf-tmux --query="$1" +m --preview 'brew info {}')
+
+    if [ "x$token" != "x" ]
+    then
+        echo "(I)nstall or open the (h)omepage of $token"
+        read input
+        if [ $input = "i" ] || [ $input = "I" ]; then
+            brew install --cask $token
+        fi
+        if [ $input = "h" ] || [ $input = "H" ]; then
+            brew home $token
+        fi
+    fi
+}
+
+# Uninstall or open the webpage for the selected application
+# using brew list as input source (all brew cask installed applications)
+# and display a info quickview window for the currently marked application
+brew_uninstall() {
+    local token
+    token=$(brew list --casks | fzf-tmux --query="$1" +m --preview 'brew info {}')
+
+    if [ "x$token" != "x" ]
+    then
+        echo "(U)ninstall or open the (h)omepae of $token"
+        read input
+        if [ $input = "u" ] || [ $input = "U" ]; then
+            brew uninstall --cask $token
+        fi
+        if [ $input = "h" ] || [ $token = "h" ]; then
+            brew home $token
+        fi
+    fi
 }

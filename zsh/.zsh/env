@@ -1,3 +1,5 @@
+# vi: ft=zsh
+
 # vi-mode go to differents modes faser
 export KEYTIMEOUT=1
 # add brew and packages to PATH
