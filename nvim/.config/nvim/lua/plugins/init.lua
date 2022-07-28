@@ -46,7 +46,11 @@ local core = {
     'tpope/vim-unimpaired',
     -- allows repeat via dot for some plugins like surround
     'tpope/vim-repeat', -- add\update\remove surround stuff like ''{}''
-    'tpope/vim-surround', -- {
+    --  'tpope/vim-surround',
+    {
+        'kylechui/nvim-surround',
+        config = function() require('nvim-surround').setup({}) end
+    },
     -- auto brackets
     {
         'ZhiyuanLck/smart-pairs',
@@ -83,7 +87,6 @@ local core = {
         'anuvyklack/hydra.nvim',
         requires = {'anuvyklack/keymap-layer.nvim'}, -- needed only for pink hydras
         config = require('plugins.hydra-nvim')
-    }
 }
 
 local git = {
