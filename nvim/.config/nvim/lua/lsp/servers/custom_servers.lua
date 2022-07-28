@@ -65,12 +65,19 @@ null_ls.setup({
         formatting.lua_format,
         formatting.stylelint,
         formatting.codespell.with({extra_filetypes = {'markdown', 'octo'}}),
+
         diagnostics.eslint_d.with({timeout = 10000}),
         diagnostics.yamllint,
         diagnostics.markdownlint,
         diagnostics.proselint.with({extra_filetypes = {'markdown', 'octo'}}),
         diagnostics.stylelint,
-        diagnostics.cspell.with({extra_filetypes = {'typescript', 'octo'}}),
+        diagnostics.cspell.with({
+            extra_filetypes = {'typescript', 'octo'},
+            diagnostics_postprocess = function(diagnostic)
+                diagnostic.severity = vim.diagnostic.severity['WARN']
+            end
+        }),
+
         code_actions.eslint_d,
         code_actions.proselint
     },
