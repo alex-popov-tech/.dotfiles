@@ -317,6 +317,11 @@ local lsp = {
         requires = 'kyazdani42/nvim-web-devicons',
         config = require('plugins.trouble-nvim')
     }, -- diagnostics
+    --  commented for now as there is no filtering unfortunately :(
+    --  {
+    --  'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
+    --  config = function() require('lsp_lines').setup() end
+    --  },
     {'weilbith/nvim-code-action-menu', cmd = 'CodeActionMenu'}, -- code action
     {
         'smjonas/inc-rename.nvim',
