@@ -87,6 +87,7 @@ local core = {
         'anuvyklack/hydra.nvim',
         requires = {'anuvyklack/keymap-layer.nvim'}, -- needed only for pink hydras
         config = require('plugins.hydra-nvim')
+    }
 }
 
 local git = {
@@ -102,7 +103,6 @@ local git = {
             'kyazdani42/nvim-web-devicons'
         },
         config = function()
-            hi('OctoEditable', {bg = 'none'})
             require'octo'.setup()
             hi('OctoEditable', {bg = 'none'})
         end
