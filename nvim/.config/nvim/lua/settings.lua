@@ -1,13 +1,6 @@
 g.mapleader = " "
 cmd("nmap <bs> <leader>")
 
--- cmd("let g:do_filetype_lua=1")
--- cmd("let g:did_load_filetypes=0")
-for key, val in pairs({
-    -- for next two - https://www.reddit.com/r/neovim/comments/rvwsl3/introducing_filetypelua_and_a_call_for_help/
-    do_filetype_lua = 1,
-    did_load_filetypes = 0
-}) do vim.g[key] = val end
 
 vim.filetype.add({extension = {ts = 'typescript'}})
 
