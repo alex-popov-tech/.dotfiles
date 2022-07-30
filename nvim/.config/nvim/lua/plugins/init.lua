@@ -342,16 +342,9 @@ local lsp = {
 
 local other = {
     {'dstein64/vim-startuptime', cmd = {'StartupTime'}},
-    {'RishabhRD/nvim-cheat.sh', requires = {'RishabhRD/popfix'}},
-    {
-        'iamcco/markdown-preview.nvim',
-        run = 'cd app && npm install',
-        setup = function() vim.g.mkdp_filetypes = {'markdown'} end,
-        ft = {'markdown'}
-    }
+    {'RishabhRD/nvim-cheat.sh', requires = {'RishabhRD/popfix'}}
 }
 
--- vim.cmd("cnoreabbrev ps PackerSync")
 require'packer'.startup {
     function(use)
         use(packer)
