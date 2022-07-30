@@ -16,7 +16,7 @@ local textObjects = {
         'kana/vim-textobj-user',
         config = function()
             vim.cmd [[
-        call textobj#user#plugin('block', {
+        call textobj#user#plugin('custom', {
         \   'block': {
         \     'pattern': '[\{\[\(].*[\)\]\}]',
         \     'select': ['ab', 'ib'],
