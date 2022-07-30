@@ -12,7 +12,19 @@ local packer = {
 }
 
 local textObjects = {
-    'kana/vim-textobj-user',
+    {
+        'kana/vim-textobj-user',
+        config = function()
+            vim.cmd [[
+        call textobj#user#plugin('block', {
+        \   'block': {
+        \     'pattern': '[\{\[\(].*[\)\]\}]',
+        \     'select': ['ab', 'ib'],
+        \   },
+        \ })
+        ]]
+        end
+    },
     'glts/vim-textobj-comment',
     'kana/vim-textobj-indent',
     'wellle/targets.vim',
