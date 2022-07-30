@@ -263,13 +263,19 @@ local treesitter = {
 }
 
 local lsp = {
-    'mattn/emmet-vim',
     -- lsp configs placed here
-    'neovim/nvim-lspconfig', -- lsp servers installer
     {
-        'williamboman/nvim-lsp-installer',
-        config = require('plugins.nvim-lsp-installer')
-    }, -- just a bit better ts support
+        'williamboman/mason-lspconfig.nvim',
+        requires = {'williamboman/mason.nvim', 'neovim/nvim-lspconfig'},
+        config = function()
+            local lsp = require('lsp')
+            require('mason').setup()
+            require('mason-lspconfig').setup({
+                automatic_installation = false,
+                ensure_installed = lsp.servers
+            })
+        end
+    },
     'jose-elias-alvarez/nvim-lsp-ts-utils',
     -- plugin to add completion possibility
     {
