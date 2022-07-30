@@ -11,38 +11,6 @@ local packer = {
     config = function() cmd('command! PS PackerSync') end
 }
 
-local textObjects = {
-    {
-        'kana/vim-textobj-user',
-        config = function()
-            vim.cmd [[
-        call textobj#user#plugin('custom', {
-        \   'block': {
-        \     'pattern': '[\{\[\(].*[\)\]\}]',
-        \     'select': ['ab', 'ib'],
-        \   },
-        \ })
-        ]]
-        end
-    },
-    'glts/vim-textobj-comment',
-    'kana/vim-textobj-indent',
-    'wellle/targets.vim',
-    {'chaoren/vim-wordmotion', config = require('plugins.vim-wordmotion')},
-    {
-        'andrewferrier/textobj-diagnostic.nvim',
-        config = function()
-            require('textobj-diagnostic').setup({create_default_keymaps = false})
-            vim.keymap.set({'x', 'o'}, 'id', function()
-                require('textobj-diagnostic').next_diag_inclusive()
-            end, {silent = true})
-            vim.keymap.set({'x', 'o'}, 'ad', function()
-                require('textobj-diagnostic').next_diag_inclusive()
-            end, {silent = true})
-        end
-    }
-}
-
 local core = {
     -- fix performance bug https://github.com/neovim/neovim/issues/12587 for CursorHold CursorHoldI
     {
@@ -83,8 +51,8 @@ local core = {
     {'gbprod/substitute.nvim', config = require('plugins.substitute-nvim')},
     -- highlight for % pairs
     'andymass/vim-matchup', -- removes cursor jumping when opening qf,etc.
-    {'luukvbaal/stabilize.nvim', config = require('plugins.stabilize-nvim')},
     -- expectedly resizes splits in different situations
+    {'luukvbaal/stabilize.nvim', config = require('plugins.stabilize-nvim')},
     {
         'kwkarlwang/bufresize.nvim',
         config = function() require('bufresize').setup() end
@@ -94,11 +62,45 @@ local core = {
         requires = {'tpope/vim-repeat'},
         config = require('plugins.lightspeed-nvim')
     },
+    -- better <c-a> and <c-x>
     {'monaqa/dial.nvim', config = require('plugins.dial-nvim')},
+    -- adding new modes
     {
         'anuvyklack/hydra.nvim',
-        requires = {'anuvyklack/keymap-layer.nvim'}, -- needed only for pink hydras
+        requires = {'anuvyklack/keymap-layer.nvim'},
         config = require('plugins.hydra-nvim')
+    }
+}
+
+local textObjects = {
+    {
+        'kana/vim-textobj-user',
+        config = function()
+            vim.cmd [[
+        call textobj#user#plugin('custom', {
+        \   'block': {
+        \     'pattern': '[\{\[\(].*[\)\]\}]',
+        \     'select': ['ab', 'ib'],
+        \   },
+        \ })
+        ]]
+        end
+    },
+    'glts/vim-textobj-comment',
+    'kana/vim-textobj-indent',
+    'wellle/targets.vim',
+    {'chaoren/vim-wordmotion', config = require('plugins.vim-wordmotion')},
+    {
+        'andrewferrier/textobj-diagnostic.nvim',
+        config = function()
+            require('textobj-diagnostic').setup({create_default_keymaps = false})
+            vim.keymap.set({'x', 'o'}, 'id', function()
+                require('textobj-diagnostic').next_diag_inclusive()
+            end, {silent = true})
+            vim.keymap.set({'x', 'o'}, 'ad', function()
+                require('textobj-diagnostic').next_diag_inclusive()
+            end, {silent = true})
+        end
     }
 }
 
@@ -127,7 +129,8 @@ local session = {
         'goolord/alpha-nvim',
         requires = {'kyazdani42/nvim-web-devicons'},
         config = require('plugins.alpha-nvim')
-    }, -- when navigate to previously opened files - open in last file position
+    },
+    -- when navigate to previously opened files - open in last file position
     {'ethanholz/nvim-lastplace', config = require('plugins.nvim-lastplace')}
 }
 
@@ -191,16 +194,6 @@ local coding = {
 }
 
 local ui = {
-    {
-        'noib3/cokeline.nvim',
-        requires = 'kyazdani42/nvim-web-devicons', -- If you want devicons
-        config = require('plugins.cokeline-nvim')
-    },
-    {
-        'feline-nvim/feline.nvim',
-        config = require('plugins.feline-nvim'),
-        requires = {'kyazdani42/nvim-web-devicons', 'lewis6991/gitsigns.nvim'}
-    },
     -- color scheme
     --  {'rmehri01/onenord.nvim'},
     {
@@ -213,6 +206,16 @@ local ui = {
         config = function()
             require'colorizer'.setup(nil, {names = false, mode = 'foreground'})
         end
+    },
+    {
+        'noib3/cokeline.nvim',
+        requires = 'kyazdani42/nvim-web-devicons', -- If you want devicons
+        config = require('plugins.cokeline-nvim')
+    },
+    {
+        'feline-nvim/feline.nvim',
+        config = require('plugins.feline-nvim'),
+        requires = {'kyazdani42/nvim-web-devicons', 'lewis6991/gitsigns.nvim'}
     }
 }
 
@@ -224,19 +227,19 @@ local treesitter = {
     },
     {
         'windwp/nvim-ts-autotag',
+        requires = {'nvim-treesitter/nvim-treesitter'},
         config = function() require('nvim-ts-autotag').setup() end
     },
     {
         'nvim-treesitter/nvim-treesitter-textobjects',
+        requires = {'nvim-treesitter/nvim-treesitter'},
         config = function()
             require'nvim-treesitter.configs'.setup {
                 textobjects = {
                     select = {
                         enable = true,
-
                         -- Automatically jump forward to textobj, similar to targets.vim
                         lookahead = true,
-
                         keymaps = {
                             -- You can use the capture groups defined in textobjects.scm
                             ['af'] = '@function.outer',
@@ -269,9 +272,19 @@ local treesitter = {
             }
         end
     },
-    {'JoosepAlviste/nvim-ts-context-commentstring'},
-    {'nvim-treesitter/playground'},
-    {'m-demare/hlargs.nvim', config = function() require'hlargs'.setup {} end}
+    {
+        'JoosepAlviste/nvim-ts-context-commentstring',
+        requires = {'nvim-treesitter/nvim-treesitter'}
+    },
+    {
+        'nvim-treesitter/playground',
+        requires = {'nvim-treesitter/nvim-treesitter'}
+    },
+    {
+        'm-demare/hlargs.nvim',
+        requires = {'nvim-treesitter/nvim-treesitter'},
+        config = function() require'hlargs'.setup {} end
+    }
 }
 
 local lsp = {
