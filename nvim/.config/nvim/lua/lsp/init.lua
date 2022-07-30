@@ -1,21 +1,48 @@
-local servers = {'sumneko_lua', 'jsonls', 'tsserver', 'ls_emmet', 'cssls'}
-local lsp_installer = require('nvim-lsp-installer')
-lsp_installer.setup({
-  ensure_installed = servers, -- ensure these servers are always installed
-  automatic_installation = true -- automatically detect which servers to install (based on which servers are set up via lspconfig)
-})
-require('lsp.settings')()
-require('lsp.servers.custom_servers')
+local M = {}
 
-local general_on_attach = require('lsp.on_attach')
+M.servers = {'sumneko_lua', 'jsonls', 'tsserver', 'cssls'}
 
-for _, serverName in pairs(servers) do
-    local serverConfig =
-        require('lsp.servers.' .. serverName)(general_on_attach)
+M.setup = function()
+    require('lsp.settings')()
+    local general_on_attach = require('lsp.on_attach')
 
-    serverConfig.flags = {debounce_text_changes = 100, lintDebounce = 200}
-    serverConfig.capabilities = require('cmp_nvim_lsp').update_capabilities(
-                                    vim.lsp.protocol.make_client_capabilities())
-    require('lspconfig')[serverName].setup(serverConfig)
-    vim.cmd [[ do User LspAttachBuffers ]]
+    for _, serverName in pairs(M.servers) do
+        local serverConfig = require('lsp.servers.' .. serverName)(
+                                 general_on_attach)
+
+        serverConfig.flags = {debounce_text_changes = 100, lintDebounce = 200}
+        serverConfig.capabilities = require('cmp_nvim_lsp').update_capabilities(
+                                        vim.lsp.protocol
+                                            .make_client_capabilities())
+        require('lspconfig')[serverName].setup(serverConfig)
+        vim.cmd [[ do User LspAttachBuffers ]]
+    end
+
+    local null_ls = require('null-ls')
+    local diagnostics = null_ls.builtins.diagnostics
+    local formatting = null_ls.builtins.formatting
+    local code_actions = null_ls.builtins.code_actions
+
+    null_ls.setup({
+        sources = {
+            formatting.prettierd,
+            formatting.fixjson,
+            formatting.lua_format,
+            diagnostics.eslint_d.with({timeout = 10000}),
+            diagnostics.yamllint,
+            diagnostics.markdownlint,
+            diagnostics.proselint.with({extra_filetypes = {'markdown'}}),
+            diagnostics.cspell.with({
+                extra_filetypes = {'typescript', 'octo'},
+                diagnostics_postprocess = function(diagnostic)
+                    diagnostic.severity = vim.diagnostic.severity['WARN']
+                end
+            }),
+            code_actions.eslint_d,
+            code_actions.proselint
+        },
+        on_attach = general_on_attach
+    })
 end
+
+return M
