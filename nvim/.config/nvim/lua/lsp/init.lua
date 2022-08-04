@@ -15,7 +15,6 @@ M.setup = function()
                                         vim.lsp.protocol
                                             .make_client_capabilities())
         require('lspconfig')[serverName].setup(serverConfig)
-        vim.cmd [[ do User LspAttachBuffers ]]
     end
 
     local null_ls = require('null-ls')

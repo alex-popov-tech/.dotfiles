@@ -1,0 +1,5 @@
+{
+  "green-circle": { "prefix": "g", "body": [ ":large_green_circle:" ], "description": "" },
+  "red-circle": { "prefix": "r", "body": [ ":red_circle:" ], "description": "" },
+  "orange-circle": { "prefix": "o", "body": [ ":large_orange_circle:" ], "description": "" }
+}
