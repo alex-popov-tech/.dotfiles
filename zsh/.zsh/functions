@@ -74,17 +74,14 @@ asdf_uninstall() {
 # and display a info quickview window for the currently marked application
 brew_install() {
     local token
-    token=$(brew search --casks "$1" | fzf-tmux --query="$1" +m --preview 'brew info {}')
+    token=$(brew search "$1" | fzf-tmux -p -w 90% -h 90% --query="$1" +m --preview 'brew info {}')
 
     if [ "x$token" != "x" ]
     then
-        echo "(I)nstall or open the (h)omepage of $token"
-        read input
-        if [ $input = "i" ] || [ $input = "I" ]; then
+        if [[ "$token" == *"homebrew-cask"* ]]; then
             brew install --cask $token
-        fi
-        if [ $input = "h" ] || [ $input = "H" ]; then
-            brew home $token
+        else
+            brew install $token
         fi
     fi
 }
@@ -94,7 +91,7 @@ brew_install() {
 # and display a info quickview window for the currently marked application
 brew_uninstall() {
     local token
-    token=$(brew list --casks | fzf-tmux --query="$1" +m --preview 'brew info {}')
+    token=$(brew list --casks | fzf-tmux -p -w 90% -h 90% --query="$1" +m --preview 'brew info {}')
 
     if [ "x$token" != "x" ]
     then
