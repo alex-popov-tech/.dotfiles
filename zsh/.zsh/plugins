@@ -1,30 +1,49 @@
 # vi: ft=zsh
 
-# source $HOME/.zinit/bin/zinit.zsh
-ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
-source "${ZINIT_HOME}/zinit.zsh"
+if [[ ! -f $HOME/.zi/bin/zi.zsh ]]; then
+  print -P "%F{33}▓▒░ %F{160}Installing (%F{33}z-shell/zi%F{160})…%f"
+  command mkdir -p "$HOME/.zi" && command chmod go-rwX "$HOME/.zi"
+  command git clone -q --depth=1 --branch "main" https://github.com/z-shell/zi "$HOME/.zi/bin" && \
+    print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
+    print -P "%F{160}▓▒░ The clone has failed.%f%b"
+fi
+source "$HOME/.zi/bin/zi.zsh"
+autoload -Uz _zi
+(( ${+_comps} )) && _comps[zi]=_zi
 
-zinit for \
-  light-mode zsh-users/zsh-autosuggestions \
-  light-mode zdharma-continuum/fast-syntax-highlighting \
-  light-mode OMZ::plugins/git/git.plugin.zsh \
-  light-mode MichaelAquilina/zsh-you-should-use \
-  light-mode OMZ::plugins/vi-mode/vi-mode.plugin.zsh
+# examples here -> https://z.digitalclouds.dev/ecosystem/annexes
+zicompinit # <- https://z.digitalclouds.dev/docs/guides/commands
 
-zinit ice depth=1; zinit light romkatv/powerlevel10k
-zinit ice as"program" from"gh-r" mv"fd* -> fd" pick"fd/fd" lucid
-zinit light sharkdp/fd
-zinit ice as"program" from"gh-r" mv"bat* -> bat" pick"bat/bat" lucid
-zinit light sharkdp/bat
-alias cat="bat"
-zinit ice as"program" from"gh-r" mv"bin/exa* -> exa" pick"exa/exa" lucid
-zinit light ogham/exa
-alias ls='exa --icons'
-alias la='exa -a --icons'
-alias lt='exa --tree --icons'
-zinit ice as"program" from"gh-r" mv"rg* -> rg" pick"rg/rg" lucid
-zinit light BurntSushi/ripgrep
+zi ice depth=1; zi light romkatv/powerlevel10k
+zi snippet OMZP::vi-mode
 
-zinit load wfxr/forgit
+#  completion which is not bad, but no fzf there
+#  zinit light zsh-users/zsh-completions
 
-eval "$(jump shell)"
+zi wait lucid for \
+  atinit"ZI[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+     z-shell/F-Sy-H \
+  atload"!_zsh_autosuggest_start" \
+     zsh-users/zsh-autosuggestions
+
+
+# better hist search
+zi load z-shell/H-S-MW
+
+zi pack for ls_colors
+
+zi has'zoxide' wait lucid for \
+  z-shell/zsh-zoxide
+
+zi is-snippet wait lucid for \
+    atload \
+  OMZP::dotenv \
+  OMZP::git
+
+zi ice wait lucid
+zi load wfxr/forgit
+
+zi ice lucid wait has'fzf'
+zi light Aloxaf/fzf-tab
+
+zicompinit # <- https://z.digitalclouds.dev/docs/guides/commands
