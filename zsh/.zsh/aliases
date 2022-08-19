@@ -43,10 +43,13 @@ alias la='exa -a --icons'
 alias lt='exa --tree --icons'
 
 alias help='navi'
+alias h='cht.sh'
 
-alias -s lua=nvim
-alias -s js=nvim
-alias -s ts=nvim
+alias -s lua=lua
+alias -s js=node
+alias -s ts=ts-node
 alias -s yaml=nvim
 alias -s yml=nvim
 alias -s json=nvim
+alias -s txt=nvim
+alias -s go="go run"
