@@ -91,17 +91,14 @@ brew_install() {
 # and display a info quickview window for the currently marked application
 brew_uninstall() {
     local token
-    token=$(brew list --casks | fzf-tmux -p -w 90% -h 90% --query="$1" +m --preview 'brew info {}')
+    token=$(brew list | fzf-tmux -p -w 90% -h 90% --query="$1" +m --preview 'brew info {}')
 
     if [ "x$token" != "x" ]
     then
-        echo "(U)ninstall or open the (h)omepae of $token"
-        read input
-        if [ $input = "u" ] || [ $input = "U" ]; then
+        if [[ "$token" == *"homebrew-cask"* ]]; then
             brew uninstall --cask $token
-        fi
-        if [ $input = "h" ] || [ $token = "h" ]; then
-            brew home $token
+        else
+            brew uninstall $token
         fi
     fi
 }
