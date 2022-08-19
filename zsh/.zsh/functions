@@ -33,7 +33,7 @@ function git_current_branch() {
 # Install one or more versions of specified language
 # e.g. `vmi rust` # => fzf multimode, tab to mark, enter to install
 # if no plugin is supplied (e.g. `vmi<CR>`), fzf will list them for you
-asdf_install() {
+asdf_i() {
   local lang=${1}
 
   if [[ ! $lang ]]; then
@@ -53,7 +53,7 @@ asdf_install() {
 # e.g. `vmi rust` # => fzf multimode, tab to mark, enter to remove
 # if no plugin is supplied (e.g. `vmi<CR>`), fzf will list them for you
 # Mnemonic [V]ersion [M]anager [C]lean
-asdf_uninstall() {
+asdf_uni() {
   local lang=${1}
 
   if [[ ! $lang ]]; then
@@ -72,7 +72,7 @@ asdf_uninstall() {
 # Install or open the webpage for the selected application
 # using brew cask search as input source
 # and display a info quickview window for the currently marked application
-brew_install() {
+brew_i() {
     local token
     token=$(brew search "$1" | fzf-tmux -p -w 90% -h 90% --query="$1" +m --preview 'brew info {}')
 
@@ -89,7 +89,7 @@ brew_install() {
 # Uninstall or open the webpage for the selected application
 # using brew list as input source (all brew cask installed applications)
 # and display a info quickview window for the currently marked application
-brew_uninstall() {
+brew_uni() {
     local token
     token=$(brew list | fzf-tmux -p -w 90% -h 90% --query="$1" +m --preview 'brew info {}')
 
