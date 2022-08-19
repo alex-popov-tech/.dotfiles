@@ -23,6 +23,7 @@ return function(client, bufnr)
     map('n', '\'d', function()
         vim.diagnostic.open_float(0, {
             scope = 'line',
+            source = "if_many",
             border = 'rounded',
             focusable = false
         })
