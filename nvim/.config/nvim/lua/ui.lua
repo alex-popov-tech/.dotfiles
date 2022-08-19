@@ -8,6 +8,7 @@ hi('ColorColumn', {guibg = 'none'})
 -- hl groups for diagnostic & float
 hi("DiagnosticVirtualTextWarn", {guifg = "#e7c664", guibg = "none"})
 hi("DiagnosticVirtualTextError", {guifg = "#fc5d7c", guibg = "none"})
+hi("DiagnosticVirtualTextHint", {guibg = "none"})
 hi("DiagnosticFloatingError", {guifg = "#fc5d7c", guibg = "none"})
 hi("DiagnosticFloatingWarn", {guifg = "#e7c664", guibg = "none"})
 -- hi("NormalFloat", {guibg = "none"})

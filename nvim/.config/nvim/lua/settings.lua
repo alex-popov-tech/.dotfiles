@@ -47,6 +47,7 @@ for key, val in pairs({
     numberwidth = 1, -- by default 4, and because of that there is empty space to the right to line numbers except current
     relativenumber = true, -- show relative line number for current line
     -- cursorcolumn = true, -- highlight for current column
+    colorcolumn = "", -- "80,120", -- highlight some column length
     cursorline = true -- Highlight the screen line of the cursor with CursorLine
 }) do vim.wo[key] = val end
 -- add chars to '%'
