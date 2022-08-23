@@ -245,7 +245,7 @@ local treesitter = {
 }
 
 local lsp = {
-  { 'lvimuser/lsp-inlayhints.nvim' },
+  { 'lvimuser/lsp-inlayhints.nvim', config = require('plugins.lsp-inlayhints') },
   -- lsp configs placed here
   {
     'williamboman/mason-lspconfig.nvim',
