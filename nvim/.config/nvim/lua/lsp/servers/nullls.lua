@@ -8,6 +8,8 @@ M.list = {
   'yamllint',
   'golangci-lint',
   'goimports',
+  'goimports',
+  'delve'
 }
 
 M.setup = function()
@@ -24,6 +26,7 @@ M.setup = function()
       formatting.gofmt,
       formatting.goimports,
 
+      diagnostics.selene,
       diagnostics.eslint_d.with({ timeout = 10000 }),
       diagnostics.yamllint,
       diagnostics.markdownlint,
