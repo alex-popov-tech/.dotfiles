@@ -76,14 +76,14 @@ local core = {
         },
       }
     end },
-    -- live preview for norm command
+  -- live preview for norm command
   { 'smjonas/live-command.nvim', config = function()
     require("live_command").setup {
       commands = {
         Norm = { cmd = "norm" },
       },
     }
-    vim.cmd[[ cnoreabbrev norm Norm ]]
+    vim.cmd [[ cnoreabbrev norm Norm ]]
   end }
 }
 
@@ -92,7 +92,14 @@ local textObjects = {
     'echasnovski/mini.nvim',
     config = function() require('mini.ai').setup() end
   },
-  { 'chaoren/vim-wordmotion', config = require('plugins.vim-wordmotion') }
+  { 'Julian/vim-textobj-variable-segment', requires = { 'kana/vim-textobj-user' } }
+  -- { 'chaoren/vim-wordmotion', setup = function ()
+  --   -- after load
+
+  -- end, config = function ()
+  --   -- before load
+  --   vim.g.wordmotion_prefix = '<leader>'
+  -- end}
 }
 
 local git = {
