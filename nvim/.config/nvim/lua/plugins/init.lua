@@ -218,7 +218,7 @@ local ui = {
   },
   {
     'noib3/cokeline.nvim',
-    requires = 'kyazdani42/nvim-web-devicons', -- If you want devicons
+    requires = 'kyazdani42/nvim-web-devicons',
     config = require('plugins.cokeline-nvim')
   },
   {
@@ -351,6 +351,30 @@ local lsp = {
   { 'b0o/SchemaStore.nvim' }
 }
 
+local debug = {
+  {
+    'mfussenegger/nvim-dap', config = require('plugins.nvim-dap')
+  },
+  {
+    'leoluz/nvim-dap-go', config = function()
+      require('dap-go').setup()
+    end
+  },
+  { 'rcarriga/nvim-dap-ui', requires = { 'mfussenegger/nvim-dap' }, config = function()
+    require("dapui").setup({})
+    local dap, dapui = require("dap"), require("dapui")
+    dap.listeners.after.event_initialized["dapui_config"] = function()
+      dapui.open()
+    end
+    dap.listeners.before.event_terminated["dapui_config"] = function()
+      dapui.close()
+    end
+    dap.listeners.before.event_exited["dapui_config"] = function()
+      dapui.close()
+    end
+  end }
+}
+
 local other = {
   { 'dstein64/vim-startuptime', cmd = { 'StartupTime' } },
   { 'RishabhRD/nvim-cheat.sh', requires = { 'RishabhRD/popfix' } }
@@ -371,6 +395,7 @@ require 'packer'.startup {
     use(ui)
     use(treesitter)
     use(lsp)
+    use(debug)
     use(other)
   end,
   config = {
@@ -378,4 +403,3 @@ require 'packer'.startup {
     display = { open_fn = require 'packer.util'.float }
   }
 }
-
