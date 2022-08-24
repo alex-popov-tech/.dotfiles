@@ -14,9 +14,9 @@ fi
 source $HOME/.zsh/env
 source $HOME/.zsh/prompt
 source $HOME/.zsh/settings
+source $HOME/.zsh/fzf
 source $HOME/.zsh/style
 source $HOME/.zsh/plugins
-source $HOME/.zsh/fzf
 source $HOME/.zsh/langs
 source $HOME/.zsh/functions
 source $HOME/.zsh/aliases
