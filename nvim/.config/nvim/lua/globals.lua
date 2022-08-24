@@ -26,18 +26,6 @@ end
 
 _G.printt = function(tbl) print(vim.inspect(tbl)) end
 
-_G.reload = function()
-    local modules = {'lsp', 'plugins', 'globals', 'mappings', 'settings', 'ui'}
-    for _, moduleName in pairs(modules) do
-        for packageName, _ in pairs(package.loaded) do
-            if string.find(packageName, '^' .. moduleName) then
-                package.loaded[packageName] = nil
-            end
-        end
-        require(moduleName)
-    end
-end
-
 function _G.map(mode, lhs, rhs, opts)
 
     local finalRhs = ''
