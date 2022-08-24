@@ -1,3 +1,9 @@
+_G.vim = vim
+_G.g = vim.g
+_G.cmd = vim.cmd
+_G.fn = vim.fn
+_G.lsp = vim.lsp
+
 _G.includes = function(map, expected)
     for _, value in pairs(map) do if expected == value then return true end end
     return false
@@ -86,7 +92,3 @@ function _G.addCommand(name, func, opts)
     vim.api.nvim_create_user_command(name, func, opts or {})
 end
 
-_G.g = vim.g
-_G.cmd = vim.cmd
-_G.fn = vim.fn
-_G.lsp = vim.lsp
