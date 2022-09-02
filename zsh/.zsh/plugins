@@ -50,5 +50,3 @@ zstyle ":plugin:history-search-multi-word" check-paths "yes"           # Whether
 zstyle ":plugin:history-search-multi-word" clear-on-cancel "no"        # Whether pressing Ctrl-C or ESC should clear entered query
 zi ice wait lucid
 zi load z-shell/H-S-MW
-
-zicompinit # <- https://z.digitalclouds.dev/docs/guides/commands
