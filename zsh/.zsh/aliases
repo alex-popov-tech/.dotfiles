@@ -16,6 +16,8 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
+alias me="cd ~/me"
+
 alias c=" clear"
 alias cc=" clear"
 alias hist="history"
@@ -43,7 +45,7 @@ alias la='exa -a --icons'
 alias lt='exa --tree --icons'
 
 alias help='navi'
-alias h='cht.sh'
+alias howto='cht.sh'
 
 alias -s lua=lua
 alias -s js=node
