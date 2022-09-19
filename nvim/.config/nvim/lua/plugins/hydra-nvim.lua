@@ -1,33 +1,62 @@
 return function()
-    local Hydra = require('hydra')
-    Hydra({
-        name = 'Resizing mode',
-        hint = [[
- ^^^^^^  Split/Pane  ^^^^^^
- ^^^^^^--------------^^^^^^
- ^ ^ _k_ ^ ^   ^ ^ _K_ ^ ^
- _h_ ^ ^ _l_   _H_ ^ ^ _L_
- ^ ^ _j_ ^ ^   ^ ^ _J_ ^ ^
- focus^^^^^^   resize^^^^^
- ^ ^ ^ ^ ^ ^   ^ ^ ^ ^ ^ ^
-]],
-        config = {
-            invoke_on_body = true,
-            hint = {position = 'bottom', border = 'rounded'},
-            timeout = 4000
-        },
-        mode = 'n',
-        body = '<leader>w',
-        heads = {
-            {'h', function() require('Navigator').left() end},
-            {'j', function() require('Navigator').down() end},
-            {'k', function() require('Navigator').up() end},
-            {'l', function() require('Navigator').right() end},
-            {'H', function() vim.cmd(':ObviousResizeLeft') end},
-            {'J', function() vim.cmd(':ObviousResizeDown') end},
-            {'K', function() vim.cmd(':ObviousResizeUp') end},
-            {'L', function() vim.cmd(':ObviousResizeRight') end},
-            {'<esc>', nil, exit = true}
-        }
-    })
+  local Hydra = require('hydra')
+  Hydra({
+    name = 'DEBUG mode',
+    hint = [[
+    s/c - start/continue
+    t - terminate
+    e - eval
+    n - step over
+    i - step into
+    o - step out
+    b - toggle breakpoint
+    B - toggle conditional breakpoint
+    lb - toggle log breakpoint
+    rt - run closest test (go)
+    esc - exit
+        ]],
+    config = {
+      hint = { position = 'bottom', border = 'rounded' },
+      timeout = 6000
+    },
+    invoke_on_body = true,
+    mode = 'n',
+    body = '<leader>d',
+    heads = {
+      { 'c', function()
+        require 'dap'.continue()
+      end },
+      { 's', function()
+        require 'dap'.continue()
+      end },
+      { 't', function()
+        require 'dap'.terminate()
+      end },
+      { 'e', function()
+        require 'dapui'.eval(vim.fn.input('Evaluate: '))
+      end },
+      { 'n', function()
+        require'dap'.step_over()
+      end },
+      { 'i', function()
+        require'dap'.step_into()
+      end },
+      { 'o', function()
+        require'dap'.step_out()
+      end },
+      { 'b', function()
+        require'dap'.toggle_breakpoint()
+      end },
+      { 'B', function()
+        require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))
+      end },
+      { 'lb', function()
+        require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))
+      end },
+      { 'rt', function()
+        require('dap-go').debug_test()
+      end },
+      { '<esc>', nil, exit = true }
+    }
+  })
 end

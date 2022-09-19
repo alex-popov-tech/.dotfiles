@@ -27,7 +27,6 @@ return function(on_attach)
     },
     on_attach = function(client, bufnr)
       on_attach(client, bufnr)
-      require("lsp-inlayhints").on_attach(client, bufnr)
       -- tsserver, stop messing with prettier da fuck!
       client.server_capabilities.documentFormattingProvider = false
       require("nvim-lsp-ts-utils").setup {}

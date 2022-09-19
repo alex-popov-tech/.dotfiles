@@ -16,7 +16,12 @@ return function()
             indent = {enable = true},
             use_languagetree = true
         },
-        context_commentstring = {enable = true, enable_autocmd = true},
+        context_commentstring = {
+          enable = true
+        },
+        autotag = {
+          enable = true
+        },
         pairs = {
             enable = true,
             disable = {},

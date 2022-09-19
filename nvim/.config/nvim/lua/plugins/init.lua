@@ -11,60 +11,52 @@ local packer = {
 }
 
 local core = {
-  -- fix performance bug https://github.com/neovim/neovim/issues/12587 for CursorHold CursorHoldI
-  {
-    'antoinemadec/FixCursorHold.nvim',
-    config = function() vim.g.cursorhold_updatetime = 200 end
-  }, -- when yanking do not put cursor at the beginning of yanked text
   -- cache modules to improve load time
   'lewis6991/impatient.nvim',
   'svban/YankAssassin.vim',
-  -- abbreviations, substitusion, coercion (transform case)
-  { 'tpope/vim-abolish', config = require('plugins.abolish-vim') },
   -- add bunch of mappings like ]p ]e ]<space> etc.
   'tpope/vim-unimpaired',
   -- allows repeat via dot for some plugins like surround
-  'tpope/vim-repeat', -- add\update\remove surround stuff like ''{}''
-  --  'tpope/vim-surround',
+  'tpope/vim-repeat',
   { 'kylechui/nvim-surround', config = require('plugins.nvim-surround') },
-  -- auto brackets
-  {
-    'ZhiyuanLck/smart-pairs',
-    config = function()
-      require 'pairs':setup({
-        autojump_strategy = { unbalanced = 'all' },
-        enter = { enable_mapping = false }
-      })
-    end,
-    event = 'InsertEnter'
-  },
+  -- {
+  --   'ZhiyuanLck/smart-pairs',
+  --   config = function()
+  --     require 'pairs':setup({
+  --       autojump_strategy = { unbalanced = 'all' },
+  --       enter = { enable_mapping = false }
+  --     })
+  --   end,
+  --   event = 'InsertEnter'
+  -- },
   --  shiftwidth/expandtab/etc
-  'tpope/vim-sleuth',
-  { 'schickling/vim-bufonly', config = require('plugins.vim-bufonly') }, -- close all buffers but current
-  { 'moll/vim-bbye', config = require('plugins.vim-bbye') }, -- close buffer
-  { 'gbprod/substitute.nvim', config = require('plugins.substitute-nvim') }, -- move to {motion}
-  'andymass/vim-matchup', -- highlight for % pairs
-  --  {'luukvbaal/stabilize.nvim', config = require('plugins.stabilize-nvim')},-- expectedly resizes splits in different situations
-  -- bufresize.nvim can keep your buffers width and height in proportion when the terminal window is resized
+  -- 'tpope/vim-sleuth',
+  -- close all buffers but current
+  { 'schickling/vim-bufonly', config = require('plugins.vim-bufonly') },
+  -- close buffer
+  { 'moll/vim-bbye', config = require('plugins.vim-bbye') },
+  -- replace without yankink deleted
+  { 'gbprod/substitute.nvim', config = require('plugins.substitute-nvim') },
+  -- helps to resize split after closing in more expected way
   {
     'kwkarlwang/bufresize.nvim',
     config = function() require('bufresize').setup() end
-  }, -- easy motion like.
-  {
-    'ggandor/lightspeed.nvim',
-    requires = { 'tpope/vim-repeat' },
-    config = require('plugins.lightspeed-nvim')
   },
+  -- {
+  --   'ggandor/lightspeed.nvim',
+  --   requires = { 'tpope/vim-repeat' },
+  --   config = require('plugins.lightspeed-nvim')
+  -- },
   -- adding new modes
-  {
-    'anuvyklack/hydra.nvim',
-    requires = { 'anuvyklack/keymap-layer.nvim' },
-    config = require('plugins.hydra-nvim')
-  },
+  -- {
+  --   'anuvyklack/hydra.nvim',
+  --   requires = { 'anuvyklack/keymap-layer.nvim' },
+  --   config = require('plugins.hydra-nvim')
+  -- },
   { 'samodostal/image.nvim',
-    requires = {
-      'nvim-lua/plenary.nvim'
-    }, config = function()
+    ft = { 'png', 'jpeg' },
+    requires = { 'nvim-lua/plenary.nvim' },
+    config = function()
       require('image').setup {
         render = {
           min_padding = 5,
@@ -77,7 +69,7 @@ local core = {
       }
     end },
   -- live preview for norm command
-  { 'smjonas/live-command.nvim', config = function()
+  { 'smjonas/live-command.nvim', cmd = "Norm", config = function()
     require("live_command").setup {
       commands = {
         Norm = { cmd = "norm" },
@@ -93,16 +85,10 @@ local textObjects = {
     config = function() require('mini.ai').setup() end
   },
   { 'Julian/vim-textobj-variable-segment', requires = { 'kana/vim-textobj-user' } }
-  -- { 'chaoren/vim-wordmotion', setup = function ()
-  --   -- after load
-
-  -- end, config = function ()
-  --   -- before load
-  --   vim.g.wordmotion_prefix = '<leader>'
-  -- end}
 }
 
 local git = {
+  { 'tpope/vim-fugitive', },
   {
     'kdheepak/lazygit.nvim',
     config = function() cmd [[cnoreabbrev git LazyGit]] end
@@ -135,9 +121,7 @@ local session = {
 
 local tmuxAndSplits = {
   -- plugin for vim-tmux interactions
-  { 'numToStr/Navigator.nvim', config = require('plugins.navigator-nvim') },
-  -- resizing windows
-  { 'talek/obvious-resize', config = require('plugins.obvious-resize') }
+  'numToStr/Navigator.nvim', config = require('plugins.navigator-nvim'),
 }
 
 local term = {
@@ -179,29 +163,12 @@ local coding = {
   { 'glepnir/mcc.nvim', config = function()
     require('mcc').setup({ go = { ':', ':=', ':' }, })
   end },
-  -- add commenting for different langs
-  {
-    'tpope/vim-commentary',
-    requires = {
-      {
-        'JoosepAlviste/nvim-ts-context-commentstring',
-        requires = { 'nvim-treesitter/nvim-treesitter' }
-      }
-    },
-    config = require('plugins.vim-commentary')
+  { 'numToStr/Comment.nvim',
+    requires = { "JoosepAlviste/nvim-ts-context-commentstring" },
+    config = require("plugins.comment-nvim")
   },
-  --  {
-  --  'winston0410/commented.nvim',
-  --  config = function()
-  --  require('commented').setup({
-  --  hooks = {
-  --  before_comment = require('ts_context_commentstring.internal').update_commentstring
-  --  }
-  --  })
-  --  end
-  --  },
-  'editorconfig/editorconfig-vim',
-  { 'tpope/vim-dotenv', config = require('plugins.vim-dotenv') }
+  -- 'editorconfig/editorconfig-vim',
+  -- { 'tpope/vim-dotenv', config = require('plugins.vim-dotenv') }
 }
 
 local ui = {
@@ -234,6 +201,7 @@ local treesitter = {
     run = ':TSUpdate',
     config = require('plugins.nvim-treesitter')
   },
+  -- autocomplete closing tags, auto rename
   {
     'windwp/nvim-ts-autotag',
     requires = { 'nvim-treesitter/nvim-treesitter' },
@@ -252,7 +220,8 @@ local treesitter = {
 }
 
 local lsp = {
-  { 'lvimuser/lsp-inlayhints.nvim', config = require('plugins.lsp-inlayhints') },
+  -- temp disabled as it brings too much stuff
+  -- { 'lvimuser/lsp-inlayhints.nvim', config = require('plugins.lsp-inlayhints') },
   -- lsp configs placed here
   {
     'williamboman/mason-lspconfig.nvim',
@@ -270,25 +239,13 @@ local lsp = {
     config = function()
       local tools = require('lsp.servers.nullls')
       require 'mason-tool-installer'.setup {
-
-        -- a list of all tools you want to ensure are installed upon
-        -- start; they should be the names Mason uses for each tool
         ensure_installed = tools.list,
-        -- automatically install / update on startup. If set to false nothing
-        -- will happen on startup. You can use :MasonToolsInstall or
-        -- :MasonToolsUpdate to install tools and check for updates.
-        -- Default: true
         run_on_start = true,
-
-        -- set a delay (in ms) before the installation starts. This is only
-        -- effective if run_on_start is set to true.
-        -- e.g.: 5000 = 5 second delay, 10000 = 10 second delay, etc...
-        -- Default: 0
-        start_delay = 3000, -- 3 second delay
+        start_delay = 2000, -- 3 second delay
       }
     end },
+  -- organize imports
   'jose-elias-alvarez/nvim-lsp-ts-utils',
-  -- plugin to add completion possibility
   {
     'hrsh7th/nvim-cmp',
     config = require('plugins.nvim-cmp'),
@@ -328,22 +285,27 @@ local lsp = {
     requires = { 'rafamadriz/friendly-snippets' },
     config = require('plugins.luasnip')
   },
-  -- 'folke/lsp-colors.nvim', -- colors for lsp if your theme have nothing
   {
     'folke/trouble.nvim',
     requires = 'kyazdani42/nvim-web-devicons',
     config = require('plugins.trouble-nvim')
-  }, -- diagnostics
-  --  commented for now as there is no filtering unfortunately :(
-  --  {
-  --  'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
-  --  config = function() require('lsp_lines').setup() end
-  --  },
+  },
   { 'weilbith/nvim-code-action-menu', cmd = 'CodeActionMenu' }, -- code action
   {
     'smjonas/inc-rename.nvim',
+    requires = { { 'stevearc/dressing.nvim', config = function()
+      require("dressing").setup {
+        input = {
+          override = function(conf)
+            conf.col = -1
+            conf.row = 0
+            return conf
+          end,
+        },
+      }
+    end } },
     config = function()
-      require('inc_rename').setup({ cmd_name = 'Rename' })
+      require('inc_rename').setup({ cmd_name = 'Rename', input_buffer_type = "dressing" })
     end
   }, -- code action
   { 'j-hui/fidget.nvim', config = require('plugins.fidget-nvim') }, -- code action
@@ -353,7 +315,7 @@ local lsp = {
 
 local debug = {
   {
-    'mfussenegger/nvim-dap', config = require('plugins.nvim-dap')
+    'mfussenegger/nvim-dap', cmd = "DapContinue", config = require('plugins.nvim-dap')
   },
   {
     'leoluz/nvim-dap-go', config = function()
@@ -377,7 +339,8 @@ local debug = {
 
 local other = {
   { 'dstein64/vim-startuptime', cmd = { 'StartupTime' } },
-  { 'RishabhRD/nvim-cheat.sh', requires = { 'RishabhRD/popfix' } }
+  { 'RishabhRD/nvim-cheat.sh', cmd = "Cheat", requires = { 'RishabhRD/popfix' } },
+  { 'rcarriga/nvim-notify' }
 }
 
 require 'packer'.startup {
