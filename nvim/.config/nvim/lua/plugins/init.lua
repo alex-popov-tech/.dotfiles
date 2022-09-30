@@ -184,9 +184,10 @@ local ui = {
     end
   },
   {
-    'noib3/cokeline.nvim',
+    'akinsho/bufferline.nvim',
+    tag = "v2.*",
     requires = 'kyazdani42/nvim-web-devicons',
-    config = require('plugins.cokeline-nvim')
+    config = require('plugins.bufferline-nvim')
   },
   {
     'feline-nvim/feline.nvim',
