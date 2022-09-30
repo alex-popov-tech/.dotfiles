@@ -34,17 +34,19 @@ for _, mappings in pairs(
         -- do not yank on x/X
         {"n", "x", '"_dl'},
         {"n", "X", '"_dh'},
+	-- magic search mappnigs
+        {'n', '/', '/\\v', { noremap = true }},
+        {'v', ':s/', ':s/\\v', { noremap = true }},
+        {'c', '%s/', '%s/\\v', { noremap = true }},
+        {'c', 'g/', 'g/\\v', { noremap = true }},
     }
 ) do
     local mode = mappings[1]
     local key = mappings[2]
     local value = mappings[3]
-    local options = mappings[4]
-    map(mode, key, value, options)
+    local options = mappings[4] or { silent = true}
+    vim.keymap.set(mode, key, value, options)
 end
-
-au("bufNewFile, BufReadPost", "*.pug", "set filetype=pug")
-au("BufNewFile, BufReadPost", "*.jade", "set filetype=pug")
 
 cmd("cnoreabbrev W noa w")
 cmd("cnoreabbrev WA noa wa")
