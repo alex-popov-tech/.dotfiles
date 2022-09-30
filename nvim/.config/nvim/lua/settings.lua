@@ -54,9 +54,9 @@ for key, val in pairs({
   number = true, -- show absolute line number
   numberwidth = 1, -- by default 4, and because of that there is empty space to the right to line numbers except current
   relativenumber = true, -- show relative line number for current line
-  cursorcolumn = true, -- highlight for current column
   colorcolumn = "", -- "80,120", -- highlight some column length
   spell = true, -- "80,120", -- highlight some column length
+  cursorcolumn = true, -- highlight for current column
   cursorline = true -- Highlight the screen line of the cursor with CursorLine
 }) do
   vim.wo[key] = val
@@ -66,9 +66,7 @@ vim.bo.matchpairs = "(:),{:},[:],<:>"
 
 -- blink search matches, not leave them visible
 vim.api.nvim_create_autocmd("CursorHold", { pattern = { "*" }, callback = function() vim.cmd("set nohlsearch") end })
--- vim.api.nvim_create_autocmd("BufEnter", { pattern = { "*.png" }, callback = function() vim.bo.filetype = "png" end })
--- vim.api.nvim_create_autocmd("BufEnter", { pattern = { "*.jpg" }, callback = function() vim.bo.filetype = "jpeg" end })
--- vim.api.nvim_create_autocmd("BufEnter", { pattern = { "*.jpeg" }, callback = function() vim.bo.filetype = "jpeg" end })
+
 -- highlight yanked text
 vim.api.nvim_create_autocmd("TextYankPost", { pattern = { "*" }, callback = function() vim.highlight.on_yank({ higroup = "Visual", timeout = 100 }) end })
 
