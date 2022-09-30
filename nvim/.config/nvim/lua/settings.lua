@@ -5,7 +5,9 @@ vim.filetype.add({
   extension = {
     png ='png',
     jpeg = 'jpeg',
-    jpg = 'jpg'
+    jpg = 'jpg',
+    pug = 'pug',
+    jade = 'pug'
   }
 })
 
