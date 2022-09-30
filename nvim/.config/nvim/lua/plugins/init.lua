@@ -236,7 +236,7 @@ local lsp = {
       })
     end
   },
-  { "WhoIsSethDaniel/mason-tool-installer.nvim", requires = { "williamboman/mason-lspconfig.nvim" },
+  { "WhoIsSethDaniel/mason-tool-installer.nvim", requires = { "williamboman/mason.nvim" },
     config = function()
       local tools = require('lsp.servers.nullls')
       require 'mason-tool-installer'.setup {
@@ -244,6 +244,12 @@ local lsp = {
         run_on_start = true,
         start_delay = 2000, -- 3 second delay
       }
+    end },
+  { "jayp0521/mason-nvim-dap.nvim", requires = { "williamboman/mason.nvim" },
+    config = function()
+      require("mason-nvim-dap").setup({
+        ensure_installed = { "delve" }
+      })
     end },
   -- organize imports
   'jose-elias-alvarez/nvim-lsp-ts-utils',
@@ -319,11 +325,11 @@ local debug = {
     'mfussenegger/nvim-dap', cmd = "DapContinue", config = require('plugins.nvim-dap')
   },
   {
-    'leoluz/nvim-dap-go', config = function()
+    'leoluz/nvim-dap-go', cmd = "DapContinue", config = function()
       require('dap-go').setup()
     end
   },
-  { 'rcarriga/nvim-dap-ui', requires = { 'mfussenegger/nvim-dap' }, config = function()
+  { 'rcarriga/nvim-dap-ui', cmd = "DapContinue", requires = { 'mfussenegger/nvim-dap' }, config = function()
     require("dapui").setup({})
     local dap, dapui = require("dap"), require("dapui")
     dap.listeners.after.event_initialized["dapui_config"] = function()
