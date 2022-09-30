@@ -34,7 +34,7 @@ local core = {
   -- close all buffers but current
   { 'schickling/vim-bufonly', config = require('plugins.vim-bufonly') },
   -- close buffer
-  { 'moll/vim-bbye', config = require('plugins.vim-bbye') },
+  { 'ojroques/nvim-bufdel', config = require('plugins.nvim-bufdel') },
   -- replace without yankink deleted
   { 'gbprod/substitute.nvim', config = require('plugins.substitute-nvim') },
   -- helps to resize split after closing in more expected way
