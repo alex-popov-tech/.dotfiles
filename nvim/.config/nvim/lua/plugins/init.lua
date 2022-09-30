@@ -13,6 +13,8 @@ local packer = {
 local core = {
   -- cache modules to improve load time
   'lewis6991/impatient.nvim',
+  --  shiftwidth/expandtab/etc
+  'tpope/vim-sleuth',
   'svban/YankAssassin.vim',
   -- add bunch of mappings like ]p ]e ]<space> etc.
   'tpope/vim-unimpaired',
@@ -29,8 +31,6 @@ local core = {
   --   end,
   --   event = 'InsertEnter'
   -- },
-  --  shiftwidth/expandtab/etc
-  -- 'tpope/vim-sleuth',
   -- close all buffers but current
   { 'schickling/vim-bufonly', config = require('plugins.vim-bufonly') },
   -- close buffer
@@ -76,7 +76,8 @@ local core = {
       },
     }
     vim.cmd [[ cnoreabbrev norm Norm ]]
-  end }
+  end },
+  { "mbbill/undotree", cmd = { "UndotreeToggle" } }
 }
 
 local textObjects = {
@@ -161,7 +162,7 @@ local fuzzyFinder = {
 }
 
 local coding = {
-  { 'glepnir/mcc.nvim', config = function()
+  { 'glepnir/mcc.nvim', ft = { 'go' }, config = function()
     require('mcc').setup({ go = { ':', ':=', ':' }, })
   end },
   { 'numToStr/Comment.nvim',
