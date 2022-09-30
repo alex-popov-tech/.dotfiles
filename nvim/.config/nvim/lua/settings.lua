@@ -70,14 +70,6 @@ vim.api.nvim_create_autocmd("CursorHold", { pattern = { "*" }, callback = functi
 -- highlight yanked text
 vim.api.nvim_create_autocmd("TextYankPost", { pattern = { "*" }, callback = function() vim.highlight.on_yank({ higroup = "Visual", timeout = 100 }) end })
 
--- Keep undo history across sessions, by storing in file.
--- Only works all the time.
--- if fn.has("persistent_undo") then
---   os.execute("mkdir " .. os.getenv("HOME") .. "/.vim/backups > /dev/null 2>&1")
---   vim.o.undodir = os.getenv("HOME") .. "/.vim/backups"
---   vim.o.undofile = true
--- end
-
 -- write path when save file if needed
 vim.api.nvim_create_autocmd("BufNewFile", { pattern = {"*"}, callback = function() vim.cmd(":exe ': !mkdir -p ' . escape(fnamemodify(bufname('%'),':p:h'),'#% \\')") end })
 
