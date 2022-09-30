@@ -14,3 +14,5 @@ hi("DiagnosticFloatingError", {guifg = "#fc5d7c", guibg = "none"})
 hi("DiagnosticFloatingWarn", {guifg = "#e7c664", guibg = "none"})
 -- hi("NormalFloat", {guibg = "none"})
 hi("SpellBad", { guifg = "#fc5d7c" })
+-- make cursor line and column of the same color
+cmd("hi! link CursorLine CursorColumn")
