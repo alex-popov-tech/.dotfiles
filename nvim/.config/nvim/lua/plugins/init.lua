@@ -333,7 +333,13 @@ local debug = {
 local other = {
   { 'dstein64/vim-startuptime', cmd = { 'StartupTime' } },
   { 'RishabhRD/nvim-cheat.sh', cmd = "Cheat", requires = { 'RishabhRD/popfix' } },
-  { 'rcarriga/nvim-notify' }
+  { 'rcarriga/nvim-notify', config = function()
+    require("notify").setup({
+      stages = "fade",
+      fps = 10
+    })
+  end
+  },
 }
 
 require 'packer'.startup {
