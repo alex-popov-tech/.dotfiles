@@ -3,7 +3,7 @@ cmd("nmap <bs> <leader>")
 
 vim.filetype.add({
   extension = {
-    png ='png',
+    png = 'png',
     jpeg = 'jpeg',
     jpg = 'jpg',
     pug = 'pug',
@@ -13,7 +13,7 @@ vim.filetype.add({
 
 for key, val in pairs({
   laststatus = 3,
-  cmdheight = 0,
+  cmdheight = 0, -- hide by default cmd line
   clipboard = "unnamedplus", -- enable yank/paste to/from system clipboard
   mouse = "a", -- to visually select and copy from vim without line numbers
   lazyredraw = true, -- Don't redraw while executing macros (good performance config)
@@ -26,7 +26,7 @@ for key, val in pairs({
   backup = false,
   showcmd = true, -- show what commands you typing, what you select in visual mode, etc.
   autowrite = true, -- Automatically :write before running commands
-  scrolloff = 2, -- how many lines till window border to see when scrolling
+  scrolloff = 5, -- how many lines till window border to see when scrolling
   sidescrolloff = 10, -- same as above but for columns
   shell = "/usr/local/bin/zsh",
   -- inccommand = "nosplit", -- incremental search ( enabled by default )
@@ -37,18 +37,24 @@ for key, val in pairs({
   termguicolors = true,
   background = "dark",
   encoding = "UTF-8",
+  splitkeep = "screen", -- stabilize buffers position when using splits
+  -- foldenable = true, -- don't fold by default
+  -- foldnestmax = 10, -- deepest fold is 10 levels
+  -- foldmethod = "expr", -- fold text using syntax
+  -- foldexpr = 'nvim_treesitter#foldexpr()',
   list = true,
   listchars = "space:·,tab:-->,eol:↩", -- replace chars
-  fillchars = "stlnc:-,vert:¦" -- splits char
+  fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:,stlnc:-,vert:|]], -- splits char
 }) do
   vim.o[key] = val
 end
 
 for key, val in pairs({
   signcolumn = "no", -- nothing to the left of line number
-  foldnestmax = 10, -- deepest fold is 10 levels
-  foldenable = false, -- don't fold by default
-  foldmethod = "syntax", -- fold text using syntax
+  -- foldnestmax = 10, -- deepest fold is 10 levels
+  -- foldmethod = "expr", -- fold text using syntax
+  -- foldexpr = 'nvim_treesitter#foldexpr()',
+  -- foldenable = false, -- don't fold by default
   wrap = false, -- when line is longer than the screen, it continues on the next line
   linebreak = true, -- but do not break words, only 'by words'
   number = true, -- show absolute line number
@@ -65,12 +71,15 @@ end
 vim.bo.matchpairs = "(:),{:},[:],<:>"
 
 -- blink search matches, not leave them visible
-vim.api.nvim_create_autocmd("CursorHold", { pattern = { "*" }, callback = function() vim.cmd("set nohlsearch") end })
+vim.api.nvim_create_autocmd("CursorHold", { pattern = { "*" }, callback = function() vim.o.hlsearch = false end })
 
 -- highlight yanked text
-vim.api.nvim_create_autocmd("TextYankPost", { pattern = { "*" }, callback = function() vim.highlight.on_yank({ higroup = "Visual", timeout = 100 }) end })
+vim.api.nvim_create_autocmd("TextYankPost",
+  { pattern = { "*" }, callback = function() vim.highlight.on_yank({ higroup = "Visual", timeout = 100 }) end })
 
 -- write path when save file if needed
-vim.api.nvim_create_autocmd("BufNewFile", { pattern = {"*"}, callback = function() vim.cmd(":exe ': !mkdir -p ' . escape(fnamemodify(bufname('%'),':p:h'),'#% \\')") end })
+vim.api.nvim_create_autocmd("BufNewFile",
+  { pattern = { "*" },
+    callback = function() vim.cmd(":exe ': !mkdir -p ' . escape(fnamemodify(bufname('%'),':p:h'),'#% \\')") end })
 
 cmd("syntax on")

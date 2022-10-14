@@ -1,3 +1,4 @@
+vim.g.catppuccin_flavour = 'macchiato'
 cmd('colorscheme catppuccin')
 hi('ColorColumn', {guibg = 'none'})
 -- highlight split separators
