@@ -33,7 +33,6 @@ zi has'zoxide' wait lucid for \
 
 zi is-snippet wait lucid for \
     atload \
-  OMZP::dotenv \
   OMZP::git
 
 zi ice wait lucid
