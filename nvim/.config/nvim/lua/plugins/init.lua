@@ -300,23 +300,6 @@ local lsp = {
     config = require('plugins.trouble-nvim')
   },
   { 'weilbith/nvim-code-action-menu', cmd = 'CodeActionMenu' }, -- code action
-  {
-    'smjonas/inc-rename.nvim',
-    requires = { { 'stevearc/dressing.nvim', config = function()
-      require("dressing").setup {
-        input = {
-          override = function(conf)
-            conf.col = -1
-            conf.row = 0
-            return conf
-          end,
-        },
-      }
-    end } },
-    config = function()
-      require('inc_rename').setup({ cmd_name = 'Rename', input_buffer_type = "dressing" })
-    end
-  }, -- code action
   { 'j-hui/fidget.nvim', config = require('plugins.fidget-nvim') }, -- code action
   -- shema validation for JSON files
   { 'b0o/SchemaStore.nvim' }

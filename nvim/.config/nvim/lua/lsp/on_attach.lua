@@ -10,7 +10,8 @@ return function(client, bufnr)
     })
   end, options)
   map('n', '\'gd', function() vim.lsp.buf.definition() end, options)
-  vim.api.nvim_set_keymap('n', '\'rn', ':Rename ', {})
+
+  map('n', '\'rn', function() vim.lsp.buf.rename() end, options)
 
   map('n', '[d',
     function() vim.diagnostic.goto_prev({ float = { border = 'single' } }) end,
