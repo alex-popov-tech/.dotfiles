@@ -3,6 +3,7 @@
 alias gb="git for-each-ref --sort='-committerdate' --format='%(committerdate) %(refname)%09' refs/heads | sed -e 's-refs/heads/--' | awk -F ' ' '{print \$2;print \$3; print \$4; print \$5; print \$7}' | xargs -n5"
 # Other
 alias n="nvim"
+alias nvim_startuptime="nvim --startuptime h -c ':q'; cat h; rm -rf h"
 
 alias ...="cd ../.."
 alias ....="cd ../../.."
