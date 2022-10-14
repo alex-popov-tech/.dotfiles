@@ -1,14 +1,10 @@
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
 
-vim.cmd('cnoreabbrev sync PackerSync')
-vim.cmd('cnoreabbrev pcomp PackerCompile')
 
-local packer = {
-  -- Packer can manage itself as an optional plugin
-  'wbthomason/packer.nvim',
-  config = function() cmd('command! PS PackerSync') end
-}
+vim.cmd('cnoreabbrev psync PackerSync')
+vim.cmd('cnoreabbrev pcomp PackerCompile')
+vim.cmd('cnoreabbrev pinst PackerInstall')
 
 local core = {
   -- cache modules to improve load time
@@ -21,16 +17,6 @@ local core = {
   -- allows repeat via dot for some plugins like surround
   'tpope/vim-repeat',
   { 'kylechui/nvim-surround', config = require('plugins.nvim-surround') },
-  -- {
-  --   'ZhiyuanLck/smart-pairs',
-  --   config = function()
-  --     require 'pairs':setup({
-  --       autojump_strategy = { unbalanced = 'all' },
-  --       enter = { enable_mapping = false }
-  --     })
-  --   end,
-  --   event = 'InsertEnter'
-  -- },
   -- close all buffers but current
   { 'schickling/vim-bufonly', config = require('plugins.vim-bufonly') },
   -- close buffer
@@ -38,109 +24,35 @@ local core = {
   -- replace without yankink deleted
   { 'gbprod/substitute.nvim', config = require('plugins.substitute-nvim') },
   -- helps to resize split after closing in more expected way
-  {
-    'kwkarlwang/bufresize.nvim',
-    config = function() require('bufresize').setup() end
-  },
-  -- {
-  --   'ggandor/lightspeed.nvim',
-  --   requires = { 'tpope/vim-repeat' },
-  --   config = require('plugins.lightspeed-nvim')
-  -- },
+  { 'kwkarlwang/bufresize.nvim', config = require('plugins.bufresize-nvim') },
   -- adding new modes
-  -- {
-  --   'anuvyklack/hydra.nvim',
-  --   requires = { 'anuvyklack/keymap-layer.nvim' },
-  --   config = require('plugins.hydra-nvim')
-  -- },
-  { 'samodostal/image.nvim',
-    ft = { 'png', 'jpeg' },
-    requires = { 'nvim-lua/plenary.nvim' },
-    config = function()
-      require('image').setup {
-        render = {
-          min_padding = 5,
-          show_label = true,
-          use_dither = true,
-        },
-        events = {
-          update_on_nvim_resize = true,
-        },
-      }
-    end },
-  -- live preview for norm command
-  { 'smjonas/live-command.nvim', cmd = "Norm", config = function()
-    require("live_command").setup {
-      commands = {
-        Norm = { cmd = "norm" },
-      },
-    }
-    vim.cmd [[ cnoreabbrev norm Norm ]]
-  end },
-  { "mbbill/undotree", cmd = { "UndotreeToggle" } }
-}
-
-local textObjects = {
-  {
-    'echasnovski/mini.nvim',
-    config = function() require('mini.ai').setup() end
-  },
-  { 'Julian/vim-textobj-variable-segment', requires = { 'kana/vim-textobj-user' } }
-}
-
-local git = {
-  { 'tpope/vim-fugitive', },
-  {
-    'kdheepak/lazygit.nvim',
-    config = function() cmd [[cnoreabbrev git LazyGit]] end
-  },
+  -- { 'anuvyklack/hydra.nvim', requires = { 'anuvyklack/keymap-layer.nvim' }, config = require('plugins.hydra-nvim') },
+  { 'samodostal/image.nvim', ft = { 'png', 'jpeg' }, requires = { 'nvim-lua/plenary.nvim' },
+    config = require('plugins.image-nvim') },
+  { "mbbill/undotree", cmd = { "UndotreeToggle" } },
   { 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async', config = require('plugins.nvim-ufo') },
+  { 'smjonas/live-command.nvim', config = require('plugins.live-command-nvim') },
+  -- when navigate to previously opened files - open in last file position
+  { 'ethanholz/nvim-lastplace', config = require('plugins.nvim-lastplace') },
+  -- plugin for vim-tmux interactions
+  { 'numToStr/Navigator.nvim', config = require('plugins.navigator-nvim') },
+  -- open terminal in floating window
+  { 'numToStr/FTerm.nvim', config = require('plugins.fterm-nvim') },
   {
-    'pwntester/octo.nvim',
-    cmd = { 'Octo' },
+    'nvim-neo-tree/neo-tree.nvim',
+    branch = 'v2.x',
     requires = {
       'nvim-lua/plenary.nvim',
-      'nvim-telescope/telescope.nvim',
-      'kyazdani42/nvim-web-devicons'
+      'kyazdani42/nvim-web-devicons', -- not strictly required, but recommended
+      'MunifTanjim/nui.nvim'
     },
-    config = function()
-      require 'octo'.setup()
-      hi('OctoEditable', { bg = 'none' })
-    end
+    config = require('plugins.nvim-neo-tree')
   }
 }
 
-local session = {
-  -- start screen
-  {
-    'goolord/alpha-nvim',
-    requires = { 'kyazdani42/nvim-web-devicons' },
-    config = require('plugins.alpha-nvim')
-  },
-  -- when navigate to previously opened files - open in last file position
-  { 'ethanholz/nvim-lastplace', config = require('plugins.nvim-lastplace') }
-}
-
-local tmuxAndSplits = {
-  -- plugin for vim-tmux interactions
-  'numToStr/Navigator.nvim', config = require('plugins.navigator-nvim'),
-}
-
-local term = {
-  -- open terminal in floating window
-  'numToStr/FTerm.nvim',
-  config = require('plugins.fterm-nvim')
-}
-
-local filetree = {
-  'nvim-neo-tree/neo-tree.nvim',
-  branch = 'v2.x',
-  requires = {
-    'nvim-lua/plenary.nvim',
-    'kyazdani42/nvim-web-devicons', -- not strictly required, but recommended
-    'MunifTanjim/nui.nvim'
-  },
-  config = require('plugins.nvim-neo-tree')
+local textObjects = {
+  { 'echasnovski/mini.nvim', config = require('plugins.mini-nvim') },
+  { 'Julian/vim-textobj-variable-segment', requires = { 'kana/vim-textobj-user' } }
 }
 
 local fuzzyFinder = {
@@ -163,15 +75,9 @@ local fuzzyFinder = {
 }
 
 local coding = {
-  { 'glepnir/mcc.nvim', ft = { 'go' }, config = function()
-    require('mcc').setup({ go = { ':', ':=', ':' }, })
-  end },
-  { 'numToStr/Comment.nvim',
-    requires = { "JoosepAlviste/nvim-ts-context-commentstring" },
-    config = require("plugins.comment-nvim")
-  },
-  -- 'editorconfig/editorconfig-vim',
-  -- { 'tpope/vim-dotenv', config = require('plugins.vim-dotenv') }
+  'numToStr/Comment.nvim',
+  requires = { "JoosepAlviste/nvim-ts-context-commentstring" },
+  config = require("plugins.comment-nvim")
 }
 
 local ui = {
@@ -182,9 +88,7 @@ local ui = {
   },
   {
     'norcalli/nvim-colorizer.lua',
-    config = function()
-      require 'colorizer'.setup(nil, { names = false, mode = 'foreground' })
-    end
+    config = function() require 'colorizer'.setup(nil, { names = false, mode = 'foreground' }) end
   },
   {
     'akinsho/bufferline.nvim',
@@ -223,37 +127,19 @@ local treesitter = {
   }
 }
 
-local lsp = {
-  -- temp disabled as it brings too much stuff
-  -- { 'lvimuser/lsp-inlayhints.nvim', config = require('plugins.lsp-inlayhints') },
-  -- lsp configs placed here
+local tools = {
   {
     'williamboman/mason-lspconfig.nvim',
     requires = { 'williamboman/mason.nvim', 'neovim/nvim-lspconfig' },
-    config = function()
-      local lsp = require('lsp')
-      require('mason').setup()
-      require('mason-lspconfig').setup({
-        automatic_installation = true,
-        ensure_installed = lsp.servers
-      })
-    end
+    config = require('plugins.mason-lspconfig-nvim')
   },
   { "WhoIsSethDaniel/mason-tool-installer.nvim", requires = { "williamboman/mason.nvim" },
-    config = function()
-      local tools = require('lsp.servers.nullls')
-      require 'mason-tool-installer'.setup {
-        ensure_installed = tools.list,
-        run_on_start = true,
-        start_delay = 2000, -- 3 second delay
-      }
-    end },
+    config = require('plugins.mason-tool-installer-nvim') },
   { "jayp0521/mason-nvim-dap.nvim", requires = { "williamboman/mason.nvim" },
-    config = function()
-      require("mason-nvim-dap").setup({
-        ensure_installed = { "delve" }
-      })
-    end },
+    config = require('plugins.mason-nvim-dap-nvim') },
+}
+
+local lsp = {
   -- organize imports
   'jose-elias-alvarez/nvim-lsp-ts-utils',
   {
@@ -286,10 +172,7 @@ local lsp = {
       }
     }
   },
-  {
-    'jose-elias-alvarez/null-ls.nvim',
-    requires = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' }
-  },
+  { 'jose-elias-alvarez/null-ls.nvim', requires = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' } },
   {
     'L3MON4D3/LuaSnip',
     requires = { 'rafamadriz/friendly-snippets' },
@@ -301,38 +184,35 @@ local lsp = {
     config = require('plugins.trouble-nvim')
   },
   { 'weilbith/nvim-code-action-menu', cmd = 'CodeActionMenu' }, -- code action
-  { 'j-hui/fidget.nvim', config = require('plugins.fidget-nvim') }, -- code action
-  -- shema validation for JSON files
+  { 'j-hui/fidget.nvim', config = require('plugins.fidget-nvim') },
   { 'b0o/SchemaStore.nvim' }
 }
 
-local debug = {
-  {
-    'mfussenegger/nvim-dap', cmd = "DapContinue", config = require('plugins.nvim-dap')
-  },
-  {
-    'leoluz/nvim-dap-go', cmd = "DapContinue", config = function()
-      require('dap-go').setup()
-    end
-  },
-  { 'rcarriga/nvim-dap-ui', cmd = "DapContinue", requires = { 'mfussenegger/nvim-dap' }, config = function()
-    require("dapui").setup({})
-    local dap, dapui = require("dap"), require("dapui")
-    dap.listeners.after.event_initialized["dapui_config"] = function()
-      dapui.open()
-    end
-    dap.listeners.before.event_terminated["dapui_config"] = function()
-      dapui.close()
-    end
-    dap.listeners.before.event_exited["dapui_config"] = function()
-      dapui.close()
-    end
-  end }
-}
+-- local debug = {
+--   {
+--     'mfussenegger/nvim-dap', cmd = "DapContinue", config = require('plugins.nvim-dap')
+--   },
+--   {
+--     'leoluz/nvim-dap-go', cmd = "DapContinue", config = function()
+--       require('dap-go').setup()
+--     end
+--   },
+--   { 'rcarriga/nvim-dap-ui', cmd = "DapContinue", requires = { 'mfussenegger/nvim-dap' }, config = function()
+--     require("dapui").setup({})
+--     local dap, dapui = require("dap"), require("dapui")
+--     dap.listeners.after.event_initialized["dapui_config"] = function()
+--       dapui.open()
+--     end
+--     dap.listeners.before.event_terminated["dapui_config"] = function()
+--       dapui.close()
+--     end
+--     dap.listeners.before.event_exited["dapui_config"] = function()
+--       dapui.close()
+--     end
+--   end }
+-- }
 
 local other = {
-  { 'dstein64/vim-startuptime', cmd = { 'StartupTime' } },
-  { 'RishabhRD/nvim-cheat.sh', cmd = "Cheat", requires = { 'RishabhRD/popfix' } },
   { 'rcarriga/nvim-notify', config = function()
     require("notify").setup({
       stages = "fade",
@@ -340,24 +220,36 @@ local other = {
     })
   end
   },
+  {
+    'pwntester/octo.nvim',
+    cmd = { 'Octo' },
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope.nvim',
+      'kyazdani42/nvim-web-devicons'
+    },
+    config = require('plugins.octo-nvim')
+  }
+  -- {
+  --   "folke/noice.nvim",
+  --   event = "VimEnter",
+  --   -- config = function() require("noice").setup() end,
+  --   requires = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify", }
+  -- }
 }
 
 require 'packer'.startup {
   function(use)
-    use(packer)
+    use 'wbthomason/packer.nvim'
     use(textObjects)
     use(core)
-    use(git)
-    use(session)
-    use(tmuxAndSplits)
-    use(term)
-    use(filetree)
     use(fuzzyFinder)
     use(coding)
     use(ui)
     use(treesitter)
     use(lsp)
-    use(debug)
+    use(tools)
+    -- use(debug)
     use(other)
   end,
   config = {

@@ -15,6 +15,31 @@ return function()
     return str .. postfix
   end
 
+  local format = function(entry, vim_item)
+    local menuMapping = {
+      buffer = '|buf|',
+      fuzzy_buffer = '|fbuf|',
+      fuzzy_path = '|fpth|',
+      path = '|pth|',
+      nvim_lua = '|api|',
+      nvim_lsp = '|lsp|'
+    }
+    local prettySourceName = menuMapping[entry.source.name]
+
+    if prettySourceName == nil then
+      -- text buff like git commit or so
+      vim_item.menu = prettySourceName
+    else
+      -- buffers with code mostly
+      vim_item.menu = fillSpacesToFixed(vim_item.kind, 8) ..
+          prettySourceName
+    end
+
+    vim_item.kind = lspkind.symbolic(vim_item.kind,
+      { with_text = false })
+    return vim_item
+  end
+
   cmp.setup({
     completion = { completeopt = 'menu,menuone,noinsert' },
     window = {
@@ -54,48 +79,25 @@ return function()
         -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
       end
     },
-    sorting = {
-      comparators = {
-        cmp.config.compare.length,
-        cmp.config.compare.offset,
-        cmp.config.compare.exact,
-        cmp.config.compare.score,
-        cmp.config.compare.kind,
-        cmp.config.compare.sort_text,
-        cmp.config.compare.order
-      }
-    },
+    -- sorting = {
+    --   comparators = {
+    --     cmp.config.compare.length,
+    --     cmp.config.compare.offset,
+    --     cmp.config.compare.exact,
+    --     cmp.config.compare.score,
+    --     cmp.config.compare.kind,
+    --     cmp.config.compare.sort_text,
+    --     cmp.config.compare.order
+    --   }
+    -- },
     sources = {
       { name = 'nvim_lsp', keyword_length = 1, max_item_count = 20 },
-      { name = 'buffer', keyword_length = 2, max_item_count = 10 },
+      { name = 'fuzzy_buffer', keyword_length = 2, max_item_count = 10 },
       { name = 'path', priority = 1 }
     },
     formatting = {
       fields = { 'kind', 'abbr', 'menu' },
-      format = function(entry, vim_item)
-        local menuMapping = {
-          buffer = '|buf|',
-          fuzzy_buffer = '|fbuf|',
-          fuzzy_path = '|fpth|',
-          path = '|pth|',
-          nvim_lua = '|api|',
-          nvim_lsp = '|lsp|'
-        }
-        local prettySourceName = menuMapping[entry.source.name]
-
-        if prettySourceName == nil then
-          -- text buff like git commit or so
-          vim_item.menu = prettySourceName
-        else
-          -- buffers with code mostly
-          vim_item.menu = fillSpacesToFixed(vim_item.kind, 8) ..
-              prettySourceName
-        end
-
-        vim_item.kind = lspkind.symbolic(vim_item.kind,
-          { with_text = false })
-        return vim_item
-      end
+      format = format
     },
     mapping = {
       ['<C-d>'] = cmp.mapping.scroll_docs(-4),
@@ -129,59 +131,32 @@ return function()
         end
       end,
       ['<CR>'] = cmp.mapping.confirm({ select = true })
-      -- ['<CR>'] = cmp.mapping(function(fallback)
-      --   if not cmp.confirm({ select = false }) then
-      --     require('pairs.enter').type()
-      --   else
-      --     fallback()
-      --   end
-      -- end),
-      --
     }
   })
-  cmp.event:on('confirm_done', function(event)
-    local item = event.entry:get_completion_item()
-    local parensDisabled = item.data and item.data.funcParensDisabled or
-        false
-    if not parensDisabled and
-        (item.kind == kind.Method or item.kind == kind.Function) then
-      require('pairs.bracket').type_left('(')
-    end
-  end)
-  cmp.setup.cmdline('/', {
-    completion = { completeopt = 'menu,menuone,noinsert,noselect' },
-    sources = { { name = 'fuzzy_buffer' } }
-  })
-  cmp.setup.filetype('octo', {
-    sources = cmp.config.sources({
-      { name = 'emoji' } -- You can specify the `cmp_git` source if you were installed it.
-    })
-  })
 
-  au('filetype', 'lua',
-    'lua require"cmp".setup.buffer({ sources = {' .. '{ name = "nvim_lua" },' ..
-    '{ name = "nvim_lsp", trigger_characters = {"."}, max_item_count = 20 }' ..
-    '}})')
-  au('filetype', 'gitcommit,markdown',
-    'lua require"cmp".setup.buffer { sources = { ' ..
-    '{ name = "look", keyword_length = 5, max_item_count = 10 }' ..
-    ' } }')
-  vim.cmd [[
-      " gray
-      highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough guifg=#808080
-      " blue
-      highlight! CmpItemAbbrMatch guibg=NONE guifg=#569CD6
-      highlight! CmpItemAbbrMatchFuzzy guibg=NONE guifg=#569CD6
-      " light blue
-      highlight! CmpItemKindVariable guibg=NONE guifg=#9CDCFE
-      highlight! CmpItemKindInterface guibg=NONE guifg=#9CDCFE
-      highlight! CmpItemKindText guibg=NONE guifg=#9CDCFE
-      " pink
-      highlight! CmpItemKindFunction guibg=NONE guifg=#C586C0
-      highlight! CmpItemKindMethod guibg=NONE guifg=#C586C0
-      " front
-      highlight! CmpItemKindKeyword guibg=NONE guifg=#D4D4D4
-      highlight! CmpItemKindProperty guibg=NONE guifg=#D4D4D4
-      highlight! CmpItemKindUnit guibg=NONE guifg=#D4D4D4
-    ]]
+  cmp.setup.filetype('octo', { sources = cmp.config.sources({ { name = 'emoji' } }) })
+  cmp.setup.filetype('lua', { sources = {
+    { name = "nvim_lua", trigger_characters = { "." }, max_item_count = 20 },
+  } })
+  cmp.setup.filetype({ 'gitcommit', 'markdown' }, { sources = {
+    { name = "look", keyword_length = 4, max_item_count = 10 },
+  } })
+
+
+  hi("CmpItemAbbrDeprecated", { fg = "#808080", bg = "none", style = "strikethrough" })
+  hi("CmpItemAbbrDeprecated", { bg = "none", style = "strikethrough", fg = "#808080" })
+  hi("CmpItemAbbrMatch", { bg = "none", fg = "#569CD6" })
+  hi("CmpItemAbbrMatchFuzzy", { bg = "none", fg = "#569CD6" })
+
+  hi("CmpItemKindVariable", { bg = "none", fg = "#9CDCFE" })
+  hi("CmpItemKindInterface", { bg = "none", fg = "#9CDCFE" })
+  hi("CmpItemKindText", { bg = "none", fg = "#9CDCFE" })
+
+  hi("CmpItemKindFunction", { bg = "none", fg = "#C586C0" })
+  hi("CmpItemKindMethod", { bg = "none", fg = "#C586C0" })
+
+  hi("CmpItemKindKeyword", { bg = "none", fg = "#D4D4D4" })
+  hi("CmpItemKindProperty", { bg = "none", fg = "#D4D4D4" })
+  hi("CmpItemKindUnit", { bg = "none", fg = "#D4D4D4" })
+
 end
