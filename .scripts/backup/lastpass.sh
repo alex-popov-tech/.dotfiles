@@ -5,6 +5,7 @@ filepath="/tmp/$filename"
 errpath="/tmp/pusherr"
 echo '' > $errpath
 export LC_ALL=en_US.UTF-8 && /usr/local/bin/lpass export --sync=now | gzip | /usr/local/bin/gpg --encrypt --trust-model always -r alex.popov.tech@gmail.com > "$filepath"
+# gpg --decrypt ./lastpass_backup.gzip.gpg | funzip > lastpass.csv
 
 mkdir -p $HOME/.backup
 cd $HOME/.backup
