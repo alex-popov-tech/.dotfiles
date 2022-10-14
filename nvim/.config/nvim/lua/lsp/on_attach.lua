@@ -1,7 +1,12 @@
 return function(client, bufnr)
   local options = { noremap = true, silent = true }
 
-  map('n', 'K', function() vim.lsp.buf.hover() end, options)
+  map('n', 'K', function()
+    local winid = require('ufo').peekFoldedLinesUnderCursor()
+    if not winid then
+        vim.lsp.buf.hover()
+    end
+  end, options)
   map('i', '<c-k>', function() vim.lsp.buf.signature_help() end, options)
   map('n', '\'gr', function()
     require 'telescope.builtin'.lsp_references({

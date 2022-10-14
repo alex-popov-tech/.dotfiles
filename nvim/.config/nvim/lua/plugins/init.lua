@@ -94,6 +94,7 @@ local git = {
     'kdheepak/lazygit.nvim',
     config = function() cmd [[cnoreabbrev git LazyGit]] end
   },
+  { 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async', config = require('plugins.nvim-ufo') },
   {
     'pwntester/octo.nvim',
     cmd = { 'Octo' },
