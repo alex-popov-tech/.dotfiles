@@ -26,6 +26,13 @@ defaults import com.manytricks.Moom ./Moom.plist
 defaults export com.manytricks.Moom ./Moom.plist
 ```
 
+# Tmux
+## How to start backing up script
+
+```
+watch --interval 600 $HOME/.tmux/plugins/tmux-resurrect/scripts/save.sh quiet
+```
+
 # Cron
 ## How to edit
 `crontab -e`
