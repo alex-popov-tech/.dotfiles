@@ -134,19 +134,15 @@ function software() {
 
   brew bundle install --file $DPATH/Brewfile
 
-  echo
-  echo "+-------------------------------+"
-  echo "|        Installing Tmux        |"
-  echo "+-------------------------------+"
-  echo
-  asdf plugin-add tmux
-  asdf install tmux 3.1b
-  asdf global tmux 3.1b
   if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
   else
     echo "Exists!"
   fi
+
+  curl https://cht.sh/:cht.sh > ./cht.sh
+  chmod +x ./cht.sh
+  mv ./cht.sh /usr/local/bin/
 
   echo
   echo "+---------------------------------+"
