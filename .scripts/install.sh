@@ -146,16 +146,12 @@ function software() {
 
   echo
   echo "+---------------------------------+"
-  echo "|        Installing Zinit         |"
+  echo "|          Installing Zi          |"
   echo "+---------------------------------+"
   echo
-  ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
-  if [ ! -d "$ZINIT_HOME" ]; then
-    mkdir -p "$(dirname $ZINIT_HOME)"
-    git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
-  else
-    echo "Exists!"
-  fi
+  command git clone -q --depth=1 --branch "main" https://github.com/z-shell/zi "$HOME/.zi/bin" && \
+    print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
+    print -P "%F{160}▓▒░ The clone has failed.%f%b"
 
   brew install --head neovim
   echo
