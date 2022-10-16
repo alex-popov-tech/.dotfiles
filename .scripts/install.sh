@@ -127,12 +127,12 @@ function software() {
   echo "|        Installing Software        |"
   echo "+-----------------------------------+"
   echo
-  cp -f $DPATH/.fonts/*.ttf $HOME/Library/Fonts
-  brew bundle install --file $DPATH/Brewfile
   sudo xcodebuild -license accept
-  curl https://cht.sh/:cht.sh > ./cht.sh
-  chmod +x ./cht.sh
-  mv ./cht.sh /usr/local/bin/
+  sudo xcodebuild -runFirstLaunch
+
+  cp -f $DPATH/.fonts/*.ttf $HOME/Library/Fonts
+
+  brew bundle install --file $DPATH/Brewfile
 
   echo
   echo "+-------------------------------+"
