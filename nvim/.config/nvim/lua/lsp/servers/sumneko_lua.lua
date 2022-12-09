@@ -5,6 +5,7 @@ return function(on_attach)
     table.insert(runtime_path, "lua/?.lua")
     table.insert(runtime_path, "lua/?/init.lua")
     return {
+    before_init=require("neodev.lsp").before_init,
         on_attach = on_attach,
         settings = {
             Lua = {

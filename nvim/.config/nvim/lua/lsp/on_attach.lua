@@ -43,3 +43,4 @@ return function(client, bufnr)
     vim.lsp.buf.format({ async = true })
   end, options)
 end
+

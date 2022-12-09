@@ -248,7 +248,8 @@ local other = {
   --   event = "VimEnter",
   --   -- config = function() require("noice").setup() end,
   --   requires = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify", }
-  -- }
+  -- },
+  { 'folke/neodev.nvim', config = require('plugins.neodev-nvim') }
 }
 
 require 'packer'.startup {
