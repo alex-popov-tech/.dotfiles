@@ -20,6 +20,8 @@ M.setup = function()
   local code_actions = null_ls.builtins.code_actions
 
   null_ls.setup({
+    debounce = 100,
+    update_in_insert = false,
     sources = {
       formatting.prettierd,
       formatting.fixjson,
@@ -29,7 +31,6 @@ M.setup = function()
       diagnostics.selene,
       diagnostics.eslint_d.with({ timeout = 10000 }),
       diagnostics.yamllint,
-      diagnostics.markdownlint,
       diagnostics.proselint.with({ extra_filetypes = { 'markdown', 'octo' } }),
       diagnostics.cspell.with({
         extra_filetypes = { 'octo' },
@@ -41,7 +42,11 @@ M.setup = function()
 
       code_actions.eslint_d,
     },
-    on_attach = general_on_attach
+    on_attach = function(client, bufnr) 
+      general_on_attach(client, bufnr)
+      local lsp_format_modifications = require"lsp-format-modifications"
+      lsp_format_modifications.attach(client, bufnr, { format_on_save = false })
+    end
   })
 end
 
