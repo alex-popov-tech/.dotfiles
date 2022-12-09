@@ -1,23 +1,15 @@
 <?php
 
-/*
- * This file is part of the alfred-github-workflow package.
- *
- * (c) Gregor Harlan
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 require 'workflow.php';
 
 $query = trim($argv[1]);
 
 if ('>' !== $query[0] && 0 !== strpos($query, 'e >')) {
     if ('.git' == substr($query, -4)) {
-        $query = 'github-mac://openRepo/'.substr($query, 0, -4);
+        $query = 'x-github-client://openRepo/'.substr($query, 0, -4);
     }
     exec('open '.$query);
+
     return;
 }
 
