@@ -37,8 +37,8 @@ function langs() {
   brew install gpg tar
   asdf plugin-add nodejs
   bash $HOME/.asdf/plugins/nodejs/bin/import-release-team-keyring
-  asdf install nodejs 16.13.0
-  asdf global nodejs 16.13.0
+  asdf install nodejs lts
+  asdf global nodejs lts
 
   echo
   echo "+-------------------------------+"
