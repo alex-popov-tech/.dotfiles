@@ -35,7 +35,7 @@ return function()
                             end
                             return ''
                         end,
-                        hl = {fg = colors.red, style = 'italic'}
+                        hl = {bg = colors.bg, fg = colors.red, style = 'italic'}
                     })
                 },
                 {
