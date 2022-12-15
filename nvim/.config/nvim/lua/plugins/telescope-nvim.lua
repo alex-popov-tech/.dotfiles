@@ -1,6 +1,13 @@
 return function()
+        -- telescope.actions.toggle_selection
+  -- -- telescope.actions.send_selected_to_qflist()
 	local telescope = require('telescope')
 	telescope.setup {
+                mappings = {
+      i = {
+        ["<C-q>"] = require('telescope.actions').send_selected_to_qflist,
+      },
+                },
 		extensions = {
 			fzf = {
 				fuzzy = true, -- false will only do exact matching
