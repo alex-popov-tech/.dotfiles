@@ -45,8 +45,9 @@ for key, val in pairs({
   list = true,
   listchars = "space:·,tab:-->,eol:↩", -- replace chars
   fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:,stlnc:-,vert:|]], -- splits char
+  diffopt = vim.o.diffopt .. ",linematch:60" -- splits char
 }) do
-  vim.o[key] = val
+  vim.go[key] = val
 end
 
 for key, val in pairs({
@@ -61,7 +62,7 @@ for key, val in pairs({
   numberwidth = 1, -- by default 4, and because of that there is empty space to the right to line numbers except current
   relativenumber = true, -- show relative line number for current line
   colorcolumn = "", -- "80,120", -- highlight some column length
-  spell = true, -- "80,120", -- highlight some column length
+  spell = false, -- "80,120", -- highlight some column length
   cursorcolumn = true, -- highlight for current column
   cursorline = true -- Highlight the screen line of the cursor with CursorLine
 }) do
@@ -81,5 +82,3 @@ vim.api.nvim_create_autocmd("TextYankPost",
 vim.api.nvim_create_autocmd("BufNewFile",
   { pattern = { "*" },
     callback = function() vim.cmd(":exe ': !mkdir -p ' . escape(fnamemodify(bufname('%'),':p:h'),'#% \\')") end })
-
-cmd("syntax on")
