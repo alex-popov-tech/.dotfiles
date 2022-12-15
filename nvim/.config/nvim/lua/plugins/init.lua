@@ -248,9 +248,12 @@ local lsp = {
 local other = {
   { 'rcarriga/nvim-notify', config = function()
     require("notify").setup({
+      timeout = 3000,
       stages = "fade",
-      fps = 10
+      fps = 10,
+      background_colour = "#1a1b26",
     })
+    vim.notify = require("notify")
   end
   },
   {
@@ -262,13 +265,7 @@ local other = {
       'kyazdani42/nvim-web-devicons'
     },
     config = require('plugins.octo-nvim')
-  }
-  -- {
-  --   "folke/noice.nvim",
-  --   event = "VimEnter",
-  --   -- config = function() require("noice").setup() end,
-  --   requires = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify", }
-  -- },
+  },
   { 'folke/neodev.nvim', config = require('plugins.neodev-nvim') }
 }
 
