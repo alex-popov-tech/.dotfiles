@@ -65,8 +65,8 @@ local core = {
   { 'smjonas/live-command.nvim', config = require('plugins.live-command-nvim') },
   -- when navigate to previously opened files - open in last file position
   { 'ethanholz/nvim-lastplace', config = require('plugins.nvim-lastplace') },
-  -- plugin for vim-tmux interactions
-  { 'numToStr/Navigator.nvim', config = require('plugins.navigator-nvim') },
+  { 'mrjones2014/smart-splits.nvim', config = require('plugins.smart-splits-nvim') },
+
   -- open terminal in floating window
   { 'numToStr/FTerm.nvim', config = require('plugins.fterm-nvim') },
   {
