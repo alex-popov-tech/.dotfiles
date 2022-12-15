@@ -1,1 +1,7 @@
-return function() require('bufresize').setup() end
+return function()
+  require('bufresize').setup({
+    register = {
+      keys = {}
+    }
+  })
+end

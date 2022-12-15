@@ -134,7 +134,7 @@ return function()
     }
   })
 
-  cmp.setup.filetype('octo', { sources = cmp.config.sources({ { name = 'emoji' } }) })
+  cmp.setup.filetype({'octo', 'markdown'}, { sources = cmp.config.sources({ { name = 'emoji' } }) })
   cmp.setup.filetype('lua', { sources = {
     { name = "nvim_lua", trigger_characters = { "." }, max_item_count = 20 },
   } })

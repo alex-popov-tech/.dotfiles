@@ -1,15 +1,15 @@
 local ensure_packer = function()
   local fn = vim.fn
-  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+  local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
   if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
     vim.cmd [[packadd packer.nvim]]
     return true
   end
   return false
 end
 
-local packer_bootstrap = ensure_packer()
+ensure_packer()
 
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
@@ -22,9 +22,27 @@ vim.cmd('cnoreabbrev pinst PackerInstall')
 local core = {
   -- cache modules to improve load time
   'lewis6991/impatient.nvim',
+  'svban/YankAssassin.vim',
   --  shiftwidth/expandtab/etc
   'tpope/vim-sleuth',
-  'svban/YankAssassin.vim',
+
+  { 'nyngwang/murmur.lua', config = require('murmur').setup {
+    -- cursor_rgb = 'purple', -- default to '#393939'
+    max_len = 80, -- maximum word-length to highlight
+    -- min_len = 3,
+    -- disable_on_lines = 2000, -- to prevent lagging on large files. Default to 2000 lines.
+    exclude_filetypes = {},
+    callbacks = {
+      -- to trigger the close_events of vim.diagnostic.open_float.
+      function()
+        -- Close floating diag. and make it triggerable again.
+        vim.cmd('doautocmd InsertEnter')
+        vim.w.diag_shown = false
+      end,
+    }
+  }
+  },
+
   -- add bunch of mappings like ]p ]e ]<space> etc.
   'tpope/vim-unimpaired',
   -- allows repeat via dot for some plugins like surround
