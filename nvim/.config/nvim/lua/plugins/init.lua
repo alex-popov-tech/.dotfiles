@@ -67,6 +67,7 @@ local core = {
   { 'ethanholz/nvim-lastplace', config = require('plugins.nvim-lastplace') },
   { 'mrjones2014/smart-splits.nvim', config = require('plugins.smart-splits-nvim') },
 
+  { 'joechrisellis/lsp-format-modifications.nvim' },
   -- open terminal in floating window
   { 'numToStr/FTerm.nvim', config = require('plugins.fterm-nvim') },
   {
@@ -82,7 +83,8 @@ local core = {
 }
 
 local textObjects = {
-  { 'echasnovski/mini.nvim', config = require('plugins.mini-nvim') },
+  { 'echasnovski/mini.ai', branch = 'stable',
+    config = function() require('mini.ai').setup({ search_method = 'cover_or_nearest' }) end },
   { 'Julian/vim-textobj-variable-segment', requires = { 'kana/vim-textobj-user' } }
 }
 
@@ -131,7 +133,7 @@ local ui = {
     'feline-nvim/feline.nvim',
     config = require('plugins.feline-nvim'),
     requires = { 'kyazdani42/nvim-web-devicons', 'lewis6991/gitsigns.nvim' }
-  }
+  },
 }
 
 local treesitter = {
