@@ -100,8 +100,8 @@ return function()
       format = format
     },
     mapping = {
-      ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-      ['<C-f>'] = cmp.mapping.scroll_docs(4),
+      ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+      ['<C-d>'] = cmp.mapping.scroll_docs(4),
       ['<C-n>'] = cmp.mapping(cmp.mapping.select_next_item({
         behavior = cmp.SelectBehavior.Insert
       }), { 'i', 's' }),
