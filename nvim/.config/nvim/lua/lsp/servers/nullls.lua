@@ -28,7 +28,7 @@ M.setup = function()
 
     null_ls.setup({
         debounce = 100,
-        update_in_insert = true,
+        update_in_insert = false,
         sources = {
             formatting.prettierd,
             formatting.fixjson,
