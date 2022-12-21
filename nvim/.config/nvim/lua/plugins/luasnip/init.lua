@@ -15,6 +15,7 @@ return function()
   require('luasnip.loaders.from_vscode').lazy_load()
   require('plugins.luasnip.all')
   require('plugins.luasnip.javascript')
+  require('plugins.luasnip.typescript')
   require('plugins.luasnip.go')
   require('plugins.luasnip.octo')
 end
