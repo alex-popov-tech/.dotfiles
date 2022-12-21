@@ -37,20 +37,22 @@ for key, val in pairs({
   termguicolors = true,
   background = "dark",
   encoding = "UTF-8",
+  showmode = false,
   splitkeep = "screen", -- stabilize buffers position when using splits
   -- foldenable = true, -- don't fold by default
   -- foldnestmax = 10, -- deepest fold is 10 levels
   -- foldmethod = "expr", -- fold text using syntax
   -- foldexpr = 'nvim_treesitter#foldexpr()',
-  list = true,
-  listchars = "space:·,tab:-->,eol:↩", -- replace chars
   fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:,stlnc:-,vert:|]], -- splits char
+  -- virtualedit = "all", -- make all area 'editable'-ish
   diffopt = vim.o.diffopt .. ",linematch:60" -- splits char
 }) do
   vim.go[key] = val
 end
 
 for key, val in pairs({
+  listchars = "space:·,tab:-->,eol:↩", -- replace chars
+  list = true,
   signcolumn = "no", -- nothing to the left of line number
   -- foldnestmax = 10, -- deepest fold is 10 levels
   -- foldmethod = "expr", -- fold text using syntax
@@ -72,7 +74,7 @@ end
 vim.bo.matchpairs = "(:),{:},[:],<:>"
 
 -- blink search matches, not leave them visible
-vim.api.nvim_create_autocmd("CursorHold", { pattern = { "*" }, callback = function() vim.o.hlsearch = false end })
+-- vim.api.nvim_create_autocmd("CursorHold", { pattern = { "*" }, callback = function() vim.o.hlsearch = false end })
 
 -- highlight yanked text
 vim.api.nvim_create_autocmd("TextYankPost",
