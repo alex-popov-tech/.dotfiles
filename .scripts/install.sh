@@ -107,8 +107,8 @@ function software() {
   echo "|        Installing Homebrew        |"
   echo "+-----------------------------------+"
   echo
-  export HOMEBREW_INSTALL_FROM_API=1
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  xcode-select --install
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
   echo
   echo "+-------------------------------+"
@@ -131,7 +131,7 @@ function software() {
   sudo xcodebuild -license accept
   sudo xcodebuild -runFirstLaunch
 
-  cp -f $DPATH/.fonts/*.ttf $HOME/Library/Fonts
+  cp -f $DPATH/.other/fonts/*.ttf $HOME/Library/Fonts
 
   brew bundle install --file $DPATH/Brewfile
 
