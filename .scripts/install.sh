@@ -107,6 +107,7 @@ function software() {
   echo "|        Installing Homebrew        |"
   echo "+-----------------------------------+"
   echo
+  export HOMEBREW_INSTALL_FROM_API=1
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
   echo
@@ -116,10 +117,10 @@ function software() {
   echo
   if [ ! -d "$HOME/.asdf" ]; then
     git clone https://github.com/asdf-vm/asdf.git $HOME/.asdf
-    cd $HOME/.asdf
-    git checkout "$(git describe --abbrev=0 --tags)"
-    cd --
   fi
+  cd $HOME/.asdf
+  git checkout "$(git describe --abbrev=0 --tags)"
+  cd --
   source $HOME/.asdf/asdf.sh
 
   echo
@@ -136,8 +137,6 @@ function software() {
 
   if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-  else
-    echo "Exists!"
   fi
 
   curl https://cht.sh/:cht.sh > ./cht.sh
@@ -153,21 +152,16 @@ function software() {
     print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
     print -P "%F{160}▓▒░ The clone has failed.%f%b"
 
-  brew install --head neovim
-  echo
-  echo "+---------------------------------+"
-  echo "|     Installing NeoVim tools     |"
-  echo "+---------------------------------+"
-  echo
-  gem install neovim
-  pip install neovim pynvim
-  pip3 install neovim pynvim
-  npm install -g neovim
+  # echo
+  # echo "+---------------------------------+"
+  # echo "|     Installing NeoVim tools     |"
+  # echo "+---------------------------------+"
+  # echo
+  # gem install neovim
+  # pip install neovim pynvim
+  # pip3 install neovim pynvim
+  # npm install -g neovim
 
-  if [ ! -d "$HOME/.local/share/nvim/site/pack/packer/start/packer.nvim" ]; then
-    git clone --depth 1 https://github.com/wbthomason/packer.nvim\
-     $HOME/.local/share/nvim/site/pack/packer/start/packer.nvim
-  fi
 }
 
 main
