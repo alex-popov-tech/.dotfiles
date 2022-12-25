@@ -108,6 +108,8 @@ function software() {
   echo "+-----------------------------------+"
   echo
   xcode-select --install
+  # [ m1 ] insure required dir in path
+  export PATH=/opt/homebrew/bin:$PATH
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
   echo
@@ -128,8 +130,6 @@ function software() {
   echo "|        Installing Software        |"
   echo "+-----------------------------------+"
   echo
-  sudo xcodebuild -license accept
-  sudo xcodebuild -runFirstLaunch
 
   cp -f $DPATH/.other/fonts/*.ttf $HOME/Library/Fonts
 
@@ -141,16 +141,19 @@ function software() {
 
   curl https://cht.sh/:cht.sh > ./cht.sh
   chmod +x ./cht.sh
-  mv ./cht.sh /usr/local/bin/
+  # mv ./cht.sh /usr/local/bin/
+  mv ./cht.sh /opt/homebrew/bin/
 
   echo
   echo "+---------------------------------+"
   echo "|          Installing Zi          |"
   echo "+---------------------------------+"
   echo
-  command git clone -q --depth=1 --branch "main" https://github.com/z-shell/zi "$HOME/.zi/bin" && \
-    print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
-    print -P "%F{160}▓▒░ The clone has failed.%f%b"
+  if [ ! -d "$HOME/.zi" ]; then
+    command git clone -q --depth=1 --branch "main" https://github.com/z-shell/zi "$HOME/.zi/bin" && \
+      print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
+      print -P "%F{160}▓▒░ The clone has failed.%f%b"
+  fi
 
   # echo
   # echo "+---------------------------------+"
