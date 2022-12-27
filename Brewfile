@@ -63,7 +63,8 @@ cask "kitty"
 cask "ledger-live"
 cask "meetingbar"
 cask "moom"
-cask "path-finder"
+cask "tmux"
+cask "tunnelblick"
 cask "slack"
 cask "spotify"
 cask "telegram"
@@ -76,4 +77,3 @@ mas "Moom", id: 419330170
 mas "Pages", id: 409201541
 mas "Spark", id: 1176895641
 mas "Tailscale", id: 1475387142
-mas "Xcode", id: 497799835
