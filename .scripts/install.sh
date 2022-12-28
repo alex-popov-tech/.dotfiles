@@ -155,11 +155,15 @@ function software() {
       print -P "%F{160}▓▒░ The clone has failed.%f%b"
   fi
 
-  # echo
-  # echo "+---------------------------------+"
-  # echo "|     Installing NeoVim tools     |"
-  # echo "+---------------------------------+"
-  # echo
+  echo
+  echo "+---------------------------------+"
+  echo "|     Installing Neovim tools     |"
+  echo "+---------------------------------+"
+  echo
+  if [ ! -d "$HOME/.local/share/nvim/site/pack/packer/start/" ]; then
+    git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+     $HOME/.local/share/nvim/site/pack/packer/start/packer.nvim
+  fi
   # gem install neovim
   # pip install neovim pynvim
   # pip3 install neovim pynvim
