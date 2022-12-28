@@ -35,7 +35,8 @@ local core = {
 
     {
         'nyngwang/murmur.lua',
-        config = require('murmur').setup {
+        config = function()
+      require('murmur').setup {
             -- cursor_rgb = 'purple', -- default to '#393939'
             max_len = 80, -- maximum word-length to highlight
             -- min_len = 3,
@@ -50,6 +51,7 @@ local core = {
                 end
             }
         }
+    end
     },
 
     -- add bunch of mappings like ]p ]e ]<space> etc.
@@ -86,9 +88,6 @@ local core = {
         'mrjones2014/smart-splits.nvim',
         config = require('plugins.smart-splits-nvim')
     },
-
-    { 'wfxr/minimap.vim', },
-    {'gorbit99/codewindow.nvim', config = require('plugins.codewindow-nvim')},
 
     {'joechrisellis/lsp-format-modifications.nvim'},
     -- open terminal in floating window
@@ -258,7 +257,7 @@ local lsp = {
         requires = 'kyazdani42/nvim-web-devicons',
         config = require('plugins.trouble-nvim')
     },
-    {'weilbith/nvim-code-action-menu', cmd = 'CodeActionMenu'}, -- code action
+    {'weilbith/nvim-code-action-menu', cmd = 'CodeActionMenu'},
     {'j-hui/fidget.nvim', config = require('plugins.fidget-nvim')},
     {'b0o/SchemaStore.nvim'}
 }
