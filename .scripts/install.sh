@@ -55,9 +55,8 @@ function langs() {
   echo "+---------------------------------+"
   echo
   asdf plugin-add python
-  asdf install python 3.9.0
-  asdf install python 2.7.13
-  asdf global python 2.7.13 3.9.0
+  asdf install python 3.11.1
+  asdf global python 3.11.1
 
   echo
   echo "+-------------------------------+"
@@ -110,6 +109,17 @@ function software() {
   xcode-select --install
   # [ m1 ] insure required dir in path
   export PATH=/opt/homebrew/bin:$PATH
+  is_arm64() {
+      test "$(uname -m)" = "arm64" 
+  }
+  if is_arm64; then
+    local homebrew_bin="/opt/homebrew/bin"
+    if ! cat /etc/paths | grep -q "${homebrew_bin}"; then
+      echo "setting up homebrew binary path for gui apps"
+      echo -e "${homebrew_bin}\n$(cat /etc/paths)" | sudo tee /etc/paths > /dev/null
+    fi
+  fi
+
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
   echo
