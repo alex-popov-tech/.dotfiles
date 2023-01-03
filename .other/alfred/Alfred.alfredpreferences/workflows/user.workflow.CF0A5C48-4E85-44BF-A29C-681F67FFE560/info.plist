@@ -208,7 +208,7 @@ echo Workflow::getItemsAsXml();</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
-				<string></string>
+				<string>/opt/homebrew/bin/php</string>
 				<key>subtext</key>
 				<string>Search or type a command</string>
 				<key>title</key>
@@ -588,39 +588,39 @@ Version 1.1 – 2015-01-10
 			<key>note</key>
 			<string>GitHub Enterprise</string>
 			<key>xpos</key>
-			<integer>30</integer>
+			<real>30</real>
 			<key>ypos</key>
-			<integer>230</integer>
+			<real>230</real>
 		</dict>
 		<key>29045171-6618-4FA4-BAB0-39C10422CF31</key>
 		<dict>
 			<key>xpos</key>
-			<integer>600</integer>
+			<real>600</real>
 			<key>ypos</key>
-			<integer>40</integer>
+			<real>40</real>
 		</dict>
 		<key>67ADBB8D-C705-4981-BB9B-7C9238BEFF2E</key>
 		<dict>
 			<key>xpos</key>
-			<integer>790</integer>
+			<real>790</real>
 			<key>ypos</key>
-			<integer>40</integer>
+			<real>40</real>
 		</dict>
 		<key>87F10E6D-697C-47CE-BD78-E7174F5DF815</key>
 		<dict>
 			<key>xpos</key>
-			<integer>790</integer>
+			<real>790</real>
 			<key>ypos</key>
-			<integer>230</integer>
+			<real>230</real>
 		</dict>
 		<key>94B48881-907F-4752-AAA0-234EA30CFC18</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>12</integer>
 			<key>xpos</key>
-			<integer>220</integer>
+			<real>220</real>
 			<key>ypos</key>
-			<integer>70</integer>
+			<real>70</real>
 		</dict>
 		<key>95CD1A63-A0C6-4458-9817-9C6B1A90C827</key>
 		<dict>
@@ -629,25 +629,25 @@ Version 1.1 – 2015-01-10
 			<key>note</key>
 			<string>GitHub Enterprise</string>
 			<key>xpos</key>
-			<integer>330</integer>
+			<real>330</real>
 			<key>ypos</key>
-			<integer>230</integer>
+			<real>230</real>
 		</dict>
 		<key>9715D8FA-0199-450F-99B8-64796B5AC6CB</key>
 		<dict>
 			<key>xpos</key>
-			<integer>680</integer>
+			<real>680</real>
 			<key>ypos</key>
-			<integer>260</integer>
+			<real>260</real>
 		</dict>
 		<key>ABE8DD6E-CD29-4E70-87CF-1382A0446009</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>9</integer>
 			<key>xpos</key>
-			<integer>220</integer>
+			<real>220</real>
 			<key>ypos</key>
-			<integer>260</integer>
+			<real>260</real>
 		</dict>
 		<key>DAA505B9-F86C-4AF8-818B-8F614F01485E</key>
 		<dict>
@@ -656,9 +656,9 @@ Version 1.1 – 2015-01-10
 			<key>note</key>
 			<string>github.com</string>
 			<key>xpos</key>
-			<integer>30</integer>
+			<real>30</real>
 			<key>ypos</key>
-			<integer>40</integer>
+			<real>40</real>
 		</dict>
 		<key>FC76BC27-8BCB-4BEE-AD42-EAC2D9B01F0F</key>
 		<dict>
@@ -667,11 +667,13 @@ Version 1.1 – 2015-01-10
 			<key>note</key>
 			<string>github.com</string>
 			<key>xpos</key>
-			<integer>330</integer>
+			<real>330</real>
 			<key>ypos</key>
-			<integer>40</integer>
+			<real>40</real>
 		</dict>
 	</dict>
+	<key>userconfigurationconfig</key>
+	<array/>
 	<key>variables</key>
 	<dict>
 		<key>hotkey</key>
