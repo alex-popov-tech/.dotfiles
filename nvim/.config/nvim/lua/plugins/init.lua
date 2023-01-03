@@ -36,22 +36,22 @@ local core = {
     {
         'nyngwang/murmur.lua',
         config = function()
-      require('murmur').setup {
-            -- cursor_rgb = 'purple', -- default to '#393939'
-            max_len = 80, -- maximum word-length to highlight
-            -- min_len = 3,
-            -- disable_on_lines = 2000, -- to prevent lagging on large files. Default to 2000 lines.
-            exclude_filetypes = {},
-            callbacks = {
-                -- to trigger the close_events of vim.diagnostic.open_float.
-                function()
-                    -- Close floating diag. and make it triggerable again.
-                    vim.cmd('doautocmd InsertEnter')
-                    vim.w.diag_shown = false
-                end
+            require('murmur').setup {
+                -- cursor_rgb = 'purple', -- default to '#393939'
+                max_len = 80, -- maximum word-length to highlight
+                -- min_len = 3,
+                -- disable_on_lines = 2000, -- to prevent lagging on large files. Default to 2000 lines.
+                exclude_filetypes = {},
+                callbacks = {
+                    -- to trigger the close_events of vim.diagnostic.open_float.
+                    function()
+                        -- Close floating diag. and make it triggerable again.
+                        vim.cmd('doautocmd InsertEnter')
+                        vim.w.diag_shown = false
+                    end
+                }
             }
-        }
-    end
+        end
     },
 
     -- add bunch of mappings like ]p ]e ]<space> etc.
@@ -88,7 +88,6 @@ local core = {
         'mrjones2014/smart-splits.nvim',
         config = require('plugins.smart-splits-nvim')
     },
-
     {'joechrisellis/lsp-format-modifications.nvim'},
     -- open terminal in floating window
     {'numToStr/FTerm.nvim', config = require('plugins.fterm-nvim')},
@@ -115,7 +114,13 @@ local textObjects = {
     {
         'Julian/vim-textobj-variable-segment',
         requires = {'kana/vim-textobj-user'}
-    }
+    },
+    {
+        'nvim-treesitter/nvim-treesitter-textobjects',
+        requires = {'nvim-treesitter/nvim-treesitter'},
+        config = require('plugins.nvim-treesitter-textobjects')
+    },
+    'michaeljsmith/vim-indent-object'
 }
 
 local fuzzyFinder = {
@@ -179,11 +184,6 @@ local treesitter = {
         'windwp/nvim-ts-autotag',
         requires = {'nvim-treesitter/nvim-treesitter'},
         config = function() require('nvim-ts-autotag').setup() end
-    },
-    {
-        'nvim-treesitter/nvim-treesitter-textobjects',
-        requires = {'nvim-treesitter/nvim-treesitter'},
-        config = require('plugins.nvim-treesitter-textobjects')
     },
     {
         'm-demare/hlargs.nvim',
