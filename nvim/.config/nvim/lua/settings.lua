@@ -28,7 +28,7 @@ for key, val in pairs({
   autowrite = true, -- Automatically :write before running commands
   scrolloff = 5, -- how many lines till window border to see when scrolling
   sidescrolloff = 10, -- same as above but for columns
-  shell = "/usr/local/bin/zsh",
+  shell = "/opt/homebrew/bin/zsh",
   -- inccommand = "nosplit", -- incremental search ( enabled by default )
   updatetime = 100, -- timeout for showing cursorhold events, etc
   shortmess = vim.o.shortmess .. "s", -- better messages
