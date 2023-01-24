@@ -15,6 +15,7 @@ autoload -Uz _zi
 zicompinit # <- https://z.digitalclouds.dev/docs/guides/commands
 
 zi ice depth=1; zi light romkatv/powerlevel10k
+
 zi snippet OMZP::vi-mode
 
 #  completion which is not bad, but no fzf there
