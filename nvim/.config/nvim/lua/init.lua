@@ -1,6 +1,0 @@
-require("globals")
-require("settings")
-require("mappings")
-require("plugins")
-require("lsp").setup()
-require("ui")

@@ -1,6 +1,9 @@
-pcall(require, 'impatient')
-require("init")
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+vim.cmd('nmap <bs> <leader>')
 
--- local Path = require "plenary.path"
--- local absolute_cwd = Path:new(vim.loop.cwd()):absolute()
--- pcall(vim.cmd, 'source ' .. absolute_cwd .. '/' .. '.conf.lua')
+if not package.loaded.lazy then require('lazyvim') end
+require('settings')
+require('autocommands')
+require('mappings')
+require('ui')
