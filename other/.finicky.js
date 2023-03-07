@@ -1,6 +1,12 @@
 const browsers = {
+  options: {
+    // Hide the finicky icon from the top bar. Default: false
+    hideIcon: true,
+    // Check for update on startup. Default: true
+    checkForUpdate: true,
+  },
   personal: {
-    name: 'Brave Browser',
+    name: 'Arc',
   },
   lokalise: {
     name: 'Brave Browser',
