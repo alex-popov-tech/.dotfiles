@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE syntax SYSTEM "symbol.dtd">
+<symbols>
+
+    <blocks>
+        <beginregex>{</beginregex>
+        <endregex>}</endregex>
+    </blocks>
+
+    <symbol id="Methods" symbol="M" indentation="1">
+      <regex>(\w{1,512}\s{0,512}:\s{0,512}function\([^)]{0,512}\))\s{0,512}{</regex>
+    </symbol>
+
+    <symbol id="Funtions" symbol="f()_#6AB18D" indentation="0" ignoreblocks="yes">
+        <regex>(?&lt;=[\n\r]|^)\s{0,512}(?:async\s{1,512})?function\s{1,512}\*?\s{0,512}([^{]{0,512})(?=\s{0,512}\{)</regex>
+        <postprocess>
+            <find>\([^\)]*\)</find>
+            <replace>()</replace>
+            <find>[\n\r]</find>
+            <replace> </replace>
+            <find>[ \t]+</find>
+            <replace> </replace>
+        </postprocess>
+    </symbol>
+
+    <symbol id="Inline Funtions" symbol="f()_#6AB18D" indentation="0" ignoreblocks="yes">
+        <regex>(\w{1,512})\s{0,512}=\s{0,512}(?:async\s{1,512})?function\s{0,512}\*?\s{0,512}\([^\)]{0,512}\)(?=\s{0,512}\{)</regex>
+        <postprocess>
+            <find>(.*)</find>
+            <replace>\1()</replace>
+        </postprocess>
+    </symbol>
+
+    <symbol id="CVS/SVN conflict" font-weight="bold" image="SymbolWarn" indentation="0" ignoreblocks="no">
+        <regex>^&lt;&lt;&lt;&lt;&lt;&lt;&lt;([\n\r]|.)*?======([\n\r]|.)*?&gt;&gt;&gt;&gt;&gt;&gt;&gt;</regex>
+        <postprocess>
+            <find>.*</find>
+            <replace>Versioning conflict!</replace>
+        </postprocess>
+    </symbol>
+
+</symbols>

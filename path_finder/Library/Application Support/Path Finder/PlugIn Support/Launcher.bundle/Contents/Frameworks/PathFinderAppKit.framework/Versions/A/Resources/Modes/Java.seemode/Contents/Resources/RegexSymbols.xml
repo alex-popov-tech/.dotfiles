@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE syntax SYSTEM "symbol.dtd">
+<symbols>
+
+    <blocks>
+        <beginregex>{</beginregex>
+        <endregex>}</endregex>
+    </blocks>
+    
+	<symbol id="package" symbol="P_#6D5E85"> 
+		<regex>^package\s+([\w_.]+)\s?;</regex>
+	</symbol>
+
+    <symbol id="Classes" symbol="C_#6D5E85" indentation="0" ignoreblocks="yes">
+        <regex>^[ \t]*((?:public|private|protected)?[ \t]*(?:(?:abstract|static|final|synchronized|native|strictfp)[ \t]+)*class[^{]+)</regex>
+        <postprocess>
+            <find>[\n\r]</find>
+            <replace> </replace>
+            <find>[ \t]+</find>
+            <replace> </replace>
+        </postprocess>
+    </symbol>
+
+    <symbol id="Methods" symbol="M" indentation="1" ignoreblocks="no">
+        <regex>((?:public|private|protected)[ \t]+(?:(?:abstract|static|final|synchronized|native|strictfp)[ \t]+)*(?:[A-Za-z0-9_\-\.&lt;&gt;]+(?:\[\])?[ \t]+)?[A-Za-z0-9_\-]+[ \t]*(?:\([^\)]*\)[ \t]*)?(?:\s*(throws)[ \t]*[A-Za-z0-9_\-, \t\.]+)?)\s*\{</regex>
+        <postprocess>
+            <find>\(([^\) ]+(?:[ \t]+\[\])?)[^\)]*\)</find>
+            <replace>(\1)</replace>
+            <find>[\n\r]</find>
+            <replace> </replace>
+            <find>[ \t]+</find>
+            <replace> </replace>
+        </postprocess>
+    </symbol>
+
+    <symbol id="CVS/SVN conflict" font-weight="bold" image="SymbolWarn" indentation="0" ignoreblocks="no">
+        <regex>^&lt;&lt;&lt;&lt;&lt;&lt;&lt;([\n\r]|.)*?======([\n\r]|.)*?&gt;&gt;&gt;&gt;&gt;&gt;&gt;</regex>
+        <postprocess>
+            <find>.*</find>
+            <replace>Versioning conflict!</replace>
+        </postprocess>
+    </symbol>
+
+    <symbol id="Comment Marks" font-weight="bold" indentation="0" ignoreblocks="yes" show-in-comments="yes">
+        <regex>//-[\t ]*mark[\t ]*(?:-(?=[\n\r]))?([^\n\r]*)</regex>
+    </symbol>
+    
+    <!-- CODA -->
+    <symbol id="Pragma marks" font-weight="normal" font-style="normal" indentation="0" ignoreblocks="no" show-in-comments="yes">
+        <regex>// !([^\n\r]+)</regex>
+    </symbol>
+
+</symbols>

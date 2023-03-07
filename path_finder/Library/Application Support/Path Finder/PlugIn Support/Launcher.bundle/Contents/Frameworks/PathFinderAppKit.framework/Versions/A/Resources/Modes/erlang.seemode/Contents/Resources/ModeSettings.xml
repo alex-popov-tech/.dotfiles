@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings>
+  <template>Template.erl</template>
+  <recognition>
+    <extension>erl</extension>
+    <extension>hrl</extension>
+    <extension>escript</extension>
+    <regex>^-module\([^\)]+\)\.</regex>
+    <regex>^-record\([^\)]+\)\.</regex>
+  </recognition>
+</settings>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE syntax SYSTEM "symbol.dtd">
+<symbols>
+
+    <blocks>
+        <beginregex>{</beginregex>
+        <endregex>}</endregex>
+    </blocks>
+    
+    <symbol id="Function Defs" symbol="f()_#6AB18D" indentation="0" ignoreblocks="yes">
+		<!-- This expression properly gets all the args too, but I'd rather not see that -->
+		<!-- getting my first set of parens right was the key to that btw. -->
+        <regex>^def[ \t]+(([^(\r\n]+)[ \t]*(\([^)\r\n]*\))?)</regex>
+        <postprocess>
+        	<find>\(.*</find>
+        	<replace>()</replace>
+        	<find>#.*</find>
+        	<replace></replace>
+        </postprocess>
+    </symbol>
+
+    <symbol id="Method Defs" symbol="M" indentation="2" ignoreblocks="yes">
+		<!-- This expression properly gets all the args too, but I'd rather not see that -->
+		<!-- getting my first set of parens right was the key to that btw. -->
+        <regex>^[ \t]+def[ \t]+(([^(\r\n]+)[ \t]*(\([^)\r\n]*\))?)</regex>
+        <postprocess>
+        	<find>\(.*</find>
+        	<replace>()</replace>
+        	<find>#.*</find>
+        	<replace></replace>
+        </postprocess>
+    </symbol>
+
+    <symbol id="Classes" symbol="C_#6D5E85" indentation="1" ignoreblocks="yes">
+        <regex>^[ \t]*class[ \t]+([\w\d_]+)</regex>
+    </symbol>
+
+    <symbol id="Modules" symbol="M_#6D5E85" indentation="0" ignoreblocks="yes">
+        <regex>^[ \t]*module[ \t]+([\w\d_]+)</regex>
+    </symbol>
+
+    <symbol id="CVS/SVN conflict" font-weight="bold" image="SymbolWarn" indentation="0" ignoreblocks="no">
+        <regex>^&lt;&lt;&lt;&lt;&lt;&lt;&lt;([\n\r]|.)*?======([\n\r]|.)*?&gt;&gt;&gt;&gt;&gt;&gt;&gt;</regex>
+        <postprocess>
+            <find>.*</find>
+            <replace>Versioning conflict!</replace>
+        </postprocess>
+    </symbol>
+
+    <symbol id="Divs with IDs" font-weight="normal" font-style="normal" symbol="ID" indentation="0" ignoreblocks="yes">
+        <regex>&lt;div[^&gt;]*id *= *"([^"]*)"[^&gt;]*&gt;</regex>
+    </symbol>
+
+    <symbol id="HTML Comment Marks" font-weight="normal" font-style="normal" symbol="!--_#2E7D35_11.0_Skia-Regular_Condensed" indentation="0" ignoreblocks="no" show-in-comments="yes">
+        <regex>&lt;!-- !([^-]*) --&gt;</regex>
+    </symbol>
+
+    <symbol id="Comment Marks" font-weight="bold" symbol="#_#2E7D35" indentation="0" ignoreblocks="yes" show-in-comments="yes">
+        <regex>^[\t ]*#mark[\t -]*([^\n]*)\n</regex>
+    </symbol>
+
+</symbols>
