@@ -44,7 +44,8 @@ return {
     colors = {
         tab_bar = {
             -- The color of the inactive tab bar edge/divider
-            background = '#24273a'
+            background = '#24273a',
+            new_tab = {bg_color = '#24273a', fg_color = '#cad3f5'}
         }
     }
 }
