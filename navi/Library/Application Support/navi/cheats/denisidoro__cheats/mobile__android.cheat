@@ -1,0 +1,45 @@
+% android, device
+
+# Logcat
+adb -s <device> logcat -v time
+
+# Get property
+adb -s <device> shell getprop <property>
+
+# Install APK
+adb -s <device> install -r <path>
+
+# Uninstall package
+adb -s <device> uninstall -r <package>
+
+# Clear user data for package
+adb -s <device> shell pm clear <package>
+
+# Dispatch a deep-link / open URI
+adb -s <device> shell am start <uri>
+
+$ device: adb devices | grep -v devices | grep device | cut -f 1
+
+
+
+% android, emulator
+
+# Start emulator
+"$ANDROID_HOME/tools/emulator" -avd <emulator> -netdelay none -netspeed full
+
+$ emulator: "$ANDROID_HOME/tools/emulator" -list-avds
+
+
+
+% android, Firebase Crashlytics Test
+
+# Enable debug logging on your device
+adb -s <device> shell setprop log.tag.CrashlyticsCore DEBUG
+
+# View the logs in the device logs
+adb -s <device> logcat -s Fabric CrashlyticsCore
+
+# Disable debug mode
+adb -s <device> shell setprop log.tag.CrashlyticsCore INFO
+
+$ device: adb devices | grep -v devices | grep device | cut -f 1
