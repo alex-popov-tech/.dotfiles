@@ -12,10 +12,10 @@ wezterm.on('gui-startup', function(cmd)
 
     local stats_tab, stats_pane, window = mux.spawn_window {
         workspace = 'default',
-        cwd = home .. '/.dotfiles',
+        cwd = home .. '/.dotfiles'
     }
+    -- window:gui_window():maximize()
     stats_pane:send_text('btop\n')
-    window:gui_window():maximize()
     stats_tab:set_title('stats')
 
     local dotfiles_tab = window:spawn_tab({
@@ -32,9 +32,6 @@ wezterm.on('gui-startup', function(cmd)
 
     local frontend_tab = window:spawn_tab({cwd = home .. '/me/gosha-ui'})
     frontend_tab:set_title('frontend')
-
-    local raycast_tab = window:spawn_tab({cwd = home .. '/me/raycast/extensions/extensions/lastpass'})
-    raycast_tab:set_title('raycast')
 
     window:gui_window():perform_action(act.ActivateTab(0), stats_pane)
 end)
