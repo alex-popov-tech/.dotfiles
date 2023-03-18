@@ -12,12 +12,12 @@ return function(client, bufnr)
         end
     end, options)
     vim.keymap.set('i', '<c-k>', function() vim.lsp.buf.signature_help() end, options)
-    -- vim.keymap.set('n', '\'gr', function()
-    --     require'telescope.builtin'.lsp_references({
-    --         layout_strategy = 'vertical',
-    --         layout_settings = {width = 0.9, height = 0.9}
-    --     })
-    -- end, options)
+    vim.keymap.set('n', '\'gr', function()
+        require'telescope.builtin'.lsp_references({
+            layout_strategy = 'vertical',
+            layout_settings = {width = 0.9, height = 0.9}
+        })
+    end, options)
     vim.keymap.set('n', '\'gd', function() vim.lsp.buf.definition() end, options)
 
     vim.keymap.set('n', '\'rn', function() vim.lsp.buf.rename() end, options)
