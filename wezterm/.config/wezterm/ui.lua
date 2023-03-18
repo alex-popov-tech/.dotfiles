@@ -33,7 +33,7 @@ end)
 
 return {
     font = wezterm.font 'JetBrains Mono',
-    font_size = 14,
+    font_size = 12,
     -- dpi = 144.0,
     tab_max_width = 16,
     color_scheme = 'Catppuccin Macchiato',
