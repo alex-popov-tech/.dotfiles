@@ -51,6 +51,8 @@ return {
         {key = '6', mods = 'LEADER', action = act.ActivateTab(5)},
         {key = '7', mods = 'LEADER', action = act.ActivateTab(6)},
         {key = '8', mods = 'LEADER', action = act.ActivateTab(7)},
+        {key = '9', mods = 'LEADER', action = act.ActivateTab(8)},
+        {key = '0', mods = 'LEADER', action = act.ActivateTab(9)},
 
         {
             key = '|',
