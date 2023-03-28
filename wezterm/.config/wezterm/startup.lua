@@ -33,6 +33,9 @@ wezterm.on('gui-startup', function(cmd)
     local frontend_tab = window:spawn_tab({cwd = home .. '/me/gosha-ui'})
     frontend_tab:set_title('frontend')
 
+    local algorithms_tab = window:spawn_tab({cwd = home .. '/me/kata-machine'})
+    algorithms_tab:set_title('algoritms')
+
     window:gui_window():perform_action(act.ActivateTab(0), stats_pane)
 end)
 
