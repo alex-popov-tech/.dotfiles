@@ -1,8 +1,7 @@
 local wezterm = require 'wezterm'
-local utils = require 'utils'
 
 local format_title = function(title, is_active, max_width)
-    local background = {Background = {Color = '#24273a'}}
+    local background = {Background = {Color = '#1f1f28'}}
     local title_len = #title
     local pad_len = math.floor((max_width - title_len) / 2)
 
@@ -36,16 +35,57 @@ return {
     font_size = 12,
     -- dpi = 144.0,
     tab_max_width = 16,
-    color_scheme = 'Catppuccin Macchiato',
-    window_decorations = 'RESIZE',
-    window_background_opacity = 0.9,
-    tab_bar_at_bottom = true,
-    use_fancy_tab_bar = false,
+    -- color_scheme = 'Kanagawa (Gogh)',
     colors = {
         tab_bar = {
             -- The color of the inactive tab bar edge/divider
-            background = '#24273a',
-            new_tab = {bg_color = '#24273a', fg_color = '#cad3f5'}
-        }
-    }
+            background = '#1f1f28',
+            new_tab = {bg_color = '#1f1f28', fg_color = '#dcd7ba'}
+        },
+        foreground = '#dcd7ba',
+        background = '#1f1f28',
+
+        cursor_bg = '#c8c093',
+        cursor_fg = '#c8c093',
+        cursor_border = '#c8c093',
+
+        selection_fg = '#c8c093',
+        selection_bg = '#2d4f67',
+
+        scrollbar_thumb = '#16161d',
+        split = '#16161d',
+
+        ansi = {
+            '#090618',
+            '#c34043',
+            '#76946a',
+            '#c0a36e',
+            '#7e9cd8',
+            '#957fb8',
+            '#6a9589',
+            '#c8c093'
+        },
+        brights = {
+            '#727169',
+            '#e82424',
+            '#98bb6c',
+            '#e6c384',
+            '#7fb4ca',
+            '#938aa9',
+            '#7aa89f',
+            '#dcd7ba'
+        },
+        indexed = {[16] = '#ffa066', [17] = '#ff5d62'}
+    },
+    window_decorations = 'RESIZE',
+    -- window_background_opacity = 0.9,
+    tab_bar_at_bottom = true,
+    use_fancy_tab_bar = false
+    -- colors = {
+    --     tab_bar = {
+    --         -- The color of the inactive tab bar edge/divider
+    --         background = '#24273a',
+    --         new_tab = {bg_color = '#24273a', fg_color = '#cad3f5'}
+    --     }
+    -- }
 }
