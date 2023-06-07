@@ -29,9 +29,6 @@ zi wait lucid for \
 
 zi pack for ls_colors
 
-zi has'zoxide' wait lucid for \
-  z-shell/zsh-zoxide
-
 zi is-snippet wait lucid for \
     atload \
   OMZP::git
