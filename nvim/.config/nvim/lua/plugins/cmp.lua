@@ -31,16 +31,17 @@ end
 
 return {
     'hrsh7th/nvim-cmp',
+    enabled = true,
     event = 'VeryLazy',
     dependencies = {
         'hrsh7th/cmp-nvim-lsp',
         'hrsh7th/cmp-nvim-lua',
         'hrsh7th/cmp-buffer',
         'hrsh7th/cmp-path',
-        'saadparwaiz1/cmp_luasnip',
+        -- 'saadparwaiz1/cmp_luasnip',
 
-        'octaltree/cmp-look',
-        'hrsh7th/cmp-emoji',
+        -- 'octaltree/cmp-look',
+        -- 'hrsh7th/cmp-emoji',
 
         'onsails/lspkind-nvim'
     },
@@ -90,17 +91,17 @@ return {
             }),
             sources = cmp.config.sources({
                 {name = 'nvim_lsp'},
-                {name = 'nvim_lua'},
-                {name = 'luasnip'},
+                -- {name = 'nvim_lua'},
+                -- {name = 'luasnip'},
                 {name = 'buffer'},
                 {name = 'path'}
             }),
             experimental = {ghost_text = {hl_group = 'LspCodeLens'}}
         })
 
-        cmp.setup.filetype({'gitcommit', 'markdown', 'octo'}, {
-            sources = {{name = 'look', keyword_length = 4, max_item_count = 10}}
-        })
+        -- cmp.setup.filetype({'gitcommit', 'markdown', 'octo'}, {
+        --     sources = {{name = 'look', keyword_length = 4, max_item_count = 10}}
+        -- })
 
         cmp.setup.filetype('lua', {
             sources = {
@@ -112,8 +113,8 @@ return {
             }
         })
 
-        cmp.setup.filetype({'octo', 'markdown'},
-                           {sources = cmp.config.sources({{name = 'emoji'}})})
+        -- cmp.setup.filetype({'octo', 'markdown'},
+        --                    {sources = cmp.config.sources({{name = 'emoji'}})})
 
     end
 }

@@ -1,31 +1,8 @@
 local util = require('util')
 
 return {
-    {'svban/YankAssassin.vim', event = 'VeryLazy'},
     --  shiftwidth/expandtab/etc
     {'tpope/vim-sleuth', event = 'VeryLazy'},
-    {
-        'nyngwang/murmur.lua',
-        event = 'VeryLazy',
-        config = function()
-            require('murmur').setup({
-                -- cursor_rgb = 'purple', -- default to '#393939'
-                max_len = 80, -- maximum word-length to highlight
-                -- min_len = 3,
-                -- disable_on_lines = 2000, -- to prevent lagging on large files. Default to 2000 lines.
-                exclude_filetypes = {},
-                callbacks = {
-                    -- to trigger the close_events of vim.diagnostic.open_float.
-                    function()
-                        -- Close floating diag. and make it triggerable again.
-                        vim.cmd('doautocmd InsertEnter')
-                        vim.w.diag_shown = false
-                    end
-                }
-            })
-        end
-    },
-
     -- add bunch of mappings like ]p ]e ]<space> etc.
     {'tpope/vim-unimpaired', event = 'VeryLazy'},
     -- allows repeat via dot for some plugins like surround
@@ -40,46 +17,28 @@ return {
             })
         end
     },
-    -- close all buffers but current
-    {
-        'schickling/vim-bufonly',
-        init = function() vim.cmd('cnoreabbrev bo silent Bonly') end,
-        cmd = 'Bonly'
-    },
-    -- close buffer
-    {
-        'ojroques/nvim-bufdel',
-        init = function()
-            vim.cmd('cnoreabbrev bd BufDel')
-            vim.cmd('cnoreabbrev bd! BufDel!')
-        end,
-        cmd = 'BufDel'
-    },
+    -- after yank leave cursor on its place
+    {'svban/YankAssassin.vim', event = 'VeryLazy'},
     -- replace without yankink deleted
     {
         'gbprod/substitute.nvim',
-        config = function() require('substitute').setup({}) end,
-        keys = {
-            {
-                'm',
-                function() require('substitute').operator() end,
-                {noremap = true}
-            },
-            {
-                'mm',
-                function() require('substitute').line() end,
-                {noremap = true}
-            },
-            {'M', function() require('substitute').eol() end, {noremap = true}},
-            {
-                'm',
-                function() require('substitute').eol() end,
-                mode = 'x',
-                {noremap = true}
-            }
-        }
+        event = 'VeryLazy',
+        config = function()
+            require('substitute').setup({})
+            vim.keymap.set({'x', 'n'}, 'm',
+                           function()
+                require('substitute').operator()
+            end, {noremap = true})
+            vim.keymap.set('n', 'mm',
+                           function() require('substitute').line() end,
+                           {noremap = true})
+            vim.keymap.set('n', 'M', function()
+                require('substitute').eol()
+            end, {noremap = true})
+        end
     },
 
+    -- visual representation for idention
     {
         'lukas-reineke/indent-blankline.nvim',
         event = 'BufReadPre',
@@ -97,27 +56,27 @@ return {
         }
     },
 
+    -- nice folding
     {
         'kevinhwang91/nvim-ufo',
+        enabled = true,
         event = 'VeryLazy',
         dependencies = {
             'kevinhwang91/promise-async',
             'nvim-treesitter/nvim-treesitter'
         },
         config = function()
-
-            -- vim.o.foldcolumn = 0
-            -- vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
-            -- vim.o.foldlevelstart = 99
-            -- vim.o.foldenable = true
-            -- Using ufo provider need remap `zR` and `zM`. If Neovim is 0.6.1, remap yourself
             vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
             vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
             vim.api.nvim_set_hl(0, 'MoreMsg', {bg = 'none', fg = '#7E9CD8'})
 
             local handler = function(virtText, lnum, endLnum, width, truncate)
                 local newVirtText = {}
-                local suffix = ('  %d '):format(endLnum - lnum)
+                local totalLines = vim.api.nvim_buf_line_count(0)
+                local foldedLines = endLnum - lnum
+                local suffix = ('  %d %d%%'):format(foldedLines,
+                                                       foldedLines / totalLines *
+                                                           100)
                 local sufWidth = vim.fn.strdisplaywidth(suffix)
                 local targetWidth = width - sufWidth
                 local curWidth = 0
@@ -141,6 +100,11 @@ return {
                     end
                     curWidth = curWidth + chunkWidth
                 end
+                local rAlignAppndx = math.max(math.min(
+                                                  vim.opt.textwidth['_value'],
+                                                  width - 1) - curWidth -
+                                                  sufWidth, 0)
+                suffix = (' '):rep(rAlignAppndx) .. suffix
                 table.insert(newVirtText, {suffix, 'MoreMsg'})
                 return newVirtText
             end
@@ -153,17 +117,41 @@ return {
             })
         end
     },
-
+    {
+        'luukvbaal/statuscol.nvim',
+        config = function()
+            -- local builtin = require("statuscol.builtin")
+            require('statuscol').setup({})
+        end
+    },
     -- live command preview
     {
         'smjonas/live-command.nvim',
+        cmd = {'G'},
         event = 'VeryLazy',
         config = function()
             require('live-command').setup({commands = {G = {cmd = 'g'}}})
         end
     },
 
-    -- navigate/resize splits
+    -- navigate splits
+    {
+        'numToStr/Navigator.nvim',
+        keys = {
+            {'<C-h>', '<CMD>NavigatorLeft<CR>', mode = {'n', 't'}},
+            {'<C-l>', '<CMD>NavigatorRight<CR>', mode = {'n', 't'}},
+            {'<C-k>', '<CMD>NavigatorUp<CR>', mode = {'n', 't'}},
+            {'<C-j>', '<CMD>NavigatorDown<CR>', mode = {'n', 't'}}
+        },
+        config = function()
+            local ok, wezterm = pcall(function()
+                return require('Navigator.mux.wezterm'):new()
+            end)
+            require('Navigator').setup({mux = ok and wezterm or 'auto'})
+        end
+    },
+
+    -- split resize mode
     {
         'mrjones2014/smart-splits.nvim',
         config = function()
@@ -178,21 +166,6 @@ return {
             })
         end,
         keys = {
-            {'<c-h>', function()
-                require('smart-splits').move_cursor_left()
-            end},
-            {'<c-j>', function()
-                require('smart-splits').move_cursor_down()
-            end},
-            {'<c-k>', function()
-                require('smart-splits').move_cursor_up()
-            end},
-            {
-                '<c-l>',
-                function()
-                    require('smart-splits').move_cursor_right()
-                end
-            },
             {
                 '<c-w>',
                 function()
@@ -201,6 +174,7 @@ return {
             }
         }
     },
+    {'anuvyklack/hydra.nvim', event = 'VeryLazy'},
 
     -- open terminal in floating window
     {
@@ -428,7 +402,10 @@ return {
                 vertright = '┣',
                 verthoriz = '╋'
             })
-            require('kanagawa').setup({transparent = true, globalStatus = true})
+            require('kanagawa').setup({
+                transparent = true,
+                globalStatus = true
+            })
             -- load the colorscheme here
             vim.cmd('colorscheme kanagawa')
         end
@@ -440,215 +417,6 @@ return {
         event = 'VeryLazy',
         config = function()
             require('colorizer').setup(nil, {names = false, mode = 'foreground'})
-        end
-    },
-
-    -- bufferline
-    {
-        'akinsho/bufferline.nvim',
-        version = 'v3.*',
-        dependencies = {'nvim-tree/nvim-web-devicons'},
-        event = {'BufEnter *.*'},
-        config = function()
-            require('bufferline').setup({
-                options = {
-                    mode = 'buffers',
-                    numbers = 'none',
-                    close_command = ':BufDel',
-                    diagnostics_indicator = false,
-                    hover = {enabled = false},
-                    show_close_icon = false,
-                    show_buffer_close_icons = false,
-                    separator_style = {'', ''},
-                    indicator = {style = 'none'}
-                },
-                highlights = {
-                    fill = {bg = 'none'},
-                    background = {bg = 'none'},
-                    tab = {bg = 'none'},
-                    tab_selected = {bg = 'none'},
-                    tab_close = {bg = 'none'},
-                    close_button = {bg = 'none'},
-                    close_button_visible = {bg = 'none'},
-                    close_button_selected = {bg = 'none'},
-                    buffer_visible = {bg = 'none'},
-                    buffer_selected = {bg = 'none', bold = true, italic = true},
-                    modified = {bg = 'none'},
-                    modified_visible = {bg = 'none'},
-                    modified_selected = {bg = 'none'},
-                    duplicate_selected = {bg = 'none', italic = true},
-                    duplicate_visible = {bg = 'none', italic = true},
-                    duplicate = {bg = 'none', italic = true},
-                    separator_selected = {bg = 'none'},
-                    separator_visible = {bg = 'none'},
-                    separator = {bg = 'none'},
-                    indicator_selected = {bg = 'none'}
-                }
-            })
-        end
-    },
-
-    -- statusline
-    {
-        'feline-nvim/feline.nvim',
-        branch = 'master',
-        dependencies = {
-            'nvim-tree/nvim-web-devicons',
-            'lewis6991/gitsigns.nvim'
-        },
-        event = {'BufEnter *.*'},
-        config = function()
-            require('gitsigns').setup()
-            local feline = require('feline')
-            local colors = {
-                bg = 'none',
-                default_fg = '#C8C093',
-                red = '#C34043',
-                git_red = '#C34043',
-                git_yellow = '#DCA561',
-                git_green = '#76946A',
-                diagnostic_error = '#E82424',
-                diagnostic_warn = '#FF9E3B',
-                diagnostic_info = '#6A9589',
-                light_blue = '#7E9CD8',
-                light_purple = '#957FB8'
-            }
-
-            local is_ignored_filetype = function()
-                return not util.t.includes({'prompt'}, vim.bo.filetype)
-            end
-
-            local component = function(comp)
-                return util.t.merge('force', {
-                    hl = {bg = colors.bg},
-                    enabled = is_ignored_filetype
-                }, comp)
-            end
-            local space = component({provider = ' ', hl = {bg = colors.bg}})
-
-            feline.setup({
-                force_inactive = {
-                    filetypes = {
-                        '^NvimTree$',
-                        '^packer$',
-                        '^startify$',
-                        '^fugitive$',
-                        '^fugitiveblame$',
-                        '^qf$',
-                        '^help$'
-                    },
-                    buftypes = {'^terminal$', 'prompt'},
-                    bufnames = {}
-                },
-                components = {
-                    active = {
-                        {
-                            space,
-                            component({
-                                provider = {
-                                    name = 'file_info',
-                                    opts = {
-                                        type = 'relative',
-                                        colored_icon = true,
-                                        file_modified_icon = '[+]'
-                                    }
-                                },
-                                hl = {fg = colors.default_fg, style = 'italic'},
-                                short_provider = {}
-                            }),
-                            component({
-                                provider = ' on ',
-                                hl = {fg = colors.light_blue}
-                            }),
-                            component({
-                                provider = function()
-                                    local branch = require(
-                                                       'feline.providers.git').git_info_exists()
-                                    if branch then
-                                        return '' .. ' ' .. branch
-                                    end
-                                    return ''
-                                end,
-                                hl = {fg = colors.git_red, style = 'italic'}
-                            })
-                        },
-                        {
-                            component({
-                                provider = 'lsp_client_names',
-                                hl = {fg = colors.light_blue, style = 'italic'}
-                            }),
-                            space
-                        }
-                    },
-                    inactive = {}
-                }
-            })
-
-            local winbarComponents = {
-                space,
-                component({
-                    provider = function(c)
-                        return require('feline.providers.file').file_info(c, {
-                            type = 'unique',
-                            colored_icon = true,
-                            file_modified_icon = ''
-                        })
-                    end,
-                    hl = {fg = colors.default_fg, style = 'italic'},
-                    short_provider = {}
-                }),
-                space,
-                space,
-                component({
-                    provider = 'position',
-                    hl = {fg = colors.light_blue, gui = 'italic'}
-                }),
-                component({
-                    provider = 'git_diff_added',
-                    enabled = function()
-                        return require('feline.providers.git').git_info_exists()
-                    end,
-                    hl = {fg = colors.git_green}
-                }),
-                component({
-                    provider = 'git_diff_changed',
-                    enabled = function()
-                        return require('feline.providers.git').git_info_exists()
-                    end,
-                    hl = {fg = colors.git_yellow}
-                }),
-                component({
-                    provider = 'git_diff_removed',
-                    enabled = function()
-                        require('feline.providers.git').git_info_exists()
-                    end,
-                    hl = {fg = colors.git_red}
-                }),
-                component({
-                    provider = 'diagnostic_errors',
-                    enabled = function()
-                        return
-                            require('feline.providers.lsp').diagnostics_exist(
-                                vim.diagnostic.severity.ERROR)
-                    end,
-                    hl = {fg = colors.diagnostic_error, gui = 'italic'}
-                }),
-                component({
-                    provider = 'diagnostic_warnings',
-                    enabled = function()
-                        return
-                            require('feline.providers.lsp').diagnostics_exist(
-                                vim.diagnostic.severity.WARN)
-                    end,
-                    hl = {fg = colors.diagnostic_warn, gui = 'italic'}
-                })
-            }
-            feline.winbar.setup({
-                components = {
-                    active = {winbarComponents},
-                    inactive = {winbarComponents}
-                }
-            })
         end
     },
 
@@ -692,23 +460,18 @@ return {
         config = function() require('nvim-ts-autotag').setup() end
     },
 
-    -- better highlights args treesitter
-    {
-        'm-demare/hlargs.nvim',
-        event = 'BufReadPost',
-        dependencies = {'nvim-treesitter/nvim-treesitter'},
-        config = function() require('hlargs').setup({}) end
-    },
-
     -- fancy notification messages
     {
         'rcarriga/nvim-notify',
         lazy = false,
-        dependencies = {'rebelot/kanagawa.nvim'},
         config = function()
             local notify = require('notify')
             notify.setup({
-                timeout = 2000,
+                fps = 60,
+                level = 2,
+                render = 'compact',
+                stages = 'fade',
+                timeout = 5,
                 top_down = false,
                 background_colour = '#000000',
                 max_height = function()
@@ -719,6 +482,26 @@ return {
                 end
             })
             vim.notify = notify
+            -- local notify = vim.notify
+            -- vim.notify = function(message, level, opts)
+            --     -- local final = ''
+            --     -- if message ~= nil then
+            --     --     final = final .. 'message is ' .. message
+            --     -- end
+            --     -- if level ~= nil then
+            --     --     final = final .. 'level is ' .. level
+            --     -- end
+            --     -- if opts ~= nil then
+            --     --     final = final .. 'opts is ' .. vim.inspect(opts)
+            --     -- end
+            --     -- if level and level == 'info' and opts and opts.title and
+            --     --     opts.title:find('prettierd') then return end
+            --     if message and message == 'Complete' then
+            --         -- notify(message .. ' ' .. level .. ' ' .. vim.inspect(opts))
+            --         return
+            --     end
+            --     notify(message or "", level, opts)
+            -- end
         end
     },
 
@@ -741,39 +524,11 @@ return {
 
     {'tpope/vim-fugitive', cmd = 'Gread'},
 
-    {
-        'ckolkey/ts-node-action',
-        keys = {
-            {
-                '<c-a>',
-                function()
-                    local type =
-                        require('nvim-treesitter.ts_utils').get_node_at_cursor():type()
-                    if type == 'number' then
-                        vim.cmd('normal! ')
-                    else
-                        require('ts-node-action').node_action()
-                    end
-                end
-            },
-            {
-                '<c-x>',
-                function()
-                    local type =
-                        require('nvim-treesitter.ts_utils').get_node_at_cursor():type()
-                    if type == 'number' then
-                        vim.cmd('normal! ')
-                    else
-                        require('ts-node-action').node_action()
-                    end
-                end
-            }
-        },
-        dependencies = {'nvim-treesitter'},
-        config = function() -- Optional
-            require('ts-node-action').setup({})
-        end
-    },
+    {'echasnovski/mini.ai'},
+
+    {'b0o/schemastore.nvim'},
+
+    {'SmiteshP/nvim-navic', dependencies = {'neovim/nvim-lspconfig'}},
 
     {
         'echasnovski/mini.move',
@@ -803,31 +558,65 @@ return {
     },
 
     {
-        'hrsh7th/nvim-insx',
-        event = 'VeryLazy',
-        config = function() require('insx.preset.standard').setup() end
-    },
-
-    {
         'andymass/vim-matchup',
         event = 'VeryLazy',
         version = nil,
         branch = 'master'
     },
 
+    -- {
+    --     'Exafunction/codeium.vim',
+    --     keys = {
+    --         {
+    --             '<c-}>',
+    --             function()
+    --                 return vim.cmd [[call codeium#CycleCompletions(1)]]
+    --             end,
+    --             mode = {'i'},
+    --             expr = true
+    --         },
+    --         {
+    --             '<c-{>',
+    --             function()
+    --                 return vim.cmd [[call codeium#CycleCompletions(-1)]]
+    --             end,
+    --             mode = {'i'},
+    --             expr = true
+    --         },
+    --         {
+    --             '<c-space>',
+    --             function() return vim.fn['codeium#Accept']() end,
+    --             mode = {'i'},
+    --             expr = true
+    --         }
+    --     },
+    --     event = 'VeryLazy',
+    --     branch = 'main',
+    --     config = function() vim.g.codeium_disable_bindings = 1 end
+    --     -- enabled = true
+    -- },
+
     {
-        'Exafunction/codeium.vim',
+        'ggandor/leap.nvim',
+        dependencies = {'tpope/vim-repeat'},
+        event = 'VeryLazy',
+        config = function() require('leap').add_default_mappings() end
+    },
+
+    {
+        'Wansmer/treesj',
+        -- keys = {'<space>s'},
         keys = {
             {
-                '<c-space>',
-                function() return vim.fn['codeium#Accept']() end,
-                mode = {'i'},
-                expr = true
+                '<leader>s',
+                function() require('treesj').toggle() end,
+                mode = {'n'}
             }
         },
-        -- lua vim.keymap.set('i', '<C-space>', function () return vim.fn['codeium#Accept']() end, { expr = true })
-        event = 'VeryLazy',
-        branch = 'main'
+        dependencies = {'nvim-treesitter/nvim-treesitter'},
+        config = function()
+            require('treesj').setup({use_default_keymaps = false})
+        end
     }
 
 }

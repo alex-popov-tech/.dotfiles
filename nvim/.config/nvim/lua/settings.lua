@@ -13,7 +13,7 @@ for key, val in pairs({
     backup = false, -- disable backups
     showcmd = true, -- show what commands you typing, what you select in visual mode, etc.
     autowrite = true, -- Automatically :write before running commands
-    scrolloff = 5, -- how many lines till window border to see when scrolling
+    scrolloff = 3, -- how many lines till window border to see when scrolling
     sidescrolloff = 10, -- same as above but for columns
     shell = '/opt/homebrew/bin/zsh',
     inccommand = 'nosplit', -- incremental search ( enabled by default )
@@ -33,9 +33,9 @@ for key, val in pairs({
         vert = '|'
     }, -- splits char
     -- virtualedit = "all", -- make all area 'editable'-ish
-    listchars = {tab = '-->', eol = '↩'}, -- replace chars
+    -- listchars = {tab = '-->', eol = ''}, -- replace chars
     list = true, -- Show some invisible characters (tabs...
-    signcolumn = 'yes', -- nothing to the left of line number
+    signcolumn = 'yes', -- things to the left of line number
     foldenable = true, -- don't fold by default
     foldcolumn = '0',
     foldlevel = 99, -- Using ufo provider need a large value, feel free to decrease the value
@@ -49,7 +49,6 @@ for key, val in pairs({
     numberwidth = 1, -- by default 4, and because of that there is empty space to the right to line numbers except current
     relativenumber = true, -- show relative line number for current line
     colorcolumn = '', -- "80,120", -- highlight some column length
-    spell = false, -- native spelling, which sucks
     cursorcolumn = true, -- highlight for current column
     cursorline = true, -- Highlight the screen line of the cursor with CursorLine
     completeopt = 'menu,menuone,noselect', -- completion select options
@@ -58,11 +57,13 @@ for key, val in pairs({
     expandtab = true, -- Use spaces instead of tabs
     smartindent = true, -- Insert indents automatically
     shiftround = true, -- Round indent
-    shiftwidth = 2, -- Size of an indent
+    shiftwidth = 4, -- Size of an indent
     tabstop = 2, -- Number of spaces tabs count for
     termguicolors = true, -- True color support
     timeoutlen = 500, -- Time in milliseconds to wait for a mapped sequence to complete.
-    wildmode = 'longest:full,full' -- Command-line completion mode
+    wildmode = 'longest:full,full', -- Command-line completion mode
+    spelllang = 'en_us',
+    spell = true -- native spelling, z= to suggest, zg to mark as good
 }) do vim.opt[key] = val end
 
 -- TODO fix it
@@ -90,16 +91,16 @@ vim.filetype.add({
 vim.cmd('cnoreabbrev W noa w')
 vim.cmd('cnoreabbrev WA noa wa')
 
-vim.o.statuscolumn =
-    '%s' -- .. '%{%v:lua.ScAppropriateLineNo(v:lnum, v:relnum)%}'
-    .. '%=' .. '%{%' -- evaluate this, and then evaluate what it returns
-    .. '&number ?' .. '(v:relnum ?' ..
-        'printf("%"..len(line("$")).."s", v:relnum)' -- when showing relative numbers, make sure to pad so things don't shift as you move the cursor
-    .. ':' .. 'v:lnum' .. ')' .. ':' .. '""' .. ' ' -- space between lines and fold
-    .. '%}' .. '%=' .. '%#FoldColumn#%{' -- expression for showing fold expand/colapse
-    .. 'foldlevel(v:lnum) > foldlevel(v:lnum - 1)' -- any folds?
-    .. '? (foldclosed(v:lnum) == -1' -- currently open?
-    .. '? ""' -- point down
-    .. ': ""' -- point to right
-    .. ')' .. ': " "' -- blank for no fold, or inside fold
-    .. '}'
+-- vim.o.statuscolumn =
+--     '%s' -- .. '%{%v:lua.ScAppropriateLineNo(v:lnum, v:relnum)%}'
+--     .. '%=' .. '%{%' -- evaluate this, and then evaluate what it returns
+--     .. '&number ?' .. '(v:relnum ?' ..
+--         'printf("%"..len(line("$")).."s", v:relnum)' -- when showing relative numbers, make sure to pad so things don't shift as you move the cursor
+--     .. ':' .. 'v:lnum' .. ')' .. ':' .. '""' .. ' ' -- space between lines and fold
+--     .. '%}' .. '%=' .. '%#FoldColumn#%{' -- expression for showing fold expand/colapse
+--     .. 'foldlevel(v:lnum) > foldlevel(v:lnum - 1)' -- any folds?
+--     .. '? (foldclosed(v:lnum) == -1' -- currently open?
+--     .. '? ""' -- point down
+--     .. ': ""' -- point to right
+--     .. ')' .. ': " "' -- blank for no fold, or inside fold
+--     .. '}'

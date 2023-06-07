@@ -1,6 +1,6 @@
 return {
     'L3MON4D3/LuaSnip',
-    event = "VeryLazy",
+    -- event = "VeryLazy",
     dependencies = {'rafamadriz/friendly-snippets'},
     keys = {
         {
@@ -69,6 +69,8 @@ return {
         }
         ls.add_snippets('javascript', js_snippets)
         ls.add_snippets('typescript', js_snippets)
+        ls.add_snippets('javascriptreact', js_snippets)
+        ls.add_snippets('typescriptreact', js_snippets)
         ls.add_snippets('octo', {
             s('g', {t(':large_green_circle:')}),
             s('r', {t(':red_circle:')}),

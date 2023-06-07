@@ -64,7 +64,40 @@ for _, mappings in pairs({
     {'n', '/', '/\\v', {noremap = true}},
     {'v', ':s/', ':s/\\v', {noremap = true}},
     {'c', '%s/', '%s/\\v', {noremap = true}},
-    {'c', 'g/', 'g/\\v', {noremap = true}}
+    {'c', '%s/', '%s/\\v', {noremap = true}},
+    {
+        'n',
+        '<c-a>',
+        function()
+            local word_under_cursor = vim.fn.expand('<cword>')
+            if word_under_cursor == 'true' then
+                vim.cmd('normal ciwfalse')
+                return
+            elseif word_under_cursor == 'false' then
+                vim.cmd('normal ciwtrue')
+                return
+            end
+            vim.cmd('normal! ')
+        end,
+        {noremap = true}
+    },
+    {
+        'n',
+        '<c-x>',
+        function()
+            local word_under_cursor = vim.fn.expand('<cword>')
+            if word_under_cursor == 'true' then
+                vim.cmd('normal ciwfalse')
+                return
+            elseif word_under_cursor == 'false' then
+                vim.cmd('normal ciwtrue')
+                return
+            end
+            vim.cmd('normal! ')
+        end,
+        {noremap = true}
+    }
+
 }) do
     local mode = mappings[1]
     local key = mappings[2]

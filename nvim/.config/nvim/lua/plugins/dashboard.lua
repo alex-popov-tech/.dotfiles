@@ -2601,7 +2601,7 @@ return {
             },
             {type = 'text', val = '', opts = {position = 'center'}}
         }
-        require('alpha').setup({layout = layout, opts = { noautocmd = true }})
+        require('alpha').setup({layout = layout, opts = {noautocmd = true}})
         vim.keymap.set('n', 'q', ':q<cr>', {buffer = 0})
 
         vim.api.nvim_create_autocmd('User', {
