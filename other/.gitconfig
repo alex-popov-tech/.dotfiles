@@ -1,6 +1,8 @@
+[init]
+  defaultBranch = main
 [user]
 	email = alex.popov.tech@gmail.com
-	name = Alexander Popov
+	name = Olexander Popov
 [color]
   branch = auto
 	diff = auto
