@@ -9,7 +9,7 @@ local format_title = function(title, is_active, max_width)
         Text = string.rep(' ', pad_len) .. title .. string.rep(' ', pad_len)
     }
     if is_active then
-        return {background, {Foreground = {Color = '#c6a0f6'}}, formatted_title}
+        return {background, {Foreground = {Color = '#957fb8'}}, formatted_title}
     else
         return {background, {Foreground = {Color = '#cad3f5'}}, formatted_title}
     end
@@ -25,6 +25,12 @@ wezterm.on('format-tab-title',
     return format_title('temp', tab.is_active, max_width)
 end)
 
+wezterm.on('update-right-status', function(window)
+    local date = wezterm.strftime '%Y-%m-%d %H:%M:%S'
+    window:set_right_status({Foreground = {Color = '#cad3f5'}},
+                            wezterm.format {{Text = ' ' .. date .. ' '}})
+end)
+
 wezterm.on('user-var-changed', function(window, pane, name, value)
     wezterm.log_info('user-var-changed', name, value)
     if name == user_var_tab_title_key then pane:tab():set_title(value) end
@@ -34,8 +40,7 @@ return {
     font = wezterm.font 'JetBrains Mono',
     font_size = 12,
     -- dpi = 144.0,
-    tab_max_width = 16,
-    -- color_scheme = 'Kanagawa (Gogh)',
+    tab_max_width = 14,
     colors = {
         tab_bar = {
             -- The color of the inactive tab bar edge/divider
@@ -81,11 +86,4 @@ return {
     -- window_background_opacity = 0.9,
     tab_bar_at_bottom = true,
     use_fancy_tab_bar = false
-    -- colors = {
-    --     tab_bar = {
-    --         -- The color of the inactive tab bar edge/divider
-    --         background = '#24273a',
-    --         new_tab = {bg_color = '#24273a', fg_color = '#cad3f5'}
-    --     }
-    -- }
 }
