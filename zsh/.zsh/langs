@@ -12,7 +12,7 @@ if [ -f $ASDF_DIR/asdf.sh ]; then
 fi
 # set java home (from java plugin)
 # source $HOME/.asdf/plugins/java/set-java-home.sh
-export JAVA_HOME="$HOME/.asdf/installs/java/adoptopenjdk-openj9-large_heap-8.0.282+8.openj9-0.24.0"
+export JAVA_HOME="$HOME/.asdf/installs/java/adoptopenjdk-11.0.18+10"
 
 export GOROOT="$HOME/.asdf/installs/golang/1.19/go"
 export GOPATH="$HOME/me/go"
