@@ -80,7 +80,7 @@ return {
                     'selene',
                     'luaformatter',
                     'goimports-reviser',
-          'golines'
+                    'golines'
                 },
                 automatic_installation = true,
                 automatic_setup = false
