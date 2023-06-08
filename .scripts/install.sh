@@ -136,14 +136,8 @@ function software() {
 
   brew bundle install --file $DPATH/Brewfile
 
-  if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
-    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-  fi
-
-  curl https://cht.sh/:cht.sh > ./cht.sh
-  chmod +x ./cht.sh
-  # mv ./cht.sh /usr/local/bin/
-  mv ./cht.sh /opt/homebrew/bin/
+  curl https://cht.sh/:cht.sh > /opt/homebrew/bin/cht.sh
+  chmod +x /opt/homebrew/bin/cht.sh
 
   echo
   echo "+---------------------------------+"
@@ -156,15 +150,6 @@ function software() {
       print -P "%F{160}▓▒░ The clone has failed.%f%b"
   fi
 
-  echo
-  echo "+---------------------------------+"
-  echo "|     Installing Neovim tools     |"
-  echo "+---------------------------------+"
-  echo
-  if [ ! -d "$HOME/.local/share/nvim/site/pack/packer/start/" ]; then
-    git clone --depth 1 https://github.com/wbthomason/packer.nvim\
-     $HOME/.local/share/nvim/site/pack/packer/start/packer.nvim
-  fi
   # gem install neovim
   # pip install neovim pynvim
   # pip3 install neovim pynvim
