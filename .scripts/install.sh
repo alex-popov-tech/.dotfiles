@@ -37,8 +37,8 @@ function langs() {
   brew install gpg tar
   asdf plugin-add nodejs
   bash $HOME/.asdf/plugins/nodejs/bin/import-release-team-keyring
-  asdf install nodejs lts
-  asdf global nodejs lts
+  asdf install nodejs 20.2.0
+  asdf global nodejs 20.2.0
 
   echo
   echo "+-------------------------------+"
@@ -46,8 +46,8 @@ function langs() {
   echo "+-------------------------------+"
   echo
   asdf plugin-add java https://github.com/halcyon/asdf-java.git
-  asdf install java adoptopenjdk-openj9-large_heap-8.0.282+8.openj9-0.24.0
-  asdf global java adoptopenjdk-openj9-large_heap-8.0.282+8.openj9-0.24.0
+  asdf install java adoptopenjdk-11.0.18+10
+  asdf global java adoptopenjdk-11.0.18+10
 
   echo
   echo "+---------------------------------+"
@@ -78,21 +78,12 @@ function langs() {
 
   echo
   echo "+------------------------------+"
-  echo "|       Installing Rust        |"
-  echo "+------------------------------+"
-  echo
-  asdf plugin-add rust
-  asdf install rust stable
-  asdf global rust stable
-
-  echo
-  echo "+------------------------------+"
   echo "|      Installing Golang       |"
   echo "+------------------------------+"
   echo
   asdf plugin-add golang
-  asdf install golang 1.19
-  asdf global golang 1.19
+  asdf install golang 1.20.5
+  asdf global golang 1.20.5
 
   asdf reshim
 }
@@ -110,7 +101,7 @@ function software() {
   # [ m1 ] insure required dir in path
   export PATH=/opt/homebrew/bin:$PATH
   is_arm64() {
-      test "$(uname -m)" = "arm64" 
+      test "$(uname -m)" = "arm64"
   }
   if is_arm64; then
     local homebrew_bin="/opt/homebrew/bin"
