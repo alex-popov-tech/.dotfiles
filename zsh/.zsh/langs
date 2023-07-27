@@ -14,7 +14,7 @@ fi
 # source $HOME/.asdf/plugins/java/set-java-home.sh
 export JAVA_HOME="$HOME/.asdf/installs/java/adoptopenjdk-11.0.18+10"
 
-export GOROOT="$HOME/.asdf/installs/golang/1.19/go"
+export GOROOT="$HOME/.asdf/installs/golang/1.20.5/go"
 export GOPATH="$HOME/me/go"
 export PATH="$PATH:$GOPATH/bin:$GOROOT/bin"
 alias gop="cd $GOPATH"
