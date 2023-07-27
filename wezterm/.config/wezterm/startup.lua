@@ -24,14 +24,11 @@ wezterm.on('gui-startup', function(cmd)
     })
     dotfiles_tab:set_title('dotfiles')
 
-    local lokalise_tab = window:spawn_tab({cwd = home .. '/me/lokalise-main/services/app/tests/e2e'})
-    lokalise_tab:set_title('lokalise')
-
     local kc_tab = window:spawn_tab({cwd = home .. '/me/informa_e2e'})
     kc_tab:set_title('K&C')
 
-    local frontend_tab = window:spawn_tab({cwd = home .. '/me/reporter/fe'})
-    frontend_tab:set_title('frontend')
+    local frontend_tab = window:spawn_tab({cwd = home .. '/me/reporter'})
+    frontend_tab:set_title('RIP')
 
     window:gui_window():perform_action(act.ActivateTab(0), stats_pane)
 end)
