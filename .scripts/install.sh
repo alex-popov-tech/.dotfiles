@@ -26,6 +26,8 @@ function main() {
   brew install stow
   $DPATH/.scripts/linkconfigs.sh
 
+  defaults write -g AppleShowAllFiles -bool true
+
 }
 
 function langs() {

@@ -70,7 +70,7 @@ return {
                     diagnostics.selene,
                     diagnostics.eslint_d.with({timeout = 10000}),
 
-                    code_actions.gitsigns
+                    -- code_actions.gitsigns
                 }
             })
             require('mason-null-ls').setup({
