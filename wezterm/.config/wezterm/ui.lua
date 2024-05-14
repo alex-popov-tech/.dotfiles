@@ -1,3 +1,4 @@
+local vars = require'vars'
 local wezterm = require 'wezterm'
 
 local format_title = function(title, is_active, max_width)
@@ -27,8 +28,8 @@ end)
 
 wezterm.on('update-right-status', function(window)
     local date = wezterm.strftime '%Y-%m-%d %H:%M:%S'
-    window:set_right_status({Foreground = {Color = '#cad3f5'}},
-                            wezterm.format {{Text = ' ' .. date .. ' '}})
+    local mode = vars.is_resize_mode and '>>RESIZE<< ' or ''
+    window:set_right_status(mode .. date)
 end)
 
 wezterm.on('user-var-changed', function(window, pane, name, value)
@@ -39,6 +40,7 @@ end)
 return {
     font = wezterm.font 'JetBrains Mono',
     font_size = 14,
+    adjust_window_size_when_changing_font_size = false,
     -- dpi = 144.0,
     tab_max_width = 14,
     colors = {
