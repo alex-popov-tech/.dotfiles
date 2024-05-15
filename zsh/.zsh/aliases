@@ -5,16 +5,8 @@ alias gb="git for-each-ref --sort='-committerdate' --format='%(committerdate) %(
 alias n="nvim"
 alias nvim_startuptime="nvim --startuptime h -c ':q'; cat h; rm -rf h"
 
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
-
-alias me="cd ~/me"
-
-alias c=" clear"
-alias cc=" clear"
-alias hist="history"
-alias tnode="npx ts-node"
+alias c="clear"
+alias cc="clear"
 
 alias refresh="$HOME/.dotfiles/.scripts/linkconfigs.sh"
 alias restart_bluetooth="$HOME/.dotfiles/.scripts/restart-bluetooth.sh"
@@ -25,19 +17,15 @@ alias color="$HOME/.dotfiles/.scripts/test_color.sh"
 alias gist="pbpaste | gh gist create | rg github | pbcopy"
 alias lg="lazygit"
 alias ld="lazydocker"
-#  alias gco="git branch | fzf | xargs -n1 git checkout"
-
-alias a="alias | rg"
 
 alias q="exit"
 
 alias app='fd ".app" /System/Library/CoreServices /System/Applications /Applications /System/Applications/Utilities --max-depth 1 | fzf | xargs -I {} open "{}"'
 
-alias ls='exa --icons'
-alias la='exa -a --icons'
+alias ls='exa --group-directories-first --icons'
+alias la='exa --group-directories-first --icons -a'
 alias lt='exa --tree --icons'
 
-alias help='navi'
 alias howto='cht.sh'
 
 alias -s lua=lua
