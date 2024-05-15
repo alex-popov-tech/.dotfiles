@@ -102,21 +102,3 @@ brew_uni() {
         fi
     fi
 }
-
-function wezterm_title() {
-  # Set wezterm tab and window title (for current tab)
-  # @param 1  tab title string (preferably singly quoted or single word)
-  local title title_b64
-
-  if [[ $# == 0 ]]; then
-    title_b64=""
-  else
-    title="$@"
-    title_b64=$(echo -n "${title}" | base64)
-  fi
-  # OCI 1337 str \007 ITerm escape seq implemented in wezterm which allows all
-  # kinds of behaviour from reading files to invoking certain methods, like
-  # SetUserVar.
-  echo "\x1b]1337;SetUserVar=tab_title=${title_b64}\007"
-  clear
-}
