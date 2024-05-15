@@ -5,8 +5,8 @@ for _, mappings in pairs({
     -- split and navigate to it
     {'n', '<up>', ':bn<cr>'},
     {'n', '<down>', ':bp<cr>'},
-    {'n', '<leader>-', ':split | wincmd j<cr>'},
-    {'n', '<leader>|', ':vsplit | wincmd l<cr>'},
+    {'n', '<leader>s', ':split | wincmd j<cr>'},
+    {'n', '<leader>v', ':vsplit | wincmd l<cr>'},
     {'n', 'zl', 'zo'}, -- remap zl back to zo
     -- replace selected
     {'n', 'R', ':%s///gI<left><left><left>'},
@@ -14,17 +14,7 @@ for _, mappings in pairs({
     {'n', 'a', 'len(getline(\'.\')) == 0 ? \'S\' : \'a\'', {expr = true}},
     -- show last commands list on last item
     {'n', 'Q', 'q:dd'},
-    -- map to drop into { } block
-    --  {"i", "{<cr>", "{}<left><cr><esc>O"},
-    --  {"i", "{<space>", "{}<left><space><left><space>"},
-    --  {"i", "(<cr>", "()<left><cr><esc>O"},
-    --  {"i", "(<space>", "()<left><space><left><space>"},
-    --  {"i", "({<space>", "({})<left><left><space><left><space>"},
-    --  {"i", "({<cr>", "({})<left><left><cr><esc>O"},
-    -- jump with  and stay cursor in center of the screen
-    -- {"n", "*", "*zz", { noremap = true }},
-    -- {"n", "n", "nzz", { noremap = true }},
-    -- {"n", "N", "Nzz", { noremap = true }},
+    -- blink on next match
     {
         'n',
         'n',
@@ -55,8 +45,6 @@ for _, mappings in pairs({
         end,
         {noremap = true, remap = true}
     },
-    -- stay cursor on place when 'J'
-    --  {"n", "J", "mzJ`z"},
     -- do not yank on x/X
     {'n', 'x', '"_dl'},
     {'n', 'X', '"_dh'},
@@ -80,24 +68,7 @@ for _, mappings in pairs({
             vim.cmd('normal! ')
         end,
         {noremap = true}
-    },
-    {
-        'n',
-        '<c-x>',
-        function()
-            local word_under_cursor = vim.fn.expand('<cword>')
-            if word_under_cursor == 'true' then
-                vim.cmd('normal ciwfalse')
-                return
-            elseif word_under_cursor == 'false' then
-                vim.cmd('normal ciwtrue')
-                return
-            end
-            vim.cmd('normal! ')
-        end,
-        {noremap = true}
     }
-
 }) do
     local mode = mappings[1]
     local key = mappings[2]

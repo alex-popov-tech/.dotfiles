@@ -1,7 +1,7 @@
-local util = require('util')
+local util = require("util")
 
 local headers = {
-    [[
+  [[
  __________________________________________
 / “I do not fear computers. I fear lack of \
 \  them.”— Isaac Asimov                    /
@@ -31,7 +31,7 @@ local headers = {
  _.-\'       |      BBb        \'-.  \'-.
 (________mrf\____.dBBBb._________)____)
 ]],
-    [[
+  [[
  __________________________________________
 / “A computer once beat me at chess, but i \
 | t was no match for me at kick boxing.”—  |
@@ -43,7 +43,7 @@ local headers = {
                 ||--WWW |
                 ||     ||
 ]],
-    [[
+  [[
  __________________________________________
 / “Computer Science is no more about compu \
 | ters than astronomy is about telescopes. |
@@ -64,7 +64,7 @@ local headers = {
 |                         |
 |                         |
 ]],
-    [[
+  [[
  __________________________________________
 / “The computer was born to solve problems \
 \  that did not exist before.”— Bill Gates /
@@ -89,7 +89,7 @@ local headers = {
       ,'  ,-----'   |        \
       `--{__________)        \/
 ]],
-    [[
+  [[
  __________________________________________
 / “Software is like entropy: It is difficu \
 | lt to grasp, weighs nothing, and obeys t |
@@ -108,7 +108,7 @@ local headers = {
      Vader
      koala
 ]],
-    [[
+  [[
  __________________________________________
 / “Software is a gas; it expands to fill i \
 \ ts container.”— Nathan Myhrvold          /
@@ -133,7 +133,7 @@ local headers = {
       ,'  ,-----'   |        \
       `--{__________)        \/
 ]],
-    [[
+  [[
  __________________________________________
 / “All parts should go together without fo \
 | rcing.  You must remember that the parts |
@@ -162,7 +162,7 @@ local headers = {
         ***    ***
        /___\  /___\
 ]],
-    [[
+  [[
  __________________________________________
 / “Standards are always out of date.  That \
 | ’s what makes them standards.”— Alan Ben |
@@ -175,7 +175,7 @@ local headers = {
            "-..__   _.-"
    ~ ~~ ~ ~  ~   """  ~~  ~
 ]],
-    [[
+  [[
  __________________________________________
 / “Physics is the universe’s operating sys \
 \ tem.”— Steven R Garman                   /
@@ -203,7 +203,7 @@ local headers = {
                                             -------------------------
 Modified from howard1@vax.oxford.ac.uk
 ]],
-    [[
+  [[
  __________________________________________
 / “It’s hardware that makes a machine fast \
 | .  It’s software that makes a fast machi |
@@ -217,7 +217,7 @@ Modified from howard1@vax.oxford.ac.uk
           \__|\ |    (-___-)        | /|__/
           '  '--'    ==`-'==        '--'  '
 ]],
-    [[
+  [[
  __________________________________________
 / “Imagination is more important than know \
 | ledge.  For knowledge is limited, wherea |
@@ -248,7 +248,7 @@ Modified from howard1@vax.oxford.ac.uk
    /__\      /__\     /__\      /__\       /__\      /__\      /__\     /__\
   (____)    (____)   (____)    (____)     (____)    (____)    (____)   (____)
 ]],
-    [[
+  [[
  __________________________________________
 / “The greatest enemy of knowledge is not  \
 | ignorance, it is the illusion of knowled |
@@ -282,7 +282,7 @@ Modified from howard1@vax.oxford.ac.uk
              [/# &HW   WWWWN    WH& \#/[
                  [/[#\xxxxxx\#[/[\x^@
 ]],
-    [[
+  [[
  __________________________________________
 / “The more you know, the more you realize \
 \  you know nothing.”— Socrates            /
@@ -305,7 +305,7 @@ Modified from howard1@vax.oxford.ac.uk
 jgs
 
 ]],
-    [[
+  [[
  __________________________________________
 / “Tell me and I forget.  Teach me and I r \
 | emember.  Involve me and I learn.”— Benj |
@@ -323,7 +323,7 @@ jgs
           \____\______/
 
 ]],
-    [[
+  [[
  __________________________________________
 / “Real knowledge is to know the extent of \
 \  one’s ignorance.”— Confucius            /
@@ -342,7 +342,7 @@ jgs
               `.              `.     .
                 `'`'`'`---..,___`;.-'
 ]],
-    [[
+  [[
  __________________________________________
 / “If people never did silly things, nothi \
 | ng intelligent would ever get done.”— Lu |
@@ -360,7 +360,7 @@ jgs
  ／｜乳｜｜／
  ￣￣￣￣￣
 ]],
-    [[
+  [[
  __________________________________________
 / “Getting information off the Internet is \
 |  like taking a drink from a fire hydrant |
@@ -388,7 +388,7 @@ jgs
              ￣        ｢   ゞ= '      }
                       ﾉ               〉
 ]],
-    [[
+  [[
  __________________________________________
 / “If you think your users are idiots, onl \
 \ y idiots will use it.”— Linus Torvalds   /
@@ -403,7 +403,7 @@ jgs
            ||            ||        `|| ||| || ||     ||jgs
         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 ]],
-    [[
+  [[
  __________________________________________
 / “From a programmer’s point of view, the  \
 | user is a peripheral that types when you |
@@ -418,7 +418,7 @@ jgs
         ||      |
         ||`---w||
 ]],
-    [[
+  [[
  __________________________________________
 / “Where is the ‘any’ key?”— Homer Simpson \
 | , in response to the message, “Press any |
@@ -456,7 +456,7 @@ jgs
           ｜|ﾚ'lノ
            レ'
 ]],
-    [[
+  [[
  __________________________________________
 / “Computers are good at following instruc \
 | tions, but not at reading your mind.”— D |
@@ -470,7 +470,7 @@ jgs
                ||----- |
                ||     ||
 ]],
-    [[
+  [[
  __________________________________________
 / “There is only one problem with common s \
 \ ense; it’s not very common.”— Milt Bryce /
@@ -486,7 +486,7 @@ jgs
                 `YY~~~~YY'
                  ||    ||
 ]],
-    [[
+  [[
  __________________________________________
 / “Your most unhappy customers are your gr \
 \ eatest source of learning.”— Bill Gates  /
@@ -499,7 +499,7 @@ jgs
   ____`._ ----- _,'_____PhS
          `-----'
 ]],
-    [[
+  [[
  __________________________________________
 / “Let us change our traditional attitude  \
 | to the construction of programs: Instead |
@@ -525,7 +525,7 @@ jgs
        ||----w |           ___,;`----'.___L_,-'`\__
        ||     ||          i_____;----\.____i""\____\
 ]],
-    [[
+  [[
  __________________________________________
 / “The Internet?  We are not interested in \
 \  it.”— Bill Gates, 1993                  /
@@ -544,7 +544,7 @@ jgs
     ___/ /) (  __/ __\ (
    (((__)((__)((__(((___)
 ]],
-    [[
+  [[
  __________________________________________
 / “The best way to get accurate informatio \
 | n on Usenet is to post something wrong a |
@@ -568,7 +568,7 @@ jgs
                ///-._ _ _ _ _ _ _}^ - - - - ~                     ~-- ,.-~
                                                                   /.-~
 ]],
-    [[
+  [[
  __________________________________________
 / “The most likely way for the world to be \
 |  destroyed, most experts agree, is by ac |
@@ -594,7 +594,7 @@ V|＼:/}ﾍ/  `ー又ー' \/}ノ{／|:／
   ,z'￣ ﾍ   /{ .ﾄ､  /￣  ヽ
 ／      /\./x 一 ﾐ./       ＼
 ]],
-    [[
+  [[
  __________________________________________
 / “Pessimists, we’re told, look at a glass \
 |  containing 50% air and 50% water and se |
@@ -618,7 +618,7 @@ V|＼:/}ﾍ/  `ー又ー' \/}ノ{／|:／
                      |     /        |     /     ~-.     `-/ _ \/__\
                      |_____|        |_____|         ~ - . _ _ _ _ _>
 ]],
-    [[
+  [[
  __________________________________________
 / “In a room full of top software designer \
 | s, if two agree on the same thing, that’ |
@@ -647,7 +647,7 @@ V|＼:/}ﾍ/  `ー又ー' \/}ノ{／|:／
      |                    |
    _\|_\|_\/(__\__)\__\//_|(_
 ]],
-    [[
+  [[
  __________________________________________
 / “It should be noted that no ethically-tr \
 | ained software engineer would ever conse |
@@ -668,7 +668,7 @@ V|＼:/}ﾍ/  `ー又ー' \/}ノ{／|:／
   /⌒ ‐ﾆ‐ ￣   /    \ ￣ ‐ﾆ‐⌒ヽ
  ヽ､_ノ       └-ｕ‐┘      ヽ､_ノ
 ]],
-    [[
+  [[
  __________________________________________
 / “Mostly, when you see programmers, they  \
 | aren’t doing anything.  One of the attra |
@@ -693,7 +693,7 @@ V|＼:/}ﾍ/  `ー又ー' \/}ノ{／|:／
    /____\
   (______)
 ]],
-    [[
+  [[
  __________________________________________
 / “If you think you are worth what you kno \
 | w, you are very wrong.  Your knowledge t |
@@ -730,7 +730,7 @@ V|＼:/}ﾍ/  `ー又ー' \/}ノ{／|:／
                          :   :
                         .'   '.
 ]],
-    [[
+  [[
  __________________________________________
 / “Programs must be written for people to  \
 | read, and only incidentally for machines |
@@ -743,7 +743,7 @@ V|＼:/}ﾍ/  `ー又ー' \/}ノ{／|:／
          (  V  )
         /--m-m-
 ]],
-    [[
+  [[
  __________________________________________
 / “Commenting your code is like cleaning y \
 | our bathroom — you never want to do it,  |
@@ -765,7 +765,7 @@ V|＼:/}ﾍ/  `ー又ー' \/}ノ{／|:／
    |＼|              |/|
    |  ||/＼／＼／＼/ | |
 ]],
-    [[
+  [[
  __________________________________________
 / “We have to stop optimizing for programm \
 | ers and start optimizing for users.”— Je |
@@ -786,7 +786,7 @@ V|＼:/}ﾍ/  `ー又ー' \/}ノ{／|:／
          //_// ___/
              \_)
 ]],
-    [[
+  [[
  __________________________________________
 / “Low-level programming is good for the p \
 \ rogrammer’s soul.”— John Carmack         /
@@ -797,7 +797,7 @@ V|＼:/}ﾍ/  `ー又ー' \/}ノ{／|:／
         ( )
       .( o ).
 ]],
-    [[
+  [[
  __________________________________________
 / “It’s OK to figure out murder mysteries, \
 |  but you shouldn’t need to figure out co |
@@ -822,7 +822,7 @@ V|＼:/}ﾍ/  `ー又ー' \/}ノ{／|:／
 jgs
 
 ]],
-    [[
+  [[
  __________________________________________
 / “If we wish to count lines of code, we s \
 | hould not regard them as ‘lines produced |
@@ -837,7 +837,7 @@ jgs
 *  ||----||
    ~~    ~~
 ]],
-    [[
+  [[
  __________________________________________
 / “Programming can be fun, so can cryptogr \
 | aphy; however they should not be combine |
@@ -851,7 +851,7 @@ jgs
      ()~*~()
      (_)-(_)
 ]],
-    [[
+  [[
  __________________________________________
 / “Before software should be reusable, it  \
 \ should be usable.”— Ralph Johnson        /
@@ -874,7 +874,7 @@ jgs
      .              .           .     . <.____`>
    .SSt  .      .     .      .    .   _.()`'()`'  .
 ]],
-    [[
+  [[
  __________________________________________
 / “If you automate a mess, you get an auto \
 \ mated mess.”— Rod Michael                /
@@ -917,7 +917,7 @@ jgs
            \'\"------\"`
 
 ]],
-    [[
+  [[
  __________________________________________
 / “Looking at code you wrote more than two \
 |  weeks ago is like looking at code you a |
@@ -933,7 +933,7 @@ jgs
              ||       ||
 
 ]],
-    [[
+  [[
  __________________________________________
 / “It is easier to change the specificatio \
 | n to fit the program than vice versa.”—  |
@@ -955,7 +955,7 @@ jgs
          \)    `--'    (/
 
 ]],
-    [[
+  [[
  __________________________________________
 / “Less than 10% of the code has to do wit \
 | h the ostensible purpose of the system;  |
@@ -971,7 +971,7 @@ jgs
   ____`._ ----- _,'_____PhS
          `-----'
 ]],
-    [[
+  [[
  __________________________________________
 / “If you have a procedure with ten parame \
 | ters, you probably missed some.”— Alan P |
@@ -1076,7 +1076,7 @@ jgs
            .                              .       ..          .       .  .   ..
              .                           .                    . .    ..    . .                             .
 ]],
-    [[
+  [[
  __________________________________________
 / “How rare it is that maintaining someone \
 |  else’s code is akin to entering a beaut |
@@ -1106,7 +1106,7 @@ jgs
    |    ::  @ | /
    !__________!/
 ]],
-    [[
+  [[
  __________________________________________
 / “Code generation, like drinking alcohol, \
 \  is good in moderation.”— Alex Lowe      /
@@ -1114,7 +1114,7 @@ jgs
   \
 (╯°□°）╯︵ ┻━┻
 ]],
-    [[
+  [[
  __________________________________________
 / “Simplicity, carried to the extreme, bec \
 \ omes elegance.”— Jon Franklin            /
@@ -1137,7 +1137,7 @@ jgs
   `---\'  |___|  `---\'
          `---'
 ]],
-    [[
+  [[
  __________________________________________
 / “A program is never less than 90% comple \
 | te, and never more than 95% complete.”—  |
@@ -1150,7 +1150,7 @@ jgs
     '､;:..: ,:.､.:',.:.::_.;..;:.‐'ﾞ
 
 ]],
-    [[
+  [[
  __________________________________________
 / “When you are stuck in a traffic jam wit \
 | h a Porsche, all you do is burn more gas |
@@ -1178,7 +1178,7 @@ jgs
       ,'  ,-----'   |        \
       `--{__________)        \/
 ]],
-    [[
+  [[
  __________________________________________
 / “Everyone by now presumably knows about  \
 | the danger of premature optimization.  I |
@@ -1200,7 +1200,7 @@ jgs
        \'-.-\'
 
 ]],
-    [[
+  [[
  __________________________________________
 / “Programming without an overall architec \
 | ture or design in mind is like exploring |
@@ -1233,7 +1233,7 @@ jgs
  ( |||| )   ( |||| )
   ` ~~ '     ` ~~ '
 ]],
-    [[
+  [[
  __________________________________________
 / “The best way to predict the future is t \
 | o implement it.”— David Heinemeier Hanss |
@@ -1257,7 +1257,7 @@ jgs
    |    ::  @ | /
    !__________!/
 ]],
-    [[
+  [[
  __________________________________________
 / “We need above all to know about changes \
 | ; no one wants or needs to be reminded 1 |
@@ -1273,7 +1273,7 @@ jgs
 
                Cowth Vader
 ]],
-    [[
+  [[
  __________________________________________
 / “On two occasions I have been asked, ‘If \
 |  you put into the machine wrong figures, |
@@ -1303,7 +1303,7 @@ jgs
          |-|  |-|
          ヒｺ  ヒｺ
 ]],
-    [[
+  [[
  __________________________________________
 / “Make everything as simple as possible,  \
 \ but not simpler.”— Albert Einstein       /
@@ -1333,7 +1333,7 @@ jgs
  _.-\'       |      BBb        \'-.  \'-.
 (________mrf\____.dBBBb._________)____)
 ]],
-    [[
+  [[
  __________________________________________
 / “Today, most software exists, not to sol \
 | ve a problem, but to interface with othe |
@@ -1361,7 +1361,7 @@ jgs
      \_______/  ___/  _|
                    --*
 ]],
-    [[
+  [[
  __________________________________________
 / “Good specifications will always improve \
 |  programmer productivity far better than |
@@ -1391,7 +1391,7 @@ jgs
             |  |   |  |
             |''|   |''|
 ]],
-    [[
+  [[
  __________________________________________
 / “The difference between theory and pract \
 | ice is that in theory, there is no diffe |
@@ -1407,7 +1407,7 @@ jgs
          | /\  /___\   / ^
           "-|__|   |__|
 ]],
-    [[
+  [[
  __________________________________________
 / “Don’t document the problem, fix it.”— A \
 \ tli Björgvin Oddsson                     /
@@ -1424,7 +1424,7 @@ jgs
         "*$bd$$$$      '*$$$$$$$$$$$o+#"
              """"          """""""
 ]],
-    [[
+  [[
  __________________________________________
 / “As a rule, software systems do not work \
 |  well until they have been used, and hav |
@@ -1442,7 +1442,7 @@ jgs
              ﾚ:ﾘ''          '' ｜:ハ:＼
              {人       ,、    ,｜/ノ:厂
 ]],
-    [[
+  [[
  __________________________________________
 / “If the code and the comments do not mat \
 | ch, possibly both are incorrect.”— Norm  |
@@ -1459,7 +1459,7 @@ jgs
                 `YY~~~~YY'
                  ||    ||
 ]],
-    [[
+  [[
  __________________________________________
 / “I think it’s a new feature.  Don’t tell \
 \  anyone it was an accident.”— Larry Wall /
@@ -1502,7 +1502,7 @@ jgs
            \'\"------\"`
 
 ]],
-    [[
+  [[
  __________________________________________
 / “If you don’t handle [exceptions], we sh \
 | ut your application down.  That dramatic |
@@ -1523,7 +1523,7 @@ jgs
          C__O__O__O__D
 snd     [_____________]
 ]],
-    [[
+  [[
  __________________________________________
 / “When debugging, novices insert correcti \
 | ve code; experts remove defective code.” |
@@ -1538,7 +1538,7 @@ snd     [_____________]
          | /\  /___\   / ^
           "-|__|   |__|
 ]],
-    [[
+  [[
  __________________________________________
 / “In a software project team of 10, there \
 |  are probably 3 people who produce enoug |
@@ -1556,7 +1556,7 @@ snd     [_____________]
   /⌒ ‐ﾆ‐ ￣   /    \ ￣ ‐ﾆ‐⌒ヽ
  ヽ､_ノ       └-ｕ‐┘      ヽ､_ノ
 ]],
-    [[
+  [[
  __________________________________________
 / “I think it is inevitable that people pr \
 | ogram poorly.  Training will not substan |
@@ -1572,7 +1572,7 @@ snd     [_____________]
              ||       ||
 
 ]],
-    [[
+  [[
  __________________________________________
 / “Program testing can be a very effective \
 |  way to show the presence of bugs, but i |
@@ -1646,7 +1646,7 @@ snd     [_____________]
                                                              \\         \\\\
                                                                \\\\_________\\\
 ]],
-    [[
+  [[
  __________________________________________
 / “Manually managing blocks of memory in C \
 |  is like juggling bars of soap in a pris |
@@ -1665,7 +1665,7 @@ snd     [_____________]
                 `YY~~~~YY'
                  ||    ||
 ]],
-    [[
+  [[
  __________________________________________
 / “There’s no obfuscated Perl contest beca \
 \ use it’s pointless.”— Jeff Polk          /
@@ -1677,7 +1677,7 @@ snd     [_____________]
        \ \_/_\_/>
        /_/   \_\
 ]],
-    [[
+  [[
  __________________________________________
 / “Java is the most distressing thing to h \
 \ it computing since MS-DOS.”— Alan Kay    /
@@ -1705,7 +1705,7 @@ snd     [_____________]
                     /  ゞ＿      '
                    /      一      `
 ]],
-    [[
+  [[
  __________________________________________
 / “There are only two things wrong with C+ \
 | +:  The initial concept and the implemen |
@@ -1737,7 +1737,7 @@ snd     [_____________]
       \  / /______\/ /
        \/___________/
 ]],
-    [[
+  [[
  __________________________________________
 / “It was a joke, okay?  If we thought it  \
 | would actually be used, we wouldn’t have |
@@ -1770,7 +1770,7 @@ snd     [_____________]
       \  / /______\/ /
        \/___________/
 ]],
-    [[
+  [[
  __________________________________________
 / “Web Services are like teenage sex.  Eve \
 | ryone is talking about doing it, and tho |
@@ -1799,7 +1799,7 @@ snd     [_____________]
                     ^^^//\\_^^//\\_^       ^(\_\_\_\)
                       ^^^ ^^ ^^^ ^
 ]],
-    [[
+  [[
  __________________________________________
 / “Perl: The only language that looks the  \
 | same before and after RSA encryption.”—  |
@@ -1872,7 +1872,7 @@ snd     [_____________]
                                                              \\         \\\\
                                                                \\\\_________\\\
 ]],
-    [[
+  [[
  __________________________________________
 / “I didn’t work hard to make Ruby perfect \
 |  for everyone, because you feel differen |
@@ -1893,7 +1893,7 @@ snd     [_____________]
 ／  ｜　＼／  ｜  ＼
     ｜        ｜
 ]],
-    [[
+  [[
  __________________________________________
 / “XML is not a language in the sense of a \
 |  programming language any more than sket |
@@ -1906,7 +1906,7 @@ snd     [_____________]
  (__)      ||     ||  \/\
 
 ]],
-    [[
+  [[
  __________________________________________
 / “BASIC is to computer programming as QWE \
 \ RTY is to typing.”— Seymour Papert       /
@@ -1926,7 +1926,7 @@ snd     [_____________]
          //_// ___/
              \_)
 ]],
-    [[
+  [[
  __________________________________________
 / “It has been discovered that C++ provide \
 | s a remarkable facility for concealing t |
@@ -1956,7 +1956,7 @@ snd     [_____________]
       H#M    /@####/      ,++.  / ==-,
                ,=/:, .+X@MMH@#H  \#####$=
 ]],
-    [[
+  [[
  __________________________________________
 / “UNIX is simple.  It just takes a genius \
 |  to understand its simplicity.”— Dennis  |
@@ -1989,7 +1989,7 @@ snd     [_____________]
                          :   :
                         .'   '.
 ]],
-    [[
+  [[
  __________________________________________
 / “Some people, when confronted with a pro \
 | blem, think ‘I know, I’ll use regular ex |
@@ -2014,7 +2014,7 @@ snd     [_____________]
         ＼／  ﾉ    |:|   }-く ＼
              /      V     \  ＼  ＼
 ]],
-    [[
+  [[
  __________________________________________
 / “I think computer viruses should count a \
 | s life.  I think it says something about |
@@ -2033,7 +2033,7 @@ snd     [_____________]
            ||            ||        `|| ||| || ||     ||jgs
         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 ]],
-    [[
+  [[
  __________________________________________
 / “The only truly secure system is one tha \
 | t is powered off, cast in a block of con |
@@ -2049,7 +2049,7 @@ snd     [_____________]
 
                Cowth Vader
 ]],
-    [[
+  [[
  __________________________________________
 / “Being able to break security doesn’t ma \
 | ke you a hacker anymore than being able  |
@@ -2078,7 +2078,7 @@ snd     [_____________]
              ￣        ｢   ゞ= '      }
                       ﾉ               〉
 ]],
-    [[
+  [[
  __________________________________________
 / “Companies spend millions of dollars on  \
 | firewalls, encryption and secure access  |
@@ -2099,7 +2099,7 @@ snd     [_____________]
       '---.~_ _ _|
 
 ]],
-    [[
+  [[
  __________________________________________
 / “If you think technology can solve your  \
 | security problems, then you don’t unders |
@@ -2128,7 +2128,7 @@ snd     [_____________]
         '―彡                         ｒー'"
             ヾノ人,,.r--､ノノノノノり'"
 ]],
-    [[
+  [[
  __________________________________________
 / “Hoaxes use weaknesses in human behavior \
 |  to ensure they are replicated and distr |
@@ -2144,7 +2144,7 @@ snd     [_____________]
      | |
      OOO
 ]],
-    [[
+  [[
  __________________________________________
 / “Passwords are like underwear: you don’t \
 |  let people see it, you should change it |
@@ -2160,7 +2160,7 @@ snd     [_____________]
          | /\  /___\   / ^
           "-|__|   |__|
 ]],
-    [[
+  [[
  __________________________________________
 / “I am not out to destroy Microsoft, that \
 |  would be a completely unintended side e |
@@ -2185,7 +2185,7 @@ snd     [_____________]
              . :´:.ヽ二二.ノ: :｀: .
             ／: : :  ／ハ＼: : : : ＼
 ]],
-    [[
+  [[
  __________________________________________
 / “Yes, we have a dress code. You have to  \
 | dress.”— Scott McNealy, co-founder of Su |
@@ -2209,7 +2209,7 @@ snd     [_____________]
   |OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO|
 
 ]],
-    [[
+  [[
  __________________________________________
 / “In an information economy, the most val \
 | uable company assets drive themselves ho |
@@ -2234,7 +2234,7 @@ snd     [_____________]
                ///-._ _ _ _ _ _ _}^ - - - - ~                     ~-- ,.-~
                                                                   /.-~
 ]],
-    [[
+  [[
  __________________________________________
 / “It’s better to wait for a productive pr \
 | ogrammer to become available than it is  |
@@ -2265,7 +2265,7 @@ snd     [_____________]
       H#M    /@####/      ,++.  / ==-,
                ,=/:, .+X@MMH@#H  \#####$=
 ]],
-    [[
+  [[
  __________________________________________
 / “I’m not one of those who think Bill Gat \
 | es is the devil.  I simply suspect that  |
@@ -2291,7 +2291,7 @@ snd     [_____________]
    \             y'
     `-.._____..-'
 ]],
-    [[
+  [[
  __________________________________________
 / “Two years from now, spam will be solved \
 \ .”— Bill Gates, 2004                     /
@@ -2311,7 +2311,7 @@ rヘn  /:\/ c=＝.::.＝=っ\/ |  rvへ
         ＼ :::>TﾇT<::: ／
           Y : ＼W／ : Y
 ]],
-    [[
+  [[
  __________________________________________
 / “The problem of viruses is temporary and \
 |  will be solved in two years.”— John McA |
@@ -2343,7 +2343,7 @@ rヘn  /:\/ c=＝.::.＝=っ\/ |  rvへ
       \  / /______\/ /
        \/___________/
 ]],
-    [[
+  [[
  __________________________________________
 / “Computer viruses are an urban legend.”— \
 \  Peter Norton, 1988                      /
@@ -2370,7 +2370,7 @@ rヘn  /:\/ c=＝.::.＝=っ\/ |  rvへ
                 \XXXXXXXXXXXXXXXXXXXXXXXXXX/
                   ""VXXXXXXXXXXXXXXXXXXV""
 ]],
-    [[
+  [[
  __________________________________________
 / “In 2031, lawyers will be commonly a par \
 | t of most development teams.”— Grady Boo |
@@ -2394,7 +2394,7 @@ rヘn  /:\/ c=＝.::.＝=っ\/ |  rvへ
   |OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO|
 
 ]],
-    [[
+  [[
  __________________________________________
 / “I don’t know what the language of the y \
 | ear 2000 will look like, but I know it w |
@@ -2425,7 +2425,7 @@ rヘn  /:\/ c=＝.::.＝=っ\/ |  rvへ
                r勺    ｜_｜ ｜  |   |  ||
                |`7    ｜ ｜ ｜  |   |   |
 ]],
-    [[
+  [[
  __________________________________________
 / “In the future, computers may weigh no m \
 | ore than 1.5 tonnes.”— Popular mechanics |
@@ -2443,7 +2443,7 @@ rヘn  /:\/ c=＝.::.＝=っ\/ |  rvへ
      [ [ /  \/ _/
     _[ [ \  /_/
 ]],
-    [[
+  [[
  __________________________________________
 / “I see little commercial potential for t \
 | he Internet for at least ten years.”— Bi |
@@ -2452,7 +2452,7 @@ rヘn  /:\/ c=＝.::.＝=っ\/ |  rvへ
   \
 (╯°□°）╯︵ ┻━┻
 ]],
-    [[
+  [[
  __________________________________________
 / “Before man reaches the moon, mail will  \
 | be delivered within hours from New York  |
@@ -2469,7 +2469,7 @@ rヘn  /:\/ c=＝.::.＝=っ\/ |  rvへ
              / / ``   w w
             w w
 ]],
-    [[
+  [[
 .____           __               .___
 |    |    _____/  |_  ______   __| _/____
 |    |  _/ __ \   __\/  ___/  / __ |/  _ \
@@ -2489,7 +2489,7 @@ rヘn  /:\/ c=＝.::.＝=っ\/ |  rvへ
 /____  >___|  (____  /____/____/   \/\_/  \___  >   |___|
      \/     \/     \/                         \/    <___>
 ]],
-    [[
+  [[
  _          _             _
 | |        | |           | |
 | |     ___| |_ ___    __| | ___
@@ -2513,7 +2513,7 @@ rヘn  /:\/ c=＝.::.＝=っ\/ |  rvへ
 \__ \ | | | (_| | | |  \ V  V /  __/  |_|
 |___/_| |_|\__,_|_|_|   \_/\_/ \___|  (_)
 ]],
-    [[
+  [[
 =================     ===============     ===============   ========  ========
 \\ . . . . . . .\\   //. . . . . . .\\   //. . . . . . .\\  \\. . .\\// . . //
 ||. . ._____. . .|| ||. . ._____. . .|| ||. . ._____. . .|| || . . .\/ . . .||
@@ -2534,7 +2534,7 @@ rヘn  /:\/ c=＝.::.＝=っ\/ |  rvへ
 \   _-'                                                                `-_   /
  `''                                                                      ``'
 ]],
-    [[
+  [[
 ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
 ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║
 ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║
@@ -2542,7 +2542,7 @@ rヘn  /:\/ c=＝.::.＝=っ\/ |  rvへ
 ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
 ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
 ]],
-    [[
+  [[
 `       --._    `-._   `-.   `.     :   /  .'   .-'   _.-'    _.--'
 `--.__     `--._   `-._  `-.  `. `. : .' .'  .-'  _.-'   _.--'     __.--'
    __    `--.__    `--._  `-._ `-. `. :/ .' .-' _.-'  _.--'    __.--'    __
@@ -2553,7 +2553,7 @@ rヘn  /:\/ c=＝.::.＝=っ\/ |  rvへ
         ```---...___    ``--..__`_(<_   _/)_'__..--''    ___...---'''
    ```-----....._____```---...___(____|_/__)___...---'''_____.....-----'''
 ]],
-    [[
+  [[
           .                                                      .",
         .n                   .                 .                  n.",
   .   .dP                  dP                   9b                 9b.    .",
@@ -2575,44 +2575,43 @@ dX.    9Xb      .dXb    __                         __    dXb.     dXP     .Xb",
                               X. 9  `   '  P )X",
                               `b  `       '  d'",
                                `             '"
-]]
+]],
 }
 
 return {
-    'goolord/alpha-nvim',
-    event = 'VimEnter',
-    config = function()
-        local length = util.t.len(headers)
-        math.randomseed(os.time(os.date('!*t')))
-        local index = math.random(length)
-        local logo = headers[index]
+  "goolord/alpha-nvim",
+  event = "VimEnter",
+  config = function()
+    local length = util.t.len(headers)
+    math.randomseed(os.time(os.date("!*t")))
+    local index = math.random(length)
+    local logo = headers[index]
 
-        local marginTopPercent = 0.2
-        local headerPadding = vim.fn.max({
-            2,
-            vim.fn.floor(vim.fn.winheight(0) * marginTopPercent)
-        })
-        local layout = {
-            {type = 'padding', val = headerPadding},
-            {
-                type = 'text',
-                val = vim.split(logo, '\n'),
-                opts = {position = 'center'}
-            },
-            {type = 'text', val = '', opts = {position = 'center'}}
-        }
-        require('alpha').setup({layout = layout, opts = {noautocmd = true}})
-        vim.keymap.set('n', 'q', ':q<cr>', {buffer = 0})
+    local marginTopPercent = 0.2
+    local headerPadding = vim.fn.max({
+      2,
+      vim.fn.floor(vim.fn.winheight(0) * marginTopPercent),
+    })
+    local layout = {
+      { type = "padding", val = headerPadding },
+      {
+        type = "text",
+        val = vim.split(logo, "\n"),
+        opts = { position = "center" },
+      },
+      { type = "text", val = "", opts = { position = "center" } },
+    }
+    require("alpha").setup({ layout = layout, opts = { noautocmd = true } })
+    vim.keymap.set("n", "q", ":q<cr>", { buffer = 0 })
 
-        vim.api.nvim_create_autocmd('User', {
-            pattern = 'LazyVimStarted',
-            callback = function()
-                local stats = require('lazy').stats()
-                local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-                layout[3].val = '⚡ Neovim loaded ' .. stats.count ..
-                                    ' plugins in ' .. ms .. 'ms'
-                pcall(vim.cmd.AlphaRedraw)
-            end
-        })
-    end
+    vim.api.nvim_create_autocmd("User", {
+      pattern = "LazyVimStarted",
+      callback = function()
+        local stats = require("lazy").stats()
+        local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
+        layout[3].val = "⚡ Neovim loaded " .. stats.count .. " plugins in " .. ms .. "ms"
+        pcall(vim.cmd.AlphaRedraw)
+      end,
+    })
+  end,
 }

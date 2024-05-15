@@ -26,6 +26,7 @@ vim.api.nvim_create_autocmd('BufNewFile', {
     end
 })
 
+-- open file on place of last visit
 vim.api.nvim_create_autocmd('BufReadPost', {
     callback = function()
         local mark = vim.api.nvim_buf_get_mark(0, '"')
@@ -36,17 +37,15 @@ vim.api.nvim_create_autocmd('BufReadPost', {
     end
 })
 
-local ns = vim.api.nvim_create_namespace('toggle_hlsearch')
-
-local function toggle_hlsearch(char)
-    if vim.fn.mode() == 'n' then
-        local keys = {'<CR>', 'n', 'N', '*', '#', '?', '/'}
-        local new_hlsearch = vim.tbl_contains(keys, vim.fn.keytrans(char))
-
-        if vim.opt.hlsearch:get() ~= new_hlsearch then
-            vim.opt.hlsearch = new_hlsearch
-        end
-    end
-end
-
-vim.on_key(toggle_hlsearch, ns)
+-- blink matches on searching
+-- local ns = vim.api.nvim_create_namespace('toggle_hlsearch')
+-- vim.on_key(function(char)
+--     if vim.fn.mode() == 'n' then
+--         local keys = {'<CR>', 'n', 'N', '*', '#', '?', '/'}
+--         local new_hlsearch = vim.tbl_contains(keys, vim.fn.keytrans(char))
+--
+--         if vim.opt.hlsearch:get() ~= new_hlsearch then
+--             vim.opt.hlsearch = new_hlsearch
+--         end
+--     end
+-- end, ns)

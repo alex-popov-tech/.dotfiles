@@ -35,7 +35,7 @@ for key, val in pairs({
     -- virtualedit = "all", -- make all area 'editable'-ish
     -- listchars = {tab = '-->', eol = ''}, -- replace chars
     list = true, -- Show some invisible characters (tabs...
-    signcolumn = 'yes', -- things to the left of line number
+    signcolumn = 'no', -- things to the left of line number
     foldenable = true, -- don't fold by default
     foldcolumn = '0',
     foldlevel = 99, -- Using ufo provider need a large value, feel free to decrease the value
@@ -90,17 +90,3 @@ vim.filetype.add({
 
 vim.cmd('cnoreabbrev W noa w')
 vim.cmd('cnoreabbrev WA noa wa')
-
--- vim.o.statuscolumn =
---     '%s' -- .. '%{%v:lua.ScAppropriateLineNo(v:lnum, v:relnum)%}'
---     .. '%=' .. '%{%' -- evaluate this, and then evaluate what it returns
---     .. '&number ?' .. '(v:relnum ?' ..
---         'printf("%"..len(line("$")).."s", v:relnum)' -- when showing relative numbers, make sure to pad so things don't shift as you move the cursor
---     .. ':' .. 'v:lnum' .. ')' .. ':' .. '""' .. ' ' -- space between lines and fold
---     .. '%}' .. '%=' .. '%#FoldColumn#%{' -- expression for showing fold expand/colapse
---     .. 'foldlevel(v:lnum) > foldlevel(v:lnum - 1)' -- any folds?
---     .. '? (foldclosed(v:lnum) == -1' -- currently open?
---     .. '? ""' -- point down
---     .. ': ""' -- point to right
---     .. ')' .. ': " "' -- blank for no fold, or inside fold
---     .. '}'
