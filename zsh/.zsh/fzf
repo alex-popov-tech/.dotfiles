@@ -1,7 +1,6 @@
 # vi: ft=zsh
 
-#  [ -f "/usr/local/opt/fzf/shell/completion.zsh" ] && source /usr/local/opt/fzf/shell/completion.zsh
-[ -f "/usr/local/opt/fzf/shell/key-bindings.zsh" ] && source /usr/local/opt/fzf/shell/key-bindings.zsh
+[ -f "/opt/homebrew/opt/fzf/shell/key-bindings.zsh" ] && source /opt/homebrew/opt/fzf/shell/key-bindings.zsh
 
 fzf_opts=(
   '--border'
@@ -11,9 +10,6 @@ fzf_opts=(
   '--bind "ctrl-a:select-all"'
   '--bind "ctrl-y:execute-silent(echo {+} | pbcopy)"'
   '--bind "ctrl-e:execute(echo {+} | xargs -o nvim)"'
-  '--color=bg+:#363a4f,bg:#24273a,spinner:#f4dbd6,hl:#ed8796'
-  '--color=fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6'
-  '--color=marker:#f4dbd6,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796'
   '--preview "([[ -f {} ]] && (bat --style=changes,numbers --color=always {} || cat {})) || ([[ -d {} ]] && (exa --icons --tree --level=2 {} | less)) || echo {} 2> /dev/null | head -200"'
 )
 export FZF_DEFAULT_COMMAND="fd --hidden --follow --exclude '.git' --exclude 'node_modules'"
