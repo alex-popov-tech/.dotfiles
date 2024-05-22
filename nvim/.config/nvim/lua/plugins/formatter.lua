@@ -1,6 +1,7 @@
 return {
   "stevearc/conform.nvim",
   dependencies = { "williamboman/mason.nvim" },
+  cmd = { "ConformInfo" },
   keys = {
     {
       "<leader>f",
@@ -12,6 +13,7 @@ return {
   },
   opts = {
     formatters_by_ft = {
+      sql = { "sqlfmt" },
       lua = { "stylua" },
       yaml = { "yamlfmt" },
       json = { "prettierd" },
@@ -25,9 +27,10 @@ return {
   init = function()
     vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
     require("mason").setup()
+    local tools = { "stylua", "prettierd", "yamlfmt", "sqlfmt" }
     local registry = require("mason-registry")
     registry.refresh(function()
-      for _, name in pairs({ "stylua", "prettierd", "yamlfmt" }) do
+      for _, name in pairs(tools) do
         local package = registry.get_package(name)
         if not registry.is_installed(name) then
           package:install()
@@ -40,5 +43,11 @@ return {
         end
       end
     end)
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      pattern = "*",
+      callback = function(args)
+        require("conform").format({ bufnr = args.buf })
+      end,
+    })
   end,
 }

@@ -49,16 +49,47 @@ return {
     end,
   },
 
+  -- open terminal in floating window
   {
-    "robitx/gp.nvim",
-    event = "VeryLazy",
-    opts = {
-      openai_api_key = { "cat", "/Users/alex/.openapi" },
+    "numToStr/FTerm.nvim",
+    config = function()
+      require("FTerm").setup({
+        border = "rounded",
+        dimensions = { height = 0.99, width = 0.99 },
+      })
+      vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
+    end,
+    keys = {
+      {
+        "<F11>",
+        function()
+          require("FTerm").toggle()
+        end,
+        mode = { "t", "n" },
+      },
     },
-    config = function(_, opts)
-      local gp = require("gp")
-      gp.setup(opts)
-      gp._state.chat_agent = "ChatGPT4"
+  },
+
+  -- global replace
+  {
+    "windwp/nvim-spectre",
+    dependencies = { "nvim-lua/plenary.nvim", "nvim-lua/popup.nvim" },
+    cmd = "Replace",
+    config = function()
+      require("spectre").setup({
+        color_devicons = true,
+        line_sep_start = "┌-----------------------------------------",
+        result_padding = "¦  ",
+        line_sep = "└-----------------------------------------",
+        highlight = {
+          ui = "String",
+          search = "DiffDelete",
+          replace = "DiffChange",
+        },
+      })
+      vim.api.nvim_create_user_command("Replace", function()
+        require("spectre").open()
+      end, {})
     end,
   },
 }

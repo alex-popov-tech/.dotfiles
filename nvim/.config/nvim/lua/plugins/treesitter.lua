@@ -5,6 +5,17 @@ return {
   config = function()
     require("nvim-treesitter.configs").setup({
       indent = { enable = true },
+      highlight = {
+        enable = true, -- false will disable the whole extension
+        use_languagetree = true,
+      },
+      autotag = { enable = true },
+      matchup = {
+        enable = true, -- mandatory, false will disable the whole extension
+      },
+      sync_install = false,
+      ignore_install = {},
+      auto_install = true,
       ensure_installed = {
         "angular",
         "arduino",
@@ -74,19 +85,11 @@ return {
         "typescript",
         "typoscript",
         "vim",
+        "regex",
         "vue",
         "xml",
         "yaml",
         "zig",
-      },
-      highlight = {
-        enable = true, -- false will disable the whole extension
-        indent = { enable = true },
-        use_languagetree = true,
-      },
-      autotag = { enable = true },
-      matchup = {
-        enable = true, -- mandatory, false will disable the whole extension
       },
     })
   end,
