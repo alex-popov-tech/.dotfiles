@@ -70,7 +70,21 @@ return {
     dependencies = { "williamboman/mason.nvim", "neovim/nvim-lspconfig", { "folke/neodev.nvim", opts = {} } },
     config = function()
       require("mason").setup()
-      local general_on_attach = require("lsp.on_attach")
+      local registry = require("mason-registry")
+      registry.refresh(function()
+        for _, name in pairs({ "sqlfluff" }) do
+          local package = registry.get_package(name)
+          if not registry.is_installed(name) then
+            package:install()
+          else
+            package:check_new_version(function(success, result_or_err)
+              if success then
+                package:install({ version = result_or_err.latest_version })
+              end
+            end)
+          end
+        end
+      end)
       local mason_lspconfig = require("mason-lspconfig")
       mason_lspconfig.setup({
         ensure_installed = {
@@ -88,7 +102,7 @@ return {
       })
       mason_lspconfig.setup_handlers({
         function(server_name)
-          local opts = require("lsp.servers." .. server_name)(general_on_attach)
+          local opts = require("lsp.servers." .. server_name)
           opts.flags = {
             debounce_text_changes = 100,
             lintDebounce = 200,
