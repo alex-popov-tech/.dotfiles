@@ -73,6 +73,7 @@ return {
         },
         mappings = {
           ["<bs>"] = "close_node",
+          ["/"] = "",
         },
       },
     },
