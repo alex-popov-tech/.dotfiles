@@ -20,8 +20,9 @@ return {
   {
     "folke/trouble.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
+    cmd = "Trouble",
     keys = {
-      { "'D", "<cmd>TroubleToggle<cr>" },
+      { "'D", "<cmd>Trouble diagnostics toggle focus=true win.type=float<cr>" },
     },
     opts = {
       auto_close = true,
