@@ -44,27 +44,15 @@ return {
       -- 'hrsh7th/cmp-emoji',
       "onsails/lspkind-nvim",
       "jcha0713/cmp-tw2css",
-      {
-        "Exafunction/codeium.nvim",
-        dependencies = { "nvim-lua/plenary.nvim" },
-        cmd = "Codeium",
-        build = ":Codeium Auth",
-        opts = { enable_chat = true },
-      },
-      {
-        "MattiasMTS/cmp-dbee",
-        dependencies = { "kndndrj/nvim-dbee" },
-        ft = "sql", -- optional but good to have
-        opts = {}, -- needed
-      },
     },
     config = function()
       local cmp = require("cmp")
       cmp.setup({
         sources = cmp.config.sources({
-          { name = "codeium" },
-          { name = "cmp-dbee" },
+          --{ name = "codeium" },
+          -- { name = "supermaven" },
           { name = "nvim_lsp" },
+          { name = "lazydev" },
           { name = "cmp-tw2css" },
           -- {name = 'luasnip'},
           { name = "buffer" },
@@ -115,7 +103,7 @@ return {
           ["<C-CR>"] = cmp.mapping.complete(),
           ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
         }),
-        experimental = { ghost_text = { hl_group = "LspCodeLens" } },
+        -- experimental = { ghost_text = { hl_group = "LspCodeLens" } },
       })
 
       cmp.setup.filetype("lua", {
