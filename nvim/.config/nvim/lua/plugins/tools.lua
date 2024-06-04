@@ -92,4 +92,12 @@ return {
       end, {})
     end,
   },
+
+  -- screenkey logging
+  {
+    "NStefan002/screenkey.nvim",
+    cmd = "Screenkey",
+    version = "*",
+    config = true,
+  },
 }
