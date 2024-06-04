@@ -54,6 +54,18 @@ return {
         end),
       }),
     },
+    {
+      key = "r",
+      mods = "LEADER",
+      action = act.PromptInputLine({
+        description = "Enter tab name:",
+        action = wezterm.action_callback(function(window, pane, line)
+          if line then
+            window:active_tab():set_title(line)
+          end
+        end),
+      }),
+    },
 
     { key = "1", mods = "LEADER", action = act.ActivateTab(0) },
     { key = "2", mods = "LEADER", action = act.ActivateTab(1) },
