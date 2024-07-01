@@ -16,7 +16,7 @@ for key, val in pairs({
   scrolloff = 3, -- how many lines till window border to see when scrolling
   sidescrolloff = 10, -- same as above but for columns
   shell = "/opt/homebrew/bin/zsh",
-  inccommand = "nosplit", -- incremental search ( enabled by default )
+  inccommand = "split", -- substitute preview
   updatetime = 100, -- timeout for showing cursorhold events, etc
   hidden = true, -- Enable modified buffers in background
   background = "dark",
@@ -64,6 +64,7 @@ for key, val in pairs({
   wildmode = "longest:full,full", -- Command-line completion mode
   spelllang = "en_us",
   spell = true, -- native spelling, z= to suggest, zg to mark as good
+  undofile = true, -- save undo history
 }) do
   vim.opt[key] = val
 end
@@ -75,7 +76,7 @@ end
 -- vim.opt.grepformat = "%f:%l:%c:%m"
 -- vim.opt.pumblend = 10 -- Popup blend
 -- vim.opt.pumheight = 10 -- Maximum number of entries in a popup
--- vim.opt.diffopt:append({ "linematch:60" }) -- splits char
+vim.opt.diffopt:append({ "linematch:60" }) -- context when using as git mergetool
 
 vim.g.markdown_recommended_style = 0 -- fix markdown indentation settings
 vim.o.shortmess = "filnxtToOFWIcC"
