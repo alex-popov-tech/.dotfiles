@@ -12,6 +12,3 @@ vim.api.nvim_create_user_command("Bonly", function()
   end
 end, {})
 vim.cmd("cnoreabbrev bo silent Bonly")
-
-vim.cmd("cnoreabbrev bd bdelete %")
-vim.cmd("cnoreabbrev bd! bdelete! %")
