@@ -8,7 +8,7 @@ return {
       function()
         require("conform").format()
       end,
-      mode = { "t", "n" },
+      mode = { "n" },
     },
   },
   opts = {

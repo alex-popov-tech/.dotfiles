@@ -33,13 +33,6 @@ return {
       { noremap = true, expr = true },
     },
     {
-      "gc",
-      function()
-        require("telescope").extensions.live_grep_args.live_grep_args()
-      end,
-      { noremap = true, expr = true },
-    },
-    {
       "go",
       function()
         require("telescope.builtin").grep_string()
@@ -55,6 +48,12 @@ return {
       "gh",
       function()
         require("telescope.builtin").oldfiles({ cwd_only = true })
+      end,
+    },
+    {
+      "z=",
+      function()
+        require("telescope.builtin").spell_suggest(require("telescope.themes").get_cursor())
       end,
     },
   },

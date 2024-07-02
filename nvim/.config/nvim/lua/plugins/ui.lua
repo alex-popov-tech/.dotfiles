@@ -19,6 +19,17 @@ return {
       },
     },
     opts = {
+      routes = {
+        {
+          view = "notify",
+          filter = {
+            event = "msg_showmode",
+            any = {
+              { find = "recording" },
+            },
+          },
+        },
+      },
       views = {
         mini = {
           win_options = {
@@ -46,6 +57,17 @@ return {
         lsp_doc_border = true, -- add a border to hover docs and signature help
       },
     },
+    config = function(_, opts)
+      require("noice").setup(opts)
+      local macro_group = vim.api.nvim_create_augroup("MacroRecording", { clear = true })
+      vim.api.nvim_create_autocmd("RecordingLeave", {
+        group = macro_group,
+        callback = function()
+          -- Display a message when macro recording stops
+          print("Macro recording stopped")
+        end,
+      })
+    end,
   },
 
   {

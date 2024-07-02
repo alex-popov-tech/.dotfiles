@@ -1,3 +1,5 @@
+local util = require("util")
+
 return {
 
   -- current lsp path in winbar
@@ -8,7 +10,11 @@ return {
       vim.api.nvim_create_autocmd("LspAttach", {
         group = vim.api.nvim_create_augroup("UserLspConfig", { clear = false }),
         callback = function(args)
-          local client = vim.lsp.get_client_by_id(args.data.client_id)
+          -- local client = vim.lsp.get_client_by_id(args.data.client_id)
+          local clients = vim.lsp.get_clients()
+          local client = util.t.find(function(it)
+            return it.id == args.data.client_id
+          end, clients)
           if client and client.server_capabilities.documentSymbolProvider then
             require("nvim-navic").attach(client, args.buf)
           end
@@ -54,7 +60,7 @@ return {
       require("mason").setup()
       local registry = require("mason-registry")
       registry.refresh(function()
-        for _, name in pairs({ "actionlint", "yamllint", "proselint", "textlint" }) do
+        for _, name in pairs({ "actionlint", "yamllint", "proselint" }) do
           local package = registry.get_package(name)
           if not registry.is_installed(name) then
             package:install()
@@ -75,7 +81,6 @@ return {
         sources = {
           diagnostics.actionlint,
           diagnostics.proselint,
-          diagnostics.textlint,
           diagnostics.yamllint,
         },
       })
@@ -107,6 +112,7 @@ return {
       local mason_lspconfig = require("mason-lspconfig")
       mason_lspconfig.setup({
         ensure_installed = {
+          "astro",
           "lua_ls",
           "eslint",
           "tsserver",

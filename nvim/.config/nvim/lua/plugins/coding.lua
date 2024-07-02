@@ -6,7 +6,7 @@ return {
   -- screen code snippets
   {
     "mistricky/codesnap.nvim",
-    event = "VeryLazy",
+    cmd = { "Screen", "Take", "TakeScreen" },
     build = "make",
     config = function()
       local codesnap = require("codesnap")
