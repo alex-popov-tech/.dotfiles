@@ -72,12 +72,15 @@ for _, mappings in pairs({
     end,
     { noremap = true },
   },
+  { "n", "<leader>c", "gc", { remap = true } },
+  { "n", "<leader>cc", "gcc", { remap = true } },
+  { "v", "<leader>c", "gc", { remap = true } },
 }) do
   local mode = mappings[1]
-  local key = mappings[2]
-  local value = mappings[3]
+  local lhs = mappings[2]
+  local rhs = mappings[3]
   local options = mappings[4] or { silent = true }
-  vim.keymap.set(mode, key, value, options)
+  vim.keymap.set(mode, lhs, rhs, options)
 end
 
 -- Define modes and delete mappings to be replaced
@@ -89,8 +92,8 @@ local delete_mappings = {
   X = '"_X',
 }
 -- Iterate over the modes and set the new mappings
-for _, mode in ipairs(modes) do
-  for lhs, rhs in pairs(delete_mappings) do
-    vim.keymap.set(mode, lhs, rhs, { noremap = true, silent = true })
-  end
-end
+-- for _, mode in ipairs(modes) do
+--   for lhs, rhs in pairs(delete_mappings) do
+--     vim.keymap.set(mode, lhs, rhs, { noremap = true, silent = true })
+--   end
+-- end
