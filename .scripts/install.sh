@@ -2,6 +2,36 @@
 
 DPATH=$HOME/.dotfiles
 
+print_header() {
+  local msg="$1"
+  echo "=================================================="
+  echo "== $msg"
+  echo "=================================================="
+}
+
+sparse_clone_and_copy() {
+  local repo_url="$1"
+  local checkout_path="$2"
+  local target_dir="$3"
+  local tmp_dir=$(mktemp -d)
+
+  print_header "Cloning repository: $repo_url"
+  git clone --depth 1 --filter=blob:none --sparse "$repo_url" "$tmp_dir"
+
+  print_header "Setting sparse checkout for path: $checkout_path"
+  cd "$tmp_dir"
+  git sparse-checkout set "$checkout_path"
+
+  print_header "Copying $checkout_path to $target_dir"
+  cp -r "$tmp_dir/$checkout_path" "$target_dir"
+
+  print_header "Cleaning up temporary directory"
+  cd "$OLDPWD"
+  rm -rf "$tmp_dir"
+
+  print_header "Done!"
+}
+
 function main() {
 
   echo
@@ -9,6 +39,7 @@ function main() {
   if [[ $REPLY =~ ^[Yy]$ ]]
   then
     software
+    sparse_clone_and_copy "https://github.com/ryanoasis/nerd-fonts.git" "patched-fonts/JetBrainsMono/Ligatures" "$PWD/fonts"
   fi
 
   echo
@@ -71,21 +102,12 @@ function langs() {
 
   echo
   echo "+------------------------------+"
-  echo "|        Installing Lua        |"
-  echo "+------------------------------+"
-  echo
-  asdf plugin-add lua
-  asdf install lua 5.3.5
-  asdf global lua 5.3.5
-
-  echo
-  echo "+------------------------------+"
   echo "|      Installing Golang       |"
   echo "+------------------------------+"
   echo
   asdf plugin-add golang
-  asdf install golang 1.20.5
-  asdf global golang 1.20.5
+  asdf install golang 1.22.4
+  asdf global golang 1.22.4
 
   asdf reshim
 }
@@ -140,22 +162,6 @@ function software() {
 
   curl https://cht.sh/:cht.sh > /opt/homebrew/bin/cht.sh
   chmod +x /opt/homebrew/bin/cht.sh
-
-  echo
-  echo "+---------------------------------+"
-  echo "|          Installing Zi          |"
-  echo "+---------------------------------+"
-  echo
-  if [ ! -d "$HOME/.zi" ]; then
-    command git clone -q --depth=1 --branch "main" https://github.com/z-shell/zi "$HOME/.zi/bin" && \
-      print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
-      print -P "%F{160}▓▒░ The clone has failed.%f%b"
-  fi
-
-  # gem install neovim
-  # pip install neovim pynvim
-  # pip3 install neovim pynvim
-  # npm install -g neovim
 
 }
 
