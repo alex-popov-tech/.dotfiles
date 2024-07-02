@@ -70,17 +70,8 @@ function langs() {
   brew install gpg tar
   asdf plugin-add nodejs
   bash $HOME/.asdf/plugins/nodejs/bin/import-release-team-keyring
-  asdf install nodejs 20.2.0
-  asdf global nodejs 20.2.0
-
-  echo
-  echo "+-------------------------------+"
-  echo "|        Installing Java        |"
-  echo "+-------------------------------+"
-  echo
-  asdf plugin-add java https://github.com/halcyon/asdf-java.git
-  asdf install java adoptopenjdk-11.0.18+10
-  asdf global java adoptopenjdk-11.0.18+10
+  asdf install nodejs 22.4.0
+  asdf global nodejs 22.4.0
 
   echo
   echo "+---------------------------------+"
@@ -97,8 +88,8 @@ function langs() {
   echo "+-------------------------------+"
   echo
   asdf plugin-add ruby
-  asdf install ruby 2.7.0
-  asdf global ruby 2.7.0
+  asdf install ruby 3.2.0
+  asdf global ruby 3.2.0
 
   echo
   echo "+------------------------------+"
@@ -106,8 +97,8 @@ function langs() {
   echo "+------------------------------+"
   echo
   asdf plugin-add golang
-  asdf install golang 1.22.4
-  asdf global golang 1.22.4
+  asdf install golang 1.22.5
+  asdf global golang 1.22.5
 
   asdf reshim
 }
@@ -155,8 +146,6 @@ function software() {
   echo "|        Installing Software        |"
   echo "+-----------------------------------+"
   echo
-
-  cp -f $DPATH/.other/fonts/*.ttf $HOME/Library/Fonts
 
   brew bundle install --file $DPATH/Brewfile
 
