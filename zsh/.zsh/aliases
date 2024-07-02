@@ -18,13 +18,16 @@ alias gist="pbpaste | gh gist create | rg github | pbcopy"
 alias lg="lazygit"
 alias ld="lazydocker"
 
+alias gf='nvim $(fzf)'
+
 alias q="exit"
 
 alias app='fd ".app" /System/Library/CoreServices /System/Applications /Applications /System/Applications/Utilities --max-depth 1 | fzf | xargs -I {} open "{}"'
 
-alias ls='exa --group-directories-first --icons'
-alias la='exa --group-directories-first --icons -a'
-alias lt='exa --tree --icons'
+alias ls='lsd --group-dirs first --classify'
+alias la='lsd --group-dirs first --classify --almost-all'
+alias ll='lsd --group-dirs first --classify --almost-all --long'
+alias lt='lsd --tree'
 
 alias howto='cht.sh'
 
@@ -36,3 +39,5 @@ alias -s yml=nvim
 alias -s json=nvim
 alias -s txt=nvim
 alias -s go="go run"
+
+alias nr="npm run"
