@@ -10,7 +10,7 @@ local format_title = function(title, is_active, max_width)
     Text = string.rep(" ", pad_len) .. title .. string.rep(" ", pad_len),
   }
   if is_active then
-    return { background, { Foreground = { Color = "#957fb8" } }, formatted_title }
+    return { background, { Foreground = { Color = "teal" } }, formatted_title }
   else
     return { background, { Foreground = { Color = "#cad3f5" } }, formatted_title }
   end
@@ -27,7 +27,7 @@ end)
 
 wezterm.on("update-right-status", function(window)
   local date = wezterm.strftime("%Y-%m-%d %H:%M:%S")
-  local mode = vars.is_resize_mode and ">>RESIZE<< " or ""
+  local mode = vars.is_resize_mode and "Resize Mode Activated |↑ up|↓ down|← left|→ right|  " or ""
   window:set_right_status(mode .. date)
 end)
 
@@ -39,18 +39,18 @@ wezterm.on("user-var-changed", function(window, pane, name, value)
 end)
 
 return {
-  font = wezterm.font("JetBrains Mono", { weight = "DemiBold" }),
+  font = wezterm.font("JetBrainsMono Nerd Font", { weight = "Medium" }),
   font_rules = {
     {
       italic = true,
       font = wezterm.font({
-        family = "JetBrains Mono",
+        family = "JetBrainsMono Nerd Font Mono",
         weight = "DemiBold",
         italic = true,
       }),
     },
   },
-  font_size = 16,
+  font_size = 14,
   adjust_window_size_when_changing_font_size = false,
   -- dpi = 144.0,
   tab_max_width = 14,
