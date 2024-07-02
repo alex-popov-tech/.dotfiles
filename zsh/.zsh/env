@@ -1,6 +1,6 @@
 # vi: ft=zsh
 
-# vi-mode go to differents modes faser
+# vi-mode go to different modes faster
 export KEYTIMEOUT=1
 # add brew and packages to PATH
 export PATH="/usr/local/bin:/opt/homebrew/bin:$PATH:$HOME/.local/bin"

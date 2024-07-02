@@ -1,6 +1,5 @@
 tap "code-hex/tap"
 tap "homebrew/bundle"
-tap "homebrew/cask-versions"
 tap "homebrew/services"
 tap "jakehilborn/jakehilborn"
 tap "jesseduffield/lazygit"
