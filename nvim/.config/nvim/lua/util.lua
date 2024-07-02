@@ -9,18 +9,10 @@ return {
   string = {
     rep = function(str, count)
       local acc = ""
-      for _=1,count do
+      for _ = 1, count do
         acc = acc .. str
       end
       return acc
-    end
-  },
-  list = {
-    concat = vim.list_extend,
-    foreach = function(table, consumer)
-      for i, val in pairs(table) do
-        consumer(val)
-      end
     end,
   },
   t = {
@@ -28,6 +20,10 @@ return {
     merge = vim.tbl_deep_extend,
     len = vim.tbl_count,
     includes = vim.tbl_contains,
+    filter = vim.tbl_filter,
+    find = function(predicate, tbl)
+      return vim.tbl_filter(predicate, tbl)[1]
+    end,
   },
   hi = vim.api.nvim_set_hl,
 }
