@@ -1,37 +1,5 @@
 return {
   {
-    "SuperBo/fugit2.nvim",
-    opts = { width = "80%", height = "80%" },
-    cmd = { "Fugit2", "Fugit2Graph" },
-    keys = { { "<leader>F", mode = "n", "<cmd>Fugit2<cr>" } },
-    init = function()
-      vim.cmd("cnoreabbrev git Fugit2")
-    end,
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-      "nvim-tree/nvim-web-devicons",
-      "nvim-lua/plenary.nvim",
-      {
-        -- optional: for diffview.nvim integration
-        "sindrets/diffview.nvim",
-        dependencies = { "nvim-tree/nvim-web-devicons" },
-        -- lazy, only load diffview by these commands
-        cmd = {
-          "DiffviewFileHistory",
-          "DiffviewOpen",
-          "DiffviewToggleFiles",
-          "DiffviewFocusFiles",
-          "DiffviewRefresh",
-        },
-      },
-      {
-        "chrisgrieser/nvim-tinygit", -- optional: for Github PR view
-        dependencies = { "stevearc/dressing.nvim" },
-      },
-    },
-  },
-
-  {
     "kndndrj/nvim-dbee",
     cmd = { "Dbee" },
     dependencies = { "MunifTanjim/nui.nvim" },
@@ -116,4 +84,20 @@ return {
     end,
   },
 
+  {
+    "NeogitOrg/neogit",
+    cmd = { "Neogit" },
+    dependencies = {
+      "nvim-lua/plenary.nvim", -- required
+      "sindrets/diffview.nvim", -- optional - Diff integration
+
+      -- Only one of these is needed, not both.
+      "nvim-telescope/telescope.nvim", -- optional
+      "ibhagwan/fzf-lua", -- optional
+    },
+    config = true,
+    init = function()
+      vim.cmd("cnoreabbrev git Neogit")
+    end,
+  },
 }
