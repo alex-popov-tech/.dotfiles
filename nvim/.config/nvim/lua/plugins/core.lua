@@ -47,12 +47,5 @@ return {
     branch = "master",
   },
 
-  {
-    "smjonas/live-command.nvim", -- live command
-    cmd = { "Norm" },
-    config = function()
-      require("live-command").setup({ commands = { Norm = { cmd = "norm" } } })
-    end,
-  },
   { "mbbill/undotree", keys = { { "<leader>u", "<cmd>UndotreeToggle<cr>" } }, cmd = "UndotreeToggle" }, -- see undo tree
 }
