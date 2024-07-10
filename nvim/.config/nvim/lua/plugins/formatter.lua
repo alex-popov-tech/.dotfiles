@@ -1,5 +1,6 @@
 return {
   "stevearc/conform.nvim",
+  event = "VeryLazy",
   dependencies = { "williamboman/mason.nvim" },
   cmd = { "ConformInfo" },
   keys = {

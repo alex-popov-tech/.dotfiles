@@ -42,7 +42,6 @@ return {
           "^NvimTree$",
           "^packer$",
           "^startify$",
-          "^fugitive$",
           "^fugitiveblame$",
           "^qf$",
           "^help$",
