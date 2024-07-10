@@ -100,4 +100,20 @@ return {
     version = "*",
     config = true,
   },
+
+  -- screen code snippets
+  {
+    "mistricky/codesnap.nvim",
+    cmd = { "Screen", "Take", "TakeScreen" },
+    build = "make",
+    config = function()
+      local codesnap = require("codesnap")
+      for _, name in ipairs({ "Screen", "Take", "TakeScreen" }) do
+        vim.api.nvim_create_user_command(name, function()
+          codesnap.copy_into_clipboard()
+        end, { nargs = "*", range = "%" })
+      end
+    end,
+  },
+
 }
