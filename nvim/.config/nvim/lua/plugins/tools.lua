@@ -100,4 +100,6 @@ return {
       vim.cmd("cnoreabbrev git Neogit")
     end,
   },
+
+  { "MunifTanjim/nui.nvim", event = "VeryLazy" },
 }
