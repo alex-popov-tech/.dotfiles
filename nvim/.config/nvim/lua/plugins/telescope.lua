@@ -11,6 +11,12 @@ return {
   cmd = { "Telescope" },
   keys = {
     {
+      "gr",
+      function()
+        require("telescope.builtin").resume()
+      end,
+    },
+    {
       "gf",
       function()
         require("telescope.builtin").git_files()
