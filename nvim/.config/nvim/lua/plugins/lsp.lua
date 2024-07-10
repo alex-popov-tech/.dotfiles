@@ -119,7 +119,7 @@ return {
           "jsonls",
           "yamlls",
           "tailwindcss",
-          "emmet_ls",
+          "emmet_language_server",
           "prismals",
           "typos_lsp",
         },
