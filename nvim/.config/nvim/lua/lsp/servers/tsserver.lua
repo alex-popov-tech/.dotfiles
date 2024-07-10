@@ -2,8 +2,10 @@ local util = require("util")
 local common = require("lsp.servers.common")
 
 return util.t.merge("force", common, {
-  -- filetypes = { "typescript", "javascript" },
   settings = {
+    implicitProjectConfiguration = {
+      checkJs = true,
+    },
     typescript = {
       inlayHints = {
         includeInlayParameterNameHints = "all",
