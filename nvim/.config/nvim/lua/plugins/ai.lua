@@ -19,18 +19,6 @@ return {
   },
 
   {
-    -- alternative to https://github.com/github/copilot.vim/tree/release
-    "supermaven-inc/supermaven-nvim",
-    enabled = false,
-    opts = {
-      keymaps = {
-        accept_suggestion = "<Tab>",
-      },
-      disable_keymaps = false, -- disables built in keymaps for more manual control
-    },
-  },
-
-  {
     "robitx/gp.nvim",
     event = "VeryLazy",
     opts = {
@@ -42,35 +30,5 @@ return {
       gp._state.chat_agent = "ChatGPT4"
       vim.cmd("cnoreabbrev gp GpChatNew popup")
     end,
-  },
-
-  {
-    "CopilotC-Nvim/CopilotChat.nvim",
-    cmd = {
-      "CopilotChat",
-      "CopilotChatOpen",
-      "CopilotChatClose",
-      "CopilotChatToggle",
-      "CopilotChatStop",
-      "CopilotChatReset",
-      "CopilotChatSave",
-      "CopilotChatLoad",
-      "CopilotChatDebugInfo",
-      "CopilotChatExplain",
-      "CopilotChatReview",
-      "CopilotChatFix",
-      "CopilotChatOptimize",
-      "CopilotChatDocs",
-      "CopilotChatTests",
-      "CopilotChatFixDiagnostic",
-      "CopilotChatCommit",
-      "CopilotChatCommitStaged",
-    },
-    branch = "canary",
-    dependencies = {
-      { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
-      { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
-    },
-    opts = {},
   },
 }
