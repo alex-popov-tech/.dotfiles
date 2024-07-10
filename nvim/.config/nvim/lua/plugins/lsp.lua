@@ -60,7 +60,7 @@ return {
       require("mason").setup()
       local registry = require("mason-registry")
       registry.refresh(function()
-        for _, name in pairs({ "actionlint", "yamllint", "proselint" }) do
+        for _, name in pairs({ "actionlint", "yamllint" }) do
           local package = registry.get_package(name)
           if not registry.is_installed(name) then
             package:install()
@@ -80,7 +80,6 @@ return {
         update_in_insert = false,
         sources = {
           diagnostics.actionlint,
-          diagnostics.proselint,
           diagnostics.yamllint,
         },
       })
@@ -122,6 +121,7 @@ return {
           "tailwindcss",
           "emmet_ls",
           "prismals",
+          "typos_lsp",
         },
         automatic_installation = true,
       })
