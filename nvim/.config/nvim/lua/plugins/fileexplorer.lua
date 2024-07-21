@@ -1,7 +1,16 @@
 return {
   {
     "stevearc/oil.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
+    dependencies = {
+      {
+        "echasnovski/mini.icons",
+        version = false,
+        config = function()
+          require("mini.icons").setup()
+          MiniIcons.mock_nvim_web_devicons()
+        end,
+      },
+    },
     opts = {
       float = {
         -- Padding around the floating window
@@ -45,7 +54,14 @@ return {
     branch = "v3.x",
     dependencies = {
       "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+      {
+        "echasnovski/mini.icons",
+        version = false,
+        config = function()
+          require("mini.icons").setup()
+          MiniIcons.mock_nvim_web_devicons()
+        end,
+      },
       "MunifTanjim/nui.nvim",
     },
     keys = { { "<c-f>", "<cmd>Neotree reveal<cr>" } },
