@@ -1,187 +1,104 @@
 local util = require("util")
 
 return {
-  "feline-nvim/feline.nvim",
-  branch = "master",
-  dependencies = { "nvim-tree/nvim-web-devicons", "lewis6991/gitsigns.nvim" },
-  event = { "BufEnter *.*" },
-  config = function()
-    require("gitsigns").setup()
-    local feline = require("feline")
-    local colors = {
-      bg = "none",
-      default_fg = "#C8C093",
-      red = "#C34043",
-      git_red = "#C34043",
-      git_yellow = "#DCA561",
-      git_green = "#76946A",
-      diagnostic_error = "#E82424",
-      diagnostic_warn = "#FF9E3B",
-      diagnostic_info = "#6A9589",
-      light_blue = "#7E9CD8",
-      light_purple = "#957FB8",
-    }
-
-    local is_ignored_filetype = function()
-      return not util.t.includes({ "prompt" }, vim.bo.filetype)
-    end
-
-    local component = function(comp)
-      return util.t.merge("force", {
-        hl = { bg = colors.bg },
-        enabled = is_ignored_filetype,
-      }, comp)
-    end
-    local space = component({ provider = " ", hl = { bg = colors.bg } })
-
-    local git_branch = require("feline.providers.git").git_info_exists()
-
-    feline.setup({
-      force_inactive = {
-        filetypes = {
-          "^NvimTree$",
-          "^packer$",
-          "^startify$",
-          "^fugitiveblame$",
-          "^qf$",
-          "^help$",
-        },
-        buftypes = { "^terminal$", "prompt" },
-        bufnames = {},
+  {
+    "nvim-lualine/lualine.nvim",
+    event = { "BufEnter *.*" },
+    -- enabled = false,
+    dependencies = {
+      {
+        "echasnovski/mini.icons",
+        version = false,
+        config = function()
+          require("mini.icons").setup()
+          MiniIcons.mock_nvim_web_devicons()
+        end,
       },
-      components = {
-        active = {
+    },
+    opts = {
+      extensions = { "mason", "lazy", "neo-tree", "toggleterm", "trouble" },
+      options = {
+        theme = "tokyonight",
+        -- component_separators = { left = "", right = "" },
+      },
+      sections = {
+        lualine_a = {},
+        lualine_b = {
           {
-            space,
-            component({
-              provider = {
-                name = "file_info",
-                opts = {
-                  type = "relative",
-                  colored_icon = true,
-                  file_modified_icon = "",
-                },
-              },
-              hl = { fg = colors.default_fg, style = "italic" },
-              short_provider = {
-                name = "file_info",
-                opts = { type = "base_only" },
-              },
-            }),
-            component({
-              truncate_hide = true,
-              provider = " on ",
-              enabled = function()
-                return git_branch
-              end,
-              hl = { fg = colors.light_blue },
-            }),
-            component({
-              truncate_hide = true,
-              enabled = function()
-                return git_branch
-              end,
-              provider = function()
-                return "" .. " " .. git_branch
-              end,
-              hl = { fg = colors.git_red, style = "italic" },
-            }),
-          },
-          {
-            component({
-              truncate_hide = true,
-              provider = "lsp_client_names",
-              hl = { fg = colors.light_blue, style = "italic" },
-            }),
-            space,
+            "mode",
+            fmt = function()
+              return MiniIcons.get("file", "init.lua")
+            end,
           },
         },
-        inactive = {},
-      },
-    })
+        lualine_c = {
+          {
+            "filename",
+            file_status = true, -- Displays file status (readonly status, modified status)
+            newfile_status = false, -- Display new file status (new file means no write after created)
+            path = 1,
+            shorting_target = 40, -- Shortens path to leave 40 spaces in the window
+          },
+          "branch",
+        },
 
-    local navic = require("nvim-navic")
-    local winbarComponents = {
-      space,
-      component({
-        truncate_hide = true,
-        provider = function(c)
-          return require("feline.providers.file").file_info(c, {
-            type = "unique",
-            colored_icon = true,
-            file_modified_icon = "",
-          })
-        end,
-        hl = { fg = colors.default_fg, style = "italic" },
-        short_provider = function(c)
-          return require("feline.providers.file").file_info(c, {
-            type = "base-only",
-            colored_icon = true,
-            file_modified_icon = "",
-          })
-        end,
-      }),
-      space,
-      component({
-        provider = "position",
-        hl = { fg = colors.light_blue, gui = "italic" },
-      }),
-      space,
-      component({
-        truncate_hide = true,
-        provider = function()
-          return navic.get_location()
-        end,
-        enabled = function()
-          return navic.is_available()
-        end,
-      }),
-      component({
-        truncate_hide = true,
-        provider = "git_diff_added",
-        enabled = function()
-          return require("feline.providers.git").git_info_exists()
-        end,
-        hl = { fg = colors.git_green },
-      }),
-      component({
-        truncate_hide = true,
-        provider = "git_diff_changed",
-        enabled = function()
-          return require("feline.providers.git").git_info_exists()
-        end,
-        hl = { fg = colors.git_yellow },
-      }),
-      component({
-        truncate_hide = true,
-        provider = "git_diff_removed",
-        enabled = function()
-          require("feline.providers.git").git_info_exists()
-        end,
-        hl = { fg = colors.git_red },
-      }),
-      component({
-        truncate_hide = true,
-        provider = "diagnostic_errors",
-        enabled = function()
-          return require("feline.providers.lsp").diagnostics_exist(vim.diagnostic.severity.ERROR)
-        end,
-        hl = { fg = colors.diagnostic_error, gui = "italic" },
-      }),
-      component({
-        truncate_hide = true,
-        provider = "diagnostic_warnings",
-        enabled = function()
-          return require("feline.providers.lsp").diagnostics_exist(vim.diagnostic.severity.WARN)
-        end,
-        hl = { fg = colors.diagnostic_warn, gui = "italic" },
-      }),
-    }
-    feline.winbar.setup({
-      components = {
-        active = { winbarComponents },
-        inactive = { winbarComponents },
+        lualine_x = { "encoding", "filetype" },
+        lualine_y = { "fileformat" },
+        lualine_z = {},
       },
-    })
-  end,
+      inactive_sections = {
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = { "filename" },
+        lualine_x = { "location" },
+        lualine_y = {},
+        lualine_z = {},
+      },
+      winbar = {
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = {
+          {
+            "filetype",
+            icon_only = true,
+            padding = { left = 1, right = 0 },
+            separator = { right = "", left = "" },
+            color = { bg = "none" },
+          },
+          {
+            "filename",
+            padding = { left = 0, right = 1 },
+            separator = { right = "", left = "" },
+            color = { bg = "none" },
+          },
+          {
+            "location",
+            padding = { left = 0, right = 1 },
+            separator = { right = "", left = "" },
+            color = { bg = "none" },
+          },
+          { "diagnostics", padding = 0, color = { bg = "none" } },
+        },
+        lualine_x = {},
+        lualine_y = {},
+        lualine_z = {},
+      },
+      inactive_winbar = {
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = { { "diagnostics", padding = 0, color = { bg = "none" } } },
+        lualine_x = {},
+        lualine_y = {},
+        lualine_z = {},
+      },
+      tabline = {
+        lualine_a = { "buffers" },
+        lualine_b = {},
+        lualine_c = {},
+        lualine_x = {},
+        lualine_y = {},
+        lualine_z = {},
+      },
+    },
+  },
 }
