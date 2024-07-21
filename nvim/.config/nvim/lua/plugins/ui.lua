@@ -93,7 +93,27 @@ return {
   },
 
   {
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require("tokyonight").setup({
+        style = "night",
+        transparent = true,
+        on_colors = function() end,
+        on_highlights = function() end,
+        styles = {
+          sidebars = "transparent",
+          floats = "transparent",
+        },
+      })
+      vim.cmd("colorscheme tokyonight")
+    end,
+  },
+
+  {
     "rebelot/kanagawa.nvim",
+    enabled = false,
     lazy = false, -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
