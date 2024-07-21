@@ -72,11 +72,26 @@ return {
 
   {
     "folke/twilight.nvim",
-    cmd = "Twilight",
+    event = "VeryLazy",
     opts = {},
+    config = function(_, opts)
+      local twilight = require("twilight")
+      twilight.setup(opts)
+      vim.api.nvim_create_autocmd("InsertLeave", {
+        group = vim.api.nvim_create_augroup("UserTwilight", { clear = false }),
+        callback = function(args)
+          vim.cmd("TwilightDisable")
+        end,
+      })
+      vim.api.nvim_create_autocmd("InsertEnter", {
+        group = vim.api.nvim_create_augroup("UserTwilight", { clear = false }),
+        callback = function(args)
+          vim.cmd("TwilightEnable")
+        end,
+      })
+    end,
   },
 
-  -- colorscheme
   {
     "rebelot/kanagawa.nvim",
     lazy = false, -- make sure we load this during startup if it is your main colorscheme
