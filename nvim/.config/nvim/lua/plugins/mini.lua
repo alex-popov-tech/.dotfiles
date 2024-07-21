@@ -2,10 +2,6 @@ return {
   {
     "echasnovski/mini.nvim",
     dependencies = {
-      -- {
-      --   "JoosepAlviste/nvim-ts-context-commentstring",
-      --   opts = { enable_autocmd = false },
-      -- },
       {
         "folke/ts-comments.nvim",
         opts = {},
@@ -17,7 +13,6 @@ return {
       local extra = require("mini.extra")
 
       require("mini.basics").setup()
-
       require("mini.surround").setup()
 
       require("mini.move").setup({ -- Module mappings. Use `''` (empty string) to disable one.
