@@ -101,5 +101,33 @@ return {
     end,
   },
 
+  {
+    "alex-popov-tech/change_case.nvim",
+    config = function()
+      vim.o.iskeyword = "@,48-57,_,192-255,-"
+    end,
+    keys = {
+      {
+        "gC",
+        function()
+          require("change_case").coherse_keyword("camel_case")
+        end,
+      },
+      {
+        "gs",
+        function()
+          require("change_case").coherse_keyword("snake_case")
+        end,
+      },
+      {
+        "gk",
+        function()
+          require("change_case").coherse_keyword("kebab_case")
+        end,
+      },
+    },
+  },
+
+  -- needed for my custom lsp rename
   { "MunifTanjim/nui.nvim", event = "VeryLazy" },
 }
