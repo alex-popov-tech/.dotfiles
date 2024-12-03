@@ -1,12 +1,12 @@
 return {
   "nvim-telescope/telescope.nvim",
   dependencies = {
-    "nvim-lua/popup.nvim",
-    "nvim-lua/plenary.nvim",
-    { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-    { "nvim-telescope/telescope-live-grep-args.nvim" },
+    { "nvim-lua/popup.nvim", lazy = true },
+    { "nvim-lua/plenary.nvim", lazy = true },
+    { "nvim-telescope/telescope-fzf-native.nvim", build = "make", lazy = true },
+    { "nvim-telescope/telescope-live-grep-args.nvim", lazy = true },
     "benfowler/telescope-luasnip.nvim",
-    { "danielfalk/smart-open.nvim", dependencies = { "kkharji/sqlite.lua" } },
+    { "danielfalk/smart-open.nvim", dependencies = { "kkharji/sqlite.lua", lazy = true }, lazy = true },
   },
   cmd = { "Telescope" },
   keys = {
@@ -91,7 +91,6 @@ return {
     telescope.load_extension("fzf")
     telescope.load_extension("luasnip")
     telescope.load_extension("smart_open")
-    telescope.load_extension("rest")
     vim.cmd("cnoreabbrev tel Telescope")
     vim.cmd("hi TelescopeBorder guibg=none")
   end,

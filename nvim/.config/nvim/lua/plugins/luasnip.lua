@@ -1,7 +1,7 @@
 return {
   "L3MON4D3/LuaSnip",
-  -- event = "VeryLazy",
-  dependencies = { "rafamadriz/friendly-snippets" },
+  event = "VeryLazy",
+  dependencies = { { "rafamadriz/friendly-snippets", lazy = true } },
   keys = {
     {
       "<tab>",

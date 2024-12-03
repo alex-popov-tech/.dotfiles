@@ -1,8 +1,10 @@
+local util = require("util")
+
 return {
   {
     "mfussenegger/nvim-dap",
     enabled = false,
-    dependencies = { "jay-babu/mason-nvim-dap.nvim", "rcarriga/nvim-dap-ui" },
+    dependencies = { { "jay-babu/mason-nvim-dap.nvim", lazy = true }, { "rcarriga/nvim-dap-ui", lazy = true } },
     config = function()
       local dap, dapui = require("dap"), require("dapui")
       require("mason-nvim-dap").setup({

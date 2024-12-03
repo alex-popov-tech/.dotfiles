@@ -1,17 +1,17 @@
 return {
   "nvim-treesitter/nvim-treesitter",
-  event = "BufReadPost",
+  event = "VeryLazy",
   build = ":TSUpdate",
   config = function()
     require("nvim-treesitter.configs").setup({
+      matchup = {
+        enable = true, -- mandatory, false will disable the whole extension
+      },
+      textobjects = { enable = true },
       indent = { enable = true },
       highlight = {
         enable = true, -- false will disable the whole extension
         use_languagetree = true,
-      },
-      autotag = { enable = true },
-      matchup = {
-        enable = true, -- mandatory, false will disable the whole extension
       },
       sync_install = false,
       ignore_install = {},

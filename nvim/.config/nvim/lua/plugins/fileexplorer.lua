@@ -1,13 +1,14 @@
 return {
   {
     "stevearc/oil.nvim",
-    dependencies = {
+    dependencies = { { "echasnovski/mini.icons", opts = {} } },
+    cmd = { "OilReveal", "Oil" },
+    keys = {
       {
-        "echasnovski/mini.icons",
-        version = false,
-        config = function()
-          require("mini.icons").setup()
-          MiniIcons.mock_nvim_web_devicons()
+        "<c-f>",
+        function()
+          local oil = require("oil")
+          oil.toggle_float(oil.get_current_dir())
         end,
       },
     },
@@ -23,7 +24,7 @@ return {
         },
       },
       view_options = {
-        show_hidden = true,
+        show_hidden = false,
       },
       experimental_watch_for_changes = false,
       columns = {
@@ -34,64 +35,58 @@ return {
       },
       keymaps = {
         ["?"] = "actions.show_help",
+        ["<BS>"] = "actions.parent",
         ["<C-v>"] = "actions.select_vsplit",
         ["<C-s>"] = "actions.select_split",
         ["q"] = "actions.close",
       },
     },
-    cmd = { "OilReveal", "Oil" },
-    init = function()
-      vim.api.nvim_create_user_command("OilReveal", function()
-        local oil = require("oil")
-        oil.toggle_float(oil.get_current_dir())
-      end, {})
-      vim.cmd("cnoreabbrev oil OilReveal")
-    end,
   },
 
-  {
-    "nvim-neo-tree/neo-tree.nvim",
-    branch = "v3.x",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      {
-        "echasnovski/mini.icons",
-        version = false,
-        config = function()
-          require("mini.icons").setup()
-          MiniIcons.mock_nvim_web_devicons()
-        end,
-      },
-      "MunifTanjim/nui.nvim",
-    },
-    keys = { { "<c-f>", "<cmd>Neotree reveal<cr>" } },
-    cmd = { "Neotree" },
-    init = function()
-      vim.cmd("cnoreabbrev filetree Neotree source=filesystem reveal=true position=float")
-    end,
-    opts = {
-      close_if_last_window = true,
-      popup_border_style = "rounded",
-      filesystem = {
-        filtered_items = {
-          visible = true, -- when true, they will just be displayed differently than normal items
-          hide_dotfiles = true,
-          hide_gitignored = true,
-          hide_hidden = true,
-        },
-      },
-      window = {
-        position = "float",
-        -- width = "90%",
-        mapping_options = {
-          noremap = true,
-          nowait = true,
-        },
-        mappings = {
-          ["<bs>"] = "close_node",
-          ["/"] = "",
-        },
-      },
-    },
-  },
+  -- {
+  --   "nvim-neo-tree/neo-tree.nvim",
+  --   branch = "v3.x",
+  --   dependencies = {
+  --     { "nvim-lua/plenary.nvim", lazy = true },
+  --     {
+  --       "echasnovski/mini.icons",
+  --       version = false,
+  --       lazy = true,
+  --       config = function()
+  --         require("mini.icons").setup()
+  --         MiniIcons.mock_nvim_web_devicons()
+  --       end,
+  --     },
+  --     "MunifTanjim/nui.nvim",
+  --   },
+  --   keys = { { "<c-f>", "<cmd>Neotree reveal<cr>" } },
+  --   cmd = { "Neotree" },
+  --   init = function()
+  --     vim.cmd("cnoreabbrev filetree Neotree source=filesystem reveal=true position=float")
+  --   end,
+  --   opts = {
+  --     close_if_last_window = true,
+  --     popup_border_style = "rounded",
+  --     filesystem = {
+  --       filtered_items = {
+  --         visible = true, -- when true, they will just be displayed differently than normal items
+  --         hide_dotfiles = true,
+  --         hide_gitignored = true,
+  --         hide_hidden = true,
+  --       },
+  --     },
+  --     window = {
+  --       position = "float",
+  --       -- width = "90%",
+  --       mapping_options = {
+  --         noremap = true,
+  --         nowait = true,
+  --       },
+  --       mappings = {
+  --         ["<bs>"] = "close_node",
+  --         ["/"] = "",
+  --       },
+  --     },
+  --   },
+  -- },
 }

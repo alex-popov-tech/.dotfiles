@@ -4,6 +4,7 @@ return {
     dependencies = {
       {
         "folke/ts-comments.nvim",
+        lazy = true,
         opts = {},
       },
     },

@@ -9,7 +9,6 @@ return util.t.merge("force", common, {
         -- Avoid TypeError: Cannot read properties of undefined (reading 'length')
         url = "",
       },
-      schemas = require("schemastore").yaml.schemas(),
     },
   },
 })

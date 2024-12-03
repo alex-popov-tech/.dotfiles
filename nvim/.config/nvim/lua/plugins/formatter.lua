@@ -1,7 +1,32 @@
+local util = require("util")
+
+local formatters_by_ft = {
+  go = { "gofmt", "golines", "goimports-reviser" },
+  templ = { "templ" },
+  sql = { "sql_formatter" },
+  lua = { "stylua" },
+  yaml = { "yamlfmt" },
+  json = { "prettierd" },
+  css = { "prettierd" },
+  html = { "prettierd" },
+  javascript = { "prettierd" },
+  typescript = { "prettierd" },
+  javascriptreact = { "prettierd" },
+  typescriptreact = { "prettierd" },
+}
+
+local formatters = {}
+
+for ft, formattersTable in pairs(formatters_by_ft) do
+  for _, formatter in pairs(formattersTable) do
+    table.insert(formatters, formatter)
+  end
+end
+
 return {
   "stevearc/conform.nvim",
   event = "VeryLazy",
-  dependencies = { "williamboman/mason.nvim" },
+  dependencies = { { "williamboman/mason.nvim", lazy = true } },
   cmd = { "ConformInfo" },
   keys = {
     {
@@ -13,42 +38,10 @@ return {
     },
   },
   opts = {
-    formatters_by_ft = {
-      sql = { "sqlfmt" },
-      lua = { "stylua" },
-      yaml = { "yamlfmt" },
-      json = { "prettierd" },
-      css = { "prettierd" },
-      javascript = { "prettierd" },
-      typescript = { "prettierd" },
-      javascriptreact = { "prettierd" },
-      typescriptreact = { "prettierd" },
-    },
+    formatters_by_ft = formatters_by_ft,
   },
   init = function()
+    util.install_mason_packages(formatters)
     vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
-    require("mason").setup()
-    local tools = { "stylua", "prettierd", "yamlfmt", "sqlfmt" }
-    local registry = require("mason-registry")
-    registry.refresh(function()
-      for _, name in pairs(tools) do
-        local package = registry.get_package(name)
-        if not registry.is_installed(name) then
-          package:install()
-        else
-          package:check_new_version(function(success, result_or_err)
-            if success then
-              package:install({ version = result_or_err.latest_version })
-            end
-          end)
-        end
-      end
-    end)
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      pattern = "*",
-      callback = function(args)
-        require("conform").format({ bufnr = args.buf })
-      end,
-    })
   end,
 }

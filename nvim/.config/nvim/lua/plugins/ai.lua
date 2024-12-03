@@ -17,18 +17,4 @@ return {
       end)
     end,
   },
-
-  {
-    "robitx/gp.nvim",
-    event = "VeryLazy",
-    opts = {
-      openai_api_key = { "cat", "/Users/alex/.openapi" },
-    },
-    config = function(_, opts)
-      local gp = require("gp")
-      gp.setup(opts)
-      gp._state.chat_agent = "ChatGPT4"
-      vim.cmd("cnoreabbrev gp GpChatNew popup")
-    end,
-  },
 }

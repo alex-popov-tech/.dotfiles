@@ -1,30 +1,32 @@
 return {
   {
-    "kndndrj/nvim-dbee",
-    cmd = { "Dbee" },
-    dependencies = { "MunifTanjim/nui.nvim" },
-    build = function()
-      -- Install tries to automatically detect the install method.
-      -- if it fails, try calling it with one of these parameters:
-      --    "curl", "wget", "bitsadmin", "go"
-      require("dbee").install()
+    "folke/snacks.nvim",
+    event = "VeryLazy",
+    opts = function()
+      -- Toggle the profiler
+      Snacks.toggle.profiler():map("<leader>pp")
+      -- Toggle the profiler highlights
+      Snacks.toggle.profiler_highlights():map("<leader>ph")
     end,
-    init = function()
-      vim.cmd("cnoreabbrev db Dbee")
-    end,
-    config = function()
-      require("dbee").setup( --[[optional config]])
-    end,
+    keys = {
+      {
+        "<leader>ps",
+        function()
+          Snacks.profiler.scratch()
+        end,
+        desc = "Profiler Scratch Bufer",
+      },
+    },
   },
 
   -- open terminal in floating window
   {
     "numToStr/FTerm.nvim",
-    config = function()
-      require("FTerm").setup({
-        border = "rounded",
-        dimensions = { height = 0.99, width = 0.99 },
-      })
+    opts = {
+      border = "rounded",
+      dimensions = { height = 0.99, width = 0.99 },
+    },
+    init = function()
       vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
     end,
     keys = {
@@ -41,20 +43,20 @@ return {
   -- global replace
   {
     "windwp/nvim-spectre",
-    dependencies = { "nvim-lua/plenary.nvim", "nvim-lua/popup.nvim" },
+    dependencies = { { "nvim-lua/plenary.nvim", lazy = true }, { "nvim-lua/popup.nvim", lazy = true } },
     cmd = "Replace",
-    config = function()
-      require("spectre").setup({
-        color_devicons = true,
-        line_sep_start = "┌-----------------------------------------",
-        result_padding = "¦  ",
-        line_sep = "└-----------------------------------------",
-        highlight = {
-          ui = "String",
-          search = "DiffDelete",
-          replace = "DiffChange",
-        },
-      })
+    opts = {
+      color_devicons = true,
+      line_sep_start = "┌-----------------------------------------",
+      result_padding = "¦  ",
+      line_sep = "└-----------------------------------------",
+      highlight = {
+        ui = "String",
+        search = "DiffDelete",
+        replace = "DiffChange",
+      },
+    },
+    init = function()
       vim.api.nvim_create_user_command("Replace", function()
         require("spectre").open()
       end, {})
@@ -83,51 +85,4 @@ return {
       end
     end,
   },
-
-  {
-    "NeogitOrg/neogit",
-    cmd = { "Neogit" },
-    dependencies = {
-      "nvim-lua/plenary.nvim", -- required
-      "sindrets/diffview.nvim", -- optional - Diff integration
-
-      -- Only one of these is needed, not both.
-      "nvim-telescope/telescope.nvim", -- optional
-      "ibhagwan/fzf-lua", -- optional
-    },
-    config = true,
-    init = function()
-      vim.cmd("cnoreabbrev git Neogit")
-    end,
-  },
-
-  {
-    "alex-popov-tech/change_case.nvim",
-    config = function()
-      vim.o.iskeyword = "@,48-57,_,192-255,-"
-    end,
-    keys = {
-      {
-        "gC",
-        function()
-          require("change_case").coherse_keyword("camel_case")
-        end,
-      },
-      {
-        "gs",
-        function()
-          require("change_case").coherse_keyword("snake_case")
-        end,
-      },
-      {
-        "gk",
-        function()
-          require("change_case").coherse_keyword("kebab_case")
-        end,
-      },
-    },
-  },
-
-  -- needed for my custom lsp rename
-  { "MunifTanjim/nui.nvim", event = "VeryLazy" },
 }

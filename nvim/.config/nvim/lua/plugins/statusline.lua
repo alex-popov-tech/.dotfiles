@@ -4,11 +4,11 @@ return {
   {
     "nvim-lualine/lualine.nvim",
     event = { "BufEnter *.*" },
-    -- enabled = false,
     dependencies = {
       {
         "echasnovski/mini.icons",
         version = false,
+        lazy = true,
         config = function()
           require("mini.icons").setup()
           MiniIcons.mock_nvim_web_devicons()
@@ -22,8 +22,7 @@ return {
         -- component_separators = { left = "", right = "" },
       },
       sections = {
-        lualine_a = {},
-        lualine_b = {
+        lualine_a = {
           {
             "mode",
             fmt = function()
@@ -31,6 +30,7 @@ return {
             end,
           },
         },
+        lualine_b = {},
         lualine_c = {
           {
             "filename",
@@ -39,12 +39,12 @@ return {
             path = 1,
             shorting_target = 40, -- Shortens path to leave 40 spaces in the window
           },
-          "branch",
+          { "branch" },
         },
 
-        lualine_x = { "encoding", "filetype" },
-        lualine_y = { "fileformat" },
-        lualine_z = {},
+        lualine_x = { { "encoding" }, "filetype" },
+        lualine_y = {},
+        lualine_z = { "fileformat" },
       },
       inactive_sections = {
         lualine_a = {},
@@ -78,6 +78,7 @@ return {
             color = { bg = "none" },
           },
           { "diagnostics", padding = 0, color = { bg = "none" } },
+          { "Snacks.profiler.status()" },
         },
         lualine_x = {},
         lualine_y = {},

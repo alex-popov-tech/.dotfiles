@@ -73,11 +73,20 @@ return function(client)
   end, options)
 
   vim.keymap.set("n", "'d", function()
-    vim.diagnostic.open_float(0, {
+    vim.diagnostic.open_float({
+      bufnr = 0,
       scope = "line",
-      source = "if_many",
+      source = true,
       border = "rounded",
-      focusable = false,
+    })
+  end, options)
+
+  vim.keymap.set("n", "'D", function()
+    vim.diagnostic.open_float({
+      bufnr = 0,
+      scope = "buffer",
+      source = true,
+      border = "rounded",
     })
   end, options)
 end

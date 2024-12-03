@@ -47,5 +47,30 @@ return {
     branch = "master",
   },
 
-  { "mbbill/undotree", keys = { { "<leader>u", "<cmd>UndotreeToggle<cr>" } }, cmd = "UndotreeToggle" }, -- see undo tree
+  {
+    "alex-popov-tech/change_case.nvim",
+    init = function()
+      vim.o.iskeyword = "@,48-57,_,192-255,-"
+    end,
+    keys = {
+      {
+        "gC",
+        function()
+          require("change_case").coherse_keyword("camel_case")
+        end,
+      },
+      {
+        "gs",
+        function()
+          require("change_case").coherse_keyword("snake_case")
+        end,
+      },
+      {
+        "gk",
+        function()
+          require("change_case").coherse_keyword("kebab_case")
+        end,
+      },
+    },
+  },
 }

@@ -1,133 +1,33 @@
-local util = require("util")
-
 return {
-
-  -- current lsp path in winbar
-  {
-    "SmiteshP/nvim-navic",
-    dependencies = { "neovim/nvim-lspconfig" },
-    config = function()
-      vim.api.nvim_create_autocmd("LspAttach", {
-        group = vim.api.nvim_create_augroup("UserLspConfig", { clear = false }),
-        callback = function(args)
-          -- local client = vim.lsp.get_client_by_id(args.data.client_id)
-          local clients = vim.lsp.get_clients()
-          local client = util.t.find(function(it)
-            return it.id == args.data.client_id
-          end, clients)
-          if client and client.server_capabilities.documentSymbolProvider then
-            require("nvim-navic").attach(client, args.buf)
-          end
-        end,
-      })
-    end,
-  },
-
-  {
-    "folke/trouble.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    cmd = "Trouble",
-    keys = {
-      { "'D", "<cmd>Trouble diagnostics toggle focus=true win.type=float<cr>" },
-    },
-    opts = {
-      auto_close = true,
-      use_diagnostic_signs = true,
-      mode = "document_diagnostics",
-    },
-  },
-
-  {
-    "aznhe21/actions-preview.nvim",
-    opts = {},
-    keys = {
-      {
-        "'a",
-        function()
-          require("actions-preview").code_actions()
-        end,
-        mode = { "n" },
-      },
-    },
-  },
-
-  -- lint setup
-  {
-    "nvimtools/none-ls.nvim",
-    event = "VeryLazy",
-    dependencies = { "williamboman/mason.nvim" },
-    config = function()
-      require("mason").setup()
-      local registry = require("mason-registry")
-      registry.refresh(function()
-        for _, name in pairs({ "actionlint", "yamllint" }) do
-          local package = registry.get_package(name)
-          if not registry.is_installed(name) then
-            package:install()
-          else
-            package:check_new_version(function(success, result_or_err)
-              if success then
-                package:install({ version = result_or_err.latest_version })
-              end
-            end)
-          end
-        end
-      end)
-      local null_ls = require("null-ls")
-      local diagnostics = null_ls.builtins.diagnostics
-      null_ls.setup({
-        debounce = 150,
-        update_in_insert = false,
-        sources = {
-          diagnostics.actionlint,
-          diagnostics.yamllint,
-        },
-      })
-    end,
-  },
-
   -- lsp setup
   {
     "williamboman/mason-lspconfig.nvim",
     event = "VeryLazy",
-    dependencies = { "williamboman/mason.nvim", "neovim/nvim-lspconfig" },
+    dependencies = { { "williamboman/mason.nvim", lazy = true }, { "neovim/nvim-lspconfig", lazy = true } },
     config = function()
       require("mason").setup()
-      local registry = require("mason-registry")
-      registry.refresh(function()
-        for _, name in pairs({ "sqlfluff" }) do
-          local package = registry.get_package(name)
-          if not registry.is_installed(name) then
-            package:install()
-          else
-            package:check_new_version(function(success, result_or_err)
-              if success then
-                package:install({ version = result_or_err.latest_version })
-              end
-            end)
-          end
-        end
-      end)
       local mason_lspconfig = require("mason-lspconfig")
       mason_lspconfig.setup({
         ensure_installed = {
           "astro",
           "lua_ls",
-          "eslint",
-          "tsserver",
+          "ts_ls",
+          "gopls",
+          "templ",
           "cssls",
           "jsonls",
           "yamlls",
           "tailwindcss",
           "emmet_language_server",
-          "prismals",
-          "typos_lsp",
         },
         automatic_installation = true,
       })
       mason_lspconfig.setup_handlers({
         function(server_name)
-          local opts = require("lsp.servers." .. server_name)
+          local ok, opts = pcall(require, "lsp.servers." .. server_name)
+          if not ok then
+            opts = require("lsp.servers.common")
+          end
           opts.flags = {
             debounce_text_changes = 100,
             lintDebounce = 200,
@@ -138,6 +38,7 @@ return {
       })
     end,
   },
+
   {
     "folke/lazydev.nvim",
     ft = "lua", -- only load on lua files
@@ -154,5 +55,27 @@ return {
         "luvit-meta/library", -- see below
       },
     },
+  },
+
+  {
+    "rachartier/tiny-code-action.nvim",
+    dependencies = {
+      { "nvim-lua/plenary.nvim", lazy = true },
+      { "nvim-telescope/telescope.nvim", lazy = true },
+    },
+    keys = {
+      {
+        "'a",
+        function()
+          require("tiny-code-action").code_action()
+        end,
+        mode = { "n" },
+      },
+    },
+    event = "LspAttach",
+    opts = {},
+    -- config = function()
+    --   require("tiny-code-action").setup()
+    -- end,
   },
 }

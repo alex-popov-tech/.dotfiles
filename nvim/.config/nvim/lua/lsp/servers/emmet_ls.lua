@@ -10,5 +10,6 @@ return util.t.merge("force", common, {
     "svelte",
     "typescriptreact",
     "vue",
+    "templ",
   },
 })

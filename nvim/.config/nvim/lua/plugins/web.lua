@@ -2,8 +2,8 @@ return {
 
   {
     "luckasRanarison/tailwind-tools.nvim",
-    event = "VeryLazy",
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    ft = { "html", "css", "javascriptreact", "typescriptreact", "templ" },
+    dependencies = { { "nvim-treesitter/nvim-treesitter", lazy = true } },
     opts = {
       document_color = {
         enabled = false,
@@ -18,25 +18,30 @@ return {
     },
   },
 
-  {
-    "rest-nvim/rest.nvim",
-    ft = "http",
-    dependencies = {
-      {
-        "vhyrro/luarocks.nvim",
-        priority = 1000,
-        config = true,
-        opts = {
-          rocks = { "lua-curl", "nvim-nio", "mimetypes", "xml2lua" },
-        },
-      },
-    },
-  },
-
   -- autocomplete closing tags, auto rename
   {
     "windwp/nvim-ts-autotag",
-    event = "BufReadPost",
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    ft = {
+      "templ",
+      "astro",
+      "glimmer",
+      "handlebars",
+      "html",
+      "jsx",
+      "markdown",
+      "php",
+      "rescript",
+      "svelte",
+      "tsx",
+      "twig",
+      "vue",
+      "xml",
+    },
+    opts = {
+      -- Defaults
+      enable_close = true, -- Auto close tags
+      enable_rename = true, -- Auto rename pairs of tags
+      enable_close_on_slash = false, -- Auto close on trailing </
+    },
   },
 }

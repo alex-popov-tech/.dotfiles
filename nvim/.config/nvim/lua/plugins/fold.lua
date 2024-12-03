@@ -3,8 +3,8 @@ return {
     "kevinhwang91/nvim-ufo",
     event = "VeryLazy",
     dependencies = {
-      "kevinhwang91/promise-async",
-      "nvim-treesitter/nvim-treesitter",
+      { "kevinhwang91/promise-async", lazy = true },
+      { "nvim-treesitter/nvim-treesitter", lazy = true },
     },
     keys = {
       {

@@ -16,6 +16,7 @@ local format = function(entry, vim_item)
     luasnip = "|snp|",
     codeium = "|cdm|",
     copilot = "|cpt|",
+    go_pkgs = "[pkg]",
   }
   local prettySourceName = menuMapping[entry.source.name]
 
@@ -36,14 +37,15 @@ return {
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
     dependencies = {
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-nvim-lua",
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-path",
+      { "hrsh7th/cmp-nvim-lsp", lazy = true },
+      { "hrsh7th/cmp-nvim-lua", lazy = true },
+      { "hrsh7th/cmp-buffer", lazy = true },
+      { "hrsh7th/cmp-path", lazy = true },
       -- 'octaltree/cmp-look',
       -- 'hrsh7th/cmp-emoji',
-      "onsails/lspkind-nvim",
-      "jcha0713/cmp-tw2css",
+      { "onsails/lspkind-nvim", lazy = true },
+      { "jcha0713/cmp-tw2css", lazy = true },
+      { "Snikimonkd/cmp-go-pkgs" },
     },
     config = function()
       local cmp = require("cmp")
@@ -52,6 +54,7 @@ return {
           --{ name = "codeium" },
           -- { name = "supermaven" },
           { name = "nvim_lsp" },
+          { name = "go_pkgs" },
           { name = "lazydev" },
           { name = "cmp-tw2css" },
           -- {name = 'luasnip'},
@@ -97,8 +100,26 @@ return {
           end,
         },
         mapping = cmp.mapping.preset.insert({
-          ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-          ["<C-f>"] = cmp.mapping.scroll_docs(4),
+          -- ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+          -- ["<C-f>"] = cmp.mapping.scroll_docs(4),
+          ["<C-d>"] = cmp.mapping({
+            i = function(fallback)
+              if cmp.visible() then
+                cmp.scroll_docs(2)
+              else
+                fallback()
+              end
+            end,
+          }),
+          ["<C-u>"] = cmp.mapping({
+            i = function(fallback)
+              if cmp.visible() then
+                cmp.scroll_docs(-2)
+              else
+                fallback()
+              end
+            end,
+          }),
           ["<C-e>"] = cmp.mapping.abort(),
           ["<C-CR>"] = cmp.mapping.complete(),
           ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.

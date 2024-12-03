@@ -2580,6 +2580,7 @@ dX.    9Xb      .dXb    __                         __    dXb.     dXP     .Xb",
 
 return {
   "goolord/alpha-nvim",
+  enabled = false,
   event = "VimEnter",
   config = function()
     local length = util.t.len(headers)

@@ -1,14 +1,35 @@
 return {
 
+  -- needed for my custom lsp rename
+  { "MunifTanjim/nui.nvim", event = "VeryLazy" },
+
+  {
+    "OXY2DEV/markview.nvim",
+    ft = "markdown", -- If you decide to lazy-load anyway
+    dependencies = {
+      { "nvim-treesitter/nvim-treesitter", lazy = true },
+      {
+        "echasnovski/mini.icons",
+        version = false,
+        lazy = true,
+        config = function()
+          require("mini.icons").setup()
+          MiniIcons.mock_nvim_web_devicons()
+        end,
+      },
+    },
+  },
+
   {
     "folke/noice.nvim",
     event = "VeryLazy",
     dependencies = {
-      "MunifTanjim/nui.nvim",
-      "rcarriga/nvim-notify",
+      { "MunifTanjim/nui.nvim", lazy = true },
+      { "rcarriga/nvim-notify", lazy = true },
       {
         "j-hui/fidget.nvim",
         event = "VeryLazy",
+        lazy = true,
         opts = {
           notification = {
             window = {
