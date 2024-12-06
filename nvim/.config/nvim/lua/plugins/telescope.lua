@@ -53,7 +53,12 @@ return {
     {
       "gh",
       function()
-        require("telescope.builtin").oldfiles({ cwd_only = true })
+        require("telescope.builtin").oldfiles({
+          cwd_only = true,
+          cache_picker = {
+            num_pickers = 100, -- Change this number to your desired value
+          },
+        })
       end,
     },
     {

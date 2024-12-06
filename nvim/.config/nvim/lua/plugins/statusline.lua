@@ -78,7 +78,6 @@ return {
             color = { bg = "none" },
           },
           { "diagnostics", padding = 0, color = { bg = "none" } },
-          { "Snacks.profiler.status()" },
         },
         lualine_x = {},
         lualine_y = {},
