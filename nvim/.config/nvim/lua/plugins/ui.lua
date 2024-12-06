@@ -21,6 +21,32 @@ return {
   },
 
   {
+    "karb94/neoscroll.nvim",
+    event = "VeryLazy",
+    opts = {
+      hide_cursor = true,
+      duration_multiplier = 0.75,
+      mappings = { -- Keys to be mapped to their corresponding default scrolling animation
+        "<C-u>",
+        "<C-d>",
+        "<C-b>",
+        "<C-y>",
+        "<C-e>",
+        "zt",
+        "zz",
+        "zb",
+      },
+    },
+  },
+  {
+    "sphamba/smear-cursor.nvim",
+    event = "VeryLazy",
+    opts = {
+      stiffness = 0.7,
+    },
+  },
+
+  {
     "folke/noice.nvim",
     event = "VeryLazy",
     dependencies = {
