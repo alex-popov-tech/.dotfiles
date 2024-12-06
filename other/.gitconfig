@@ -1,5 +1,5 @@
 [init]
-  defaultBranch = main
+	defaultBranch = main
 [user]
 	email = alex.popov.tech@gmail.com
 	name = Oleksandr Popov

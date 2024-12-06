@@ -1,9 +1,13 @@
----
-
 # Options for analysis running.
 run:
   # The default concurrency value is the number of available CPU.
-  concurrency: 8
-
+  concurrency: 16
 linters:
-  fast: false
+  enable:
+    - errcheck
+    - gosimple
+    - govet
+    - ineffassign
+    - staticcheck
+    - unused
+    - gosec
