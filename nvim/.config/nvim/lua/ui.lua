@@ -21,4 +21,6 @@ reset_bg_for_highlight("helpCommand")
 reset_bg_for_highlight("GitSignsChange")
 reset_bg_for_highlight("GitSignsAdd")
 reset_bg_for_highlight("GitSignsDelete")
+-- for changed line in lazy update notification which annoy me
+reset_bg_for_highlight("@markup.raw.markdown_inline")
 -- vim.api.nvim_set_hl(0, 'CursorLineNr', {bg = 'none'})
