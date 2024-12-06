@@ -16,17 +16,17 @@ return {
       float = {
         -- Padding around the floating window
         padding = 2,
-        max_width = 100,
-        max_height = 80,
+        max_width = 80,
+        max_height = 30,
         border = "rounded",
         win_options = {
           winblend = 0,
         },
       },
       view_options = {
-        show_hidden = false,
+        show_hidden = true,
       },
-      experimental_watch_for_changes = false,
+      watch_for_changes = true,
       columns = {
         -- "permissions",
         "icon",
