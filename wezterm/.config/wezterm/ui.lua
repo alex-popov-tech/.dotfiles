@@ -55,7 +55,7 @@ return {
   font_size = 13,
   adjust_window_size_when_changing_font_size = false,
   -- dpi = 144.0,
-  tab_max_width = 14,
+  tab_max_width = 18,
   colors = {
     tab_bar = {
       -- The color of the inactive tab bar edge/divider

@@ -30,7 +30,7 @@ return {
   keys = {
     { key = "q", mods = "SUPER", action = act.QuitApplication },
     { key = "v", mods = "SUPER", action = act.PasteFrom("Clipboard") },
-    { key = "r", mods = "LEADER", action = act.ReloadConfiguration },
+    -- { key = "r", mods = "LEADER", action = act.ReloadConfiguration },
     { key = "z", mods = "LEADER", action = act.TogglePaneZoomState },
 
     {

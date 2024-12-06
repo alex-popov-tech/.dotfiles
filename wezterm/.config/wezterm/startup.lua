@@ -16,6 +16,7 @@ wezterm.on("gui-startup", function(cmd)
     workspace = "default",
     cwd = home .. "/.dotfiles",
   })
+  stats_pane:split({ args = { "up" }, direction = "Right", size = 20 })
   -- window:gui_window():maximize()
   stats_pane:send_text("btop\n")
   stats_tab:set_title("stats")
