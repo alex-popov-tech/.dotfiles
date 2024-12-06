@@ -39,5 +39,14 @@ alias -s yml=nvim
 alias -s json=nvim
 alias -s txt=nvim
 alias -s go="go run"
+alias -s rb="ruby"
+alias -s clj="clojure"
 
 alias nr="npm run"
+
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ......="cd ../../../../.."
+
+alias copy="pbcopy"

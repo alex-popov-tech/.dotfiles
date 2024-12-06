@@ -37,3 +37,4 @@ setopt auto_list               # Automatically list choices on ambiguous complet
 setopt auto_pushd              # Make cd push the old directory onto the directory stack.
 setopt pushdminus              # Swapped the meaning of cd +1 and cd -1; we want them to mean the opposite of what they mean.
 setopt promptsubst             # Enables the substitution of parameters inside the prompt each time the prompt is drawn.
+set +o clobber # write with > operator instead of >|

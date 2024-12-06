@@ -12,6 +12,8 @@ export LANG=en_US.UTF-8
 # for gpg
 export GPG_TTY=$TTY
 
-export GOROOT="$HOME/.asdf/installs/golang/1.20.5/go"
-export GOPATH="$HOME/me/go"
-export PATH="$PATH:$GOPATH/bin:$GOROOT/bin"
+# sets export GOROOT="$HOME/.asdf/installs/golang/1.23.1/go" where its needs to be
+. ~/.asdf/plugins/golang/set-env.zsh
+export GOPATH="$HOME/.go"
+export MASON_BIN_PATH="$HOME/.local/share/nvim/mason/bin"
+export PATH="$PATH:$MASON_BIN_PATH:$GOPATH/bin:$GOROOT/bin"
