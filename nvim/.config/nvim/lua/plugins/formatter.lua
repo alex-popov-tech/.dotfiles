@@ -1,7 +1,7 @@
 local util = require("util")
 
 local formatters_by_ft = {
-  go = { "gofmt", "golines", "goimports-reviser" },
+  go = { "gofumpt", "golines", "goimports-reviser" },
   templ = { "templ" },
   sql = { "sql_formatter" },
   lua = { "stylua" },
