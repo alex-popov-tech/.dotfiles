@@ -3,7 +3,7 @@
   <br />
   &bull; <a href="https://github.com/alex-popov-tech/.dotfiles/blob/master/.scripts/install.sh" title="OS"><b>OSX</b></a>
   &bull; <a href="https://www.raycast.com/" title="Raycast"><b>Raycast</b></a>
-  &bull; <a href="https://github.com/alex-popov-tech/.dotfiles/blob/master/Brewfile" title="Homebrew"><b>Homebrew</b></a>
+  &bull; <a href="https://github.com/alex-popov-tech/.dotfiles/blob/master/.scripts/install.sh" title="Homebrew"><b>Homebrew</b></a>
   &bull; <a href="https://github.com/alex-popov-tech/.dotfiles/blob/master/.scripts/install.sh" title="Languages"><b>Programming Languages</b></a>
   &bull;
   <br />
