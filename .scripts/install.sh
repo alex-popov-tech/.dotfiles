@@ -39,7 +39,7 @@ function main() {
   if [[ $REPLY =~ ^[Yy]$ ]]
   then
     software
-    sparse_clone_and_copy "https://github.com/ryanoasis/nerd-fonts.git" "patched-fonts/JetBrainsMono/Ligatures" "$PWD/fonts"
+    sparse_clone_and_copy "https://github.com/ryanoasis/nerd-fonts.git" "patched-fonts/JetBrainsMono/Ligatures" "$HOME/.dotfiles/fonts"
   fi
 
   echo
