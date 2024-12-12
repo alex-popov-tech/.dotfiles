@@ -74,24 +74,6 @@ function langs() {
   asdf global nodejs 22.4.0
 
   echo
-  echo "+---------------------------------+"
-  echo "|        Installing Python        |"
-  echo "+---------------------------------+"
-  echo
-  asdf plugin-add python
-  asdf install python 3.11.1
-  asdf global python 3.11.1
-
-  echo
-  echo "+-------------------------------+"
-  echo "|        Installing Ruby        |"
-  echo "+-------------------------------+"
-  echo
-  asdf plugin-add ruby
-  asdf install ruby 3.2.0
-  asdf global ruby 3.2.0
-
-  echo
   echo "+------------------------------+"
   echo "|      Installing Golang       |"
   echo "+------------------------------+"
@@ -112,7 +94,6 @@ function software() {
   echo "|        Installing Homebrew        |"
   echo "+-----------------------------------+"
   echo
-  xcode-select --install
   # [ m1 ] insure required dir in path
   export PATH=/opt/homebrew/bin:$PATH
   is_arm64() {
@@ -147,7 +128,27 @@ function software() {
   echo "+-----------------------------------+"
   echo
 
-  brew bundle install --file $DPATH/Brewfile
+  brew install bat
+  brew install bitwarden-cli
+  brew install btop
+  brew install curl
+  brew install fzf
+  brew install httpie
+  brew install thefuck
+  brew install tldr
+  brew install unzip
+  brew install watch
+  brew install lazygit
+  brew install dropbox
+  brew install firefox@developer-edition
+  brew install meetingbar
+  brew install ngrok
+  brew install slack
+  brew install spotify
+  brew install transmission
+  brew install visual-studio-code
+  brew install vlc
+  brew install wezterm@nightly
 
   curl https://cht.sh/:cht.sh > /opt/homebrew/bin/cht.sh
   chmod +x /opt/homebrew/bin/cht.sh
