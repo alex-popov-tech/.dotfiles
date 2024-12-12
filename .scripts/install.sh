@@ -22,6 +22,9 @@ sparse_clone_and_copy() {
   cd "$tmp_dir"
   git sparse-checkout set "$checkout_path"
 
+  print_header "Installing fonts"
+  find "$tmp_dir/$checkout_path" -name "*.ttf" -exec cp {} "$HOME/Library/Fonts/" \;
+
   print_header "Copying $checkout_path to $target_dir"
   cp -r "$tmp_dir/$checkout_path" "$target_dir"
 
