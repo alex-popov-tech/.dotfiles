@@ -159,7 +159,12 @@ function software() {
   brew install neovim
   brew install karabiner-elements
   brew install setapp
-
+  brew install spark
+  brew install slack
+  brew install telegram
+  brew install discord
+  brew install finicky
+  brew install arc
 
   curl https://cht.sh/:cht.sh > /opt/homebrew/bin/cht.sh
   chmod +x /opt/homebrew/bin/cht.sh
