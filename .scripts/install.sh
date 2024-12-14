@@ -73,8 +73,10 @@ function langs() {
   brew install gpg tar
   asdf plugin-add nodejs
   bash $HOME/.asdf/plugins/nodejs/bin/import-release-team-keyring
-  asdf install nodejs 22.4.0
-  asdf global nodejs 22.4.0
+  NODEJS_VERSION=$(asdf list-all nodejs | tail -n 1)
+  echo "Version: $NODEJS_VERSION"
+  asdf install nodejs $NODEJS_VERSION
+  asdf global nodejs $NODEJS_VERSION
 
   echo
   echo "+------------------------------+"
@@ -82,8 +84,10 @@ function langs() {
   echo "+------------------------------+"
   echo
   asdf plugin-add golang
-  asdf install golang 1.22.5
-  asdf global golang 1.22.5
+  GOLANG_VERSION=$(asdf list-all golang | rg --invert-match "rc" | tail -n 1)
+  echo "Version: $GOLANG_VERSION"
+  asdf install golang $GOLANG_VERSION
+  asdf global golang $GOLANG_VERSION
 
   asdf reshim
 }
