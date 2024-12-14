@@ -156,6 +156,10 @@ function software() {
   brew install visual-studio-code
   brew install vlc
   brew install wezterm@nightly
+  brew install neovim
+  brew install karabiner-elements
+  brew install setapp
+
 
   curl https://cht.sh/:cht.sh > /opt/homebrew/bin/cht.sh
   chmod +x /opt/homebrew/bin/cht.sh
