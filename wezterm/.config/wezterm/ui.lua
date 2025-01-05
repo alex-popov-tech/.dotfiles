@@ -40,6 +40,11 @@ wezterm.on("user-var-changed", function(window, pane, name, value)
 end)
 
 return {
+  animation_fps = 240,
+  dpi = 144.0,
+  max_fps = 240,
+  front_end = "WebGpu",
+  webgpu_power_preference = "HighPerformance",
   color_scheme = "Tokyo Night",
   font = wezterm.font("JetBrainsMono Nerd Font", { weight = "Medium" }),
   font_rules = {
