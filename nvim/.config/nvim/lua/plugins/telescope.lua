@@ -1,5 +1,6 @@
 return {
   "nvim-telescope/telescope.nvim",
+  enabled = false,
   dependencies = {
     { "nvim-lua/popup.nvim", lazy = true },
     { "nvim-lua/plenary.nvim", lazy = true },

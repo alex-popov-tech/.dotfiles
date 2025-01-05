@@ -56,26 +56,4 @@ return {
       },
     },
   },
-
-  {
-    "rachartier/tiny-code-action.nvim",
-    dependencies = {
-      { "nvim-lua/plenary.nvim", lazy = true },
-      { "nvim-telescope/telescope.nvim", lazy = true },
-    },
-    keys = {
-      {
-        "'a",
-        function()
-          require("tiny-code-action").code_action()
-        end,
-        mode = { "n" },
-      },
-    },
-    event = "LspAttach",
-    opts = {},
-    -- config = function()
-    --   require("tiny-code-action").setup()
-    -- end,
-  },
 }

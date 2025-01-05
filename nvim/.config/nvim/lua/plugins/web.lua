@@ -3,6 +3,7 @@ return {
   {
     "luckasRanarison/tailwind-tools.nvim",
     ft = { "html", "css", "javascriptreact", "typescriptreact", "templ" },
+    build = ":UpdateRemotePlugins",
     dependencies = { { "nvim-treesitter/nvim-treesitter", lazy = true } },
     opts = {
       document_color = {
