@@ -31,7 +31,15 @@ return {
     {
       "gx",
       function()
-        require("fzf-lua").grep()
+        require("fzf-lua").live_grep_native()
+      end,
+    },
+    {
+      "gX",
+      function()
+        require("fzf-lua").live_grep_native({
+          cmd = "rg --column --no-heading --color=always --max-columns=4096 --trim --no-ignore --hidden --no-ignore -i -e",
+        })
       end,
     },
     {
