@@ -1,12 +1,34 @@
 return {
   "saghen/blink.cmp",
-  event = "InsertEnter",
   version = "*",
+  event = "InsertEnter",
   opts = {
-    completion = {
-      list = {
-        selection = "manual",
+    keymap = {
+      ["<Down>"] = { "select_next", "fallback" },
+      ["<C-n>"] = { "select_next", "fallback" },
+      ["<Up>"] = { "select_prev", "fallback" },
+      ["<C-p>"] = { "select_prev", "fallback" },
+
+      ["<Tab>"] = { "snippet_forward", "fallback" },
+      ["<S-Tab>"] = { "snippet_backward", "fallback" },
+
+      ["<C-u>"] = { "scroll_documentation_up", "fallback" },
+      ["<C-d>"] = { "scroll_documentation_down", "fallback" },
+
+      ["<C-e>"] = { "cancel", "fallback" },
+      ["<CR>"] = { "select_and_accept", "fallback" },
+
+      ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
+    },
+    sources = {
+      default = { "lsp", "path", "buffer", "snippets", "lazydev" },
+      providers = {
+        -- dont show LuaLS require statements when lazydev has items
+        lazydev = { name = "LazyDev", module = "lazydev.integrations.blink" },
       },
+    },
+    completion = {
+      list = { selection = { preselect = false, auto_insert = true } },
       menu = {
         border = "single",
         draw = {
@@ -26,30 +48,11 @@ return {
           },
         },
       },
-      documentation = { auto_show = true, auto_show_delay_ms = 500, window = { border = "single" } },
+      documentation = { auto_show = true, auto_show_delay_ms = 100, window = { border = "single" } },
     },
-    sources = {
-      default = { "lsp", "path", "buffer", "lazydev" },
-      providers = {
-        -- dont show LuaLS require statements when lazydev has items
-        lazydev = { name = "LazyDev", module = "lazydev.integrations.blink" },
-      },
-      cmdline = {},
-    },
-    signature = { window = { border = "single" } },
-    keymap = {
-      ["<Up>"] = { "select_prev", "fallback" },
-      ["<Down>"] = { "select_next", "fallback" },
-      ["<Tab>"] = { "select_next", "fallback" },
-
-      ["<C-u>"] = { "scroll_documentation_up", "fallback" },
-      ["<C-d>"] = { "scroll_documentation_down", "fallback" },
-
-      ["<C-e>"] = { "cancel", "fallback" },
-      ["<CR>"] = { "select_and_accept", "fallback" },
-
-      ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
-    },
+    snippets = { preset = "luasnip" },
+    signature = { enabled = true, window = { border = "single" } },
+    cmdline = { enabled = true, completion = { menu = { auto_show = false } } },
   },
   opts_extend = { "sources.default" },
 }
