@@ -26,8 +26,10 @@ return function(client)
   -- set global diagnostic config
   vim.diagnostic.config({
     signs = true,
-    underline = true,
-    virtual_text = { prefix = "<" },
+    -- underline = true,
+    virtual_text = { prefix = "<- " },
+    -- virtual_text = false,
+    virtual_lines = false,
     severity_sort = true,
   })
 end
