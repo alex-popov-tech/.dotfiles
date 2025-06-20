@@ -10,6 +10,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     require("lsp.settings")(client)
     require("lsp.mappings")(client)
     require("lsp.ui")(client)
+    vim.notify("Hello mom, lsp started!")
     -- vim.lsp.completion.enable(true, args.data.client_id, args.buf, { autotrigger = true })
   end,
 })

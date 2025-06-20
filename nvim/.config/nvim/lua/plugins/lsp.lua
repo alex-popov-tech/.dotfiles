@@ -12,30 +12,30 @@ return {
           "astro",
           "lua_ls",
           "ts_ls",
-          "gopls",
+          -- "gopls",
           "templ",
           "cssls",
           "jsonls",
           "yamlls",
           "tailwindcss",
           "emmet_language_server",
+          "harper_ls",
         },
         automatic_installation = true,
       })
-      mason_lspconfig.setup_handlers({
-        function(server_name)
-          local ok, opts = pcall(require, "lsp.servers." .. server_name)
-          if not ok then
-            opts = require("lsp.servers.common")
-          end
-          opts.flags = {
-            debounce_text_changes = 100,
-            lintDebounce = 200,
-          }
-          opts.capabilities = opts.capabilities or vim.lsp.protocol.make_client_capabilities()
-          require("lspconfig")[server_name].setup(opts)
-        end,
-      })
+      -- mason_lspconfig.setup_handlers({
+      --   function(server_name)
+      --     local ok, opts = pcall(require, "lsp.servers." .. server_name)
+      --     if not ok then
+      --       opts = require("lsp.servers.common")
+      --     end
+      --     -- wrap into blink specific capabilities
+      --     local blinkCaps = require("blink.cmp").get_lsp_capabilities(opts.capabilities)
+      --     -- set back to opts
+      --     opts.capabilities = blinkCaps
+      --     require("lspconfig")[server_name].setup(opts)
+      --   end,
+      -- })
     end,
   },
 
@@ -53,7 +53,17 @@ return {
         -- "LazyVim",
         -- When relative, you can also provide a path to the library in the plugin dir
         "luvit-meta/library", -- see below
+        "nvim-dap-ui",
       },
+    },
+  },
+
+  {
+    "hedyhli/outline.nvim",
+    lazy = true,
+    cmd = { "Outline", "OutlineOpen" },
+    opts = {
+      -- Your setup opts here
     },
   },
 }

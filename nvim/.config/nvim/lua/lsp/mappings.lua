@@ -9,10 +9,11 @@ return function(client)
   vim.keymap.set("n", "'rn", vim.lsp.buf.rename, options)
 
   vim.keymap.set("n", "'gr", function()
-    require("telescope.builtin").lsp_references({
-      layout_strategy = "vertical",
-      layout_settings = { width = 0.9, height = 0.9 },
-    })
+    require('fzf-lua').lsp_references()
+    -- require("telescope.builtin").lsp_references({
+    --   layout_strategy = "vertical",
+    --   layout_settings = { width = 0.9, height = 0.9 },
+    -- })
   end, options)
 
   vim.keymap.set("n", "'gi", function()
