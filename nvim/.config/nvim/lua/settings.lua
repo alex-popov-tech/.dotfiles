@@ -31,12 +31,12 @@ vim.schedule(function()
       foldsep = " ",
       foldclose = "",
       stlnc = "-",
-      vert = "|",
+      vert = "│",
     }, -- splits char
     -- virtualedit = "all", -- make all area 'editable'-ish
-    listchars = { tab = "-->", space = "·" }, -- replace chars
+    listchars = { tab = "-->", space = "·", eol = "↩" }, -- replace chars
     list = true, -- Show some invisible characters (tabs...
-    signcolumn = "no", -- things to the left of line number
+    signcolumn = "auto", -- things to the left of line number
     foldenable = true, -- don't fold by default
     foldcolumn = "0",
     foldlevel = 99, -- Using ufo provider need a large value, feel free to decrease the value
@@ -66,6 +66,7 @@ vim.schedule(function()
     spelllang = "en_us",
     spell = true, -- native spelling, z= to suggest, zg to mark as good
     undofile = true, -- save undo history
+    winborder = "rounded", -- have no idea what is it yet
   }) do
     vim.opt[key] = val
   end
@@ -111,6 +112,6 @@ vim.schedule(function()
     },
   })
 
-  vim.cmd("cnoreabbrev W noa w")
-  vim.cmd("cnoreabbrev WA noa wa")
+  vim.keymap.set("ca", "W", "noa w")
+  vim.keymap.set("ca", "WA", "noa wa")
 end)

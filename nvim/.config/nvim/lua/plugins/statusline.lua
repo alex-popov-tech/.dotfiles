@@ -15,23 +15,31 @@ return {
         end,
       },
     },
+    config = function(_, opts)
+      local custom_gruvbox = require("lualine.themes.gruvbox-material")
+
+      -- Change the background of lualine_c section for normal mode
+      custom_gruvbox.normal.a.bg = "#1d2021"
+      custom_gruvbox.normal.b.bg = "#1d2021"
+      custom_gruvbox.normal.c.bg = "#1d2021"
+      custom_gruvbox.insert.a.bg = "#1d2021"
+      custom_gruvbox.visual.a.bg = "#1d2021"
+      custom_gruvbox.command.a.bg = "#1d2021"
+      custom_gruvbox.replace.a.bg = "#1d2021"
+
+      require("lualine").setup(util.t.merge("force", opts, {
+        options = { theme = custom_gruvbox },
+      }))
+    end,
     opts = {
       extensions = { "mason", "lazy", "neo-tree", "toggleterm", "trouble" },
       options = {
-        theme = "tokyonight",
-        -- component_separators = { left = "", right = "" },
+        theme = "gruvbox-material",
       },
       sections = {
-        lualine_a = {
-          {
-            "mode",
-            fmt = function()
-              return MiniIcons.get("file", "init.lua")
-            end,
-          },
-        },
-        lualine_b = {},
-        lualine_c = {
+        lualine_a = {},
+        lualine_b = {
+          { "filetype", icon_only = true },
           {
             "filename",
             file_status = true, -- Displays file status (readonly status, modified status)
@@ -41,10 +49,11 @@ return {
           },
           { "branch" },
         },
+        lualine_c = {},
 
-        lualine_x = { { "encoding" }, "filetype" },
-        lualine_y = {},
-        lualine_z = { "fileformat" },
+        lualine_x = {},
+        lualine_y = { { "encoding" } },
+        lualine_z = {},
       },
       inactive_sections = {
         lualine_a = {},

@@ -11,4 +11,4 @@ vim.api.nvim_create_user_command("Bonly", function()
     end
   end
 end, {})
-vim.cmd("cnoreabbrev bo silent Bonly")
+vim.keymap.set('ca', 'bo', 'silent Bonly')

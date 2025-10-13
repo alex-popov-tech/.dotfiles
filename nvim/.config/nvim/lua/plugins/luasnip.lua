@@ -1,32 +1,34 @@
 return {
   "L3MON4D3/LuaSnip",
+  run = "make install_jsregexp",
+  version = "v2.*",
   event = "VeryLazy",
   dependencies = { { "rafamadriz/friendly-snippets", lazy = true } },
   keys = {
-    {
-      "<tab>",
-      function()
-        if vim.fn["luasnip#expand_or_jumpable"]() then
-          return "<plug>luasnip-expand-or-jump"
-        else
-          return "<tab>"
-        end
-      end,
-      mode = { "s", "i" },
-      expr = true,
-    },
-    {
-      "<s-tab>",
-      function()
-        if vim.fn["luasnip#expand_or_jumpable"]() then
-          return require("luasnip").jump(-1)
-        else
-          return "<s-tab>"
-        end
-      end,
-      mode = { "s", "i" },
-      expr = true,
-    },
+    -- {
+    --   "<tab>",
+    --   function()
+    --     if vim.fn["luasnip#expand_or_jumpable"]() then
+    --       return "<plug>luasnip-expand-or-jump"
+    --     else
+    --       return "<tab>"
+    --     end
+    --   end,
+    --   mode = { "s", "i" },
+    --   expr = true,
+    -- },
+    -- {
+    --   "<s-tab>",
+    --   function()
+    --     if vim.fn["luasnip#expand_or_jumpable"]() then
+    --       return require("luasnip").jump(-1)
+    --     else
+    --       return "<s-tab>"
+    --     end
+    --   end,
+    --   mode = { "s", "i" },
+    --   expr = true,
+    -- },
   },
   config = function()
     require("luasnip.loaders.from_vscode").lazy_load()

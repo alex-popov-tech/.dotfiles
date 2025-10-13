@@ -73,4 +73,12 @@ return {
       },
     },
   },
+
+  {
+    "smjonas/live-command.nvim",
+    cmd = "Preview",
+    config = function()
+      require("live-command").setup()
+    end,
+  },
 }

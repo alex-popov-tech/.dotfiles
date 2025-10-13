@@ -1,24 +1,4 @@
 return {
-  {
-    "folke/snacks.nvim",
-    event = "VeryLazy",
-    opts = function()
-      -- Toggle the profiler
-      Snacks.toggle.profiler():map("<leader>pp")
-      -- Toggle the profiler highlights
-      Snacks.toggle.profiler_highlights():map("<leader>ph")
-    end,
-    keys = {
-      {
-        "<leader>ps",
-        function()
-          Snacks.profiler.scratch()
-        end,
-        desc = "Profiler Scratch Bufer",
-      },
-    },
-  },
-
   -- open terminal in floating window
   {
     "numToStr/FTerm.nvim",
@@ -66,9 +46,12 @@ return {
   -- screenkey logging
   {
     "NStefan002/screenkey.nvim",
+    event = "VeryLazy",
     cmd = "Screenkey",
     version = "*",
-    config = true,
+    -- config = function()
+    --   vim.cmd("Screenkey")
+    -- end,
   },
 
   -- screen code snippets
@@ -84,5 +67,45 @@ return {
         end, { nargs = "*", range = "%" })
       end
     end,
+  },
+  {
+    -- dir = "/Users/alex/me/pet/store.nvim",
+    -- name = "store.nvim",
+    "alex-popov-tech/store.nvim",
+    dependencies = { "OXY2DEV/markview.nvim" },
+    -- opts = {},
+    opts = {
+      logging = "off",
+      width = 0.95,
+      height = 0.95,
+      proportions = { list = 0.5, preview = 0.5 },
+      preview_debounce = 50,
+      -- plugin_manager = "lazy.nvim",
+      repository_renderer = function(repo, isInstalled) -- Function to render repository data for list display
+        return {
+          {
+            content = "⭐" .. repo.pretty.stars,
+            limit = 10,
+          },
+          {
+            content = repo.full_name,
+            limit = 30,
+          },
+          {
+            content = repo.pretty.updated_at,
+            limit = 25,
+          },
+          {
+            content = repo.tags and #repo.tags > 0 and table.concat(repo.tags, ", ") or "",
+            limit = 100,
+          },
+          {
+            content = repo.description,
+            limit = 200,
+          },
+        }
+      end,
+    },
+    cmd = { "Store" },
   },
 }

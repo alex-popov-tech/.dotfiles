@@ -40,6 +40,12 @@ return {
   opts = {
     formatters_by_ft = formatters_by_ft,
   },
+  config = function(_, opts)
+    require("conform").setup(opts)
+    require("conform").formatters.sql_formatter = {
+      prepend_args = { "-l", "postgresql" },
+    }
+  end,
   init = function()
     util.install_mason_packages(formatters)
     vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"

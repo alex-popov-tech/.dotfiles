@@ -117,24 +117,12 @@ function software() {
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
   echo
-  echo "+-------------------------------+"
-  echo "|        Installing asdf        |"
-  echo "+-------------------------------+"
-  echo
-  if [ ! -d "$HOME/.asdf" ]; then
-    git clone https://github.com/asdf-vm/asdf.git $HOME/.asdf
-  fi
-  cd $HOME/.asdf
-  git checkout "$(git describe --abbrev=0 --tags)"
-  cd --
-  source $HOME/.asdf/asdf.sh
-
-  echo
   echo "+-----------------------------------+"
   echo "|        Installing Software        |"
   echo "+-----------------------------------+"
   echo
 
+  brew install asdf
   brew install bat
   brew install bitwarden-cli
   brew install btop

@@ -1,41 +1,93 @@
+local util = require("util")
+local lsp_servers = {
+  "lua_ls",
+  "astro",
+  "cssls",
+  "gopls",
+  "harper_ls",
+  "jsonls",
+  "tailwindcss",
+  "emmet_language_server",
+  "templ",
+  "ts_ls",
+  "yamlls",
+}
+
 return {
-  -- lsp setup
   {
-    "williamboman/mason-lspconfig.nvim",
+    "neovim/nvim-lspconfig",
     event = "VeryLazy",
-    dependencies = { { "williamboman/mason.nvim", lazy = true }, { "neovim/nvim-lspconfig", lazy = true } },
     config = function()
-      require("mason").setup()
-      local mason_lspconfig = require("mason-lspconfig")
-      mason_lspconfig.setup({
-        ensure_installed = {
-          "astro",
-          "lua_ls",
-          "ts_ls",
-          -- "gopls",
-          "templ",
-          "cssls",
-          "jsonls",
-          "yamlls",
-          "tailwindcss",
-          "emmet_language_server",
-          "harper_ls",
+      util.install_mason_packages(lsp_servers)
+      vim.lsp.enable(lsp_servers)
+    end,
+  },
+  { "dmmulroy/ts-error-translator.nvim" },
+
+  {
+    "saghen/blink.cmp",
+    dependencies = { "neovim/nvim-lspconfig" },
+    version = "*",
+    event = { "VeryLazy", "InsertEnter" },
+    opts = {
+      keymap = {
+        ["<Down>"] = { "select_next", "fallback" },
+        ["<C-n>"] = { "select_next", "fallback" },
+        ["<Up>"] = { "select_prev", "fallback" },
+        ["<C-p>"] = { "select_prev", "fallback" },
+
+        ["<Tab>"] = { "snippet_forward", "fallback" },
+        ["<S-Tab>"] = { "snippet_backward", "fallback" },
+
+        ["<C-u>"] = { "scroll_documentation_up", "fallback" },
+        ["<C-d>"] = { "scroll_documentation_down", "fallback" },
+
+        ["<C-e>"] = { "cancel", "fallback" },
+        ["<CR>"] = { "select_and_accept", "fallback" },
+
+        ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
+      },
+      sources = {
+        default = { "lsp", "path", "buffer", "snippets", "lazydev" },
+        providers = {
+          -- dont show LuaLS require statements when lazydev has items
+          lazydev = { name = "LazyDev", module = "lazydev.integrations.blink" },
         },
-        automatic_installation = true,
-      })
-      -- mason_lspconfig.setup_handlers({
-      --   function(server_name)
-      --     local ok, opts = pcall(require, "lsp.servers." .. server_name)
-      --     if not ok then
-      --       opts = require("lsp.servers.common")
-      --     end
-      --     -- wrap into blink specific capabilities
-      --     local blinkCaps = require("blink.cmp").get_lsp_capabilities(opts.capabilities)
-      --     -- set back to opts
-      --     opts.capabilities = blinkCaps
-      --     require("lspconfig")[server_name].setup(opts)
-      --   end,
-      -- })
+      },
+      completion = {
+        list = { selection = { preselect = false, auto_insert = true } },
+        menu = {
+          border = "single",
+          draw = {
+            components = {
+              kind_icon = {
+                ellipsis = false,
+                text = function(ctx)
+                  local kind_icon, _, _ = require("mini.icons").get("lsp", ctx.kind)
+                  return kind_icon
+                end,
+                -- Optionally, you may also use the highlights from mini.icons
+                highlight = function(ctx)
+                  local _, hl, _ = require("mini.icons").get("lsp", ctx.kind)
+                  return hl
+                end,
+              },
+            },
+          },
+        },
+        documentation = { auto_show = true, auto_show_delay_ms = 100, window = { border = "single" } },
+      },
+      snippets = { preset = "luasnip" },
+      signature = { enabled = true, window = { border = "single" } },
+      cmdline = { enabled = true, completion = { menu = { auto_show = false } } },
+    },
+    opts_extend = { "sources.default" },
+    config = function(_, opts)
+      require("blink.cmp").setup(opts)
+      local capabilities = require("blink.cmp").get_lsp_capabilities()
+      for _, lsp in ipairs(lsp_servers) do
+        vim.lsp.config(lsp, { capabilities = capabilities })
+      end
     end,
   },
 

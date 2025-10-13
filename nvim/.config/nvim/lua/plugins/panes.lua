@@ -19,27 +19,39 @@ return {
   -- split resize mode
   {
     "mrjones2014/smart-splits.nvim",
-    keys = { {
-      "<c-w>",
-      function()
-        require("smart-splits").start_resize_mode()
-      end,
-    } },
-    opts = {
-      resize_mode = {
-        quit_key = "<ESC>",
-        resize_keys = { "l", "d", "u", "r" },
-        silent = true,
-        hooks = {
+    dependencies = { "pogyomo/submode.nvim" },
+    keys = {
+      {
+        "<C-w>",
+        function()
+          local submode = require("submode")
+          submode.enter("smart-splits")
+        end,
+        mode = { "n" },
+      },
+    },
+    config = function()
+      -- Resize
+      local submode = require("submode")
+      submode.create("smart-splits", {
+        mode = "n",
+        enter = "<C-w>r",
+        leave = { "<Esc>", "q", "<C-c>" },
+        hook = {
           on_enter = function()
-            vim.notify("Entering resize mode")
+            vim.notify("Use { h, j, k, l } or { <Left>, <Down>, <Up>, <Right> } to resize the window")
           end,
           on_leave = function()
-            vim.notify("Exiting resize mode, bye")
+            vim.notify("")
           end,
         },
-      },
-      default_amount = 5,
-    },
+        default = function(register)
+          register("l", require("smart-splits").resize_left, { desc = "Resize left" })
+          register("d", require("smart-splits").resize_down, { desc = "Resize down" })
+          register("u", require("smart-splits").resize_up, { desc = "Resize up" })
+          register("r", require("smart-splits").resize_right, { desc = "Resize right" })
+        end,
+      })
+    end,
   },
 }

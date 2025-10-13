@@ -1,8 +1,4 @@
 return {
-
-  -- needed for my custom lsp rename
-  { "MunifTanjim/nui.nvim", event = "VeryLazy" },
-
   {
     "OXY2DEV/markview.nvim",
     ft = "markdown", -- If you decide to lazy-load anyway
@@ -50,20 +46,19 @@ return {
     "folke/noice.nvim",
     event = "VeryLazy",
     dependencies = {
-      { "MunifTanjim/nui.nvim", lazy = true },
-      { "rcarriga/nvim-notify", lazy = true },
-      {
-        "j-hui/fidget.nvim",
-        event = "VeryLazy",
-        lazy = true,
-        opts = {
-          notification = {
-            window = {
-              winblend = 0,
-            },
-          },
-        },
-      },
+      { "MunifTanjim/nui.nvim" },
+      { "rcarriga/nvim-notify" },
+      -- {
+      --   "j-hui/fidget.nvim",
+      --   event = "VeryLazy",
+      --   opts = {
+      --     notification = {
+      --       window = {
+      --         winblend = 0,
+      --       },
+      --     },
+      --   },
+      -- },
     },
     opts = {
       routes = {
@@ -140,50 +135,23 @@ return {
   },
 
   {
-    "folke/tokyonight.nvim",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      require("tokyonight").setup({
-        style = "night",
-        transparent = true,
-        on_colors = function() end,
-        on_highlights = function() end,
-        styles = {
-          sidebars = "transparent",
-          floats = "transparent",
-        },
-      })
-      vim.cmd("colorscheme tokyonight")
-    end,
-  },
-
-  {
-    "rebelot/kanagawa.nvim",
-    enabled = false,
-    lazy = false, -- make sure we load this during startup if it is your main colorscheme
-    priority = 1000, -- make sure to load this before all the other start plugins
-    config = function()
-      vim.opt.fillchars:append({
-        horiz = "━",
-        horizup = "┻",
-        horizdown = "┳",
-        vert = "┃",
-        vertleft = "┨",
-        vertright = "┣",
-        verthoriz = "╋",
-      })
-      require("kanagawa").setup({ transparent = true, globalStatus = true })
-      -- load the colorscheme here
-      vim.cmd("colorscheme kanagawa")
-    end,
-  },
-
-  -- highlight text as color
-  {
-    "brenoprata10/nvim-highlight-colors",
+    "folke/zen-mode.nvim",
     event = "VeryLazy",
-    opts = { render = "virtual", enable_tailwind = true },
+    cmd = "ZenMode",
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    },
+    config = function(_, opts)
+      local zen_mode = require("zen-mode")
+      zen_mode.setup(opts)
+      local cb = function()
+        zen_mode.toggle({})
+      end
+      vim.api.nvim_create_user_command("Focus", cb, {})
+      vim.api.nvim_create_user_command("Center", cb, {})
+    end,
   },
 
   -- fancy notification messages
@@ -195,9 +163,9 @@ return {
       notify.setup({
         fps = 60,
         level = 2,
-        render = "compact",
+        render = "wrapped-compact",
         stages = "fade",
-        timeout = 5,
+        timeout = 1,
         top_down = false,
         background_colour = "#000000",
         max_height = function()

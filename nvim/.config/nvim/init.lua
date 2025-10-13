@@ -21,3 +21,5 @@ require("mappings")
 require("commands")
 require("ui")
 require("lsp")
+
+-- vim.opt.runtimepath:append("/Users/alex/me/pet/store.nvim")

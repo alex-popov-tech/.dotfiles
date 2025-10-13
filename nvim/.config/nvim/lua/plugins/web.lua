@@ -22,6 +22,7 @@ return {
   -- autocomplete closing tags, auto rename
   {
     "windwp/nvim-ts-autotag",
+    enabled = false,
     ft = {
       "templ",
       "astro",

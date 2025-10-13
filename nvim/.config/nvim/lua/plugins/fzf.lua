@@ -17,6 +17,12 @@ return {
       end,
     },
     {
+      "gb",
+      function()
+        require("fzf-lua").buffers()
+      end,
+    },
+    {
       "gf",
       function()
         require("fzf-lua").git_files()

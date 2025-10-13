@@ -34,25 +34,25 @@ return {
       local gen_ai_spec = extra.gen_ai_spec
       require("mini.ai").setup({
         search_method = "cover_or_nearest",
-        mappings = {
-          around_next = "",
-          inside_next = "",
-          around_last = "",
-          inside_last = "",
-        },
-        custom_textobjects = {
-          b = { { "%b()", "%b[]", "%b{}" }, "^.().*().$" },
-          d = gen_ai_spec.diagnostic(),
-          l = gen_ai_spec.line(),
-          n = gen_ai_spec.number(),
-        },
+        -- mappings = {
+        --   around_next = "",
+        --   inside_next = "",
+        --   around_last = "",
+        --   inside_last = "",
+        -- },
+        -- custom_textobjects = {
+        --   b = { { "%b()", "%b[]", "%b{}" }, "^.().*().$" },
+        --   d = gen_ai_spec.diagnostic(),
+        --   l = gen_ai_spec.line(),
+        --   n = gen_ai_spec.number(),
+        -- },
       })
 
       require("mini.bufremove").setup({})
       vim.api.nvim_create_user_command("BDelete", function()
         MiniBufremove.delete()
       end, {})
-      vim.cmd("cnoreabbrev bd BDelete")
+      vim.keymap.set("ca", "bd", "BDelete")
     end,
   },
 }
