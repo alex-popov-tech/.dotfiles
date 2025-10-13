@@ -2,19 +2,18 @@ local vars = require("vars")
 local wezterm = require("wezterm")
 
 local format_title = function(title, is_active, max_width)
-  local background = { Background = { Color = "#1f1f28" } }
   local title_len = #title
   local pad_len = math.floor((max_width - title_len) / 2)
 
   local formatted_title = {
     Text = string.rep(" ", pad_len) .. title .. string.rep(" ", pad_len),
   }
-  if is_active then
-    -- return { background, { Foreground = { Color = "teal" } }, formatted_title }
-    return { formatted_title }
-  else
-    return { formatted_title }
-  end
+  return { { Background = { Color = "#1d2021" } }, formatted_title }
+  -- if is_active then
+  --   -- return { background, { Foreground = { Color = "teal" } }, formatted_title }
+  -- else
+  --   return { formatted_title }
+  -- end
 end
 
 local user_var_tab_title_key = "tab_title"
@@ -40,12 +39,12 @@ wezterm.on("user-var-changed", function(window, pane, name, value)
 end)
 
 return {
-  animation_fps = 240,
+  animation_fps = 120,
   dpi = 144.0,
-  max_fps = 240,
+  max_fps = 120,
   front_end = "WebGpu",
   webgpu_power_preference = "HighPerformance",
-  color_scheme = "Tokyo Night",
+  color_scheme = "Gruvbox dark, hard (base16)",
   font = wezterm.font("JetBrainsMono Nerd Font", { weight = "Medium" }),
   font_rules = {
     {
@@ -64,42 +63,17 @@ return {
   colors = {
     tab_bar = {
       -- The color of the inactive tab bar edge/divider
-      -- background = "none",
+      background = "none",
+      new_tab = {
+        bg_color = "#1d2021",
+        fg_color = "#d3869b",
+      },
+      active_tab = {
+        bg_color = "#2b2042",
+        fg_color = "#d3869b",
+        italic = true,
+      },
     },
-    --   foreground = "#dcd7ba",
-    --   background = "#1f1f28",
-    --
-    --   cursor_bg = "#c8c093",
-    --   cursor_fg = "#c8c093",
-    --   cursor_border = "#c8c093",
-    --
-    --   selection_fg = "#c8c093",
-    -- selection_bg = "#2d4f67",
-    --
-    --   scrollbar_thumb = "#16161d",
-    --   split = "#16161d",
-    --
-    --   ansi = {
-    --     "#090618",
-    --     "#c34043",
-    --     "#76946a",
-    --     "#c0a36e",
-    --     "#7e9cd8",
-    --     "#957fb8",
-    --     "#6a9589",
-    --     "#c8c093",
-    --   },
-    --   brights = {
-    --     "#727169",
-    --     "#e82424",
-    --     "#98bb6c",
-    --     "#e6c384",
-    --     "#7fb4ca",
-    --     "#938aa9",
-    --     "#7aa89f",
-    --     "#dcd7ba",
-    --   },
-    --   indexed = { [16] = "#ffa066", [17] = "#ff5d62" },
   },
   window_decorations = "RESIZE",
   window_background_opacity = 1,

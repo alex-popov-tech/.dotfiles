@@ -116,11 +116,31 @@ return {
     },
 
     {
+      key = "L",
+      action = wezterm.action_callback(function(window, pane)
+        wezterm.log_info("l pressed, is_resize_mode=[" .. tostring(vars.is_resize_mode) .. "]")
+        return window:perform_action(
+          vars.is_resize_mode and act.AdjustPaneSize({ "Left", 15 }) or act.SendKey({ key = "L" }),
+          pane
+        )
+      end),
+    },
+    {
       key = "l",
       action = wezterm.action_callback(function(window, pane)
         wezterm.log_info("l pressed, is_resize_mode=[" .. tostring(vars.is_resize_mode) .. "]")
         return window:perform_action(
           vars.is_resize_mode and act.AdjustPaneSize({ "Left", 5 }) or act.SendKey({ key = "l" }),
+          pane
+        )
+      end),
+    },
+    {
+      key = "R",
+      action = wezterm.action_callback(function(window, pane)
+        wezterm.log_info("r pressed, is_resize_mode=[" .. tostring(vars.is_resize_mode) .. "]")
+        return window:perform_action(
+          vars.is_resize_mode and act.AdjustPaneSize({ "Right", 15 }) or act.SendKey({ key = "R" }),
           pane
         )
       end),
@@ -136,11 +156,31 @@ return {
       end),
     },
     {
+      key = "U",
+      action = wezterm.action_callback(function(window, pane)
+        wezterm.log_info("u pressed, is_resize_mode=[" .. tostring(vars.is_resize_mode) .. "]")
+        return window:perform_action(
+          vars.is_resize_mode and act.AdjustPaneSize({ "Up", 15 }) or act.SendKey({ key = "U" }),
+          pane
+        )
+      end),
+    },
+    {
       key = "u",
       action = wezterm.action_callback(function(window, pane)
         wezterm.log_info("u pressed, is_resize_mode=[" .. tostring(vars.is_resize_mode) .. "]")
         return window:perform_action(
           vars.is_resize_mode and act.AdjustPaneSize({ "Up", 5 }) or act.SendKey({ key = "u" }),
+          pane
+        )
+      end),
+    },
+    {
+      key = "D",
+      action = wezterm.action_callback(function(window, pane)
+        wezterm.log_info("d pressed, is_resize_mode=[" .. tostring(vars.is_resize_mode) .. "]")
+        return window:perform_action(
+          vars.is_resize_mode and act.AdjustPaneSize({ "Down", 15 }) or act.SendKey({ key = "D" }),
           pane
         )
       end),
