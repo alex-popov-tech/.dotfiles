@@ -147,5 +147,4 @@ source $HOME/.zsh/aliases
 source $HOME/.zsh/fzf
 # source $HOME/.zsh/style
 # source $HOME/.zsh/plugins
-# source $HOME/.zsh/langs
 

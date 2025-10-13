@@ -3,7 +3,6 @@
 # vi-mode go to different modes faster
 export KEYTIMEOUT=1
 # add brew and packages to PATH
-export PATH="/usr/local/bin:/opt/homebrew/bin:$PATH:$HOME/.local/bin"
 # Preferred editor for local sessions
 export EDITOR="nvim"
 # LANG=""
@@ -12,8 +11,8 @@ export LANG=en_US.UTF-8
 # for gpg
 export GPG_TTY=$TTY
 
-# sets export GOROOT="$HOME/.asdf/installs/golang/1.23.1/go" where its needs to be
-. ~/.asdf/plugins/golang/set-env.zsh
-export GOPATH="$HOME/.go"
 export MASON_BIN_PATH="$HOME/.local/share/nvim/mason/bin"
-export PATH="$PATH:$MASON_BIN_PATH:$GOPATH/bin:$GOROOT/bin"
+export PATH="$PATH:$MASON_BIN_PATH"
+export PATH="$PATH:/usr/local/bin:/opt/homebrew/bin"
+# export PATH="$PATH:$HOME/.local/bin"
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"

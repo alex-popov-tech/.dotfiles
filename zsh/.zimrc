@@ -59,6 +59,5 @@ zmodule zsh-users/zsh-autosuggestions
 # }}} End configuration added by Zim install
 
 # manually added modules
-zmodule asdf
 zmodule ohmyzsh/ohmyzsh --root plugins/vi-mode
 zmodule ohmyzsh/ohmyzsh --root plugins/git
