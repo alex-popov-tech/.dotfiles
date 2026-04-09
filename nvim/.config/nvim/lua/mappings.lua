@@ -98,54 +98,16 @@ local delete_mappings = {
 --   end
 -- end
 
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "typescript", "typescriptreact" },
-  callback = function(ev)
-    vim.keymap.set("i", "<Space>", function()
-      local col = vim.fn.col(".") -- cursor col (1-based)
-      local line = vim.fn.getline(".") -- whole line
-      local before = line:sub(1, col - 1)
-
-      -- check if inside comment (//)
-      if before:match("//") then
-        return "<Space>"
-      end
-
-      -- async -> expand 'as ' → 'async '
-      if before:sub(-2) == "as" then
-        return "<BS><BS>async "
-      end
-
-      -- await -> expand 'a ' → 'await '
-      if before:sub(-1) == "a" then
-        return "<BS>await "
-      end
-
-      return "<Space>"
-    end, { expr = true, buffer = ev.buf })
-  end,
-})
 
 vim.keymap.set('v', 'ai', function()
   local a, b = vim.fn.line('v'), vim.fn.line('.')
   local start_line, end_line = math.min(a, b), math.max(a, b)
   local filepath = vim.fn.expand('%:p')
-  local ft = (vim.bo.filetype ~= '' and vim.bo.filetype) and vim.bo.filetype or 'text'
-  local content = table.concat(vim.fn.getline(start_line, end_line), '\n')
+  local git_root = vim.fn.systemlist('git rev-parse --show-toplevel')[1]
+  local rel_path = (git_root and vim.v.shell_error == 0) and filepath:sub(#git_root + 2) or filepath
 
-  local function pick_fence(s)
-    for n = 3, 8 do
-      local f = string.rep('`', n)
-      if not s:find(f, 1, true) then return f end
-    end
-    return '~~~~' -- fallback
-  end
-
-  local fence = pick_fence(content)
-  local header = string.format('%s:%d:%d', filepath, start_line, end_line)
-  local result = string.format('%s\n%s%s\n%s\n%s', header, fence, ft, content, fence)
-
+  local result = string.format('@%s#L%d-%d', rel_path, start_line, end_line)
   vim.fn.setreg('+', result)
-  print('📋 Copied file info + content (with autodetected filetype)')
+  print('📋 Copied: ' .. result)
   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Esc>', true, false, true), 'n', false)
-end, { desc = 'Copy file path, range, and content as fenced code block' })
+end, { desc = 'Copy file reference for Claude' })

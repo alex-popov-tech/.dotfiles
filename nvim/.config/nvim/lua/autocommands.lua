@@ -25,17 +25,6 @@ vim.api.nvim_create_autocmd("BufNewFile", {
   end,
 })
 
--- open file on place of last visit
-vim.api.nvim_create_autocmd("BufReadPost", {
-  callback = function()
-    local mark = vim.api.nvim_buf_get_mark(0, '"')
-    local lcount = vim.api.nvim_buf_line_count(0)
-    if mark[1] > 0 and mark[1] <= lcount then
-      pcall(vim.api.nvim_win_set_cursor, 0, mark)
-    end
-  end,
-})
-
 -- blink matches on searching
 -- local ns = vim.api.nvim_create_namespace('toggle_hlsearch')
 -- vim.on_key(function(char)
@@ -49,16 +38,43 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 --     end
 -- end, ns)
 
--- enable inlay_hints for golang
-vim.api.nvim_create_autocmd("BufEnter", {
-  pattern = { "*.go" },
+-- disable line numbers and enable wrap for claude markdown files
+vim.api.nvim_create_autocmd("BufRead", {
+  pattern = { "*/claude-prompt-*.md", "claude-prompt-*.md" },
   callback = function()
-    vim.lsp.inlay_hint.enable(true)
+    vim.schedule(function()
+      vim.opt_local.number = false
+      vim.opt_local.relativenumber = false
+      vim.opt_local.wrap = true
+    end)
   end,
 })
-vim.api.nvim_create_autocmd("BufLeave", {
-  pattern = { "*.go" },
-  callback = function()
-    vim.lsp.inlay_hint.enable(false)
+
+-- complete 'as' and 'a' to 'async' and 'await'
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "typescript", "typescriptreact" },
+  callback = function(ev)
+    vim.keymap.set("i", "<Space>", function()
+      local col = vim.fn.col(".") -- cursor col (1-based)
+      local line = vim.fn.getline(".") -- whole line
+      local before = line:sub(1, col - 1)
+
+      -- check if inside comment (//)
+      if before:match("//") then
+        return "<Space>"
+      end
+
+      -- async -> expand 'as ' → 'async '
+      if before:sub(-3) == " as" then
+        return "<BS><BS>async "
+      end
+
+      -- await -> expand 'a ' → 'await '
+      if before:sub(-2) == " a" then
+        return "<BS>await "
+      end
+
+      return "<Space>"
+    end, { expr = true, buffer = ev.buf })
   end,
 })

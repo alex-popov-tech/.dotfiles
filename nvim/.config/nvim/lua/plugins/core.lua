@@ -8,6 +8,8 @@ return {
   -- after yank leave cursor on its place
   { "svban/YankAssassin.vim", event = "VeryLazy" },
 
+  { "nemanjamalesija/smart-paste.nvim", event = "VeryLazy", config = true },
+
   -- replace without yankink deleted
   {
     "gbprod/substitute.nvim",
@@ -40,12 +42,7 @@ return {
     },
   },
 
-  {
-    "andymass/vim-matchup",
-    event = "VeryLazy",
-    version = nil,
-    branch = "master",
-  },
+  { "andymass/vim-matchup", event = "VeryLazy", version = nil, branch = "master" },
 
   {
     "alex-popov-tech/change_case.nvim",
@@ -72,13 +69,5 @@ return {
         end,
       },
     },
-  },
-
-  {
-    "smjonas/live-command.nvim",
-    cmd = "Preview",
-    config = function()
-      require("live-command").setup()
-    end,
   },
 }

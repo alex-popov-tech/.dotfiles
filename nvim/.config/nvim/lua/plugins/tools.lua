@@ -57,55 +57,51 @@ return {
   -- screen code snippets
   {
     "mistricky/codesnap.nvim",
+    tag = "v2.0.0-beta.17",
     cmd = { "Screen", "Take", "TakeScreen" },
-    build = "make",
     config = function()
-      local codesnap = require("codesnap")
       for _, name in ipairs({ "Screen", "Take", "TakeScreen" }) do
         vim.api.nvim_create_user_command(name, function()
-          codesnap.copy_into_clipboard()
+          vim.cmd("CodeSnap")
         end, { nargs = "*", range = "%" })
       end
     end,
   },
   {
+    "mistweaverco/snap.nvim",
+    version = "v1.5.0",
+    cmd = "Snap",
+    ---@type SnapUserConfig
+    opts = {
+      save_to_disk = { image = false, html = false },
+      copy_to_clipboard = { image = true, html = true },
+    },
+    event = "VeryLazy",
+  },
+
+  {
     -- dir = "/Users/alex/me/pet/store.nvim",
     -- name = "store.nvim",
     "alex-popov-tech/store.nvim",
-    dependencies = { "OXY2DEV/markview.nvim" },
+    dependencies = {
+      { "OXY2DEV/markview.nvim", opts = {} },
+      { "3rd/image.nvim", opts = { integrations = { markdown = { enabled = false } } } },
+    },
     -- opts = {},
     opts = {
-      logging = "off",
-      width = 0.95,
-      height = 0.95,
-      proportions = { list = 0.5, preview = 0.5 },
+      layout = "tab",
+      proportions = { list = 0.6, preview = 0.4 },
       preview_debounce = 50,
-      -- plugin_manager = "lazy.nvim",
-      repository_renderer = function(repo, isInstalled) -- Function to render repository data for list display
-        return {
-          {
-            content = "⭐" .. repo.pretty.stars,
-            limit = 10,
-          },
-          {
-            content = repo.full_name,
-            limit = 30,
-          },
-          {
-            content = repo.pretty.updated_at,
-            limit = 25,
-          },
-          {
-            content = repo.tags and #repo.tags > 0 and table.concat(repo.tags, ", ") or "",
-            limit = 100,
-          },
-          {
-            content = repo.description,
-            limit = 200,
-          },
-        }
-      end,
     },
     cmd = { "Store" },
+  },
+  {
+    -- "alex-popov-tech/stt-whisper.nvim",
+    dir = "/Users/alex/me/pet/talk-to-me.nvim/",
+    name = "stt-whisper.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("stt_whisper").setup()
+    end,
   },
 }

@@ -1,5 +1,3 @@
-local util = require("util")
-
 return {
   {
     "nvim-lualine/lualine.nvim",
@@ -15,26 +13,10 @@ return {
         end,
       },
     },
-    config = function(_, opts)
-      local custom_gruvbox = require("lualine.themes.gruvbox-material")
-
-      -- Change the background of lualine_c section for normal mode
-      custom_gruvbox.normal.a.bg = "#1d2021"
-      custom_gruvbox.normal.b.bg = "#1d2021"
-      custom_gruvbox.normal.c.bg = "#1d2021"
-      custom_gruvbox.insert.a.bg = "#1d2021"
-      custom_gruvbox.visual.a.bg = "#1d2021"
-      custom_gruvbox.command.a.bg = "#1d2021"
-      custom_gruvbox.replace.a.bg = "#1d2021"
-
-      require("lualine").setup(util.t.merge("force", opts, {
-        options = { theme = custom_gruvbox },
-      }))
-    end,
     opts = {
       extensions = { "mason", "lazy", "neo-tree", "toggleterm", "trouble" },
       options = {
-        theme = "gruvbox-material",
+        theme = "nightfox",
       },
       sections = {
         lualine_a = {},
@@ -47,9 +29,10 @@ return {
             path = 1,
             shorting_target = 40, -- Shortens path to leave 40 spaces in the window
           },
+        },
+        lualine_c = {
           { "branch" },
         },
-        lualine_c = {},
 
         lualine_x = {},
         lualine_y = { { "encoding" } },
@@ -65,28 +48,13 @@ return {
       },
       winbar = {
         lualine_a = {},
-        lualine_b = {},
+        lualine_b = {
+          { "filetype", icon_only = true },
+          { "filename" },
+        },
         lualine_c = {
-          {
-            "filetype",
-            icon_only = true,
-            padding = { left = 1, right = 0 },
-            separator = { right = "", left = "" },
-            color = { bg = "none" },
-          },
-          {
-            "filename",
-            padding = { left = 0, right = 1 },
-            separator = { right = "", left = "" },
-            color = { bg = "none" },
-          },
-          {
-            "location",
-            padding = { left = 0, right = 1 },
-            separator = { right = "", left = "" },
-            color = { bg = "none" },
-          },
-          { "diagnostics", padding = 0, color = { bg = "none" } },
+          { "location" },
+          { "diagnostics" },
         },
         lualine_x = {},
         lualine_y = {},
@@ -94,8 +62,14 @@ return {
       },
       inactive_winbar = {
         lualine_a = {},
-        lualine_b = {},
-        lualine_c = { { "diagnostics", padding = 0, color = { bg = "none" } } },
+        lualine_b = {
+          { "filetype", icon_only = true },
+          { "filename" },
+        },
+        lualine_c = {
+          { "location" },
+          { "diagnostics" },
+        },
         lualine_x = {},
         lualine_y = {},
         lualine_z = {},

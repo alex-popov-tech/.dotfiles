@@ -4,7 +4,6 @@ return {
     event = "VeryLazy",
     dependencies = {
       { "kevinhwang91/promise-async", lazy = true },
-      { "nvim-treesitter/nvim-treesitter", lazy = true },
     },
     keys = {
       {

@@ -1,7 +1,8 @@
 local util = require("util")
-local common = require("lsp.servers.common")
+local common = require("lsp.common")
 
 return util.t.merge("force", common, {
+  flags = { allow_incremental_sync = true, debounce_text_changes = 500 },
   settings = {
     gopls = {
       gofumpt = true,
@@ -18,8 +19,9 @@ return util.t.merge("force", common, {
         constantValues = true,
         functionTypeParameters = true,
         parameterNames = true,
-        assignVariableTypes = false,
-        rangeVariableTypes = false,
+        assignVariableTypes = true,
+        rangeVariableTypes = true,
+        ignoredError = true,
       },
       analyses = {
         nilness = true,

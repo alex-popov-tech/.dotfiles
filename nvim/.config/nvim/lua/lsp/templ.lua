@@ -1,3 +1,3 @@
-local common = require("lsp.servers.common")
+local common = require("lsp.common")
 
 return common

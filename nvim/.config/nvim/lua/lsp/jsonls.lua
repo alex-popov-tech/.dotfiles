@@ -1,5 +1,5 @@
 local util = require("util")
-local common = require("lsp.servers.common")
+local common = require("lsp.common")
 
 return util.t.merge("force", common, {
   settings = {

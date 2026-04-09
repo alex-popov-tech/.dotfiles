@@ -58,14 +58,16 @@ return {
 
       nvimLint.linters_by_ft = linters_by_ft
 
-      vim.api.nvim_create_autocmd({ "BufReadPost", "BufWritePost", "InsertLeave" }, {
-        group = vim.api.nvim_create_augroup("my-nvim-lint", { clear = true }),
-        callback = function()
-          -- try_lint without arguments runs the linters defined in `linters_by_ft`
-          -- for the current filetype
-          nvimLint.try_lint()
-        end,
-      })
+      vim.defer_fn(function()
+        vim.api.nvim_create_autocmd({ "BufReadPost", "BufWritePost", "InsertLeave" }, {
+          group = vim.api.nvim_create_augroup("my-nvim-lint", { clear = true }),
+          callback = function()
+            -- try_lint without arguments runs the linters defined in `linters_by_ft`
+            -- for the current filetype
+            pcall(nvimLint.try_lint)
+          end,
+        })
+      end, 30)
     end,
   },
 }

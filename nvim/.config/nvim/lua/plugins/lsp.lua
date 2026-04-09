@@ -1,16 +1,14 @@
 local util = require("util")
 local lsp_servers = {
   "lua_ls",
-  "astro",
   "cssls",
   "gopls",
   "harper_ls",
   "jsonls",
-  "tailwindcss",
-  "emmet_language_server",
   "templ",
   "ts_ls",
   "yamlls",
+  "gleam",
 }
 
 return {
@@ -19,7 +17,14 @@ return {
     event = "VeryLazy",
     config = function()
       util.install_mason_packages(lsp_servers)
-      vim.lsp.enable(lsp_servers)
+      for _, lsp in ipairs(lsp_servers) do
+        local isOk, conf = pcall(require, "lsp." .. lsp)
+        if not isOk then
+          print("Failed to load lsp." .. lsp .. " config, ignoring this one")
+        end
+        vim.lsp.config(lsp, conf)
+        vim.lsp.enable(lsp)
+      end
     end,
   },
   { "dmmulroy/ts-error-translator.nvim" },
@@ -48,11 +53,8 @@ return {
         ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
       },
       sources = {
-        default = { "lsp", "path", "buffer", "snippets", "lazydev" },
-        providers = {
-          -- dont show LuaLS require statements when lazydev has items
-          lazydev = { name = "LazyDev", module = "lazydev.integrations.blink" },
-        },
+        default = { "lsp", "path", "buffer", "snippets" },
+        providers = {},
       },
       completion = {
         list = { selection = { preselect = false, auto_insert = true } },
@@ -92,30 +94,8 @@ return {
   },
 
   {
-    "folke/lazydev.nvim",
-    ft = "lua", -- only load on lua files
-    dependencies = {
-      { "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
-    },
-    opts = {
-      library = {
-        -- Library items can be absolute paths
-        -- "~/projects/my-awesome-lib",
-        -- Or relative, which means they will be resolved as a plugin
-        -- "LazyVim",
-        -- When relative, you can also provide a path to the library in the plugin dir
-        "luvit-meta/library", -- see below
-        "nvim-dap-ui",
-      },
-    },
-  },
-
-  {
     "hedyhli/outline.nvim",
-    lazy = true,
     cmd = { "Outline", "OutlineOpen" },
-    opts = {
-      -- Your setup opts here
-    },
+    opts = {},
   },
 }

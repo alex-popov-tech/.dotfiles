@@ -1,22 +1,5 @@
 return {
   {
-    "OXY2DEV/markview.nvim",
-    ft = "markdown", -- If you decide to lazy-load anyway
-    dependencies = {
-      { "nvim-treesitter/nvim-treesitter", lazy = true },
-      {
-        "echasnovski/mini.icons",
-        version = false,
-        lazy = true,
-        config = function()
-          require("mini.icons").setup()
-          MiniIcons.mock_nvim_web_devicons()
-        end,
-      },
-    },
-  },
-
-  {
     "karb94/neoscroll.nvim",
     event = "VeryLazy",
     opts = {
@@ -36,6 +19,7 @@ return {
   },
   {
     "sphamba/smear-cursor.nvim",
+    enabled = false,
     event = "VeryLazy",
     opts = {
       stiffness = 0.7,
@@ -44,21 +28,11 @@ return {
 
   {
     "folke/noice.nvim",
+    enabled = false,
     event = "VeryLazy",
     dependencies = {
       { "MunifTanjim/nui.nvim" },
       { "rcarriga/nvim-notify" },
-      -- {
-      --   "j-hui/fidget.nvim",
-      --   event = "VeryLazy",
-      --   opts = {
-      --     notification = {
-      --       window = {
-      --         winblend = 0,
-      --       },
-      --     },
-      --   },
-      -- },
     },
     opts = {
       routes = {
@@ -114,50 +88,35 @@ return {
 
   {
     "folke/twilight.nvim",
-    event = "VeryLazy",
+    enabled = false,
+    cmd = "Focus",
     opts = {},
-    config = function(_, opts)
+    init = function()
       local twilight = require("twilight")
       twilight.setup(opts)
       vim.api.nvim_create_autocmd("InsertLeave", {
         group = vim.api.nvim_create_augroup("UserTwilight", { clear = false }),
         callback = function(args)
-          vim.cmd("TwilightDisable")
+          require("twilight").disable({})
         end,
       })
       vim.api.nvim_create_autocmd("InsertEnter", {
         group = vim.api.nvim_create_augroup("UserTwilight", { clear = false }),
         callback = function(args)
-          vim.cmd("TwilightEnable")
+          require("twilight").enable({})
         end,
       })
-    end,
-  },
-
-  {
-    "folke/zen-mode.nvim",
-    event = "VeryLazy",
-    cmd = "ZenMode",
-    opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-    },
-    config = function(_, opts)
-      local zen_mode = require("zen-mode")
-      zen_mode.setup(opts)
       local cb = function()
-        zen_mode.toggle({})
+        require("twilight").toggle({})
       end
       vim.api.nvim_create_user_command("Focus", cb, {})
-      vim.api.nvim_create_user_command("Center", cb, {})
     end,
   },
 
   -- fancy notification messages
   {
     "rcarriga/nvim-notify",
-    lazy = false,
+    event = "VeryLazy",
     config = function()
       local notify = require("notify")
       notify.setup({

@@ -42,6 +42,7 @@ return {
 
   {
     "ellisonleao/gruvbox.nvim",
+    enabled = false,
     event = "UIEnter",
     priority = 1000,
     config = function()
@@ -84,6 +85,16 @@ return {
       vim.g.gruvbox_material_enable_italic = true
       vim.g.gruvbox_material_background = "hard"
       -- vim.cmd.colorscheme("gruvbox-material")
+    end,
+  },
+
+  {
+    "EdenEast/nightfox.nvim",
+    lazy = false,
+    priority = 1000,
+    event = "UIEnter",
+    config = function()
+      vim.cmd("colorscheme nightfox")
     end,
   },
 

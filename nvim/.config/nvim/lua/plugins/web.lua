@@ -5,6 +5,7 @@ return {
     ft = { "html", "css", "javascriptreact", "typescriptreact", "templ" },
     build = ":UpdateRemotePlugins",
     dependencies = { { "nvim-treesitter/nvim-treesitter", lazy = true } },
+    enabled = false, -- throws errors
     opts = {
       document_color = {
         enabled = false,
@@ -16,34 +17,6 @@ return {
           fg = "#38BDF8",
         },
       },
-    },
-  },
-
-  -- autocomplete closing tags, auto rename
-  {
-    "windwp/nvim-ts-autotag",
-    enabled = false,
-    ft = {
-      "templ",
-      "astro",
-      "glimmer",
-      "handlebars",
-      "html",
-      "jsx",
-      "markdown",
-      "php",
-      "rescript",
-      "svelte",
-      "tsx",
-      "twig",
-      "vue",
-      "xml",
-    },
-    opts = {
-      -- Defaults
-      enable_close = true, -- Auto close tags
-      enable_rename = true, -- Auto rename pairs of tags
-      enable_close_on_slash = false, -- Auto close on trailing </
     },
   },
 }

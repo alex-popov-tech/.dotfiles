@@ -53,7 +53,7 @@ vim.schedule(function()
     cursorcolumn = true, -- highlight for current column
     cursorline = true, -- Highlight the screen line of the cursor with CursorLine
     completeopt = "menu,menuone,noselect", -- completion select options
-    conceallevel = 3, -- Hide * markup for bold and italic
+    conceallevel = 2, -- Hide * markup for bold and italic
     confirm = true, -- confirm to save changes before exiting modified buffer
     expandtab = true, -- Use spaces instead of tabs
     -- smartindent = true, -- Insert indents automatically

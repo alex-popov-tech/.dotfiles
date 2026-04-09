@@ -1,6 +1,15 @@
 local util = require("util")
 local options = { noremap = true, silent = true }
 
+-- set global diagnostic config
+vim.diagnostic.config({
+  signs = true,
+  -- underline = true,
+  virtual_text = { prefix = "<- " },
+  -- virtual_text = false,
+  virtual_lines = false,
+  severity_sort = true,
+})
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("UserLspConfig", { clear = false }),
   callback = function(args)
@@ -9,30 +18,25 @@ vim.api.nvim_create_autocmd("LspAttach", {
       return it.id == args.data.client_id
     end, clients)
 
+    -- enable inlay_hints for golang
+    if client.name == "gopls" then
+      vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
+    end
+
     vim.lsp.inline_completion.enable()
-    vim.diagnostic.config({ signs = function() end })
+    -- vim.diagnostic.config({ signs = function() end })
 
     vim.keymap.set("n", "K", vim.lsp.buf.hover, options)
     vim.keymap.set("i", "<c-k>", vim.lsp.buf.signature_help, options)
-    vim.keymap.set("n", "'gd", vim.lsp.buf.definition, options)
-    vim.keymap.set("n", "'rn", vim.lsp.buf.rename, options)
+    vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, options)
+    vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, options)
 
-    vim.keymap.set("n", "'gr", function()
+    vim.keymap.set("n", "<leader>gr", function()
       require("fzf-lua").lsp_references()
-      -- require("telescope.builtin").lsp_references({
-      --   layout_strategy = "vertical",
-      --   layout_settings = { width = 0.9, height = 0.9 },
-      -- })
     end, options)
 
-    vim.keymap.set("n", "'gi", function()
-      if vim.bo.filetype == "go" then
-        vim.lsp.buf.definition()
-      else
-        vim.lsp.buf.implementation()
-      end
-    end, options)
-
+    vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, options)
+    vim.keymap.set("n", "<leader>gi", vim.lsp.buf.implementation, options)
     vim.keymap.set("n", "[d", function()
       vim.diagnostic.goto_prev({ float = { border = "single" } })
     end, options)
@@ -40,7 +44,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
       vim.diagnostic.goto_next({ float = { border = "single" } })
     end, options)
 
-    vim.keymap.set("n", "'d", function()
+    vim.keymap.set("n", "<leader>d", function()
       vim.diagnostic.open_float({
         bufnr = 0,
         scope = "line",
@@ -49,7 +53,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
       })
     end, options)
 
-    vim.keymap.set("n", "'D", function()
+    vim.keymap.set("n", "<leader>D", function()
       vim.diagnostic.open_float({
         bufnr = 0,
         scope = "buffer",
@@ -57,8 +61,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
         border = "rounded",
       })
     end, options)
-
-    -- vim.lsp.completion.enable(true, args.data.client_id, args.buf, { autotrigger = true })
 
     -- define line number hl for lines with Lsp errors
     local define_sign = function(name)
@@ -83,15 +85,5 @@ vim.api.nvim_create_autocmd("LspAttach", {
       reset_bg_for_highlight("DiagnosticSignHint")
       reset_bg_for_highlight("DiagnosticSignInfo")
     end, 100)
-
-    -- set global diagnostic config
-    vim.diagnostic.config({
-      signs = true,
-      -- underline = true,
-      virtual_text = { prefix = "<- " },
-      -- virtual_text = false,
-      virtual_lines = false,
-      severity_sort = true,
-    })
   end,
 })
