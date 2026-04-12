@@ -61,3 +61,6 @@ zmodule zsh-users/zsh-autosuggestions
 # manually added modules
 zmodule ohmyzsh/ohmyzsh --root plugins/vi-mode
 zmodule ohmyzsh/ohmyzsh --root plugins/git
+
+zmodule kylesnowschwartz/zsh-ai-cmd
+
