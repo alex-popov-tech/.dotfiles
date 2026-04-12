@@ -1,117 +1,100 @@
-vim.schedule(function()
-  for key, val in pairs({
-    laststatus = 3,
-    cmdheight = 0, -- hide by default cmd line
-    clipboard = "unnamedplus", -- enable yank/paste to/from system clipboard
-    mouse = "a", -- to visually select and copy from vim without line numbers
-    -- lazyredraw = true, -- Don't redraw while executing macros (good performance config)
-    ttyfast = true, -- Don't redraw while executing macros (good performance config)
-    hlsearch = false, -- keep searched chunks highlighted
-    ignorecase = true, -- search case-insensitive
-    smartcase = true, -- if on with ignorecase, when a pattern contains an uppercase letter, it is case sensitive, otherwise it is not
-    writebackup = false, -- Turn backup off, since most stuff is in SVN, git et.c anyway...
-    swapfile = false, -- disable backups
-    backup = false, -- disable backups
-    showcmd = true, -- show what commands you typing, what you select in visual mode, etc.
-    autowrite = true, -- Automatically :write before running commands
-    scrolloff = 3, -- how many lines till window border to see when scrolling
-    sidescrolloff = 10, -- same as above but for columns
-    shell = "/opt/homebrew/bin/zsh",
-    inccommand = "split", -- substitute preview
-    updatetime = 100, -- timeout for showing cursorhold events, etc
-    hidden = true, -- Enable modified buffers in background
-    background = "dark",
-    encoding = "UTF-8",
-    showmode = false, -- dont show mode since we have a statusline
-    splitkeep = "screen", -- stabilize buffers position when using splits
-    fillchars = {
-      -- eob = " ",
-      fold = " ",
-      foldopen = "",
-      foldsep = " ",
-      foldclose = "",
-      stlnc = "-",
-      vert = "│",
-    }, -- splits char
-    -- virtualedit = "all", -- make all area 'editable'-ish
-    listchars = { tab = "-->", space = "·", eol = "↩" }, -- replace chars
-    list = true, -- Show some invisible characters (tabs...
-    signcolumn = "auto", -- things to the left of line number
-    foldenable = true, -- don't fold by default
-    foldcolumn = "0",
-    foldlevel = 99, -- Using ufo provider need a large value, feel free to decrease the value
-    foldlevelstart = 99,
-    -- foldnestmax = 10, -- deepest fold is 10 levels
-    -- foldmethod = "expr", -- fold text using syntax
-    -- foldexpr = 'nvim_treesitter#foldexpr()',
-    wrap = false, -- when line is longer than the screen, it continues on the next line
-    linebreak = true, -- but do not break words, only 'by words'
-    number = true, -- show absolute line number
-    numberwidth = 1, -- by default 4, and because of that there is empty space to the right to line numbers except current
-    relativenumber = true, -- show relative line number for current line
-    colorcolumn = "", -- "80,120", -- highlight some column length
-    cursorcolumn = true, -- highlight for current column
-    cursorline = true, -- Highlight the screen line of the cursor with CursorLine
-    completeopt = "menu,menuone,noselect", -- completion select options
-    conceallevel = 2, -- Hide * markup for bold and italic
-    confirm = true, -- confirm to save changes before exiting modified buffer
-    expandtab = true, -- Use spaces instead of tabs
-    -- smartindent = true, -- Insert indents automatically
-    shiftround = true, -- Round indent
-    shiftwidth = 2, -- Size of an indent
-    tabstop = 2, -- Number of spaces tabs count for
-    termguicolors = true, -- True color support
-    timeoutlen = 500, -- Time in milliseconds to wait for a mapped sequence to complete.
-    wildmode = "longest:full,full", -- Command-line completion mode
-    spelllang = "en_us",
-    spell = true, -- native spelling, z= to suggest, zg to mark as good
-    undofile = true, -- save undo history
-    winborder = "rounded", -- have no idea what is it yet
-  }) do
-    vim.opt[key] = val
-  end
+-- UI & window layout --------------------------------------------------------
+vim.opt.laststatus = 3          -- global statusline
+vim.opt.cmdheight = 0           -- hide cmdline when not in use
+vim.opt.showmode = false        -- statusline shows mode
+vim.opt.splitkeep = "screen"    -- stabilize buffer position when splitting
+vim.opt.splitbelow = true       -- new horizontal splits go below current
+vim.opt.splitright = true       -- new vertical splits go right of current
+vim.opt.winborder = "rounded"   -- default border for floating windows
+                                -- (lsp hover, diagnostic floats, :help, etc).
+                                -- plugins with their own border config (blink,
+                                -- fzf-lua) override this.
+vim.opt.winblend = 0           -- floating window transparency
+vim.opt.pumblend = 0           -- popup menu transparency
 
-  -- TODO fix it
-  -- vim.opt.shortmess:append({ "s" }) -- better messages
+-- Line numbers & cursor ------------------------------------------------------
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.numberwidth = 1
+vim.opt.cursorline = true
+vim.opt.scrolloff = 8
+vim.opt.sidescrolloff = 10
+vim.opt.signcolumn = "auto"     -- only show when there's something (dap breakpoints)
 
-  -- vim.opt.formatoptions = "jcroqlnt" -- tcqj
-  -- vim.opt.grepformat = "%f:%l:%c:%m"
-  -- vim.opt.pumblend = 10 -- Popup blend
-  -- vim.opt.pumheight = 10 -- Maximum number of entries in a popup
+-- Whitespace & indentation ---------------------------------------------------
+vim.opt.expandtab = true
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
+vim.opt.shiftround = true
+vim.opt.list = true
+vim.opt.listchars = { tab = "-->", space = "·", eol = "↩" }
+vim.opt.fillchars = {
+  fold = " ",
+  foldopen = "▾",
+  foldsep = " ",
+  foldclose = "▸",
+  stlnc = "-",
+  vert = "│",
+  diff = "╱",                   -- hatch-style filler in diff view
+}
 
-  vim.opt.diffopt:append({ "linematch:60" }) -- context when using as git mergetool
+-- Wrapping -------------------------------------------------------------------
+vim.opt.wrap = false
+vim.opt.linebreak = true        -- only matters when wrap is on, but harmless
+vim.opt.breakindent = true      -- preserve indent on wrapped lines
 
-  vim.g.markdown_recommended_style = 0 -- fix markdown indentation settings
-  -- vim.o.shortmess = "filnxtToOFWIcC"
-  vim.o.shortmess = "otTACF"
+-- Folding (used with ufo) ----------------------------------------------------
+vim.opt.foldlevel = 99
+vim.opt.foldlevelstart = 99
 
-  vim.filetype.add({
-    -- Detect and assign filetype based on the extension of the filename
-    extension = {
-      png = "png",
-      jpeg = "jpeg",
-      jpg = "jpg",
-      pug = "pug",
-      jade = "pug",
-      http = "http",
-      mdx = "mdx",
-      log = "log",
-      conf = "conf",
-      env = "dotenv",
-    },
-    -- Detect and apply filetypes based on the entire filename
-    filename = {
-      [".env"] = "dotenv",
-      ["env"] = "dotenv",
-      ["tsconfig.json"] = "jsonc",
-    },
-    -- Detect and apply filetypes based on certain patterns of the filenames
-    pattern = {
-      -- INFO: Match filenames like - ".env.example", ".env.local" and so on
-      ["%.env%.[%w_.-]+"] = "dotenv",
-    },
-  })
+-- Search ---------------------------------------------------------------------
+vim.opt.hlsearch = false        -- custom blink-on-search in keymaps.lua
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.inccommand = "split"    -- live substitution preview
 
-  vim.keymap.set("ca", "W", "noa w")
-  vim.keymap.set("ca", "WA", "noa wa")
-end)
+-- Completion & popup ---------------------------------------------------------
+vim.opt.completeopt = "menu,menuone,noselect,fuzzy"  -- fuzzy is 0.11+
+vim.opt.pumheight = 10
+vim.opt.wildmode = "longest:full,full"
+
+-- Files & undo ---------------------------------------------------------------
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.writebackup = false
+vim.opt.undofile = true         -- persistent undo
+vim.opt.autowrite = true        -- auto :write before running commands
+vim.opt.confirm = true          -- prompt on unsaved exit
+
+-- Timings --------------------------------------------------------------------
+vim.opt.updatetime = 100        -- cursorhold / gitsigns / lsp highlight delay
+vim.opt.timeoutlen = 200        -- key sequence timeout
+
+-- Clipboard & colors ---------------------------------------------------------
+vim.opt.clipboard = "unnamedplus"
+vim.opt.termguicolors = true
+vim.opt.background = "dark"
+
+-- Jumplist & scrolling -------------------------------------------------------
+vim.opt.jumpoptions = "stack,view,clean"  -- browser-like jumps + restore view
+vim.opt.smoothscroll = true     -- smooth C-d/C-u with wrapped lines
+
+-- Markdown / concealing ------------------------------------------------------
+vim.opt.conceallevel = 2
+
+-- Spelling -------------------------------------------------------------------
+vim.opt.spell = true
+vim.opt.spelllang = "en_us"
+
+-- Messages -------------------------------------------------------------------
+-- see :h 'shortmess' for flag meanings
+vim.opt.shortmess = "otTACFOWcs"
+
+-- Diff -----------------------------------------------------------------------
+vim.opt.diffopt:append("linematch:60")
+
+-- TODO fix it
+-- vim.opt.shortmess:append({ "s" })
+
+-- 3rd party ------------------------------------------------------------------
+vim.g.markdown_recommended_style = 0    -- fix markdown indent

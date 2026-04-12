@@ -1,14 +1,15 @@
+-- :Bonly — delete all listed, unmodified, non-visible buffers
 vim.api.nvim_create_user_command("Bonly", function()
-  local last_buffer_number = vim.fn.bufnr("$")
-  for i = 1, last_buffer_number - 1 do
-    if vim.fn.buflisted(i) ~= 0 then
-      local buf_info = vim.fn.getbufinfo(i)[1]
-      local is_modified = buf_info.changed == 1
-      local is_focused = buf_info.hidden ~= 1
-      if not is_modified and not is_focused then
-        vim.cmd(string.format("bd! %d", i))
-      end
-    end
-  end
-end, {})
-vim.keymap.set('ca', 'bo', 'silent Bonly')
+  vim.iter(vim.api.nvim_list_bufs())
+    :filter(function(buf)
+      return vim.bo[buf].buflisted
+        and not vim.bo[buf].modified
+        and vim.fn.bufwinnr(buf) == -1
+    end)
+    :each(function(buf)
+      vim.api.nvim_buf_delete(buf, { force = true })
+    end)
+end, { desc = "Delete all non-visible, unmodified buffers" })
+
+-- :bo → :Bonly
+vim.keymap.set("ca", "bo", "Bonly")
