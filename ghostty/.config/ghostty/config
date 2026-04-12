@@ -1,0 +1,24 @@
+# Theme
+theme = nightfox
+
+# Font
+font-family = JetBrains Mono
+font-family-italic = JetBrains Mono
+font-style-italic = DemiBold Italic
+font-size = 13
+
+# Window
+macos-titlebar-style = tabs
+window-save-state = always
+background-opacity = 0.9
+background-blur = 20
+
+# Splits
+unfocused-split-opacity = 0.85
+
+# Shaders
+custom-shader = /Users/alex/.dotfiles/ghostty-shader-playground/public/shaders/blaze_sparks.glsl
+custom-shader = /Users/alex/.dotfiles/ghostty-cursor-shaders/cursor_tail.glsl
+
+# Keybindings
+config-file = keybinds
