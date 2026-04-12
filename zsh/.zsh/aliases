@@ -50,3 +50,5 @@ alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
 
 alias copy="pbcopy"
+
+alias kb="kubectl"

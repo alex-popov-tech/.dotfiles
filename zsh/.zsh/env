@@ -1,5 +1,6 @@
 # vi: ft=zsh
 
+[[ -f ~/.secrets/env ]] && source ~/.secrets/env
 # vi-mode go to different modes faster
 export KEYTIMEOUT=1
 # add brew and packages to PATH
@@ -11,8 +12,15 @@ export LANG=en_US.UTF-8
 # for gpg
 export GPG_TTY=$TTY
 
-export MASON_BIN_PATH="$HOME/.local/share/nvim/mason/bin"
-export PATH="$PATH:$MASON_BIN_PATH"
-export PATH="$PATH:/usr/local/bin:/opt/homebrew/bin"
+# export PATH="$PATH:/opt/homebrew/bin"
+# MASON_BIN_PATH="$HOME/.local/share/nvim/mason/bin"
+# export PATH="$PATH:$MASON_BIN_PATH"
 # export PATH="$PATH:$HOME/.local/bin"
-export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+# export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+ASDF_BIN_PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims"
+LOCAL_BIN="$PATH:/Users/alex/.local/bin"
+export PATH="$ASDF_BIN_PATH:$LOCAL_BIN:$PATH"
+
+# for zsh-ai plugin
+ZSH_AI_CMD_PROVIDER=ollama
+ZSH_AI_CMD_OLLAMA_MODEL=gemma3
