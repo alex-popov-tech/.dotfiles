@@ -1,12 +1,13 @@
-local utils = require("utils")
+local wezterm = require("wezterm")
 
 local session = require("session")
 local keys = require("mappings")
 local ui = require("ui")
 
-local other_opts = {
-  -- notification_handling = "AlwaysShow",
-  use_ime = true,
-  -- macos_forward_to_ime_modifier_mask = 'SHIFT',
-}
-return utils.merge({ other_opts, session, keys, ui })
+local config = wezterm.config_builder()
+for _, tbl in ipairs({ session, keys, ui }) do
+  for k, v in pairs(tbl) do
+    config[k] = v
+  end
+end
+return config
