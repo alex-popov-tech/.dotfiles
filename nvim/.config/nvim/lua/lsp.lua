@@ -2,7 +2,6 @@
 -- plugin-dependent parts (vim.pack.add, blink, schemastore, mason) live in
 -- plugin/lsp.lua.
 
-
 -- diagnostics ----------------------------------------------------------------
 vim.diagnostic.config({
   virtual_text = { prefix = "<- " },
@@ -44,29 +43,22 @@ end
 vim.api.nvim_create_autocmd("ColorScheme", { callback = strip_diagnostic_bg })
 strip_diagnostic_bg()
 
-
 -- global lsp features --------------------------------------------------------
-vim.lsp.inline_completion.enable()
-
+-- vim.lsp.inline_completion.enable()  -- disabled: neocodeium handles inline suggestions
 
 -- global diagnostic keymaps (work without any lsp client) --------------------
 local mapopts = { noremap = true, silent = true }
 
 vim.keymap.set("n", "[d", function()
-  vim.diagnostic.jump({ count = -1, float = { border = "single" } })
+  vim.diagnostic.jump({ count = -1 })
 end, mapopts)
 
 vim.keymap.set("n", "]d", function()
-  vim.diagnostic.jump({ count = 1, float = { border = "single" } })
+  vim.diagnostic.jump({ count = 1 })
 end, mapopts)
 
 vim.keymap.set("n", "<leader>d", function()
-  vim.diagnostic.open_float({
-    bufnr = 0,
-    scope = "line",
-    source = true,
-    border = "rounded",
-  })
+  vim.diagnostic.open_float({ bufnr = 0, scope = "line", source = true, border = "rounded" })
 end, mapopts)
 
 vim.keymap.set("n", "<leader>D", function()
@@ -78,7 +70,6 @@ vim.keymap.set("n", "<leader>D", function()
   })
 end, mapopts)
 
-
 -- enable all servers declared in ~/.config/nvim/lsp/ -------------------------
 -- single source of truth: drop a file in lsp/, get a restart, it's enabled.
 local lsp_dir = vim.fn.stdpath("config") .. "/lsp"
@@ -89,7 +80,6 @@ for name, ftype in vim.fs.dir(lsp_dir) do
   end
 end
 vim.lsp.enable(servers)
-
 
 -- per-client behavior + buffer-local lsp keymaps -----------------------------
 vim.api.nvim_create_autocmd("LspAttach", {

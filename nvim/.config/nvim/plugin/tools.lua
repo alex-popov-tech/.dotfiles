@@ -1,7 +1,6 @@
 -- tools — utility plugins loaded on demand.
 local defer = require("defer")
 
-
 -- snap.nvim — screenshot code snippets (:Snap, :Screen)
 defer.on_cmd({ "Snap", "Screen" }, function()
   vim.pack.add({ { src = "https://github.com/mistweaverco/snap.nvim", version = "v1.5.0" } })
@@ -14,7 +13,6 @@ defer.on_cmd({ "Snap", "Screen" }, function()
   end, { desc = "Screenshot code snippet", nargs = "*", range = "%" })
 end)
 
-
 -- store.nvim — plugin/note manager (:Store)
 defer.on_cmd({ "Store" }, function()
   vim.pack.add({
@@ -25,12 +23,12 @@ defer.on_cmd({ "Store" }, function()
   require("markview").setup({})
   require("image").setup({ integrations = { markdown = { enabled = false } } })
   require("store").setup({
+    -- logging = "debug",
     layout = "tab",
     proportions = { list = 0.6, preview = 0.4 },
     preview_debounce = 50,
   })
 end)
-
 
 -- no-neck-pain.nvim — center buffer for distraction-free editing (:NoNeckPain)
 defer.on_cmd({ "NoNeckPain" }, function()

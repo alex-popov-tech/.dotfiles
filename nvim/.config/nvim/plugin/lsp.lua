@@ -29,14 +29,17 @@ vim.pack.add({
 })
 
 require("blink.cmp").setup({
-  keymap = { preset = "default" },
+  keymap = {
+    preset = "default",
+    ["<CR>"] = { "select_and_accept", "fallback" },
+  },
   appearance = { nerd_font_variant = "mono" },
   sources = { default = { "lsp", "path", "snippets", "buffer" } },
   snippets = { preset = "luasnip" },
   completion = {
     list = { selection = { preselect = false, auto_insert = true } },
     menu = {
-      border = "single",
+      border = "rounded",
       draw = {
         components = {
           kind_icon = {

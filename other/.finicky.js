@@ -6,11 +6,19 @@ const browsers = {
     checkForUpdate: true,
   },
   personal: {
-    name: 'Arc',
+    name: "Arc",
   },
   lokalise: {
-    name: 'Brave Browser',
-    profile: 'Profile 1'
+    name: "Brave Browser",
+    profile: "Profile 1",
+  },
+  kandc: {
+    name: "Brave Browser",
+    profile: "Default",
+  },
+  of: {
+    name: "Brave Browser",
+    profile: "Profile 3",
   },
 };
 
@@ -19,17 +27,15 @@ module.exports = {
   handlers: [
     {
       match: /zoom.us\/j\//,
-      browser: 'us.zoom.xos',
+      browser: "us.zoom.xos",
     },
     {
-      match: [
-        '*lokalise*',
-        'https://meet.google.com/isy-mnwr-mas*',
-        'https://meet.google.com/pfu-saon-rqy',
-        '*greenhouse*',
-        '*papayaglobal*',
-      ],
-      browser: browsers.lokalise
+      match: ["*informa*", "*krusche*", "*knect*", "*informaconnect*", "*knnlab*", "*itmebusiness*", ".*itmebusiness.*"],
+      browser: browsers.kandc,
+    },
+    {
+      match: ["*retloko*", "*onlyfans*"],
+      browser: browsers.of,
     },
   ],
 };

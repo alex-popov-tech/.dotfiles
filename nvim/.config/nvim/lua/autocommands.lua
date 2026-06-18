@@ -5,6 +5,31 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
+-- restore cursor to last position when reopening a file
+vim.api.nvim_create_autocmd("BufReadPost", {
+  callback = function(ev)
+    local mark = vim.api.nvim_buf_get_mark(ev.buf, '"')
+    local lcount = vim.api.nvim_buf_line_count(ev.buf)
+    if mark[1] > 0 and mark[1] <= lcount
+      and not vim.tbl_contains({ "commit", "gitrebase" }, vim.bo[ev.buf].filetype)
+    then
+      pcall(vim.api.nvim_win_set_cursor, 0, mark)
+    end
+  end,
+})
+
+-- hide cursorline in insert mode, restore on leave
+vim.api.nvim_create_autocmd("InsertEnter", {
+  callback = function()
+    vim.opt_local.cursorline = false
+  end,
+})
+vim.api.nvim_create_autocmd("InsertLeave", {
+  callback = function()
+    vim.opt_local.cursorline = true
+  end,
+})
+
 -- start terminal in insert mode
 vim.api.nvim_create_autocmd("TermOpen", {
   callback = function()

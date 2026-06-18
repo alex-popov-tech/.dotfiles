@@ -13,6 +13,9 @@ require("nightfox").setup({
 
 vim.cmd.colorscheme("nightfox")
 
+-- highlight overrides applied after colorscheme loads
+vim.api.nvim_set_hl(0, "@lsp.typemod.string.format.go", { fg = "#f4a261" })
+
 
 -- disabled colorschemes (kept as reference) ------------------------------
 -- to try one: uncomment its block and comment out the nightfox section above.

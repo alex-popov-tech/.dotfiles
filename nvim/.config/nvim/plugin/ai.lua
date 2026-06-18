@@ -6,7 +6,9 @@ local defer = require("defer")
 defer.later(function()
   vim.pack.add({ "https://github.com/monkoose/neocodeium" })
   local neocodeium = require("neocodeium")
-  neocodeium.setup()
+  neocodeium.setup({
+    show_label = false,
+  })
 
   vim.keymap.set("i", "<A-a>", neocodeium.accept, { desc = "Accept suggestion" })
   vim.keymap.set("i", "<A-e>", neocodeium.accept_line, { desc = "Accept line" })

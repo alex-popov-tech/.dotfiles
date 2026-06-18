@@ -6,6 +6,8 @@ vim.api.nvim_create_autocmd("ColorScheme", {
     local groups = {
       "NormalFloat",
       "FloatBorder",
+      "Pmenu",
+      "Folded",
       "LspInlayHint",
       "DiagnosticVirtualTextError",
       "DiagnosticVirtualTextWarn",

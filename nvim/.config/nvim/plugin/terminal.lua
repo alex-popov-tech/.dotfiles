@@ -28,6 +28,7 @@ local function toggle()
 
   if vim.bo[term_buf].buftype ~= "terminal" then
     vim.cmd.terminal()
+    vim.bo[term_buf].buflisted = false
   end
   vim.cmd.startinsert()
 end
