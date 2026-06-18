@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//Users/alex/.claude/**)",
+      "Skill(skill-creator)",
+      "mcp__sequential-thinking__sequentialthinking",
+      "Bash(python3:*)",
+      "Bash(chmod:*)",
+      "WebFetch(domain:code.claude.com)",
+      "WebSearch",
+      "WebFetch(domain:claudelog.com)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:cuong.io)",
+      "WebFetch(domain:gist.github.com)",
+      "Bash(mkdir:*)",
+      "Bash(wc:*)",
+      "WebFetch(domain:ghostty.org)",
+      "WebFetch(domain:cmp.saghen.dev)",
+      "Bash(printf '')",
+      "WebFetch(domain:www.reddit.com)",
+      "WebFetch(domain:old.reddit.com)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

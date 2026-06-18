@@ -35,7 +35,7 @@ skill-name/
 │   └── Markdown instructions (required)
 └── Bundled Resources (optional)
     ├── scripts/          - Executable code (Python/Bash/etc.)
-    ├── references/       - Documentation intended to be loaded into context as needed
+    ├── references/       - Documentation intended to be loaded into context as needed ( HIGHLY RECOMMENDED to use )
     └── assets/           - Files used in output (templates, icons, fonts, etc.)
 ```
 
@@ -54,12 +54,13 @@ Executable code (Python/Bash/etc.) for tasks that require deterministic reliabil
 - **Benefits**: Token efficient, deterministic, may be executed without loading into context
 - **Note**: Scripts may still need to be read by Claude for patching or environment-specific adjustments
 
-##### References (`references/`)
+##### References (`references/`) - HIGHLY RECOMMENDED
 
 Documentation and reference material intended to be loaded as needed into context to inform Claude's process and thinking.
+Its a great way to save context space by making mandatory read for titles, and at the same time be able to have extensive description of specific topics.
 
 - **When to include**: For documentation that Claude should reference while working
-- **Examples**: `references/finance.md` for financial schemas, `references/mnda.md` for company NDA template, `references/policies.md` for company policies, `references/api_docs.md` for API specifications
+- **Examples**: When writing coding guidelines, include each good practice in separate reference, like `references/naming.md` for naming conventions, `references/structure.md` for files and directories organization, `references/react.md` for react-specific guidelines, etc.
 - **Use cases**: Database schemas, API documentation, domain knowledge, company policies, detailed workflow guides
 - **Benefits**: Keeps SKILL.md lean, loaded only when Claude determines it's needed
 - **Best practice**: If files are large (>10k words), include grep search patterns in SKILL.md
